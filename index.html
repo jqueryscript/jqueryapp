@@ -1,63 +1,109 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>jQuery Or Not</title>
-    <style>
-    *,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+<link rel="stylesheet" href="app.css">
 
-html {
-  font-family: sans-serif;
-  line-height: 1.15;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  -ms-overflow-style: scrollbar;
-  -webkit-tap-highlight-color: transparent;
-}
-
-@-ms-viewport {
-  width: device-width;
-}
-
-article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
-  display: block;
-}
-
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #212529;
-  text-align: left;
-  background-color: #fff;
-}
-[tabindex="-1"]:focus {
-  outline: 0 !important;
-}
-h1, h2, h3, h4, h5, h6 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-}
-
-p {
-  margin-top: 0;
-  margin-bottom: 1rem;
-}
-</style>
+    <title>jQuery.app</title>
   </head>
   <body>
-    <h1>This page is under construction</h1>
-    <h2>I like jQuery:</h2>
-    <p><a href="https://www.jqueryscript.net/">https://www.jqueryscript.net</a></p>
-    <h2>jQuery is out of date:</h2>
-    <p><a href="https://www.cssscript.com/">https://www.cssscript.com/</a></p>
+<nav class="site-header sticky-top py-1">
+      <div class="container d-flex flex-column flex-md-row justify-content-between">
+        <a class="py-2" href="https://github.com/jqueryscript/jqueryapp">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mx-auto"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
+        </a>
+        <a class="py-2 d-none d-md-inline-block" href="https://www.jqueryscript.net/">jQuery</a>
+        <a class="py-2 d-none d-md-inline-block" href="https://www.cssscript.com/category/free-javascripts/">JavaScript</a>
+        <a class="py-2 d-none d-md-inline-block" href="https://www.cssscript.com/category/css-css3/">HTML5/CSS3</a>
+        <a class="py-2 d-none d-md-inline-block" href="https://365webresources.com/">Freebies</a>
+        <a class="py-2 d-none d-md-inline-block" href="https://wpmissing.com/">Wordpress</a>
+        <a class="py-2 d-none d-md-inline-block" href="http://www.vuescript.com/">VueJS</a>
+      </div>
+    </nav>
+
+    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+      <div class="col-md-5 p-lg-5 mx-auto my-5">
+        <h1 class="display-4 font-weight-normal">Welcome</h1>
+        <p class="lead font-weight-normal">Ultimate resources for web, mobile, app, graphic designers.</p>
+        <a class="btn btn-outline-secondary" href="https://github.com/jqueryscript/jqueryapp">Github</a>
+      </div>
+      <div class="product-device box-shadow d-none d-md-block"></div>
+      <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
+    </div>
+
+    <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+      <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+        <div class="my-3 py-3">
+          <h2 class="display-5">jQueryScript</h2>
+          <p class="lead">8000+ latest Free jQuery plugins.</p>
+          <a class="btn btn-outline-secondary" href="https://www.jqueryscript.net/">View</a>
+        </div>
+        <div class="bg-light box-shadow mx-auto bg-app" style="background-image:url(images/jquery-min.png)"></div>
+      </div>
+      <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+        <div class="my-3 p-3">
+          <h2 class="display-5">JavaScript</h2>
+          <p class="lead">Pure JavaScript libraries and plugins.</p>
+          <a class="btn btn-outline-secondary" href="https://www.cssscript.com/category/free-javascripts/">View</a>
+        </div>
+        <div class="bg-dark box-shadow mx-auto bg-app" style="background-image:url(images/javascript-min.png)"></div>
+      </div>
+    </div>
+
+    <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+      <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+        <div class="my-3 p-3">
+          <h2 class="display-5">CSS/CSS3</h2>
+          <p class="lead">HTML5/CSS/CSS3</p>
+          <a class="btn btn-outline-secondary" href="https://www.cssscript.com/category/css-css3/">View</a>
+        </div>
+        <div class="bg-dark box-shadow mx-auto bg-app" style="background-image:url(images/htmlcss-min.jpg)"></div>
+      </div>
+      <div class="bg-info mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+        <div class="my-3 py-3">
+          <h2 class="display-5">365WebResources</h2>
+          <p class="lead">Graphic &amp; Web Design Freebies</p>
+          <a class="btn btn-outline-secondary" href="https://365webresources.com/">View</a>
+        </div>
+        <div class="bg-light box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+      </div>
+    </div>
+
+    <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+      <div class="bg-primary mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+        <div class="my-3 p-3">
+          <h2 class="display-5">WPMissing</h2>
+          <p class="lead">Best Free Wordpress Plugins And Themes</p>
+          <a class="btn btn-outline-secondary" href="https://wpmissing.com/">View</a>
+        </div>
+        <div class="bg-white box-shadow mx-auto bg-app" style="background-image:url(images/wordpress-min.png)"></div>
+      </div>
+      <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+        <div class="my-3 py-3">
+          <h2 class="display-5">VueScript</h2>
+          <p class="lead">Best Free Vue.js Components</p>
+          <a class="btn btn-outline-secondary" href="http://www.vuescript.com/">View</a>
+        </div>
+        <div class="bg-white box-shadow mx-auto bg-app" style="background-image:url(images/vue-min.png)"></div>
+      </div>
+    </div>
+
+
+
+    <footer class="container py-5">
+      <div class="row">
+        <div class="col-12 col-md">
+          <h5>&copy; 2018 Built With Bootstrap 4 <a href="https://getbootstrap.com/docs/4.1/examples/checkout/">Product</a> </h5>
+        </div>
+      </div>
+    </footer>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
   </body>
 </html>
