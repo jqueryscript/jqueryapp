@@ -1,112 +1,341 @@
 <!doctype html>
-<html lang="en">
+<html>
   <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-<link rel="stylesheet" href="app.css">
-
-    <title>jQuery.app</title>
+    <title>jQuery.app: Free & Fast Online Tools For Developers</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="app.css" />
+    <link rel="shortcut icon" href="./images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./images/apple-touch-icon.png">
+    <style>
+      .nav-item > a { font-weight: 500; }
+      .hero {background-color: #DFDBE5;}
+      .card-title { font-weight: 400;}
+      .card > img { height: 240px; object-fit: cover; }
+    </style>
   </head>
   <body>
-<nav class="site-header sticky-top py-1">
-      <div class="container d-flex flex-column flex-md-row justify-content-between">
-        <a class="py-2" href="https://github.com/jqueryscript/jqueryapp">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mx-auto"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
-        </a>
-        <a class="py-2 d-none d-md-inline-block" href="https://www.jqueryscript.net/">jQuery</a>
-        <a class="py-2 d-none d-md-inline-block" href="https://www.cssscript.com/category/free-javascripts/">JavaScript</a>
-        <a class="py-2 d-none d-md-inline-block" href="https://www.cssscript.com/category/css-css3/">HTML5/CSS3</a>
-        <a class="py-2 d-none d-md-inline-block" href="https://365webresources.com/">Freebies</a>
-        <a class="py-2 d-none d-md-inline-block" href="https://wpmissing.com/">Wordpress</a>
-        <a class="py-2 d-none d-md-inline-block" href="http://www.vuescript.com/">VueJS</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand mr-0 mr-md-2" href="/" aria-label="jQuery.App"><img src="./images/favicon-32x32.png" /></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav mr-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#jquery" title="Free jQuery Plugins">jQuery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#javascript" title="Vanilla JavaScript & CSS/CSS3 Libraries">JS & CSS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#vue" title="Vue.js Components">Vue.js</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#graphic" title="Web &amp; Graphic Design Freebies">Graphic Design Freebies</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#wordpress" title="Free WordPress Plugins">WordPress</a>
+            </li>
+          </ul>
+          <hr class="d-md-none">
+          <ul class="navbar-nav ml-md-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="projects" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Repositories
+              </a>
+              <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="projects">
+                <a class="dropdown-item active" href="/">jQuery.App</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="https://github.com/jqueryscript/Bootstrap-5-Design-Resources" title="Bootstrap 5 Design Resources">Bootstrap 5</a>
+                <a class="dropdown-item" href="https://github.com/jqueryscript/awesome-neumorphism" title="Awesome Neumorphism resources.">Neumorphism Design</a>
+                <a class="dropdown-item" href="https://github.com/jqueryscript/covid-19-web" title="Open-source COVID-19 (Coronavirus) resources">COVID-19</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="https://github.com/jqueryscript?tab=repositories">All Repositories</a>
+              </div>
+            </li>
+          </ul>
+          <a class="btn btn-outline-dark d-lg-inline-block my-2 my-md-0 ml-md-3" href="https://github.com/jqueryscript/">Github</a>
+        </div>
       </div>
     </nav>
-
-    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-      <div class="col-md-5 p-lg-5 mx-auto my-5">
-        <h1 class="display-4 font-weight-normal">Welcome</h1>
-        <p class="lead font-weight-normal">Ultimate resources for web, mobile, app, graphic designers.</p>
-        <a class="btn btn-outline-secondary" href="https://github.com/jqueryscript/jqueryapp">Github</a>
-      </div>
-      <div class="product-device box-shadow d-none d-md-block"></div>
-      <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
+    <div class="bg-dark text-white py-3">
+      <div class="container text-center">A round-up of the best Web & Graphic design resources from the last week can be <a href="https://www.jqueryscript.net/blog/Weekly-Web-Design-Development-News-Collective-373.html" class="text-white">found here</a>.</div>
     </div>
-
-    <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
-      <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
-        <div class="my-3 py-3">
-          <h2 class="display-5">jQueryScript</h2>
-          <p class="lead">8000+ latest Free jQuery plugins.</p>
-          <a class="btn btn-outline-secondary" href="https://www.jqueryscript.net/">View</a>
+    <div class="bg-light hero">
+      <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+          <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="mb-3">🚀 Build Modern Sites & Web Apps with jQuery.App</h1>
+            <p class="lead text-muted">Qucikly build modern websites and web applications with latest, free, and popluar online resources we found on the web.</p>
+          </div>
         </div>
-        <div class="bg-light box-shadow mx-auto bg-app" style="background-image:url(images/jquery-min.png)"></div>
-      </div>
-      <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-        <div class="my-3 p-3">
-          <h2 class="display-5">JavaScript</h2>
-          <p class="lead">Pure JavaScript libraries and plugins.</p>
-          <a class="btn btn-outline-secondary" href="https://www.cssscript.com/category/free-javascripts/">View</a>
-        </div>
-        <div class="bg-dark box-shadow mx-auto bg-app" style="background-image:url(images/javascript-min.png)"></div>
-      </div>
+      </section>
     </div>
-
-    <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
-      <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-        <div class="my-3 p-3">
-          <h2 class="display-5">CSS/CSS3</h2>
-          <p class="lead">HTML5/CSS/CSS3</p>
-          <a class="btn btn-outline-secondary" href="https://www.cssscript.com/category/css-css3/">View</a>
-        </div>
-        <div class="bg-dark box-shadow mx-auto bg-app" style="background-image:url(images/htmlcss-min.jpg)"></div>
+    <main class="container py-5">
+      <div class="px-3 py-3 pt-md-5 pb-md-5 mx-auto text-center">
+        <h2 class="text-black-50" id="jquery">jQuery Plugins</h2>
+        <p>10000+ Free jQuery plugins for web &amp; mobile developers.</p>
+        <a class="text-center btn btn-lg btn-dark" href="https://www.jqueryscript.net/" title="View More jQuery Plugins">View More</a>
       </div>
-      <div class="bg-info mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
-        <div class="my-3 py-3">
-          <h2 class="display-5">365WebResources</h2>
-          <p class="lead">Graphic &amp; Web Design Freebies</p>
-          <a class="btn btn-outline-secondary" href="https://365webresources.com/">View</a>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img src="https://www.jqueryscript.net/images/json-xml-data-tree.jpg" class="card-img-top" alt="Image" />
+            <div class="card-body">
+              <h3 class="card-title">Data Tree</h3>
+              <p class="card-text text-black-50">An easy-to-use yet fully customizable jQuery tree view plugin used to visualize your JSON or XML data in a hierarchical tree structure.</p>
+              <div class="btn-group">
+                <a class="btn btn-sm btn-outline-secondary" href="https://www.jqueryscript.net/demo/json-xml-data-tree">Live Demo</a>
+                <a class="btn btn-sm btn-outline-secondary" href="https://www.jqueryscript.net/other/json-xml-data-tree.html">Download</a>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="bg-light box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
-      </div>
-    </div>
-
-    <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
-      <div class="bg-primary mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
-        <div class="my-3 p-3">
-          <h2 class="display-5">WPMissing</h2>
-          <p class="lead">Best Free Wordpress Plugins And Themes</p>
-          <a class="btn btn-outline-secondary" href="https://wpmissing.com/">View</a>
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img src="https://www.jqueryscript.net/images/bootstrap-5-jbvalidator.jpg" class="card-img-top" alt="Image" />
+            <div class="card-body">
+              <h3 class="card-title">Notific</h3>
+              <p class="card-text text-black-50">A powerful jQuery notification plugin to create customizable, non-blocking, animated notification boxes and loading indicators for modern web design.</p>
+              <div class="btn-group">
+                <a class="btn btn-sm btn-outline-dark" href="https://www.jqueryscript.net/demo/notification-box-notific">Live Demo</a>
+                <a class="btn btn-sm btn-outline-dark" href="https://www.jqueryscript.net/other/notification-box-notific.html">Download</a>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="bg-white box-shadow mx-auto bg-app" style="background-image:url(images/wordpress-min.png)"></div>
-      </div>
-      <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-        <div class="my-3 py-3">
-          <h2 class="display-5">VueScript</h2>
-          <p class="lead">Best Free Vue.js Components</p>
-          <a class="btn btn-outline-secondary" href="http://www.vuescript.com/">View</a>
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img src="https://i1.wp.com/www.cssscript.com/wp-content/uploads/2020/09/Custom-Dropdown-Select-Box-In-Vanilla-JavaScript-bvselect.png?fit=723%2C589&ssl=1" class="card-img-top" alt="Image" />
+            <div class="card-body">
+              <h3 class="card-title">bvselect</h3>
+              <p class="card-text text-black-50">Transforms the native select element into an animated, customizable, mobile-friendly dropdown.</p>
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary">Live Demo</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">Download</button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="bg-white box-shadow mx-auto bg-app" style="background-image:url(images/vue-min.png)"></div>
       </div>
-    </div>
-
-
-
+      <div class="px-3 py-3 pt-md-5 pb-md-5 mx-auto text-center">
+        <h2 class="text-black-50" id="javascript">JavaScript & CSS</h2>
+        <p>UI components made using Vanilla JavaScript and Pure CSS.</p>
+        <a class="text-center btn btn-lg btn-dark" href="https://www.cssscript.com/" title="JavaScript & CSS/CSS3">View More</a>
+      </div>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img src="https://i2.wp.com/www.cssscript.com/wp-content/uploads/2015/12/Snow.js.png?fit=447%2C326&ssl=1" class="card-img-top" alt="Image" />
+            <div class="card-body">
+              <h3 class="card-title">Snow.js</h3>
+              <p class="card-text text-black-50">Pure JavaScript implementation of simple snowfall effect that uses pure HTML/CSS for snowflakes.</p>
+              <div class="btn-group">
+                <a class="btn btn-sm btn-outline-secondary" href="https://www.cssscript.com/demo/minimalist-falling-snow-effect-with-pure-javascript-snow-js">Live Demo</a>
+                <a class="btn btn-sm btn-outline-secondary" href="https://www.cssscript.com/minimalist-falling-snow-effect-with-pure-javascript-snow-js/">Download</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img src="https://i2.wp.com/www.cssscript.com/wp-content/uploads/2017/07/multiselect.png?fit=482%2C360&ssl=1" class="card-img-top" alt="Image" />
+            <div class="card-body">
+              <h3 class="card-title">multiselect.js</h3>
+              <p class="card-text text-black-50">Converts the native select box into a multi-select control with checkboxes and check all button.</p>
+              <div class="btn-group">
+                <a class="btn btn-sm btn-outline-dark" href="https://www.cssscript.com/demo/multiselect-dropdown-list-checkboxes-multiselect-js">Live Demo</a>
+                <a class="btn btn-sm btn-outline-dark" href="https://www.cssscript.com/multiselect-dropdown-list-checkboxes-multiselect-js/">Download</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img src="https://i0.wp.com/www.cssscript.com/wp-content/uploads/2018/10/Confetti-Falling-Animation-In-Pure-JavaScript-confetti.js.png?fit=482%2C374&ssl=1" class="card-img-top" alt="Image" />
+            <div class="card-body">
+              <h3 class="card-title">confetti.js</h3>
+              <p class="card-text text-black-50">A vanilla JS library for creating a configurable, high-performance confetti falling animation.</p>
+              <div class="btn-group">
+                <a class="btn btn-sm btn-outline-secondary" href="https://www.cssscript.com/demo/confetti-falling-animation">Live Demo</a>
+                <a class="btn btn-sm btn-outline-secondary" href="https://www.cssscript.com/confetti-falling-animation/">Download</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="px-3 py-3 pt-md-5 pb-md-5 mt-5 mx-auto text-center">
+      <h2 class="text-black-50" id="vue">Vue.js</h2>
+        <p>Free Vue.js Components For Modern Apps</p>
+        <a class="text-center btn btn-lg btn-dark" href="https://www.vuescript.com/" title="Vue.js Components">View More</a>
+      </div>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img src="https://www.vuescript.com/wp-content/uploads/2020/11/Elegant-Toast-Notification-For-Vue.js-3-Toaster.jpg" class="card-img-top" alt="Image" />
+            <div class="card-body">
+              <h3 class="card-title">Toaster</h3>
+              <p class="card-text text-black-50">Helps developers create customizable toast-style notification messages in Vue.js 3 apps.</p>
+              <div class="btn-group">
+                <a class="btn btn-sm btn-outline-secondary" href="https://meforma.github.io/vue-toaster/">Live Demo</a>
+                <a class="btn btn-sm btn-outline-secondary" href="https://www.vuescript.com/elegant-toast-notification-toaster/">Download</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img src="https://www.vuescript.com/wp-content/uploads/2020/07/Tiny-Horizontal-Carousel-With-CSS-Scroll-Snap-vue-snap.png" class="card-img-top" alt="Image" />
+            <div class="card-body">
+              <h3 class="card-title">vue-snap</h3>
+              <p class="card-text text-black-50">A lightweight, performant Vue.js slider/carousel component that uses CSS Scroll Snap to automatically snap slide items to the boundary.</p>
+              <div class="btn-group">
+                <a class="btn btn-sm btn-outline-secondary" href="https://vue-snap.vercel.app/?path=/docs/carousel--default">Live Demo</a>
+                <a class="btn btn-sm btn-outline-secondary" href="https://www.vuescript.com/carousel-css-scroll-snap/">Download</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img src="https://www.vuescript.com/wp-content/uploads/2020/10/Lite-Date-Picker-Component-For-Vue-3.jpg" class="card-img-top" alt="Image" />
+            <div class="card-body">
+              <h3 class="card-title">Lite Date Picker</h3>
+              <p class="card-text text-black-50">A simple and compact date picker component for Vue 3 apps.</p>
+              <div class="btn-group">
+                <a class="btn btn-sm btn-outline-secondary" href="https://linmasahiro.github.io/vue3-datepicker-lite/dist/">Live Demo</a>
+                <a class="btn btn-sm btn-outline-secondary" href="https://www.vuescript.com/lite-date-picker/">Download</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="px-3 py-3 pt-md-5 pb-md-5 mx-auto text-center">
+        <h2 class="text-black-50" id="graphic">Graphic Design Freebies</h2>
+        <p>Web &amp; Graphic Design Freebies</p>
+        <a class="text-center btn btn-lg btn-dark" href="https://365webresources.com/" title="Web &amp; Graphic Design Freebies">View More</a>
+      </div>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img src="https://i0.wp.com/365webresources.com/wp-content/uploads/2019/07/Google-Pixel-4-Free-Mockup.jpg?w=972&ssl=1" class="card-img-top" alt="Image" />
+            <div class="card-body">
+              <h3 class="card-title">Android Smartphone Mockups</h3>
+              <p class="card-text text-black-50">A powerful and full-featured presentation library to create responsive, touch-friendly, fully customizable presentations on the web app.</p>
+              <a class="btn btn-outline-secondary" href="https://365webresources.com/android-windows-phone-mockups/">Preview & Download</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img src="https://i1.wp.com/365webresources.com/wp-content/uploads/2018/04/Psd-Business-Card-Branding-Mockup-2.jpg?w=619&ssl=1" class="card-img-top" alt="Image" />
+            <div class="card-body">
+              <h3 class="card-title">Business Card Mock-ups</h3>
+              <p class="card-text text-black-50">A hand-picked collection of Top and Newest Business Card Mockups we found on the web.</p>
+              <a class="btn btn-outline-secondary" href="https://365webresources.com/top-new-business-card-mockup-templates-free-download/">Preview & Download</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img src="https://i1.wp.com/www.cssscript.com/wp-content/uploads/2020/09/Custom-Dropdown-Select-Box-In-Vanilla-JavaScript-bvselect.png?fit=723%2C589&ssl=1" class="card-img-top" alt="Image" />
+            <div class="card-body">
+              <h3 class="card-title">Photoshop Text Styles</h3>
+              <p class="card-text text-black-50">A handcrafted collection of 100+ Free Photoshop Text styles (Layer Styles) to help you create unique and awesome text effects for your design project. </p>
+              <a class="btn btn-outline-secondary" href="https://365webresources.com/15-new-photoshop-text-styles-free-download/">Preview & Download</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="px-3 py-3 pt-md-5 pb-md-5 mx-auto text-center">
+        <h2 class="text-black-50" id="wordpress">WordPress Plugins</h2>
+        <p>Best Free Wordpress Plugins, Themes and Tutorials</p>
+        <a class="text-center btn btn-lg btn-dark" href="https://wpmissing.com/" title="Best Free Wordpress Plugins">View More</a>
+      </div>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img src="https://i1.wp.com/wpmissing.com/wp-content/uploads/2020/11/Protect-The-Entire-WordPress-With-A-Password.png?w=907&ssl=1" class="card-img-top" alt="Image" />
+            <div class="card-body">
+              <h3 class="card-title">Password for WP</h3>
+              <p class="card-text text-black-50">A tiny and fast WordPress plugin that restricts access to the entire WordPress website with a password.</p>
+              <a class="btn btn-outline-secondary" href="https://wpmissing.com/plugins/protect-password/">Preview & Download</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img src="https://i2.wp.com/wpmissing.com/wp-content/uploads/2020/11/Mention-Links-User.png?w=674&ssl=1" class="card-img-top" alt="Image" />
+            <div class="card-body">
+              <h3 class="card-title">Mention Links</h3>
+              <p class="card-text text-black-50">A WordPress Plugin that allows you to quickly select and insert matched users or posts in the Gutenberg editor.</p>
+              <a class="btn btn-outline-secondary" href="https://wpmissing.com/plugins/mention-autocomplete/">Preview & Download</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img src="https://i1.wp.com/wpmissing.com/wp-content/uploads/2020/11/Post-Featured-Video-Image.jpg?w=402&ssl=1" class="card-img-top" alt="Image" />
+            <div class="card-body">
+              <h3 class="card-title">Post Featured Video</h3>
+              <p class="card-text text-black-50">A WordPress plugin that replaces the featured image of your post or page with a Youtube, Vimeo, or HTML5 video.</p>
+              <a class="btn btn-outline-secondary" href="https://wpmissing.com/plugins/videos-featured-images/">Preview & Download</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <hr />
     <footer class="container py-5">
       <div class="row">
-        <div class="col-12 col-md">
-          <h5>&copy; 2018 Built With Bootstrap 4 <a href="https://getbootstrap.com/docs/4.0/examples/product/">Product</a> </h5>
+        <div class="col-4 col-lg">
+          <h5>Our Network</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="link-secondary" href="https://www.jqueryscript.net/" title="Free jQuery Plugins">jQuery Plugins</a></li>
+            <li><a class="link-secondary" href="https://www.cssscript.com/" title="Vanilla JavaScript & CSS/CSS3 Libraries">JavaScript & CSS/CSS3</a></li>
+            <li><a class="link-secondary" href="https://www.vuescript.com/" title="Vue.js Components">Vue.js Components</a></li>
+            <li><a class="link-secondary" href="https://365webresources.com/" title="Web &amp; Graphic Design Freebies">Graphic Design Freebies</a></li>
+            <li><a class="link-secondary" href="https://wpmissing.com/" title="Free WordPress Plugins">WordPress Plugins</a></li>
+          </ul>
+        </div>
+        <div class="col-4 col-lg">
+          <h5>Popular Posts</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="link-secondary" href="https://www.jqueryscript.net/blog/best-carousel.html" title="10 Best Carousel Plugins In jQuery/JavaScript/CSS">10 Best Carousel Plugins</a></li>
+            <li><a class="link-secondary" href="https://cssscript.com/best-autocomplete/" title="5 Best Autocomplete Libraries">5 Best Autocomplete Libraries</a></li>
+            <li><a class="link-secondary" href="https://www.vuescript.com/best-countdown-component/" title="Best Countdown Components For Vue.js">Best Countdown Components For Vue.js</a></li>
+            <li><a class="link-secondary" href="https://365webresources.com/best-free-iphone-12-mockups/" title="25+ Best Free iPhone 12 Mockups For Showcasing Your Creative Design">Best Free iPhone 12 Mockups</a></li>
+          </ul>
+        </div>
+        <div class="col-4 col-lg">
+          <h5>About</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="link-secondary" href="https://www.jqueryscript.net/about/" target="_blank">About</a></li>
+            <li><a class="link-secondary" href="https://www.jqueryscript.net/privacy/" target="_blank">Privacy</a></li>
+            <li><a class="link-secondary" href="https://www.jqueryscript.net/contact/" target="_blank">Contact</a></li>
+          </ul>
         </div>
       </div>
     </footer>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-46156385-2"></script>
+    <hr />
+    <footer class="container py-5">
+      <p class="float-right mb-1">
+        <a href="#">Back to top</a>
+      </p>
+      <p class="mb-1">© 2020 jQuery.App. All rights reserved.</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-popRpmFF9JQgExhfw5tZT4I9/CI5e2QcuUZPOVXb1m7qUmeR2b50u+YFEYe1wgzy" crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-46156385-2"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -114,6 +343,5 @@
 
   gtag('config', 'UA-46156385-2');
 </script>
-
   </body>
 </html>
