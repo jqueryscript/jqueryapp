@@ -1,0 +1,492 @@
+[
+  {
+    "id": "hreflang-tag-generator",
+    "name": "Hreflang Tag Generator",
+    "category": "seo",
+    "summary": "Generate clean hreflang tags for multilingual static websites.",
+    "description": "Create alternate language tags from a simple language and URL list. Useful for GitHub Pages, static sites, blogs, documentation sites, and small business websites with translated pages.",
+    "keywords": ["hreflang generator", "alternate language tag", "multilingual seo"],
+    "whatIs": "A hreflang tag tells search engines which language or regional version of a page should be shown to a visitor. It is most useful when the same content exists in English, Spanish, Chinese, Japanese, or another language. Static site owners often need these tags because GitHub Pages and simple HTML exports do not create them automatically.",
+    "howToUse": [
+      "Enter one language and URL pair per line, using the format language-code|absolute-url.",
+      "Add an x-default URL if you have a global landing page or language selector.",
+      "Copy the generated tags into the head section of every equivalent language page.",
+      "Make sure each translated page includes the full hreflang set, including itself."
+    ],
+    "useCases": [
+      "Add alternate language tags to static HTML pages.",
+      "Check language URL pairs before publishing.",
+      "Create an x-default URL for language selector pages."
+    ],
+    "examples": [
+      {
+        "title": "Three-language documentation page",
+        "text": "A docs page has English, Spanish, and Chinese versions. Add all three URLs to the tool and paste the generated tags into each version so search engines can connect the translated pages."
+      },
+      {
+        "title": "GitHub Pages language folders",
+        "text": "A static site uses /en/, /es/, and /ja/ folders. This tool helps create the exact alternate tags without writing each link tag by hand."
+      }
+    ],
+    "mistakes": [
+      "Using a language code that does not match the actual page language.",
+      "Forgetting to include the current page in the hreflang set.",
+      "Pointing hreflang tags to redirected or canonicalized URLs."
+    ],
+    "faq": [
+      {
+        "question": "Should every language page include the same hreflang list?",
+        "answer": "Yes. Each equivalent page should link to every alternate version, including itself. This reciprocal pattern helps search engines understand the full language group."
+      },
+      {
+        "question": "Do I need x-default?",
+        "answer": "Use x-default when you have a general page, region selector, or fallback page that is not aimed at one specific language or country."
+      },
+      {
+        "question": "Can I use relative URLs in hreflang tags?",
+        "answer": "Absolute URLs are safer and easier to audit. Use the final public URL that visitors and search engines can access."
+      }
+    ]
+  },
+  {
+    "id": "og-twitter-card-builder",
+    "name": "Open Graph & Twitter Card Builder",
+    "category": "seo",
+    "summary": "Build social preview meta tags for blog posts and static pages.",
+    "description": "Generate Open Graph and Twitter Card tags from title, description, URL, image, and site name fields. The output is ready to paste into the HTML head.",
+    "keywords": ["open graph generator", "twitter card generator", "social preview meta tags"],
+    "whatIs": "Open Graph and Twitter Card tags control how a page appears when someone shares it on social platforms, messaging apps, and link preview tools. They define the preview title, description, image, page URL, and card format. Small site owners need them because default previews often pull the wrong text or no image at all.",
+    "howToUse": [
+      "Enter the page title, description, canonical URL, site name, and preview image URL.",
+      "Choose the Open Graph type. Use website for normal pages and article for blog posts.",
+      "Copy the generated meta tags into the head section of your page.",
+      "Use an absolute image URL and test the page after it is published."
+    ],
+    "useCases": [
+      "Prepare social sharing tags before publishing a blog post.",
+      "Create a repeatable meta tag block for static HTML pages.",
+      "Preview title, description, and image length before copy-pasting."
+    ],
+    "examples": [
+      {
+        "title": "Blog post preview",
+        "text": "A publisher wants a post to show a specific title and image on X, LinkedIn, Facebook, Slack, and Discord. The generated tags keep the preview consistent across those platforms."
+      },
+      {
+        "title": "Tool page launch",
+        "text": "A new calculator page needs a clean preview image and short description. This tool creates the social meta block before the page goes live."
+      }
+    ],
+    "mistakes": [
+      "Using a relative image URL for social preview images.",
+      "Writing a title or description that is too long to scan.",
+      "Forgetting the canonical page URL in og:url."
+    ],
+    "faq": [
+      {
+        "question": "What image size should I use?",
+        "answer": "A 1200 by 630 pixel image is a practical default for large link previews. Keep important text away from the edges."
+      },
+      {
+        "question": "Is Twitter Card markup still useful?",
+        "answer": "Yes. Many sites still include Twitter Card tags because they give explicit preview data to platforms that read them."
+      },
+      {
+        "question": "Can one page use both Open Graph and Twitter tags?",
+        "answer": "Yes. Most pages should use both. Open Graph covers many platforms, while Twitter Card tags give extra control for X-style previews."
+      }
+    ]
+  },
+  {
+    "id": "github-pages-cname-helper",
+    "name": "GitHub Pages CNAME Helper",
+    "category": "github-pages",
+    "summary": "Create the CNAME file content and DNS notes for a GitHub Pages custom domain.",
+    "description": "Enter a domain and get the exact CNAME file content plus common DNS record guidance for apex and www setups.",
+    "keywords": ["github pages cname", "github pages custom domain", "cname file generator"],
+    "whatIs": "A CNAME file tells GitHub Pages which custom domain should be attached to a published site. The file must contain only the domain name, with no protocol, path, or extra text. This helper is for beginners who want to avoid small formatting mistakes before pushing a site to GitHub.",
+    "howToUse": [
+      "Enter the custom domain you want to use for GitHub Pages.",
+      "Choose whether the site will use a www subdomain or an apex domain.",
+      "Copy the CNAME file content into a file named CNAME at the published site root.",
+      "Apply the DNS notes at your domain provider, then enable HTTPS in GitHub Pages settings."
+    ],
+    "useCases": [
+      "Create the CNAME file for a custom GitHub Pages domain.",
+      "Check whether a www or apex domain setup needs different DNS records.",
+      "Document DNS changes before updating a domain provider."
+    ],
+    "examples": [
+      {
+        "title": "www custom domain",
+        "text": "A site owner wants www.example.com to load a GitHub Pages site. The tool outputs the CNAME file content and reminds them to point the www record at the GitHub Pages host."
+      },
+      {
+        "title": "Apex domain planning",
+        "text": "A beginner wants example.com without www. The tool separates the CNAME file content from the DNS note so they do not paste the wrong value into the wrong place."
+      }
+    ],
+    "mistakes": [
+      "Putting https:// in the CNAME file.",
+      "Adding a path after the domain name.",
+      "Mixing apex A records with an unrelated CNAME record."
+    ],
+    "faq": [
+      {
+        "question": "Should the CNAME file include https://?",
+        "answer": "No. The CNAME file should contain only the domain name, such as www.example.com."
+      },
+      {
+        "question": "Where should the CNAME file be placed?",
+        "answer": "Place it at the root of the published site. If you deploy a dist folder, the CNAME file must exist inside that published output."
+      },
+      {
+        "question": "Why does my custom domain disappear after deployment?",
+        "answer": "Many build tools delete and regenerate the output folder. Make sure the CNAME file is copied into the final build output every time."
+      }
+    ]
+  },
+  {
+    "id": "static-site-seo-checklist-generator",
+    "name": "Static Site SEO Checklist Generator",
+    "category": "seo",
+    "summary": "Generate a practical SEO checklist for static websites before launch.",
+    "description": "Choose your site type and features, then get a launch checklist for metadata, indexing, links, performance, and multilingual setup.",
+    "keywords": ["static site seo checklist", "github pages seo checklist", "website launch checklist"],
+    "whatIs": "A static site SEO checklist is a pre-publish review for HTML sites, GitHub Pages projects, static blogs, documentation sites, and small tool websites. It helps catch missing titles, broken internal links, missing canonical tags, missing social tags, and other small issues that can reduce search visibility.",
+    "howToUse": [
+      "Choose the site type that best matches your project.",
+      "Enter the public domain or final site URL.",
+      "Select the features your site uses, such as multilingual pages or structured data.",
+      "Copy the generated checklist and review each item before publishing."
+    ],
+    "useCases": [
+      "Review a static site before pushing to GitHub Pages.",
+      "Create a reusable checklist for blog post publishing.",
+      "Avoid missing common SEO tags on small websites."
+    ],
+    "examples": [
+      {
+        "title": "New GitHub Pages launch",
+        "text": "A beginner finishes a static website and wants a final review before sharing it. The checklist gives a plain-language list of SEO and publishing checks."
+      },
+      {
+        "title": "Recurring blog publishing process",
+        "text": "A blogger can generate a checklist for every new post to confirm title, description, canonical URL, internal links, images, and social preview tags."
+      }
+    ],
+    "mistakes": [
+      "Publishing pages without unique titles and descriptions.",
+      "Leaving important pages out of navigation or sitemap files.",
+      "Adding multilingual pages without canonical and hreflang planning."
+    ],
+    "faq": [
+      {
+        "question": "Is this checklist enough for a full SEO audit?",
+        "answer": "No. It is a launch checklist for common static site issues. A full audit also checks crawl data, search performance, content quality, backlinks, and technical logs."
+      },
+      {
+        "question": "Can I use this for a blog?",
+        "answer": "Yes. Select the blog option and include blog-specific checks such as internal links, image alt text, and social preview tags."
+      },
+      {
+        "question": "Does a GitHub Pages site need SEO tags?",
+        "answer": "Yes. Static hosting does not remove the need for titles, descriptions, canonical URLs, internal links, and indexable HTML."
+      }
+    ]
+  },
+  {
+    "id": "robots-meta-tag-generator",
+    "name": "Robots Meta Tag Generator",
+    "category": "seo",
+    "summary": "Generate page-level robots meta tags without guessing directive syntax.",
+    "description": "Build robots meta tags for indexing, following, snippets, image previews, and archive behavior.",
+    "keywords": ["robots meta tag generator", "noindex generator", "meta robots"],
+    "whatIs": "A robots meta tag gives page-level instructions to search engines. It can allow indexing, prevent indexing, allow or block following links, limit snippets, and control image previews. It is useful when one page needs special treatment without changing the whole site's robots.txt file.",
+    "howToUse": [
+      "Choose whether the page should be indexed and whether links should be followed.",
+      "Enable optional directives such as noarchive, nosnippet, or noimageindex only when needed.",
+      "Set image preview and snippet length rules if the page has special preview requirements.",
+      "Copy the generated meta tag into the page head."
+    ],
+    "useCases": [
+      "Prevent a utility page from appearing in search results.",
+      "Allow indexing while limiting snippets or previews.",
+      "Create a robots directive for one page without changing robots.txt."
+    ],
+    "examples": [
+      {
+        "title": "Noindex a thank-you page",
+        "text": "A site has a confirmation page that users see after submitting a form. The robots meta tag can keep that utility page out of search results."
+      },
+      {
+        "title": "Limit preview controls",
+        "text": "A publisher can allow a page to be indexed but restrict snippet or image preview behavior when the content needs a smaller search preview."
+      }
+    ],
+    "mistakes": [
+      "Using noindex on a page that should rank.",
+      "Blocking a page in robots.txt and expecting search engines to see its noindex tag.",
+      "Adding conflicting directives such as index and noindex together."
+    ],
+    "faq": [
+      {
+        "question": "Should I use robots.txt or a robots meta tag?",
+        "answer": "Use robots.txt for crawl access rules. Use a robots meta tag when search engines can access the page and need page-level indexing instructions."
+      },
+      {
+        "question": "Can a blocked page read its noindex tag?",
+        "answer": "If a crawler cannot access the page because robots.txt blocks it, it may not see the noindex tag. Do not combine those rules without a clear reason."
+      },
+      {
+        "question": "What is the safest default?",
+        "answer": "For normal public pages, index and follow is the normal default. Add restrictions only when the page has a specific reason."
+      }
+    ]
+  },
+  {
+    "id": "canonical-url-tag-generator",
+    "name": "Canonical URL Tag Generator",
+    "category": "seo",
+    "summary": "Generate canonical link tags for static pages and blog posts.",
+    "description": "Enter the preferred page URL and get a clean canonical tag for your HTML head.",
+    "keywords": ["canonical tag generator", "canonical url", "seo link tag"],
+    "whatIs": "A canonical tag tells search engines which URL is the preferred version of a page. It is helpful when the same content can appear with and without a trailing slash, through index.html, through tracking parameters, or through alternate paths. Static sites often need canonical tags because routing and deployment output can create multiple versions of the same page.",
+    "howToUse": [
+      "Enter the final public URL that should be treated as the preferred version.",
+      "Remove index.html if your live site resolves the folder URL correctly.",
+      "Copy the generated canonical link tag into the HTML head.",
+      "Use the same canonical format consistently across the site."
+    ],
+    "useCases": [
+      "Set the preferred URL for a page available through multiple paths.",
+      "Create canonical tags for GitHub Pages or static HTML exports.",
+      "Normalize trailing slash and index.html variants."
+    ],
+    "examples": [
+      {
+        "title": "Static output with index.html",
+        "text": "A generated page exists as /tools/example/index.html, but the preferred public URL is /tools/example/. The tool outputs the cleaner canonical URL."
+      },
+      {
+        "title": "Tracking parameter cleanup",
+        "text": "A blog post receives traffic with UTM parameters. The canonical tag points search engines back to the clean version of the article URL."
+      }
+    ],
+    "mistakes": [
+      "Pointing the canonical tag to a non-equivalent page.",
+      "Using a relative URL instead of an absolute URL.",
+      "Leaving both http and https versions live without a clear canonical."
+    ],
+    "faq": [
+      {
+        "question": "Should canonical URLs be absolute?",
+        "answer": "Yes. Absolute URLs are clearer and less likely to break when pages move between folders or templates."
+      },
+      {
+        "question": "Can multiple pages use the same canonical URL?",
+        "answer": "Only if they are duplicate or near-duplicate versions of the same content. Different pages should not all point to one canonical URL."
+      },
+      {
+        "question": "Do canonical tags replace redirects?",
+        "answer": "No. Redirects control visitor and crawler navigation. Canonical tags are indexing signals for equivalent content."
+      }
+    ]
+  },
+  {
+    "id": "html-link-rel-generator",
+    "name": "HTML Link Rel Generator",
+    "category": "html",
+    "summary": "Generate link tags for preload, preconnect, dns-prefetch, canonical, and alternate URLs.",
+    "description": "Choose a rel value, add attributes, and copy a valid link tag for the HTML head.",
+    "keywords": ["html link rel generator", "preload tag generator", "preconnect generator"],
+    "whatIs": "An HTML link tag connects a page to another resource or declares a relationship in the document head. Developers use link tags for canonical URLs, language alternates, icons, preload hints, preconnect hints, stylesheets, and more. This tool helps beginners avoid missing attributes such as as, type, href, or crossorigin.",
+    "howToUse": [
+      "Choose the rel value that matches the relationship or browser hint you need.",
+      "Enter the href path or URL.",
+      "Add as, type, and crossorigin only when they apply to the selected rel value.",
+      "Copy the generated tag into the head section of your HTML."
+    ],
+    "useCases": [
+      "Create a preload tag for a font, script, image, or stylesheet.",
+      "Add preconnect or dns-prefetch for third-party origins.",
+      "Build link tags without forgetting as, type, or crossorigin attributes."
+    ],
+    "examples": [
+      {
+        "title": "Preload a key stylesheet",
+        "text": "A small site has a critical CSS file. The tool can generate a preload tag with the correct rel, href, as, and type attributes."
+      },
+      {
+        "title": "Preconnect to a font host",
+        "text": "A page uses a third-party font provider. A preconnect tag can prepare the browser connection before the font file is requested."
+      }
+    ],
+    "mistakes": [
+      "Preloading too many resources.",
+      "Using preload without the correct as attribute.",
+      "Adding preconnect to domains that are not used on the page."
+    ],
+    "faq": [
+      {
+        "question": "When should I use preload?",
+        "answer": "Use preload for a small number of critical resources that the browser needs early. Do not preload every image, script, or stylesheet."
+      },
+      {
+        "question": "What does the as attribute do?",
+        "answer": "The as attribute tells the browser what type of resource is being preloaded, such as style, script, font, image, or fetch."
+      },
+      {
+        "question": "Do preconnect tags improve every page?",
+        "answer": "No. Preconnect is useful for important third-party origins. Extra preconnect tags can waste browser resources."
+      }
+    ]
+  },
+  {
+    "id": "favicon-html-tag-generator",
+    "name": "Favicon HTML Tag Generator",
+    "category": "assets",
+    "summary": "Generate favicon and web app icon tags for static websites.",
+    "description": "Create a practical favicon block for browsers, Apple touch icons, manifest files, and theme colors.",
+    "keywords": ["favicon html generator", "favicon tags", "web app manifest generator"],
+    "whatIs": "Favicon markup tells browsers and devices which icons to use for tabs, bookmarks, home screen shortcuts, and web app installs. A small static site can still need several icon formats because desktop browsers, mobile browsers, and saved web apps use different files.",
+    "howToUse": [
+      "Enter the base path where your icon files will be published.",
+      "Add the app or site name plus theme and background colors.",
+      "Copy the generated link and meta tags into your HTML head.",
+      "Copy the manifest JSON snippet into your site.webmanifest file if you use one."
+    ],
+    "useCases": [
+      "Add favicon markup to a plain HTML website.",
+      "Prepare icon paths for GitHub Pages.",
+      "Create a small web manifest JSON snippet."
+    ],
+    "examples": [
+      {
+        "title": "Static site icon setup",
+        "text": "A GitHub Pages site stores icons in /icons. The generator creates the favicon, SVG icon, Apple touch icon, manifest link, and theme color tags."
+      },
+      {
+        "title": "Home screen save support",
+        "text": "A mobile visitor saves the site to their phone home screen. The Apple touch icon and manifest entries help the saved shortcut look intentional."
+      }
+    ],
+    "mistakes": [
+      "Using icon paths that break after deployment under a subfolder.",
+      "Forgetting an Apple touch icon for mobile home screen saves.",
+      "Using a theme color that does not match the actual site header."
+    ],
+    "faq": [
+      {
+        "question": "Do I still need favicon.ico?",
+        "answer": "It is still useful as a broad fallback. Many modern setups also include SVG and PNG icons."
+      },
+      {
+        "question": "Where should icon files live?",
+        "answer": "Use a stable public folder such as /icons or /assets/icons, and make sure the same path exists in the built output."
+      },
+      {
+        "question": "Is a web manifest required?",
+        "answer": "No. It is optional for a normal website, but useful if you want better saved-app behavior on mobile and desktop."
+      }
+    ]
+  },
+  {
+    "id": "css-clamp-calculator",
+    "name": "CSS Clamp Calculator",
+    "category": "css",
+    "summary": "Calculate responsive CSS clamp values for font sizes and spacing.",
+    "description": "Enter minimum and maximum values plus viewport widths to generate a CSS clamp expression for fluid typography, spacing, or layout values.",
+    "keywords": ["css clamp calculator", "fluid typography calculator", "responsive font size"],
+    "whatIs": "CSS clamp sets a minimum value, a preferred fluid value, and a maximum value in one expression. It is commonly used for responsive font sizes and spacing because it can scale smoothly between mobile and desktop without writing several media queries.",
+    "howToUse": [
+      "Enter the smallest and largest size you want the property to use.",
+      "Enter the viewport width where the smallest value should start and the viewport width where the largest value should stop.",
+      "Choose the CSS property you want to generate.",
+      "Copy the clamp expression into your stylesheet and test it at mobile, tablet, and desktop widths."
+    ],
+    "useCases": [
+      "Create fluid headings without many media queries.",
+      "Scale spacing smoothly between mobile and desktop.",
+      "Copy a clamp value directly into CSS."
+    ],
+    "examples": [
+      {
+        "title": "Responsive heading size",
+        "text": "A heading should be 32px on phones and 64px on desktop. The calculator creates one clamp value that scales between those points."
+      },
+      {
+        "title": "Fluid section spacing",
+        "text": "A landing page needs smaller spacing on mobile and wider spacing on desktop. Use clamp for padding or gap values instead of multiple breakpoints."
+      }
+    ],
+    "mistakes": [
+      "Using viewport ranges that do not match the actual layout.",
+      "Applying clamp to body text without checking readability.",
+      "Mixing px and rem values without a clear base size."
+    ],
+    "faq": [
+      {
+        "question": "Can I use clamp for more than font size?",
+        "answer": "Yes. It works for many length-based CSS properties, including margin, padding, gap, width, and border radius."
+      },
+      {
+        "question": "Does clamp replace media queries?",
+        "answer": "It can reduce many size-related media queries, but media queries are still useful when layout structure changes."
+      },
+      {
+        "question": "Should I use px or rem?",
+        "answer": "Both can work. Rem is often better for font sizes because it respects user font settings, while px is simpler for quick layout calculations."
+      }
+    ]
+  },
+  {
+    "id": "css-safe-area-insets-generator",
+    "name": "CSS Safe Area Insets Generator",
+    "category": "css",
+    "summary": "Generate CSS for safe-area insets on phones with notches and rounded corners.",
+    "description": "Create padding, margin, or position offset rules using env(safe-area-inset-*) with a fallback value.",
+    "keywords": ["css safe area inset", "iphone notch css", "safe area padding generator"],
+    "whatIs": "Safe-area insets are CSS environment variables that help keep content away from phone notches, rounded screen corners, home indicator areas, and other display cutouts. They are useful for mobile web apps, fixed headers, sticky bottom bars, and full-bleed layouts.",
+    "howToUse": [
+      "Choose whether you want to generate padding, margin, or inset rules.",
+      "Set a fallback value for browsers and screens that do not need special safe-area spacing.",
+      "Enter the selector that should receive the safe-area spacing.",
+      "Copy the meta viewport tag and CSS into your page, then test on a mobile device or simulator."
+    ],
+    "useCases": [
+      "Keep fixed headers and bottom bars away from screen cutouts.",
+      "Add safe padding to mobile web apps.",
+      "Create reusable CSS variables for safe-area spacing."
+    ],
+    "examples": [
+      {
+        "title": "Sticky mobile bottom bar",
+        "text": "A mobile site has a bottom navigation bar. Safe-area padding keeps the buttons above the home indicator on modern phones."
+      },
+      {
+        "title": "Full-width app shell",
+        "text": "A browser-based tool uses a full-bleed layout. Safe-area variables prevent content from touching the notch or rounded screen edges."
+      }
+    ],
+    "mistakes": [
+      "Using safe-area variables without a fallback.",
+      "Applying inset padding on desktop layouts where it is not needed.",
+      "Forgetting viewport-fit=cover when testing full-screen mobile layouts."
+    ],
+    "faq": [
+      {
+        "question": "Do safe-area variables work on every browser?",
+        "answer": "Support is strongest where display cutouts matter. Always include fallback spacing so layouts remain usable elsewhere."
+      },
+      {
+        "question": "Why is viewport-fit=cover included?",
+        "answer": "It allows the page to extend into the full visual viewport on supported mobile browsers, which makes safe-area spacing meaningful."
+      },
+      {
+        "question": "Should I apply safe-area padding to the whole page?",
+        "answer": "Usually no. Apply it to fixed bars, app shells, or sections that need edge protection."
+      }
+    ]
+  }
+]

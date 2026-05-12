@@ -1,0 +1,22 @@
+{
+  "seo": {
+    "name": "SEO Tools",
+    "description": "Small browser tools for metadata, indexing, canonical URLs, social previews, and static site launch checks."
+  },
+  "html": {
+    "name": "HTML Tools",
+    "description": "Copy-paste helpers for cleaner HTML tags, head markup, snippets, and publishing workflows."
+  },
+  "css": {
+    "name": "CSS Tools",
+    "description": "Practical CSS generators for responsive layouts, spacing, mobile polish, and everyday UI fixes."
+  },
+  "assets": {
+    "name": "Image & Asset Tools",
+    "description": "Client-side helpers for icons, image markup, asset paths, and static website files."
+  },
+  "github-pages": {
+    "name": "GitHub Pages Tools",
+    "description": "Tools for custom domains, static publishing, launch checks, and GitHub Pages website maintenance."
+  }
+}
