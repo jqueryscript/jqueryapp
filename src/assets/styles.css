@@ -135,7 +135,8 @@ button {
   display: flex;
   align-items: center;
   gap: 4px;
-  overflow-x: auto;
+  min-width: 0;
+  overflow: visible;
 }
 
 .main-nav a {
@@ -879,6 +880,12 @@ button {
 
   .main-nav {
     width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .main-nav::-webkit-scrollbar {
+    display: none;
   }
 
   .hero-grid,
