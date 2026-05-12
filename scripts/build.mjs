@@ -119,11 +119,11 @@ function hero({ eyebrow, title, description, actions = "" }) {
     </div>
     <div class="tool-snapshot hero-artifact" aria-label="Tool output preview">
       <div class="snapshot-bar"><span></span><span></span><span></span><strong>head.html</strong></div>
-      <pre><span class="line-no">01</span> &lt;link rel="canonical" href="https://site.test/page/"&gt;
+      <pre><span class="line-no">01</span> &lt;link rel="canonical" href="/tools/css-clamp/"&gt;
 <span class="line-no">02</span> &lt;meta name="robots" content="index, follow"&gt;
-<span class="line-no">03</span> &lt;link rel="alternate" hreflang="en" href="..."&gt;
-<span class="line-no">04</span> &lt;meta property="og:title" content="..."&gt;</pre>
-      <div class="snapshot-status"><span></span>Runs locally in the browser</div>
+<span class="line-no">03</span> &lt;meta property="og:title" content="Ready to publish"&gt;
+<span class="line-no">04</span> &lt;link rel="alternate" hreflang="en" href="/"&gt;</pre>
+      <div class="snapshot-status"><span></span>Nothing leaves your browser</div>
     </div>
   </div>
 </section>`;
@@ -168,7 +168,7 @@ function examplesMarkup(items = []) {
 
 function homePage(locale, tools, categories) {
   const body = `${hero({
-    eyebrow: "Client-side web tools",
+    eyebrow: "For the last mile of publishing",
     title: site.tagline,
     description: site.description,
     actions: `<div class="hero-actions"><a class="button primary" href="${urlFor(locale, "tools")}">Browse tools</a><a class="button secondary" href="${urlFor(locale, "tools/github-pages")}">GitHub Pages tools</a></div>`
@@ -177,9 +177,9 @@ function homePage(locale, tools, categories) {
   <div class="wrap split-section">
     <div class="section-heading">
       <p class="eyebrow">Start here</p>
-      <h2>Practical fixes for static sites, blogs, and beginner front-end work.</h2>
+      <h2>Practical fixes for static sites, blogs, and everyday front-end work.</h2>
     </div>
-    <p>jquery.app is built for small jobs that should not require a login, a server, or a long tutorial. Pick the job, enter the values, copy the result, and paste it into your page.</p>
+    <p>Some jobs are too small for a dashboard and too important to do by memory. Open a tool, make the change, copy the result, and get back to the page you were trying to ship.</p>
   </div>
   <div class="wrap category-grid offset-grid">
     ${Object.entries(categories).map(([key, details]) => categoryPill(key, details, locale)).join("")}
@@ -190,21 +190,21 @@ function homePage(locale, tools, categories) {
     <div>
       <p class="eyebrow on-dark">Why this exists</p>
       <h2>Most tiny web problems are not AI problems.</h2>
-      <p>Missing canonical tags, broken favicon paths, unsafe mobile padding, and messy social previews need a reliable tool that gives a clean answer fast.</p>
+      <p>Missing canonical tags, broken favicon paths, awkward mobile padding, and messy social previews need a reliable answer more than another chat box.</p>
     </div>
     <div class="dark-list">
       <span>No uploads</span>
       <span>No accounts</span>
       <span>No server-side processing</span>
-      <span>Static hosting friendly</span>
+      <span>Ready for static hosting</span>
     </div>
   </div>
 </section>
 <section class="section soft-band">
   <div class="wrap section-heading">
     <p class="eyebrow">First release</p>
-    <h2>Fast fixes for static websites</h2>
-    <p>These tools run in your browser. Text you enter stays on your device.</p>
+    <h2>Small tools with a clear finish line</h2>
+    <p>Each tool is designed to produce something you can inspect, copy, and use right away.</p>
   </div>
   <div class="wrap tool-grid">
     ${tools.slice(0, 6).map((tool) => toolCard(tool, locale)).join("")}
@@ -242,7 +242,7 @@ function toolsIndexPage(locale, tools, categories) {
   <div class="wrap narrow">
     <p class="eyebrow">Tools</p>
     <h1>Small web tools that run in your browser</h1>
-    <p class="lede">Generate tags, clean launch details, and prepare static pages without accounts, uploads, or server-side processing.</p>
+    <p class="lede">Generate tags, clean launch details, and prepare static pages without accounts, uploads, or busywork.</p>
   </div>
 </section>
 <section class="section">
@@ -254,7 +254,7 @@ function toolsIndexPage(locale, tools, categories) {
   return pageShell({
     locale,
     title: `Free Web Tools - ${site.siteName}`,
-    description: "Browse client-side tools for SEO tags, GitHub Pages setup, CSS helpers, and static website publishing.",
+    description: "Browse browser-based tools for SEO tags, GitHub Pages setup, CSS helpers, and static website publishing.",
     pathname: "tools",
     body,
     current: "tools"
@@ -342,7 +342,7 @@ function toolPage(locale, tool, allTools, categories) {
   <div class="wrap content-layout">
     <aside class="content-rail">
       <span>${escapeHtml(categoryName)}</span>
-      <span>Client-side tool</span>
+      <span>Runs in your browser</span>
       <span>No upload required</span>
     </aside>
     <article class="tool-article">
@@ -526,13 +526,13 @@ async function buildLocale(locale) {
     addSitemapUrl(`tools/${tool.id}`);
   }
 
-  await writePage(path.join(localeDir, "about", "index.html"), simplePage(locale, "about", "About", "jquery.app is a client-side tool site for small web publishing tasks.", `<p>jquery.app provides small browser-based tools for beginner web developers, static site owners, bloggers, and people who maintain simple websites. The site focuses on practical fixes: metadata, HTML head tags, GitHub Pages setup, responsive CSS values, favicon markup, and other tasks that should be quick to solve.</p><p>The tools are designed for static hosting. They run in the browser, avoid account creation, and keep inputs on the user's device unless a future tool clearly states otherwise.</p>`));
+  await writePage(path.join(localeDir, "about", "index.html"), simplePage(locale, "about", "About jquery.app", "A small workshop for the details that sit between building a page and publishing it well.", `<h2>Why this site exists</h2><p>jquery.app is a collection of small tools for people who build, publish, and maintain websites. It is made for the quiet tasks that still matter: writing canonical tags, preparing social preview metadata, checking launch details, shaping responsive CSS, and keeping static pages tidy.</p><p>The site is intentionally simple. Most tools run entirely in your browser, ask for only the fields they need, and return output you can read before you copy it. There are no accounts, no project dashboards, and no need to upload your work to use the current tools.</p><h2>What belongs here</h2><p>jquery.app focuses on practical web publishing chores with a clear result. A good tool on this site should save a few minutes, reduce a small mistake, or make a repeated job easier to finish. It should also be understandable without a manual.</p><h2>What does not belong here</h2><p>This is not a replacement for professional judgment, browser testing, search console data, or a full technical audit. Generated code and checklists should be reviewed before they are added to a production site.</p>`));
   addSitemapUrl("about");
-  await writePage(path.join(localeDir, "privacy", "index.html"), simplePage(locale, "privacy", "Privacy", "jquery.app tools are designed to process inputs locally in your browser.", `<p>Tool inputs are processed in the browser. The current tools do not require accounts, do not upload form values to a server, and do not store generated output on jquery.app servers.</p><p>Because the site is hosted as static files, normal hosting, CDN, browser, and security logs may still record standard request information such as requested URLs, user agent, referrer, and IP address. If analytics or advertising tools are added later, this policy should be updated before those tools are enabled.</p>`));
+  await writePage(path.join(localeDir, "privacy", "index.html"), simplePage(locale, "privacy", "Privacy Policy", "The current tools are designed to work locally in your browser and avoid unnecessary collection.", `<h2>Local tool inputs</h2><p>The current tools process the values you enter in your browser. They do not require an account, and the site does not intentionally send tool inputs or generated output to a jquery.app application server.</p><h2>Hosting and technical logs</h2><p>jquery.app is published as a static website. Hosting providers, CDN services, browsers, and security systems may process standard request information such as IP address, user agent, referrer, requested URL, timestamps, and basic diagnostic data. This information is normally used to deliver the site, prevent abuse, and understand technical problems.</p><h2>Cookies and analytics</h2><p>The preview version of jquery.app does not need cookies for the tools to work. If analytics, advertising, embedded media, or third-party widgets are added later, this policy should be updated before those services are enabled.</p><h2>External links</h2><p>Some pages may link to GitHub, documentation sites, browser tools, or other third-party resources. Those sites have their own privacy practices.</p><h2>Contact</h2><p>Use the contact page to report privacy concerns, broken tools, or outdated information.</p>`));
   addSitemapUrl("privacy");
-  await writePage(path.join(localeDir, "terms", "index.html"), simplePage(locale, "terms", "Terms", "Use jquery.app tools as free informational utilities and review generated output before publishing it.", `<p>jquery.app provides free tools for convenience and educational use. Generated output should be reviewed before it is added to a live website, repository, CMS, or production workflow.</p><p>The tools are provided without warranties. You are responsible for checking whether generated HTML, CSS, SEO tags, DNS notes, and publishing checklists are appropriate for your site and hosting setup.</p>`));
+  await writePage(path.join(localeDir, "terms", "index.html"), simplePage(locale, "terms", "Terms of Use", "Use the tools freely, but review the output before it becomes part of a live site.", `<h2>Use of the tools</h2><p>jquery.app provides free web utilities for convenience, learning, and everyday publishing work. You may use the generated output in personal, commercial, and client projects, subject to your own review and the requirements of your project.</p><h2>No professional advice</h2><p>The tools and written guidance are informational. They are not legal, security, compliance, accessibility, or search engine optimization advice. Before publishing, verify that the output is appropriate for your website, framework, hosting provider, and local requirements.</p><h2>No warranty</h2><p>The site is provided as is and as available. jquery.app does not guarantee that a tool will be error-free, uninterrupted, or suitable for every use case. Browser behavior, search engine interpretation, platform rules, and hosting requirements can change.</p><h2>Your responsibility</h2><p>You are responsible for testing generated HTML, CSS, metadata, DNS notes, and checklists before using them on a live website. You are also responsible for keeping backups of your own code and content.</p><h2>Acceptable use</h2><p>Do not use the site in a way that attempts to disrupt the service, scrape it aggressively, bypass technical limits, or interfere with other visitors.</p>`));
   addSitemapUrl("terms");
-  await writePage(path.join(localeDir, "contact", "index.html"), simplePage(locale, "contact", "Contact", "Contact information for jquery.app will be connected before the full public launch.", `<p>This preview release is prepared for GitHub Pages deployment. Add a working contact email, repository issue link, or contact form destination before wider promotion.</p><p>A public tool site should give users a clear way to report broken tools, outdated guidance, accessibility issues, and privacy concerns.</p>`));
+  await writePage(path.join(localeDir, "contact", "index.html"), simplePage(locale, "contact", "Contact", "Report broken tools, outdated guidance, accessibility issues, or privacy concerns.", `<h2>Send a useful report</h2><p>If something is broken, include the tool name, the page URL, what you entered, what you expected, and what happened instead. Clear reports make small tools easier to keep accurate.</p><h2>Suggested contact options</h2><p>This preview site is published from GitHub. A public issue tracker is the best fit for bug reports and small corrections because it keeps changes visible. Add your preferred GitHub issue link or contact email here before wider promotion.</p><h2>What to report</h2><ul><li>Broken form behavior or copy buttons.</li><li>Outdated guidance about GitHub Pages, SEO tags, browser support, or HTML output.</li><li>Accessibility problems, keyboard traps, visual contrast issues, or mobile layout problems.</li><li>Privacy concerns or third-party service questions.</li></ul>`));
   addSitemapUrl("contact");
 
   if (locale === site.defaultLocale) {

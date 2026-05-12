@@ -13,7 +13,7 @@
   },
   "assets": {
     "name": "Image & Asset Tools",
-    "description": "Client-side helpers for icons, image markup, asset paths, and static website files."
+    "description": "Local helpers for icons, image markup, asset paths, and static website files."
   },
   "github-pages": {
     "name": "GitHub Pages Tools",

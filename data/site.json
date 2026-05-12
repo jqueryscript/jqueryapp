@@ -4,6 +4,6 @@
   "defaultLocale": "en",
   "locales": ["en"],
   "siteName": "jquery.app",
-  "tagline": "Small web tools for quick fixes.",
-  "description": "Client-side tools for beginner web developers, site owners, and blog publishers. Fix HTML, generate SEO tags, clean snippets, and prepare static pages without uploads, accounts, or AI."
+  "tagline": "Small web tools for the work between ideas and publishing.",
+  "description": "A quiet collection of browser-based tools for people who build, publish, and maintain websites. Generate clean tags, prepare static pages, and fix the small details that slow a launch down."
 }

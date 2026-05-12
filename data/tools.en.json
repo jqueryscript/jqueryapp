@@ -6,7 +6,7 @@
     "summary": "Generate clean hreflang tags for multilingual static websites.",
     "description": "Create alternate language tags from a simple language and URL list. Useful for GitHub Pages, static sites, blogs, documentation sites, and small business websites with translated pages.",
     "keywords": ["hreflang generator", "alternate language tag", "multilingual seo"],
-    "whatIs": "A hreflang tag tells search engines which language or regional version of a page should be shown to a visitor. It is most useful when the same content exists in English, Spanish, Chinese, Japanese, or another language. Static site owners often need these tags because GitHub Pages and simple HTML exports do not create them automatically.",
+    "whatIs": "A hreflang tag tells search engines which language or regional version of a page should be shown to a visitor. It is most useful when the same content exists in English, Spanish, Chinese, Japanese, or another language. Static sites often need these tags because GitHub Pages and simple HTML exports do not create them automatically.",
     "howToUse": [
       "Enter one language and URL pair per line, using the format language-code|absolute-url.",
       "Add an x-default URL if you have a global landing page or language selector.",
@@ -55,7 +55,7 @@
     "summary": "Build social preview meta tags for blog posts and static pages.",
     "description": "Generate Open Graph and Twitter Card tags from title, description, URL, image, and site name fields. The output is ready to paste into the HTML head.",
     "keywords": ["open graph generator", "twitter card generator", "social preview meta tags"],
-    "whatIs": "Open Graph and Twitter Card tags control how a page appears when someone shares it on social platforms, messaging apps, and link preview tools. They define the preview title, description, image, page URL, and card format. Small site owners need them because default previews often pull the wrong text or no image at all.",
+    "whatIs": "Open Graph and Twitter Card tags control how a page appears when someone shares it on social platforms, messaging apps, and link preview tools. They define the preview title, description, image, page URL, and card format. They are useful when default previews pull the wrong text or no image at all.",
     "howToUse": [
       "Enter the page title, description, canonical URL, site name, and preview image URL.",
       "Choose the Open Graph type. Use website for normal pages and article for blog posts.",
@@ -104,7 +104,7 @@
     "summary": "Create the CNAME file content and DNS notes for a GitHub Pages custom domain.",
     "description": "Enter a domain and get the exact CNAME file content plus common DNS record guidance for apex and www setups.",
     "keywords": ["github pages cname", "github pages custom domain", "cname file generator"],
-    "whatIs": "A CNAME file tells GitHub Pages which custom domain should be attached to a published site. The file must contain only the domain name, with no protocol, path, or extra text. This helper is for beginners who want to avoid small formatting mistakes before pushing a site to GitHub.",
+    "whatIs": "A CNAME file tells GitHub Pages which custom domain should be attached to a published site. The file must contain only the domain name, with no protocol, path, or extra text. This helper keeps the file content and DNS notes separate, which helps prevent small publishing mistakes.",
     "howToUse": [
       "Enter the custom domain you want to use for GitHub Pages.",
       "Choose whether the site will use a www subdomain or an apex domain.",
@@ -123,7 +123,7 @@
       },
       {
         "title": "Apex domain planning",
-        "text": "A beginner wants example.com without www. The tool separates the CNAME file content from the DNS note so they do not paste the wrong value into the wrong place."
+        "text": "A publisher wants example.com without www. The tool separates the CNAME file content from the DNS note so they do not paste the wrong value into the wrong place."
       }
     ],
     "mistakes": [
@@ -168,7 +168,7 @@
     "examples": [
       {
         "title": "New GitHub Pages launch",
-        "text": "A beginner finishes a static website and wants a final review before sharing it. The checklist gives a plain-language list of SEO and publishing checks."
+        "text": "A publisher finishes a static website and wants a final review before sharing it. The checklist gives a plain-language list of SEO and publishing checks."
       },
       {
         "title": "Recurring blog publishing process",
@@ -300,7 +300,7 @@
     "summary": "Generate link tags for preload, preconnect, dns-prefetch, canonical, and alternate URLs.",
     "description": "Choose a rel value, add attributes, and copy a valid link tag for the HTML head.",
     "keywords": ["html link rel generator", "preload tag generator", "preconnect generator"],
-    "whatIs": "An HTML link tag connects a page to another resource or declares a relationship in the document head. Developers use link tags for canonical URLs, language alternates, icons, preload hints, preconnect hints, stylesheets, and more. This tool helps beginners avoid missing attributes such as as, type, href, or crossorigin.",
+    "whatIs": "An HTML link tag connects a page to another resource or declares a relationship in the document head. Developers use link tags for canonical URLs, language alternates, icons, preload hints, preconnect hints, stylesheets, and more. This tool helps keep attributes such as as, type, href, and crossorigin in the right place.",
     "howToUse": [
       "Choose the rel value that matches the relationship or browser hint you need.",
       "Enter the href path or URL.",

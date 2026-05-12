@@ -311,10 +311,11 @@ button {
   min-height: 270px;
   margin: 0;
   padding: 28px;
-  overflow-x: auto;
+  overflow: hidden;
   color: #f0e7d8;
   font: 14px/1.8 var(--mono);
-  white-space: pre;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 
 .line-no {
@@ -817,10 +818,36 @@ button {
   background: var(--surface-card);
 }
 
-.prose p {
+.prose h2 {
+  margin: 34px 0 12px;
+  font-size: 30px;
+}
+
+.prose h2:first-child {
+  margin-top: 0;
+}
+
+.prose p,
+.prose li {
   margin: 0;
   color: var(--body);
   font-size: 18px;
+}
+
+.prose p + p,
+.prose p + ul,
+.prose ul + h2,
+.prose p + h2 {
+  margin-top: 18px;
+}
+
+.prose ul {
+  margin-bottom: 0;
+  padding-left: 22px;
+}
+
+.prose li + li {
+  margin-top: 8px;
 }
 
 .site-footer {

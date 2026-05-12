@@ -115,7 +115,7 @@ const tools = {
       <div class="field-grid">
         ${field({ id: "title", label: "Title", value: "Small web tools for quick fixes" })}
         ${field({ id: "site", label: "Site name", value: "jquery.app" })}
-        ${textarea({ id: "description", label: "Description", value: "Client-side tools for beginner web developers, site owners, and blog publishers.", full: true })}
+        ${textarea({ id: "description", label: "Description", value: "Browser-based tools for people who build, publish, and maintain websites.", full: true })}
         ${field({ id: "url", label: "Page URL", value: "https://www.jquery.app/en/tools/" })}
         ${field({ id: "image", label: "Image URL", value: "https://www.jquery.app/assets/social-preview.png" })}
         ${select({ id: "type", label: "Open Graph type", value: "website", options: [{ label: "website", value: "website" }, { label: "article", value: "article" }] })}
