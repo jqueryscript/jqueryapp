@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Robots Meta Tag Generator - jquery.app</title>
+  <meta name="description" content="Generate page-level robots meta tags without guessing directive syntax.">
+  <link rel="canonical" href="https://www.jquery.app/tools/robots-meta-tag-generator/">
+  <meta property="og:site_name" content="jquery.app">
+  <meta property="og:title" content="Robots Meta Tag Generator - jquery.app">
+  <meta property="og:description" content="Generate page-level robots meta tags without guessing directive syntax.">
+  <meta property="og:url" content="https://www.jquery.app/tools/robots-meta-tag-generator/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="/assets/styles.css">
+  
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="/" aria-label="jquery.app home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>jquery.app</span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="/tools/" >Tools</a><a href="/tools/seo/" aria-current="page">SEO</a><a href="/tools/css/" >CSS</a><a href="/tools/github-pages/" >GitHub Pages</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="tool-hero">
+  <div class="wrap tool-hero-grid">
+    <div>
+      <p class="eyebrow">SEO Tools</p>
+      <h1>Robots Meta Tag Generator</h1>
+      <p class="lede">Build robots meta tags for indexing, following, snippets, image previews, and archive behavior.</p>
+    </div>
+    <aside class="tool-side-note">
+      <p class="eyebrow">Browser-only</p>
+      <strong>Private by default</strong>
+      <span>This tool runs in your browser. Your input is not uploaded.</span>
+      <a href="#tool">Use the tool</a>
+    </aside>
+  </div>
+</section>
+<section class="section tool-workspace-section" id="tool">
+  <div class="wrap">
+    <div class="tool-workspace" data-tool-id="robots-meta-tag-generator" data-tool-name="Robots Meta Tag Generator">
+      <div class="tool-loading">Loading tool...</div>
+    </div>
+  </div>
+</section>
+<section class="section article-band">
+  <div class="wrap content-layout">
+    <aside class="content-rail">
+      <span>SEO Tools</span>
+      <span>Client-side tool</span>
+      <span>No upload required</span>
+    </aside>
+    <article class="tool-article">
+      <h2>What is Robots Meta Tag Generator?</h2>
+      <p>A robots meta tag gives page-level instructions to search engines. It can allow indexing, prevent indexing, allow or block following links, limit snippets, and control image previews. It is useful when one page needs special treatment without changing the whole site's robots.txt file.</p>
+      <h2>How to use this tool</h2>
+      <ol><li>Choose whether the page should be indexed and whether links should be followed.</li><li>Enable optional directives such as noarchive, nosnippet, or noimageindex only when needed.</li><li>Set image preview and snippet length rules if the page has special preview requirements.</li><li>Copy the generated meta tag into the page head.</li></ol>
+      <h2>What you can use it for</h2>
+      <ul><li>Prevent a utility page from appearing in search results.</li><li>Allow indexing while limiting snippets or previews.</li><li>Create a robots directive for one page without changing robots.txt.</li></ul>
+    </article>
+  </div>
+</section>
+<section class="section soft-band">
+  <div class="wrap section-heading">
+    <p class="eyebrow">Use cases</p>
+    <h2>Practical examples</h2>
+  </div>
+  <div class="wrap example-grid">
+    <article class="example-item">
+  <p class="eyebrow">Example</p>
+  <h3>Noindex a thank-you page</h3>
+  <p>A site has a confirmation page that users see after submitting a form. The robots meta tag can keep that utility page out of search results.</p>
+</article><article class="example-item">
+  <p class="eyebrow">Example</p>
+  <h3>Limit preview controls</h3>
+  <p>A publisher can allow a page to be indexed but restrict snippet or image preview behavior when the content needs a smaller search preview.</p>
+</article>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap content-layout">
+    <aside class="content-rail">
+      <span>Before publishing</span>
+      <span>Check the output</span>
+    </aside>
+    <article class="tool-article">
+      <h2>Common mistakes</h2>
+      <ul><li>Using noindex on a page that should rank.</li><li>Blocking a page in robots.txt and expecting search engines to see its noindex tag.</li><li>Adding conflicting directives such as index and noindex together.</li></ul>
+    </article>
+  </div>
+</section>
+<section class="section faq-band">
+  <div class="wrap content-layout">
+    <div class="section-heading">
+      <p class="eyebrow">FAQ</p>
+      <h2>Questions about Robots Meta Tag Generator</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+  <summary>Should I use robots.txt or a robots meta tag?</summary>
+  <p>Use robots.txt for crawl access rules. Use a robots meta tag when search engines can access the page and need page-level indexing instructions.</p>
+</details><details class="faq-item">
+  <summary>Can a blocked page read its noindex tag?</summary>
+  <p>If a crawler cannot access the page because robots.txt blocks it, it may not see the noindex tag. Do not combine those rules without a clear reason.</p>
+</details><details class="faq-item">
+  <summary>What is the safest default?</summary>
+  <p>For normal public pages, index and follow is the normal default. Add restrictions only when the page has a specific reason.</p>
+</details>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap section-heading">
+    <p class="eyebrow">Related tools</p>
+    <h2>More seo tools</h2>
+  </div>
+  <div class="wrap tool-grid compact">
+    <article class="tool-card">
+  <div>
+    <p class="card-kicker">Seo</p>
+    <h2><a href="/tools/hreflang-tag-generator/">Hreflang Tag Generator</a></h2>
+    <p>Generate clean hreflang tags for multilingual static websites.</p>
+  </div>
+  <a class="card-link" href="/tools/hreflang-tag-generator/">Open tool</a>
+</article><article class="tool-card">
+  <div>
+    <p class="card-kicker">Seo</p>
+    <h2><a href="/tools/og-twitter-card-builder/">Open Graph &amp; Twitter Card Builder</a></h2>
+    <p>Build social preview meta tags for blog posts and static pages.</p>
+  </div>
+  <a class="card-link" href="/tools/og-twitter-card-builder/">Open tool</a>
+</article><article class="tool-card">
+  <div>
+    <p class="card-kicker">Seo</p>
+    <h2><a href="/tools/static-site-seo-checklist-generator/">Static Site SEO Checklist Generator</a></h2>
+    <p>Generate a practical SEO checklist for static websites before launch.</p>
+  </div>
+  <a class="card-link" href="/tools/static-site-seo-checklist-generator/">Open tool</a>
+</article>
+  </div>
+</section>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <a class="brand footer-brand" href="/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>jquery.app</span>
+        </a>
+        <p>Client-side tools for beginner web developers, site owners, and blog publishers. Fix HTML, generate SEO tags, clean snippets, and prepare static pages without uploads, accounts, or AI.</p>
+      </div>
+      <div>
+        <h2>Tools</h2>
+        <a href="/tools/seo/">SEO Tools</a>
+        <a href="/tools/css/">CSS Tools</a>
+        <a href="/tools/github-pages/">GitHub Pages Tools</a>
+      </div>
+      <div>
+        <h2>Site</h2>
+        <a href="/about/">About</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+        <a href="/contact/">Contact</a>
+      </div>
+    </div>
+  </footer>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Robots Meta Tag Generator","description":"Generate page-level robots meta tags without guessing directive syntax.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/robots-meta-tag-generator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Should I use robots.txt or a robots meta tag?","acceptedAnswer":{"@type":"Answer","text":"Use robots.txt for crawl access rules. Use a robots meta tag when search engines can access the page and need page-level indexing instructions."}},{"@type":"Question","name":"Can a blocked page read its noindex tag?","acceptedAnswer":{"@type":"Answer","text":"If a crawler cannot access the page because robots.txt blocks it, it may not see the noindex tag. Do not combine those rules without a clear reason."}},{"@type":"Question","name":"What is the safest default?","acceptedAnswer":{"@type":"Answer","text":"For normal public pages, index and follow is the normal default. Add restrictions only when the page has a specific reason."}}]}</script><script src="/assets/tools.js" defer></script>
+</body>
+</html>

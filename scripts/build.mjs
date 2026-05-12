@@ -29,15 +29,16 @@ function titleCase(value) {
 
 function urlFor(locale, pathname = "") {
   const clean = pathname.replace(/^\/+/, "").replace(/\/+$/, "");
-  return clean ? `/${locale}/${clean}/` : `/${locale}/`;
+  const prefix = locale === site.defaultLocale ? "" : `/${locale}`;
+  return clean ? `${prefix}/${clean}/` : `${prefix || "/"}`;
 }
 
 function absoluteUrl(locale, pathname = "") {
   return new URL(urlFor(locale, pathname), site.baseUrl).toString();
 }
 
-function pageShell({ locale, title, description, pathname, body, scripts = "", current = "", extraHead = "" }) {
-  const canonical = absoluteUrl(locale, pathname);
+function pageShell({ locale, title, description, pathname, body, scripts = "", current = "", extraHead = "", canonicalOverride = "" }) {
+  const canonical = canonicalOverride || absoluteUrl(locale, pathname);
   const nav = [
     ["Tools", urlFor(locale, "tools"), "tools"],
     ["SEO", urlFor(locale, "tools/seo"), "seo"],
@@ -446,6 +447,30 @@ function notFoundPage(locale) {
   });
 }
 
+function redirectPage({ locale, fromPathname, toPathname }) {
+  const target = urlFor(locale, toPathname);
+  const targetAbsolute = absoluteUrl(locale, toPathname);
+  return pageShell({
+    locale,
+    title: `Redirecting - ${site.siteName}`,
+    description: "This page has moved.",
+    pathname: fromPathname,
+    canonicalOverride: targetAbsolute,
+    body: `<section class="page-hero">
+  <div class="wrap narrow">
+    <p class="eyebrow">Moved</p>
+    <h1>This page has moved</h1>
+    <p class="lede">The English version now lives at <a href="${target}">${escapeHtml(target)}</a>.</p>
+    <div class="hero-actions">
+      <a class="button primary" href="${target}">Continue</a>
+    </div>
+  </div>
+</section>`,
+    extraHead: `<meta http-equiv="refresh" content="0; url=${attr(target)}">
+  <meta name="robots" content="noindex">`
+  });
+}
+
 function sitemapXml(urls) {
   const items = [...new Set(urls)]
     .sort()
@@ -476,7 +501,7 @@ async function copyAssets() {
 async function buildLocale(locale) {
   const tools = JSON.parse(await readFile(path.join(dataDir, `tools.${locale}.json`), "utf8"));
   const categories = JSON.parse(await readFile(path.join(dataDir, `categories.${locale}.json`), "utf8"));
-  const localeDir = path.join(distDir, locale);
+  const localeDir = locale === site.defaultLocale ? distDir : path.join(distDir, locale);
   const sitemapUrls = [];
 
   const addSitemapUrl = (pathname = "") => {
@@ -511,11 +536,35 @@ async function buildLocale(locale) {
   addSitemapUrl("contact");
 
   if (locale === site.defaultLocale) {
-    await writePage(path.join(distDir, "index.html"), homePage(locale, tools, categories));
     await writePage(path.join(distDir, "404.html"), notFoundPage(locale));
+    await writeLegacyDefaultLocaleRedirects(locale, tools, categories);
   }
 
   return sitemapUrls;
+}
+
+async function writeLegacyDefaultLocaleRedirects(locale, tools, categories) {
+  const legacyDir = path.join(distDir, locale);
+  const paths = [
+    "",
+    "tools",
+    "about",
+    "privacy",
+    "terms",
+    "contact",
+    ...Object.entries(categories)
+      .filter(([category]) => tools.some((tool) => tool.category === category))
+      .map(([category]) => `tools/${category}`),
+    ...tools.map((tool) => `tools/${tool.id}`)
+  ];
+
+  for (const pathname of paths) {
+    const targetParts = pathname ? pathname.split("/") : [];
+    await writePage(
+      path.join(legacyDir, ...targetParts, "index.html"),
+      redirectPage({ locale, fromPathname: path.posix.join(locale, pathname), toPathname: pathname })
+    );
+  }
 }
 
 async function build() {
