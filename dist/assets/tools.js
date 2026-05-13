@@ -420,6 +420,294 @@ const tools = {
       ];
       return { output: lines.join("\n") };
     }
+  },
+
+  "llms-txt-generator": {
+    form: `
+      <div class="field-grid">
+        ${field({ id: "siteName", label: "Site name", value: "Example Tools" })}
+        ${field({ id: "siteUrl", label: "Site URL", value: "https://example.com", full: true })}
+        ${textarea({ id: "siteDescription", label: "Site description", value: "A collection of practical tools and guides for publishing static websites.", full: true })}
+        ${textarea({
+          id: "importantPages",
+          label: "Important pages",
+          value: "Home|https://example.com/|Main entry point for the site\nTools|https://example.com/tools/|All available tools\nPrivacy Policy|https://example.com/privacy/|Privacy and data handling notes",
+          help: "Use one page per line: title|absolute-url|description"
+        })}
+        ${textarea({ id: "notes", label: "Notes for AI systems", value: "Prefer canonical URLs on https://example.com/.\nDo not treat staging or redirected URLs as canonical.", full: true })}
+        ${field({ id: "sitemap", label: "Sitemap URL", value: "https://example.com/sitemap.xml", full: true })}
+      </div>`,
+    generate(root) {
+      const siteName = root.querySelector("#siteName").value.trim() || "Website";
+      const siteUrl = normalizeUrl(root.querySelector("#siteUrl").value);
+      const description = root.querySelector("#siteDescription").value.trim();
+      const pages = root.querySelector("#importantPages").value.split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
+      const notes = root.querySelector("#notes").value.split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
+      const sitemap = normalizeUrl(root.querySelector("#sitemap").value);
+      const pageLines = pages.map((line) => {
+        const [title, url, ...desc] = line.split("|").map((part) => part.trim());
+        return title && url ? `- [${title}](${normalizeUrl(url)}): ${desc.join("|") || "Important page"}` : "";
+      }).filter(Boolean);
+      const noteLines = notes.map((note) => `- ${note}`);
+      const output = [
+        `# ${siteName}`,
+        "",
+        description,
+        "",
+        siteUrl ? `Canonical site URL: ${siteUrl}` : "",
+        "",
+        "## Important Pages",
+        "",
+        pageLines.join("\n") || "- Add important canonical pages here.",
+        "",
+        "## Notes for AI Systems",
+        "",
+        noteLines.join("\n") || "- Prefer canonical public URLs.",
+        "",
+        "## Sitemap",
+        "",
+        sitemap || "https://example.com/sitemap.xml"
+      ].filter((line, index, arr) => line !== "" || arr[index - 1] !== "").join("\n");
+      return { output };
+    }
+  },
+
+  "robots-txt-builder": {
+    form: `
+      <div class="field-grid">
+        ${field({ id: "siteUrl", label: "Site URL", value: "https://example.com", full: true })}
+        ${field({ id: "sitemap", label: "Sitemap URL", value: "https://example.com/sitemap.xml", full: true })}
+        ${select({
+          id: "crawlMode",
+          label: "Default crawler access",
+          value: "allow",
+          options: [
+            { label: "Allow all public pages", value: "allow" },
+            { label: "Block all crawling", value: "block" }
+          ]
+        })}
+        ${textarea({ id: "disallow", label: "Disallowed paths", value: "/tmp/\n/search/\n?preview=", help: "One path or pattern per line. Leave blank when everything public can be crawled." })}
+        ${checkbox({ id: "aiNote", label: "Add AI crawler policy comment", checked: true })}
+      </div>`,
+    generate(root) {
+      const siteUrl = normalizeUrl(root.querySelector("#siteUrl").value).replace(/\/$/, "");
+      const sitemap = normalizeUrl(root.querySelector("#sitemap").value);
+      const blockAll = root.querySelector("#crawlMode").value === "block";
+      const disallow = root.querySelector("#disallow").value.split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
+      const lines = ["User-agent: *"];
+      if (blockAll) {
+        lines.push("Disallow: /");
+      } else {
+        lines.push("Allow: /");
+        disallow.forEach((path) => lines.push(`Disallow: ${path}`));
+      }
+      if (root.querySelector("#aiNote").checked) {
+        lines.push("", "# AI crawler policy: public pages are available unless a path is disallowed above.");
+      }
+      lines.push("", `Sitemap: ${sitemap || `${siteUrl}/sitemap.xml`}`);
+      return { output: lines.join("\n") };
+    }
+  },
+
+  "json-ld-starter-builder": {
+    form: `
+      <div class="field-grid">
+        ${select({
+          id: "schemaType",
+          label: "Schema type",
+          value: "WebSite",
+          options: [
+            { label: "WebSite", value: "WebSite" },
+            { label: "Organization", value: "Organization" },
+            { label: "Article", value: "Article" },
+            { label: "FAQPage", value: "FAQPage" },
+            { label: "BreadcrumbList", value: "BreadcrumbList" }
+          ]
+        })}
+        ${field({ id: "name", label: "Name or title", value: "Example Tools" })}
+        ${field({ id: "url", label: "URL", value: "https://example.com/", full: true })}
+        ${textarea({ id: "description", label: "Description", value: "Practical tools for publishing static websites.", full: true })}
+        ${textarea({ id: "items", label: "FAQ or breadcrumb lines", value: "What is this site?|A small collection of useful web tools.\nTools|https://example.com/tools/", help: "FAQ: question|answer. Breadcrumb: name|url." })}
+      </div>`,
+    generate(root) {
+      const type = root.querySelector("#schemaType").value;
+      const name = root.querySelector("#name").value.trim();
+      const url = normalizeUrl(root.querySelector("#url").value);
+      const description = root.querySelector("#description").value.trim();
+      const rows = root.querySelector("#items").value.split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
+      let schema;
+      if (type === "FAQPage") {
+        schema = {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: rows.map((line) => {
+            const [question, ...answer] = line.split("|");
+            return {
+              "@type": "Question",
+              name: (question || "").trim(),
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: answer.join("|").trim()
+              }
+            };
+          }).filter((item) => item.name && item.acceptedAnswer.text)
+        };
+      } else if (type === "BreadcrumbList") {
+        schema = {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: rows.map((line, index) => {
+            const [itemName, itemUrl] = line.split("|").map((part) => part.trim());
+            return {
+              "@type": "ListItem",
+              position: index + 1,
+              name: itemName,
+              item: normalizeUrl(itemUrl)
+            };
+          }).filter((item) => item.name && item.item)
+        };
+      } else {
+        schema = {
+          "@context": "https://schema.org",
+          "@type": type,
+          name,
+          url,
+          description
+        };
+        if (type === "Article") schema.headline = name;
+      }
+      return { output: `<script type="application/ld+json">\n${JSON.stringify(schema, null, 2)}\n</script>` };
+    }
+  },
+
+  "responsive-image-markup-generator": {
+    form: `
+      <div class="field-grid">
+        ${field({ id: "src", label: "Default image URL", value: "/assets/example-960.webp", full: true })}
+        ${field({ id: "alt", label: "Alt text", value: "Screenshot of the example tool", full: true })}
+        ${field({ id: "width", label: "Width", value: "960", type: "number" })}
+        ${field({ id: "height", label: "Height", value: "540", type: "number" })}
+        ${textarea({ id: "srcset", label: "srcset candidates", value: "/assets/example-640.webp 640w\n/assets/example-960.webp 960w\n/assets/example-1280.webp 1280w" })}
+        ${field({ id: "sizes", label: "sizes", value: "(max-width: 760px) 100vw, 760px", full: true })}
+        ${checkbox({ id: "picture", label: "Generate picture element with WebP source" })}
+        ${checkbox({ id: "lazy", label: "Lazy load image", checked: true })}
+      </div>`,
+    generate(root) {
+      const src = root.querySelector("#src").value.trim();
+      const alt = root.querySelector("#alt").value.trim();
+      const width = root.querySelector("#width").value.trim();
+      const height = root.querySelector("#height").value.trim();
+      const srcset = root.querySelector("#srcset").value.split(/\r?\n/).map((line) => line.trim()).filter(Boolean).join(",\n    ");
+      const sizes = root.querySelector("#sizes").value.trim();
+      const lazy = root.querySelector("#lazy").checked;
+      const attrs = [
+        `src="${attrEscape(src)}"`,
+        srcset ? `srcset="${attrEscape(srcset.replace(/\n\s*/g, " "))}"` : "",
+        sizes ? `sizes="${attrEscape(sizes)}"` : "",
+        `width="${attrEscape(width)}"`,
+        `height="${attrEscape(height)}"`,
+        `alt="${attrEscape(alt)}"`,
+        lazy ? `loading="lazy"` : `loading="eager"`,
+        `decoding="async"`
+      ].filter(Boolean).join("\n  ");
+      const img = `<img\n  ${attrs}\n>`;
+      if (!root.querySelector("#picture").checked) return { output: img };
+      return {
+        output: `<picture>\n  <source type="image/webp" srcset="${attrEscape(srcset.replace(/\n\s*/g, " "))}" sizes="${attrEscape(sizes)}">\n  ${img.replace(/\n/g, "\n  ")}\n</picture>`
+      };
+    }
+  },
+
+  "responsive-iframe-embed-generator": {
+    form: `
+      <div class="field-grid">
+        ${field({ id: "src", label: "Iframe URL", value: "https://www.youtube.com/embed/dQw4w9WgXcQ", full: true })}
+        ${field({ id: "title", label: "Iframe title", value: "Video tutorial", full: true })}
+        ${select({
+          id: "ratio",
+          label: "Aspect ratio",
+          value: "16 / 9",
+          options: [
+            { label: "16:9", value: "16 / 9" },
+            { label: "4:3", value: "4 / 3" },
+            { label: "1:1", value: "1 / 1" },
+            { label: "21:9", value: "21 / 9" }
+          ]
+        })}
+        ${field({ id: "className", label: "Wrapper class", value: "embed-frame" })}
+        ${checkbox({ id: "lazy", label: "Lazy load iframe", checked: true })}
+        ${checkbox({ id: "sandbox", label: "Add common sandbox permissions" })}
+      </div>`,
+    generate(root) {
+      const src = root.querySelector("#src").value.trim();
+      const title = root.querySelector("#title").value.trim();
+      const ratio = root.querySelector("#ratio").value;
+      const className = root.querySelector("#className").value.trim() || "embed-frame";
+      const lazy = root.querySelector("#lazy").checked;
+      const sandbox = root.querySelector("#sandbox").checked;
+      const iframeAttrs = [
+        `src="${attrEscape(src)}"`,
+        `title="${attrEscape(title)}"`,
+        lazy ? `loading="lazy"` : "",
+        `referrerpolicy="strict-origin-when-cross-origin"`,
+        sandbox ? `sandbox="allow-scripts allow-same-origin allow-presentation"` : "",
+        `allowfullscreen`
+      ].filter(Boolean).join("\n    ");
+      return {
+        output: `<div class="${attrEscape(className)}">\n  <iframe\n    ${iframeAttrs}\n  ></iframe>\n</div>\n\n<style>\n.${className} {\n  width: 100%;\n  aspect-ratio: ${ratio};\n}\n\n.${className} iframe {\n  width: 100%;\n  height: 100%;\n  border: 0;\n  display: block;\n}\n</style>`
+      };
+    }
+  },
+
+  "github-pages-spa-404-helper": {
+    form: `
+      <div class="field-grid">
+        ${field({ id: "basePath", label: "App base path", value: "/", help: "Use / for custom domains, or /repo-name/ for project pages." })}
+        ${select({
+          id: "mode",
+          label: "Preserve path as",
+          value: "query",
+          options: [
+            { label: "Query string (?p=/route)", value: "query" },
+            { label: "Hash (#/route)", value: "hash" }
+          ]
+        })}
+        ${field({ id: "delay", label: "Redirect delay ms", value: "0", type: "number" })}
+      </div>`,
+    generate(root) {
+      let basePath = root.querySelector("#basePath").value.trim() || "/";
+      if (!basePath.startsWith("/")) basePath = `/${basePath}`;
+      if (!basePath.endsWith("/")) basePath = `${basePath}/`;
+      const mode = root.querySelector("#mode").value;
+      const delay = Number(root.querySelector("#delay").value) || 0;
+      const targetExpression = mode === "hash"
+        ? `base + "#" + path + search + hash`
+        : `base + "?p=" + encodeURIComponent(path + search + hash)`;
+      const output = `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <title>Redirecting...</title>
+</head>
+<body>
+  <script>
+    (function () {
+      var base = ${JSON.stringify(basePath)};
+      var path = location.pathname;
+      var search = location.search || "";
+      var hash = location.hash || "";
+      var target = ${targetExpression};
+      setTimeout(function () {
+        location.replace(target);
+      }, ${delay});
+    }());
+  </script>
+  <p>Redirecting...</p>
+</body>
+</html>`;
+      return { output };
+    }
   }
 };
 

@@ -32,6 +32,12 @@ jquery.app is a static website with practical browser tools for metadata, CSS, G
 - [Favicon HTML Tag Generator](https://www.jquery.app/tools/favicon-html-tag-generator/): Generate favicon and web app icon tags for static websites.
 - [CSS Clamp Calculator](https://www.jquery.app/tools/css-clamp-calculator/): Calculate responsive CSS clamp values for font sizes and spacing.
 - [CSS Safe Area Insets Generator](https://www.jquery.app/tools/css-safe-area-insets-generator/): Generate CSS for safe-area insets on phones with notches and rounded corners.
+- [llms.txt Generator](https://www.jquery.app/tools/llms-txt-generator/): Create an llms.txt file for AI search and answer engines.
+- [robots.txt Builder](https://www.jquery.app/tools/robots-txt-builder/): Generate a simple robots.txt file with sitemap and crawler rules.
+- [JSON-LD Starter Builder](https://www.jquery.app/tools/json-ld-starter-builder/): Generate starter JSON-LD for WebSite, Organization, Article, FAQ, or BreadcrumbList.
+- [Responsive Image Markup Generator](https://www.jquery.app/tools/responsive-image-markup-generator/): Generate img or picture markup with srcset, sizes, width, height, and alt text.
+- [Responsive Iframe Embed Generator](https://www.jquery.app/tools/responsive-iframe-embed-generator/): Generate responsive iframe embed markup for videos, maps, demos, and docs.
+- [GitHub Pages SPA 404 Helper](https://www.jquery.app/tools/github-pages-spa-404-helper/): Generate a 404.html fallback for single-page apps on GitHub Pages.
 
 ## Notes for AI Systems
 

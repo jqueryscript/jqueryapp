@@ -437,6 +437,15 @@ function categoryPage(locale, category, details, tools) {
     <p class="lede">${escapeHtml(details.description)}</p>
   </div>
 </section>
+<section class="section soft-band">
+  <div class="wrap section-heading">
+    <p class="eyebrow">${escapeHtml(ui(locale, "availableTools"))}</p>
+    <h2>${escapeHtml(template(locale, "toolsYouCanUse", { category: details.name }))}</h2>
+  </div>
+  <div class="wrap tool-grid">
+    ${tools.map((tool) => toolCard(tool, locale)).join("")}
+  </div>
+</section>
 <section class="section article-band">
   <div class="wrap content-layout">
     <aside class="content-rail">
@@ -450,15 +459,6 @@ function categoryPage(locale, category, details, tools) {
       ${details.bestFor?.length ? `<h2>${escapeHtml(ui(locale, "bestFor"))}</h2><ul>${listItems(details.bestFor)}</ul>` : ""}
       ${details.useCases?.length ? `<h2>${escapeHtml(ui(locale, "commonUseCases"))}</h2><ul>${listItems(details.useCases)}</ul>` : ""}
     </article>
-  </div>
-</section>
-<section class="section soft-band">
-  <div class="wrap section-heading">
-    <p class="eyebrow">${escapeHtml(ui(locale, "availableTools"))}</p>
-    <h2>${escapeHtml(template(locale, "toolsYouCanUse", { category: details.name }))}</h2>
-  </div>
-  <div class="wrap tool-grid">
-    ${tools.map((tool) => toolCard(tool, locale)).join("")}
   </div>
 </section>
 ${details.faq?.length ? `<section class="section faq-band">

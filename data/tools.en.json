@@ -488,5 +488,299 @@
         "answer": "Usually no. Apply it to fixed bars, app shells, or sections that need edge protection."
       }
     ]
+  },
+  {
+    "id": "llms-txt-generator",
+    "name": "llms.txt Generator",
+    "category": "seo",
+    "summary": "Create an llms.txt file for AI search and answer engines.",
+    "description": "Describe your site, list important pages, and generate a clean llms.txt file for static hosting.",
+    "keywords": ["llms.txt generator", "ai seo", "generative engine optimization"],
+    "whatIs": "An llms.txt file is a plain text guide that helps AI systems understand the most important parts of a website. It can summarize the site, list canonical URLs, identify useful tool or documentation pages, and point crawlers toward the sitemap. For static sites, it is easy to publish at the site root next to robots.txt and sitemap.xml.",
+    "howToUse": [
+      "Enter the site name, public URL, and a short description.",
+      "Add one important page per line using title|absolute-url|description.",
+      "Add notes that help AI systems understand canonical URLs, language structure, or tool behavior.",
+      "Copy the output into a file named llms.txt at the published site root."
+    ],
+    "useCases": [
+      "Publish a clear AI-readable overview for a static website.",
+      "List tool, documentation, and policy pages in one small text file.",
+      "Explain canonical URL rules and multilingual paths for answer engines."
+    ],
+    "examples": [
+      {
+        "title": "Tool site overview",
+        "text": "A web utility site can list its homepage, tools index, top categories, and sitemap so AI systems see the most useful entry points first."
+      },
+      {
+        "title": "Documentation site summary",
+        "text": "A docs site can include setup guides, API references, changelog pages, and rules for which version is canonical."
+      }
+    ],
+    "mistakes": [
+      "Listing staging, localhost, or redirected URLs.",
+      "Turning llms.txt into a keyword-stuffed sales page.",
+      "Forgetting to update the file after changing major URL paths."
+    ],
+    "faq": [
+      {
+        "question": "Where should llms.txt be published?",
+        "answer": "Publish it at the root of the public site, such as https://example.com/llms.txt."
+      },
+      {
+        "question": "Does llms.txt replace sitemap.xml?",
+        "answer": "No. Sitemap.xml is still the canonical crawl list for search engines. llms.txt is a concise guide for AI-oriented discovery."
+      },
+      {
+        "question": "Should every page be listed?",
+        "answer": "No. List the pages that best explain the site, its tools, its documentation, and its policies."
+      }
+    ]
+  },
+  {
+    "id": "robots-txt-builder",
+    "name": "robots.txt Builder",
+    "category": "seo",
+    "summary": "Generate a simple robots.txt file with sitemap and crawler rules.",
+    "description": "Build a robots.txt file for static sites, including sitemap location, crawl access, and optional AI crawler notes.",
+    "keywords": ["robots.txt generator", "sitemap robots.txt", "ai crawler robots"],
+    "whatIs": "A robots.txt file gives crawlers site-level access rules. It can allow or disallow paths, point to the sitemap, and document crawler policies. Static sites often need a small, predictable robots.txt file because build outputs and GitHub Pages deployments only publish what exists in the final folder.",
+    "howToUse": [
+      "Enter the public site URL and sitemap URL.",
+      "Choose whether normal crawlers should be allowed across the site.",
+      "Add disallowed paths only when there is a real reason to block crawling.",
+      "Copy the result into robots.txt at the published site root."
+    ],
+    "useCases": [
+      "Create a clean robots.txt file for GitHub Pages.",
+      "Add a sitemap reference without hand-writing the file.",
+      "Document public crawler access before launch."
+    ],
+    "examples": [
+      {
+        "title": "Static site launch",
+        "text": "A new static site needs to allow crawling and point search engines to the sitemap. The builder creates a minimal file with the final sitemap URL."
+      },
+      {
+        "title": "Block generated utility folders",
+        "text": "A site can disallow temporary export paths while keeping public pages and tools open to crawlers."
+      }
+    ],
+    "mistakes": [
+      "Blocking important pages and expecting them to rank.",
+      "Using robots.txt to remove a page that is already indexed instead of using noindex or removal tools.",
+      "Forgetting to publish robots.txt into the final build output."
+    ],
+    "faq": [
+      {
+        "question": "Can robots.txt force a page out of Google?",
+        "answer": "No. It controls crawling. For indexing decisions, use page-level noindex when crawlers can access the page."
+      },
+      {
+        "question": "Should I add a sitemap line?",
+        "answer": "Yes. A Sitemap line gives crawlers a stable path to the site's canonical URL list."
+      },
+      {
+        "question": "Should I block AI crawlers by default?",
+        "answer": "That is a policy choice. If AI visibility matters, avoid blocking crawlers unless you have a clear business or privacy reason."
+      }
+    ]
+  },
+  {
+    "id": "json-ld-starter-builder",
+    "name": "JSON-LD Starter Builder",
+    "category": "seo",
+    "summary": "Generate starter JSON-LD for WebSite, Organization, Article, FAQ, or BreadcrumbList.",
+    "description": "Choose a schema type, fill in the main fields, and copy a valid JSON-LD script block.",
+    "keywords": ["json-ld generator", "schema markup generator", "structured data builder"],
+    "whatIs": "JSON-LD is structured data written as a script block in the page head or body. It helps search engines and AI systems understand entities, page purpose, navigation paths, and question-answer content. This builder focuses on starter markup that is easy to inspect and adapt before publishing.",
+    "howToUse": [
+      "Choose the schema type that matches the page.",
+      "Enter the page URL, name, description, and optional organization or FAQ data.",
+      "Copy the generated script block into the page HTML.",
+      "Validate the final page after publishing because schema must match visible content."
+    ],
+    "useCases": [
+      "Create WebSite or Organization markup for a homepage.",
+      "Prepare Article metadata for a static blog post.",
+      "Build FAQ or BreadcrumbList schema from structured lines."
+    ],
+    "examples": [
+      {
+        "title": "Homepage entity markup",
+        "text": "A small website can add WebSite and Organization JSON-LD to identify its name, URL, and description."
+      },
+      {
+        "title": "FAQ section markup",
+        "text": "A tool page with visible questions and answers can generate matching FAQ JSON-LD for clearer machine understanding."
+      }
+    ],
+    "mistakes": [
+      "Adding schema that does not match visible page content.",
+      "Using placeholder URLs or local file paths.",
+      "Treating schema as a ranking shortcut instead of a clarity layer."
+    ],
+    "faq": [
+      {
+        "question": "Where should JSON-LD go?",
+        "answer": "It can live in the head or body. For static pages, placing it near other metadata in the head is easy to maintain."
+      },
+      {
+        "question": "Can one page have multiple JSON-LD blocks?",
+        "answer": "Yes. A page can use separate blocks for WebSite, BreadcrumbList, FAQ, WebApplication, and other relevant entities."
+      },
+      {
+        "question": "Do I need to validate it?",
+        "answer": "Yes. Validate the published page and make sure the structured data matches visible content."
+      }
+    ]
+  },
+  {
+    "id": "responsive-image-markup-generator",
+    "name": "Responsive Image Markup Generator",
+    "category": "assets",
+    "summary": "Generate img or picture markup with srcset, sizes, width, height, and alt text.",
+    "description": "Create responsive image HTML for static pages without forgetting sizing, lazy loading, or accessible alt text.",
+    "keywords": ["responsive image generator", "srcset generator", "picture tag generator"],
+    "whatIs": "Responsive image markup lets the browser choose a suitable image file for the visitor's screen and layout. Good markup also includes width, height, loading, decoding, and useful alt text. Static sites benefit from this because images often have fixed exported filenames and need clear paths in the final build output.",
+    "howToUse": [
+      "Enter the default image URL, alt text, width, and height.",
+      "Add srcset candidates as image-url width pairs.",
+      "Choose whether to generate a plain img tag or a picture element with a WebP source.",
+      "Copy the markup and confirm that every image file exists in the published output."
+    ],
+    "useCases": [
+      "Prepare responsive images for static HTML pages.",
+      "Avoid missing width and height attributes that cause layout shift.",
+      "Create picture markup with WebP and fallback image paths."
+    ],
+    "examples": [
+      {
+        "title": "Blog hero image",
+        "text": "A blog post has 640px, 960px, and 1280px versions of a hero image. The generator creates srcset and sizes markup."
+      },
+      {
+        "title": "Tool screenshot",
+        "text": "A tool page screenshot needs a useful alt attribute, dimensions, and lazy loading below the fold."
+      }
+    ],
+    "mistakes": [
+      "Leaving alt text empty for meaningful images.",
+      "Using srcset paths that are not copied to the published output.",
+      "Omitting width and height, which can create layout shift."
+    ],
+    "faq": [
+      {
+        "question": "When should alt text be empty?",
+        "answer": "Use empty alt text only for decorative images. Meaningful screenshots, diagrams, and product images need useful alt text."
+      },
+      {
+        "question": "What does sizes do?",
+        "answer": "The sizes attribute tells the browser how wide the image will be in the layout so it can choose the right srcset candidate."
+      },
+      {
+        "question": "Should every image be lazy loaded?",
+        "answer": "No. Lazy loading is useful below the fold. Important above-the-fold images may need eager loading."
+      }
+    ]
+  },
+  {
+    "id": "responsive-iframe-embed-generator",
+    "name": "Responsive Iframe Embed Generator",
+    "category": "html",
+    "summary": "Generate responsive iframe embed markup for videos, maps, demos, and docs.",
+    "description": "Create a stable iframe wrapper with aspect ratio, loading, referrer, sandbox, and title attributes.",
+    "keywords": ["responsive iframe generator", "iframe embed code", "aspect ratio iframe"],
+    "whatIs": "Responsive iframe markup keeps embeds from overflowing, shifting layout, or missing accessibility attributes. It is useful for videos, maps, demos, slides, and documentation widgets. A good embed includes a title, lazy loading when appropriate, a stable aspect ratio, and only the permissions the embed needs.",
+    "howToUse": [
+      "Paste the iframe source URL and write a clear title.",
+      "Choose the aspect ratio and whether lazy loading should be enabled.",
+      "Enable sandbox only when the embedded page can work with the selected restrictions.",
+      "Copy the HTML and CSS into the page where the embed should appear."
+    ],
+    "useCases": [
+      "Embed a video without fixed-width overflow.",
+      "Add a live demo iframe to documentation.",
+      "Create a map embed with a stable aspect ratio and title."
+    ],
+    "examples": [
+      {
+        "title": "Documentation demo",
+        "text": "A docs page embeds a live example. The generated wrapper keeps the iframe responsive and prevents layout jumps."
+      },
+      {
+        "title": "Video tutorial",
+        "text": "A blog post embeds a video and needs a 16:9 frame that works on mobile and desktop."
+      }
+    ],
+    "mistakes": [
+      "Embedding iframes without a title.",
+      "Using fixed width and height values that break on mobile.",
+      "Adding sandbox restrictions without testing the embedded page."
+    ],
+    "faq": [
+      {
+        "question": "Should iframe embeds use lazy loading?",
+        "answer": "Use lazy loading for embeds below the fold. For important above-the-fold embeds, test whether lazy loading delays useful content."
+      },
+      {
+        "question": "What aspect ratio should I choose?",
+        "answer": "Use 16:9 for most videos, 4:3 for older slides or demos, and 1:1 for square interactive previews."
+      },
+      {
+        "question": "Is sandbox always safe?",
+        "answer": "Sandbox can improve containment, but strict settings may break scripts, forms, or same-origin behavior. Test the embed."
+      }
+    ]
+  },
+  {
+    "id": "github-pages-spa-404-helper",
+    "name": "GitHub Pages SPA 404 Helper",
+    "category": "github-pages",
+    "summary": "Generate a 404.html fallback for single-page apps on GitHub Pages.",
+    "description": "Create a small GitHub Pages 404 fallback snippet for client-side routing and static SPA deployments.",
+    "keywords": ["github pages spa 404", "github pages client side routing", "404 fallback generator"],
+    "whatIs": "GitHub Pages serves static files and does not know client-side routes unless a matching file exists. A single-page app can show 404 when a visitor opens a deep route directly. A 404 fallback can redirect the browser back to the app entry point while preserving the requested path for the router.",
+    "howToUse": [
+      "Enter the app base path. Use / for a user or custom domain site, or /repo-name/ for a project page.",
+      "Choose whether the fallback should store the original path in the query string or hash.",
+      "Copy the generated 404.html file into the published site root.",
+      "Test a deep route directly after deployment."
+    ],
+    "useCases": [
+      "Fix direct visits to client-side routes on GitHub Pages.",
+      "Prepare a 404 fallback for React, Vue, Svelte, or vanilla routers.",
+      "Document the base path needed for project pages."
+    ],
+    "examples": [
+      {
+        "title": "Custom domain SPA",
+        "text": "A site at www.example.com uses client-side routing. The helper generates a fallback that redirects deep routes back to / with the path preserved."
+      },
+      {
+        "title": "Project page SPA",
+        "text": "A project deployed under /my-app/ needs the base path included so routes do not redirect to the domain root."
+      }
+    ],
+    "mistakes": [
+      "Using / as the base path for a project page deployed under /repo-name/.",
+      "Forgetting to copy 404.html into the final dist folder.",
+      "Expecting this fallback to replace server-side redirects."
+    ],
+    "faq": [
+      {
+        "question": "Does this work for every router?",
+        "answer": "No. It is a generic fallback. Your router still needs to read the preserved path and render the matching route."
+      },
+      {
+        "question": "Where should 404.html go?",
+        "answer": "Place it in the published site root, next to index.html, CNAME, robots.txt, or other final output files."
+      },
+      {
+        "question": "Should normal static sites use this?",
+        "answer": "Usually no. A normal static site should publish real HTML files for important pages instead of routing everything through a fallback."
+      }
+    ]
   }
 ]
