@@ -4,14 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GitHub Pages Tools - jquery.app</title>
-  <meta name="description" content="Tools for custom domains, static publishing, launch checks, and GitHub Pages website maintenance.">
+  <meta name="description" content="Tools for custom domains, static publishing, launch checks, and GitHub Pages website maintenance. Free in your browser, with no account or upload.">
   <link rel="canonical" href="https://www.jquery.app/tools/github-pages/">
   <meta property="og:site_name" content="jquery.app">
   <meta property="og:title" content="GitHub Pages Tools - jquery.app">
-  <meta property="og:description" content="Tools for custom domains, static publishing, launch checks, and GitHub Pages website maintenance.">
+  <meta property="og:description" content="Tools for custom domains, static publishing, launch checks, and GitHub Pages website maintenance. Free in your browser, with no account or upload.">
   <meta property="og:url" content="https://www.jquery.app/tools/github-pages/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
+  <link rel="alternate" hreflang="en" href="https://www.jquery.app/tools/github-pages/">
+  <link rel="alternate" hreflang="x-default" href="https://www.jquery.app/tools/github-pages/">
+  <link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt">
   <link rel="stylesheet" href="/assets/styles.css">
   
 </head>
@@ -36,7 +39,26 @@
     <p class="lede">Tools for custom domains, static publishing, launch checks, and GitHub Pages website maintenance.</p>
   </div>
 </section>
+<section class="section article-band">
+  <div class="wrap content-layout">
+    <aside class="content-rail">
+      <span>GitHub Pages Tools</span>
+      <span>Runs in your browser</span>
+      <span>No account required</span>
+    </aside>
+    <article class="tool-article">
+      <h2>What this collection helps with</h2>
+      <p>GitHub Pages is simple once it is set up, but its domain and publishing rules are unforgiving. A CNAME file in the wrong folder, an outdated custom domain setting, or a missing build artifact can turn a correct website into a 404. These helpers focus on the checks that matter before and after deployment.</p>
+      <h2>Best for</h2><ul><li>Preparing custom domains for GitHub Pages.</li><li>Checking static output before pushing a release.</li><li>Keeping CNAME, sitemap, robots.txt, and generated files in the published folder.</li></ul>
+      <h2>Common use cases</h2><ul><li>Create valid CNAME file content for a custom domain.</li><li>Separate DNS notes from GitHub Pages repository settings.</li><li>Review launch details before enabling HTTPS and sharing the URL.</li></ul>
+    </article>
+  </div>
+</section>
 <section class="section soft-band">
+  <div class="wrap section-heading">
+    <p class="eyebrow">Available tools</p>
+    <h2>GitHub Pages Tools you can use now</h2>
+  </div>
   <div class="wrap tool-grid">
     <article class="tool-card">
   <div>
@@ -48,6 +70,23 @@
 </article>
   </div>
 </section>
+<section class="section faq-band">
+  <div class="wrap content-layout">
+    <div class="section-heading">
+      <p class="eyebrow">FAQ</p>
+      <h2>Questions about github pages tools</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+  <summary>Where should the CNAME file live?</summary>
+  <p>It must be in the published site root. If GitHub Pages serves a dist folder or build output, the CNAME file must be generated inside that output.</p>
+</details><details class="faq-item">
+  <summary>Why can GitHub Pages show 404 after a successful push?</summary>
+  <p>Common causes include publishing from the wrong branch or folder, missing index.html, delayed Pages deployment, or a custom domain pointing at the wrong repository.</p>
+</details>
+    </div>
+  </div>
+</section>
   </main>
   <footer class="site-footer">
     <div class="wrap footer-grid">
@@ -56,7 +95,7 @@
           <span class="brand-mark" aria-hidden="true"></span>
           <span>jquery.app</span>
         </a>
-        <p>A quiet collection of browser-based tools for people who build, publish, and maintain websites. Generate clean tags, prepare static pages, and fix the small details that slow a launch down.</p>
+        <p>Practical browser tools for metadata, CSS, static sites, and launch checks. No accounts, no uploads, no heavy workflow.</p>
       </div>
       <div>
         <h2>Tools</h2>
@@ -70,9 +109,10 @@
         <a href="/privacy/">Privacy</a>
         <a href="/terms/">Terms</a>
         <a href="/contact/">Contact</a>
+        <a href="/llms.txt">llms.txt</a>
       </div>
     </div>
   </footer>
-  
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"GitHub Pages Tools","item":"https://www.jquery.app/tools/github-pages/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"GitHub Pages Tools","itemListElement":[{"@type":"ListItem","position":1,"name":"GitHub Pages CNAME Helper","url":"https://www.jquery.app/tools/github-pages-cname-helper/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where should the CNAME file live?","acceptedAnswer":{"@type":"Answer","text":"It must be in the published site root. If GitHub Pages serves a dist folder or build output, the CNAME file must be generated inside that output."}},{"@type":"Question","name":"Why can GitHub Pages show 404 after a successful push?","acceptedAnswer":{"@type":"Answer","text":"Common causes include publishing from the wrong branch or folder, missing index.html, delayed Pages deployment, or a custom domain pointing at the wrong repository."}}]}</script>
 </body>
 </html>

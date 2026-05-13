@@ -7,6 +7,7 @@ const dataDir = path.join(root, "data");
 const assetsDir = path.join(root, "src", "assets");
 
 const site = JSON.parse(await readFile(path.join(dataDir, "site.json"), "utf8"));
+const buildDate = new Date().toISOString().slice(0, 10);
 
 function escapeHtml(value = "") {
   return String(value)
@@ -60,6 +61,9 @@ function pageShell({ locale, title, description, pathname, body, scripts = "", c
   <meta property="og:url" content="${attr(canonical)}">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
+  <link rel="alternate" hreflang="${attr(locale)}" href="${attr(canonical)}">
+  <link rel="alternate" hreflang="x-default" href="${attr(canonical)}">
+  <link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt">
   <link rel="stylesheet" href="/assets/styles.css">
   ${extraHead}
 </head>
@@ -100,6 +104,7 @@ function pageShell({ locale, title, description, pathname, body, scripts = "", c
         <a href="${urlFor(locale, "privacy")}">Privacy</a>
         <a href="${urlFor(locale, "terms")}">Terms</a>
         <a href="${urlFor(locale, "contact")}">Contact</a>
+        <a href="/llms.txt">llms.txt</a>
       </div>
     </div>
   </footer>
@@ -119,10 +124,10 @@ function hero({ eyebrow, title, description, actions = "" }) {
     </div>
     <div class="tool-snapshot hero-artifact" aria-label="Tool output preview">
       <div class="snapshot-bar"><span></span><span></span><span></span><strong>head.html</strong></div>
-      <pre><span class="line-no">01</span> &lt;link rel="canonical" href="/tools/css-clamp/"&gt;
+      <pre><span class="line-no">01</span> &lt;link rel="canonical" href="https://www.jquery.app/tools/css-clamp-calculator/"&gt;
 <span class="line-no">02</span> &lt;meta name="robots" content="index, follow"&gt;
 <span class="line-no">03</span> &lt;meta property="og:title" content="Ready to publish"&gt;
-<span class="line-no">04</span> &lt;link rel="alternate" hreflang="en" href="/"&gt;</pre>
+<span class="line-no">04</span> &lt;link rel="alternate" hreflang="en" href="https://www.jquery.app/"&gt;</pre>
       <div class="snapshot-status"><span></span>Nothing leaves your browser</div>
     </div>
   </div>
@@ -166,7 +171,59 @@ function examplesMarkup(items = []) {
 </article>`).join("");
 }
 
+function jsonLd(schema) {
+  return `<script type="application/ld+json">${JSON.stringify(schema)}</script>`;
+}
+
+function breadcrumbSchema(locale, items) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: absoluteUrl(locale, item.pathname)
+    }))
+  };
+}
+
+function itemListSchema(locale, name, items) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name,
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      url: absoluteUrl(locale, `tools/${item.id}`)
+    }))
+  };
+}
+
+function freeBrowserDescription(text) {
+  return `${text.replace(/\.$/, "")}. Free in your browser, with no account or upload.`;
+}
+
 function homePage(locale, tools, categories) {
+  const scripts = [
+    jsonLd({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: site.siteName,
+      url: absoluteUrl(locale),
+      description: site.description,
+      inLanguage: locale
+    }),
+    jsonLd({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: site.siteName,
+      url: absoluteUrl(locale)
+    }),
+    jsonLd(itemListSchema(locale, "jquery.app tools", tools.slice(0, 6)))
+  ].join("");
   const body = `${hero({
     eyebrow: "For the last mile of publishing",
     title: site.tagline,
@@ -213,15 +270,23 @@ function homePage(locale, tools, categories) {
 
   return pageShell({
     locale,
-    title: `${site.siteName} - ${site.tagline}`,
+    title: `${site.siteName} - ${titleCase(site.tagline)}`,
     description: site.description,
     pathname: "",
     body,
+    scripts,
     current: "home"
   });
 }
 
 function toolsIndexPage(locale, tools, categories) {
+  const scripts = [
+    jsonLd(breadcrumbSchema(locale, [
+      { name: "Home", pathname: "" },
+      { name: "Tools", pathname: "tools" }
+    ])),
+    jsonLd(itemListSchema(locale, "Free web tools", tools))
+  ].join("");
   const grouped = Object.entries(categories)
     .map(([category, details]) => {
       const categoryTools = tools.filter((tool) => tool.category === category);
@@ -257,11 +322,33 @@ function toolsIndexPage(locale, tools, categories) {
     description: "Browse browser-based tools for SEO tags, GitHub Pages setup, CSS helpers, and static website publishing.",
     pathname: "tools",
     body,
+    scripts,
     current: "tools"
   });
 }
 
 function categoryPage(locale, category, details, tools) {
+  const faqSchema = details.faq?.length ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: details.faq.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer
+      }
+    }))
+  } : null;
+  const scripts = [
+    jsonLd(breadcrumbSchema(locale, [
+      { name: "Home", pathname: "" },
+      { name: "Tools", pathname: "tools" },
+      { name: details.name, pathname: `tools/${category}` }
+    ])),
+    jsonLd(itemListSchema(locale, details.name, tools)),
+    faqSchema ? jsonLd(faqSchema) : ""
+  ].filter(Boolean).join("");
   const body = `<section class="page-hero">
   <div class="wrap narrow">
     <p class="eyebrow">Tools</p>
@@ -269,18 +356,49 @@ function categoryPage(locale, category, details, tools) {
     <p class="lede">${escapeHtml(details.description)}</p>
   </div>
 </section>
+<section class="section article-band">
+  <div class="wrap content-layout">
+    <aside class="content-rail">
+      <span>${escapeHtml(details.name)}</span>
+      <span>Runs in your browser</span>
+      <span>No account required</span>
+    </aside>
+    <article class="tool-article">
+      <h2>What this collection helps with</h2>
+      <p>${escapeHtml(details.intro || details.description)}</p>
+      ${details.bestFor?.length ? `<h2>Best for</h2><ul>${listItems(details.bestFor)}</ul>` : ""}
+      ${details.useCases?.length ? `<h2>Common use cases</h2><ul>${listItems(details.useCases)}</ul>` : ""}
+    </article>
+  </div>
+</section>
 <section class="section soft-band">
+  <div class="wrap section-heading">
+    <p class="eyebrow">Available tools</p>
+    <h2>${escapeHtml(details.name)} you can use now</h2>
+  </div>
   <div class="wrap tool-grid">
     ${tools.map((tool) => toolCard(tool, locale)).join("")}
   </div>
-</section>`;
+</section>
+${details.faq?.length ? `<section class="section faq-band">
+  <div class="wrap content-layout">
+    <div class="section-heading">
+      <p class="eyebrow">FAQ</p>
+      <h2>Questions about ${escapeHtml(details.name.toLowerCase())}</h2>
+    </div>
+    <div class="faq-list">
+      ${faqMarkup(details.faq)}
+    </div>
+  </div>
+</section>` : ""}`;
 
   return pageShell({
     locale,
     title: `${details.name} - ${site.siteName}`,
-    description: details.description,
+    description: freeBrowserDescription(details.description),
     pathname: `tools/${category}`,
     body,
+    scripts,
     current: category
   });
 }
@@ -311,8 +429,14 @@ function toolPage(locale, tool, allTools, categories) {
     }))
   } : null;
   const scripts = [
-    `<script type="application/ld+json">${JSON.stringify(webAppSchema)}</script>`,
-    faqSchema ? `<script type="application/ld+json">${JSON.stringify(faqSchema)}</script>` : "",
+    jsonLd(webAppSchema),
+    jsonLd(breadcrumbSchema(locale, [
+      { name: "Home", pathname: "" },
+      { name: "Tools", pathname: "tools" },
+      { name: categoryName, pathname: `tools/${tool.category}` },
+      { name: tool.name, pathname: `tools/${tool.id}` }
+    ])),
+    faqSchema ? jsonLd(faqSchema) : "",
     `<script src="/assets/tools.js" defer></script>`
   ].filter(Boolean).join("");
 
@@ -400,7 +524,7 @@ ${related.length ? `<section class="section">
   return pageShell({
     locale,
     title: `${tool.name} - ${site.siteName}`,
-    description: tool.summary,
+    description: freeBrowserDescription(tool.summary),
     pathname: `tools/${tool.id}`,
     body,
     scripts,
@@ -409,6 +533,19 @@ ${related.length ? `<section class="section">
 }
 
 function simplePage(locale, slug, title, description, content) {
+  const scripts = jsonLd({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: title,
+    description,
+    url: absoluteUrl(locale, slug),
+    inLanguage: locale,
+    isPartOf: {
+      "@type": "WebSite",
+      name: site.siteName,
+      url: absoluteUrl(locale)
+    }
+  });
   const body = `<section class="page-hero">
   <div class="wrap narrow">
     <h1>${escapeHtml(title)}</h1>
@@ -421,7 +558,7 @@ function simplePage(locale, slug, title, description, content) {
   </div>
 </section>`;
 
-  return pageShell({ locale, title: `${title} - ${site.siteName}`, description, pathname: slug, body });
+  return pageShell({ locale, title: `${title} - ${site.siteName}`, description, pathname: slug, body, scripts });
 }
 
 function notFoundPage(locale) {
@@ -476,6 +613,7 @@ function sitemapXml(urls) {
     .sort()
     .map((url) => `  <url>
     <loc>${escapeHtml(url)}</loc>
+    <lastmod>${buildDate}</lastmod>
   </url>`)
     .join("\n");
 
@@ -483,6 +621,49 @@ function sitemapXml(urls) {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${items}
 </urlset>
+`;
+}
+
+function llmsTxt(tools, categories) {
+  const categoryLines = Object.entries(categories)
+    .map(([category, details]) => `- [${details.name}](${absoluteUrl(site.defaultLocale, `tools/${category}`)}): ${details.description}`)
+    .join("\n");
+  const toolLines = tools
+    .map((tool) => `- [${tool.name}](${absoluteUrl(site.defaultLocale, `tools/${tool.id}`)}): ${tool.summary}`)
+    .join("\n");
+
+  return `# ${site.siteName}
+
+${site.description}
+
+jquery.app is a static website with practical browser tools for metadata, CSS, GitHub Pages, static site publishing, and launch checks. The tools are designed to produce copyable output that visitors can review before using on a live website.
+
+## Important Pages
+
+- [Home](${absoluteUrl(site.defaultLocale)})
+- [All tools](${absoluteUrl(site.defaultLocale, "tools")})
+- [About](${absoluteUrl(site.defaultLocale, "about")})
+- [Privacy Policy](${absoluteUrl(site.defaultLocale, "privacy")})
+- [Terms of Use](${absoluteUrl(site.defaultLocale, "terms")})
+
+## Tool Categories
+
+${categoryLines}
+
+## Tools
+
+${toolLines}
+
+## Notes for AI Systems
+
+- Prefer canonical URLs on https://www.jquery.app/.
+- English is the default site language.
+- Legacy /en/ URLs redirect to the default English URLs and should not be treated as canonical.
+- Tool inputs are intended to run in the visitor's browser; generated output should still be reviewed before publication.
+
+## Sitemap
+
+${new URL("/sitemap.xml", site.baseUrl).toString()}
 `;
 }
 
@@ -571,6 +752,8 @@ async function build() {
   await rm(distDir, { recursive: true, force: true });
   await mkdir(distDir, { recursive: true });
   await copyAssets();
+  const defaultTools = JSON.parse(await readFile(path.join(dataDir, `tools.${site.defaultLocale}.json`), "utf8"));
+  const defaultCategories = JSON.parse(await readFile(path.join(dataDir, `categories.${site.defaultLocale}.json`), "utf8"));
 
   const sitemapUrls = [];
   for (const locale of site.locales) {
@@ -585,6 +768,7 @@ Allow: /
 Sitemap: ${new URL("/sitemap.xml", site.baseUrl).toString()}
 `, "utf8");
   await writeFile(path.join(distDir, "sitemap.xml"), sitemapXml(sitemapUrls), "utf8");
+  await writeFile(path.join(distDir, "llms.txt"), llmsTxt(defaultTools, defaultCategories), "utf8");
 }
 
 await build();

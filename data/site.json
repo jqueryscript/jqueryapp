@@ -4,6 +4,6 @@
   "defaultLocale": "en",
   "locales": ["en"],
   "siteName": "jquery.app",
-  "tagline": "Small web tools for the work between ideas and publishing.",
-  "description": "A quiet collection of browser-based tools for people who build, publish, and maintain websites. Generate clean tags, prepare static pages, and fix the small details that slow a launch down."
+  "tagline": "Small web tools for publishing",
+  "description": "Practical browser tools for metadata, CSS, static sites, and launch checks. No accounts, no uploads, no heavy workflow."
 }

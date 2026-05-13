@@ -1,22 +1,127 @@
 {
   "seo": {
     "name": "SEO Tools",
-    "description": "Small browser tools for metadata, indexing, canonical URLs, social previews, and static site launch checks."
+    "description": "Small browser tools for metadata, indexing, canonical URLs, social previews, and static site launch checks.",
+    "intro": "SEO work often slows down at the edge of publishing: a missing canonical URL, a weak social preview, a forgotten robots directive, or a checklist that lives in memory instead of the page. These tools focus on the small details that make a page easier to crawl, understand, share, and maintain.",
+    "bestFor": [
+      "Preparing static pages before they are submitted to Google Search Console.",
+      "Creating repeatable metadata blocks for blogs, docs, landing pages, and tools.",
+      "Checking page-level indexing decisions before a launch or content update."
+    ],
+    "useCases": [
+      "Generate hreflang tags for translated pages.",
+      "Build Open Graph and Twitter Card markup for clean link previews.",
+      "Create robots meta tags and launch checklists without memorizing directive syntax."
+    ],
+    "faq": [
+      {
+        "question": "Are these tools a replacement for a full SEO audit?",
+        "answer": "No. They help with recurring page-level tasks. A full audit still needs crawl data, search performance, content review, internal linking, and technical checks."
+      },
+      {
+        "question": "Do static websites still need SEO metadata?",
+        "answer": "Yes. Static hosting does not create titles, descriptions, canonical URLs, social tags, or structured data for you unless your build system adds them."
+      }
+    ]
   },
   "html": {
     "name": "HTML Tools",
-    "description": "Copy-paste helpers for cleaner HTML tags, head markup, snippets, and publishing workflows."
+    "description": "Copy-paste helpers for cleaner HTML tags, head markup, snippets, and publishing workflows.",
+    "intro": "HTML mistakes are rarely dramatic, but they can be expensive when they reach production. A broken head tag, inconsistent snippet, or missing attribute can affect previews, accessibility, crawlability, and maintenance. This collection keeps common markup work visible and easy to review.",
+    "bestFor": [
+      "Preparing HTML snippets for static pages and documentation.",
+      "Reducing hand-written tag mistakes before publishing.",
+      "Keeping repeated page markup consistent across a small site."
+    ],
+    "useCases": [
+      "Create structured head markup from clear input fields.",
+      "Prepare reusable snippets for posts, pages, and small tools.",
+      "Check generated HTML before it is added to a template."
+    ],
+    "faq": [
+      {
+        "question": "Can generated HTML be pasted directly into a production page?",
+        "answer": "Use it as a starting point and review it in your own template. The right final markup depends on your framework, document structure, and publishing workflow."
+      },
+      {
+        "question": "Why use a helper instead of writing the tags by hand?",
+        "answer": "A helper is useful when the syntax is repetitive, easy to mistype, or needs the same structure across many pages."
+      }
+    ]
   },
   "css": {
     "name": "CSS Tools",
-    "description": "Practical CSS generators for responsive layouts, spacing, mobile polish, and everyday UI fixes."
+    "description": "Practical CSS generators for responsive layouts, spacing, mobile polish, and everyday UI fixes.",
+    "intro": "Good CSS often comes down to small numbers that need to survive real screens: fluid type, spacing, breakpoints, safe line lengths, and layout constraints. These tools help turn visual decisions into CSS you can inspect instead of guessing values by trial and error.",
+    "bestFor": [
+      "Building responsive CSS values for static pages and simple front ends.",
+      "Tuning mobile layout details without opening a large design system.",
+      "Creating CSS output that can be copied into an existing stylesheet."
+    ],
+    "useCases": [
+      "Generate clamp() values for fluid typography and spacing.",
+      "Check responsive ranges before adding them to a layout.",
+      "Document CSS decisions in a form other people can read."
+    ],
+    "faq": [
+      {
+        "question": "Should generated CSS replace design review?",
+        "answer": "No. Generated CSS gives you a precise starting point. You still need to test the result across real content, browser widths, and device conditions."
+      },
+      {
+        "question": "Why use clamp() for responsive sizing?",
+        "answer": "clamp() sets a minimum, preferred, and maximum value in one declaration, which keeps type and spacing responsive without adding several media queries."
+      }
+    ]
   },
   "assets": {
     "name": "Image & Asset Tools",
-    "description": "Local helpers for icons, image markup, asset paths, and static website files."
+    "description": "Local helpers for icons, image markup, asset paths, and static website files.",
+    "intro": "Images, favicons, and static files are easy to leave until the end of a launch. That is when small mistakes appear: the wrong path, a missing size, an unclear alt attribute, or an icon file that never reaches the published folder. These tools keep asset work concrete.",
+    "bestFor": [
+      "Preparing static website assets before deployment.",
+      "Checking image markup and icon references.",
+      "Keeping file paths and output folders aligned with the final public site."
+    ],
+    "useCases": [
+      "Create image markup with useful attributes.",
+      "Plan favicon and asset paths for static hosting.",
+      "Review files that must be copied into the published output."
+    ],
+    "faq": [
+      {
+        "question": "Do asset tools upload my images?",
+        "answer": "The current tools are designed around local browser work and copyable output. Review each tool page for the exact behavior before using sensitive files."
+      },
+      {
+        "question": "Why do asset paths break after deployment?",
+        "answer": "Static builds often publish from a generated output folder. A path that works locally can fail if the asset is not copied to the same public location."
+      }
+    ]
   },
   "github-pages": {
     "name": "GitHub Pages Tools",
-    "description": "Tools for custom domains, static publishing, launch checks, and GitHub Pages website maintenance."
+    "description": "Tools for custom domains, static publishing, launch checks, and GitHub Pages website maintenance.",
+    "intro": "GitHub Pages is simple once it is set up, but its domain and publishing rules are unforgiving. A CNAME file in the wrong folder, an outdated custom domain setting, or a missing build artifact can turn a correct website into a 404. These helpers focus on the checks that matter before and after deployment.",
+    "bestFor": [
+      "Preparing custom domains for GitHub Pages.",
+      "Checking static output before pushing a release.",
+      "Keeping CNAME, sitemap, robots.txt, and generated files in the published folder."
+    ],
+    "useCases": [
+      "Create valid CNAME file content for a custom domain.",
+      "Separate DNS notes from GitHub Pages repository settings.",
+      "Review launch details before enabling HTTPS and sharing the URL."
+    ],
+    "faq": [
+      {
+        "question": "Where should the CNAME file live?",
+        "answer": "It must be in the published site root. If GitHub Pages serves a dist folder or build output, the CNAME file must be generated inside that output."
+      },
+      {
+        "question": "Why can GitHub Pages show 404 after a successful push?",
+        "answer": "Common causes include publishing from the wrong branch or folder, missing index.html, delayed Pages deployment, or a custom domain pointing at the wrong repository."
+      }
+    ]
   }
 }

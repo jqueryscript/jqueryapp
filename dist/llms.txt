@@ -1,0 +1,45 @@
+# jquery.app
+
+Practical browser tools for metadata, CSS, static sites, and launch checks. No accounts, no uploads, no heavy workflow.
+
+jquery.app is a static website with practical browser tools for metadata, CSS, GitHub Pages, static site publishing, and launch checks. The tools are designed to produce copyable output that visitors can review before using on a live website.
+
+## Important Pages
+
+- [Home](https://www.jquery.app/)
+- [All tools](https://www.jquery.app/tools/)
+- [About](https://www.jquery.app/about/)
+- [Privacy Policy](https://www.jquery.app/privacy/)
+- [Terms of Use](https://www.jquery.app/terms/)
+
+## Tool Categories
+
+- [SEO Tools](https://www.jquery.app/tools/seo/): Small browser tools for metadata, indexing, canonical URLs, social previews, and static site launch checks.
+- [HTML Tools](https://www.jquery.app/tools/html/): Copy-paste helpers for cleaner HTML tags, head markup, snippets, and publishing workflows.
+- [CSS Tools](https://www.jquery.app/tools/css/): Practical CSS generators for responsive layouts, spacing, mobile polish, and everyday UI fixes.
+- [Image & Asset Tools](https://www.jquery.app/tools/assets/): Local helpers for icons, image markup, asset paths, and static website files.
+- [GitHub Pages Tools](https://www.jquery.app/tools/github-pages/): Tools for custom domains, static publishing, launch checks, and GitHub Pages website maintenance.
+
+## Tools
+
+- [Hreflang Tag Generator](https://www.jquery.app/tools/hreflang-tag-generator/): Generate clean hreflang tags for multilingual static websites.
+- [Open Graph & Twitter Card Builder](https://www.jquery.app/tools/og-twitter-card-builder/): Build social preview meta tags for blog posts and static pages.
+- [GitHub Pages CNAME Helper](https://www.jquery.app/tools/github-pages-cname-helper/): Create the CNAME file content and DNS notes for a GitHub Pages custom domain.
+- [Static Site SEO Checklist Generator](https://www.jquery.app/tools/static-site-seo-checklist-generator/): Generate a practical SEO checklist for static websites before launch.
+- [Robots Meta Tag Generator](https://www.jquery.app/tools/robots-meta-tag-generator/): Generate page-level robots meta tags without guessing directive syntax.
+- [Canonical URL Tag Generator](https://www.jquery.app/tools/canonical-url-tag-generator/): Generate canonical link tags for static pages and blog posts.
+- [HTML Link Rel Generator](https://www.jquery.app/tools/html-link-rel-generator/): Generate link tags for preload, preconnect, dns-prefetch, canonical, and alternate URLs.
+- [Favicon HTML Tag Generator](https://www.jquery.app/tools/favicon-html-tag-generator/): Generate favicon and web app icon tags for static websites.
+- [CSS Clamp Calculator](https://www.jquery.app/tools/css-clamp-calculator/): Calculate responsive CSS clamp values for font sizes and spacing.
+- [CSS Safe Area Insets Generator](https://www.jquery.app/tools/css-safe-area-insets-generator/): Generate CSS for safe-area insets on phones with notches and rounded corners.
+
+## Notes for AI Systems
+
+- Prefer canonical URLs on https://www.jquery.app/.
+- English is the default site language.
+- Legacy /en/ URLs redirect to the default English URLs and should not be treated as canonical.
+- Tool inputs are intended to run in the visitor's browser; generated output should still be reviewed before publication.
+
+## Sitemap
+
+https://www.jquery.app/sitemap.xml
