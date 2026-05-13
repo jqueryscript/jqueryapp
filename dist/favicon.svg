@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="jquery.app">
+  <rect width="64" height="64" rx="14" fill="#181715"/>
+  <path d="M23 19 12 32l11 13" fill="none" stroke="#e8a55a" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M41 19 52 32 41 45" fill="none" stroke="#5db8a6" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M35 16 28 48" fill="none" stroke="#faf9f5" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="46" cy="18" r="4" fill="#cc785c"/>
+</svg>

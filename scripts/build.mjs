@@ -7,6 +7,7 @@ const dataDir = path.join(root, "data");
 const assetsDir = path.join(root, "src", "assets");
 
 const site = JSON.parse(await readFile(path.join(dataDir, "site.json"), "utf8"));
+const locales = JSON.parse(await readFile(path.join(dataDir, "locales.json"), "utf8"));
 const buildDate = new Date().toISOString().slice(0, 10);
 
 function escapeHtml(value = "") {
@@ -28,24 +29,63 @@ function titleCase(value) {
     .join(" ");
 }
 
+function localePack(locale) {
+  return locales[locale] || locales[site.defaultLocale];
+}
+
+function localeSite(locale) {
+  return localePack(locale).site || locales[site.defaultLocale].site;
+}
+
+function ui(locale, key) {
+  return localePack(locale).ui?.[key] || locales[site.defaultLocale].ui[key] || key;
+}
+
+function uiText(locale, key, fallback) {
+  return localePack(locale).ui?.[key] || locales[site.defaultLocale].ui[key] || fallback;
+}
+
+function template(locale, key, values = {}) {
+  return ui(locale, key).replace(/\{(\w+)\}/g, (_, name) => values[name] ?? "");
+}
+
+function fillTemplate(value, values = {}) {
+  return String(value || "").replace(/\{(\w+)\}/g, (_, name) => values[name] ?? "");
+}
+
 function urlFor(locale, pathname = "") {
   const clean = pathname.replace(/^\/+/, "").replace(/\/+$/, "");
   const prefix = locale === site.defaultLocale ? "" : `/${locale}`;
-  return clean ? `${prefix}/${clean}/` : `${prefix || "/"}`;
+  return clean ? `${prefix}/${clean}/` : (prefix ? `${prefix}/` : "/");
 }
 
 function absoluteUrl(locale, pathname = "") {
   return new URL(urlFor(locale, pathname), site.baseUrl).toString();
 }
 
-function pageShell({ locale, title, description, pathname, body, scripts = "", current = "", extraHead = "", canonicalOverride = "" }) {
+function pageShell({ locale, title, description, pathname, body, scripts = "", current = "", extraHead = "", canonicalOverride = "", skipAlternates = false }) {
   const canonical = canonicalOverride || absoluteUrl(locale, pathname);
+  const lang = localePack(locale);
+  const defaultCanonical = absoluteUrl(site.defaultLocale, pathname);
   const nav = [
-    ["Tools", urlFor(locale, "tools"), "tools"],
-    ["SEO", urlFor(locale, "tools/seo"), "seo"],
-    ["CSS", urlFor(locale, "tools/css"), "css"],
-    ["GitHub Pages", urlFor(locale, "tools/github-pages"), "github-pages"]
+    [ui(locale, "tools"), urlFor(locale, "tools"), "tools"],
+    [ui(locale, "seo"), urlFor(locale, "tools/seo"), "seo"],
+    [ui(locale, "css"), urlFor(locale, "tools/css"), "css"],
+    [ui(locale, "githubPages"), urlFor(locale, "tools/github-pages"), "github-pages"]
   ];
+  const alternateLinks = skipAlternates ? "" : site.locales
+    .map((item) => `  <link rel="alternate" hreflang="${attr(item)}" href="${attr(absoluteUrl(item, pathname))}">`)
+    .concat(`  <link rel="alternate" hreflang="x-default" href="${attr(defaultCanonical)}">`)
+    .join("\n");
+  const languageLinks = site.locales
+    .map((item) => `<a href="${urlFor(item, pathname)}" ${item === locale ? 'aria-current="true"' : ""}>${escapeHtml(localePack(item).nativeName)}</a>`)
+    .join("");
+  const languageMenu = skipAlternates ? "" : `<details class="language-menu">
+        <summary>${escapeHtml(lang.nativeName)}</summary>
+        <div>
+          ${languageLinks}
+        </div>
+      </details>`;
 
   return `<!doctype html>
 <html lang="${attr(locale)}">
@@ -61,8 +101,9 @@ function pageShell({ locale, title, description, pathname, body, scripts = "", c
   <meta property="og:url" content="${attr(canonical)}">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
-  <link rel="alternate" hreflang="${attr(locale)}" href="${attr(canonical)}">
-  <link rel="alternate" hreflang="x-default" href="${attr(canonical)}">
+${alternateLinks}
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#181715">
   <link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt">
   <link rel="stylesheet" href="/assets/styles.css">
   ${extraHead}
@@ -78,6 +119,7 @@ function pageShell({ locale, title, description, pathname, body, scripts = "", c
       <nav class="main-nav" aria-label="Main navigation">
         ${nav.map(([label, href, key]) => `<a href="${href}" ${current === key ? 'aria-current="page"' : ""}>${label}</a>`).join("")}
       </nav>
+      ${languageMenu}
     </div>
   </header>
   <main id="main">
@@ -90,20 +132,20 @@ function pageShell({ locale, title, description, pathname, body, scripts = "", c
           <span class="brand-mark" aria-hidden="true"></span>
           <span>${escapeHtml(site.siteName)}</span>
         </a>
-        <p>${escapeHtml(site.description)}</p>
+        <p>${escapeHtml(localeSite(locale).description)}</p>
       </div>
       <div>
-        <h2>Tools</h2>
-        <a href="${urlFor(locale, "tools/seo")}">SEO Tools</a>
-        <a href="${urlFor(locale, "tools/css")}">CSS Tools</a>
-        <a href="${urlFor(locale, "tools/github-pages")}">GitHub Pages Tools</a>
+        <h2>${escapeHtml(ui(locale, "tools"))}</h2>
+        <a href="${urlFor(locale, "tools/seo")}">${escapeHtml(ui(locale, "seo"))}</a>
+        <a href="${urlFor(locale, "tools/css")}">${escapeHtml(ui(locale, "css"))}</a>
+        <a href="${urlFor(locale, "tools/github-pages")}">${escapeHtml(ui(locale, "githubPages"))}</a>
       </div>
       <div>
-        <h2>Site</h2>
-        <a href="${urlFor(locale, "about")}">About</a>
-        <a href="${urlFor(locale, "privacy")}">Privacy</a>
-        <a href="${urlFor(locale, "terms")}">Terms</a>
-        <a href="${urlFor(locale, "contact")}">Contact</a>
+        <h2>${escapeHtml(ui(locale, "site"))}</h2>
+        <a href="${urlFor(locale, "about")}">${escapeHtml(ui(locale, "about"))}</a>
+        <a href="${urlFor(locale, "privacy")}">${escapeHtml(ui(locale, "privacy"))}</a>
+        <a href="${urlFor(locale, "terms")}">${escapeHtml(ui(locale, "terms"))}</a>
+        <a href="${urlFor(locale, "contact")}">${escapeHtml(ui(locale, "contact"))}</a>
         <a href="/llms.txt">llms.txt</a>
       </div>
     </div>
@@ -141,7 +183,7 @@ function toolCard(tool, locale) {
     <h2><a href="${urlFor(locale, `tools/${tool.id}`)}">${escapeHtml(tool.name)}</a></h2>
     <p>${escapeHtml(tool.summary)}</p>
   </div>
-  <a class="card-link" href="${urlFor(locale, `tools/${tool.id}`)}">Open tool</a>
+  <a class="card-link" href="${urlFor(locale, `tools/${tool.id}`)}">${escapeHtml(ui(locale, "openTool"))}</a>
 </article>`;
 }
 
@@ -206,14 +248,56 @@ function freeBrowserDescription(text) {
   return `${text.replace(/\.$/, "")}. Free in your browser, with no account or upload.`;
 }
 
+function localizeCategories(sourceCategories, locale) {
+  if (locale === site.defaultLocale) return sourceCategories;
+  const overrides = localePack(locale).categories || {};
+  return Object.fromEntries(Object.entries(sourceCategories).map(([key, details]) => [
+    key,
+    {
+      ...details,
+      ...(overrides[key] || {})
+    }
+  ]));
+}
+
+function localizeTools(sourceTools, locale) {
+  if (locale === site.defaultLocale) return sourceTools;
+  const pack = localePack(locale);
+  const toolTemplates = pack.toolTemplates || {};
+  const overrides = pack.tools || {};
+  return sourceTools.map((tool) => {
+    const override = overrides[tool.id] || {};
+    const name = override.name || tool.name;
+    const summary = override.summary || tool.summary;
+    const values = { name, summary };
+    return {
+      ...tool,
+      ...override,
+      name,
+      summary,
+      description: override.description || summary,
+      whatIs: override.whatIs || fillTemplate(toolTemplates.whatIs, values),
+      howToUse: override.howToUse || (toolTemplates.howToUse || []).map((item) => fillTemplate(item, values)),
+      useCases: override.useCases || (toolTemplates.useCases || []).map((item) => fillTemplate(item, values)),
+      examples: override.examples || [],
+      mistakes: override.mistakes || (toolTemplates.mistakes || []).map((item) => fillTemplate(item, values)),
+      faq: override.faq || (toolTemplates.faq || []).map((item) => ({
+        question: fillTemplate(item.question, values),
+        answer: fillTemplate(item.answer, values)
+      }))
+    };
+  });
+}
+
 function homePage(locale, tools, categories) {
+  const localizedSite = localeSite(locale);
   const scripts = [
     jsonLd({
       "@context": "https://schema.org",
       "@type": "WebSite",
       name: site.siteName,
       url: absoluteUrl(locale),
-      description: site.description,
+      description: localizedSite.description,
       inLanguage: locale
     }),
     jsonLd({
@@ -225,18 +309,18 @@ function homePage(locale, tools, categories) {
     jsonLd(itemListSchema(locale, "jquery.app tools", tools.slice(0, 6)))
   ].join("");
   const body = `${hero({
-    eyebrow: "For the last mile of publishing",
-    title: site.tagline,
-    description: site.description,
-    actions: `<div class="hero-actions"><a class="button primary" href="${urlFor(locale, "tools")}">Browse tools</a><a class="button secondary" href="${urlFor(locale, "tools/github-pages")}">GitHub Pages tools</a></div>`
+    eyebrow: ui(locale, "forLastMile"),
+    title: localizedSite.tagline,
+    description: localizedSite.description,
+    actions: `<div class="hero-actions"><a class="button primary" href="${urlFor(locale, "tools")}">${escapeHtml(ui(locale, "browseTools"))}</a><a class="button secondary" href="${urlFor(locale, "tools/github-pages")}">${escapeHtml(ui(locale, "githubPagesTools"))}</a></div>`
   })}
 <section class="section intro-band">
   <div class="wrap split-section">
     <div class="section-heading">
-      <p class="eyebrow">Start here</p>
-      <h2>Practical fixes for static sites, blogs, and everyday front-end work.</h2>
+      <p class="eyebrow">${escapeHtml(ui(locale, "startHere"))}</p>
+      <h2>${escapeHtml(ui(locale, "homeIntroTitle"))}</h2>
     </div>
-    <p>Some jobs are too small for a dashboard and too important to do by memory. Open a tool, make the change, copy the result, and get back to the page you were trying to ship.</p>
+    <p>${escapeHtml(ui(locale, "homeIntroText"))}</p>
   </div>
   <div class="wrap category-grid offset-grid">
     ${Object.entries(categories).map(([key, details]) => categoryPill(key, details, locale)).join("")}
@@ -245,23 +329,20 @@ function homePage(locale, tools, categories) {
 <section class="section dark-band">
   <div class="wrap dark-grid">
     <div>
-      <p class="eyebrow on-dark">Why this exists</p>
-      <h2>Most tiny web problems are not AI problems.</h2>
-      <p>Missing canonical tags, broken favicon paths, awkward mobile padding, and messy social previews need a reliable answer more than another chat box.</p>
+      <p class="eyebrow on-dark">${escapeHtml(ui(locale, "whyExists"))}</p>
+      <h2>${escapeHtml(ui(locale, "homeWhyTitle"))}</h2>
+      <p>${escapeHtml(ui(locale, "homeWhyText"))}</p>
     </div>
     <div class="dark-list">
-      <span>No uploads</span>
-      <span>No accounts</span>
-      <span>No server-side processing</span>
-      <span>Ready for static hosting</span>
+      ${ui(locale, "homeProof").map((item) => `<span>${escapeHtml(item)}</span>`).join("")}
     </div>
   </div>
 </section>
 <section class="section soft-band">
   <div class="wrap section-heading">
-    <p class="eyebrow">First release</p>
-    <h2>Small tools with a clear finish line</h2>
-    <p>Each tool is designed to produce something you can inspect, copy, and use right away.</p>
+    <p class="eyebrow">${escapeHtml(ui(locale, "firstRelease"))}</p>
+    <h2>${escapeHtml(ui(locale, "homeToolsTitle"))}</h2>
+    <p>${escapeHtml(ui(locale, "homeToolsText"))}</p>
   </div>
   <div class="wrap tool-grid">
     ${tools.slice(0, 6).map((tool) => toolCard(tool, locale)).join("")}
@@ -270,8 +351,8 @@ function homePage(locale, tools, categories) {
 
   return pageShell({
     locale,
-    title: `${site.siteName} - ${titleCase(site.tagline)}`,
-    description: site.description,
+    title: `${site.siteName} - ${titleCase(localizedSite.tagline)}`,
+    description: localizedSite.description,
     pathname: "",
     body,
     scripts,
@@ -305,9 +386,9 @@ function toolsIndexPage(locale, tools, categories) {
 
   const body = `<section class="page-hero">
   <div class="wrap narrow">
-    <p class="eyebrow">Tools</p>
-    <h1>Small web tools that run in your browser</h1>
-    <p class="lede">Generate tags, clean launch details, and prepare static pages without accounts, uploads, or busywork.</p>
+    <p class="eyebrow">${escapeHtml(ui(locale, "tools"))}</p>
+    <h1>${escapeHtml(ui(locale, "toolsPageTitle"))}</h1>
+    <p class="lede">${escapeHtml(ui(locale, "toolsPageDescription"))}</p>
   </div>
 </section>
 <section class="section">
@@ -318,8 +399,8 @@ function toolsIndexPage(locale, tools, categories) {
 
   return pageShell({
     locale,
-    title: `Free Web Tools - ${site.siteName}`,
-    description: "Browse browser-based tools for SEO tags, GitHub Pages setup, CSS helpers, and static website publishing.",
+    title: ui(locale, "freeWebToolsTitle"),
+    description: ui(locale, "freeWebToolsDescription"),
     pathname: "tools",
     body,
     scripts,
@@ -351,7 +432,7 @@ function categoryPage(locale, category, details, tools) {
   ].filter(Boolean).join("");
   const body = `<section class="page-hero">
   <div class="wrap narrow">
-    <p class="eyebrow">Tools</p>
+    <p class="eyebrow">${escapeHtml(ui(locale, "tools"))}</p>
     <h1>${escapeHtml(details.name)}</h1>
     <p class="lede">${escapeHtml(details.description)}</p>
   </div>
@@ -364,17 +445,17 @@ function categoryPage(locale, category, details, tools) {
       <span>No account required</span>
     </aside>
     <article class="tool-article">
-      <h2>What this collection helps with</h2>
+      <h2>${escapeHtml(ui(locale, "whatCollectionHelps"))}</h2>
       <p>${escapeHtml(details.intro || details.description)}</p>
-      ${details.bestFor?.length ? `<h2>Best for</h2><ul>${listItems(details.bestFor)}</ul>` : ""}
-      ${details.useCases?.length ? `<h2>Common use cases</h2><ul>${listItems(details.useCases)}</ul>` : ""}
+      ${details.bestFor?.length ? `<h2>${escapeHtml(ui(locale, "bestFor"))}</h2><ul>${listItems(details.bestFor)}</ul>` : ""}
+      ${details.useCases?.length ? `<h2>${escapeHtml(ui(locale, "commonUseCases"))}</h2><ul>${listItems(details.useCases)}</ul>` : ""}
     </article>
   </div>
 </section>
 <section class="section soft-band">
   <div class="wrap section-heading">
-    <p class="eyebrow">Available tools</p>
-    <h2>${escapeHtml(details.name)} you can use now</h2>
+    <p class="eyebrow">${escapeHtml(ui(locale, "availableTools"))}</p>
+    <h2>${escapeHtml(template(locale, "toolsYouCanUse", { category: details.name }))}</h2>
   </div>
   <div class="wrap tool-grid">
     ${tools.map((tool) => toolCard(tool, locale)).join("")}
@@ -383,8 +464,8 @@ function categoryPage(locale, category, details, tools) {
 ${details.faq?.length ? `<section class="section faq-band">
   <div class="wrap content-layout">
     <div class="section-heading">
-      <p class="eyebrow">FAQ</p>
-      <h2>Questions about ${escapeHtml(details.name.toLowerCase())}</h2>
+      <p class="eyebrow">${escapeHtml(ui(locale, "faq"))}</p>
+      <h2>${escapeHtml(template(locale, "questionsAbout", { topic: details.name.toLowerCase() }))}</h2>
     </div>
     <div class="faq-list">
       ${faqMarkup(details.faq)}
@@ -395,7 +476,7 @@ ${details.faq?.length ? `<section class="section faq-band">
   return pageShell({
     locale,
     title: `${details.name} - ${site.siteName}`,
-    description: freeBrowserDescription(details.description),
+    description: locale === site.defaultLocale ? freeBrowserDescription(details.description) : details.description,
     pathname: `tools/${category}`,
     body,
     scripts,
@@ -448,17 +529,17 @@ function toolPage(locale, tool, allTools, categories) {
       <p class="lede">${escapeHtml(tool.description)}</p>
     </div>
     <aside class="tool-side-note">
-      <p class="eyebrow">Browser-only</p>
-      <strong>Private by default</strong>
-      <span>This tool runs in your browser. Your input is not uploaded.</span>
-      <a href="#tool">Use the tool</a>
+      <p class="eyebrow">${escapeHtml(ui(locale, "browserOnly"))}</p>
+      <strong>${escapeHtml(ui(locale, "privateByDefault"))}</strong>
+      <span>${escapeHtml(ui(locale, "privateNote"))}</span>
+      <a href="#tool">${escapeHtml(ui(locale, "useTool"))}</a>
     </aside>
   </div>
 </section>
 <section class="section tool-workspace-section" id="tool">
   <div class="wrap">
-    <div class="tool-workspace" data-tool-id="${attr(tool.id)}" data-tool-name="${attr(tool.name)}">
-      <div class="tool-loading">Loading tool...</div>
+    <div class="tool-workspace" data-tool-id="${attr(tool.id)}" data-tool-name="${attr(tool.name)}" data-output-label="${attr(uiText(locale, "output", "Output"))}" data-copy-label="${attr(uiText(locale, "copy", "Copy"))}" data-copied-label="${attr(uiText(locale, "copied", "Copied"))}">
+      <div class="tool-loading">${escapeHtml(ui(locale, "loadingTool"))}</div>
     </div>
   </div>
 </section>
@@ -466,23 +547,23 @@ function toolPage(locale, tool, allTools, categories) {
   <div class="wrap content-layout">
     <aside class="content-rail">
       <span>${escapeHtml(categoryName)}</span>
-      <span>Runs in your browser</span>
-      <span>No upload required</span>
+      <span>${escapeHtml(ui(locale, "browserOnly"))}</span>
+      <span>${escapeHtml(ui(locale, "privateByDefault"))}</span>
     </aside>
     <article class="tool-article">
-      <h2>What is ${escapeHtml(tool.name)}?</h2>
+      <h2>${escapeHtml(template(locale, "whatIs", { name: tool.name }))}</h2>
       <p>${escapeHtml(tool.whatIs || tool.description)}</p>
-      <h2>How to use this tool</h2>
+      <h2>${escapeHtml(ui(locale, "howToUse"))}</h2>
       <ol>${listItems(tool.howToUse || [])}</ol>
-      <h2>What you can use it for</h2>
+      <h2>${escapeHtml(ui(locale, "whatUseFor"))}</h2>
       <ul>${listItems(tool.useCases)}</ul>
     </article>
   </div>
 </section>
 ${tool.examples?.length ? `<section class="section soft-band">
   <div class="wrap section-heading">
-    <p class="eyebrow">Use cases</p>
-    <h2>Practical examples</h2>
+    <p class="eyebrow">${escapeHtml(ui(locale, "useCases"))}</p>
+    <h2>${escapeHtml(ui(locale, "examples"))}</h2>
   </div>
   <div class="wrap example-grid">
     ${examplesMarkup(tool.examples)}
@@ -492,10 +573,10 @@ ${tool.examples?.length ? `<section class="section soft-band">
   <div class="wrap content-layout">
     <aside class="content-rail">
       <span>Before publishing</span>
-      <span>Check the output</span>
+      <span>${escapeHtml(ui(locale, "checkOutput"))}</span>
     </aside>
     <article class="tool-article">
-      <h2>Common mistakes</h2>
+      <h2>${escapeHtml(ui(locale, "commonMistakes"))}</h2>
       <ul>${listItems(tool.mistakes)}</ul>
     </article>
   </div>
@@ -503,8 +584,8 @@ ${tool.examples?.length ? `<section class="section soft-band">
 ${tool.faq?.length ? `<section class="section faq-band">
   <div class="wrap content-layout">
     <div class="section-heading">
-      <p class="eyebrow">FAQ</p>
-      <h2>Questions about ${escapeHtml(tool.name)}</h2>
+      <p class="eyebrow">${escapeHtml(ui(locale, "faq"))}</p>
+      <h2>${escapeHtml(template(locale, "questionsAbout", { topic: tool.name }))}</h2>
     </div>
     <div class="faq-list">
       ${faqMarkup(tool.faq)}
@@ -513,8 +594,8 @@ ${tool.faq?.length ? `<section class="section faq-band">
 </section>` : ""}
 ${related.length ? `<section class="section">
   <div class="wrap section-heading">
-    <p class="eyebrow">Related tools</p>
-    <h2>More ${escapeHtml(categoryName.toLowerCase())}</h2>
+    <p class="eyebrow">${escapeHtml(ui(locale, "relatedTools"))}</p>
+    <h2>${escapeHtml(template(locale, "moreCategory", { category: categoryName.toLowerCase() }))}</h2>
   </div>
   <div class="wrap tool-grid compact">
     ${related.map((item) => toolCard(item, locale)).join("")}
@@ -524,7 +605,7 @@ ${related.length ? `<section class="section">
   return pageShell({
     locale,
     title: `${tool.name} - ${site.siteName}`,
-    description: freeBrowserDescription(tool.summary),
+    description: locale === site.defaultLocale ? freeBrowserDescription(tool.summary) : tool.summary,
     pathname: `tools/${tool.id}`,
     body,
     scripts,
@@ -561,26 +642,87 @@ function simplePage(locale, slug, title, description, content) {
   return pageShell({ locale, title: `${title} - ${site.siteName}`, description, pathname: slug, body, scripts });
 }
 
+function simplePages(locale) {
+  const en = {
+    about: {
+      title: "About jquery.app",
+      description: "A small workshop for the details that sit between building a page and publishing it well.",
+      content: `<h2>Why this site exists</h2><p>jquery.app is a collection of small tools for people who build, publish, and maintain websites. It is made for the quiet tasks that still matter: writing canonical tags, preparing social preview metadata, checking launch details, shaping responsive CSS, and keeping static pages tidy.</p><p>The site is intentionally simple. Most tools run entirely in your browser, ask for only the fields they need, and return output you can read before you copy it. There are no accounts, no project dashboards, and no need to upload your work to use the current tools.</p><h2>What belongs here</h2><p>jquery.app focuses on practical web publishing chores with a clear result. A good tool on this site should save a few minutes, reduce a small mistake, or make a repeated job easier to finish. It should also be understandable without a manual.</p><h2>What does not belong here</h2><p>This is not a replacement for professional judgment, browser testing, search console data, or a full technical audit. Generated code and checklists should be reviewed before they are added to a production site.</p>`
+    },
+    privacy: {
+      title: "Privacy Policy",
+      description: "The current tools are designed to work locally in your browser and avoid unnecessary collection.",
+      content: `<h2>Local tool inputs</h2><p>The current tools process the values you enter in your browser. They do not require an account, and the site does not intentionally send tool inputs or generated output to a jquery.app application server.</p><h2>Hosting and technical logs</h2><p>jquery.app is published as a static website. Hosting providers, CDN services, browsers, and security systems may process standard request information such as IP address, user agent, referrer, requested URL, timestamps, and basic diagnostic data.</p><h2>Cookies and analytics</h2><p>The preview version of jquery.app does not need cookies for the tools to work. If analytics, advertising, embedded media, or third-party widgets are added later, this policy should be updated before those services are enabled.</p><h2>External links</h2><p>Some pages may link to GitHub, documentation sites, browser tools, or other third-party resources. Those sites have their own privacy practices.</p>`
+    },
+    terms: {
+      title: "Terms of Use",
+      description: "Use the tools freely, but review the output before it becomes part of a live site.",
+      content: `<h2>Use of the tools</h2><p>jquery.app provides free web utilities for convenience, learning, and everyday publishing work. You may use the generated output in personal, commercial, and client projects, subject to your own review and the requirements of your project.</p><h2>No professional advice</h2><p>The tools and written guidance are informational. They are not legal, security, compliance, accessibility, or search engine optimization advice.</p><h2>No warranty</h2><p>The site is provided as is and as available. jquery.app does not guarantee that a tool will be error-free, uninterrupted, or suitable for every use case.</p><h2>Your responsibility</h2><p>You are responsible for testing generated HTML, CSS, metadata, DNS notes, and checklists before using them on a live website.</p>`
+    },
+    contact: {
+      title: "Contact",
+      description: "Report broken tools, outdated guidance, accessibility issues, or privacy concerns.",
+      content: `<h2>Send a useful report</h2><p>If something is broken, include the tool name, the page URL, what you entered, what you expected, and what happened instead. Clear reports make small tools easier to keep accurate.</p><h2>Suggested contact options</h2><p>This preview site is published from GitHub. A public issue tracker is the best fit for bug reports and small corrections because it keeps changes visible. Add your preferred GitHub issue link or contact email here before wider promotion.</p><h2>What to report</h2><ul><li>Broken form behavior or copy buttons.</li><li>Outdated guidance about GitHub Pages, SEO tags, browser support, or HTML output.</li><li>Accessibility problems, keyboard traps, visual contrast issues, or mobile layout problems.</li><li>Privacy concerns or third-party service questions.</li></ul>`
+    }
+  };
+
+  const localized = {
+    de: {
+      about: { title: "Uber jquery.app", description: "Ein kleiner Arbeitsbereich fur die Details zwischen Aufbau und Veroffentlichung.", content: `<h2>Warum diese Seite existiert</h2><p>jquery.app sammelt kleine Webtools fur wiederkehrende Aufgaben vor der Veroffentlichung: Canonical-Tags, Social-Preview-Metadaten, CSS-Werte, GitHub-Pages-Details und Launch-Checks.</p><h2>Wie die Tools arbeiten</h2><p>Die aktuellen Tools laufen im Browser, fragen nur die notigen Werte ab und liefern eine Ausgabe, die du vor dem Kopieren lesen kannst.</p><h2>Grenzen</h2><p>Die Tools ersetzen keine professionelle Prufung, kein Browser-Testing, keine Search-Console-Daten und kein vollstandiges technisches Audit.</p>` },
+      privacy: { title: "Datenschutz", description: "Die aktuellen Tools arbeiten lokal im Browser und vermeiden unnotige Datenerfassung.", content: `<h2>Tool-Eingaben</h2><p>Die aktuellen Tools verarbeiten Eingaben im Browser. Es ist kein Konto erforderlich, und Eingaben werden nicht absichtlich an einen jquery.app-Anwendungsserver gesendet.</p><h2>Hosting-Protokolle</h2><p>Hosting-, CDN- und Sicherheitsdienste konnen ubliche technische Informationen wie IP-Adresse, Browserdaten, Referrer, URL und Zeitpunkt verarbeiten.</p><h2>Cookies und Analyse</h2><p>Die Tools benotigen keine Cookies. Wenn spater Analyse, Werbung oder eingebettete Dienste hinzukommen, sollte diese Richtlinie vorher aktualisiert werden.</p>` },
+      terms: { title: "Nutzungsbedingungen", description: "Nutze die Tools frei, aber prufe die Ausgabe vor dem Einsatz auf einer Live-Seite.", content: `<h2>Nutzung</h2><p>jquery.app stellt kostenlose Webtools fur Publishing- und Entwicklungsaufgaben bereit. Du kannst die Ausgabe in eigenen, kommerziellen und Kundenprojekten nutzen, wenn du sie selbst prufst.</p><h2>Keine Fachberatung</h2><p>Die Inhalte sind informativ und keine Rechts-, Sicherheits-, Compliance-, Barrierefreiheits- oder SEO-Beratung.</p><h2>Keine Gewahrleistung</h2><p>Die Seite wird ohne Garantie bereitgestellt. Browser, Suchmaschinen und Hosting-Regeln konnen sich andern.</p>` },
+      contact: { title: "Kontakt", description: "Melde defekte Tools, veraltete Hinweise, Barrierefreiheitsprobleme oder Datenschutzfragen.", content: `<h2>Hilfreiche Meldungen</h2><p>Nenne bei Fehlern den Toolnamen, die URL, deine Eingabe, das erwartete Ergebnis und das tatsachliche Verhalten.</p><h2>Geeignete Themen</h2><ul><li>Defekte Formulare oder Kopierbuttons.</li><li>Veraltete Hinweise zu GitHub Pages, SEO-Tags oder Browsern.</li><li>Probleme mit Tastatur, Kontrast, Layout oder Mobilansicht.</li><li>Datenschutz- oder Drittanbieterfragen.</li></ul>` }
+    },
+    fr: {
+      about: { title: "A propos de jquery.app", description: "Un petit atelier pour les details entre creation et publication.", content: `<h2>Pourquoi ce site existe</h2><p>jquery.app regroupe de petits outils web pour les taches qui reviennent avant publication : canonical, apercus sociaux, valeurs CSS, details GitHub Pages et controles de lancement.</p><h2>Fonctionnement</h2><p>Les outils actuels fonctionnent dans le navigateur, demandent seulement les champs utiles et affichent une sortie lisible avant copie.</p><h2>Limites</h2><p>Ils ne remplacent pas un jugement professionnel, des tests navigateur, les donnees Search Console ou un audit technique complet.</p>` },
+      privacy: { title: "Politique de confidentialite", description: "Les outils actuels fonctionnent localement dans le navigateur et limitent la collecte.", content: `<h2>Saisies dans les outils</h2><p>Les outils actuels traitent les valeurs dans votre navigateur. Aucun compte n'est requis et les donnees ne sont pas volontairement envoyees a un serveur applicatif jquery.app.</p><h2>Logs techniques</h2><p>L'hebergement, le CDN et les systemes de securite peuvent traiter des informations techniques standard comme IP, navigateur, referrer, URL et horodatage.</p><h2>Cookies et analytics</h2><p>Les outils n'ont pas besoin de cookies. Si analytics, publicite ou widgets tiers sont ajoutes plus tard, cette page devra etre mise a jour.</p>` },
+      terms: { title: "Conditions d'utilisation", description: "Utilisez les outils librement, mais verifiez la sortie avant publication.", content: `<h2>Utilisation</h2><p>jquery.app fournit des outils web gratuits pour les taches de publication. Vous pouvez utiliser la sortie dans des projets personnels, commerciaux ou clients apres verification.</p><h2>Pas de conseil professionnel</h2><p>Les contenus sont informatifs et ne constituent pas un conseil juridique, securite, conformite, accessibilite ou SEO.</p><h2>Pas de garantie</h2><p>Le site est fourni tel quel. Les navigateurs, moteurs de recherche et regles d'hebergement peuvent changer.</p>` },
+      contact: { title: "Contact", description: "Signalez un outil casse, une information obsolete, un probleme d'accessibilite ou une question de confidentialite.", content: `<h2>Envoyer un signalement utile</h2><p>Indiquez le nom de l'outil, l'URL, votre saisie, le resultat attendu et le resultat observe.</p><h2>Sujets utiles</h2><ul><li>Formulaire ou bouton de copie casse.</li><li>Information obsolete sur GitHub Pages, SEO ou navigateurs.</li><li>Problemes de contraste, clavier, mobile ou mise en page.</li><li>Questions de confidentialite ou de service tiers.</li></ul>` }
+    },
+    es: {
+      about: { title: "Acerca de jquery.app", description: "Un pequeno taller para los detalles entre crear una pagina y publicarla bien.", content: `<h2>Por que existe este sitio</h2><p>jquery.app reune herramientas web pequenas para tareas que aparecen antes de publicar: canonical, previews sociales, valores CSS, detalles de GitHub Pages y revisiones de lanzamiento.</p><h2>Como funcionan</h2><p>Las herramientas actuales funcionan en el navegador, piden solo los campos necesarios y muestran una salida legible antes de copiarla.</p><h2>Limites</h2><p>No sustituyen criterio profesional, pruebas en navegador, datos de Search Console ni una auditoria tecnica completa.</p>` },
+      privacy: { title: "Politica de privacidad", description: "Las herramientas actuales trabajan localmente en el navegador y evitan recopilacion innecesaria.", content: `<h2>Datos introducidos</h2><p>Las herramientas actuales procesan los valores en tu navegador. No requieren cuenta y no envian intencionalmente la entrada a un servidor de aplicacion de jquery.app.</p><h2>Registros tecnicos</h2><p>Hosting, CDN y sistemas de seguridad pueden procesar informacion tecnica normal como IP, navegador, referrer, URL y hora.</p><h2>Cookies y analitica</h2><p>Las herramientas no necesitan cookies. Si mas adelante se anaden analitica, anuncios o widgets de terceros, esta politica debe actualizarse antes.</p>` },
+      terms: { title: "Terminos de uso", description: "Usa las herramientas libremente, pero revisa la salida antes de publicarla.", content: `<h2>Uso</h2><p>jquery.app ofrece herramientas web gratuitas para tareas de publicacion. Puedes usar la salida en proyectos personales, comerciales o de clientes despues de revisarla.</p><h2>Sin asesoramiento profesional</h2><p>El contenido es informativo y no es asesoramiento legal, de seguridad, cumplimiento, accesibilidad ni SEO.</p><h2>Sin garantia</h2><p>El sitio se ofrece tal cual. Navegadores, buscadores y reglas de hosting pueden cambiar.</p>` },
+      contact: { title: "Contacto", description: "Informa de herramientas rotas, guias desactualizadas, problemas de accesibilidad o privacidad.", content: `<h2>Enviar un informe util</h2><p>Incluye nombre de la herramienta, URL, entrada usada, resultado esperado y resultado obtenido.</p><h2>Que informar</h2><ul><li>Formularios o botones de copiar rotos.</li><li>Guia desactualizada sobre GitHub Pages, SEO o navegadores.</li><li>Problemas de teclado, contraste, movil o layout.</li><li>Preguntas de privacidad o servicios externos.</li></ul>` }
+    },
+    ja: {
+      about: { title: "jquery.appについて", description: "ページ制作と公開の間にある細かな作業を助ける小さな作業場です。", content: `<h2>このサイトの目的</h2><p>jquery.appは、公開前によく発生する小さなWeb作業を助けるツール集です。canonical、SNSプレビュー、CSS値、GitHub Pages設定、公開前チェックなどを扱います。</p><h2>ツールの動作</h2><p>現在のツールはブラウザで動作し、必要な項目だけを入力して、確認しやすい出力を返します。</p><h2>注意点</h2><p>専門的な判断、ブラウザテスト、Search Consoleデータ、完全な技術監査の代わりではありません。</p>` },
+      privacy: { title: "プライバシーポリシー", description: "現在のツールはブラウザ内で動作し、不要な収集を避ける設計です。", content: `<h2>ツールへの入力</h2><p>現在のツールは入力値をブラウザ内で処理します。アカウントは不要で、入力内容をjquery.appのアプリケーションサーバーへ意図的に送信しません。</p><h2>技術ログ</h2><p>ホスティング、CDN、セキュリティサービスは、IPアドレス、ブラウザ情報、参照元、URL、時刻などの標準的な情報を処理する場合があります。</p><h2>Cookieと解析</h2><p>ツールの動作にCookieは不要です。将来、解析、広告、第三者ウィジェットを追加する場合は、このページを先に更新する必要があります。</p>` },
+      terms: { title: "利用規約", description: "ツールは自由に使えますが、公開前に出力を確認してください。", content: `<h2>利用</h2><p>jquery.appは公開作業向けの無料Webツールを提供します。出力は確認したうえで、個人、商用、クライアント案件に利用できます。</p><h2>専門的助言ではありません</h2><p>掲載内容は情報提供であり、法律、セキュリティ、コンプライアンス、アクセシビリティ、SEOの専門的助言ではありません。</p><h2>保証なし</h2><p>サイトは現状有姿で提供されます。ブラウザ、検索エンジン、ホスティングの仕様は変わる可能性があります。</p>` },
+      contact: { title: "お問い合わせ", description: "壊れたツール、古い情報、アクセシビリティ、プライバシーの問題を報告できます。", content: `<h2>役立つ報告</h2><p>問題がある場合は、ツール名、ページURL、入力内容、期待した結果、実際の結果を含めてください。</p><h2>報告できる内容</h2><ul><li>フォームやコピー操作の不具合。</li><li>GitHub Pages、SEOタグ、ブラウザ対応に関する古い情報。</li><li>キーボード操作、コントラスト、モバイル表示、レイアウトの問題。</li><li>プライバシーや第三者サービスに関する懸念。</li></ul>` }
+    },
+    nl: {
+      about: { title: "Over jquery.app", description: "Een kleine werkplaats voor de details tussen bouwen en netjes publiceren.", content: `<h2>Waarom deze site bestaat</h2><p>jquery.app verzamelt kleine webtools voor terugkerende taken voor publicatie: canonicals, social previews, CSS-waarden, GitHub Pages details en launchchecks.</p><h2>Hoe de tools werken</h2><p>De huidige tools draaien in de browser, vragen alleen noodzakelijke velden en tonen leesbare uitvoer voordat je kopieert.</p><h2>Grenzen</h2><p>Ze vervangen geen professioneel oordeel, browsertests, Search Console data of volledige technische audit.</p>` },
+      privacy: { title: "Privacybeleid", description: "De huidige tools werken lokaal in je browser en vermijden onnodige verzameling.", content: `<h2>Invoer in tools</h2><p>De huidige tools verwerken waarden in je browser. Er is geen account nodig en invoer wordt niet bewust naar een jquery.app applicatieserver gestuurd.</p><h2>Technische logs</h2><p>Hosting, CDN en beveiligingssystemen kunnen standaard technische informatie verwerken, zoals IP-adres, browser, referrer, URL en tijdstip.</p><h2>Cookies en analytics</h2><p>De tools hebben geen cookies nodig. Als later analytics, advertenties of widgets worden toegevoegd, moet dit beleid eerst worden bijgewerkt.</p>` },
+      terms: { title: "Gebruiksvoorwaarden", description: "Gebruik de tools vrij, maar controleer uitvoer voordat die live gaat.", content: `<h2>Gebruik</h2><p>jquery.app biedt gratis webtools voor publicatiewerk. Je mag de uitvoer gebruiken in persoonlijke, commerciele en klantprojecten na eigen controle.</p><h2>Geen professioneel advies</h2><p>De inhoud is informatief en geen juridisch, beveiligings-, compliance-, toegankelijkheids- of SEO-advies.</p><h2>Geen garantie</h2><p>De site wordt geleverd zoals hij is. Browsers, zoekmachines en hostingregels kunnen veranderen.</p>` },
+      contact: { title: "Contact", description: "Meld kapotte tools, verouderde informatie, toegankelijkheidsproblemen of privacyvragen.", content: `<h2>Stuur een nuttige melding</h2><p>Noem de toolnaam, pagina-URL, invoer, verwachte uitkomst en wat er gebeurde.</p><h2>Wat je kunt melden</h2><ul><li>Kapotte formulieren of kopieerknoppen.</li><li>Verouderde informatie over GitHub Pages, SEO-tags of browsers.</li><li>Problemen met toetsenbord, contrast, mobiel of layout.</li><li>Privacyvragen of vragen over externe diensten.</li></ul>` }
+    }
+  };
+
+  return localized[locale] || en;
+}
+
 function notFoundPage(locale) {
   const body = `<section class="page-hero">
   <div class="wrap narrow">
     <p class="eyebrow">404</p>
-    <h1>Page not found</h1>
-    <p class="lede">The page may have moved, or the URL may be incorrect. Start from the homepage or browse the available tools.</p>
+    <h1>${escapeHtml(ui(locale, "notFoundTitle"))}</h1>
+    <p class="lede">${escapeHtml(ui(locale, "notFoundText"))}</p>
     <div class="hero-actions">
-      <a class="button primary" href="${urlFor(locale)}">Go home</a>
-      <a class="button secondary" href="${urlFor(locale, "tools")}">Browse tools</a>
+      <a class="button primary" href="${urlFor(locale)}">${escapeHtml(ui(locale, "goHome"))}</a>
+      <a class="button secondary" href="${urlFor(locale, "tools")}">${escapeHtml(ui(locale, "browseTools"))}</a>
     </div>
   </div>
 </section>`;
 
   return pageShell({
     locale,
-    title: `Page Not Found - ${site.siteName}`,
+    title: `${ui(locale, "notFoundTitle")} - ${site.siteName}`,
     description: "The requested page could not be found.",
     pathname: "404",
     body,
-    extraHead: '<meta name="robots" content="noindex">'
+    extraHead: '<meta name="robots" content="noindex">',
+    skipAlternates: true
   });
 }
 
@@ -596,15 +738,16 @@ function redirectPage({ locale, fromPathname, toPathname }) {
     body: `<section class="page-hero">
   <div class="wrap narrow">
     <p class="eyebrow">Moved</p>
-    <h1>This page has moved</h1>
-    <p class="lede">The English version now lives at <a href="${target}">${escapeHtml(target)}</a>.</p>
+    <h1>${escapeHtml(ui(locale, "redirectTitle"))}</h1>
+    <p class="lede">${escapeHtml(template(locale, "redirectText", { target }))}</p>
     <div class="hero-actions">
-      <a class="button primary" href="${target}">Continue</a>
+      <a class="button primary" href="${target}">${escapeHtml(ui(locale, "continue"))}</a>
     </div>
   </div>
 </section>`,
     extraHead: `<meta http-equiv="refresh" content="0; url=${attr(target)}">
-  <meta name="robots" content="noindex">`
+  <meta name="robots" content="noindex">`,
+    skipAlternates: true
   });
 }
 
@@ -677,11 +820,14 @@ async function copyAssets() {
   await mkdir(target, { recursive: true });
   await copyFile(path.join(assetsDir, "styles.css"), path.join(target, "styles.css"));
   await copyFile(path.join(assetsDir, "tools.js"), path.join(target, "tools.js"));
+  await copyFile(path.join(assetsDir, "favicon.svg"), path.join(distDir, "favicon.svg"));
 }
 
 async function buildLocale(locale) {
-  const tools = JSON.parse(await readFile(path.join(dataDir, `tools.${locale}.json`), "utf8"));
-  const categories = JSON.parse(await readFile(path.join(dataDir, `categories.${locale}.json`), "utf8"));
+  const sourceTools = JSON.parse(await readFile(path.join(dataDir, "tools.en.json"), "utf8"));
+  const sourceCategories = JSON.parse(await readFile(path.join(dataDir, "categories.en.json"), "utf8"));
+  const tools = localizeTools(sourceTools, locale);
+  const categories = localizeCategories(sourceCategories, locale);
   const localeDir = locale === site.defaultLocale ? distDir : path.join(distDir, locale);
   const sitemapUrls = [];
 
@@ -707,13 +853,14 @@ async function buildLocale(locale) {
     addSitemapUrl(`tools/${tool.id}`);
   }
 
-  await writePage(path.join(localeDir, "about", "index.html"), simplePage(locale, "about", "About jquery.app", "A small workshop for the details that sit between building a page and publishing it well.", `<h2>Why this site exists</h2><p>jquery.app is a collection of small tools for people who build, publish, and maintain websites. It is made for the quiet tasks that still matter: writing canonical tags, preparing social preview metadata, checking launch details, shaping responsive CSS, and keeping static pages tidy.</p><p>The site is intentionally simple. Most tools run entirely in your browser, ask for only the fields they need, and return output you can read before you copy it. There are no accounts, no project dashboards, and no need to upload your work to use the current tools.</p><h2>What belongs here</h2><p>jquery.app focuses on practical web publishing chores with a clear result. A good tool on this site should save a few minutes, reduce a small mistake, or make a repeated job easier to finish. It should also be understandable without a manual.</p><h2>What does not belong here</h2><p>This is not a replacement for professional judgment, browser testing, search console data, or a full technical audit. Generated code and checklists should be reviewed before they are added to a production site.</p>`));
+  const pages = simplePages(locale);
+  await writePage(path.join(localeDir, "about", "index.html"), simplePage(locale, "about", pages.about.title, pages.about.description, pages.about.content));
   addSitemapUrl("about");
-  await writePage(path.join(localeDir, "privacy", "index.html"), simplePage(locale, "privacy", "Privacy Policy", "The current tools are designed to work locally in your browser and avoid unnecessary collection.", `<h2>Local tool inputs</h2><p>The current tools process the values you enter in your browser. They do not require an account, and the site does not intentionally send tool inputs or generated output to a jquery.app application server.</p><h2>Hosting and technical logs</h2><p>jquery.app is published as a static website. Hosting providers, CDN services, browsers, and security systems may process standard request information such as IP address, user agent, referrer, requested URL, timestamps, and basic diagnostic data. This information is normally used to deliver the site, prevent abuse, and understand technical problems.</p><h2>Cookies and analytics</h2><p>The preview version of jquery.app does not need cookies for the tools to work. If analytics, advertising, embedded media, or third-party widgets are added later, this policy should be updated before those services are enabled.</p><h2>External links</h2><p>Some pages may link to GitHub, documentation sites, browser tools, or other third-party resources. Those sites have their own privacy practices.</p><h2>Contact</h2><p>Use the contact page to report privacy concerns, broken tools, or outdated information.</p>`));
+  await writePage(path.join(localeDir, "privacy", "index.html"), simplePage(locale, "privacy", pages.privacy.title, pages.privacy.description, pages.privacy.content));
   addSitemapUrl("privacy");
-  await writePage(path.join(localeDir, "terms", "index.html"), simplePage(locale, "terms", "Terms of Use", "Use the tools freely, but review the output before it becomes part of a live site.", `<h2>Use of the tools</h2><p>jquery.app provides free web utilities for convenience, learning, and everyday publishing work. You may use the generated output in personal, commercial, and client projects, subject to your own review and the requirements of your project.</p><h2>No professional advice</h2><p>The tools and written guidance are informational. They are not legal, security, compliance, accessibility, or search engine optimization advice. Before publishing, verify that the output is appropriate for your website, framework, hosting provider, and local requirements.</p><h2>No warranty</h2><p>The site is provided as is and as available. jquery.app does not guarantee that a tool will be error-free, uninterrupted, or suitable for every use case. Browser behavior, search engine interpretation, platform rules, and hosting requirements can change.</p><h2>Your responsibility</h2><p>You are responsible for testing generated HTML, CSS, metadata, DNS notes, and checklists before using them on a live website. You are also responsible for keeping backups of your own code and content.</p><h2>Acceptable use</h2><p>Do not use the site in a way that attempts to disrupt the service, scrape it aggressively, bypass technical limits, or interfere with other visitors.</p>`));
+  await writePage(path.join(localeDir, "terms", "index.html"), simplePage(locale, "terms", pages.terms.title, pages.terms.description, pages.terms.content));
   addSitemapUrl("terms");
-  await writePage(path.join(localeDir, "contact", "index.html"), simplePage(locale, "contact", "Contact", "Report broken tools, outdated guidance, accessibility issues, or privacy concerns.", `<h2>Send a useful report</h2><p>If something is broken, include the tool name, the page URL, what you entered, what you expected, and what happened instead. Clear reports make small tools easier to keep accurate.</p><h2>Suggested contact options</h2><p>This preview site is published from GitHub. A public issue tracker is the best fit for bug reports and small corrections because it keeps changes visible. Add your preferred GitHub issue link or contact email here before wider promotion.</p><h2>What to report</h2><ul><li>Broken form behavior or copy buttons.</li><li>Outdated guidance about GitHub Pages, SEO tags, browser support, or HTML output.</li><li>Accessibility problems, keyboard traps, visual contrast issues, or mobile layout problems.</li><li>Privacy concerns or third-party service questions.</li></ul>`));
+  await writePage(path.join(localeDir, "contact", "index.html"), simplePage(locale, "contact", pages.contact.title, pages.contact.description, pages.contact.content));
   addSitemapUrl("contact");
 
   if (locale === site.defaultLocale) {

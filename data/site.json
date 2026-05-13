@@ -2,7 +2,7 @@
   "baseUrl": "https://www.jquery.app",
   "customDomain": "www.jquery.app",
   "defaultLocale": "en",
-  "locales": ["en"],
+  "locales": ["en", "de", "fr", "es", "ja", "nl"],
   "siteName": "jquery.app",
   "tagline": "Small web tools for publishing",
   "description": "Practical browser tools for metadata, CSS, static sites, and launch checks. No accounts, no uploads, no heavy workflow."

@@ -109,26 +109,44 @@ button {
 
 .brand-mark {
   position: relative;
-  width: 24px;
-  height: 24px;
-  flex: 0 0 24px;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  border: 1px solid color-mix(in srgb, var(--ink) 18%, transparent);
+  border-radius: 9px;
+  background:
+    radial-gradient(circle at 74% 24%, var(--primary) 0 10%, transparent 11%),
+    linear-gradient(135deg, var(--surface-dark) 0 48%, var(--surface-dark-elevated) 49% 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 8px 18px rgba(20, 20, 19, 0.12);
+  overflow: hidden;
 }
 
 .brand-mark::before,
 .brand-mark::after {
   content: "";
   position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 22px;
-  height: 3px;
   border-radius: 999px;
-  background: var(--ink);
-  transform: translate(-50%, -50%);
+}
+
+.brand-mark::before {
+  left: 6px;
+  top: 9px;
+  width: 18px;
+  height: 12px;
+  border-left: 4px solid var(--accent-amber);
+  border-right: 4px solid var(--accent-teal);
+  transform: skewX(-12deg);
 }
 
 .brand-mark::after {
-  transform: translate(-50%, -50%) rotate(90deg);
+  left: 14px;
+  top: 6px;
+  width: 4px;
+  height: 19px;
+  background: var(--on-dark);
+  transform: rotate(13deg);
 }
 
 .main-nav {
@@ -153,6 +171,71 @@ button {
 }
 
 .main-nav a[aria-current="page"] {
+  background: var(--surface-card);
+  color: var(--ink);
+}
+
+.language-menu {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.language-menu summary {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 12px;
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+  color: var(--body);
+  font-size: 14px;
+  font-weight: 500;
+  list-style: none;
+  cursor: pointer;
+}
+
+.language-menu summary::-webkit-details-marker {
+  display: none;
+}
+
+.language-menu summary::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  margin-left: 8px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+}
+
+.language-menu div {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  z-index: 20;
+  min-width: 160px;
+  padding: 8px;
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+  background: var(--canvas);
+  box-shadow: 0 16px 36px rgba(20, 20, 19, 0.12);
+}
+
+.language-menu:not([open]) div {
+  display: none;
+}
+
+.language-menu a {
+  display: block;
+  padding: 9px 10px;
+  border-radius: 6px;
+  color: var(--body);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.language-menu a[aria-current="true"],
+.language-menu a:hover {
   background: var(--surface-card);
   color: var(--ink);
 }
@@ -860,11 +943,6 @@ button {
   color: var(--on-dark);
 }
 
-.site-footer .brand-mark::before,
-.site-footer .brand-mark::after {
-  background: var(--on-dark);
-}
-
 .footer-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.3fr) repeat(2, minmax(160px, 0.45fr));
@@ -909,6 +987,15 @@ button {
     width: 100%;
     overflow-x: auto;
     scrollbar-width: none;
+  }
+
+  .language-menu {
+    justify-self: start;
+  }
+
+  .language-menu div {
+    left: 0;
+    right: auto;
   }
 
   .main-nav::-webkit-scrollbar {

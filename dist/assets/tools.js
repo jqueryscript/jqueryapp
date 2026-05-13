@@ -46,6 +46,9 @@ const checkbox = ({ id, label, checked = false }) => `
   </label>`;
 
 function mountTool(root, config) {
+  const outputLabel = root.dataset.outputLabel || "Output";
+  const copyLabel = root.dataset.copyLabel || "Copy";
+  const copiedLabel = root.dataset.copiedLabel || "Copied";
   root.innerHTML = `
     <div class="tool-layout">
       <form class="tool-panel" data-role="form">
@@ -53,8 +56,8 @@ function mountTool(root, config) {
       </form>
       <div class="result-box">
         <div class="result-header">
-          <h2>Output</h2>
-          <button class="copy-button" type="button" data-role="copy">Copy</button>
+          <h2>${htmlEscape(outputLabel)}</h2>
+          <button class="copy-button" type="button" data-role="copy">${htmlEscape(copyLabel)}</button>
         </div>
         <pre class="output" data-role="output"></pre>
         <div data-role="preview"></div>
@@ -76,9 +79,9 @@ function mountTool(root, config) {
   form.addEventListener("change", update);
   copy.addEventListener("click", async () => {
     await navigator.clipboard.writeText(output.textContent);
-    copy.textContent = "Copied";
+    copy.textContent = copiedLabel;
     setTimeout(() => {
-      copy.textContent = "Copy";
+      copy.textContent = copyLabel;
     }, 1200);
   });
 
@@ -116,7 +119,7 @@ const tools = {
         ${field({ id: "title", label: "Title", value: "Small web tools for quick fixes" })}
         ${field({ id: "site", label: "Site name", value: "jquery.app" })}
         ${textarea({ id: "description", label: "Description", value: "Browser-based tools for people who build, publish, and maintain websites.", full: true })}
-        ${field({ id: "url", label: "Page URL", value: "https://www.jquery.app/en/tools/" })}
+        ${field({ id: "url", label: "Page URL", value: "https://www.jquery.app/tools/" })}
         ${field({ id: "image", label: "Image URL", value: "https://www.jquery.app/assets/social-preview.png" })}
         ${select({ id: "type", label: "Open Graph type", value: "website", options: [{ label: "website", value: "website" }, { label: "article", value: "article" }] })}
       </div>`,
