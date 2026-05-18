@@ -70,7 +70,9 @@ function pageShell({ locale, title, description, pathname, body, scripts = "", c
   const nav = [
     [ui(locale, "tools"), urlFor(locale, "tools"), "tools"],
     [ui(locale, "seo"), urlFor(locale, "tools/seo"), "seo"],
+    [ui(locale, "html"), urlFor(locale, "tools/html"), "html"],
     [ui(locale, "css"), urlFor(locale, "tools/css"), "css"],
+    [ui(locale, "assets"), urlFor(locale, "tools/assets"), "assets"],
     [ui(locale, "githubPages"), urlFor(locale, "tools/github-pages"), "github-pages"]
   ];
   const alternateLinks = skipAlternates ? "" : site.locales
@@ -137,7 +139,9 @@ ${alternateLinks}
       <div>
         <h2>${escapeHtml(ui(locale, "tools"))}</h2>
         <a href="${urlFor(locale, "tools/seo")}">${escapeHtml(ui(locale, "seo"))}</a>
+        <a href="${urlFor(locale, "tools/html")}">${escapeHtml(ui(locale, "html"))}</a>
         <a href="${urlFor(locale, "tools/css")}">${escapeHtml(ui(locale, "css"))}</a>
+        <a href="${urlFor(locale, "tools/assets")}">${escapeHtml(ui(locale, "assets"))}</a>
         <a href="${urlFor(locale, "tools/github-pages")}">${escapeHtml(ui(locale, "githubPages"))}</a>
       </div>
       <div>
@@ -184,6 +188,19 @@ function toolCard(tool, locale) {
     <p>${escapeHtml(tool.summary)}</p>
   </div>
   <a class="card-link" href="${urlFor(locale, `tools/${tool.id}`)}">${escapeHtml(ui(locale, "openTool"))}</a>
+</article>`;
+}
+
+function collectionCard(collectionId, details, locale) {
+  const toolCount = (details.tools || []).length;
+  return `<article class="collection-card">
+  <div>
+    <p class="card-kicker">${escapeHtml(ui(locale, "collections"))}</p>
+    <h2><a href="${urlFor(locale, `collections/${collectionId}`)}">${escapeHtml(details.name)}</a></h2>
+    <p>${escapeHtml(details.description)}</p>
+    <small>${toolCount} tools</small>
+  </div>
+  <a class="card-link" href="${urlFor(locale, `collections/${collectionId}`)}">${escapeHtml(ui(locale, "openCollection"))}</a>
 </article>`;
 }
 
@@ -289,7 +306,7 @@ function localizeTools(sourceTools, locale) {
   });
 }
 
-function homePage(locale, tools, categories) {
+function homePage(locale, tools, categories, collections) {
   const localizedSite = localeSite(locale);
   const scripts = [
     jsonLd({
@@ -347,12 +364,21 @@ function homePage(locale, tools, categories) {
   <div class="wrap tool-grid">
     ${tools.slice(0, 6).map((tool) => toolCard(tool, locale)).join("")}
   </div>
-</section>`;
+</section>
+${collections ? `<section class="section">
+  <div class="wrap section-heading">
+    <p class="eyebrow">${escapeHtml(ui(locale, "collections"))}</p>
+    <h2>${escapeHtml(ui(locale, "browseCollections"))}</h2>
+  </div>
+  <div class="wrap collection-grid">
+    ${Object.entries(collections).map(([id, details]) => collectionCard(id, details, locale)).join("")}
+  </div>
+</section>` : ""}`;
 
   return pageShell({
     locale,
-    title: `${site.siteName} - ${titleCase(localizedSite.tagline)}`,
-    description: localizedSite.description,
+    title: localizedSite.seoTitle,
+    description: localizedSite.seoDescription,
     pathname: "",
     body,
     scripts,
@@ -484,8 +510,91 @@ ${details.faq?.length ? `<section class="section faq-band">
   });
 }
 
+function collectionPage(locale, collectionId, details, tools, categories) {
+  const faqSchema = details.faq?.length ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: details.faq.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer }
+    }))
+  } : null;
+  const scripts = [
+    jsonLd(breadcrumbSchema(locale, [
+      { name: "Home", pathname: "" },
+      { name: ui(locale, "collections"), pathname: "collections" },
+      { name: details.name, pathname: `collections/${collectionId}` }
+    ])),
+    jsonLd(itemListSchema(locale, details.name, tools)),
+    faqSchema ? jsonLd(faqSchema) : ""
+  ].filter(Boolean).join("");
+  const body = `<section class="page-hero">
+  <div class="wrap narrow">
+    <p class="eyebrow">${escapeHtml(ui(locale, "collections"))}</p>
+    <h1>${escapeHtml(details.name)}</h1>
+    <p class="lede">${escapeHtml(details.description)}</p>
+  </div>
+</section>
+<section class="section soft-band">
+  <div class="wrap section-heading">
+    <p class="eyebrow">${escapeHtml(ui(locale, "availableTools"))}</p>
+    <h2>${escapeHtml(template(locale, "toolsYouCanUse", { category: details.name }))}</h2>
+  </div>
+  <div class="wrap tool-grid">
+    ${tools.map((tool) => toolCard(tool, locale)).join("")}
+  </div>
+</section>
+<section class="section article-band">
+  <div class="wrap content-layout">
+    <aside class="content-rail">
+      <span>${escapeHtml(details.name)}</span>
+      <span>${escapeHtml(ui(locale, "collections"))}</span>
+    </aside>
+    <article class="tool-article">
+      <h2>${escapeHtml(ui(locale, "whatCollectionHelps"))}</h2>
+      <p>${escapeHtml(details.intro || details.description)}</p>
+      ${details.bestFor?.length ? `<h2>${escapeHtml(ui(locale, "bestFor"))}</h2><ul>${listItems(details.bestFor)}</ul>` : ""}
+    </article>
+  </div>
+</section>
+${details.faq?.length ? `<section class="section faq-band">
+  <div class="wrap content-layout">
+    <div class="section-heading">
+      <p class="eyebrow">${escapeHtml(ui(locale, "faq"))}</p>
+      <h2>${escapeHtml(template(locale, "questionsAbout", { topic: details.name.toLowerCase() }))}</h2>
+    </div>
+    <div class="faq-list">
+      ${faqMarkup(details.faq)}
+    </div>
+  </div>
+</section>` : ""}`;
+
+  return pageShell({
+    locale,
+    title: `${details.name} - ${site.siteName}`,
+    description: details.description,
+    pathname: `collections/${collectionId}`,
+    body,
+    scripts,
+    current: "collections"
+  });
+}
+
 function toolPage(locale, tool, allTools, categories) {
   const related = allTools.filter((item) => item.category === tool.category && item.id !== tool.id).slice(0, 3);
+  const complementary = ["seo", "html", "css", "assets", "github-pages"];
+  const complementaryCategories = {
+    seo: ["html", "github-pages"],
+    html: ["seo", "css"],
+    css: ["html", "assets"],
+    assets: ["css", "html"],
+    "github-pages": ["seo", "assets"]
+  };
+  const crossCategory = (complementaryCategories[tool.category] || [])
+    .flatMap((cat) => allTools.filter((item) => item.category === cat && item.id !== tool.id))
+    .filter((item, index, arr) => arr.findIndex((t) => t.id === item.id) === index)
+    .slice(0, 3);
   const categoryName = categories[tool.category]?.name || titleCase(tool.category);
   const webAppSchema = {
     "@context": "https://schema.org",
@@ -599,6 +708,15 @@ ${related.length ? `<section class="section">
   </div>
   <div class="wrap tool-grid compact">
     ${related.map((item) => toolCard(item, locale)).join("")}
+  </div>
+</section>` : ""}
+${crossCategory.length ? `<section class="section">
+  <div class="wrap section-heading">
+    <p class="eyebrow">${escapeHtml(ui(locale, "alsoTry"))}</p>
+    <h2>${escapeHtml(ui(locale, "alsoTry"))}</h2>
+  </div>
+  <div class="wrap tool-grid compact">
+    ${crossCategory.map((item) => toolCard(item, locale)).join("")}
   </div>
 </section>` : ""}`;
 
@@ -826,8 +944,10 @@ async function copyAssets() {
 async function buildLocale(locale) {
   const sourceTools = JSON.parse(await readFile(path.join(dataDir, "tools.en.json"), "utf8"));
   const sourceCategories = JSON.parse(await readFile(path.join(dataDir, "categories.en.json"), "utf8"));
+  const sourceCollections = JSON.parse(await readFile(path.join(dataDir, "collections.en.json"), "utf8"));
   const tools = localizeTools(sourceTools, locale);
   const categories = localizeCategories(sourceCategories, locale);
+  const collections = sourceCollections;
   const localeDir = locale === site.defaultLocale ? distDir : path.join(distDir, locale);
   const sitemapUrls = [];
 
@@ -835,7 +955,7 @@ async function buildLocale(locale) {
     sitemapUrls.push(absoluteUrl(locale, pathname));
   };
 
-  await writePage(path.join(localeDir, "index.html"), homePage(locale, tools, categories));
+  await writePage(path.join(localeDir, "index.html"), homePage(locale, tools, categories, collections));
   addSitemapUrl("");
   await writePage(path.join(localeDir, "tools", "index.html"), toolsIndexPage(locale, tools, categories));
   addSitemapUrl("tools");
@@ -853,6 +973,14 @@ async function buildLocale(locale) {
     addSitemapUrl(`tools/${tool.id}`);
   }
 
+  for (const [collectionId, details] of Object.entries(collections)) {
+    const collectionTools = tools.filter((tool) => details.tools?.includes(tool.id));
+    if (collectionTools.length) {
+      await writePage(path.join(localeDir, "collections", collectionId, "index.html"), collectionPage(locale, collectionId, details, collectionTools, categories));
+      addSitemapUrl(`collections/${collectionId}`);
+    }
+  }
+
   const pages = simplePages(locale);
   await writePage(path.join(localeDir, "about", "index.html"), simplePage(locale, "about", pages.about.title, pages.about.description, pages.about.content));
   addSitemapUrl("about");
@@ -865,13 +993,13 @@ async function buildLocale(locale) {
 
   if (locale === site.defaultLocale) {
     await writePage(path.join(distDir, "404.html"), notFoundPage(locale));
-    await writeLegacyDefaultLocaleRedirects(locale, tools, categories);
+    await writeLegacyDefaultLocaleRedirects(locale, tools, categories, collections);
   }
 
   return sitemapUrls;
 }
 
-async function writeLegacyDefaultLocaleRedirects(locale, tools, categories) {
+async function writeLegacyDefaultLocaleRedirects(locale, tools, categories, collections) {
   const legacyDir = path.join(distDir, locale);
   const paths = [
     "",
@@ -883,7 +1011,8 @@ async function writeLegacyDefaultLocaleRedirects(locale, tools, categories) {
     ...Object.entries(categories)
       .filter(([category]) => tools.some((tool) => tool.category === category))
       .map(([category]) => `tools/${category}`),
-    ...tools.map((tool) => `tools/${tool.id}`)
+    ...tools.map((tool) => `tools/${tool.id}`),
+    ...Object.keys(collections).map((id) => `collections/${id}`)
   ];
 
   for (const pathname of paths) {

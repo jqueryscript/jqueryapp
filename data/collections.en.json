@@ -1,0 +1,108 @@
+{
+  "github-pages-workflow": {
+    "name": "GitHub Pages Publishing Workflow",
+    "description": "Tools for setting up a custom domain, preparing static output, and checking launch details before pushing to GitHub Pages.",
+    "intro": "Publishing with GitHub Pages is simple once it is configured, but domain rules, CNAME placement, and build output checks can cause 404s or broken deployments. This collection groups the tools that matter before and after you push.",
+    "bestFor": [
+      "Setting up a custom domain on GitHub Pages.",
+      "Checking static output before pushing a release.",
+      "Preparing CNAME, robots.txt, sitemap, and favicon files for a new site."
+    ],
+    "tools": [
+      "github-pages-cname-helper",
+      "github-pages-spa-404-helper",
+      "static-site-seo-checklist-generator",
+      "robots-txt-builder",
+      "responsive-image-markup-generator"
+    ],
+    "faq": [
+      {
+        "question": "What order should I use these tools?",
+        "answer": "Start with the CNAME helper to set up your domain, then the SEO checklist to verify pages, then the robots.txt builder for crawler rules, then responsive image markup for media, and finally the SPA 404 helper if your site is a single-page app."
+      },
+      {
+        "question": "Do I need all of these for a simple GitHub Pages site?",
+        "answer": "Not necessarily. A minimal setup might only need the CNAME helper and the SEO checklist. Add the other tools as your site grows or when you notice missing favicons, broken social previews, or crawler issues."
+      }
+    ]
+  },
+  "blog-publisher": {
+    "name": "Blog Publisher Toolkit",
+    "description": "Tools for social previews, clean HTML markup, canonical URLs, structured data, and responsive images for blog posts and article pages.",
+    "intro": "Blog posts and article pages carry a small set of repeating metadata needs: social preview tags, canonical URLs, link relationships, image markup, and structured data. These details are easy to miss when publishing on a schedule. This collection helps keep them consistent across every post.",
+    "bestFor": [
+      "Preparing social share previews for blog posts.",
+      "Keeping canonical URLs and link tags consistent across article templates.",
+      "Adding structured data and image markup to content-heavy pages."
+    ],
+    "tools": [
+      "og-twitter-card-builder",
+      "canonical-url-tag-generator",
+      "html-link-rel-generator",
+      "responsive-image-markup-generator",
+      "json-ld-starter-builder"
+    ],
+    "faq": [
+      {
+        "question": "Should every blog post have Open Graph tags?",
+        "answer": "Yes. Each post should carry its own og:title, og:description, og:url, and og:image tags so that sharing the post on social platforms produces a useful preview. The og-twitter-card-builder handles both Open Graph and Twitter Card markup in one step."
+      },
+      {
+        "question": "Do I need structured data on every article?",
+        "answer": "Article structured data helps search engines understand the content type, headline, author, and publication date. It is useful for blogs and news sites but optional for simple personal pages."
+      }
+    ]
+  },
+  "beginner-css": {
+    "name": "Beginner CSS Starter Kit",
+    "description": "CSS tools for responsive typography, safe-area spacing, and iframe embeds. Practical values without a large design system.",
+    "intro": "Good CSS often comes down to small numbers: fluid type, responsive spacing, safe mobile insets, and embed containers that do not break on small screens. These tools turn visual decisions into CSS you can inspect and copy into an existing stylesheet.",
+    "bestFor": [
+      "Building responsive typography and spacing without guessing values.",
+      "Adjusting mobile layout details for phones with notches or rounded corners.",
+      "Creating responsive iframe embeds for video, maps, and documentation."
+    ],
+    "tools": [
+      "css-clamp-calculator",
+      "css-safe-area-insets-generator",
+      "responsive-iframe-embed-generator"
+    ],
+    "faq": [
+      {
+        "question": "Do I need to understand clamp() to use the CSS tools?",
+        "answer": "No. The clamp calculator handles the math for you. Enter your minimum and maximum sizes and viewport widths, and the tool produces a usable clamp() declaration with explanatory comments."
+      },
+      {
+        "question": "What is safe-area-inset and when should I use it?",
+        "answer": "Safe-area insets are CSS environment variables that describe the visible area of a phone screen that is not covered by a notch, rounded corners, or a home indicator. Use them when you need padding or margins that respect those device features."
+      }
+    ]
+  },
+  "multilingual-site": {
+    "name": "Multilingual Website Setup",
+    "description": "Tools for hreflang tags, canonical URLs, social previews, and crawler directives for websites with content in multiple languages.",
+    "intro": "Translated pages need clear signals for search engines: hreflang tags that connect equivalent pages, canonical URLs that point to the right version, and robots directives that keep indexing unambiguous. This collection covers the tags that make multilingual sites easier to crawl and surface correctly.",
+    "bestFor": [
+      "Setting up hreflang tags for a site with two or more languages.",
+      "Keeping canonical URLs correct across language versions.",
+      "Preparing social previews and crawler rules for localized pages."
+    ],
+    "tools": [
+      "hreflang-tag-generator",
+      "canonical-url-tag-generator",
+      "og-twitter-card-builder",
+      "html-link-rel-generator",
+      "robots-txt-builder"
+    ],
+    "faq": [
+      {
+        "question": "Should every language page include the same hreflang set?",
+        "answer": "Yes. Each equivalent page should link to every alternate version, including itself. This reciprocal pattern helps search engines understand the full language group and select the right version for each visitor."
+      },
+      {
+        "question": "Do I need hreflang tags for a site with only two languages?",
+        "answer": "Yes. Even two-language sites benefit from hreflang tags because they remove ambiguity about which version of a page should appear in search results for each language audience."
+      }
+    ]
+  }
+}

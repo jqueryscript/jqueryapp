@@ -518,6 +518,56 @@ button {
   font-size: 15px;
 }
 
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.collection-card {
+  min-height: 200px;
+  display: grid;
+  align-content: space-between;
+  gap: 16px;
+  padding: 28px;
+  border-radius: 12px;
+  background: var(--surface-card);
+  color: var(--ink);
+  text-decoration: none;
+  border: 1px solid var(--hairline);
+}
+
+.collection-card h2 {
+  margin: 6px 0;
+}
+
+.collection-card h2 a {
+  text-decoration: none;
+  font-family: var(--display);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.18;
+  color: var(--ink);
+}
+
+.collection-card p {
+  margin: 0;
+  color: var(--body);
+  font-size: 15px;
+}
+
+.collection-card small {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.collection-card .card-link {
+  color: var(--primary);
+  font-weight: 500;
+  font-size: 14px;
+  text-decoration: none;
+}
+
 .tool-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

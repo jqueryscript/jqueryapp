@@ -4,12 +4,16 @@
     "nativeName": "English",
     "site": {
       "tagline": "Small web tools for publishing",
-      "description": "Practical browser tools for metadata, CSS, static sites, and launch checks. No accounts, no uploads, no heavy workflow."
+      "description": "Practical browser tools for metadata, CSS, static sites, and launch checks. No accounts, no uploads, no heavy workflow.",
+      "seoTitle": "Static Website Tools for SEO, HTML, CSS & GitHub Pages",
+      "seoDescription": "A practical toolkit for static sites: create SEO tags, schema, llms.txt, robots.txt, responsive image markup, CSS values, and GitHub Pages helpers."
     },
     "ui": {
       "tools": "Tools",
       "seo": "SEO",
+      "html": "HTML",
       "css": "CSS",
+      "assets": "Assets",
       "githubPages": "GitHub Pages",
       "site": "Site",
       "about": "About",
@@ -18,6 +22,8 @@
       "contact": "Contact",
       "language": "Language",
       "browseTools": "Browse tools",
+      "browseCollections": "Tool collections for common workflows",
+      "collections": "Collections",
       "githubPagesTools": "GitHub Pages tools",
       "startHere": "Start here",
       "whyExists": "Why this exists",
@@ -27,6 +33,7 @@
       "examples": "Practical examples",
       "faq": "FAQ",
       "relatedTools": "Related tools",
+      "alsoTry": "Also try",
       "browserOnly": "Browser-only",
       "privateByDefault": "Private by default",
       "privateNote": "This tool runs in your browser. Your input is not uploaded.",
@@ -45,6 +52,7 @@
       "toolsYouCanUse": "{category} you can use now",
       "questionsAbout": "Questions about {topic}",
       "openTool": "Open tool",
+      "openCollection": "Open collection",
       "output": "Output",
       "copy": "Copy",
       "copied": "Copied",
@@ -73,7 +81,9 @@
     "nativeName": "Deutsch",
     "site": {
       "tagline": "Kleine Webtools fur sauberes Publishing",
-      "description": "Praktische Browser-Tools fur Meta-Tags, CSS, statische Websites und Launch-Checks. Ohne Konto, Uploads oder schwere Workflows."
+      "description": "Praktische Browser-Tools fur Meta-Tags, CSS, statische Websites und Launch-Checks. Ohne Konto, Uploads oder schwere Workflows.",
+      "seoTitle": "Statische Website-Tools fur SEO, HTML, CSS & GitHub Pages",
+      "seoDescription": "Ein praktisches Toolkit fur statische Seiten: SEO-Tags, Schema, llms.txt, robots.txt, responsives Bild-Markup, CSS-Werte und GitHub Pages-Helfer."
     },
     "ui": {
       "tools": "Tools",
@@ -87,6 +97,8 @@
       "contact": "Kontakt",
       "language": "Sprache",
       "browseTools": "Tools ansehen",
+      "browseCollections": "Tool-Sammlungen fur typische Arbeitsablaufe",
+      "collections": "Sammlungen",
       "githubPagesTools": "GitHub Pages Tools",
       "startHere": "Einstieg",
       "whyExists": "Warum diese Seite existiert",
@@ -96,6 +108,7 @@
       "examples": "Praxisbeispiele",
       "faq": "FAQ",
       "relatedTools": "Verwandte Tools",
+      "alsoTry": "Auch ausprobieren",
       "browserOnly": "Nur im Browser",
       "privateByDefault": "Privat voreingestellt",
       "privateNote": "Dieses Tool lauft in deinem Browser. Deine Eingaben werden nicht hochgeladen.",
@@ -114,6 +127,7 @@
       "toolsYouCanUse": "{category}, die du sofort nutzen kannst",
       "questionsAbout": "Fragen zu {topic}",
       "openTool": "Tool offnen",
+      "openCollection": "Sammlung offnen",
       "output": "Ausgabe",
       "copy": "Kopieren",
       "copied": "Kopiert",
@@ -195,7 +209,13 @@
       "html-link-rel-generator": {"name": "HTML-Link-Rel-Generator", "summary": "Erzeuge Link-Tags fur preload, preconnect, dns-prefetch, canonical und alternate URLs."},
       "favicon-html-tag-generator": {"name": "Favicon-HTML-Tag-Generator", "summary": "Erzeuge Favicon- und Web-App-Icon-Tags fur statische Websites."},
       "css-clamp-calculator": {"name": "CSS-clamp()-Rechner", "summary": "Berechne responsive CSS-clamp-Werte fur Schriftgroßen und Abstaende."},
-      "css-safe-area-insets-generator": {"name": "CSS-Safe-Area-Insets-Generator", "summary": "Erzeuge CSS fur safe-area-insets auf Smartphones mit Notch oder runden Ecken."}
+      "css-safe-area-insets-generator": {"name": "CSS-Safe-Area-Insets-Generator", "summary": "Erzeuge CSS fur safe-area-insets auf Smartphones mit Notch oder runden Ecken."},
+      "llms-txt-generator": {"name": "llms.txt-Generator", "summary": "Erstelle eine llms.txt-Datei fur KI-Such- und Antwortmaschinen."},
+      "robots-txt-builder": {"name": "robots.txt-Builder", "summary": "Erstelle eine einfache robots.txt-Datei mit Sitemap- und Crawler-Regeln."},
+      "json-ld-starter-builder": {"name": "JSON-LD-Starter-Builder", "summary": "Generiere Starter-JSON-LD fur WebSite, Organization, Article, FAQ oder BreadcrumbList."},
+      "responsive-image-markup-generator": {"name": "Responsive-Image-Markup-Generator", "summary": "Erzeuge img- oder picture-Markup mit srcset, sizes, width, height und Alt-Text."},
+      "responsive-iframe-embed-generator": {"name": "Responsive-Iframe-Embed-Generator", "summary": "Generiere responsives Iframe-Embed-Markup fur Videos, Karten, Demos und Dokumentation."},
+      "github-pages-spa-404-helper": {"name": "GitHub-Pages-SPA-404-Helfer", "summary": "Erstelle einen 404.html-Fallback fur Single-Page-Apps auf GitHub Pages."}
     }
   },
   "fr": {
@@ -203,7 +223,9 @@
     "nativeName": "Francais",
     "site": {
       "tagline": "Petits outils web pour publier proprement",
-      "description": "Des outils pratiques dans le navigateur pour les balises meta, le CSS, les sites statiques et les controles avant publication."
+      "description": "Des outils pratiques dans le navigateur pour les balises meta, le CSS, les sites statiques et les controles avant publication.",
+      "seoTitle": "Outils de site statique pour le SEO, HTML, CSS & GitHub Pages",
+      "seoDescription": "Une boite a outils pratique pour les sites statiques : creez des balises SEO, schema, llms.txt, robots.txt, du balisage d'image responsive, des valeurs CSS et des aide-memoire GitHub Pages."
     },
     "ui": {
       "tools": "Outils",
@@ -217,6 +239,8 @@
       "contact": "Contact",
       "language": "Langue",
       "browseTools": "Voir les outils",
+      "browseCollections": "Collections d'outils pour les workflows courants",
+      "collections": "Collections",
       "githubPagesTools": "Outils GitHub Pages",
       "startHere": "Commencer",
       "whyExists": "Pourquoi ce site existe",
@@ -226,6 +250,7 @@
       "examples": "Exemples concrets",
       "faq": "FAQ",
       "relatedTools": "Outils lies",
+      "alsoTry": "A essayer aussi",
       "browserOnly": "Dans le navigateur",
       "privateByDefault": "Prive par defaut",
       "privateNote": "Cet outil fonctionne dans votre navigateur. Vos saisies ne sont pas envoyees.",
@@ -244,6 +269,7 @@
       "toolsYouCanUse": "{category} disponibles maintenant",
       "questionsAbout": "Questions sur {topic}",
       "openTool": "Ouvrir l'outil",
+      "openCollection": "Ouvrir la collection",
       "output": "Sortie",
       "copy": "Copier",
       "copied": "Copie",
@@ -290,7 +316,13 @@
       "html-link-rel-generator": {"name": "Generateur HTML link rel", "summary": "Generez des balises link pour preload, preconnect, dns-prefetch, canonical et alternate."},
       "favicon-html-tag-generator": {"name": "Generateur HTML favicon", "summary": "Generez des balises favicon et icones web app pour sites statiques."},
       "css-clamp-calculator": {"name": "Calculateur CSS clamp()", "summary": "Calculez des valeurs CSS clamp responsives pour typographie et espacements."},
-      "css-safe-area-insets-generator": {"name": "Generateur CSS safe-area-insets", "summary": "Generez du CSS pour les encoches et coins arrondis des telephones."}
+      "css-safe-area-insets-generator": {"name": "Generateur CSS safe-area-insets", "summary": "Generez du CSS pour les encoches et coins arrondis des telephones."},
+      "llms-txt-generator": {"name": "Generateur de fichier llms.txt", "summary": "Creez un fichier llms.txt pour les moteurs de recherche IA et de reponse."},
+      "robots-txt-builder": {"name": "Constructeur robots.txt", "summary": "Creez un fichier robots.txt simple avec regles de sitemap et de crawl."},
+      "json-ld-starter-builder": {"name": "Constructeur JSON-LD starter", "summary": "Generez du JSON-LD starter pour WebSite, Organization, Article, FAQ ou BreadcrumbList."},
+      "responsive-image-markup-generator": {"name": "Generateur de balisage d'image responsive", "summary": "Creez du balisage img ou picture avec srcset, sizes, largeur, hauteur et texte alt."},
+      "responsive-iframe-embed-generator": {"name": "Generateur d'embed iframe responsive", "summary": "Creez du balisage iframe responsive pour video, cartes, demos et documentation."},
+      "github-pages-spa-404-helper": {"name": "Aide 404 SPA GitHub Pages", "summary": "Creez un fallback 404.html pour les applications monopages sur GitHub Pages."}
     }
   },
   "es": {
@@ -298,10 +330,12 @@
     "nativeName": "Espanol",
     "site": {
       "tagline": "Pequenas herramientas web para publicar mejor",
-      "description": "Herramientas practicas en el navegador para metadatos, CSS, sitios estaticos y revisiones antes de publicar."
+      "description": "Herramientas practicas en el navegador para metadatos, CSS, sitios estaticos y revisiones antes de publicar.",
+      "seoTitle": "Herramientas para sitios estaticos: SEO, HTML, CSS y GitHub Pages",
+      "seoDescription": "Un kit practico para sitios estaticos: crea etiquetas SEO, schema, llms.txt, robots.txt, marcado de imagenes responsive, valores CSS y ayudas para GitHub Pages."
     },
     "ui": {
-      "tools": "Herramientas", "seo": "SEO", "css": "CSS", "githubPages": "GitHub Pages", "site": "Sitio", "about": "Acerca de", "privacy": "Privacidad", "terms": "Terminos", "contact": "Contacto", "language": "Idioma", "browseTools": "Ver herramientas", "githubPagesTools": "Herramientas GitHub Pages", "startHere": "Empieza aqui", "whyExists": "Por que existe", "firstRelease": "Primera version", "availableTools": "Herramientas disponibles", "useCases": "Casos de uso", "examples": "Ejemplos practicos", "faq": "FAQ", "relatedTools": "Herramientas relacionadas", "browserOnly": "Solo navegador", "privateByDefault": "Privado por defecto", "privateNote": "Esta herramienta funciona en tu navegador. Tus datos no se suben.", "useTool": "Usar herramienta", "output": "Resultado", "copy": "Copiar", "copied": "Copiado", "loadingTool": "Cargando herramienta...", "whatIs": "Que es {name}?", "howToUse": "Como usar esta herramienta", "whatUseFor": "Para que puedes usarla", "commonMistakes": "Errores comunes", "beforePublishing": "Antes de publicar", "checkOutput": "Revisar resultado", "moreCategory": "Mas {category}", "whatCollectionHelps": "En que ayuda esta coleccion", "bestFor": "Ideal para", "commonUseCases": "Casos de uso comunes", "toolsYouCanUse": "{category} que puedes usar ahora", "questionsAbout": "Preguntas sobre {topic}", "openTool": "Abrir herramienta", "forLastMile": "Para los ultimos detalles antes de publicar", "homeIntroTitle": "Arreglos practicos para sitios estaticos, blogs y trabajo front-end diario.", "homeIntroText": "Algunas tareas son pequenas para un panel completo y demasiado importantes para hacerlas de memoria. Abre una herramienta, revisa el resultado y sigue publicando.", "homeWhyTitle": "Muchos problemas pequenos de la web no son problemas de IA.", "homeWhyText": "Canonicals ausentes, favicons rotos, espaciado movil raro y vistas previas pobres necesitan una respuesta clara.", "homeProof": ["Sin subidas", "Sin cuentas", "Sin procesamiento del servidor", "Listo para hosting estatico"], "homeToolsTitle": "Herramientas pequenas con un resultado claro", "homeToolsText": "Cada herramienta produce algo que puedes revisar, copiar y usar.", "toolsPageTitle": "Pequenas herramientas web que funcionan en el navegador", "toolsPageDescription": "Genera etiquetas, limpia detalles de lanzamiento y prepara paginas estaticas sin cuenta ni subidas.", "freeWebToolsTitle": "Herramientas web gratis - jquery.app", "freeWebToolsDescription": "Herramientas de navegador para SEO, GitHub Pages, CSS y publicacion de sitios estaticos.", "redirectTitle": "Esta pagina se movio", "redirectText": "La version en ingles ahora esta en {target}.", "continue": "Continuar", "notFoundTitle": "Pagina no encontrada", "notFoundText": "La pagina puede haberse movido o la URL puede ser incorrecta.", "goHome": "Inicio"
+      "tools": "Herramientas", "seo": "SEO", "css": "CSS", "githubPages": "GitHub Pages", "site": "Sitio", "about": "Acerca de", "privacy": "Privacidad", "terms": "Terminos", "contact": "Contacto", "language": "Idioma", "collections": "Colecciones", "browseCollections": "Colecciones de herramientas para flujos comunes", "browseTools": "Ver herramientas", "githubPagesTools": "Herramientas GitHub Pages", "startHere": "Empieza aqui", "whyExists": "Por que existe", "firstRelease": "Primera version", "availableTools": "Herramientas disponibles", "useCases": "Casos de uso", "examples": "Ejemplos practicos", "faq": "FAQ", "relatedTools": "Herramientas relacionadas", "alsoTry": "Prueba tambien", "browserOnly": "Solo navegador", "privateByDefault": "Privado por defecto", "privateNote": "Esta herramienta funciona en tu navegador. Tus datos no se suben.", "useTool": "Usar herramienta", "output": "Resultado", "copy": "Copiar", "copied": "Copiado", "loadingTool": "Cargando herramienta...", "whatIs": "Que es {name}?", "howToUse": "Como usar esta herramienta", "whatUseFor": "Para que puedes usarla", "commonMistakes": "Errores comunes", "beforePublishing": "Antes de publicar", "checkOutput": "Revisar resultado", "moreCategory": "Mas {category}", "whatCollectionHelps": "En que ayuda esta coleccion", "bestFor": "Ideal para", "commonUseCases": "Casos de uso comunes", "toolsYouCanUse": "{category} que puedes usar ahora", "questionsAbout": "Preguntas sobre {topic}", "openTool": "Abrir herramienta", "openCollection": "Abrir coleccion", "forLastMile": "Para los ultimos detalles antes de publicar", "homeIntroTitle": "Arreglos practicos para sitios estaticos, blogs y trabajo front-end diario.", "homeIntroText": "Algunas tareas son pequenas para un panel completo y demasiado importantes para hacerlas de memoria. Abre una herramienta, revisa el resultado y sigue publicando.", "homeWhyTitle": "Muchos problemas pequenos de la web no son problemas de IA.", "homeWhyText": "Canonicals ausentes, favicons rotos, espaciado movil raro y vistas previas pobres necesitan una respuesta clara.", "homeProof": ["Sin subidas", "Sin cuentas", "Sin procesamiento del servidor", "Listo para hosting estatico"], "homeToolsTitle": "Herramientas pequenas con un resultado claro", "homeToolsText": "Cada herramienta produce algo que puedes revisar, copiar y usar.", "toolsPageTitle": "Pequenas herramientas web que funcionan en el navegador", "toolsPageDescription": "Genera etiquetas, limpia detalles de lanzamiento y prepara paginas estaticas sin cuenta ni subidas.", "freeWebToolsTitle": "Herramientas web gratis - jquery.app", "freeWebToolsDescription": "Herramientas de navegador para SEO, GitHub Pages, CSS y publicacion de sitios estaticos.", "redirectTitle": "Esta pagina se movio", "redirectText": "La version en ingles ahora esta en {target}.", "continue": "Continuar", "notFoundTitle": "Pagina no encontrada", "notFoundText": "La pagina puede haberse movido o la URL puede ser incorrecta.", "goHome": "Inicio"
     },
     "categories": {
       "seo": {"name": "Herramientas SEO", "description": "Herramientas para metadatos, indexacion, canonical, vistas previas sociales y revisiones de lanzamiento.", "intro": "El SEO suele frenarse justo antes de publicar: falta un canonical, una vista previa social no convence o una directiva robots queda dudosa. Estas herramientas hacen esos detalles mas faciles de revisar.", "bestFor": ["Revisar paginas estaticas antes de indexarlas.", "Crear bloques meta repetibles para blogs, docs y herramientas.", "Controlar decisiones de indexacion antes del lanzamiento."], "useCases": ["Generar etiquetas hreflang.", "Crear Open Graph y Twitter Cards.", "Preparar meta robots y checklists de lanzamiento."], "faq": [{"question": "Sustituyen una auditoria SEO?", "answer": "No. Ayudan con tareas recurrentes por pagina. Una auditoria completa necesita crawl, datos de busqueda, contenido y tecnica."}, {"question": "Un sitio estatico necesita metadatos SEO?", "answer": "Si. El hosting estatico no crea titulos, descripciones, canonical ni datos estructurados por si solo."}]},
@@ -327,7 +361,13 @@
       "html-link-rel-generator": {"name": "Generador HTML link rel", "summary": "Genera etiquetas link para preload, preconnect, dns-prefetch, canonical y alternate."},
       "favicon-html-tag-generator": {"name": "Generador HTML de favicon", "summary": "Genera etiquetas de favicon e iconos web app para sitios estaticos."},
       "css-clamp-calculator": {"name": "Calculadora CSS clamp()", "summary": "Calcula valores CSS clamp responsive para tipografia y espaciado."},
-      "css-safe-area-insets-generator": {"name": "Generador CSS safe-area-insets", "summary": "Genera CSS para areas seguras en telefonos con notch o esquinas redondeadas."}
+      "css-safe-area-insets-generator": {"name": "Generador CSS safe-area-insets", "summary": "Genera CSS para areas seguras en telefonos con notch o esquinas redondeadas."},
+      "llms-txt-generator": {"name": "Generador de llms.txt", "summary": "Crea un archivo llms.txt para motores de busqueda y respuesta de IA."},
+      "robots-txt-builder": {"name": "Constructor de robots.txt", "summary": "Crea un archivo robots.txt simple con reglas de sitemap y rastreo."},
+      "json-ld-starter-builder": {"name": "Constructor JSON-LD basico", "summary": "Genera JSON-LD basico para WebSite, Organization, Article, FAQ o BreadcrumbList."},
+      "responsive-image-markup-generator": {"name": "Generador de marcado de imagen responsive", "summary": "Crea marcado img o picture con srcset, sizes, ancho, alto y texto alt."},
+      "responsive-iframe-embed-generator": {"name": "Generador de iframe responsive", "summary": "Crea marcado iframe responsive para videos, mapas, demos y documentacion."},
+      "github-pages-spa-404-helper": {"name": "Ayudante 404 para SPA en GitHub Pages", "summary": "Crea un fallback 404.html para aplicaciones de una sola pagina en GitHub Pages."}
     }
   },
   "ja": {
@@ -335,10 +375,12 @@
     "nativeName": "日本語",
     "site": {
       "tagline": "公開前の小さなWebツール",
-      "description": "メタデータ、CSS、静的サイト、公開前チェックをブラウザで処理できる実用的なWebツール集。"
+      "description": "メタデータ、CSS、静的サイト、公開前チェックをブラウザで処理できる実用的なWebツール集。",
+      "seoTitle": "静的サイトのためのSEO・HTML・CSS・GitHub Pagesツール",
+      "seoDescription": "静的サイトのための実用的ツールキット：SEOタグ、schema、llms.txt、robots.txt、レスポンシブ画像マークアップ、CSS値、GitHub Pagesヘルパーを生成。"
     },
     "ui": {
-      "tools": "ツール", "seo": "SEO", "css": "CSS", "githubPages": "GitHub Pages", "site": "サイト", "about": "概要", "privacy": "プライバシー", "terms": "利用規約", "contact": "お問い合わせ", "language": "言語", "browseTools": "ツールを見る", "githubPagesTools": "GitHub Pagesツール", "startHere": "はじめに", "whyExists": "このサイトについて", "firstRelease": "初回リリース", "availableTools": "利用できるツール", "useCases": "用途", "examples": "使用例", "faq": "FAQ", "relatedTools": "関連ツール", "browserOnly": "ブラウザ内で実行", "privateByDefault": "入力は手元で処理", "privateNote": "このツールはブラウザで動作します。入力内容はアップロードされません。", "useTool": "ツールを使う", "output": "出力", "copy": "コピー", "copied": "コピー済み", "loadingTool": "ツールを読み込み中...", "whatIs": "{name}とは", "howToUse": "使い方", "whatUseFor": "主な用途", "commonMistakes": "よくあるミス", "beforePublishing": "公開前に", "checkOutput": "出力を確認", "moreCategory": "その他の{category}", "whatCollectionHelps": "このカテゴリでできること", "bestFor": "向いている作業", "commonUseCases": "よくある用途", "toolsYouCanUse": "今すぐ使える{category}", "questionsAbout": "{topic}のFAQ", "openTool": "ツールを開く", "forLastMile": "公開前の最後の作業に", "homeIntroTitle": "静的サイト、ブログ、日常のフロントエンド作業に使える実用的な補助ツール。", "homeIntroText": "小さすぎて大きな管理画面を開くほどではない作業でも、公開前には正確さが必要です。入力し、結果を確認し、必要な部分だけ使えます。", "homeWhyTitle": "小さなWeb作業の多くはAIでなくても解決できます。", "homeWhyText": "canonical、favicon、モバイル余白、SNSプレビューなどは、曖昧な会話より確かな出力が役立ちます。", "homeProof": ["アップロード不要", "アカウント不要", "サーバー処理なし", "静的ホスティング向け"], "homeToolsTitle": "結果が明確な小さなツール", "homeToolsText": "各ツールは確認し、コピーし、すぐ使える出力を返します。", "toolsPageTitle": "ブラウザで動く小さなWebツール", "toolsPageDescription": "タグ生成、公開前チェック、静的ページ準備をアカウントやアップロードなしで行えます。", "freeWebToolsTitle": "無料Webツール - jquery.app", "freeWebToolsDescription": "SEOタグ、GitHub Pages、CSS、静的サイト公開向けのブラウザツール。", "redirectTitle": "このページは移動しました", "redirectText": "英語版は現在 {target} にあります。", "continue": "続行", "notFoundTitle": "ページが見つかりません", "notFoundText": "ページが移動したか、URLが間違っている可能性があります。", "goHome": "ホームへ"
+      "tools": "ツール", "seo": "SEO", "css": "CSS", "githubPages": "GitHub Pages", "site": "サイト", "about": "概要", "privacy": "プライバシー", "terms": "利用規約", "contact": "お問い合わせ", "language": "言語", "collections": "コレクション", "browseCollections": "よくある作業フロー別ツールコレクション", "browseTools": "ツールを見る", "githubPagesTools": "GitHub Pagesツール", "startHere": "はじめに", "whyExists": "このサイトについて", "firstRelease": "初回リリース", "availableTools": "利用できるツール", "useCases": "用途", "examples": "使用例", "faq": "FAQ", "relatedTools": "関連ツール", "alsoTry": "こちらもお試しください", "browserOnly": "ブラウザ内で実行", "privateByDefault": "入力は手元で処理", "privateNote": "このツールはブラウザで動作します。入力内容はアップロードされません。", "useTool": "ツールを使う", "output": "出力", "copy": "コピー", "copied": "コピー済み", "loadingTool": "ツールを読み込み中...", "whatIs": "{name}とは", "howToUse": "使い方", "whatUseFor": "主な用途", "commonMistakes": "よくあるミス", "beforePublishing": "公開前に", "checkOutput": "出力を確認", "moreCategory": "その他の{category}", "whatCollectionHelps": "このカテゴリでできること", "bestFor": "向いている作業", "commonUseCases": "よくある用途", "toolsYouCanUse": "今すぐ使える{category}", "questionsAbout": "{topic}のFAQ", "openTool": "ツールを開く", "openCollection": "コレクションを開く", "forLastMile": "公開前の最後の作業に", "homeIntroTitle": "静的サイト、ブログ、日常のフロントエンド作業に使える実用的な補助ツール。", "homeIntroText": "小さすぎて大きな管理画面を開くほどではない作業でも、公開前には正確さが必要です。入力し、結果を確認し、必要な部分だけ使えます。", "homeWhyTitle": "小さなWeb作業の多くはAIでなくても解決できます。", "homeWhyText": "canonical、favicon、モバイル余白、SNSプレビューなどは、曖昧な会話より確かな出力が役立ちます。", "homeProof": ["アップロード不要", "アカウント不要", "サーバー処理なし", "静的ホスティング向け"], "homeToolsTitle": "結果が明確な小さなツール", "homeToolsText": "各ツールは確認し、コピーし、すぐ使える出力を返します。", "toolsPageTitle": "ブラウザで動く小さなWebツール", "toolsPageDescription": "タグ生成、公開前チェック、静的ページ準備をアカウントやアップロードなしで行えます。", "freeWebToolsTitle": "無料Webツール - jquery.app", "freeWebToolsDescription": "SEOタグ、GitHub Pages、CSS、静的サイト公開向けのブラウザツール。", "redirectTitle": "このページは移動しました", "redirectText": "英語版は現在 {target} にあります。", "continue": "続行", "notFoundTitle": "ページが見つかりません", "notFoundText": "ページが移動したか、URLが間違っている可能性があります。", "goHome": "ホームへ"
     },
     "categories": {
       "seo": {"name": "SEOツール", "description": "メタデータ、インデックス、canonical、SNSプレビュー、公開前チェックのためのツール。", "intro": "SEO作業は公開直前の細部で止まりがちです。canonical、SNSプレビュー、robots指定などを確認しやすい形にします。", "bestFor": ["静的ページを公開前に確認する。", "ブログ、ドキュメント、ツールページ用のメタ情報を作る。", "インデックス可否を公開前に整理する。"], "useCases": ["hreflangタグを生成する。", "Open GraphとTwitter Cardを作る。", "robots metaと公開前チェックリストを作る。"], "faq": [{"question": "SEO監査の代わりになりますか？", "answer": "いいえ。ページ単位の作業を助けるツールです。完全な監査にはクロール、検索データ、内容、技術確認が必要です。"}, {"question": "静的サイトにもSEOメタ情報は必要ですか？", "answer": "はい。静的ホスティングはタイトル、description、canonical、構造化データを自動で用意しません。"}]},
@@ -364,7 +406,13 @@
       "html-link-rel-generator": {"name": "HTML link rel生成ツール", "summary": "preload、preconnect、dns-prefetch、canonical、alternateのlinkタグを作成します。"},
       "favicon-html-tag-generator": {"name": "Favicon HTMLタグ生成ツール", "summary": "静的サイト向けfaviconとWebアプリアイコンタグを作成します。"},
       "css-clamp-calculator": {"name": "CSS clamp()計算ツール", "summary": "文字サイズや余白向けのレスポンシブなCSS clamp値を計算します。"},
-      "css-safe-area-insets-generator": {"name": "CSS safe-area-insets生成ツール", "summary": "ノッチや角丸画面向けのsafe-area CSSを生成します。"}
+      "css-safe-area-insets-generator": {"name": "CSS safe-area-insets生成ツール", "summary": "ノッチや角丸画面向けのsafe-area CSSを生成します。"},
+      "llms-txt-generator": {"name": "llms.txt生成ツール", "summary": "AI検索エンジン向けのllms.txtファイルを作成します。"},
+      "robots-txt-builder": {"name": "robots.txtビルダー", "summary": "サイトマップとクローラールール付きのrobots.txtファイルを生成します。"},
+      "json-ld-starter-builder": {"name": "JSON-LDスタータービルダー", "summary": "WebSite、Organization、Article、FAQ、BreadcrumbList用のJSON-LDを生成します。"},
+      "responsive-image-markup-generator": {"name": "レスポンシブ画像マークアップ生成ツール", "summary": "srcset、sizes、width、height、altテキスト付きのimgまたはpictureタグを生成します。"},
+      "responsive-iframe-embed-generator": {"name": "レスポンシブiframe埋め込み生成ツール", "summary": "動画、地図、デモ、ドキュメント向けのレスポンシブiframe埋め込みコードを生成します。"},
+      "github-pages-spa-404-helper": {"name": "GitHub Pages SPA 404ヘルパー", "summary": "GitHub Pages上のシングルページアプリ向けに404.htmlフォールバックを生成します。"}
     }
   },
   "nl": {
@@ -372,10 +420,12 @@
     "nativeName": "Nederlands",
     "site": {
       "tagline": "Kleine webtools voor netjes publiceren",
-      "description": "Praktische browsertools voor metadata, CSS, statische sites en controles voor publicatie."
+      "description": "Praktische browsertools voor metadata, CSS, statische sites en controles voor publicatie.",
+      "seoTitle": "Statische website tools voor SEO, HTML, CSS & GitHub Pages",
+      "seoDescription": "Een praktische toolkit voor statische sites: maak SEO-tags, schema, llms.txt, robots.txt, responsive afbeeldingsmarkup, CSS-waarden en GitHub Pages-hulpmiddelen."
     },
     "ui": {
-      "tools": "Tools", "seo": "SEO", "css": "CSS", "githubPages": "GitHub Pages", "site": "Site", "about": "Over", "privacy": "Privacy", "terms": "Voorwaarden", "contact": "Contact", "language": "Taal", "browseTools": "Bekijk tools", "githubPagesTools": "GitHub Pages tools", "startHere": "Begin hier", "whyExists": "Waarom deze site bestaat", "firstRelease": "Eerste versie", "availableTools": "Beschikbare tools", "useCases": "Gebruik", "examples": "Praktische voorbeelden", "faq": "FAQ", "relatedTools": "Gerelateerde tools", "browserOnly": "Alleen browser", "privateByDefault": "Standaard prive", "privateNote": "Deze tool draait in je browser. Je invoer wordt niet geupload.", "useTool": "Tool gebruiken", "output": "Uitvoer", "copy": "Kopieren", "copied": "Gekopieerd", "loadingTool": "Tool laden...", "whatIs": "Wat is {name}?", "howToUse": "Zo gebruik je deze tool", "whatUseFor": "Waarvoor je het kunt gebruiken", "commonMistakes": "Veelgemaakte fouten", "beforePublishing": "Voor publicatie", "checkOutput": "Controleer uitvoer", "moreCategory": "Meer {category}", "whatCollectionHelps": "Waar deze collectie bij helpt", "bestFor": "Geschikt voor", "commonUseCases": "Veelvoorkomend gebruik", "toolsYouCanUse": "{category} die je nu kunt gebruiken", "questionsAbout": "Vragen over {topic}", "openTool": "Open tool", "forLastMile": "Voor de laatste stap voor publicatie", "homeIntroTitle": "Praktische oplossingen voor statische sites, blogs en dagelijks front-endwerk.", "homeIntroText": "Sommige taken zijn te klein voor een dashboard en te belangrijk om uit het hoofd te doen. Open een tool, controleer de uitvoer en ga verder.", "homeWhyTitle": "Veel kleine webproblemen zijn geen AI-problemen.", "homeWhyText": "Ontbrekende canonicals, faviconpaden, mobiele spacing en social previews hebben vooral duidelijke uitvoer nodig.", "homeProof": ["Geen uploads", "Geen account", "Geen serververwerking", "Klaar voor statische hosting"], "homeToolsTitle": "Kleine tools met een duidelijk resultaat", "homeToolsText": "Elke tool geeft uitvoer die je kunt controleren, kopieren en gebruiken.", "toolsPageTitle": "Kleine webtools die in je browser draaien", "toolsPageDescription": "Maak tags, controleer launchdetails en bereid statische pagina's voor zonder account of upload.", "freeWebToolsTitle": "Gratis webtools - jquery.app", "freeWebToolsDescription": "Browsertools voor SEO-tags, GitHub Pages, CSS en statische publicatie.", "redirectTitle": "Deze pagina is verplaatst", "redirectText": "De Engelse versie staat nu op {target}.", "continue": "Doorgaan", "notFoundTitle": "Pagina niet gevonden", "notFoundText": "De pagina is mogelijk verplaatst of de URL klopt niet.", "goHome": "Home"
+      "tools": "Tools", "seo": "SEO", "css": "CSS", "githubPages": "GitHub Pages", "site": "Site", "about": "Over", "privacy": "Privacy", "terms": "Voorwaarden", "contact": "Contact", "language": "Taal", "collections": "Collecties", "browseCollections": "Toolcollecties voor veelvoorkomende workflows", "browseTools": "Bekijk tools", "githubPagesTools": "GitHub Pages tools", "startHere": "Begin hier", "whyExists": "Waarom deze site bestaat", "firstRelease": "Eerste versie", "availableTools": "Beschikbare tools", "useCases": "Gebruik", "examples": "Praktische voorbeelden", "faq": "FAQ", "relatedTools": "Gerelateerde tools", "alsoTry": "Probeer ook", "browserOnly": "Alleen browser", "privateByDefault": "Standaard prive", "privateNote": "Deze tool draait in je browser. Je invoer wordt niet geupload.", "useTool": "Tool gebruiken", "output": "Uitvoer", "copy": "Kopieren", "copied": "Gekopieerd", "loadingTool": "Tool laden...", "whatIs": "Wat is {name}?", "howToUse": "Zo gebruik je deze tool", "whatUseFor": "Waarvoor je het kunt gebruiken", "commonMistakes": "Veelgemaakte fouten", "beforePublishing": "Voor publicatie", "checkOutput": "Controleer uitvoer", "moreCategory": "Meer {category}", "whatCollectionHelps": "Waar deze collectie bij helpt", "bestFor": "Geschikt voor", "commonUseCases": "Veelvoorkomend gebruik", "toolsYouCanUse": "{category} die je nu kunt gebruiken", "questionsAbout": "Vragen over {topic}", "openTool": "Open tool", "openCollection": "Open collectie", "forLastMile": "Voor de laatste stap voor publicatie", "homeIntroTitle": "Praktische oplossingen voor statische sites, blogs en dagelijks front-endwerk.", "homeIntroText": "Sommige taken zijn te klein voor een dashboard en te belangrijk om uit het hoofd te doen. Open een tool, controleer de uitvoer en ga verder.", "homeWhyTitle": "Veel kleine webproblemen zijn geen AI-problemen.", "homeWhyText": "Ontbrekende canonicals, faviconpaden, mobiele spacing en social previews hebben vooral duidelijke uitvoer nodig.", "homeProof": ["Geen uploads", "Geen account", "Geen serververwerking", "Klaar voor statische hosting"], "homeToolsTitle": "Kleine tools met een duidelijk resultaat", "homeToolsText": "Elke tool geeft uitvoer die je kunt controleren, kopieren en gebruiken.", "toolsPageTitle": "Kleine webtools die in je browser draaien", "toolsPageDescription": "Maak tags, controleer launchdetails en bereid statische pagina's voor zonder account of upload.", "freeWebToolsTitle": "Gratis webtools - jquery.app", "freeWebToolsDescription": "Browsertools voor SEO-tags, GitHub Pages, CSS en statische publicatie.", "redirectTitle": "Deze pagina is verplaatst", "redirectText": "De Engelse versie staat nu op {target}.", "continue": "Doorgaan", "notFoundTitle": "Pagina niet gevonden", "notFoundText": "De pagina is mogelijk verplaatst of de URL klopt niet.", "goHome": "Home"
     },
     "categories": {
       "seo": {"name": "SEO-tools", "description": "Tools voor metadata, indexering, canonical URL's, social previews en launchchecks.", "intro": "SEO-werk loopt vaak vast vlak voor publicatie: een ontbrekende canonical, zwakke social preview of twijfelachtige robots-instructie. Deze tools maken die details controleerbaar.", "bestFor": ["Statische pagina's controleren voor indexering.", "Herbruikbare metablokken maken voor blogs, docs en tools.", "Indexeringskeuzes voor een launch nalopen."], "useCases": ["Hreflang-tags genereren.", "Open Graph en Twitter Card markup maken.", "Robots meta en launchchecklists voorbereiden."], "faq": [{"question": "Vervangen deze tools een SEO-audit?", "answer": "Nee. Ze helpen bij terugkerende paginataken. Een audit heeft ook crawlgegevens, zoekdata, content en techniek nodig."}, {"question": "Heeft een statische site SEO-metadata nodig?", "answer": "Ja. Statische hosting maakt niet automatisch titels, descriptions, canonicals of structured data."}]},
@@ -401,7 +451,13 @@
       "html-link-rel-generator": {"name": "HTML link rel generator", "summary": "Genereer link-tags voor preload, preconnect, dns-prefetch, canonical en alternate."},
       "favicon-html-tag-generator": {"name": "Favicon HTML taggenerator", "summary": "Genereer favicon- en web app icon-tags voor statische websites."},
       "css-clamp-calculator": {"name": "CSS clamp() calculator", "summary": "Bereken responsive CSS clamp-waarden voor lettergroottes en spacing."},
-      "css-safe-area-insets-generator": {"name": "CSS safe-area-insets generator", "summary": "Genereer CSS voor safe-area insets op telefoons met notch of ronde hoeken."}
+      "css-safe-area-insets-generator": {"name": "CSS safe-area-insets generator", "summary": "Genereer CSS voor safe-area insets op telefoons met notch of ronde hoeken."},
+      "llms-txt-generator": {"name": "llms.txt-generator", "summary": "Maak een llms.txt-bestand voor AI-zoek- en antwoordmachines."},
+      "robots-txt-builder": {"name": "robots.txt-bouwer", "summary": "Genereer een eenvoudig robots.txt-bestand met sitemap- en crawlerregels."},
+      "json-ld-starter-builder": {"name": "JSON-LD-starterbouwer", "summary": "Genereer start-JSON-LD voor WebSite, Organization, Article, FAQ of BreadcrumbList."},
+      "responsive-image-markup-generator": {"name": "Responsive afbeeldingsmarkupgenerator", "summary": "Genereer img- of picture-markup met srcset, sizes, breedte, hoogte en alt-tekst."},
+      "responsive-iframe-embed-generator": {"name": "Responsive iframe-embedgenerator", "summary": "Genereer responsive iframe-embedmarkup voor video's, kaarten, demo's en documentatie."},
+      "github-pages-spa-404-helper": {"name": "GitHub Pages SPA 404-helper", "summary": "Genereer een 404.html-fallback voor single-page apps op GitHub Pages."}
     }
   }
 }
