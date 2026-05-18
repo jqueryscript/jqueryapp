@@ -3,10 +3,10 @@
     "name": "English",
     "nativeName": "English",
     "site": {
-      "tagline": "Small web tools for publishing",
-      "description": "Practical browser tools for metadata, CSS, static sites, and launch checks. No accounts, no uploads, no heavy workflow.",
-      "seoTitle": "Static Website Tools for SEO, HTML, CSS & GitHub Pages",
-      "seoDescription": "A practical toolkit for static sites: create SEO tags, schema, llms.txt, robots.txt, responsive image markup, CSS values, and GitHub Pages helpers."
+      "tagline": "Small web tools for building, designing, and publishing",
+      "description": "Practical browser tools for web developers, designers, and bloggers. No accounts, no uploads, no AI dependency.",
+      "seoTitle": "Small Web Tools for Building, Designing & Publishing",
+      "seoDescription": "Free browser tools for web developers, designers, and bloggers: CSS generators, SEO helpers, HTML checkers, GitHub Pages utilities, and more."
     },
     "ui": {
       "tools": "Tools",
@@ -215,7 +215,12 @@
       "json-ld-starter-builder": {"name": "JSON-LD-Starter-Builder", "summary": "Generiere Starter-JSON-LD fur WebSite, Organization, Article, FAQ oder BreadcrumbList."},
       "responsive-image-markup-generator": {"name": "Responsive-Image-Markup-Generator", "summary": "Erzeuge img- oder picture-Markup mit srcset, sizes, width, height und Alt-Text."},
       "responsive-iframe-embed-generator": {"name": "Responsive-Iframe-Embed-Generator", "summary": "Generiere responsives Iframe-Embed-Markup fur Videos, Karten, Demos und Dokumentation."},
-      "github-pages-spa-404-helper": {"name": "GitHub-Pages-SPA-404-Helfer", "summary": "Erstelle einen 404.html-Fallback fur Single-Page-Apps auf GitHub Pages."}
+      "github-pages-spa-404-helper": {"name": "GitHub-Pages-SPA-404-Helfer", "summary": "Erstelle einen 404.html-Fallback fur Single-Page-Apps auf GitHub Pages."},
+      "css-color-contrast-checker": {"name": "CSS-Farbkontrast-Prufer", "summary": "Prufe das Kontrastverhaltnis zwischen zwei Farben gegenuber den WCAG-Richtlinien."},
+      "css-box-shadow-builder": {"name": "CSS-Box-Shadow-Builder", "summary": "Erstelle box-shadow CSS visuell durch Anpassen von Offset, Blur, Spread und Farbe."},
+      "css-flexbox-generator": {"name": "CSS-Flexbox-Generator", "summary": "Generiere Flexbox-Container-CSS und Beispiel-HTML aus ausgewahlten Flex-Eigenschaften."},
+      "css-border-radius-builder": {"name": "CSS-Border-Radius-Builder", "summary": "Setze abgerundete Ecken einzeln und generiere die border-radius CSS-Deklaration."},
+      "url-slug-generator": {"name": "URL-Slug-Generator", "summary": "Wandle Titel in saubere, kleingeschriebene, mit Bindestrichen getrennte URL-Slugs um."}
     }
   },
   "fr": {
@@ -322,7 +327,12 @@
       "json-ld-starter-builder": {"name": "Constructeur JSON-LD starter", "summary": "Generez du JSON-LD starter pour WebSite, Organization, Article, FAQ ou BreadcrumbList."},
       "responsive-image-markup-generator": {"name": "Generateur de balisage d'image responsive", "summary": "Creez du balisage img ou picture avec srcset, sizes, largeur, hauteur et texte alt."},
       "responsive-iframe-embed-generator": {"name": "Generateur d'embed iframe responsive", "summary": "Creez du balisage iframe responsive pour video, cartes, demos et documentation."},
-      "github-pages-spa-404-helper": {"name": "Aide 404 SPA GitHub Pages", "summary": "Creez un fallback 404.html pour les applications monopages sur GitHub Pages."}
+      "github-pages-spa-404-helper": {"name": "Aide 404 SPA GitHub Pages", "summary": "Creez un fallback 404.html pour les applications monopages sur GitHub Pages."},
+      "css-color-contrast-checker": {"name": "Verificateur de contraste CSS", "summary": "Verifiez le rapport de contraste entre deux couleurs selon les normes WCAG."},
+      "css-box-shadow-builder": {"name": "Constructeur box-shadow CSS", "summary": "Creez visuellement des declarations box-shadow en ajustant decalage, flou, etendue et couleur."},
+      "css-flexbox-generator": {"name": "Generateur CSS Flexbox", "summary": "Generez du CSS flexbox et un squelette HTML a partir des proprietes flex choisies."},
+      "css-border-radius-builder": {"name": "Constructeur border-radius CSS", "summary": "Definissez chaque coin arrondi et generez la declaration CSS border-radius."},
+      "url-slug-generator": {"name": "Generateur de slug URL", "summary": "Convertissez des titres en slugs propres, en minuscules et separes par des tirets."}
     }
   },
   "es": {
@@ -367,7 +377,12 @@
       "json-ld-starter-builder": {"name": "Constructor JSON-LD basico", "summary": "Genera JSON-LD basico para WebSite, Organization, Article, FAQ o BreadcrumbList."},
       "responsive-image-markup-generator": {"name": "Generador de marcado de imagen responsive", "summary": "Crea marcado img o picture con srcset, sizes, ancho, alto y texto alt."},
       "responsive-iframe-embed-generator": {"name": "Generador de iframe responsive", "summary": "Crea marcado iframe responsive para videos, mapas, demos y documentacion."},
-      "github-pages-spa-404-helper": {"name": "Ayudante 404 para SPA en GitHub Pages", "summary": "Crea un fallback 404.html para aplicaciones de una sola pagina en GitHub Pages."}
+      "github-pages-spa-404-helper": {"name": "Ayudante 404 para SPA en GitHub Pages", "summary": "Crea un fallback 404.html para aplicaciones de una sola pagina en GitHub Pages."},
+      "css-color-contrast-checker": {"name": "Comprobador de contraste CSS", "summary": "Comprueba la relacion de contraste entre dos colores segun las normas WCAG."},
+      "css-box-shadow-builder": {"name": "Constructor box-shadow CSS", "summary": "Construye visualmente declaraciones box-shadow ajustando desplazamiento, desenfoque, extension y color."},
+      "css-flexbox-generator": {"name": "Generador CSS Flexbox", "summary": "Genera CSS flexbox y esqueleto HTML a partir de las propiedades flex seleccionadas."},
+      "css-border-radius-builder": {"name": "Constructor border-radius CSS", "summary": "Define cada esquina redondeada y genera la declaracion CSS border-radius."},
+      "url-slug-generator": {"name": "Generador de slug URL", "summary": "Convierte titulos en slugs limpios, en minusculas y separados por guiones."}
     }
   },
   "ja": {
@@ -412,7 +427,12 @@
       "json-ld-starter-builder": {"name": "JSON-LDスタータービルダー", "summary": "WebSite、Organization、Article、FAQ、BreadcrumbList用のJSON-LDを生成します。"},
       "responsive-image-markup-generator": {"name": "レスポンシブ画像マークアップ生成ツール", "summary": "srcset、sizes、width、height、altテキスト付きのimgまたはpictureタグを生成します。"},
       "responsive-iframe-embed-generator": {"name": "レスポンシブiframe埋め込み生成ツール", "summary": "動画、地図、デモ、ドキュメント向けのレスポンシブiframe埋め込みコードを生成します。"},
-      "github-pages-spa-404-helper": {"name": "GitHub Pages SPA 404ヘルパー", "summary": "GitHub Pages上のシングルページアプリ向けに404.htmlフォールバックを生成します。"}
+      "github-pages-spa-404-helper": {"name": "GitHub Pages SPA 404ヘルパー", "summary": "GitHub Pages上のシングルページアプリ向けに404.htmlフォールバックを生成します。"},
+      "css-color-contrast-checker": {"name": "CSSカラーコントラストチェッカー", "summary": "2色間のコントラスト比をWCAG基準でチェックします。"},
+      "css-box-shadow-builder": {"name": "CSSボックスシャドウビルダー", "summary": "オフセット、ぼかし、広がり、色を調整してbox-shadow CSSを視覚的に作成します。"},
+      "css-flexbox-generator": {"name": "CSSフレックスボックスジェネレーター", "summary": "フレックスプロパティを選択してflexboxコンテナCSSとHTMLスケルトンを生成します。"},
+      "css-border-radius-builder": {"name": "CSSボーダーラジアスビルダー", "summary": "各コーナーの丸みを設定し、border-radius CSS宣言を生成します。"},
+      "url-slug-generator": {"name": "URLスラッグジェネレーター", "summary": "タイトルをクリーンな小文字のハイフン区切りURLスラッグに変換します。"}
     }
   },
   "nl": {
@@ -457,7 +477,12 @@
       "json-ld-starter-builder": {"name": "JSON-LD-starterbouwer", "summary": "Genereer start-JSON-LD voor WebSite, Organization, Article, FAQ of BreadcrumbList."},
       "responsive-image-markup-generator": {"name": "Responsive afbeeldingsmarkupgenerator", "summary": "Genereer img- of picture-markup met srcset, sizes, breedte, hoogte en alt-tekst."},
       "responsive-iframe-embed-generator": {"name": "Responsive iframe-embedgenerator", "summary": "Genereer responsive iframe-embedmarkup voor video's, kaarten, demo's en documentatie."},
-      "github-pages-spa-404-helper": {"name": "GitHub Pages SPA 404-helper", "summary": "Genereer een 404.html-fallback voor single-page apps op GitHub Pages."}
+      "github-pages-spa-404-helper": {"name": "GitHub Pages SPA 404-helper", "summary": "Genereer een 404.html-fallback voor single-page apps op GitHub Pages."},
+      "css-color-contrast-checker": {"name": "CSS Kleurcontrast Checker", "summary": "Controleer de contrastverhouding tussen twee kleuren tegen WCAG-richtlijnen."},
+      "css-box-shadow-builder": {"name": "CSS Box Shadow Builder", "summary": "Bouw visueel box-shadow CSS door offset, blur, spread en kleur aan te passen."},
+      "css-flexbox-generator": {"name": "CSS Flexbox Generator", "summary": "Genereer flexbox container CSS en HTML-skelet uit geselecteerde flex-eigenschappen."},
+      "css-border-radius-builder": {"name": "CSS Border Radius Builder", "summary": "Stel afgeronde hoeken afzonderlijk in en genereer de border-radius CSS-declaratie."},
+      "url-slug-generator": {"name": "URL Slug Generator", "summary": "Zet titels om in schone, kleine letters, met koppeltekens gescheiden URL-slugs."}
     }
   }
 }

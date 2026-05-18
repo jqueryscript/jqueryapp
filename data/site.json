@@ -4,6 +4,6 @@
   "defaultLocale": "en",
   "locales": ["en", "de", "fr", "es", "ja", "nl"],
   "siteName": "jquery.app",
-  "tagline": "Small web tools for publishing",
-  "description": "Practical browser tools for metadata, CSS, static sites, and launch checks. No accounts, no uploads, no heavy workflow."
+  "tagline": "Small web tools for building, designing, and publishing",
+  "description": "Practical browser tools for web developers, designers, and bloggers. No accounts, no uploads, no AI dependency."
 }

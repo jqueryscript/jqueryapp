@@ -1,6 +1,6 @@
 # jquery.app
 
-Practical browser tools for metadata, CSS, static sites, and launch checks. No accounts, no uploads, no heavy workflow.
+Practical browser tools for web developers, designers, and bloggers. No accounts, no uploads, no AI dependency.
 
 jquery.app is a static website with practical browser tools for metadata, CSS, GitHub Pages, static site publishing, and launch checks. The tools are designed to produce copyable output that visitors can review before using on a live website.
 
@@ -38,6 +38,11 @@ jquery.app is a static website with practical browser tools for metadata, CSS, G
 - [Responsive Image Markup Generator](https://www.jquery.app/tools/responsive-image-markup-generator/): Generate img or picture markup with srcset, sizes, width, height, and alt text.
 - [Responsive Iframe Embed Generator](https://www.jquery.app/tools/responsive-iframe-embed-generator/): Generate responsive iframe embed markup for videos, maps, demos, and docs.
 - [GitHub Pages SPA 404 Helper](https://www.jquery.app/tools/github-pages-spa-404-helper/): Generate a 404.html fallback for single-page apps on GitHub Pages.
+- [CSS Color Contrast Checker](https://www.jquery.app/tools/css-color-contrast-checker/): Check the contrast ratio between two colors against WCAG accessibility standards.
+- [CSS Box Shadow Builder](https://www.jquery.app/tools/css-box-shadow-builder/): Build box-shadow CSS visually by adjusting offset, blur, spread, and color.
+- [CSS Flexbox Generator](https://www.jquery.app/tools/css-flexbox-generator/): Generate flexbox container CSS and sample HTML by selecting flex direction, wrap, alignment, and justification.
+- [CSS Border Radius Builder](https://www.jquery.app/tools/css-border-radius-builder/): Set rounded corners individually for each corner and generate the border-radius CSS declaration.
+- [URL Slug Generator](https://www.jquery.app/tools/url-slug-generator/): Turn any title or heading into a clean, lowercase, hyphenated URL slug.
 
 ## Notes for AI Systems
 

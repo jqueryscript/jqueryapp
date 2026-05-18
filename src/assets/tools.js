@@ -88,6 +88,31 @@ function mountTool(root, config) {
   update();
 }
 
+function hexToRgb(hex) {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16)
+  } : { r: 0, g: 0, b: 0 };
+}
+
+function relativeLuminance({ r, g, b }) {
+  const [rs, gs, bs] = [r, g, b].map((c) => {
+    const s = c / 255;
+    return s <= 0.03928 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4);
+  });
+  return 0.2126 * rs + 0.7152 * gs + 0.0722 * bs;
+}
+
+function contrastRatio(hex1, hex2) {
+  const lum1 = relativeLuminance(hexToRgb(hex1));
+  const lum2 = relativeLuminance(hexToRgb(hex2));
+  const lighter = Math.max(lum1, lum2);
+  const darker = Math.min(lum1, lum2);
+  return (lighter + 0.05) / (darker + 0.05);
+}
+
 const tools = {
   "hreflang-tag-generator": {
     form: `
@@ -707,6 +732,216 @@ const tools = {
 </body>
 </html>`;
       return { output };
+    }
+  },
+
+  "css-color-contrast-checker": {
+    form: `
+      <div class="field-grid">
+        ${field({ id: "fgColor", label: "Foreground color", value: "#333333", type: "color" })}
+        ${field({ id: "bgColor", label: "Background color", value: "#ffffff", type: "color" })}
+      </div>`,
+    generate(root) {
+      const fg = root.querySelector("#fgColor").value;
+      const bg = root.querySelector("#bgColor").value;
+      const ratio = contrastRatio(fg, bg);
+      const lines = [
+        `Contrast ratio: ${ratio.toFixed(2)}:1`,
+        "",
+        "WCAG AA:",
+        `  Normal text (4.5:1): ${ratio >= 4.5 ? "PASS" : "FAIL"}`,
+        `  Large text (3:1):    ${ratio >= 3 ? "PASS" : "FAIL"}`,
+        "",
+        "WCAG AAA:",
+        `  Normal text (7:1):   ${ratio >= 7 ? "PASS" : "FAIL"}`,
+        `  Large text (4.5:1):  ${ratio >= 4.5 ? "PASS" : "FAIL"}`
+      ].join("\n");
+      const preview = `<div style="padding:1rem;background-color:${bg};color:${fg};font-size:1.25rem;border-radius:4px;border:1px solid #ddd">Sample Text</div>`;
+      return { output: lines, preview };
+    }
+  },
+
+  "css-box-shadow-builder": {
+    form: `
+      <div class="field-grid">
+        ${field({ id: "ox", label: "Offset-X", value: "0", type: "number" })}
+        ${field({ id: "oy", label: "Offset-Y", value: "4", type: "number" })}
+        ${field({ id: "blur", label: "Blur", value: "8", type: "number" })}
+        ${field({ id: "spread", label: "Spread", value: "0", type: "number" })}
+        ${field({ id: "color", label: "Color", value: "rgba(0,0,0,0.15)" })}
+        ${checkbox({ id: "inset", label: "Inset" })}
+      </div>`,
+    generate(root) {
+      const ox = root.querySelector("#ox").value || "0";
+      const oy = root.querySelector("#oy").value || "0";
+      const blur = root.querySelector("#blur").value || "0";
+      const spread = root.querySelector("#spread").value || "0";
+      const color = root.querySelector("#color").value.trim() || "rgba(0,0,0,0.15)";
+      const inset = root.querySelector("#inset").checked ? "inset " : "";
+      const css = `box-shadow: ${inset}${ox}px ${oy}px ${blur}px ${spread}px ${color};`;
+      const preview = `<div style="width:200px;height:120px;border-radius:8px;background:#fff;${css}margin:1rem auto;border:1px solid #e5e7eb"></div>`;
+      return { output: css, preview };
+    }
+  },
+
+  "css-flexbox-generator": {
+    form: `
+      <div class="field-grid">
+        ${select({
+          id: "fd",
+          label: "flex-direction",
+          value: "row",
+          options: [
+            { label: "row", value: "row" },
+            { label: "row-reverse", value: "row-reverse" },
+            { label: "column", value: "column" },
+            { label: "column-reverse", value: "column-reverse" }
+          ]
+        })}
+        ${select({
+          id: "fw",
+          label: "flex-wrap",
+          value: "nowrap",
+          options: [
+            { label: "nowrap", value: "nowrap" },
+            { label: "wrap", value: "wrap" },
+            { label: "wrap-reverse", value: "wrap-reverse" }
+          ]
+        })}
+        ${select({
+          id: "jc",
+          label: "justify-content",
+          value: "flex-start",
+          options: [
+            { label: "flex-start", value: "flex-start" },
+            { label: "center", value: "center" },
+            { label: "flex-end", value: "flex-end" },
+            { label: "space-between", value: "space-between" },
+            { label: "space-around", value: "space-around" },
+            { label: "space-evenly", value: "space-evenly" }
+          ]
+        })}
+        ${select({
+          id: "ai",
+          label: "align-items",
+          value: "stretch",
+          options: [
+            { label: "stretch", value: "stretch" },
+            { label: "flex-start", value: "flex-start" },
+            { label: "center", value: "center" },
+            { label: "flex-end", value: "flex-end" },
+            { label: "baseline", value: "baseline" }
+          ]
+        })}
+      </div>`,
+    generate(root) {
+      const fd = root.querySelector("#fd").value;
+      const fw = root.querySelector("#fw").value;
+      const jc = root.querySelector("#jc").value;
+      const ai = root.querySelector("#ai").value;
+      const css = `display: flex;\nflex-direction: ${fd};\nflex-wrap: ${fw};\njustify-content: ${jc};\nalign-items: ${ai};`;
+      const html = `<div class="flex-container">\n  <div>Item 1</div>\n  <div>Item 2</div>\n  <div>Item 3</div>\n</div>`;
+      const preview = `<div style="display:flex;flex-direction:${fd};flex-wrap:${fw};justify-content:${jc};align-items:${ai};gap:8px;padding:8px;border:1px solid #e5e7eb;border-radius:4px;min-height:60px"><div style="background:#ef4444;color:#fff;padding:12px 16px;border-radius:4px;font-weight:700">1</div><div style="background:#3b82f6;color:#fff;padding:12px 16px;border-radius:4px;font-weight:700">2</div><div style="background:#22c55e;color:#fff;padding:12px 16px;border-radius:4px;font-weight:700">3</div></div>`;
+      return { output: `${css}\n\n<!-- HTML -->\n${html}`, preview };
+    }
+  },
+
+  "css-border-radius-builder": {
+    form: `
+      <div class="field-grid">
+        <label class="check-row">
+          <input id="uniform" type="checkbox" onchange="var c=document.getElementById('corner-fields'),u=document.getElementById('uniform-field');c.style.display=this.checked?'none':'';u.style.display=this.checked?'':'none';">
+          <span>Use uniform value</span>
+        </label>
+        <div id="uniform-field" style="display:none">
+          <div class="field">
+            <label for="radius">Border radius</label>
+            <div style="display:flex;gap:4px">
+              <input id="radius" type="number" value="8" style="flex:1">
+              <select id="radius-unit">
+                <option value="px" selected>px</option>
+                <option value="rem">rem</option>
+                <option value="%">%</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div id="corner-fields">
+          <div class="field">
+            <label for="tl">Top-left</label>
+            <div style="display:flex;gap:4px">
+              <input id="tl" type="number" value="8" style="flex:1">
+              <select id="tl-unit">
+                <option value="px" selected>px</option>
+                <option value="rem">rem</option>
+                <option value="%">%</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="tr">Top-right</label>
+            <div style="display:flex;gap:4px">
+              <input id="tr" type="number" value="8" style="flex:1">
+              <select id="tr-unit">
+                <option value="px" selected>px</option>
+                <option value="rem">rem</option>
+                <option value="%">%</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="br">Bottom-right</label>
+            <div style="display:flex;gap:4px">
+              <input id="br" type="number" value="8" style="flex:1">
+              <select id="br-unit">
+                <option value="px" selected>px</option>
+                <option value="rem">rem</option>
+                <option value="%">%</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="bl">Bottom-left</label>
+            <div style="display:flex;gap:4px">
+              <input id="bl" type="number" value="8" style="flex:1">
+              <select id="bl-unit">
+                <option value="px" selected>px</option>
+                <option value="rem">rem</option>
+                <option value="%">%</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>`,
+    generate(root) {
+      const uniform = root.querySelector("#uniform").checked;
+      let css;
+      if (uniform) {
+        const v = root.querySelector("#radius").value || "0";
+        const u = root.querySelector("#radius-unit").value;
+        css = `border-radius: ${v}${u};`;
+      } else {
+        css = `border-radius: ${root.querySelector("#tl").value || "0"}${root.querySelector("#tl-unit").value} ${root.querySelector("#tr").value || "0"}${root.querySelector("#tr-unit").value} ${root.querySelector("#br").value || "0"}${root.querySelector("#br-unit").value} ${root.querySelector("#bl").value || "0"}${root.querySelector("#bl-unit").value};`;
+      }
+      const preview = `<div style="width:200px;height:120px;background:linear-gradient(135deg,#6366f1,#a855f7);${css}margin:1rem auto"></div>`;
+      return { output: css, preview };
+    }
+  },
+
+  "url-slug-generator": {
+    form: `
+      <div class="field-grid">
+        ${textarea({ id: "slugSource", label: "Title or heading", value: "How to Build a Static Website with GitHub Pages", full: true })}
+      </div>`,
+    generate(root) {
+      const input = root.querySelector("#slugSource").value.trim();
+      const slug = input
+        .toLowerCase()
+        .replace(/[^a-z0-9\s-]/g, "")
+        .replace(/[\s_]+/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-+|-+$/g, "");
+      return { output: slug || "(enter text to generate a slug)" };
     }
   }
 };

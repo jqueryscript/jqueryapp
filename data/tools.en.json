@@ -782,5 +782,230 @@
         "answer": "Usually no. A normal static site should publish real HTML files for important pages instead of routing everything through a fallback."
       }
     ]
+  },
+  {
+    "id": "css-color-contrast-checker",
+    "name": "CSS Color Contrast Checker",
+    "category": "css",
+    "summary": "Check the contrast ratio between two colors against WCAG accessibility standards.",
+    "description": "Enter a foreground and background color, and see the contrast ratio with WCAG AA and AAA pass/fail results for normal and large text. Runs entirely in your browser.",
+    "keywords": ["color contrast checker", "wcag contrast", "accessibility checker", "color accessibility"],
+    "whatIs": "WCAG contrast ratio measures the luminance difference between two colors. A ratio of 4.5:1 meets the AA standard for normal text, and 7:1 meets AAA. These thresholds help ensure that people with low vision, color vision deficiency, or who are reading on a screen in difficult lighting can still read the content. This tool calculates the precise ratio from the hex values you enter and shows whether the combination passes the level you need, helping designers and developers check color combinations before publishing.",
+    "howToUse": [
+      "Enter the foreground color using a hex code, RGB value, or color picker.",
+      "Enter the background color the same way.",
+      "Read the contrast ratio result and the WCAG AA and AAA pass/fail indicators for normal text and large text.",
+      "Adjust either color until the ratio meets your target accessibility level."
+    ],
+    "useCases": [
+      "Check whether body text on a light background meets WCAG AA readability standards.",
+      "Validate brand color combinations across buttons, badges, and UI components.",
+      "Prepare accessible design specs before handing off to development."
+    ],
+    "examples": [
+      {
+        "title": "Button text on brand color",
+        "text": "A designer picks a brand blue background for a primary button and needs white text. The tool confirms the contrast ratio meets AA for normal text or suggests a darker shade if it does not."
+      },
+      {
+        "title": "Body text on a custom background",
+        "text": "A landing page uses a light gray section background. The tool checks whether the default dark gray body text stays readable at the AA level."
+      }
+    ],
+    "mistakes": [
+      "Relying on visual judgment instead of a measured ratio, which can miss contrast problems.",
+      "Testing only on a bright screen in a well-lit room where low-contrast text may look acceptable.",
+      "Forgetting that large text passes WCAG AA at a lower ratio (3:1) than normal text (4.5:1)."
+    ],
+    "faq": [
+      {
+        "question": "What is a good contrast ratio?",
+        "answer": "For normal text, aim for at least 4.5:1 (WCAG AA) or 7:1 (WCAG AAA). For large text above 18px or 14px bold, 3:1 meets AA."
+      },
+      {
+        "question": "Does WCAG apply to decorative text?",
+        "answer": "WCAG applies to information-bearing text. Purely decorative text that carries no meaning and is not part of a user interface element does not need to meet contrast thresholds."
+      }
+    ]
+  },
+  {
+    "id": "css-box-shadow-builder",
+    "name": "CSS Box Shadow Builder",
+    "category": "css",
+    "summary": "Build box-shadow CSS visually by adjusting offset, blur, spread, and color.",
+    "description": "Adjust horizontal and vertical offset, blur radius, spread, color, and inset to generate a clean box-shadow declaration. See a live preview of the shadow as you build it.",
+    "keywords": ["box shadow generator", "css shadow", "drop shadow css", "box-shadow builder"],
+    "whatIs": "box-shadow is one of the most commonly used CSS properties for adding depth and elevation to elements, but its multi-value syntax can be confusing, especially when combining offset, blur, spread, color, and the inset keyword. This tool makes the property visual by showing a live preview as you adjust each value, so you can see exactly how the shadow behaves before adding it to your stylesheet.",
+    "howToUse": [
+      "Adjust the horizontal and vertical offset to move the shadow position.",
+      "Set the blur radius and spread to control softness and size.",
+      "Pick a shadow color and toggle inset if the shadow should appear inside the element.",
+      "Copy the generated CSS declaration and paste it into your stylesheet."
+    ],
+    "useCases": [
+      "Add subtle elevation to cards, modals, and dropdown menus.",
+      "Create inset pressed effects for buttons and form fields.",
+      "Build layered shadows by combining multiple box-shadow values for realistic depth."
+    ],
+    "examples": [
+      {
+        "title": "Subtle card shadow",
+        "text": "A card component needs a light box-shadow to lift it off the page. A small offset and blur with a low-opacity black creates a clean material-style shadow."
+      },
+      {
+        "title": "Inset form field shadow",
+        "text": "A text input can use an inset shadow to suggest depth inside the field. The tool toggles the inset keyword so the shadow renders inside the element border."
+      }
+    ],
+    "mistakes": [
+      "Forgetting to add a color value, which can cause the shadow to render as black or inherit unexpected browser defaults.",
+      "Using a blur radius that is too large, making the shadow nearly invisible on small elements.",
+      "Not checking that the inset keyword produces the expected inner shadow behavior on the target element."
+    ],
+    "faq": [
+      {
+        "question": "What does the spread value do?",
+        "answer": "Spread expands or contracts the shadow size. A positive spread makes the shadow larger, while a negative spread shrinks it. Zero spread keeps the shadow the same size as the element."
+      },
+      {
+        "question": "How do I add multiple shadows?",
+        "answer": "Separate each shadow declaration with a comma. The builder can be used once per shadow, then you combine the values in your stylesheet."
+      }
+    ]
+  },
+  {
+    "id": "css-flexbox-generator",
+    "name": "CSS Flexbox Generator",
+    "category": "css",
+    "summary": "Generate flexbox container CSS and sample HTML by selecting flex direction, wrap, alignment, and justification.",
+    "description": "Choose flex direction, wrap behavior, justify-content, and align-items values. The tool outputs complete container CSS and a minimal HTML skeleton you can test immediately.",
+    "keywords": ["flexbox generator", "css flexbox", "flex layout", "flexbox css builder"],
+    "whatIs": "Flexbox is the most common CSS layout method for one-dimensional layouts, aligning items along a main axis and a cross axis. Beginners often mix up justify-content (main axis) and align-items (cross axis), which leads to unexpected centering and spacing results. This tool makes both axes explicit by showing the generated CSS alongside the flex properties you select, so you can connect each value to its visible effect.",
+    "howToUse": [
+      "Select the flex direction and wrap behavior for your container.",
+      "Choose justify-content and align-items values to control item placement.",
+      "Copy the generated CSS for your flex container.",
+      "Use the provided HTML skeleton to test the layout in your own page."
+    ],
+    "useCases": [
+      "Center a single element both horizontally and vertically inside a container.",
+      "Create a responsive navigation bar with evenly spaced links.",
+      "Build a card row that wraps onto multiple lines at narrow viewports."
+    ],
+    "examples": [
+      {
+        "title": "Centered hero content",
+        "text": "A hero section needs a heading and button centered on both axes. The generator creates display:flex with justify-content and align-items set to center."
+      },
+      {
+        "title": "Wrapped card layout",
+        "text": "A product listing should show cards in a row that wrap when the container shrinks. Flex-wrap: wrap with justify-content: space-between creates an evenly spaced grid."
+      }
+    ],
+    "mistakes": [
+      "Confusing the main axis with the cross axis, which leads to using justify-content when align-items is needed.",
+      "Forgetting to set display: flex on the container, which causes flex properties to have no effect.",
+      "Not testing wrap behavior at narrow widths, leaving items to overflow instead of wrapping."
+    ],
+    "faq": [
+      {
+        "question": "When should I use flexbox instead of grid?",
+        "answer": "Use flexbox for one-dimensional layouts where items flow along a single axis. Use grid for two-dimensional layouts where you need to control rows and columns simultaneously."
+      },
+      {
+        "question": "What does align-items do vs align-content?",
+        "answer": "align-items controls the alignment of individual items along the cross axis within a single line. align-content controls the spacing between wrapped lines when there are multiple lines of items."
+      }
+    ]
+  },
+  {
+    "id": "css-border-radius-builder",
+    "name": "CSS Border Radius Builder",
+    "category": "css",
+    "summary": "Set rounded corners individually for each corner and generate the border-radius CSS declaration.",
+    "description": "Control each corner radius separately or use the shorthand. Choose pixel, rem, or percentage units. See a live preview of the rounded element as you adjust values.",
+    "keywords": ["border radius generator", "css rounded corners", "border-radius builder", "css corners"],
+    "whatIs": "border-radius controls how much each corner of an element is rounded, but the four-value shorthand and the eight-value elliptical syntax can be confusing. This tool makes the properties visual by letting you set each corner independently and choose between px, rem, and percentage units, so you can see the effect before writing the CSS declaration.",
+    "howToUse": [
+      "Set a radius value for each corner individually or enable uniform mode to apply one value everywhere.",
+      "Choose the unit you want to use: px, rem, or percentage.",
+      "Watch the live preview update as you adjust each corner.",
+      "Copy the generated CSS declaration into your stylesheet."
+    ],
+    "useCases": [
+      "Create pill-shaped buttons by setting the border-radius larger than the button height.",
+      "Make circular avatars and profile images with border-radius: 50%.",
+      "Design card corners with subtle rounding on the top corners and sharp bottom corners."
+    ],
+    "examples": [
+      {
+        "title": "Pill button with large radius",
+        "text": "A call-to-action button needs a fully rounded pill shape. Setting border-radius to 999px on a short button creates rounded ends regardless of the button width."
+      },
+      {
+        "title": "Card with subtle corner rounding",
+        "text": "A content card uses 8px rounding on all corners. The uniform mode applies the same value everywhere, producing a soft but professional appearance."
+      }
+    ],
+    "mistakes": [
+      "Using px on elements that should scale with font size, preventing the corner radius from adjusting when text is resized.",
+      "Forgetting the slash syntax for elliptical corners, which sets separate horizontal and vertical radii for advanced shapes.",
+      "Setting a radius larger than half the element size, which can cause the corners to overlap and produce unexpected results."
+    ],
+    "faq": [
+      {
+        "question": "How do I make a perfect circle?",
+        "answer": "Set border-radius to 50% on a square element. This creates a perfect circle because each corner is rounded to half the element width and height."
+      },
+      {
+        "question": "What unit should I use for border-radius?",
+        "answer": "Use rem for radii that should scale with the base font size and px for fixed-size decorative elements. Use percentage for circular shapes and fluid rounding."
+      }
+    ]
+  },
+  {
+    "id": "url-slug-generator",
+    "name": "URL Slug Generator",
+    "category": "html",
+    "summary": "Turn any title or heading into a clean, lowercase, hyphenated URL slug.",
+    "description": "Paste a page title, blog post headline, or any string, and get a URL-ready slug with hyphens instead of spaces and special characters removed. A small tool for a daily publishing task.",
+    "keywords": ["url slug generator", "seo slug", "url friendly string", "slugify"],
+    "whatIs": "A URL slug is the readable part of a web address, such as my-blog-post in example.com/blog/my-blog-post. Clean slugs help both readers and search engines understand what a page is about before opening it. This tool removes special characters, converts text to lowercase, and replaces spaces with hyphens so you get the standard format used by most content management systems and static site generators.",
+    "howToUse": [
+      "Paste or type a title, heading, or any text string.",
+      "The tool converts it to a clean hyphenated slug instantly.",
+      "Review the output and trim any unnecessary words.",
+      "Copy the slug for your URL path, file name, or anchor link."
+    ],
+    "useCases": [
+      "Create SEO-friendly blog post URLs from article headlines.",
+      "Generate clean file names for static site content directories.",
+      "Prepare anchor link IDs from section headings for on-page navigation."
+    ],
+    "examples": [
+      {
+        "title": "Blog post title to slug",
+        "text": "A new article titled 10 Tips for Better Web Typography becomes 10-tips-for-better-web-typography as a clean, crawlable URL path."
+      },
+      {
+        "title": "Page heading to anchor ID",
+        "text": "A documentation section heading How to Install the CLI is converted to how-to-install-the-cli and used as the id attribute on the heading element."
+      }
+    ],
+    "mistakes": [
+      "Using very long slugs with dozens of words that make URLs hard to read and share.",
+      "Forgetting to check whether the slug duplicates an existing page URL.",
+      "Stripping meaningful words that help readers and search engines understand the page topic."
+    ],
+    "faq": [
+      {
+        "question": "What characters are removed from slugs?",
+        "answer": "Spaces are replaced with hyphens. Special characters such as punctuation marks, symbols, quotes, brackets, and accented characters are removed to keep the slug clean."
+      },
+      {
+        "question": "How long should a URL slug be?",
+        "answer": "Aim for three to five words. Short slugs are easier to read, type, and share while still conveying what the page is about."
+      }
+    ]
   }
 ]
