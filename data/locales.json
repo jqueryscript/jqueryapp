@@ -220,7 +220,12 @@
       "css-box-shadow-builder": {"name": "CSS-Box-Shadow-Builder", "summary": "Erstelle box-shadow CSS visuell durch Anpassen von Offset, Blur, Spread und Farbe."},
       "css-flexbox-generator": {"name": "CSS-Flexbox-Generator", "summary": "Generiere Flexbox-Container-CSS und Beispiel-HTML aus ausgewahlten Flex-Eigenschaften."},
       "css-border-radius-builder": {"name": "CSS-Border-Radius-Builder", "summary": "Setze abgerundete Ecken einzeln und generiere die border-radius CSS-Deklaration."},
-      "url-slug-generator": {"name": "URL-Slug-Generator", "summary": "Wandle Titel in saubere, kleingeschriebene, mit Bindestrichen getrennte URL-Slugs um."}
+      "url-slug-generator": {"name": "URL-Slug-Generator", "summary": "Wandle Titel in saubere, kleingeschriebene, mit Bindestrichen getrennte URL-Slugs um."},
+      "html-heading-hierarchy-checker": {"name": "HTML-Uberschriften-Prufer", "summary": "Prufe die Uberschriftenhierarchie mit einem Baum. Finde ubersprungene Ebenen und fehlende h1."},
+      "reading-time-estimator": {"name": "Lesezeit-Schatzer", "summary": "Berechne die geschatzte Lesezeit aus Wortanzahl und einstellbarer Lesegeschwindigkeit."},
+      "viewport-meta-tag-generator": {"name": "Viewport-Meta-Tag-Generator", "summary": "Erstelle komplette Viewport-Meta-Tags plus Theme-Color und Apple-Touch-Icon-Links."},
+      "dns-record-quick-reference": {"name": "DNS-Record-Kurzreferenz", "summary": "Gib eine Domain ein und erhalte Beispiel-A-, AAAA-, CNAME-, MX- und TXT-Records."},
+      "html-entity-quick-reference": {"name": "HTML-Entity-Kurzreferenz", "summary": "Durchsuche und kopiere haufige HTML-Entities: Pfeile, Striche, Anfuhrungszeichen und Symbole."}
     }
   },
   "fr": {
@@ -332,7 +337,12 @@
       "css-box-shadow-builder": {"name": "Constructeur box-shadow CSS", "summary": "Creez visuellement des declarations box-shadow en ajustant decalage, flou, etendue et couleur."},
       "css-flexbox-generator": {"name": "Generateur CSS Flexbox", "summary": "Generez du CSS flexbox et un squelette HTML a partir des proprietes flex choisies."},
       "css-border-radius-builder": {"name": "Constructeur border-radius CSS", "summary": "Definissez chaque coin arrondi et generez la declaration CSS border-radius."},
-      "url-slug-generator": {"name": "Generateur de slug URL", "summary": "Convertissez des titres en slugs propres, en minuscules et separes par des tirets."}
+      "url-slug-generator": {"name": "Generateur de slug URL", "summary": "Convertissez des titres en slugs propres, en minuscules et separes par des tirets."},
+      "html-heading-hierarchy-checker": {"name": "Verificateur de hierarchie HTML", "summary": "Collez du HTML et visualisez l'arborescence des titres. Detectez les niveaux sautes et les h1 manquants."},
+      "reading-time-estimator": {"name": "Estimateur de temps de lecture", "summary": "Calculez le temps de lecture estime a partir du nombre de mots et d'une vitesse de lecture reglable."},
+      "viewport-meta-tag-generator": {"name": "Generateur de balises meta viewport", "summary": "Generez un jeu complet de balises meta viewport, theme-color et Apple touch icon."},
+      "dns-record-quick-reference": {"name": "Reference rapide des enregistrements DNS", "summary": "Saisissez un domaine et obtenez des exemples d'enregistrements A, AAAA, CNAME, MX et TXT."},
+      "html-entity-quick-reference": {"name": "Reference rapide des entites HTML", "summary": "Recherchez et copiez les entites HTML courantes : fleches, tirets, guillemets et symboles."}
     }
   },
   "es": {
@@ -382,7 +392,12 @@
       "css-box-shadow-builder": {"name": "Constructor box-shadow CSS", "summary": "Construye visualmente declaraciones box-shadow ajustando desplazamiento, desenfoque, extension y color."},
       "css-flexbox-generator": {"name": "Generador CSS Flexbox", "summary": "Genera CSS flexbox y esqueleto HTML a partir de las propiedades flex seleccionadas."},
       "css-border-radius-builder": {"name": "Constructor border-radius CSS", "summary": "Define cada esquina redondeada y genera la declaracion CSS border-radius."},
-      "url-slug-generator": {"name": "Generador de slug URL", "summary": "Convierte titulos en slugs limpios, en minusculas y separados por guiones."}
+      "url-slug-generator": {"name": "Generador de slug URL", "summary": "Convierte titulos en slugs limpios, en minusculas y separados por guiones."},
+      "html-heading-hierarchy-checker": {"name": "Comprobador de jerarquia HTML", "summary": "Pega HTML y visualiza el arbol de encabezados. Encuentra niveles saltados y h1 faltantes."},
+      "reading-time-estimator": {"name": "Estimador de tiempo de lectura", "summary": "Calcula el tiempo de lectura estimado a partir del recuento de palabras y velocidad ajustable."},
+      "viewport-meta-tag-generator": {"name": "Generador de metaetiquetas viewport", "summary": "Genera un conjunto completo de metaetiquetas viewport, theme-color y Apple touch icon."},
+      "dns-record-quick-reference": {"name": "Referencia rapida de registros DNS", "summary": "Ingresa un dominio y obtén ejemplos de registros A, AAAA, CNAME, MX y TXT."},
+      "html-entity-quick-reference": {"name": "Referencia rapida de entidades HTML", "summary": "Busca y copia entidades HTML comunes: flechas, guiones, comillas y simbolos."}
     }
   },
   "ja": {
@@ -432,7 +447,12 @@
       "css-box-shadow-builder": {"name": "CSSボックスシャドウビルダー", "summary": "オフセット、ぼかし、広がり、色を調整してbox-shadow CSSを視覚的に作成します。"},
       "css-flexbox-generator": {"name": "CSSフレックスボックスジェネレーター", "summary": "フレックスプロパティを選択してflexboxコンテナCSSとHTMLスケルトンを生成します。"},
       "css-border-radius-builder": {"name": "CSSボーダーラジアスビルダー", "summary": "各コーナーの丸みを設定し、border-radius CSS宣言を生成します。"},
-      "url-slug-generator": {"name": "URLスラッグジェネレーター", "summary": "タイトルをクリーンな小文字のハイフン区切りURLスラッグに変換します。"}
+      "url-slug-generator": {"name": "URLスラッグジェネレーター", "summary": "タイトルをクリーンな小文字のハイフン区切りURLスラッグに変換します。"},
+      "html-heading-hierarchy-checker": {"name": "HTML見出し階層チェッカー", "summary": "HTMLを貼り付けて見出し構造をツリー表示。スキップされたレベルや不足h1を検出します。"},
+      "reading-time-estimator": {"name": "読了時間見積もり", "summary": "単語数と調整可能な読書速度から推定読了時間を計算します。"},
+      "viewport-meta-tag-generator": {"name": "ビューポートメタタグジェネレーター", "summary": "ビューポートメタタグ、theme-color、Apple touch iconリンクをまとめて生成します。"},
+      "dns-record-quick-reference": {"name": "DNSレコード早見表", "summary": "ドメイン名を入力してA、AAAA、CNAME、MX、TXTレコードの例を表示します。"},
+      "html-entity-quick-reference": {"name": "HTMLエンティティ早見表", "summary": "矢印、ダッシュ、引用符、記号などよく使うHTMLエンティティを検索・コピーできます。"}
     }
   },
   "nl": {
@@ -482,7 +502,12 @@
       "css-box-shadow-builder": {"name": "CSS Box Shadow Builder", "summary": "Bouw visueel box-shadow CSS door offset, blur, spread en kleur aan te passen."},
       "css-flexbox-generator": {"name": "CSS Flexbox Generator", "summary": "Genereer flexbox container CSS en HTML-skelet uit geselecteerde flex-eigenschappen."},
       "css-border-radius-builder": {"name": "CSS Border Radius Builder", "summary": "Stel afgeronde hoeken afzonderlijk in en genereer de border-radius CSS-declaratie."},
-      "url-slug-generator": {"name": "URL Slug Generator", "summary": "Zet titels om in schone, kleine letters, met koppeltekens gescheiden URL-slugs."}
+      "url-slug-generator": {"name": "URL Slug Generator", "summary": "Zet titels om in schone, kleine letters, met koppeltekens gescheiden URL-slugs."},
+      "html-heading-hierarchy-checker": {"name": "HTML Koppenhiërarchie Checker", "summary": "Plak HTML en zie de koppenstructuur als boom. Vind overgeslagen niveaus en ontbrekende h1."},
+      "reading-time-estimator": {"name": "Leestijd Schatter", "summary": "Bereken geschatte leestijd op basis van woordenaantal en instelbare leessnelheid."},
+      "viewport-meta-tag-generator": {"name": "Viewport Meta Tag Generator", "summary": "Genereer een complete set viewport meta tags plus theme-color en Apple touch icon links."},
+      "dns-record-quick-reference": {"name": "DNS Record Snelreferentie", "summary": "Voer een domein in en zie voorbeeld A-, AAAA-, CNAME-, MX- en TXT-records."},
+      "html-entity-quick-reference": {"name": "HTML Entiteit Snelreferentie", "summary": "Zoek en kopieer veelgebruikte HTML-entiteiten: pijlen, streepjes, aanhalingstekens en symbolen."}
     }
   }
 }

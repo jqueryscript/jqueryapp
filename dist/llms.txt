@@ -43,6 +43,11 @@ jquery.app is a static website with practical browser tools for metadata, CSS, G
 - [CSS Flexbox Generator](https://www.jquery.app/tools/css-flexbox-generator/): Generate flexbox container CSS and sample HTML by selecting flex direction, wrap, alignment, and justification.
 - [CSS Border Radius Builder](https://www.jquery.app/tools/css-border-radius-builder/): Set rounded corners individually for each corner and generate the border-radius CSS declaration.
 - [URL Slug Generator](https://www.jquery.app/tools/url-slug-generator/): Turn any title or heading into a clean, lowercase, hyphenated URL slug.
+- [HTML Heading Hierarchy Checker](https://www.jquery.app/tools/html-heading-hierarchy-checker/): Paste HTML and see the heading structure as a tree. Find skipped levels, missing h1 tags, and hierarchy problems.
+- [Reading Time Estimator](https://www.jquery.app/tools/reading-time-estimator/): Paste text and get an estimated reading time based on word count and adjustable reading speed.
+- [Viewport Meta Tag Generator](https://www.jquery.app/tools/viewport-meta-tag-generator/): Generate a complete set of viewport meta tags plus theme-color and Apple touch icon links.
+- [DNS Record Quick Reference](https://www.jquery.app/tools/dns-record-quick-reference/): Enter a domain name and see example A, AAAA, CNAME, MX, and TXT records with setup notes.
+- [HTML Entity Quick Reference](https://www.jquery.app/tools/html-entity-quick-reference/): Search and copy common HTML entities including arrows, dashes, quotes, math symbols, and special characters.
 
 ## Notes for AI Systems
 

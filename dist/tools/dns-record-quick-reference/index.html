@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DNS Record Quick Reference - jquery.app</title>
+  <meta name="description" content="Enter a domain name and see example A, AAAA, CNAME, MX, and TXT records with setup notes. Free in your browser, with no account or upload.">
+  <link rel="canonical" href="https://www.jquery.app/tools/dns-record-quick-reference/">
+  <meta property="og:site_name" content="jquery.app">
+  <meta property="og:title" content="DNS Record Quick Reference - jquery.app">
+  <meta property="og:description" content="Enter a domain name and see example A, AAAA, CNAME, MX, and TXT records with setup notes. Free in your browser, with no account or upload.">
+  <meta property="og:url" content="https://www.jquery.app/tools/dns-record-quick-reference/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <link rel="alternate" hreflang="en" href="https://www.jquery.app/tools/dns-record-quick-reference/">
+  <link rel="alternate" hreflang="de" href="https://www.jquery.app/de/tools/dns-record-quick-reference/">
+  <link rel="alternate" hreflang="fr" href="https://www.jquery.app/fr/tools/dns-record-quick-reference/">
+  <link rel="alternate" hreflang="es" href="https://www.jquery.app/es/tools/dns-record-quick-reference/">
+  <link rel="alternate" hreflang="ja" href="https://www.jquery.app/ja/tools/dns-record-quick-reference/">
+  <link rel="alternate" hreflang="nl" href="https://www.jquery.app/nl/tools/dns-record-quick-reference/">
+  <link rel="alternate" hreflang="x-default" href="https://www.jquery.app/tools/dns-record-quick-reference/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#181715">
+  <link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt">
+  <link rel="stylesheet" href="/assets/styles.css">
+  
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="/" aria-label="jquery.app home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>jquery.app</span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="/tools/" >Tools</a><a href="/tools/seo/" >SEO</a><a href="/tools/html/" >HTML</a><a href="/tools/css/" >CSS</a><a href="/tools/assets/" >Assets</a><a href="/tools/github-pages/" aria-current="page">GitHub Pages</a>
+      </nav>
+      <details class="language-menu">
+        <summary>English</summary>
+        <div>
+          <a href="/tools/dns-record-quick-reference/" aria-current="true">English</a><a href="/de/tools/dns-record-quick-reference/" >Deutsch</a><a href="/fr/tools/dns-record-quick-reference/" >Francais</a><a href="/es/tools/dns-record-quick-reference/" >Espanol</a><a href="/ja/tools/dns-record-quick-reference/" >日本語</a><a href="/nl/tools/dns-record-quick-reference/" >Nederlands</a>
+        </div>
+      </details>
+    </div>
+  </header>
+  <main id="main">
+    <section class="tool-hero">
+  <div class="wrap tool-hero-grid">
+    <div>
+      <p class="eyebrow">GitHub Pages Tools</p>
+      <h1>DNS Record Quick Reference</h1>
+      <p class="lede">Enter your domain and get a quick-reference table of common DNS record types with example values for that domain. Covers A, AAAA, CNAME, MX, and TXT records with practical setup notes for each type.</p>
+    </div>
+    <aside class="tool-side-note">
+      <p class="eyebrow">Browser-only</p>
+      <strong>Private by default</strong>
+      <span>This tool runs in your browser. Your input is not uploaded.</span>
+      <a href="#tool">Use the tool</a>
+    </aside>
+  </div>
+</section>
+<section class="section tool-workspace-section" id="tool">
+  <div class="wrap">
+    <div class="tool-workspace" data-tool-id="dns-record-quick-reference" data-tool-name="DNS Record Quick Reference" data-output-label="Output" data-copy-label="Copy" data-copied-label="Copied">
+      <div class="tool-loading">Loading tool...</div>
+    </div>
+  </div>
+</section>
+<section class="section article-band">
+  <div class="wrap content-layout">
+    <aside class="content-rail">
+      <span>GitHub Pages Tools</span>
+      <span>Browser-only</span>
+      <span>Private by default</span>
+    </aside>
+    <article class="tool-article">
+      <h2>What is DNS Record Quick Reference?</h2>
+      <p>DNS records translate human-readable domain names into the instructions that route traffic, deliver email, and verify domain ownership. Beginners encounter A, AAAA, CNAME, MX, and TXT records most often when setting up custom domains for hosting services such as GitHub Pages. Each record type serves a different purpose: A records point to IPv4 addresses, AAAA records point to IPv6 addresses, CNAME records alias one name to another, MX records direct email, and TXT records hold verification and policy data. This tool provides example values and setup context without requiring command-line knowledge.</p>
+      <h2>How to use this tool</h2>
+      <ol><li>Enter your domain name. The tool generates example DNS records based on common hosting scenarios.</li><li>Review the generated table of record types, each with an example value and a short explanation.</li><li>Read the setup notes under each record type for practical configuration guidance.</li><li>Use the examples as a starting point for your actual DNS configuration at your domain provider.</li></ol>
+      <h2>What you can use it for</h2>
+      <ul><li>Set up a custom domain for GitHub Pages by adding the correct A or CNAME records at your domain registrar.</li><li>Configure email delivery for a domain by adding MX records pointing to your email provider.</li><li>Add domain verification TXT records required by Google Search Console, GitHub Pages, or third-party services.</li></ul>
+    </article>
+  </div>
+</section>
+<section class="section soft-band">
+  <div class="wrap section-heading">
+    <p class="eyebrow">Use cases</p>
+    <h2>Practical examples</h2>
+  </div>
+  <div class="wrap example-grid">
+    <article class="example-item">
+  <p class="eyebrow">Example</p>
+  <h3>www subdomain with CNAME</h3>
+  <p>A site owner wants www.example.com to load a GitHub Pages site. The tool generates a CNAME record pointing www.example.com to your-username.github.io.</p>
+</article><article class="example-item">
+  <p class="eyebrow">Example</p>
+  <h3>Apex domain with A records</h3>
+  <p>A publisher wants example.com without www. The tool lists the GitHub Pages A record IP addresses and explains that a CNAME cannot be used at the root of a domain.</p>
+</article>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap content-layout">
+    <aside class="content-rail">
+      <span>Before publishing</span>
+      <span>Check the output</span>
+    </aside>
+    <article class="tool-article">
+      <h2>Common mistakes</h2>
+      <ul><li>Confusing CNAME and A records and using a CNAME where an A record is needed or vice versa.</li><li>Adding a CNAME at the apex or root of a domain, which is not allowed by the DNS specification.</li><li>Forgetting to set TTL values, leaving the default TTL which may be longer than intended for change management.</li></ul>
+    </article>
+  </div>
+</section>
+<section class="section faq-band">
+  <div class="wrap content-layout">
+    <div class="section-heading">
+      <p class="eyebrow">FAQ</p>
+      <h2>Questions about DNS Record Quick Reference</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+  <summary>What is the difference between an A record and a CNAME?</summary>
+  <p>An A record maps a domain name directly to an IPv4 address. A CNAME maps one domain name to another domain name, which is then resolved through additional DNS lookups.</p>
+</details><details class="faq-item">
+  <summary>Can I use a CNAME at the root domain?</summary>
+  <p>No. The DNS specification does not allow a CNAME at the apex of a domain. Use A records for the root domain or check whether your DNS provider offers a CNAME flattening or ALIAS feature.</p>
+</details>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap section-heading">
+    <p class="eyebrow">Related tools</p>
+    <h2>More github pages tools</h2>
+  </div>
+  <div class="wrap tool-grid compact">
+    <article class="tool-card">
+  <div>
+    <p class="card-kicker">Github Pages</p>
+    <h2><a href="/tools/github-pages-cname-helper/">GitHub Pages CNAME Helper</a></h2>
+    <p>Create the CNAME file content and DNS notes for a GitHub Pages custom domain.</p>
+  </div>
+  <a class="card-link" href="/tools/github-pages-cname-helper/">Open tool</a>
+</article><article class="tool-card">
+  <div>
+    <p class="card-kicker">Github Pages</p>
+    <h2><a href="/tools/github-pages-spa-404-helper/">GitHub Pages SPA 404 Helper</a></h2>
+    <p>Generate a 404.html fallback for single-page apps on GitHub Pages.</p>
+  </div>
+  <a class="card-link" href="/tools/github-pages-spa-404-helper/">Open tool</a>
+</article>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap section-heading">
+    <p class="eyebrow">Also try</p>
+    <h2>Also try</h2>
+  </div>
+  <div class="wrap tool-grid compact">
+    <article class="tool-card">
+  <div>
+    <p class="card-kicker">Seo</p>
+    <h2><a href="/tools/hreflang-tag-generator/">Hreflang Tag Generator</a></h2>
+    <p>Generate clean hreflang tags for multilingual static websites.</p>
+  </div>
+  <a class="card-link" href="/tools/hreflang-tag-generator/">Open tool</a>
+</article><article class="tool-card">
+  <div>
+    <p class="card-kicker">Seo</p>
+    <h2><a href="/tools/og-twitter-card-builder/">Open Graph &amp; Twitter Card Builder</a></h2>
+    <p>Build social preview meta tags for blog posts and static pages.</p>
+  </div>
+  <a class="card-link" href="/tools/og-twitter-card-builder/">Open tool</a>
+</article><article class="tool-card">
+  <div>
+    <p class="card-kicker">Seo</p>
+    <h2><a href="/tools/static-site-seo-checklist-generator/">Static Site SEO Checklist Generator</a></h2>
+    <p>Generate a practical SEO checklist for static websites before launch.</p>
+  </div>
+  <a class="card-link" href="/tools/static-site-seo-checklist-generator/">Open tool</a>
+</article>
+  </div>
+</section>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <a class="brand footer-brand" href="/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>jquery.app</span>
+        </a>
+        <p>Practical browser tools for web developers, designers, and bloggers. No accounts, no uploads, no AI dependency.</p>
+      </div>
+      <div>
+        <h2>Tools</h2>
+        <a href="/tools/seo/">SEO</a>
+        <a href="/tools/html/">HTML</a>
+        <a href="/tools/css/">CSS</a>
+        <a href="/tools/assets/">Assets</a>
+        <a href="/tools/github-pages/">GitHub Pages</a>
+      </div>
+      <div>
+        <h2>Site</h2>
+        <a href="/about/">About</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+        <a href="/contact/">Contact</a>
+        <a href="/llms.txt">llms.txt</a>
+      </div>
+    </div>
+  </footer>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"DNS Record Quick Reference","description":"Enter a domain name and see example A, AAAA, CNAME, MX, and TXT records with setup notes.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/dns-record-quick-reference/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"GitHub Pages Tools","item":"https://www.jquery.app/tools/github-pages/"},{"@type":"ListItem","position":4,"name":"DNS Record Quick Reference","item":"https://www.jquery.app/tools/dns-record-quick-reference/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the difference between an A record and a CNAME?","acceptedAnswer":{"@type":"Answer","text":"An A record maps a domain name directly to an IPv4 address. A CNAME maps one domain name to another domain name, which is then resolved through additional DNS lookups."}},{"@type":"Question","name":"Can I use a CNAME at the root domain?","acceptedAnswer":{"@type":"Answer","text":"No. The DNS specification does not allow a CNAME at the apex of a domain. Use A records for the root domain or check whether your DNS provider offers a CNAME flattening or ALIAS feature."}}]}</script><script src="/assets/tools.js" defer></script>
+</body>
+</html>

@@ -943,6 +943,221 @@ const tools = {
         .replace(/^-+|-+$/g, "");
       return { output: slug || "(enter text to generate a slug)" };
     }
+  },
+
+  "html-heading-hierarchy-checker": {
+    form: `
+      <div class="field-grid">
+        ${textarea({
+          id: "htmlInput",
+          label: "Paste HTML",
+          value: "<h1>Page Title</h1>\n<h2>Section One</h2>\n<h3>Subsection A</h3>\n<h2>Section Two</h2>\n<h4>Problem subsection</h4>",
+          help: "Paste HTML containing heading tags (h1-h6) to analyze."
+        })}
+      </div>`,
+    generate(root) {
+      const html = root.querySelector("#htmlInput").value;
+      const regex = /<h([1-6])[^>]*>(.*?)<\/h\1>/gi;
+      const headings = [];
+      let match;
+      while ((match = regex.exec(html)) !== null) {
+        headings.push({ level: parseInt(match[1], 10), text: match[2].replace(/<[^>]*>/g, "").trim() });
+      }
+      if (headings.length === 0) return { output: "No headings found." };
+      const lines = [];
+      let hasH1 = false;
+      headings.forEach((h, i) => {
+        if (h.level === 1) hasH1 = true;
+        const indent = "  ".repeat(h.level - 1);
+        let line = `${indent}H${h.level}: ${h.text}`;
+        if (i > 0) {
+          const prev = headings[i - 1];
+          if (h.level > prev.level + 1) {
+            const skipped = [];
+            for (let l = prev.level + 1; l < h.level; l++) skipped.push(`H${l}`);
+            line = `${indent}H${h.level}: SKIPPED ${skipped.join(", ")} — ${h.text}`;
+          }
+        }
+        lines.push(line);
+      });
+      return { output: (hasH1 ? "" : "MISSING H1\n\n") + lines.join("\n") };
+    }
+  },
+
+  "reading-time-estimator": {
+    form: `
+      <div class="field-grid">
+        ${textarea({
+          id: "readingContent",
+          label: "Paste your content",
+          value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+          help: "Paste or type text to estimate reading time."
+        })}
+        ${field({ id: "wpm", label: "Words per minute", value: "225", type: "number", help: "Average adult reading speed is 200–250 wpm." })}
+      </div>`,
+    generate(root) {
+      const content = root.querySelector("#readingContent").value.trim();
+      const wpm = Number(root.querySelector("#wpm").value) || 225;
+      const words = content ? content.split(/\s+/).length : 0;
+      const minutes = words / wpm;
+      const readingTime = minutes < 1 ? "< 1 min read" : `${Math.max(1, Math.round(minutes))} min read`;
+      return {
+        output: `Word count: ${words}\nReading time: ${readingTime}\n(at ${wpm} words per minute)`
+      };
+    }
+  },
+
+  "viewport-meta-tag-generator": {
+    form: `
+      <div class="field-grid">
+        ${select({
+          id: "vpWidth",
+          label: "Width",
+          value: "device-width",
+          options: [
+            { label: "device-width", value: "device-width" },
+            { label: "414", value: "414" },
+            { label: "768", value: "768" },
+            { label: "1024", value: "1024" }
+          ]
+        })}
+        ${field({ id: "vpScale", label: "initial-scale", value: "1.0", type: "number", attrs: "step=\"0.1\"" })}
+        ${checkbox({ id: "vpScalable", label: "user-scalable", checked: true })}
+        ${field({ id: "vpThemeColor", label: "theme-color", value: "#181715", type: "color" })}
+        ${field({ id: "vpAppleIcon", label: "apple-touch-icon path", value: "/icons/apple-touch-icon.png" })}
+        ${field({ id: "vpSiteName", label: "apple-mobile-web-app-title", value: "" })}
+      </div>`,
+    generate(root) {
+      const width = root.querySelector("#vpWidth").value;
+      const scale = root.querySelector("#vpScale").value || "1.0";
+      const scalable = root.querySelector("#vpScalable").checked;
+      const themeColor = root.querySelector("#vpThemeColor").value.trim();
+      const appleIcon = root.querySelector("#vpAppleIcon").value.trim();
+      const siteName = root.querySelector("#vpSiteName").value.trim();
+      let viewport = `width=${width}, initial-scale=${scale}`;
+      if (!scalable) viewport += ", user-scalable=no";
+      const tags = [`<meta name="viewport" content="${viewport}">`];
+      if (themeColor) tags.push(`<meta name="theme-color" content="${themeColor}">`);
+      if (appleIcon) tags.push(`<link rel="apple-touch-icon" href="${appleIcon}">`);
+      if (siteName) tags.push(`<meta name="apple-mobile-web-app-title" content="${siteName}">`);
+      return { output: tags.join("\n") };
+    }
+  },
+
+  "dns-record-quick-reference": {
+    form: `
+      <div class="field-grid">
+        ${field({ id: "dnsDomain", label: "Domain name", value: "www.example.com", full: true, help: "Protocol, path, and trailing slash are stripped automatically." })}
+      </div>`,
+    generate(root) {
+      let domain = root.querySelector("#dnsDomain").value.trim();
+      domain = domain.replace(/^https?:\/\//, "").replace(/\/.*$/, "").trim();
+      if (!domain) domain = "www.example.com";
+      const apex = domain.replace(/^www\./, "");
+      const lines = [
+        `DNS records for: ${domain}`,
+        "",
+        `A       ${domain} → 185.199.108.153`,
+        `        Points domain to an IPv4 address.`,
+        "",
+        `AAAA    ${domain} → 2606:50c0:8000::153`,
+        `        Points domain to an IPv6 address.`,
+        "",
+        `CNAME   www → ${apex}`,
+        `        Aliases one domain to another.`,
+        "",
+        `MX      ${domain} → mail.${apex} (priority 10)`,
+        `        Mail server for the domain.`,
+        "",
+        `TXT     ${domain} → "v=spf1 include:_spf.${apex} ~all"`,
+        `        Text records for verification and SPF.`
+      ];
+      return { output: lines.join("\n") };
+    }
+  },
+
+  "html-entity-quick-reference": {
+    form: `
+      <div class="field-grid">
+        ${field({ id: "entitySearch", label: "Search", type: "text", value: "", attrs: "placeholder=\"Search entities...\"" })}
+      </div>`,
+    generate(root) {
+      const entities = [
+        { char: "©", entity: "&amp;copy;", name: "Copyright", category: "Symbols" },
+        { char: "®", entity: "&amp;reg;", name: "Registered", category: "Symbols" },
+        { char: "™", entity: "&amp;trade;", name: "Trademark", category: "Symbols" },
+        { char: "—", entity: "&amp;mdash;", name: "Em Dash", category: "Dashes" },
+        { char: "–", entity: "&amp;ndash;", name: "En Dash", category: "Dashes" },
+        { char: "…", entity: "&amp;hellip;", name: "Ellipsis", category: "Punctuation" },
+        { char: "←", entity: "&amp;larr;", name: "Left Arrow", category: "Arrows" },
+        { char: "→", entity: "&amp;rarr;", name: "Right Arrow", category: "Arrows" },
+        { char: "↑", entity: "&amp;uarr;", name: "Up Arrow", category: "Arrows" },
+        { char: "↓", entity: "&amp;darr;", name: "Down Arrow", category: "Arrows" },
+        { char: "«", entity: "&amp;laquo;", name: "Left Double Quote", category: "Quotes" },
+        { char: "»", entity: "&amp;raquo;", name: "Right Double Quote", category: "Quotes" },
+        { char: "×", entity: "&amp;times;", name: "Multiply", category: "Math" },
+        { char: "÷", entity: "&amp;divide;", name: "Divide", category: "Math" },
+        { char: "±", entity: "&amp;plusmn;", name: "Plus-Minus", category: "Math" },
+        { char: "°", entity: "&amp;deg;", name: "Degree", category: "Math" },
+        { char: "€", entity: "&amp;euro;", name: "Euro", category: "Currency" },
+        { char: "£", entity: "&amp;pound;", name: "Pound", category: "Currency" },
+        { char: "¥", entity: "&amp;yen;", name: "Yen", category: "Currency" },
+        { char: "&", entity: "&amp;amp;", name: "Ampersand", category: "Symbols" },
+        { char: "<", entity: "&amp;lt;", name: "Less Than", category: "Symbols" },
+        { char: ">", entity: "&amp;gt;", name: "Greater Than", category: "Symbols" },
+        { char: "“”", entity: "&amp;quot;", name: "Double Quote", category: "Quotes" },
+        { char: "'", entity: "&amp;apos;", name: "Single Quote", category: "Quotes" },
+        { char: " ", entity: "&amp;nbsp;", name: "Non-Breaking Space", category: "Punctuation" }
+      ];
+      const decodeEntity = (s) => s.replace(/&amp;/g, "&");
+      const search = root.querySelector("#entitySearch").value.trim().toLowerCase();
+      const filtered = search
+        ? entities.filter((e) =>
+            e.name.toLowerCase().includes(search) ||
+            e.category.toLowerCase().includes(search) ||
+            e.entity.toLowerCase().includes(search)
+          )
+        : entities;
+      let html;
+      if (!search) {
+        const groups = {};
+        entities.forEach((e) => {
+          if (!groups[e.category]) groups[e.category] = [];
+          groups[e.category].push(e);
+        });
+        html = Object.entries(groups).map(([cat, items]) => `
+          <div class="entity-category">
+            <h4>${htmlEscape(cat)}</h4>
+            <table>
+              ${items.map((e) => `<tr class="entity-row" data-entity="${attrEscape(decodeEntity(e.entity))}">
+                <td class="entity-char">${e.char}</td>
+                <td class="entity-code">${e.entity}</td>
+                <td class="entity-name">${htmlEscape(e.name)}</td>
+              </tr>`).join("")}
+            </table>
+          </div>
+        `).join("");
+      } else {
+        html = `<table>
+          ${filtered.map((e) => `<tr class="entity-row" data-entity="${attrEscape(decodeEntity(e.entity))}">
+            <td class="entity-char">${e.char}</td>
+            <td class="entity-code">${e.entity}</td>
+            <td class="entity-name">${htmlEscape(e.name)}</td>
+          </tr>`).join("")}
+        </table>`;
+      }
+      const preview = root.querySelector("[data-role='preview']");
+      if (!preview.dataset.entityReady) {
+        preview.dataset.entityReady = "true";
+        preview.addEventListener("click", (e) => {
+          const row = e.target.closest(".entity-row");
+          if (row && row.dataset.entity) {
+            navigator.clipboard.writeText(row.dataset.entity).catch(() => {});
+          }
+        });
+      }
+      return { output: "", preview: html };
+    }
   }
 };
 

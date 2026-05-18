@@ -1007,5 +1007,230 @@
         "answer": "Aim for three to five words. Short slugs are easier to read, type, and share while still conveying what the page is about."
       }
     ]
+  },
+  {
+    "id": "html-heading-hierarchy-checker",
+    "name": "HTML Heading Hierarchy Checker",
+    "category": "html",
+    "summary": "Paste HTML and see the heading structure as a tree. Find skipped levels, missing h1 tags, and hierarchy problems.",
+    "description": "Paste any HTML snippet and get a visual tree of h1 through h6 headings. The tool flags skipped heading levels, missing h1 tags, and structural issues that affect accessibility and SEO.",
+    "keywords": ["heading hierarchy checker", "html heading outline", "h1 h2 structure", "heading accessibility"],
+    "whatIs": "Heading hierarchy (h1 through h6) is the structural backbone of any HTML document. Screen readers depend on a logical heading order to let users navigate by jumping between sections. Search engines also use headings to understand page topics and their relative importance. Skipping levels, such as jumping from h1 to h3, or using multiple h1 tags on one page, can confuse both assistive technology and crawlers. This tool extracts all headings from pasted HTML and displays them as a nested tree, so structural problems are visible at a glance before the page reaches production.",
+    "howToUse": [
+      "Paste your HTML markup into the textarea. The tool will extract all h1 through h6 heading tags.",
+      "Review the generated heading tree. Each heading appears at its correct depth.",
+      "Look for skipped levels, duplicate h1 tags, or headings that are out of logical order.",
+      "Adjust your HTML to fix any structural issues, then paste again to confirm the hierarchy is clean."
+    ],
+    "useCases": [
+      "Audit a blog post template before publishing to ensure screen reader navigation works correctly.",
+      "Check a static page heading structure for skipped levels that could confuse search engine crawlers.",
+      "Verify that section headings inside articles descend logically from h1 through h2 and h3 without gaps."
+    ],
+    "examples": [
+      {
+        "title": "Well-structured article",
+        "text": "A blog post uses h1 for the page title, h2 for major sections such as Introduction and Conclusion, and h3 for subsections within each major section. The heading tree shows a clean one-level-at-a-time descent."
+      },
+      {
+        "title": "Problematic heading order",
+        "text": "A page starts with an h1 title, then jumps directly to an h3 for the first section, skipping h2 entirely. The tree highlights the gap and flags it as a skipped level."
+      }
+    ],
+    "mistakes": [
+      "Using headings for visual size instead of structural meaning, which breaks screen reader navigation.",
+      "Skipping from h2 to h4, creating a gap that makes the hierarchy harder for crawlers to interpret.",
+      "Omitting the h1 tag entirely on a page, leaving the document without a top-level heading."
+    ],
+    "faq": [
+      {
+        "question": "How many h1 tags should a page have?",
+        "answer": "One h1 per page is the standard recommendation. The h1 should describe the overall page topic. Multiple h1 tags can dilute the primary topic signal for search engines."
+      },
+      {
+        "question": "Is it ok to skip heading levels for styling reasons?",
+        "answer": "No. Headings should reflect document structure, not visual appearance. Use CSS to style headings differently rather than skipping levels for a larger or smaller look."
+      }
+    ]
+  },
+  {
+    "id": "reading-time-estimator",
+    "name": "Reading Time Estimator",
+    "category": "html",
+    "summary": "Paste text and get an estimated reading time based on word count and adjustable reading speed.",
+    "description": "Paste article content, blog post text, or any body copy. The tool calculates estimated reading time using a configurable words-per-minute rate. A small utility for bloggers and content editors.",
+    "keywords": ["reading time calculator", "read time estimator", "blog reading time", "content length"],
+    "whatIs": "Reading time estimates help readers decide whether they have time to read an article before clicking into it. The standard adult reading speed is 200 to 250 words per minute for typical web content. This tool counts the words in your pasted text and divides by a configurable rate to produce an estimated reading time in minutes. Bloggers can use the result as a reading-time label displayed next to the post date or author byline.",
+    "howToUse": [
+      "Paste or type the content you want to estimate in the text area.",
+      "Adjust the words-per-minute rate if your audience reads at a different pace. The default is 225 WPM.",
+      "Read the estimated time output, shown in minutes and seconds.",
+      "Use the result as a reading-time label on your blog post, article, or documentation page."
+    ],
+    "useCases": [
+      "Add a 3 min read label to blog posts so readers know the time commitment before starting.",
+      "Estimate newsletter reading time to keep editions within a comfortable length for subscribers.",
+      "Check whether a draft article is too long for its intended format, such as a quick tip versus an in-depth guide."
+    ],
+    "examples": [
+      {
+        "title": "Short blog post",
+        "text": "A 500-word article on CSS tips has an estimated reading time of about 2 minutes at 225 WPM. The author adds a 2 min read label below the headline."
+      },
+      {
+        "title": "Long-form guide",
+        "text": "A 2000-word deployment guide estimates to about 9 minutes of reading time. The author can decide whether to break it into multiple parts or keep it as a single comprehensive page."
+      }
+    ],
+    "mistakes": [
+      "Using reading time as the only content-length signal, ignoring whether the text is substantive enough for its topic.",
+      "Not accounting for code blocks, images, or tables that add visual scanning time beyond the word count.",
+      "Applying the same WPM rate to technical and non-technical content without adjusting for the difference in reading difficulty."
+    ],
+    "faq": [
+      {
+        "question": "What is the standard reading speed?",
+        "answer": "The average adult reads web content at about 200 to 250 words per minute. Technical or dense material may be slower, around 150 to 200 WPM."
+      },
+      {
+        "question": "Should I include images in the reading time estimate?",
+        "answer": "Images add scanning time but are hard to convert into a consistent estimate. Many publishers ignore images in reading time and add a small fudge factor if the page is image-heavy."
+      }
+    ]
+  },
+  {
+    "id": "viewport-meta-tag-generator",
+    "name": "Viewport Meta Tag Generator",
+    "category": "seo",
+    "summary": "Generate a complete set of viewport meta tags plus theme-color and Apple touch icon links.",
+    "description": "Build the standard viewport meta tag, theme-color meta tag, and Apple touch icon link tags from simple input fields. Covers the mobile-first essentials that every HTML page should include.",
+    "keywords": ["viewport meta tag", "mobile meta tags", "theme color", "apple touch icon", "responsive meta"],
+    "whatIs": "The viewport meta tag controls how a page scales on mobile browsers, making it one of the most important tags for responsive design. The theme-color meta tag sets the browser chrome color in mobile browsers and desktop browsers that support it. Apple touch icon link tags define the icon shown when a visitor saves the page to their iOS home screen. Together these tags form the basic mobile-presentation layer that every modern HTML page should include, but each has a specific syntax that is easy to get wrong.",
+    "howToUse": [
+      "Set the viewport width and initial scale. The standard values are width=device-width and initial-scale=1.",
+      "Enter a theme color as a hex value, such as #ffffff for white or a color that matches your site header.",
+      "Enter the path to your Apple touch icon file. A 180 by 180 pixel PNG is the standard size.",
+      "Copy all generated tags and paste them into the head section of your HTML page."
+    ],
+    "useCases": [
+      "Set up the mobile viewport tag for a new static HTML page before deployment.",
+      "Add PWA-ready meta tags including theme-color and Apple touch icons for a home-screen installed experience.",
+      "Standardize mobile meta tags across a multi-page site template so every page uses the same viewport configuration."
+    ],
+    "examples": [
+      {
+        "title": "Standard responsive page setup",
+        "text": "A new landing page needs width=device-width, initial-scale=1, a white theme color, and a standard Apple touch icon. The generator produces all three tags from the input fields."
+      },
+      {
+        "title": "PWA-ready configuration",
+        "text": "A web app uses a brand blue theme color and a custom Apple touch icon with transparent background. The generator creates the tags with the exact hex color and icon path."
+      }
+    ],
+    "mistakes": [
+      "Setting user-scalable=no which blocks pinch-to-zoom and creates an accessibility barrier for low-vision users.",
+      "Using an incorrect or missing Apple touch icon path that results in a broken icon when saved to the home screen.",
+      "Forgetting to include viewport-fit=cover for pages that extend into the full display area on notched phones."
+    ],
+    "faq": [
+      {
+        "question": "What should the viewport width be?",
+        "answer": "Use width=device-width for nearly all responsive pages. This tells the browser to match the device width instead of assuming a desktop-sized viewport."
+      },
+      {
+        "question": "Do I need Apple touch icons for a website that is not a PWA?",
+        "answer": "Apple touch icons are still useful for regular websites because iOS users can save any page to their home screen. Without the icon, iOS uses a screenshot of the page as the icon."
+      }
+    ]
+  },
+  {
+    "id": "dns-record-quick-reference",
+    "name": "DNS Record Quick Reference",
+    "category": "github-pages",
+    "summary": "Enter a domain name and see example A, AAAA, CNAME, MX, and TXT records with setup notes.",
+    "description": "Enter your domain and get a quick-reference table of common DNS record types with example values for that domain. Covers A, AAAA, CNAME, MX, and TXT records with practical setup notes for each type.",
+    "keywords": ["dns records", "dns reference", "A record", "CNAME", "domain setup", "dns types"],
+    "whatIs": "DNS records translate human-readable domain names into the instructions that route traffic, deliver email, and verify domain ownership. Beginners encounter A, AAAA, CNAME, MX, and TXT records most often when setting up custom domains for hosting services such as GitHub Pages. Each record type serves a different purpose: A records point to IPv4 addresses, AAAA records point to IPv6 addresses, CNAME records alias one name to another, MX records direct email, and TXT records hold verification and policy data. This tool provides example values and setup context without requiring command-line knowledge.",
+    "howToUse": [
+      "Enter your domain name. The tool generates example DNS records based on common hosting scenarios.",
+      "Review the generated table of record types, each with an example value and a short explanation.",
+      "Read the setup notes under each record type for practical configuration guidance.",
+      "Use the examples as a starting point for your actual DNS configuration at your domain provider."
+    ],
+    "useCases": [
+      "Set up a custom domain for GitHub Pages by adding the correct A or CNAME records at your domain registrar.",
+      "Configure email delivery for a domain by adding MX records pointing to your email provider.",
+      "Add domain verification TXT records required by Google Search Console, GitHub Pages, or third-party services."
+    ],
+    "examples": [
+      {
+        "title": "www subdomain with CNAME",
+        "text": "A site owner wants www.example.com to load a GitHub Pages site. The tool generates a CNAME record pointing www.example.com to your-username.github.io."
+      },
+      {
+        "title": "Apex domain with A records",
+        "text": "A publisher wants example.com without www. The tool lists the GitHub Pages A record IP addresses and explains that a CNAME cannot be used at the root of a domain."
+      }
+    ],
+    "mistakes": [
+      "Confusing CNAME and A records and using a CNAME where an A record is needed or vice versa.",
+      "Adding a CNAME at the apex or root of a domain, which is not allowed by the DNS specification.",
+      "Forgetting to set TTL values, leaving the default TTL which may be longer than intended for change management."
+    ],
+    "faq": [
+      {
+        "question": "What is the difference between an A record and a CNAME?",
+        "answer": "An A record maps a domain name directly to an IPv4 address. A CNAME maps one domain name to another domain name, which is then resolved through additional DNS lookups."
+      },
+      {
+        "question": "Can I use a CNAME at the root domain?",
+        "answer": "No. The DNS specification does not allow a CNAME at the apex of a domain. Use A records for the root domain or check whether your DNS provider offers a CNAME flattening or ALIAS feature."
+      }
+    ]
+  },
+  {
+    "id": "html-entity-quick-reference",
+    "name": "HTML Entity Quick Reference",
+    "category": "html",
+    "summary": "Search and copy common HTML entities including arrows, dashes, quotes, math symbols, and special characters.",
+    "description": "Browse or search a categorized reference of common HTML entities. Click any entity to copy it to your clipboard. Covers typographic characters, arrows, math symbols, currency signs, and more.",
+    "keywords": ["html entities", "special characters", "html symbols", "character codes", "html entity reference"],
+    "whatIs": "HTML entities let you display special characters that either have meaning in HTML markup, such as &lt; and &amp;, or characters that are hard to type directly on a keyboard, such as em-dashes, copyright symbols, and accented letters. Beginners often search for these symbols by name or by visual appearance. This reference puts the most frequently used HTML entities in one categorized table with their entity name, decimal code, and rendered character, so you can find and copy the entity you need without leaving your text editor.",
+    "howToUse": [
+      "Browse the categorized list of entities or type in the search field to filter by name or character.",
+      "Click any entity row to copy the entity name, such as &mdash;, to your clipboard.",
+      "Paste the entity into your HTML wherever the special character should appear.",
+      "Use the character preview column to confirm what the entity will look like when rendered in a browser."
+    ],
+    "useCases": [
+      "Find the correct dash or quote character for typographically correct web content.",
+      "Copy the copyright, registered, or trademark symbol for a page footer.",
+      "Look up arrow and math entities for technical documentation and code examples."
+    ],
+    "examples": [
+      {
+        "title": "Copyright notice in footer",
+        "text": "A site footer displays Copyright 2025 Example Corp. The &copy; entity renders the copyright symbol in the HTML without needing a special character encoding."
+      },
+      {
+        "title": "Em-dashes in article text",
+        "text": "A blog post uses em-dashes for parenthetical phrases. The &mdash; entity inserts proper em-dashes that are wider than hyphens and visually distinct from en-dashes."
+      }
+    ],
+    "mistakes": [
+      "Using a hyphen where an en-dash or em-dash is typographically correct, resulting in less polished text formatting.",
+      "Typing raw &lt; or &gt; symbols in HTML that get interpreted as tag delimiters and break the page parsing.",
+      "Forgetting that HTML entity names are case-sensitive, so &copy; works but &Copy; does not."
+    ],
+    "faq": [
+      {
+        "question": "What is the difference between &mdash; and &ndash;?",
+        "answer": "&mdash; produces an em-dash, which is the width of the letter m and is used for parenthetical breaks. &ndash; produces an en-dash, the width of the letter n, used for number ranges such as 2010 to 2015."
+      },
+      {
+        "question": "Do I need entities for UTF-8 pages?",
+        "answer": "UTF-8 pages can display most special characters directly, but HTML entities are still useful for characters that have reserved meaning in HTML such as &lt; and &amp;, or for characters that are easier to type as named entities."
+      }
+    ]
   }
 ]
