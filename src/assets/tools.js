@@ -848,26 +848,26 @@ const tools = {
 
   "css-border-radius-builder": {
     form: `
-      <div class="field-grid">
-        <label class="check-row">
-          <input id="uniform" type="checkbox" onchange="var c=document.getElementById('corner-fields'),u=document.getElementById('uniform-field');c.style.display=this.checked?'none':'';u.style.display=this.checked?'':'none';">
-          <span>Use uniform value</span>
-        </label>
-        <div id="uniform-field" style="display:none">
-          <div class="field">
-            <label for="radius">Border radius</label>
-            <div style="display:flex;gap:4px">
-              <input id="radius" type="number" value="8" style="flex:1">
-              <select id="radius-unit">
-                <option value="px" selected>px</option>
-                <option value="rem">rem</option>
-                <option value="%">%</option>
-              </select>
-            </div>
+      <label class="check-row">
+        <input id="uniform" type="checkbox" onchange="var c=document.getElementById('corner-fields'),u=document.getElementById('uniform-field');c.style.display=this.checked?'none':'';u.style.display=this.checked?'':'none';">
+        <span>Use uniform value</span>
+      </label>
+      <div id="uniform-field" style="display:none">
+        <div class="field">
+          <label for="radius">Border radius</label>
+          <div style="display:flex;gap:4px">
+            <input id="radius" type="number" value="8" style="flex:1">
+            <select id="radius-unit">
+              <option value="px" selected>px</option>
+              <option value="rem">rem</option>
+              <option value="%">%</option>
+            </select>
           </div>
         </div>
-        <div id="corner-fields">
-          <div class="field">
+      </div>
+      <div id="corner-fields">
+        <div style="display:flex;gap:14px">
+          <div class="field" style="flex:1">
             <label for="tl">Top-left</label>
             <div style="display:flex;gap:4px">
               <input id="tl" type="number" value="8" style="flex:1">
@@ -878,7 +878,7 @@ const tools = {
               </select>
             </div>
           </div>
-          <div class="field">
+          <div class="field" style="flex:1">
             <label for="tr">Top-right</label>
             <div style="display:flex;gap:4px">
               <input id="tr" type="number" value="8" style="flex:1">
@@ -889,7 +889,9 @@ const tools = {
               </select>
             </div>
           </div>
-          <div class="field">
+        </div>
+        <div style="display:flex;gap:14px;margin-top:14px">
+          <div class="field" style="flex:1">
             <label for="br">Bottom-right</label>
             <div style="display:flex;gap:4px">
               <input id="br" type="number" value="8" style="flex:1">
@@ -900,7 +902,7 @@ const tools = {
               </select>
             </div>
           </div>
-          <div class="field">
+          <div class="field" style="flex:1">
             <label for="bl">Bottom-left</label>
             <div style="display:flex;gap:4px">
               <input id="bl" type="number" value="8" style="flex:1">
