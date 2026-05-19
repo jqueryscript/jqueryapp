@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Speculation Rules Generator - jquery.app</title>
+  <meta name="description" content="Generate Speculation Rules JSON for prerendering and prefetching pages in Chrome and Edge. Free in your browser, with no account or upload.">
+  <link rel="canonical" href="https://www.jquery.app/tools/speculation-rules-generator/">
+  <meta property="og:site_name" content="jquery.app">
+  <meta property="og:title" content="Speculation Rules Generator - jquery.app">
+  <meta property="og:description" content="Generate Speculation Rules JSON for prerendering and prefetching pages in Chrome and Edge. Free in your browser, with no account or upload.">
+  <meta property="og:url" content="https://www.jquery.app/tools/speculation-rules-generator/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <link rel="alternate" hreflang="en" href="https://www.jquery.app/tools/speculation-rules-generator/">
+  <link rel="alternate" hreflang="de" href="https://www.jquery.app/de/tools/speculation-rules-generator/">
+  <link rel="alternate" hreflang="fr" href="https://www.jquery.app/fr/tools/speculation-rules-generator/">
+  <link rel="alternate" hreflang="es" href="https://www.jquery.app/es/tools/speculation-rules-generator/">
+  <link rel="alternate" hreflang="ja" href="https://www.jquery.app/ja/tools/speculation-rules-generator/">
+  <link rel="alternate" hreflang="nl" href="https://www.jquery.app/nl/tools/speculation-rules-generator/">
+  <link rel="alternate" hreflang="x-default" href="https://www.jquery.app/tools/speculation-rules-generator/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#181715">
+  <link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt">
+  <link rel="stylesheet" href="/assets/styles.css">
+  
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="/" aria-label="jquery.app home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>jquery.app</span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="/tools/" >Tools</a><a href="/tools/seo/" aria-current="page">SEO</a><a href="/tools/html/" >HTML</a><a href="/tools/css/" >CSS</a><a href="/tools/assets/" >Assets</a><a href="/tools/github-pages/" >GitHub Pages</a>
+      </nav>
+      <details class="language-menu">
+        <summary>English</summary>
+        <div>
+          <a href="/tools/speculation-rules-generator/" aria-current="true">English</a><a href="/de/tools/speculation-rules-generator/" >Deutsch</a><a href="/fr/tools/speculation-rules-generator/" >Francais</a><a href="/es/tools/speculation-rules-generator/" >Espanol</a><a href="/ja/tools/speculation-rules-generator/" >日本語</a><a href="/nl/tools/speculation-rules-generator/" >Nederlands</a>
+        </div>
+      </details>
+    </div>
+  </header>
+  <main id="main">
+    <section class="tool-hero">
+  <div class="wrap tool-hero-grid">
+    <div>
+      <p class="eyebrow">SEO Tools</p>
+      <h1>Speculation Rules Generator</h1>
+      <p class="lede">Choose prerender or prefetch mode, pick a URL list or document rules source, and get the script tag with JSON speculation rules. Use to speed up navigation on static sites.</p>
+    </div>
+    <aside class="tool-side-note">
+      <p class="eyebrow">Browser-only</p>
+      <strong>Private by default</strong>
+      <span>This tool runs in your browser. Your input is not uploaded.</span>
+      <a href="#tool">Use the tool</a>
+    </aside>
+  </div>
+</section>
+<section class="section tool-workspace-section" id="tool">
+  <div class="wrap">
+    <div class="tool-workspace" data-tool-id="speculation-rules-generator" data-tool-name="Speculation Rules Generator" data-output-label="Output" data-copy-label="Copy" data-copied-label="Copied">
+      <div class="tool-loading">Loading tool...</div>
+    </div>
+  </div>
+</section>
+<section class="section article-band">
+  <div class="wrap content-layout">
+    <aside class="content-rail">
+      <span>SEO Tools</span>
+      <span>Browser-only</span>
+      <span>Private by default</span>
+    </aside>
+    <article class="tool-article">
+      <h2>What is Speculation Rules Generator?</h2>
+      <p>Speculation Rules are a JSON-based browser feature that lets you tell the browser which pages to prefetch or prerender before the user clicks. Prerendering loads the full page for instant navigation, while prefetching fetches only the document resource. This can make a static site feel fast because subsequent page views load from cache or pre-rendered state.</p>
+      <h2>How to use this tool</h2>
+      <ol><li>Choose whether to prerender pages (full render) or prefetch them (document fetch only).</li><li>Select the URL list source to specify exact pages, or document rules for pattern-based matching.</li><li>Set the eagerness level. Conservative fires on hover or focus, moderate adds a short delay, eager fires immediately.</li><li>Copy the script tag into your page head or near the end of body.</li></ol>
+      <h2>What you can use it for</h2>
+      <ul><li>Prerender top navigation pages so they open instantly when clicked.</li><li>Prefetch blog article pages from a listing to speed up reading flow.</li><li>Add speculation rules to a documentation site so section pages load faster.</li></ul>
+    </article>
+  </div>
+</section>
+<section class="section soft-band">
+  <div class="wrap section-heading">
+    <p class="eyebrow">Use cases</p>
+    <h2>Practical examples</h2>
+  </div>
+  <div class="wrap example-grid">
+    <article class="example-item">
+  <p class="eyebrow">Example</p>
+  <h3>Prerender main navigation</h3>
+  <p>A site prerenders the About, Tools, and FAQ pages because most visitors navigate to them from the homepage. Eagerness is set to moderate to balance speed and bandwidth.</p>
+</article><article class="example-item">
+  <p class="eyebrow">Example</p>
+  <h3>Document rules for blog links</h3>
+  <p>A blog listing uses document rules so any same-origin link on the page is eligible for prefetching when the user hovers over it.</p>
+</article>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap content-layout">
+    <aside class="content-rail">
+      <span>Before publishing</span>
+      <span>Check the output</span>
+    </aside>
+    <article class="tool-article">
+      <h2>Common mistakes</h2>
+      <ul><li>Prerendering too many pages, which wastes bandwidth and browser resources.</li><li>Setting eagerness to eager on every page, which can cause excessive prefetching.</li><li>Prerendering cross-origin pages without understanding the privacy and cookie implications.</li></ul>
+    </article>
+  </div>
+</section>
+<section class="section faq-band">
+  <div class="wrap content-layout">
+    <div class="section-heading">
+      <p class="eyebrow">FAQ</p>
+      <h2>Questions about Speculation Rules Generator</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+  <summary>Which browsers support Speculation Rules?</summary>
+  <p>Chrome 109+ and Edge 109+. Other browsers ignore the script tag, so it is safe to include as a progressive enhancement.</p>
+</details><details class="faq-item">
+  <summary>What is the difference between prerender and prefetch?</summary>
+  <p>Prerender fetches and fully renders the page including subresources, making navigation feel instant. Prefetch fetches only the main document, which is lighter on bandwidth.</p>
+</details>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap section-heading">
+    <p class="eyebrow">Related tools</p>
+    <h2>More seo tools</h2>
+  </div>
+  <div class="wrap tool-grid compact">
+    <article class="tool-card">
+  <div>
+    <p class="card-kicker">Seo</p>
+    <h2><a href="/tools/hreflang-tag-generator/">Hreflang Tag Generator</a></h2>
+    <p>Generate clean hreflang tags for multilingual static websites.</p>
+  </div>
+  <a class="card-link" href="/tools/hreflang-tag-generator/">Open tool</a>
+</article><article class="tool-card">
+  <div>
+    <p class="card-kicker">Seo</p>
+    <h2><a href="/tools/og-twitter-card-builder/">Open Graph &amp; Twitter Card Builder</a></h2>
+    <p>Build social preview meta tags for blog posts and static pages.</p>
+  </div>
+  <a class="card-link" href="/tools/og-twitter-card-builder/">Open tool</a>
+</article><article class="tool-card">
+  <div>
+    <p class="card-kicker">Seo</p>
+    <h2><a href="/tools/static-site-seo-checklist-generator/">Static Site SEO Checklist Generator</a></h2>
+    <p>Generate a practical SEO checklist for static websites before launch.</p>
+  </div>
+  <a class="card-link" href="/tools/static-site-seo-checklist-generator/">Open tool</a>
+</article>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap section-heading">
+    <p class="eyebrow">Also try</p>
+    <h2>Also try</h2>
+  </div>
+  <div class="wrap tool-grid compact">
+    <article class="tool-card">
+  <div>
+    <p class="card-kicker">Html</p>
+    <h2><a href="/tools/html-link-rel-generator/">HTML Link Rel Generator</a></h2>
+    <p>Generate link tags for preload, preconnect, dns-prefetch, canonical, and alternate URLs.</p>
+  </div>
+  <a class="card-link" href="/tools/html-link-rel-generator/">Open tool</a>
+</article><article class="tool-card">
+  <div>
+    <p class="card-kicker">Html</p>
+    <h2><a href="/tools/responsive-iframe-embed-generator/">Responsive Iframe Embed Generator</a></h2>
+    <p>Generate responsive iframe embed markup for videos, maps, demos, and docs.</p>
+  </div>
+  <a class="card-link" href="/tools/responsive-iframe-embed-generator/">Open tool</a>
+</article><article class="tool-card">
+  <div>
+    <p class="card-kicker">Html</p>
+    <h2><a href="/tools/url-slug-generator/">URL Slug Generator</a></h2>
+    <p>Turn any title or heading into a clean, lowercase, hyphenated URL slug.</p>
+  </div>
+  <a class="card-link" href="/tools/url-slug-generator/">Open tool</a>
+</article>
+  </div>
+</section>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <a class="brand footer-brand" href="/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>jquery.app</span>
+        </a>
+        <p>Practical browser tools for web developers, designers, and bloggers. No accounts, no uploads, no AI dependency.</p>
+      </div>
+      <div>
+        <h2>Tools</h2>
+        <a href="/tools/seo/">SEO</a>
+        <a href="/tools/html/">HTML</a>
+        <a href="/tools/css/">CSS</a>
+        <a href="/tools/assets/">Assets</a>
+        <a href="/tools/github-pages/">GitHub Pages</a>
+      </div>
+      <div>
+        <h2>Site</h2>
+        <a href="/about/">About</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+        <a href="/contact/">Contact</a>
+        <a href="/llms.txt">llms.txt</a>
+      </div>
+    </div>
+  </footer>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Speculation Rules Generator","description":"Generate Speculation Rules JSON for prerendering and prefetching pages in Chrome and Edge.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/speculation-rules-generator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"SEO Tools","item":"https://www.jquery.app/tools/seo/"},{"@type":"ListItem","position":4,"name":"Speculation Rules Generator","item":"https://www.jquery.app/tools/speculation-rules-generator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which browsers support Speculation Rules?","acceptedAnswer":{"@type":"Answer","text":"Chrome 109+ and Edge 109+. Other browsers ignore the script tag, so it is safe to include as a progressive enhancement."}},{"@type":"Question","name":"What is the difference between prerender and prefetch?","acceptedAnswer":{"@type":"Answer","text":"Prerender fetches and fully renders the page including subresources, making navigation feel instant. Prefetch fetches only the main document, which is lighter on bandwidth."}}]}</script><script src="/assets/tools.js" defer></script>
+</body>
+</html>

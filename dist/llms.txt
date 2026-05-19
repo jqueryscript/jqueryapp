@@ -48,6 +48,14 @@ jquery.app is a static website with practical browser tools for metadata, CSS, G
 - [Viewport Meta Tag Generator](https://www.jquery.app/tools/viewport-meta-tag-generator/): Generate a complete set of viewport meta tags plus theme-color and Apple touch icon links.
 - [DNS Record Quick Reference](https://www.jquery.app/tools/dns-record-quick-reference/): Enter a domain name and see example A, AAAA, CNAME, MX, and TXT records with setup notes.
 - [HTML Entity Quick Reference](https://www.jquery.app/tools/html-entity-quick-reference/): Search and copy common HTML entities including arrows, dashes, quotes, math symbols, and special characters.
+- [CSS Cascade Layer Planner](https://www.jquery.app/tools/css-cascade-layer-planner/): Plan @layer order and generate a CSS cascade layer structure with example rules.
+- [CSS Content Visibility Generator](https://www.jquery.app/tools/css-content-visibility-generator/): Generate CSS for content-visibility and contain-intrinsic-size to speed up long pages.
+- [CSS Overscroll Behavior Generator](https://www.jquery.app/tools/css-overscroll-behavior-generator/): Generate overscroll-behavior CSS to control pull-to-refresh, scroll chaining, and bounce effects.
+- [HTML Popover Generator](https://www.jquery.app/tools/html-popover-generator/): Generate native HTML popover markup using popovertarget and the Popover API without JavaScript.
+- [Iframe Sandbox & Allow Attribute Generator](https://www.jquery.app/tools/iframe-sandbox-allow-generator/): Generate secure iframe markup with sandbox flags and allow permissions by embed type.
+- [Static Sitemap XML Builder](https://www.jquery.app/tools/static-sitemap-xml-builder/): Paste a list of URLs and get a complete sitemap.xml file for static hosting and GitHub Pages.
+- [GitHub Pages Workflow Generator](https://www.jquery.app/tools/github-pages-workflow-generator/): Generate a GitHub Actions workflow YAML to deploy a static site, Vite, or Astro project to GitHub Pages.
+- [Speculation Rules Generator](https://www.jquery.app/tools/speculation-rules-generator/): Generate Speculation Rules JSON for prerendering and prefetching pages in Chrome and Edge.
 
 ## Notes for AI Systems
 

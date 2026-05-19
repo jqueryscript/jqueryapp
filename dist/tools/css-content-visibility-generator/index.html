@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS Content Visibility Generator - jquery.app</title>
+  <meta name="description" content="Generate CSS for content-visibility and contain-intrinsic-size to speed up long pages. Free in your browser, with no account or upload.">
+  <link rel="canonical" href="https://www.jquery.app/tools/css-content-visibility-generator/">
+  <meta property="og:site_name" content="jquery.app">
+  <meta property="og:title" content="CSS Content Visibility Generator - jquery.app">
+  <meta property="og:description" content="Generate CSS for content-visibility and contain-intrinsic-size to speed up long pages. Free in your browser, with no account or upload.">
+  <meta property="og:url" content="https://www.jquery.app/tools/css-content-visibility-generator/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <link rel="alternate" hreflang="en" href="https://www.jquery.app/tools/css-content-visibility-generator/">
+  <link rel="alternate" hreflang="de" href="https://www.jquery.app/de/tools/css-content-visibility-generator/">
+  <link rel="alternate" hreflang="fr" href="https://www.jquery.app/fr/tools/css-content-visibility-generator/">
+  <link rel="alternate" hreflang="es" href="https://www.jquery.app/es/tools/css-content-visibility-generator/">
+  <link rel="alternate" hreflang="ja" href="https://www.jquery.app/ja/tools/css-content-visibility-generator/">
+  <link rel="alternate" hreflang="nl" href="https://www.jquery.app/nl/tools/css-content-visibility-generator/">
+  <link rel="alternate" hreflang="x-default" href="https://www.jquery.app/tools/css-content-visibility-generator/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#181715">
+  <link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt">
+  <link rel="stylesheet" href="/assets/styles.css">
+  
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="/" aria-label="jquery.app home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>jquery.app</span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="/tools/" >Tools</a><a href="/tools/seo/" >SEO</a><a href="/tools/html/" >HTML</a><a href="/tools/css/" aria-current="page">CSS</a><a href="/tools/assets/" >Assets</a><a href="/tools/github-pages/" >GitHub Pages</a>
+      </nav>
+      <details class="language-menu">
+        <summary>English</summary>
+        <div>
+          <a href="/tools/css-content-visibility-generator/" aria-current="true">English</a><a href="/de/tools/css-content-visibility-generator/" >Deutsch</a><a href="/fr/tools/css-content-visibility-generator/" >Francais</a><a href="/es/tools/css-content-visibility-generator/" >Espanol</a><a href="/ja/tools/css-content-visibility-generator/" >日本語</a><a href="/nl/tools/css-content-visibility-generator/" >Nederlands</a>
+        </div>
+      </details>
+    </div>
+  </header>
+  <main id="main">
+    <section class="tool-hero">
+  <div class="wrap tool-hero-grid">
+    <div>
+      <p class="eyebrow">CSS Tools</p>
+      <h1>CSS Content Visibility Generator</h1>
+      <p class="lede">Select your content type and get the correct content-visibility CSS with a sensible contain-intrinsic-size estimate. Improves rendering performance for long article feeds, card grids, comment threads, and documentation pages.</p>
+    </div>
+    <aside class="tool-side-note">
+      <p class="eyebrow">Browser-only</p>
+      <strong>Private by default</strong>
+      <span>This tool runs in your browser. Your input is not uploaded.</span>
+      <a href="#tool">Use the tool</a>
+    </aside>
+  </div>
+</section>
+<section class="section tool-workspace-section" id="tool">
+  <div class="wrap">
+    <div class="tool-workspace" data-tool-id="css-content-visibility-generator" data-tool-name="CSS Content Visibility Generator" data-output-label="Output" data-copy-label="Copy" data-copied-label="Copied">
+      <div class="tool-loading">Loading tool...</div>
+    </div>
+  </div>
+</section>
+<section class="section article-band">
+  <div class="wrap content-layout">
+    <aside class="content-rail">
+      <span>CSS Tools</span>
+      <span>Browser-only</span>
+      <span>Private by default</span>
+    </aside>
+    <article class="tool-article">
+      <h2>What is CSS Content Visibility Generator?</h2>
+      <p>content-visibility: auto tells the browser to skip rendering work for off-screen elements until they approach the viewport. Paired with contain-intrinsic-size, it gives the browser an estimated size so the scrollbar behaves correctly. This can significantly improve rendering performance on long pages with many repeated sections such as blog archives, product grids, and documentation.</p>
+      <h2>How to use this tool</h2>
+      <ol><li>Choose the content type that best matches your repeating sections.</li><li>Set the estimated average height of one section in pixels.</li><li>Copy the CSS and apply it to the container selector for your repeating sections.</li><li>Test page performance and scrollbar behavior before publishing.</li></ol>
+      <h2>What you can use it for</h2>
+      <ul><li>Speed up rendering of long blog article lists with many repeated cards.</li><li>Improve performance on documentation pages with many collapsible sections.</li><li>Reduce layout work on product listing pages with hundreds of items.</li></ul>
+    </article>
+  </div>
+</section>
+<section class="section soft-band">
+  <div class="wrap section-heading">
+    <p class="eyebrow">Use cases</p>
+    <h2>Practical examples</h2>
+  </div>
+  <div class="wrap example-grid">
+    <article class="example-item">
+  <p class="eyebrow">Example</p>
+  <h3>Blog feed performance</h3>
+  <p>A blog homepage shows 50 post cards. Adding content-visibility: auto with a 300px contain-intrinsic-size lets the browser skip rendering off-screen cards until they are needed.</p>
+</article><article class="example-item">
+  <p class="eyebrow">Example</p>
+  <h3>Documentation page sections</h3>
+  <p>A long documentation page has many independent sections. Each section gets content-visibility: auto so off-screen sections do not block the initial page render.</p>
+</article>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap content-layout">
+    <aside class="content-rail">
+      <span>Before publishing</span>
+      <span>Check the output</span>
+    </aside>
+    <article class="tool-article">
+      <h2>Common mistakes</h2>
+      <ul><li>Setting contain-intrinsic-size too small or too large, which causes scrollbar jumping as sections render in.</li><li>Applying content-visibility to elements that need JavaScript measurement or are scrolled to via anchor links.</li><li>Forgetting that elements with content-visibility: auto are not painted, which can affect getBoundingClientRect measurements.</li></ul>
+    </article>
+  </div>
+</section>
+<section class="section faq-band">
+  <div class="wrap content-layout">
+    <div class="section-heading">
+      <p class="eyebrow">FAQ</p>
+      <h2>Questions about CSS Content Visibility Generator</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+  <summary>What browsers support content-visibility?</summary>
+  <p>Chrome 85+, Edge 85+, Firefox 125+, and Safari 18.2+. It is safe to use as a progressive enhancement because browsers that do not support it simply render all content as normal.</p>
+</details><details class="faq-item">
+  <summary>How does contain-intrinsic-size work?</summary>
+  <p>It sets a placeholder size for the element before it renders. Use an estimate close to the real average height so the scrollbar does not jump when sections render in.</p>
+</details>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap section-heading">
+    <p class="eyebrow">Related tools</p>
+    <h2>More css tools</h2>
+  </div>
+  <div class="wrap tool-grid compact">
+    <article class="tool-card">
+  <div>
+    <p class="card-kicker">Css</p>
+    <h2><a href="/tools/css-clamp-calculator/">CSS Clamp Calculator</a></h2>
+    <p>Calculate responsive CSS clamp values for font sizes and spacing.</p>
+  </div>
+  <a class="card-link" href="/tools/css-clamp-calculator/">Open tool</a>
+</article><article class="tool-card">
+  <div>
+    <p class="card-kicker">Css</p>
+    <h2><a href="/tools/css-safe-area-insets-generator/">CSS Safe Area Insets Generator</a></h2>
+    <p>Generate CSS for safe-area insets on phones with notches and rounded corners.</p>
+  </div>
+  <a class="card-link" href="/tools/css-safe-area-insets-generator/">Open tool</a>
+</article><article class="tool-card">
+  <div>
+    <p class="card-kicker">Css</p>
+    <h2><a href="/tools/css-color-contrast-checker/">CSS Color Contrast Checker</a></h2>
+    <p>Check the contrast ratio between two colors against WCAG accessibility standards.</p>
+  </div>
+  <a class="card-link" href="/tools/css-color-contrast-checker/">Open tool</a>
+</article>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap section-heading">
+    <p class="eyebrow">Also try</p>
+    <h2>Also try</h2>
+  </div>
+  <div class="wrap tool-grid compact">
+    <article class="tool-card">
+  <div>
+    <p class="card-kicker">Html</p>
+    <h2><a href="/tools/html-link-rel-generator/">HTML Link Rel Generator</a></h2>
+    <p>Generate link tags for preload, preconnect, dns-prefetch, canonical, and alternate URLs.</p>
+  </div>
+  <a class="card-link" href="/tools/html-link-rel-generator/">Open tool</a>
+</article><article class="tool-card">
+  <div>
+    <p class="card-kicker">Html</p>
+    <h2><a href="/tools/responsive-iframe-embed-generator/">Responsive Iframe Embed Generator</a></h2>
+    <p>Generate responsive iframe embed markup for videos, maps, demos, and docs.</p>
+  </div>
+  <a class="card-link" href="/tools/responsive-iframe-embed-generator/">Open tool</a>
+</article><article class="tool-card">
+  <div>
+    <p class="card-kicker">Html</p>
+    <h2><a href="/tools/url-slug-generator/">URL Slug Generator</a></h2>
+    <p>Turn any title or heading into a clean, lowercase, hyphenated URL slug.</p>
+  </div>
+  <a class="card-link" href="/tools/url-slug-generator/">Open tool</a>
+</article>
+  </div>
+</section>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <a class="brand footer-brand" href="/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>jquery.app</span>
+        </a>
+        <p>Practical browser tools for web developers, designers, and bloggers. No accounts, no uploads, no AI dependency.</p>
+      </div>
+      <div>
+        <h2>Tools</h2>
+        <a href="/tools/seo/">SEO</a>
+        <a href="/tools/html/">HTML</a>
+        <a href="/tools/css/">CSS</a>
+        <a href="/tools/assets/">Assets</a>
+        <a href="/tools/github-pages/">GitHub Pages</a>
+      </div>
+      <div>
+        <h2>Site</h2>
+        <a href="/about/">About</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+        <a href="/contact/">Contact</a>
+        <a href="/llms.txt">llms.txt</a>
+      </div>
+    </div>
+  </footer>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CSS Content Visibility Generator","description":"Generate CSS for content-visibility and contain-intrinsic-size to speed up long pages.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/css-content-visibility-generator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"CSS Tools","item":"https://www.jquery.app/tools/css/"},{"@type":"ListItem","position":4,"name":"CSS Content Visibility Generator","item":"https://www.jquery.app/tools/css-content-visibility-generator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What browsers support content-visibility?","acceptedAnswer":{"@type":"Answer","text":"Chrome 85+, Edge 85+, Firefox 125+, and Safari 18.2+. It is safe to use as a progressive enhancement because browsers that do not support it simply render all content as normal."}},{"@type":"Question","name":"How does contain-intrinsic-size work?","acceptedAnswer":{"@type":"Answer","text":"It sets a placeholder size for the element before it renders. Use an estimate close to the real average height so the scrollbar does not jump when sections render in."}}]}</script><script src="/assets/tools.js" defer></script>
+</body>
+</html>

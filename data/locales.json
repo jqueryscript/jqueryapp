@@ -225,7 +225,15 @@
       "reading-time-estimator": {"name": "Lesezeit-Schatzer", "summary": "Berechne die geschatzte Lesezeit aus Wortanzahl und einstellbarer Lesegeschwindigkeit."},
       "viewport-meta-tag-generator": {"name": "Viewport-Meta-Tag-Generator", "summary": "Erstelle komplette Viewport-Meta-Tags plus Theme-Color und Apple-Touch-Icon-Links."},
       "dns-record-quick-reference": {"name": "DNS-Record-Kurzreferenz", "summary": "Gib eine Domain ein und erhalte Beispiel-A-, AAAA-, CNAME-, MX- und TXT-Records."},
-      "html-entity-quick-reference": {"name": "HTML-Entity-Kurzreferenz", "summary": "Durchsuche und kopiere haufige HTML-Entities: Pfeile, Striche, Anfuhrungszeichen und Symbole."}
+      "html-entity-quick-reference": {"name": "HTML-Entity-Kurzreferenz", "summary": "Durchsuche und kopiere haufige HTML-Entities: Pfeile, Striche, Anfuhrungszeichen und Symbole."},
+      "css-cascade-layer-planner": {"name": "CSS-Cascade-Layer-Planer", "summary": "Plane die @layer-Reihenfolge und generiere eine CSS-Cascade-Layer-Struktur mit Beispielregeln."},
+      "css-content-visibility-generator": {"name": "CSS-Content-Visibility-Generator", "summary": "Generiere CSS fur content-visibility und contain-intrinsic-size, um lange Seiten zu beschleunigen."},
+      "css-overscroll-behavior-generator": {"name": "CSS-Overscroll-Behavior-Generator", "summary": "Generiere overscroll-behavior-CSS, um Pull-to-Refresh, Scroll-Verkettung und Bounce-Effekte zu steuern."},
+      "html-popover-generator": {"name": "HTML-Popover-Generator", "summary": "Generiere natives HTML-Popover-Markup mit popovertarget und der Popover-API ohne JavaScript."},
+      "iframe-sandbox-allow-generator": {"name": "Iframe-Sandbox-und-Allow-Generator", "summary": "Generiere sicheres Iframe-Markup mit Sandbox-Flags und Allow-Berechtigungen nach Embed-Typ."},
+      "static-sitemap-xml-builder": {"name": "Statischer-Sitemap-XML-Builder", "summary": "Fuge eine URL-Liste ein und erhalte eine vollstandige sitemap.xml fur statisches Hosting und GitHub Pages."},
+      "github-pages-workflow-generator": {"name": "GitHub-Pages-Workflow-Generator", "summary": "Generiere eine GitHub-Actions-Workflow-YAML zum Deployen statischer Sites auf GitHub Pages."},
+      "speculation-rules-generator": {"name": "Speculation-Rules-Generator", "summary": "Generiere Speculation-Rules-JSON zum Prerendering und Prefetching von Seiten in Chrome und Edge."}
     }
   },
   "fr": {
@@ -342,7 +350,15 @@
       "reading-time-estimator": {"name": "Estimateur de temps de lecture", "summary": "Calculez le temps de lecture estime a partir du nombre de mots et d'une vitesse de lecture reglable."},
       "viewport-meta-tag-generator": {"name": "Generateur de balises meta viewport", "summary": "Generez un jeu complet de balises meta viewport, theme-color et Apple touch icon."},
       "dns-record-quick-reference": {"name": "Reference rapide des enregistrements DNS", "summary": "Saisissez un domaine et obtenez des exemples d'enregistrements A, AAAA, CNAME, MX et TXT."},
-      "html-entity-quick-reference": {"name": "Reference rapide des entites HTML", "summary": "Recherchez et copiez les entites HTML courantes : fleches, tirets, guillemets et symboles."}
+      "html-entity-quick-reference": {"name": "Reference rapide des entites HTML", "summary": "Recherchez et copiez les entites HTML courantes : fleches, tirets, guillemets et symboles."},
+      "css-cascade-layer-planner": {"name": "Planificateur de couches CSS", "summary": "Planifiez l'ordre @layer et genere une structure de couches CSS avec des exemples."},
+      "css-content-visibility-generator": {"name": "Generateur CSS content-visibility", "summary": "Generez du CSS pour content-visibility et contain-intrinsic-size afin d'accelerer les pages longues."},
+      "css-overscroll-behavior-generator": {"name": "Generateur CSS overscroll-behavior", "summary": "Generez du CSS overscroll-behavior pour controler le pull-to-refresh et le chaînage du defilement."},
+      "html-popover-generator": {"name": "Generateur HTML popover", "summary": "Generez du balisage popover HTML natif avec popovertarget et l'API Popover sans JavaScript."},
+      "iframe-sandbox-allow-generator": {"name": "Generateur iframe sandbox et allow", "summary": "Generez du balisage iframe securise avec les drapeaux sandbox et les permissions allow par type d'integration."},
+      "static-sitemap-xml-builder": {"name": "Constructeur sitemap.xml statique", "summary": "Collez une liste d'URL et obtenez un fichier sitemap.xml complet pour l'hebergement statique et GitHub Pages."},
+      "github-pages-workflow-generator": {"name": "Generateur de workflow GitHub Pages", "summary": "Generez un YAML de workflow GitHub Actions pour deployer un site statique sur GitHub Pages."},
+      "speculation-rules-generator": {"name": "Generateur de regles de speculation", "summary": "Generez du JSON Speculation Rules pour le prerendering et le prefetching dans Chrome et Edge."}
     }
   },
   "es": {
@@ -397,7 +413,15 @@
       "reading-time-estimator": {"name": "Estimador de tiempo de lectura", "summary": "Calcula el tiempo de lectura estimado a partir del recuento de palabras y velocidad ajustable."},
       "viewport-meta-tag-generator": {"name": "Generador de metaetiquetas viewport", "summary": "Genera un conjunto completo de metaetiquetas viewport, theme-color y Apple touch icon."},
       "dns-record-quick-reference": {"name": "Referencia rapida de registros DNS", "summary": "Ingresa un dominio y obtén ejemplos de registros A, AAAA, CNAME, MX y TXT."},
-      "html-entity-quick-reference": {"name": "Referencia rapida de entidades HTML", "summary": "Busca y copia entidades HTML comunes: flechas, guiones, comillas y simbolos."}
+      "html-entity-quick-reference": {"name": "Referencia rapida de entidades HTML", "summary": "Busca y copia entidades HTML comunes: flechas, guiones, comillas y simbolos."},
+      "css-cascade-layer-planner": {"name": "Planificador de capas CSS", "summary": "Planifica el orden @layer y genera una estructura de capas CSS con reglas de ejemplo."},
+      "css-content-visibility-generator": {"name": "Generador CSS content-visibility", "summary": "Genera CSS para content-visibility y contain-intrinsic-size para acelerar paginas largas."},
+      "css-overscroll-behavior-generator": {"name": "Generador CSS overscroll-behavior", "summary": "Genera CSS overscroll-behavior para controlar pull-to-refresh y encadenamiento de desplazamiento."},
+      "html-popover-generator": {"name": "Generador HTML popover", "summary": "Genera marcado popover HTML nativo usando popovertarget y la API Popover sin JavaScript."},
+      "iframe-sandbox-allow-generator": {"name": "Generador iframe sandbox y allow", "summary": "Genera marcado iframe seguro con banderas sandbox y permisos allow por tipo de insercion."},
+      "static-sitemap-xml-builder": {"name": "Constructor sitemap.xml estatico", "summary": "Pega una lista de URLs y obten un archivo sitemap.xml completo para hosting estatico y GitHub Pages."},
+      "github-pages-workflow-generator": {"name": "Generador de workflow GitHub Pages", "summary": "Genera un YAML de workflow de GitHub Actions para desplegar sitios estaticos en GitHub Pages."},
+      "speculation-rules-generator": {"name": "Generador de reglas de especulacion", "summary": "Genera JSON Speculation Rules para prerendering y prefetching de paginas en Chrome y Edge."}
     }
   },
   "ja": {
@@ -452,7 +476,15 @@
       "reading-time-estimator": {"name": "読了時間見積もり", "summary": "単語数と調整可能な読書速度から推定読了時間を計算します。"},
       "viewport-meta-tag-generator": {"name": "ビューポートメタタグジェネレーター", "summary": "ビューポートメタタグ、theme-color、Apple touch iconリンクをまとめて生成します。"},
       "dns-record-quick-reference": {"name": "DNSレコード早見表", "summary": "ドメイン名を入力してA、AAAA、CNAME、MX、TXTレコードの例を表示します。"},
-      "html-entity-quick-reference": {"name": "HTMLエンティティ早見表", "summary": "矢印、ダッシュ、引用符、記号などよく使うHTMLエンティティを検索・コピーできます。"}
+      "html-entity-quick-reference": {"name": "HTMLエンティティ早見表", "summary": "矢印、ダッシュ、引用符、記号などよく使うHTMLエンティティを検索・コピーできます。"},
+      "css-cascade-layer-planner": {"name": "CSSカスケードレイヤープランナー", "summary": "@layer順序を計画し、サンプルルール付きのCSSカスケードレイヤー構造を生成します。"},
+      "css-content-visibility-generator": {"name": "CSSコンテンツ可視性ジェネレーター", "summary": "長いページを高速化するためのcontent-visibilityとcontain-intrinsic-sizeのCSSを生成します。"},
+      "css-overscroll-behavior-generator": {"name": "CSSオーバースクロール動作ジェネレーター", "summary": "プルリフレッシュやスクロール連鎖、バウンス効果を制御するoverscroll-behavior CSSを生成します。"},
+      "html-popover-generator": {"name": "HTMLポップオーバージェネレーター", "summary": "popovertargetとPopover APIを使ったJavaScript不要のネイティブHTMLポップオーバーマークアップを生成します。"},
+      "iframe-sandbox-allow-generator": {"name": "iframeサンドボックス・許可属性ジェネレーター", "summary": "埋め込みタイプ別にサンドボックスフラグと許可属性を設定した安全なiframeマークアップを生成します。"},
+      "static-sitemap-xml-builder": {"name": "静的サイトマップXMLビルダー", "summary": "URLリストを貼り付けて、静的ホスティングとGitHub Pages用の完全なsitemap.xmlを取得します。"},
+      "github-pages-workflow-generator": {"name": "GitHub Pagesワークフロージェネレーター", "summary": "静的サイトをGitHub PagesにデプロイするためのGitHub ActionsワークフローYAMLを生成します。"},
+      "speculation-rules-generator": {"name": "投機ルールジェネレーター", "summary": "ChromeとEdgeでページのプリレンダリングとプリフェッチを行うためのSpeculation Rules JSONを生成します。"}
     }
   },
   "nl": {
@@ -507,7 +539,15 @@
       "reading-time-estimator": {"name": "Leestijd Schatter", "summary": "Bereken geschatte leestijd op basis van woordenaantal en instelbare leessnelheid."},
       "viewport-meta-tag-generator": {"name": "Viewport Meta Tag Generator", "summary": "Genereer een complete set viewport meta tags plus theme-color en Apple touch icon links."},
       "dns-record-quick-reference": {"name": "DNS Record Snelreferentie", "summary": "Voer een domein in en zie voorbeeld A-, AAAA-, CNAME-, MX- en TXT-records."},
-      "html-entity-quick-reference": {"name": "HTML Entiteit Snelreferentie", "summary": "Zoek en kopieer veelgebruikte HTML-entiteiten: pijlen, streepjes, aanhalingstekens en symbolen."}
+      "html-entity-quick-reference": {"name": "HTML Entiteit Snelreferentie", "summary": "Zoek en kopieer veelgebruikte HTML-entiteiten: pijlen, streepjes, aanhalingstekens en symbolen."},
+      "css-cascade-layer-planner": {"name": "CSS Cascade Layer Planner", "summary": "Plan de @layer-volgorde en genereer een CSS-cascadelagenstructuur met voorbeeldregels."},
+      "css-content-visibility-generator": {"name": "CSS Content Visibility Generator", "summary": "Genereer CSS voor content-visibility en contain-intrinsic-size om lange pagina's te versnellen."},
+      "css-overscroll-behavior-generator": {"name": "CSS Overscroll Behavior Generator", "summary": "Genereer overscroll-behavior CSS om pull-to-refresh, scroll-chaining en bounce-effecten te beheren."},
+      "html-popover-generator": {"name": "HTML Popover Generator", "summary": "Genereer native HTML popover markup met popovertarget en de Popover API zonder JavaScript."},
+      "iframe-sandbox-allow-generator": {"name": "Iframe Sandbox & Allow Generator", "summary": "Genereer veilige iframe markup met sandbox vlaggen en allow permissies per embedtype."},
+      "static-sitemap-xml-builder": {"name": "Statische Sitemap XML Builder", "summary": "Plak een URL-lijst en krijg een complete sitemap.xml voor statische hosting en GitHub Pages."},
+      "github-pages-workflow-generator": {"name": "GitHub Pages Workflow Generator", "summary": "Genereer een GitHub Actions workflow YAML om statische sites naar GitHub Pages te deployen."},
+      "speculation-rules-generator": {"name": "Speculation Rules Generator", "summary": "Genereer Speculation Rules JSON voor prerendering en prefetching in Chrome en Edge."}
     }
   }
 }

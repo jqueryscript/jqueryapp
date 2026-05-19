@@ -1160,6 +1160,471 @@ const tools = {
       }
       return { output: "", preview: html };
     }
+  },
+
+  "css-cascade-layer-planner": {
+    form: `
+      <div class="field-grid">
+        ${select({
+          id: "layerPreset",
+          label: "Site type",
+          value: "simple",
+          options: [
+            { label: "Simple site", value: "simple" },
+            { label: "Component library", value: "components" },
+            { label: "Utility-first CSS", value: "utility" },
+            { label: "Custom", value: "custom" }
+          ]
+        })}
+      </div>
+      <div class="check-grid" id="layerChecks">
+        ${checkbox({ id: "layerReset", label: "reset / normalize", checked: true })}
+        ${checkbox({ id: "layerBase", label: "base (typography, colors)", checked: true })}
+        ${checkbox({ id: "layerLayout", label: "layout (grid, spacing)", checked: true })}
+        ${checkbox({ id: "layerComponents", label: "components (cards, buttons)", checked: true })}
+        ${checkbox({ id: "layerUtilities", label: "utilities (overrides)", checked: true })}
+        ${checkbox({ id: "layerThemes", label: "themes (dark mode, brand)", checked: false })}
+      </div>`,
+    generate(root) {
+      const preset = root.querySelector("#layerPreset").value;
+      const layerIds = ["layerReset","layerBase","layerLayout","layerComponents","layerUtilities","layerThemes"];
+      const layerNames = { layerReset: "reset", layerBase: "base", layerLayout: "layout", layerComponents: "components", layerUtilities: "utilities", layerThemes: "themes" };
+      const layerGuides = {
+        reset: "Normalize or reset rules here. Remove default margins and set box-sizing.",
+        base: "HTML element defaults, typography, color variables, and link styles.",
+        layout: "Container, grid, spacing, and section layout rules.",
+        components: "Cards, buttons, forms, navigation, and other reusable components.",
+        utilities: "Small override classes: .hidden, .centered, .sr-only, spacing helpers.",
+        themes: "Theme variations: dark mode, brand skins, high-contrast settings."
+      };
+      let layers;
+      if (preset !== "custom") {
+        const presets = {
+          simple: ["reset","base","layout","components","utilities"],
+          components: ["reset","base","layout","components","utilities","themes"],
+          utility: ["reset","base","components","utilities"]
+        };
+        layers = presets[preset];
+        layerIds.forEach(id => {
+          const cb = root.querySelector(`#${id}`);
+          if (cb) cb.checked = layers.includes(layerNames[id]);
+        });
+      } else {
+        layers = layerIds.filter(id => root.querySelector(`#${id}`).checked).map(id => layerNames[id]);
+      }
+      if (layers.length === 0) return { output: "Select at least one layer." };
+      const orderDecl = `@layer ${layers.join(", ")};`;
+      const cssBlocks = layers.map(l =>
+        `/* ── ${l} ── */\n@layer ${l} {\n  /* ${layerGuides[l] || ""} */\n}`
+      ).join("\n\n");
+      return { output: `${orderDecl}\n\n${cssBlocks}\n\n/* Layer order: later layers override earlier ones.\n   Unlayered styles always beat layered styles.\n   !important in earlier layers beats !important in later layers (reverse of normal). */` };
+    }
+  },
+
+  "css-content-visibility-generator": {
+    form: `
+      <div class="field-grid">
+        ${select({
+          id: "cvScenario",
+          label: "Content type",
+          value: "articles",
+          options: [
+            { label: "Article list / blog feed", value: "articles" },
+            { label: "Card grid (products, posts)", value: "cards" },
+            { label: "Documentation sections", value: "docs" },
+            { label: "Comment thread", value: "comments" },
+            { label: "Custom", value: "custom" }
+          ]
+        })}
+        ${field({ id: "cvHeight", label: "Estimated height px", value: "400", type: "number", help: "contain-intrinsic-size. Use a value close to the average content height." })}
+        ${field({ id: "cvSelector", label: "Selector", value: ".content-section", full: true })}
+      </div>`,
+    generate(root) {
+      const scenario = root.querySelector("#cvScenario").value;
+      const height = root.querySelector("#cvHeight").value || "400";
+      const selector = root.querySelector("#cvSelector").value.trim() || ".content-section";
+      const defaults = { articles: "300", cards: "350", docs: "500", comments: "200", custom: height };
+      const h = defaults[scenario];
+      return { output: `${selector} {
+  content-visibility: auto;
+  contain-intrinsic-size: auto ${h}px;
+}
+
+/* How it works:
+   content-visibility: auto skips rendering for off-screen content.
+   contain-intrinsic-size gives the browser an estimated height so the
+   scrollbar stays stable before the section is rendered.
+
+   When the section approaches the viewport, the browser renders it fully.
+
+   Browser support: Chrome 85+, Edge 85+, Firefox 125+, Safari 18.2+ */` };
+    }
+  },
+
+  "css-overscroll-behavior-generator": {
+    form: `
+      <div class="field-grid">
+        ${select({
+          id: "osScenario",
+          label: "Scenario",
+          value: "body",
+          options: [
+            { label: "Body (prevent pull-to-refresh)", value: "body" },
+            { label: "Modal / drawer overlay", value: "modal" },
+            { label: "Sidebar navigation", value: "sidebar" },
+            { label: "Horizontal carousel", value: "carousel" },
+            { label: "Custom", value: "custom" }
+          ]
+        })}
+        ${select({
+          id: "osBehavior",
+          label: "Behavior",
+          value: "contain",
+          options: [
+            { label: "contain (stop chaining, keep bounce)", value: "contain" },
+            { label: "none (no chaining, no bounce)", value: "none" },
+            { label: "auto (browser default)", value: "auto" }
+          ]
+        })}
+        ${select({
+          id: "osAxis",
+          label: "Axis",
+          value: "both",
+          options: [
+            { label: "both (x and y)", value: "both" },
+            { label: "x (horizontal only)", value: "x" },
+            { label: "y (vertical only)", value: "y" }
+          ]
+        })}
+        ${field({ id: "osSelector", label: "Selector", value: "body", full: true })}
+      </div>`,
+    generate(root) {
+      const scenario = root.querySelector("#osScenario").value;
+      const behavior = root.querySelector("#osBehavior").value;
+      const axis = root.querySelector("#osAxis").value;
+      const presets = { body: "body", modal: ".modal-overlay", sidebar: ".sidebar", carousel: ".carousel-track", custom: ".overscroll-target" };
+      const presetSelector = root.querySelector("#osSelector").value.trim();
+      const selector = scenario === "custom" ? (presetSelector || ".overscroll-target") : presets[scenario];
+      const prop = axis === "both" ? `overscroll-behavior: ${behavior};` : `overscroll-behavior-${axis}: ${behavior};`;
+      const warnings = [];
+      if (scenario === "body" && behavior === "none") warnings.push("Caution: overscroll-behavior: none on body disables pull-to-refresh entirely.");
+      const warnText = warnings.length ? `\n\n/* ${warnings.join(" ")} */` : "";
+      return { output: `${selector} {
+  ${prop}
+}${warnText}
+
+/* contain — stops scroll chaining but keeps visual bounce.
+   none — prevents scroll chaining and bounce effects.
+   auto — browser default overscroll behavior. */` };
+    }
+  },
+
+  "html-popover-generator": {
+    form: `
+      <div class="field-grid">
+        ${field({ id: "popoverId", label: "Popover ID", value: "my-popover" })}
+        ${field({ id: "popoverButton", label: "Button text", value: "Open popover" })}
+        ${textarea({ id: "popoverContent", label: "Popover content (HTML)", value: "<p>This is a popover message.</p>" })}
+        ${select({
+          id: "popoverPosition",
+          label: "Anchor position",
+          value: "auto",
+          options: [
+            { label: "auto (browser default)", value: "auto" },
+            { label: "top", value: "top" },
+            { label: "bottom", value: "bottom" },
+            { label: "left", value: "left" },
+            { label: "right", value: "right" }
+          ]
+        })}
+        ${checkbox({ id: "popoverManual", label: "Manual (no auto-close on outside click)", checked: false })}
+      </div>`,
+    generate(root) {
+      const id = root.querySelector("#popoverId").value.trim() || "my-popover";
+      const button = root.querySelector("#popoverButton").value.trim() || "Open popover";
+      const content = root.querySelector("#popoverContent").value.trim();
+      const position = root.querySelector("#popoverPosition").value;
+      const manual = root.querySelector("#popoverManual").checked ? " manual" : "";
+      const posCSS = position !== "auto"
+        ? `\n  [popover] { position-area: ${position}; }`
+        : "";
+      return { output: `<button popovertarget="${attrEscape(id)}">${htmlEscape(button)}</button>
+
+<div id="${attrEscape(id)}" popover${manual}>
+  ${content}
+</div>
+
+<style>
+  [popover] {
+    padding: 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    max-width: 320px;
+  }${posCSS}
+</style>
+
+<!-- Browser support: Chrome 114+, Edge 114+, Safari 17+, Firefox 125+.
+     Browsers without popover support show the content inline as static HTML. -->` };
+    }
+  },
+
+  "iframe-sandbox-allow-generator": {
+    form: `
+      <div class="field-grid">
+        ${select({
+          id: "sxUseCase",
+          label: "Embed type",
+          value: "youtube",
+          options: [
+            { label: "YouTube / video", value: "youtube" },
+            { label: "Google Maps", value: "maps" },
+            { label: "Form widget", value: "form" },
+            { label: "Payment / checkout", value: "payment" },
+            { label: "Generic third-party", value: "generic" },
+            { label: "Custom", value: "custom" }
+          ]
+        })}
+        ${field({ id: "sxSrc", label: "Iframe URL", value: "https://www.youtube.com/embed/dQw4w9WgXcQ", full: true })}
+        ${field({ id: "sxTitle", label: "Iframe title", value: "Embedded content", full: true })}
+      </div>
+      <div class="check-grid">
+        ${checkbox({ id: "sxScripts", label: "allow-scripts", checked: true })}
+        ${checkbox({ id: "sxSameOrigin", label: "allow-same-origin" })}
+        ${checkbox({ id: "sxForms", label: "allow-forms" })}
+        ${checkbox({ id: "sxPopups", label: "allow-popups" })}
+        ${checkbox({ id: "sxPresentation", label: "allow-presentation" })}
+        ${checkbox({ id: "sxTopNav", label: "allow-top-navigation" })}
+      </div>
+      <div class="check-grid">
+        ${checkbox({ id: "sxCamera", label: "camera" })}
+        ${checkbox({ id: "sxMicrophone", label: "microphone" })}
+        ${checkbox({ id: "sxGeolocation", label: "geolocation" })}
+        ${checkbox({ id: "sxFullscreen", label: "fullscreen" })}
+        ${checkbox({ id: "sxPayment", label: "payment" })}
+      </div>`,
+    generate(root) {
+      const useCase = root.querySelector("#sxUseCase").value;
+      const sandboxIds = ["sxScripts","sxSameOrigin","sxForms","sxPopups","sxPresentation","sxTopNav"];
+      const sandboxNames = { sxScripts: "allow-scripts", sxSameOrigin: "allow-same-origin", sxForms: "allow-forms", sxPopups: "allow-popups", sxPresentation: "allow-presentation", sxTopNav: "allow-top-navigation" };
+      const allowPermIds = ["sxCamera","sxMicrophone","sxGeolocation","sxFullscreen","sxPayment"];
+      const presets = {
+        youtube: { sandbox: ["sxScripts","sxSameOrigin","sxPresentation"], allow: ["sxFullscreen"] },
+        maps: { sandbox: ["sxScripts","sxSameOrigin"], allow: [] },
+        form: { sandbox: ["sxScripts","sxSameOrigin","sxForms"], allow: [] },
+        payment: { sandbox: ["sxScripts","sxSameOrigin","sxForms"], allow: ["sxPayment"] },
+        generic: { sandbox: ["sxScripts","sxSameOrigin","sxPopups"], allow: [] },
+        custom: { sandbox: sandboxIds.filter(id => root.querySelector(`#${id}`).checked), allow: allowPermIds.filter(id => root.querySelector(`#${id}`).checked) }
+      };
+      const config = presets[useCase];
+      if (useCase !== "custom") {
+        sandboxIds.forEach(id => { const cb = root.querySelector(`#${id}`); if (cb) cb.checked = config.sandbox.includes(id); });
+        allowPermIds.forEach(id => { const cb = root.querySelector(`#${id}`); if (cb) cb.checked = config.allow.includes(id); });
+      }
+      const sandbox = config.sandbox.map(id => sandboxNames[id]).filter(Boolean);
+      const allow = config.allow.map(id => id.replace("sx", "").toLowerCase()).filter(Boolean);
+      const src = root.querySelector("#sxSrc").value.trim();
+      const title = root.querySelector("#sxTitle").value.trim();
+      const attrs = [
+        `src="${attrEscape(src)}"`,
+        `title="${attrEscape(title)}"`,
+        `width="100%"`,
+        sandbox.length ? `sandbox="${sandbox.join(" ")}"` : "",
+        allow.length ? `allow="${allow.join("; ")}"` : "",
+        `allowfullscreen`,
+        `referrerpolicy="strict-origin-when-cross-origin"`,
+        `loading="lazy"`
+      ].filter(Boolean);
+      let warn = sandbox.includes("allow-scripts") && sandbox.includes("allow-same-origin")
+        ? "\n\n<!-- Warning: allow-scripts + allow-same-origin can remove sandbox protection. Only use both when the embed needs same-origin script access. -->"
+        : "";
+      return { output: `<iframe\n    ${attrs.join("\n    ")}\n  ></iframe>${warn}` };
+    }
+  },
+
+  "static-sitemap-xml-builder": {
+    form: `
+      <div class="field-grid">
+        ${textarea({
+          id: "sitemapUrls",
+          label: "URL list",
+          value: "https://example.com/|2025-01-15|monthly|0.8\nhttps://example.com/about/|2025-01-10|monthly|0.5\nhttps://example.com/tools/|2025-01-20|weekly|0.9",
+          help: "One URL per line: url|lastmod|changefreq|priority. Lastmod, changefreq, and priority are optional."
+        })}
+      </div>`,
+    generate(root) {
+      const lines = root.querySelector("#sitemapUrls").value.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+      const validFreqs = ["always","hourly","daily","weekly","monthly","yearly","never"];
+      const urls = lines.map(line => {
+        const [url, lastmod, changefreq, priority] = line.split("|").map(s => s.trim());
+        if (!url) return "";
+        const freq = validFreqs.includes(changefreq) ? changefreq : null;
+        const prio = priority && !isNaN(parseFloat(priority)) ? parseFloat(priority) : null;
+        let entry = `  <url>\n    <loc>${attrEscape(normalizeUrl(url))}</loc>`;
+        if (lastmod) entry += `\n    <lastmod>${attrEscape(lastmod)}</lastmod>`;
+        if (freq) entry += `\n    <changefreq>${freq}</changefreq>`;
+        if (prio !== null) entry += `\n    <priority>${prio}</priority>`;
+        entry += `\n  </url>`;
+        return entry;
+      }).filter(Boolean);
+      if (urls.length === 0) return { output: "Add URLs to generate a sitemap." };
+      return { output: `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join("\n")}\n</urlset>` };
+    }
+  },
+
+  "github-pages-workflow-generator": {
+    form: `
+      <div class="field-grid">
+        ${select({
+          id: "wfType",
+          label: "Site type",
+          value: "static",
+          options: [
+            { label: "Plain HTML / static files", value: "static" },
+            { label: "Vite", value: "vite" },
+            { label: "Astro", value: "astro" },
+            { label: "Custom", value: "custom" }
+          ]
+        })}
+        ${field({ id: "wfBuildCmd", label: "Build command", value: "npm run build" })}
+        ${field({ id: "wfOutputDir", label: "Output directory", value: "dist" })}
+        ${field({ id: "wfNodeVersion", label: "Node version", value: "22" })}
+        ${checkbox({ id: "wfCNAME", label: "Include CNAME placeholder step", checked: true })}
+      </div>`,
+    generate(root) {
+      const type = root.querySelector("#wfType").value;
+      const presets = {
+        static: { build: "", outDir: "." },
+        vite: { build: "npm run build", outDir: "dist" },
+        astro: { build: "npm run build", outDir: "dist" },
+        custom: {
+          build: root.querySelector("#wfBuildCmd").value.trim() || "npm run build",
+          outDir: root.querySelector("#wfOutputDir").value.trim() || "dist"
+        }
+      };
+      const config = presets[type];
+      const nodeVersion = root.querySelector("#wfNodeVersion").value.trim() || "22";
+      const includeCNAME = root.querySelector("#wfCNAME").checked;
+      let buildStep = "";
+      if (config.build) {
+        buildStep = `\n\n      - name: Install dependencies\n        run: npm ci\n\n      - name: Build\n        run: ${config.build}`;
+      }
+      let cnameStep = "";
+      if (includeCNAME) {
+        cnameStep = `\n\n      - name: Write CNAME placeholder\n        run: echo "example.com" > ${config.outDir}/CNAME`;
+      }
+      let createCnameIfDir = "";
+      if (includeCNAME && config.outDir !== ".") {
+        createCnameIfDir = `\n      - name: Ensure output directory\n        run: mkdir -p ${config.outDir}`;
+      }
+      const yaml = `name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: \${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "${nodeVersion}"${buildStep}${createCnameIfDir}${cnameStep}
+
+      - uses: actions/configure-pages@v4
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${config.outDir}
+
+      - uses: actions/deploy-pages@v4`;
+      return { output: yaml };
+    }
+  },
+
+  "speculation-rules-generator": {
+    form: `
+      <div class="field-grid">
+        ${select({
+          id: "specType",
+          label: "Speculation type",
+          value: "prerender",
+          options: [
+            { label: "Prerender (full page render)", value: "prerender" },
+            { label: "Prefetch (document only)", value: "prefetch" }
+          ]
+        })}
+        ${select({
+          id: "specSource",
+          label: "Source type",
+          value: "list",
+          options: [
+            { label: "URL list", value: "list" },
+            { label: "Document rules (same-origin links)", value: "document-rules" }
+          ]
+        })}
+        ${textarea({
+          id: "specUrls",
+          label: "URLs to include",
+          value: "/about/\n/tools/\n/faq/",
+          help: "One URL per line. Only used for list source type."
+        })}
+        ${select({
+          id: "specEagerness",
+          label: "Eagerness",
+          value: "moderate",
+          options: [
+            { label: "conservative (hover / focus)", value: "conservative" },
+            { label: "moderate (hover + 200ms)", value: "moderate" },
+            { label: "eager (immediate)", value: "eager" }
+          ]
+        })}
+      </div>`,
+    generate(root) {
+      const specType = root.querySelector("#specType").value;
+      const source = root.querySelector("#specSource").value;
+      const eagerness = root.querySelector("#specEagerness").value;
+      const urls = root.querySelector("#specUrls").value.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+      let rules;
+      if (source === "list") {
+        rules = {
+          [specType]: urls.map(url => {
+            const entry = { source: "list", urls: [url] };
+            if (eagerness !== "moderate") entry.eagerness = eagerness;
+            return entry;
+          }).filter(r => r.urls[0])
+        };
+      } else {
+        rules = {
+          [specType]: [{
+            source: "document",
+            where: {
+              href_matches: "/*"
+            }
+          }]
+        };
+        if (eagerness !== "moderate") rules[specType][0].eagerness = eagerness;
+      }
+      if (Object.keys(rules[specType]).length === 0 || (Array.isArray(rules[specType]) && rules[specType].length === 0)) {
+        return { output: "Add at least one URL, or switch to document rules." };
+      }
+      return { output: `<script type="speculationrules">\n${JSON.stringify(rules, null, 2)}\n</script>\n\n<!-- Place in <head> or near the end of <body>.\n     Chrome 109+ and Edge 109+ support Speculation Rules.\n     Other browsers ignore the script tag — safe as progressive enhancement.\n     Prerendering = full page fetch and render (fastest, more bandwidth).\n     Prefetching = document resource only (lighter, less bandwidth). -->` };
+    }
   }
 };
 

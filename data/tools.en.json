@@ -1232,5 +1232,365 @@
         "answer": "UTF-8 pages can display most special characters directly, but HTML entities are still useful for characters that have reserved meaning in HTML such as &lt; and &amp;, or for characters that are easier to type as named entities."
       }
     ]
+  },
+  {
+    "id": "css-cascade-layer-planner",
+    "name": "CSS Cascade Layer Planner",
+    "category": "css",
+    "summary": "Plan @layer order and generate a CSS cascade layer structure with example rules.",
+    "description": "Choose a site type and select the layers you need. The tool generates the @layer order statement and a skeleton CSS file with example rules for each layer, so you understand which styles override which.",
+    "keywords": ["css layer generator", "cascade layer planner", "@layer order tool", "css layers"],
+    "whatIs": "CSS cascade layers let you control which styles win when there are conflicting rules, regardless of specificity. By defining an explicit layer order such as reset, base, components, and utilities, you can make utility classes override component styles without fighting specificity wars. This tool helps you plan the right layer order for your project and generates a starter structure you can copy into your stylesheet.",
+    "howToUse": [
+      "Choose a preset that matches your project type or select Custom to pick layers individually.",
+      "Select the layers you want in your cascade order. Later layers override earlier ones.",
+      "Copy the @layer order declaration and the example CSS skeleton for each layer.",
+      "Move your existing styles into the matching layers and test that overrides behave as expected."
+    ],
+    "useCases": [
+      "Plan a clean layer order before refactoring a large CSS codebase.",
+      "Understand how reset, base, component, and utility layers interact.",
+      "Create a predictable cascade for a design system or component library."
+    ],
+    "examples": [
+      {
+        "title": "Simple static site layers",
+        "text": "A small static site uses reset, base, layout, components, and utilities layers. Utilities in the last layer always win over earlier component styles."
+      },
+      {
+        "title": "Component library with theme support",
+        "text": "A component library adds a themes layer after components so dark mode and brand skins can override default component styles without increasing specificity."
+      }
+    ],
+    "mistakes": [
+      "Placing utilities before components, which means utility classes cannot override component styles.",
+      "Forgetting that unlayered styles always win against layered styles, which can cause confusion during migration.",
+      "Putting third-party CSS in the wrong layer and losing the expected override behavior."
+    ],
+    "faq": [
+      {
+        "question": "Does layer order matter?",
+        "answer": "Yes. Styles in later layers override styles in earlier layers, even if the earlier styles have higher specificity. Place foundational styles first and overrides last."
+      },
+      {
+        "question": "What happens to unlayered styles?",
+        "answer": "Unlayered styles always beat layered styles. When migrating to layers, move your existing styles into layers explicitly to avoid unexpected priority."
+      }
+    ]
+  },
+  {
+    "id": "css-content-visibility-generator",
+    "name": "CSS Content Visibility Generator",
+    "category": "css",
+    "summary": "Generate CSS for content-visibility and contain-intrinsic-size to speed up long pages.",
+    "description": "Select your content type and get the correct content-visibility CSS with a sensible contain-intrinsic-size estimate. Improves rendering performance for long article feeds, card grids, comment threads, and documentation pages.",
+    "keywords": ["content-visibility generator", "contain-intrinsic-size", "css rendering performance", "content visibility css"],
+    "whatIs": "content-visibility: auto tells the browser to skip rendering work for off-screen elements until they approach the viewport. Paired with contain-intrinsic-size, it gives the browser an estimated size so the scrollbar behaves correctly. This can significantly improve rendering performance on long pages with many repeated sections such as blog archives, product grids, and documentation.",
+    "howToUse": [
+      "Choose the content type that best matches your repeating sections.",
+      "Set the estimated average height of one section in pixels.",
+      "Copy the CSS and apply it to the container selector for your repeating sections.",
+      "Test page performance and scrollbar behavior before publishing."
+    ],
+    "useCases": [
+      "Speed up rendering of long blog article lists with many repeated cards.",
+      "Improve performance on documentation pages with many collapsible sections.",
+      "Reduce layout work on product listing pages with hundreds of items."
+    ],
+    "examples": [
+      {
+        "title": "Blog feed performance",
+        "text": "A blog homepage shows 50 post cards. Adding content-visibility: auto with a 300px contain-intrinsic-size lets the browser skip rendering off-screen cards until they are needed."
+      },
+      {
+        "title": "Documentation page sections",
+        "text": "A long documentation page has many independent sections. Each section gets content-visibility: auto so off-screen sections do not block the initial page render."
+      }
+    ],
+    "mistakes": [
+      "Setting contain-intrinsic-size too small or too large, which causes scrollbar jumping as sections render in.",
+      "Applying content-visibility to elements that need JavaScript measurement or are scrolled to via anchor links.",
+      "Forgetting that elements with content-visibility: auto are not painted, which can affect getBoundingClientRect measurements."
+    ],
+    "faq": [
+      {
+        "question": "What browsers support content-visibility?",
+        "answer": "Chrome 85+, Edge 85+, Firefox 125+, and Safari 18.2+. It is safe to use as a progressive enhancement because browsers that do not support it simply render all content as normal."
+      },
+      {
+        "question": "How does contain-intrinsic-size work?",
+        "answer": "It sets a placeholder size for the element before it renders. Use an estimate close to the real average height so the scrollbar does not jump when sections render in."
+      }
+    ]
+  },
+  {
+    "id": "css-overscroll-behavior-generator",
+    "name": "CSS Overscroll Behavior Generator",
+    "category": "css",
+    "summary": "Generate overscroll-behavior CSS to control pull-to-refresh, scroll chaining, and bounce effects.",
+    "description": "Pick a scenario such as body, modal, sidebar, or carousel, and choose the overscroll behavior. Copy the CSS to prevent unwanted pull-to-refresh and scroll chaining on mobile.",
+    "keywords": ["overscroll behavior", "disable pull to refresh css", "scroll chaining", "css overscroll"],
+    "whatIs": "overscroll-behavior controls what happens when a scrollable area reaches its boundary. On mobile devices, overscrolling can trigger pull-to-refresh or let scroll bleed from a modal into the page behind it. This property lets you contain or prevent overscroll effects on body, modal, sidebar, and carousel elements.",
+    "howToUse": [
+      "Select a scenario that matches where you want to control overscroll behavior.",
+      "Choose the behavior: contain to stop scroll chaining but keep the bounce, or none to prevent all overscroll effects.",
+      "Select the axis if you only want to control horizontal or vertical overscroll separately.",
+      "Copy the CSS and test on a real mobile device to confirm the expected behavior."
+    ],
+    "useCases": [
+      "Prevent pull-to-refresh on a page body while keeping vertical scroll working.",
+      "Stop background page scroll when a modal or drawer is open.",
+      "Contain horizontal scroll in a carousel so it does not trigger back/forward navigation."
+    ],
+    "examples": [
+      {
+        "title": "Prevent pull-to-refresh",
+        "text": "A web app page wants to disable pull-to-refresh while keeping normal scrolling. overscroll-behavior: contain on body stops the refresh gesture without blocking the scroll."
+      },
+      {
+        "title": "Modal with scroll lock",
+        "text": "A modal dialog has its own scrollable content. overscroll-behavior: contain on the modal overlay prevents scroll from bleeding into the page behind it."
+      }
+    ],
+    "mistakes": [
+      "Applying overscroll-behavior: none to the body element, which disables pull-to-refresh entirely and may frustrate mobile users.",
+      "Setting overflow: hidden on body for modal scroll locking instead of using overscroll-behavior.",
+      "Forgetting to test on real mobile devices where overscroll effects differ from desktop emulation."
+    ],
+    "faq": [
+      {
+        "question": "What is the difference between contain and none?",
+        "answer": "contain stops scroll chaining to the parent but keeps the visual bounce or glow effect at the boundary. none prevents both the chaining and the visual overscroll effect."
+      },
+      {
+        "question": "Should I use overscroll-behavior instead of overflow: hidden for modals?",
+        "answer": "overscroll-behavior is better for preventing scroll bleed while keeping the modal scrollable. Use it together with a position fixed technique, not instead of it."
+      }
+    ]
+  },
+  {
+    "id": "html-popover-generator",
+    "name": "HTML Popover Generator",
+    "category": "html",
+    "summary": "Generate native HTML popover markup using popovertarget and the Popover API without JavaScript.",
+    "description": "Build a button-triggered popover element with the native HTML Popover API. Set content, position, and popover mode. The generated markup works without any JavaScript libraries.",
+    "keywords": ["html popover generator", "popover api example", "popovertarget html", "popover without javascript"],
+    "whatIs": "The HTML Popover API lets you create popup overlays, dropdowns, tooltips, and small panels using only HTML attributes such as popover and popovertarget. The browser manages opening, closing, light-dismiss, and stacking without custom JavaScript. This is useful for help popovers, notification dropdowns, and simple menus on static sites where you want to avoid pulling in a JavaScript library.",
+    "howToUse": [
+      "Set a unique popover ID and the text that will appear on the trigger button.",
+      "Write the HTML content that should appear inside the popover.",
+      "Choose whether the popover should close automatically (auto) or stay open until dismissed by script (manual).",
+      "Copy the button, popover, and CSS into your page. Test in a supporting browser."
+    ],
+    "useCases": [
+      "Create a help or info popover next to a form field without JavaScript.",
+      "Build a notification or account dropdown menu toggle.",
+      "Add a simple confirmation tooltip that appears on click."
+    ],
+    "examples": [
+      {
+        "title": "Form field help popover",
+        "text": "A password field has a help button next to it. The popover appears on click and shows password requirements without any JavaScript libraries."
+      },
+      {
+        "title": "Notification dropdown",
+        "text": "A bell icon button triggers a popover listing recent notifications. Clicking outside the popover dismisses it automatically."
+      }
+    ],
+    "mistakes": [
+      "Using the popover for critical content without a JavaScript fallback for older browsers.",
+      "Putting interactive form elements inside a popover without testing focus and keyboard navigation.",
+      "Forgetting to set a unique id for each popover on the page."
+    ],
+    "faq": [
+      {
+        "question": "Does the Popover API work on all browsers?",
+        "answer": "Chrome 114+, Edge 114+, Safari 17+, and Firefox 125+. For older browsers, the popover content remains visible as static HTML and degrades gracefully."
+      },
+      {
+        "question": "What happens when JavaScript is disabled?",
+        "answer": "The Popover API is built into the browser and works without custom JavaScript. The popover and popovertarget attributes are natively recognized by supporting browsers."
+      }
+    ]
+  },
+  {
+    "id": "iframe-sandbox-allow-generator",
+    "name": "Iframe Sandbox & Allow Attribute Generator",
+    "category": "html",
+    "summary": "Generate secure iframe markup with sandbox flags and allow permissions by embed type.",
+    "description": "Choose an embed type such as YouTube, maps, forms, or payment, and get an iframe tag with the correct sandbox restrictions and allow permissions. Helps avoid over-permissive defaults.",
+    "keywords": ["iframe sandbox generator", "iframe allow attribute", "iframe permissions generator", "secure iframe embed"],
+    "whatIs": "The sandbox attribute restricts what an iframe can do, and the allow attribute grants specific feature permissions such as fullscreen, camera, or payment. Together they create a security boundary around embedded content. This tool generates the right sandbox and allow values for common embed types so you do not accidentally allow more permissions than the embed needs.",
+    "howToUse": [
+      "Select the embed type that best matches what you are embedding.",
+      "Review the suggested sandbox flags and allow permissions. Adjust them for your specific use case.",
+      "Enter the iframe source URL and a descriptive title.",
+      "Copy the generated iframe tag into your HTML page."
+    ],
+    "useCases": [
+      "Embed a YouTube video with minimal sandbox permissions.",
+      "Add a payment iframe with only the payment permission allowed.",
+      "Restrict a third-party form embed to only the permissions it needs."
+    ],
+    "examples": [
+      {
+        "title": "YouTube embed with safe defaults",
+        "text": "A blog post embeds a YouTube video. The generator adds allow-scripts and allow-presentation in the sandbox, plus allowfullscreen, without granting unnecessary permissions."
+      },
+      {
+        "title": "Payment widget embed",
+        "text": "A checkout page embeds a payment provider. The iframe uses allow-scripts, allow-same-origin, and allow-forms in the sandbox, with the payment allow permission."
+      }
+    ],
+    "mistakes": [
+      "Adding both allow-scripts and allow-same-origin without understanding this effectively removes sandbox isolation.",
+      "Allowing more features in the allow attribute than the embed actually needs.",
+      "Omitting a sandbox attribute entirely, which means the iframe runs with full page permissions."
+    ],
+    "faq": [
+      {
+        "question": "What does allow-scripts + allow-same-origin do together?",
+        "answer": "Together they can allow the iframe to access the parent page's DOM, effectively removing the sandbox. Only use both when the embed genuinely needs same-origin script access."
+      },
+      {
+        "question": "Should every iframe have a sandbox attribute?",
+        "answer": "A sandbox with the right restrictions is a security best practice for third-party content. For first-party embeds, test whether the restrictions break expected behavior."
+      }
+    ]
+  },
+  {
+    "id": "static-sitemap-xml-builder",
+    "name": "Static Sitemap XML Builder",
+    "category": "seo",
+    "summary": "Paste a list of URLs and get a complete sitemap.xml file for static hosting and GitHub Pages.",
+    "description": "Build a valid sitemap.xml from a pasted URL list. Add optional lastmod dates, changefreq, and priority values. The output is ready to place in your static site root.",
+    "keywords": ["sitemap.xml generator", "static site sitemap", "github pages sitemap", "url list to sitemap"],
+    "whatIs": "A sitemap.xml file lists the important URLs on a website so search engines can discover and crawl them efficiently. For static sites without a CMS that auto-generates sitemaps, you need to create the XML file by hand and include it in your build output. This tool converts a simple URL list into valid sitemap.xml format.",
+    "howToUse": [
+      "Paste one URL per line. Optionally add lastmod, changefreq, and priority separated by |.",
+      "Review the generated XML for correct URLs and values.",
+      "Copy the output into a file named sitemap.xml at your published site root.",
+      "Reference the sitemap URL in your robots.txt file and submit it in Google Search Console."
+    ],
+    "useCases": [
+      "Create a sitemap.xml for a hand-coded static HTML website.",
+      "Generate a sitemap for a GitHub Pages site that has no CMS backend.",
+      "Build a small sitemap for a micro-site, landing page, or tool collection."
+    ],
+    "examples": [
+      {
+        "title": "Small static site sitemap",
+        "text": "A 10-page static website owner pastes all page URLs into the tool and gets a complete sitemap.xml ready to upload."
+      },
+      {
+        "title": "Blog sitemap with dates",
+        "text": "A blogger adds lastmod dates to each URL so search engines know which pages were recently updated."
+      }
+    ],
+    "mistakes": [
+      "Including non-indexable URLs such as admin pages, redirects, or staging URLs in the sitemap.",
+      "Using relative URLs instead of absolute, fully-qualified HTTPS URLs.",
+      "Forgetting to update the sitemap when new pages are added to the site."
+    ],
+    "faq": [
+      {
+        "question": "Should every page be in the sitemap?",
+        "answer": "List only indexable, canonical pages that you want search engines to find. Exclude utility pages, redirects, and paginated archives that dilute the crawl budget."
+      },
+      {
+        "question": "Where should sitemap.xml be placed?",
+        "answer": "At the published site root, such as https://example.com/sitemap.xml. Reference it from robots.txt with Sitemap: <url>."
+      }
+    ]
+  },
+  {
+    "id": "github-pages-workflow-generator",
+    "name": "GitHub Pages Workflow Generator",
+    "category": "github-pages",
+    "summary": "Generate a GitHub Actions workflow YAML to deploy a static site, Vite, or Astro project to GitHub Pages.",
+    "description": "Choose your site type, enter the build command and output directory, and get a complete pages.yml workflow file. Includes CNAME placeholder and id-token write for deployment.",
+    "keywords": ["github pages workflow", "deploy static site action", "github pages yaml", "pages deploy action"],
+    "whatIs": "A GitHub Pages workflow is a GitHub Actions YAML file that automatically builds and deploys your site every time you push to the main branch. Beginners often need a template that includes the correct permissions, concurrency settings, Node setup, build step, and artifact upload. This tool generates a ready-to-use pages.yml with the standard deployment structure.",
+    "howToUse": [
+      "Choose the site type preset or enter custom build settings.",
+      "Set the Node version, build command, and output directory for your project.",
+      "Copy the generated YAML into .github/workflows/pages.yml in your repository.",
+      "Enable GitHub Pages in your repository settings to use GitHub Actions as the source."
+    ],
+    "useCases": [
+      "Set up automated deployment for a plain HTML static site on GitHub Pages.",
+      "Create a build-and-deploy workflow for a Vite or Astro static project.",
+      "Add a CNAME placeholder step so custom domains are not lost on deployment."
+    ],
+    "examples": [
+      {
+        "title": "Plain HTML site deployment",
+        "text": "A static HTML site with no build step needs the workflow to upload the root directory as-is. The generator creates a minimal workflow without a build step."
+      },
+      {
+        "title": "Vite project deployment",
+        "text": "A Vite project needs npm ci, npm run build, and the dist folder uploaded. The generator creates the correct workflow with artifact upload."
+      }
+    ],
+    "mistakes": [
+      "Using the wrong output directory, which causes GitHub Pages to serve an empty or incomplete site.",
+      "Forgetting to set the correct permissions for pages and id-token in the workflow.",
+      "Leaving the CNAME placeholder in the workflow when the site does not use a custom domain."
+    ],
+    "faq": [
+      {
+        "question": "Where should the workflow file be saved?",
+        "answer": "Save it as .github/workflows/pages.yml in your repository. GitHub Actions automatically detects and runs workflow files in that directory."
+      },
+      {
+        "question": "Do I need to configure anything in the repository settings?",
+        "answer": "Yes. Go to Settings > Pages and set the source to GitHub Actions. This tells GitHub Pages to use the workflow deployment instead of branch-based deployment."
+      }
+    ]
+  },
+  {
+    "id": "speculation-rules-generator",
+    "name": "Speculation Rules Generator",
+    "category": "seo",
+    "summary": "Generate Speculation Rules JSON for prerendering and prefetching pages in Chrome and Edge.",
+    "description": "Choose prerender or prefetch mode, pick a URL list or document rules source, and get the script tag with JSON speculation rules. Use to speed up navigation on static sites.",
+    "keywords": ["speculation rules", "prerender json", "prefetch rules", "chrome prerender"],
+    "whatIs": "Speculation Rules are a JSON-based browser feature that lets you tell the browser which pages to prefetch or prerender before the user clicks. Prerendering loads the full page for instant navigation, while prefetching fetches only the document resource. This can make a static site feel fast because subsequent page views load from cache or pre-rendered state.",
+    "howToUse": [
+      "Choose whether to prerender pages (full render) or prefetch them (document fetch only).",
+      "Select the URL list source to specify exact pages, or document rules for pattern-based matching.",
+      "Set the eagerness level. Conservative fires on hover or focus, moderate adds a short delay, eager fires immediately.",
+      "Copy the script tag into your page head or near the end of body."
+    ],
+    "useCases": [
+      "Prerender top navigation pages so they open instantly when clicked.",
+      "Prefetch blog article pages from a listing to speed up reading flow.",
+      "Add speculation rules to a documentation site so section pages load faster."
+    ],
+    "examples": [
+      {
+        "title": "Prerender main navigation",
+        "text": "A site prerenders the About, Tools, and FAQ pages because most visitors navigate to them from the homepage. Eagerness is set to moderate to balance speed and bandwidth."
+      },
+      {
+        "title": "Document rules for blog links",
+        "text": "A blog listing uses document rules so any same-origin link on the page is eligible for prefetching when the user hovers over it."
+      }
+    ],
+    "mistakes": [
+      "Prerendering too many pages, which wastes bandwidth and browser resources.",
+      "Setting eagerness to eager on every page, which can cause excessive prefetching.",
+      "Prerendering cross-origin pages without understanding the privacy and cookie implications."
+    ],
+    "faq": [
+      {
+        "question": "Which browsers support Speculation Rules?",
+        "answer": "Chrome 109+ and Edge 109+. Other browsers ignore the script tag, so it is safe to include as a progressive enhancement."
+      },
+      {
+        "question": "What is the difference between prerender and prefetch?",
+        "answer": "Prerender fetches and fully renders the page including subresources, making navigation feel instant. Prefetch fetches only the main document, which is lighter on bandwidth."
+      }
+    ]
   }
 ]
