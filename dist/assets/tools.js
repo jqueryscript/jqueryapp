@@ -857,7 +857,7 @@ const tools = {
           <label for="radius">Border radius</label>
           <div style="display:flex;gap:4px">
             <input id="radius" type="number" value="8" style="flex:1">
-            <select id="radius-unit">
+            <select style="width:56px;flex:none" id="radius-unit">
               <option value="px" selected>px</option>
               <option value="rem">rem</option>
               <option value="%">%</option>
@@ -871,7 +871,7 @@ const tools = {
             <label for="tl">Top-left</label>
             <div style="display:flex;gap:4px">
               <input id="tl" type="number" value="8" style="flex:1">
-              <select id="tl-unit">
+              <select style="width:56px;flex:none" id="tl-unit">
                 <option value="px" selected>px</option>
                 <option value="rem">rem</option>
                 <option value="%">%</option>
@@ -882,7 +882,7 @@ const tools = {
             <label for="tr">Top-right</label>
             <div style="display:flex;gap:4px">
               <input id="tr" type="number" value="8" style="flex:1">
-              <select id="tr-unit">
+              <select style="width:56px;flex:none" id="tr-unit">
                 <option value="px" selected>px</option>
                 <option value="rem">rem</option>
                 <option value="%">%</option>
@@ -895,7 +895,7 @@ const tools = {
             <label for="br">Bottom-right</label>
             <div style="display:flex;gap:4px">
               <input id="br" type="number" value="8" style="flex:1">
-              <select id="br-unit">
+              <select style="width:56px;flex:none" id="br-unit">
                 <option value="px" selected>px</option>
                 <option value="rem">rem</option>
                 <option value="%">%</option>
@@ -906,7 +906,7 @@ const tools = {
             <label for="bl">Bottom-left</label>
             <div style="display:flex;gap:4px">
               <input id="bl" type="number" value="8" style="flex:1">
-              <select id="bl-unit">
+              <select style="width:56px;flex:none" id="bl-unit">
                 <option value="px" selected>px</option>
                 <option value="rem">rem</option>
                 <option value="%">%</option>
