@@ -501,7 +501,7 @@ ${details.faq?.length ? `<section class="section faq-band">
 
   return pageShell({
     locale,
-    title: `${details.name} - ${site.siteName}`,
+    title: `Free ${details.name} - ${site.siteName}`,
     description: locale === site.defaultLocale ? freeBrowserDescription(details.description) : details.description,
     pathname: `tools/${category}`,
     body,
@@ -572,7 +572,7 @@ ${details.faq?.length ? `<section class="section faq-band">
 
   return pageShell({
     locale,
-    title: `${details.name} - ${site.siteName}`,
+    title: `Free ${details.name} - ${site.siteName}`,
     description: details.description,
     pathname: `collections/${collectionId}`,
     body,
