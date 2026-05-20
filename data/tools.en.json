@@ -1690,5 +1690,725 @@
         "answer": "default-src 'self' is a practical starting point. It allows resources from the same origin and blocks everything else. Add specific origins for CDNs, fonts, and analytics as needed."
       }
     ]
+  },
+  {
+    "id": "web-app-manifest-generator",
+    "name": "Web App Manifest Generator",
+    "category": "assets",
+    "summary": "Generate a site.webmanifest JSON file for PWA-ready static websites.",
+    "description": "Create a web app manifest with name, short name, icons, theme color, background color, display mode, and orientation. The output is ready to place in your static site root.",
+    "keywords": ["web app manifest generator", "site.webmanifest", "pwa manifest", "manifest json"],
+    "whatIs": "A web app manifest is a JSON file that tells browsers about your web application and how it should behave when installed on a user's device. It controls the app name, icons, colors, and launch behavior. For static sites on GitHub Pages, a manifest is the key step toward making the site installable as a Progressive Web App.",
+    "howToUse": [
+      "Enter your site name and an optional short name that fits under 12 characters.",
+      "Select the display mode: standalone removes browser chrome for an app-like experience.",
+      "Set icon paths to PNG images at recommended sizes such as 192x192 and 512x512.",
+      "Copy the generated manifest JSON and save it as site.webmanifest in your site root."
+    ],
+    "useCases": [
+      "Make a static documentation site installable on mobile home screens.",
+      "Add PWA metadata to a blog so returning readers can launch it like an app.",
+      "Prepare a web app manifest before submitting a site to a PWA directory."
+    ],
+    "examples": [
+      {
+        "title": "Tool site with standalone mode",
+        "text": "A static site that publishes browser-based utility tools sets display to standalone and theme-color to match its coral brand accent. Visitors on Android can add the site to their home screen and open it without the address bar."
+      },
+      {
+        "title": "Blog with minimal manifest",
+        "text": "A personal blog uses only name, short name, and a 192x192 icon. It leaves display as browser and skips orientation. The blog appears as a regular shortcut but still shows a branded icon on the home screen."
+      }
+    ],
+    "mistakes": [
+      "Setting icon paths that point to invalid locations or missing files, which causes the browser to reject the manifest.",
+      "Generating a manifest but forgetting the <link rel=\"manifest\" href=\"/site.webmanifest\"> tag in the page head, so the browser never reads it.",
+      "Choosing fullscreen or standalone display for a content-heavy site where users still need the address bar for navigation."
+    ],
+    "faq": [
+      {
+        "question": "Where should I place the manifest file?",
+        "answer": "Place site.webmanifest in your site root and reference it with <link rel=\"manifest\" href=\"/site.webmanifest\"> in the page head. The file must be served with the application/manifest+json MIME type."
+      },
+      {
+        "question": "Does a regular static site need a manifest?",
+        "answer": "A manifest is optional but recommended. It is the only way to control how your site appears when a user saves it to their home screen. Without a manifest, the browser uses a generic screenshot as the icon."
+      }
+    ]
+  },
+  {
+    "id": "markdown-front-matter-generator",
+    "name": "Markdown Front Matter Generator",
+    "category": "seo",
+    "summary": "Generate YAML front matter blocks for Jekyll, Hugo, Astro, 11ty, and other static site generators.",
+    "description": "Build YAML front matter with title, date, description, tags, layout, author, slug, and draft status. Copy the block into the top of your Markdown content files.",
+    "keywords": ["front matter generator", "yaml front matter", "markdown metadata", "jekyll front matter", "hugo front matter"],
+    "whatIs": "Front matter is a block of YAML or TOML at the top of a Markdown file that provides metadata to the static site generator. It tells the generator what layout to use, what the page title is, when it was published, and which tags or categories apply. Front matter is the bridge between raw Markdown content and the generated HTML page.",
+    "howToUse": [
+      "Enter the page title, publish date, and meta description for your post or page.",
+      "Add tags and an author name if your site supports them. Leave these blank to omit.",
+      "Set the layout to match your theme's template name, such as post or page.",
+      "Copy the generated front matter block and paste it at the very top of your Markdown file."
+    ],
+    "useCases": [
+      "Create consistent front matter for a batch of new blog posts.",
+      "Generate front matter for a static site migration from WordPress to Jekyll or Hugo.",
+      "Prepare draft front matter with draft: true so the content stays unpublished during review."
+    ],
+    "examples": [
+      {
+        "title": "Jekyll blog post",
+        "text": "A writer adds front matter with title, date, layout: post, and a list of tags. Jekyll uses the layout to wrap the content and the date to sort it in the blog archive."
+      },
+      {
+        "title": "Astro content collection entry",
+        "text": "An Astro site uses front matter with title, description, and a slug field. The slug overrides the filename so the URL stays clean even when the file is renamed."
+      }
+    ],
+    "mistakes": [
+      "Using tabs instead of spaces in YAML values, which causes parse errors in static site generators.",
+      "Forgetting the closing ---, which makes the generator treat the rest of the file as front matter.",
+      "Writing unquoted values with colons or special characters such as Title: My Page: Subtitle, which breaks the YAML parser."
+    ],
+    "faq": [
+      {
+        "question": "What is front matter used for?",
+        "answer": "Front matter tells your static site generator how to handle a page: which layout to apply, what title to use in the HTML head, when to publish, and how to organize the content in collections or tag pages."
+      },
+      {
+        "question": "Does every Markdown file need front matter?",
+        "answer": "No. Static files like an about page with no special metadata can omit front matter. Most generators treat a file without front matter as a plain HTML passthrough."
+      }
+    ]
+  },
+  {
+    "id": "toc-anchor-generator",
+    "name": "Table of Contents Anchor Generator",
+    "category": "html",
+    "summary": "Paste HTML headings and get a nested table of contents with anchor links for articles and documentation.",
+    "description": "Extract headings from pasted HTML and build a nested unordered list with anchor links. Each heading gets a slugified ID. Perfect for long blog posts, guides, and documentation pages.",
+    "keywords": ["table of contents generator", "anchor link generator", "toc html", "heading anchor"],
+    "whatIs": "A table of contents is a linked list of headings that lets readers jump to sections within a long page. Anchor links use the id attribute on each heading to create deep-linkable URLs. For static sites with long articles, a TOC improves navigation, accessibility, and reader engagement by letting users preview the article structure.",
+    "howToUse": [
+      "Paste the HTML of your article or page content into the input area.",
+      "Select which heading levels to include in the TOC, such as h2 through h4.",
+      "Review the generated nested list and click a link to verify the anchor format.",
+      "Copy the TOC HTML and paste it at the top of your article, then add the id attributes to your headings."
+    ],
+    "useCases": [
+      "Add a table of contents to a long guide with 12 or more sections.",
+      "Create anchor links for a documentation page with a deep h2 and h3 hierarchy.",
+      "Generate jump-to-section links for a multi-section landing page."
+    ],
+    "examples": [
+      {
+        "title": "Long guide with 12 sections",
+        "text": "A publishing guide on static site setup covers installation, configuration, deployment, and troubleshooting. The TOC lists each h2 section with an anchor link so readers can skip directly to the relevant step."
+      },
+      {
+        "title": "Documentation with h2/h3 hierarchy",
+        "text": "An API reference uses h2 for endpoint groups and h3 for individual endpoints. The TOC generator preserves the nesting so readers see the parent-child relationship in the sidebar."
+      }
+    ],
+    "mistakes": [
+      "Generating a TOC with anchor links but not adding corresponding id attributes to the original headings, which makes the links nonfunctional.",
+      "Attempting to generate a TOC from pasted content that contains no heading tags, which produces an empty list.",
+      "Generating a TOC with inconsistent heading levels such as jumping from h2 to h4 without h3, which breaks the visual nesting."
+    ],
+    "faq": [
+      {
+        "question": "Does this tool add id attributes to my existing headings?",
+        "answer": "It generates the id values as part of the TOC links. You must add those id attributes to the corresponding heading tags in your HTML manually or through your site generator."
+      },
+      {
+        "question": "Should every page have a table of contents?",
+        "answer": "Only pages with enough content to justify navigation benefit from a TOC. A page with fewer than three or four headings usually does not need one."
+      }
+    ]
+  },
+  {
+    "id": "rss-feed-starter-generator",
+    "name": "RSS Feed Starter Generator",
+    "category": "seo",
+    "summary": "Generate a complete RSS 2.0 XML feed for your static blog from a list of posts.",
+    "description": "Build a valid RSS 2.0 feed with channel metadata and item entries. Enter posts as title|url|date|description lines. The output is ready to publish as feed.xml on your static site.",
+    "keywords": ["rss feed generator", "rss 2.0 xml", "blog rss feed", "static site rss"],
+    "whatIs": "RSS is an XML format that lets readers subscribe to content updates through feed readers, browsers, and aggregators. An RSS feed on a static blog lets regular readers track new posts without visiting the site every day. Search engines also use RSS feeds to discover new and updated content on sites that publish infrequently.",
+    "howToUse": [
+      "Enter your site title, description, and the full site URL for the channel metadata.",
+      "Add each post on its own line using the format: Post Title|https://example.com/post-slug|2026-05-20|Short description.",
+      "Review the generated XML and validate that all URLs are absolute and dates are in RFC 822 format.",
+      "Save the output as feed.xml in your site root and link to it from your page head with <link rel=\"alternate\">."
+    ],
+    "useCases": [
+      "Publish an RSS feed for a static blog so readers can subscribe in their feed reader.",
+      "Generate a podcast RSS feed with episode titles, publish dates, and enclosure URLs for audio files.",
+      "Create a changelog feed that notifies subscribers when the site adds new tools or features."
+    ],
+    "examples": [
+      {
+        "title": "Blog with 10 posts",
+        "text": "A personal blog on GitHub Pages adds an RSS feed with channel metadata and 10 item entries. The feed link tag in the page head lets browsers and feed readers auto-discover the feed."
+      },
+      {
+        "title": "Changelog feed",
+        "text": "A software changelog publishes entries as RSS items with the date and a summary of each version. Subscribers get notified when a new version releases without checking the site."
+      }
+    ],
+    "mistakes": [
+      "Using relative URLs for item links and enclosure URLs, which fail when the feed is read by an external reader.",
+      "Generating the feed once and never updating it, which leaves subscribers stuck on old content.",
+      "Entering dates in a format that is not RFC 822, such as 2026-05-20, which causes feed validators to reject the XML."
+    ],
+    "faq": [
+      {
+        "question": "Where should I publish my RSS feed?",
+        "answer": "Save the file as feed.xml or index.xml in your site root. Most static site generators and feed readers expect the feed at /feed.xml by convention. Add a <link rel=\"alternate\" type=\"application/rss+xml\"> tag in your page head for auto-discovery."
+      },
+      {
+        "question": "Do search engines use RSS feeds?",
+        "answer": "Yes. Google and other search engines read RSS feeds to discover new content, especially on sites that do not update frequently. An RSS feed can help your new posts get indexed faster."
+      }
+    ]
+  },
+  {
+    "id": "dialog-modal-html-generator",
+    "name": "Dialog Modal HTML Generator",
+    "category": "html",
+    "summary": "Generate a native HTML dialog modal with open and close buttons using the dialog element.",
+    "description": "Build a complete dialog modal with trigger button, content, close button, and styling using the native HTML dialog element. Works without external JavaScript libraries.",
+    "keywords": ["html dialog generator", "dialog modal html", "native dialog element", "modal without javascript"],
+    "whatIs": "The HTML dialog element provides a native browser-controlled modal dialog that does not require external libraries. The showModal() method opens a modal that blocks interaction with the rest of the page, while show() opens a non-modal dialog. For static sites, the dialog element removes the need for a JavaScript framework or custom modal logic.",
+    "howToUse": [
+      "Enter the button text and the heading for your modal dialog.",
+      "Write the body content for the modal using plain text or HTML tags.",
+      "Choose whether to use showModal() for a blocking modal or show() for a modeless overlay.",
+      "Copy the generated HTML, CSS, and JavaScript into your page. Include all three parts for the modal to work."
+    ],
+    "useCases": [
+      "Add a contact form modal to a landing page without pulling in a UI library.",
+      "Create an image lightbox using the dialog element with a close button and backdrop.",
+      "Show a confirmation dialog before form submission on a static site."
+    ],
+    "examples": [
+      {
+        "title": "Landing page contact modal",
+        "text": "A product landing page uses a dialog with showModal() to display a contact form. The backdrop dims the page behind the form, and clicking outside the dialog or pressing Escape closes it."
+      },
+      {
+        "title": "Gallery image dialog",
+        "text": "A photography portfolio opens images in a dialog using showModal(). Each image has a close button, and clicking the backdrop closes the dialog without JavaScript event handlers."
+      }
+    ],
+    "mistakes": [
+      "Adding the dialog HTML and CSS but forgetting the JavaScript open and close calls, which leaves the dialog hidden and nonfunctional.",
+      "Not styling the dialog::backdrop pseudo-element, which leaves the backdrop transparent and fails to visually separate the modal from the page.",
+      "Making the close button difficult to find or removing it entirely, which traps users inside the modal."
+    ],
+    "faq": [
+      {
+        "question": "Which browsers support the dialog element?",
+        "answer": "All modern browsers support the dialog element as of 2025. No polyfill is needed for current Chrome, Firefox, Safari, and Edge releases."
+      },
+      {
+        "question": "Can I style the backdrop of a dialog?",
+        "answer": "Yes. Use the ::backdrop pseudo-element in CSS. For example, dialog::backdrop { background: rgba(0, 0, 0, 0.5); } creates a semi-transparent dark overlay behind the modal."
+      }
+    ]
+  },
+  {
+    "id": "css-scroll-snap-generator",
+    "name": "CSS Scroll Snap Generator",
+    "category": "css",
+    "summary": "Generate CSS scroll-snap rules for carousels, galleries, and horizontal scroll sections.",
+    "description": "Create CSS scroll-snap container and item rules. Choose direction, snap type, alignment, and stop behavior. Includes a minimal HTML skeleton to test immediately.",
+    "keywords": ["scroll snap css", "css carousel", "scroll snap generator", "horizontal scroll css"],
+    "whatIs": "CSS scroll-snap controls the scroll position of a container so it snaps to alignment points you define. It enables carousels, horizontal galleries, and section-by-section scrolling without JavaScript. The browser handles the snapping physics, making it smooth on trackpad, mouse wheel, and touch devices.",
+    "howToUse": [
+      "Select the scroll direction: horizontal for carousels and galleries, vertical for section-by-section pages.",
+      "Choose the snap type: mandatory always snaps to the nearest point, proximity snaps only when the scroll is near a snap point.",
+      "Pick the alignment: start aligns the child to the container start, center centers it, end aligns to the end.",
+      "Copy the generated CSS and HTML skeleton, then replace the placeholder child content with your own."
+    ],
+    "useCases": [
+      "Build a horizontal image gallery that snaps to each image on scroll or swipe.",
+      "Create a full-page landing site where each section snaps into view on scroll.",
+      "Replace a JavaScript carousel with a lightweight CSS-only scroll-snap component."
+    ],
+    "examples": [
+      {
+        "title": "Photography portfolio gallery",
+        "text": "A photographer sets up a horizontal scroll container with snap-type mandatory and snap-align center. Each image fills most of the viewport, and the scroll stops centered on each photo."
+      },
+      {
+        "title": "Landing page sections",
+        "text": "A product landing page uses vertical scroll-snap with snap-type proximity. Each full-viewport section gently snaps into place, but the user can still scroll freely past sections without fighting the snap."
+      }
+    ],
+    "mistakes": [
+      "Using mandatory snap-type on a container with very long content, which forces the user to snap to every child and makes browsing feel rigid.",
+      "Forgetting to set overflow to scroll or auto on the container, which prevents scroll-snap from activating.",
+      "Not testing scroll-snap on a touch device, where the snapping behavior can feel different than on a mouse or trackpad."
+    ],
+    "faq": [
+      {
+        "question": "Does scroll-snap work on mobile devices?",
+        "answer": "Yes. Scroll-snap works on all modern browsers including mobile Safari and Chrome. Touch gestures, trackpad swipes, and mouse wheel scrolling all trigger the snap behavior."
+      },
+      {
+        "question": "What is the difference between mandatory and proximity?",
+        "answer": "Mandatory always snaps to the nearest snap point, even if the user scrolls slightly. Proximity only snaps when the scroll position is near a snap point, giving the user more freedom to browse without forced snapping."
+      }
+    ]
+  },
+  {
+    "id": "container-query-snippet-generator",
+    "name": "Container Query Snippet Generator",
+    "category": "css",
+    "summary": "Generate CSS container query rules for component-based responsive design.",
+    "description": "Set up @container rules with container-type and container-name. Enter breakpoint conditions and the CSS to apply. Makes reusable components adapt to their container instead of the viewport.",
+    "keywords": ["container query generator", "@container css", "container-type", "component responsive"],
+    "whatIs": "Container queries let you apply CSS styles based on the size of a parent container rather than the viewport. This is different from media queries, which respond to the browser window. For reusable components, container queries mean the same component can render correctly in a narrow sidebar and a wide main content area without duplicating styles.",
+    "howToUse": [
+      "Set a container-type and optional container-name for the parent element that will be the query reference.",
+      "Choose a breakpoint condition such as min-width, max-width, or an inline-size range.",
+      "Write the CSS rules that should apply when the condition is met.",
+      "Copy the generated @container block and place it inside your component stylesheet."
+    ],
+    "useCases": [
+      "Make a card component switch from horizontal to vertical layout when its container shrinks.",
+      "Build a form row that stacks fields on narrow containers and places them inline on wide containers.",
+      "Create a widget that resizes its font and spacing based on the container width, independent of the viewport."
+    ],
+    "examples": [
+      {
+        "title": "Card component in sidebar and main content",
+        "text": "A reusable card is placed in both a narrow sidebar and a wide main column. With container queries, the card uses a stacked layout in the sidebar and a horizontal layout in the main content, all from a single component class."
+      },
+      {
+        "title": "Form row that adapts to available space",
+        "text": "A form with name, email, and phone fields uses a container query on the fieldset. When the container is wider than 500px, the fields sit inline. Below 500px, each field stacks to its own line."
+      }
+    ],
+    "mistakes": [
+      "Applying container queries to an element without setting container-type on a parent, which means no container context is established and the queries never apply.",
+      "Using viewport units such as vw or vh inside a container query, which still reference the viewport rather than the container.",
+      "Relying entirely on container queries without a fallback layout, which leaves the component unstyled in browsers that do not support container queries."
+    ],
+    "faq": [
+      {
+        "question": "Which browsers support container queries?",
+        "answer": "Container queries are supported in all modern browsers as of Chrome 105, Firefox 110, Safari 16, and Edge 105. For older browsers, provide a fallback layout that works without @container rules."
+      },
+      {
+        "question": "What is the difference between inline-size and size for container-type?",
+        "answer": "inline-size establishes a query container that responds to the inline dimension only, which is width in horizontal writing modes. size establishes a container that responds to both width and height but requires contain: layout style on the container, which can affect layout behavior."
+      }
+    ]
+  },
+  {
+    "id": "aspect-ratio-placeholder-calculator",
+    "name": "Aspect Ratio Placeholder Calculator",
+    "category": "css",
+    "summary": "Calculate aspect-ratio CSS values and padding-bottom fallbacks to prevent Cumulative Layout Shift.",
+    "description": "Choose a preset ratio or enter custom dimensions. Get the modern aspect-ratio CSS and the padding-bottom percentage fallback for older browsers. Reserve space for images and embeds before they load.",
+    "keywords": ["aspect ratio calculator", "css aspect-ratio", "layout shift", "padding-bottom aspect ratio", "cls fix"],
+    "whatIs": "Aspect-ratio is a CSS property that sets a preferred aspect ratio for an element, letting the browser calculate the height from the width before content loads. This prevents Cumulative Layout Shift (CLS), a Core Web Vitals metric that measures visual stability. By reserving the correct space for images, videos, and embeds ahead of time, the page layout stays stable as resources load.",
+    "howToUse": [
+      "Select a preset ratio such as 16:9, 4:3, or 1:1, or enter custom width and height values.",
+      "View the generated aspect-ratio CSS value for modern browsers.",
+      "Copy the padding-bottom fallback for browsers that do not support the aspect-ratio property.",
+      "Apply the wrapper markup to your image or embed element. The placeholder reserves the correct height before the resource loads."
+    ],
+    "useCases": [
+      "Reserve space for hero images on blog posts so the layout does not jump when the image loads.",
+      "Create stable video embed containers for YouTube or Vimeo iframes that preserve the player aspect ratio.",
+      "Build placeholder boxes for lazy-loaded images in a gallery grid."
+    ],
+    "examples": [
+      {
+        "title": "Blog hero image with 16:9 ratio",
+        "text": "A blog wraps the hero image in a container with aspect-ratio: 16/9. The browser reserves a 16:9 box before the image URL loads, preventing the title and intro text from shifting downward."
+      },
+      {
+        "title": "Video embed with padding-bottom fallback",
+        "text": "A tutorial page embeds YouTube iframes in a 16:9 wrapper. The aspect-ratio property handles modern browsers, and the padding-bottom: 56.25% fallback covers Safari 14 and older Android browsers."
+      }
+    ],
+    "mistakes": [
+      "Applying aspect-ratio to an image but not setting a defined width, which leaves the element with zero size in some layout contexts.",
+      "Adding a fixed height attribute on the same element that uses aspect-ratio, which creates a conflict and breaks the ratio.",
+      "Using aspect-ratio without testing the padding-bottom fallback in browsers that do not support it, which causes layout shift in older browsers."
+    ],
+    "faq": [
+      {
+        "question": "Which browsers support the aspect-ratio CSS property?",
+        "answer": "Aspect-ratio is supported in all modern browsers as of 2024. Chrome 88, Firefox 87, Safari 15, and Edge 88 all support it. For older browsers, use the padding-bottom percentage fallback."
+      },
+      {
+        "question": "What is a good default aspect ratio for blog images?",
+        "answer": "16:9 is a common choice for blog hero images and video embeds. 4:3 works well for screenshots and photos. 1:1 is useful for profile pictures and product thumbnails."
+      }
+    ]
+  },
+  {
+    "id": "no-js-redirect-page-generator",
+    "name": "No-JS Redirect Page Generator",
+    "category": "html",
+    "summary": "Generate a complete HTML redirect page using the meta refresh tag without JavaScript.",
+    "description": "Create a self-contained HTML page that redirects visitors to a new URL using the meta refresh tag. Works on any static hosting without server configuration or JavaScript.",
+    "keywords": ["html redirect page", "meta refresh redirect", "no javascript redirect", "static redirect page"],
+    "whatIs": "A meta refresh redirect is an HTML-only way to send visitors from one URL to another. It works on static hosting (GitHub Pages, Netlify, etc.) where server redirects are not available. The tag sits in the page head with a delay and destination URL.",
+    "howToUse": [
+      "Enter the target URL and redirect delay in seconds.",
+      "Add a page title and optional body text for the redirect notice page.",
+      "Copy the generated HTML into a file at the old URL location.",
+      "Publish the file and test that the redirect fires correctly."
+    ],
+    "useCases": [
+      "Redirect old URLs to new locations on static hosting where server redirects are not available.",
+      "Create a short-link page that forwards visitors to a destination URL.",
+      "Move a GitHub Pages site to a new domain with a soft redirect page at each old URL."
+    ],
+    "examples": [
+      {
+        "title": "Blog post URL change",
+        "text": "A blog moves from /old-post to /new-post. The tool generates a meta refresh page at the old URL so visitors and crawlers are forwarded to the new location."
+      },
+      {
+        "title": "Domain migration",
+        "text": "A site moves from user.github.io to a custom domain and uses redirect pages for deep links so visitors with bookmarks still reach the correct content."
+      }
+    ],
+    "mistakes": [
+      "Setting the delay to 0, which gives visitors no time to read the redirect notice before the page changes.",
+      "Pointing to a broken or relative URL that does not resolve when the redirect fires.",
+      "Not adding a manual click link in case the meta refresh does not fire or is blocked by the browser."
+    ],
+    "faq": [
+      {
+        "question": "Do search engines follow meta refresh redirects?",
+        "answer": "Google treats a 0-second meta refresh as a permanent redirect in most cases. Longer delays are treated as temporary. Meta refresh is not as strong as a 301 server redirect but is the only option on static hosting."
+      },
+      {
+        "question": "Is meta refresh better than JavaScript redirects?",
+        "answer": "Meta refresh works without JavaScript and is simpler to implement. Both are less ideal than server-side redirects but are practical options on static hosting platforms."
+      }
+    ]
+  },
+  {
+    "id": "static-404-page-template-generator",
+    "name": "Static 404 Page Template Generator",
+    "category": "html",
+    "summary": "Generate a friendly 404 error page with navigation links for static websites and GitHub Pages.",
+    "description": "Build a complete 404.html page with a helpful message, navigation links, and optional search. The output is ready to place in your static site root for GitHub Pages and other static hosting.",
+    "keywords": ["404 page template", "github pages 404", "custom 404 html", "static 404 page"],
+    "whatIs": "A 404 page shows when a visitor opens a URL that does not exist. Static hosts automatically serve 404.html from the site root when a page is not found. A good 404 page helps visitors find their way back instead of bouncing.",
+    "howToUse": [
+      "Enter your site name, URL, and a custom message for the 404 page.",
+      "Choose which navigation links to include on the page.",
+      "Copy the complete HTML into a file named 404.html at your site root.",
+      "Test by visiting a non-existent URL on your published site."
+    ],
+    "useCases": [
+      "Prepare a 404 page for a new GitHub Pages site before launch.",
+      "Add a search box and navigation links to help lost visitors find content.",
+      "Create a consistent 404 experience across a multi-page static site."
+    ],
+    "examples": [
+      {
+        "title": "Tool site 404 page",
+        "text": "A tool site creates a 404 page listing popular tools and a link to the homepage so visitors can quickly navigate back to useful content."
+      },
+      {
+        "title": "Blog 404 page with search",
+        "text": "A blog 404 page suggests recent posts and includes a search box linked to a site search engine so visitors can find what they were looking for."
+      }
+    ],
+    "mistakes": [
+      "Creating a 404 page that looks nothing like the rest of the site, which confuses visitors who end up on it.",
+      "Omitting navigation links from the 404 page, leaving visitors with no way to continue browsing.",
+      "Forgetting to publish 404.html in the published site root, which means the default browser 404 page is shown instead."
+    ],
+    "faq": [
+      {
+        "question": "Where should 404.html be placed?",
+        "answer": "At the published site root. GitHub Pages, Netlify, and most static hosts look for 404.html at the root of the published output."
+      },
+      {
+        "question": "Can I use the same 404 page for every static host?",
+        "answer": "Yes. 404.html is a standard convention supported by most static hosting platforms including GitHub Pages, Netlify, Cloudflare Pages, and Vercel."
+      }
+    ]
+  },
+  {
+    "id": "json-feed-starter-generator",
+    "name": "JSON Feed Starter Generator",
+    "category": "seo",
+    "summary": "Generate a JSON Feed file for your static blog as a modern, machine-readable alternative to RSS.",
+    "description": "Build a JSON Feed version 1.1 file with feed metadata and item entries. Enter posts as title|url|date|content lines. Output is ready to publish as feed.json.",
+    "keywords": ["json feed generator", "json feed 1.1", "feed json", "json rss alternative"],
+    "whatIs": "JSON Feed is a modern feed format similar to RSS but in JSON. It is easier to parse for JavaScript apps and modern feed readers. It has a clear spec at jsonfeed.org and supports title, URL, description, items, and author fields.",
+    "howToUse": [
+      "Enter the site title, URL, description, and author name for the feed channel.",
+      "Add posts one per line using the format: title|url|date|content.",
+      "Review the generated JSON and validate that all URLs are absolute.",
+      "Save the file as feed.json at your site root and link it from the HTML head."
+    ],
+    "useCases": [
+      "Create a JSON Feed for a static blog alongside an existing RSS feed.",
+      "Build a machine-readable content API for your static site.",
+      "Add a feed for JavaScript-based feed readers and microblogging clients that prefer JSON over XML."
+    ],
+    "examples": [
+      {
+        "title": "Dual feed publishing",
+        "text": "A static blog publishes both feed.xml and feed.json so readers can choose their preferred format. RSS covers legacy readers and JSON Feed covers modern tools."
+      },
+      {
+        "title": "Microblog JSON Feed",
+        "text": "A short-form microblog publishes a JSON Feed for clients that natively parse JSON. Each short post becomes a feed item with title, URL, and content."
+      }
+    ],
+    "mistakes": [
+      "Using relative URLs in feed entries, which fail when the feed is read by an external reader.",
+      "Forgetting to validate the JSON syntax before publishing, which causes feed readers to reject the file.",
+      "Including HTML in content_text without a matching content_html field, which violates the JSON Feed spec."
+    ],
+    "faq": [
+      {
+        "question": "Should I publish both RSS and JSON Feed?",
+        "answer": "Both formats have readers. RSS has broader legacy support. JSON Feed is easier for modern tools. Publishing both covers the widest range of feed readers."
+      },
+      {
+        "question": "Where should feed.json be placed?",
+        "answer": "At the site root, such as /feed.json. Link from the HTML head with <link rel=\"alternate\" type=\"application/feed+json\" href=\"/feed.json\"> for auto-discovery."
+      }
+    ]
+  },
+  {
+    "id": "accessible-skip-link-generator",
+    "name": "Accessible Skip Link Generator",
+    "category": "html",
+    "summary": "Generate an accessible skip-to-main-content link with CSS for keyboard and screen reader navigation.",
+    "description": "Create a skip navigation link that appears on focus for keyboard users. Essential for accessibility and required by WCAG for pages with repeated navigation blocks.",
+    "keywords": ["skip link generator", "skip to main content", "accessible skip navigation", "wcag skip link"],
+    "whatIs": "A skip link is a hidden link at the top of the page that becomes visible when focused with the Tab key. It lets keyboard and screen reader users jump directly to the main content, skipping the navigation. WCAG requires a way to bypass repeated blocks of content.",
+    "howToUse": [
+      "Enter the CSS selector of the main content area, such as #main-content or #content.",
+      "Set the link text that will appear when the skip link is focused.",
+      "Choose whether the link is always visible or only appears on keyboard focus.",
+      "Copy the generated HTML and CSS into your page and test by tabbing from the top of the page."
+    ],
+    "useCases": [
+      "Add skip navigation to a static HTML template for better keyboard accessibility.",
+      "Meet WCAG 2.4.1 bypass block requirements on pages with persistent navigation.",
+      "Improve keyboard navigation for a multi-page documentation site with a sidebar."
+    ],
+    "examples": [
+      {
+        "title": "Blog with skip link on focus",
+        "text": "A blog template adds a skip link that becomes visible on Tab focus and jumps to <main id=\"content\">. Keyboard users can press Tab once on page load to see and activate the link."
+      },
+      {
+        "title": "Documentation sidebar skip",
+        "text": "A documentation site uses a visible skip link that keyboard users can activate to jump past the sidebar navigation to the main article content."
+      }
+    ],
+    "mistakes": [
+      "Setting the target selector to an element that does not exist or is not focusable, which makes the skip link nonfunctional.",
+      "Hiding the link with display: none, which also hides it from screen readers and defeats the purpose.",
+      "Forgetting to make the target element focusable with tabindex=\"-1\" so it can receive focus when the skip link is activated."
+    ],
+    "faq": [
+      {
+        "question": "Should the skip link always be visible?",
+        "answer": "It can be visible-on-focus or always visible. Either method is valid as long as the link is accessible to keyboard users when they need it."
+      },
+      {
+        "question": "What selector should the skip link target?",
+        "answer": "The id of the main content element, such as #main-content or #content. The target element should also have tabindex=\"-1\" so it can receive focus when the link is activated."
+      }
+    ]
+  },
+  {
+    "id": "html-landmark-checker",
+    "name": "HTML Landmark Checker",
+    "category": "html",
+    "summary": "Paste HTML and check for ARIA landmark elements that help screen readers navigate the page structure.",
+    "description": "Scan pasted HTML for common landmark elements: header, main, nav, footer, aside, section, form, and search. Flags missing essential landmarks and explains why each one matters for accessibility.",
+    "keywords": ["html landmark checker", "aria landmarks", "html semantics checker", "landmark audit"],
+    "whatIs": "ARIA landmarks are HTML elements that define page regions. Screen readers use landmarks to let users jump between page sections. Common landmarks include header, main, nav, footer, aside, and form. Missing landmarks make pages harder to navigate for assistive technology users.",
+    "howToUse": [
+      "Paste your HTML markup into the input area.",
+      "The tool scans for landmark elements and displays which ones are present.",
+      "Review the results showing which landmarks are missing from your page.",
+      "Add the missing landmark elements to improve page accessibility."
+    ],
+    "useCases": [
+      "Audit a static page template for missing landmark elements before publishing.",
+      "Check that every page on a site has a main element for screen reader navigation.",
+      "Verify that navigation blocks use the nav element instead of generic div elements."
+    ],
+    "examples": [
+      {
+        "title": "Missing main landmark",
+        "text": "A page template audit reveals a missing main element. The checker flags it as a required landmark and explains that screen readers depend on main to jump to page content."
+      },
+      {
+        "title": "Div navigation detected",
+        "text": "A blog layout has header and footer elements but uses a div for navigation. The checker suggests replacing the div with a nav element for better landmark structure."
+      }
+    ],
+    "mistakes": [
+      "Using multiple main elements on one page, which is not standard and confuses screen reader navigation.",
+      "Wrapping everything in a nav element instead of using it only for actual site navigation.",
+      "Using section elements without accessible names, which makes them less useful as ARIA landmarks."
+    ],
+    "faq": [
+      {
+        "question": "How many main elements should a page have?",
+        "answer": "One visible main element per page. Multiple main elements are not standard and confuse screen reader navigation."
+      },
+      {
+        "question": "Are HTML5 semantic elements the same as ARIA landmarks?",
+        "answer": "Yes. Elements like header, main, nav, footer, aside, and form have implicit ARIA landmark roles. Using these semantic elements automatically creates landmarks."
+      }
+    ]
+  },
+  {
+    "id": "input-attributes-generator",
+    "name": "Input Attributes Generator",
+    "category": "html",
+    "summary": "Generate HTML input elements with type-specific attributes for forms on static websites.",
+    "description": "Choose an input type and configure type-specific attributes such as placeholder, required, pattern, autocomplete, min, max, and step. Copy the complete input tag with all attributes correctly set.",
+    "keywords": ["input attributes generator", "html input tag", "form input builder", "input type attributes"],
+    "whatIs": "HTML inputs have many type-specific attributes that are easy to forget. The type attribute changes which attributes are valid: email inputs use pattern and multiple, number inputs use min, max, and step, text inputs use minlength and maxlength. Getting these right helps with form validation and user experience.",
+    "howToUse": [
+      "Choose the input type that matches the data you are collecting.",
+      "Set common attributes such as name, placeholder, and required.",
+      "Add type-specific attributes like min and max for numbers or pattern for text inputs.",
+      "Copy the complete input tag into your form HTML."
+    ],
+    "useCases": [
+      "Build a contact form with correctly attributed email and phone input fields.",
+      "Create a search form with autocomplete and placeholder attributes.",
+      "Prepare accessible form fields with labels and aria attributes included."
+    ],
+    "examples": [
+      {
+        "title": "Newsletter email field",
+        "text": "A newsletter signup form needs an email input with type=\"email\", the required attribute, and a placeholder that explains the format."
+      },
+      {
+        "title": "Quantity selector",
+        "text": "A checkout form needs a number input with min=\"1\" and max=\"10\" for item quantity so the browser validates the range before submission."
+      }
+    ],
+    "mistakes": [
+      "Using type=\"text\" for email or URL fields instead of the correct semantic input type.",
+      "Forgetting the name attribute, which is required for form submission to work.",
+      "Adding the required attribute without a visible indicator or an accessible label for screen readers."
+    ],
+    "faq": [
+      {
+        "question": "Which input types have built-in validation?",
+        "answer": "Email, URL, number, date, and tel inputs validate format automatically in supporting browsers. The browser checks the value against the expected format before allowing form submission."
+      },
+      {
+        "question": "Should I use the pattern attribute?",
+        "answer": "Use pattern when the input type's built-in validation is not specific enough for your format requirement. Always pair pattern validation with server-side validation."
+      }
+    ]
+  },
+  {
+    "id": "dynamic-viewport-units-generator",
+    "name": "Dynamic Viewport Units Generator",
+    "category": "css",
+    "summary": "Generate CSS using dynamic viewport units (dvh, svh, lvh) with fallbacks for older browsers.",
+    "description": "Create CSS declarations using the modern viewport units: small (svh/svw), large (lvh/lvw), and dynamic (dvh/dvw). Each unit behaves differently on mobile browsers. Includes fallback declarations for older browser support.",
+    "keywords": ["dynamic viewport units", "dvh css", "svh css", "lvh css", "viewport height css"],
+    "whatIs": "Modern CSS viewport units come in three variants. Small viewport (svh) is the viewport height minus the browser UI. Large viewport (lvh) is the viewport height with the browser UI retracted. Dynamic viewport (dvh) adjusts as the browser UI appears and disappears. These are useful for full-screen layouts on mobile where the browser address bar changes the visible area.",
+    "howToUse": [
+      "Choose the unit type: svh, lvh, dvh, svw, lvw, or dvw.",
+      "Set a percentage value for the viewport unit such as 100 for full height.",
+      "Choose the CSS property to apply the viewport unit to, such as min-height or height.",
+      "Copy the CSS declaration with the modern unit and a classic vh fallback."
+    ],
+    "useCases": [
+      "Create a hero section that fills the exact visible screen on mobile devices.",
+      "Prevent content from being hidden behind the mobile browser toolbar on scroll.",
+      "Build full-screen panels that adapt to changing viewport sizes as the browser UI appears and retracts."
+    ],
+    "examples": [
+      {
+        "title": "Mobile hero with svh",
+        "text": "A hero section uses min-height: 100svh to fill the screen while accounting for the mobile address bar. The classic vh fallback covers older browsers."
+      },
+      {
+        "title": "Bottom navigation with dvh",
+        "text": "A bottom navigation bar uses bottom: 0 with padding-bottom based on dvh to stay above the home indicator and adapt when the address bar retracts."
+      }
+    ],
+    "mistakes": [
+      "Using dvh for every element when svh or lvh would provide more stable behavior for the specific use case.",
+      "Not providing a classic vh or vw fallback for browsers that do not support dynamic viewport units.",
+      "Using dynamic viewport units for desktop layouts where the simple vh unit works perfectly well."
+    ],
+    "faq": [
+      {
+        "question": "When should I use dvh instead of vh?",
+        "answer": "Use dvh when the element must fill the exact visible area and adapt as the browser UI changes. Use vh for simpler cases or when a stable, unchanging height is preferred."
+      },
+      {
+        "question": "Which browsers support dynamic viewport units?",
+        "answer": "Chrome 108+, Edge 108+, Safari 15.4+, and Firefox 101+. Provide a classic vh or vw fallback for older browser versions."
+      }
+    ]
+  },
+  {
+    "id": "css-logical-properties-converter",
+    "name": "CSS Logical Properties Converter",
+    "category": "css",
+    "summary": "Convert physical CSS properties to logical properties for better right-to-left and writing-mode support.",
+    "description": "Turn physical CSS values like margin-left and padding-right into logical equivalents such as margin-inline-start and padding-inline-end. Write CSS once that adapts to LTR, RTL, and vertical writing modes.",
+    "keywords": ["css logical properties", "logical css converter", "rtl css", "writing mode css", "inline block css"],
+    "whatIs": "CSS logical properties use writing-mode-relative directions instead of physical directions. Inline (text flow direction) and Block (perpendicular direction) replace Left, Right, Top, and Bottom. This means the same CSS works for left-to-right, right-to-left, and vertical languages without overrides. For example, margin-inline-start applies to the left side in LTR and the right side in RTL.",
+    "howToUse": [
+      "Choose the physical CSS property you want to convert, such as margin-left or padding-right.",
+      "Select the logical equivalent from the available suggestions.",
+      "Enter the value for the property.",
+      "Copy the logical property declaration into your stylesheet and test in both LTR and RTL directions."
+    ],
+    "useCases": [
+      "Prepare CSS that works for multilingual websites with RTL language support.",
+      "Write direction-agnostic component styles that do not need separate RTL overrides.",
+      "Reduce the need for a separate RTL stylesheet by using logical properties from the start."
+    ],
+    "examples": [
+      {
+        "title": "Card with automatic RTL support",
+        "text": "A card component uses margin-inline-end instead of margin-right. In RTL mode, the spacing flips automatically without additional CSS overrides."
+      },
+      {
+        "title": "Vertical writing mode layout",
+        "text": "A layout uses padding-block-start instead of padding-top so the spacing stays correct in vertical writing mode where top and bottom have different meaning."
+      }
+    ],
+    "mistakes": [
+      "Converting every physical property without checking browser support for the specific logical property variant.",
+      "Mixing physical and logical properties in the same declaration, which can cause inconsistent behavior across writing modes.",
+      "Assuming all logical properties have full browser support. Some shorthand logical properties are newer than the core set."
+    ],
+    "faq": [
+      {
+        "question": "Do all browsers support logical properties?",
+        "answer": "Chrome 87+, Edge 87+, Safari 15+, and Firefox 66+ support the core set of logical properties. Some shorthand variants are newer. Check support for the specific property you plan to use."
+      },
+      {
+        "question": "Should I replace all physical properties with logical ones?",
+        "answer": "For multilingual sites with RTL or vertical language support, yes. For English-only sites, logical properties are still fine to use but physical properties remain valid and are simpler to read."
+      }
+    ]
   }
 ]

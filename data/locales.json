@@ -235,7 +235,23 @@
       "github-pages-workflow-generator": {"name": "GitHub-Pages-Workflow-Generator", "summary": "Generiere eine GitHub-Actions-Workflow-YAML zum Deployen statischer Sites auf GitHub Pages."},
       "speculation-rules-generator": {"name": "Speculation-Rules-Generator", "summary": "Generiere Speculation-Rules-JSON zum Prerendering und Prefetching von Seiten in Chrome und Edge."},
       "permissions-policy-generator": {"name": "Permissions-Policy-Header-Generator", "summary": "Generiere einen Permissions-Policy-HTTP-Header zur Kontrolle des Browser-Feature-Zugriffs auf deiner Website."},
-      "csp-starter-policy-generator": {"name": "CSP-Starter-Policy-Generator", "summary": "Generiere einen Content-Security-Policy-Header fur statische Sites mit CDN-, Analyse-, Schrift- und Embed-Optionen."}
+      "csp-starter-policy-generator": {"name": "CSP-Starter-Policy-Generator", "summary": "Generiere einen Content-Security-Policy-Header fur statische Sites mit CDN-, Analyse-, Schrift- und Embed-Optionen."},
+      "web-app-manifest-generator": {"name": "Web-App-Manifest-Generator", "summary": "Generiere eine site.webmanifest-JSON-Datei fur PWA-fahige statische Websites."},
+      "markdown-front-matter-generator": {"name": "Markdown-Front-Matter-Generator", "summary": "Generiere YAML-Front-Matter-Blocke fur Jekyll, Hugo, Astro, 11ty und andere Static-Site-Generators."},
+      "toc-anchor-generator": {"name": "Inhaltsverzeichnis-Anker-Generator", "summary": "Fuge HTML-Uberschriften ein und erhalte ein verschachteltes Inhaltsverzeichnis mit Ankerlinks."},
+      "rss-feed-starter-generator": {"name": "RSS-Feed-Starter-Generator", "summary": "Generiere einen vollstandigen RSS-2.0-XML-Feed fur deinen statischen Blog."},
+      "dialog-modal-html-generator": {"name": "Dialog-Modal-HTML-Generator", "summary": "Generiere ein natives HTML-Dialog-Modal mit Offnungs- und Schlies-Buttons."},
+      "css-scroll-snap-generator": {"name": "CSS-Scroll-Snap-Generator", "summary": "Generiere CSS-Scroll-Snap-Regeln fur Karussells, Galerien und horizontale Scrollbereiche."},
+      "container-query-snippet-generator": {"name": "Container-Query-Snippet-Generator", "summary": "Generiere CSS-Container-Query-Regeln fur komponentenbasiertes responsives Design."},
+      "aspect-ratio-placeholder-calculator": {"name": "Aspect-Ratio-Placeholder-Rechner", "summary": "Berechne aspect-ratio-CSS-Werte und padding-bottom-Fallbacks gegen Layout Shift."},
+      "no-js-redirect-page-generator": {"name": "No-JS-Weiterleitungsseiten-Generator", "summary": "Generiere eine vollstandige HTML-Weiterleitungsseite mit dem Meta-Refresh-Tag ohne JavaScript."},
+      "static-404-page-template-generator": {"name": "Statischer-404-Seiten-Template-Generator", "summary": "Generiere eine freundliche 404-Fehlerseite mit Navigationslinks fur statische Websites und GitHub Pages."},
+      "json-feed-starter-generator": {"name": "JSON-Feed-Starter-Generator", "summary": "Generiere eine JSON-Feed-Datei fur deinen statischen Blog als moderne Alternative zu RSS."},
+      "accessible-skip-link-generator": {"name": "Barrierefreier-Skip-Link-Generator", "summary": "Generiere einen barrierefreien Skip-Link mit CSS fur Tastatur- und Screenreader-Navigation."},
+      "html-landmark-checker": {"name": "HTML-Landmark-Prufer", "summary": "Fuge HTML ein und prufe auf ARIA-Landmark-Elemente fur Screenreader-Navigation."},
+      "input-attributes-generator": {"name": "Input-Attribute-Generator", "summary": "Generiere HTML-Input-Elemente mit typspezifischen Attributen fur Formulare."},
+      "dynamic-viewport-units-generator": {"name": "Dynamische-Viewport-Einheiten-Generator", "summary": "Generiere CSS mit dynamischen Viewport-Einheiten (dvh, svh, lvh) mit Fallbacks."},
+      "css-logical-properties-converter": {"name": "CSS-Logical-Properties-Konverter", "summary": "Konvertiere physische CSS-Eigenschaften in logische Eigenschaften fur bessere RTL-Unterstutzung."}
     }
   },
   "fr": {
@@ -362,7 +378,23 @@
       "github-pages-workflow-generator": {"name": "Generateur de workflow GitHub Pages", "summary": "Generez un YAML de workflow GitHub Actions pour deployer un site statique sur GitHub Pages."},
       "speculation-rules-generator": {"name": "Generateur de regles de speculation", "summary": "Generez du JSON Speculation Rules pour le prerendering et le prefetching dans Chrome et Edge."},
       "permissions-policy-generator": {"name": "Generateur d'en-tete Permissions-Policy", "summary": "Generez un en-tete HTTP Permissions-Policy pour controler l'acces aux fonctionnalites du navigateur sur votre site."},
-      "csp-starter-policy-generator": {"name": "Generateur de politique CSP pour sites statiques", "summary": "Generez un en-tete Content-Security-Policy pour les sites statiques avec options CDN, analytics, polices et embeds."}
+      "csp-starter-policy-generator": {"name": "Generateur de politique CSP pour sites statiques", "summary": "Generez un en-tete Content-Security-Policy pour les sites statiques avec options CDN, analytics, polices et embeds."},
+      "web-app-manifest-generator": {"name": "Generateur de manifeste web app", "summary": "Generez un fichier JSON site.webmanifest pour les sites statiques prêts pour PWA."},
+      "markdown-front-matter-generator": {"name": "Generateur de front matter Markdown", "summary": "Generez des blocs YAML front matter pour Jekyll, Hugo, Astro, 11ty et autres generateurs de site statique."},
+      "toc-anchor-generator": {"name": "Generateur de table des matieres avec ancres", "summary": "Collez du HTML avec des titres et obtenez une table des matieres imbriquee avec des liens d'ancrage."},
+      "rss-feed-starter-generator": {"name": "Generateur de flux RSS", "summary": "Generez un flux RSS 2.0 XML complet pour votre blog statique."},
+      "dialog-modal-html-generator": {"name": "Generateur HTML de dialogue modal", "summary": "Generez un dialogue modal HTML natif avec boutons d'ouverture et de fermeture."},
+      "css-scroll-snap-generator": {"name": "Generateur CSS scroll-snap", "summary": "Generez des regles CSS scroll-snap pour les carrousels, galeries et defilement horizontal."},
+      "container-query-snippet-generator": {"name": "Generateur de container queries CSS", "summary": "Generez des regles @container CSS pour un design responsive base sur les composants."},
+      "aspect-ratio-placeholder-calculator": {"name": "Calculateur de ratio d'aspect", "summary": "Calculez les valeurs CSS aspect-ratio et les fallbacks padding-bottom contre le layout shift."},
+      "no-js-redirect-page-generator": {"name": "Generateur de page de redirection sans JS", "summary": "Generez une page HTML de redirection complete avec la balise meta refresh sans JavaScript."},
+      "static-404-page-template-generator": {"name": "Generateur de template page 404 statique", "summary": "Generez une page d'erreur 404 conviviale avec liens de navigation pour sites statiques."},
+      "json-feed-starter-generator": {"name": "Generateur de flux JSON Feed", "summary": "Generez un fichier JSON Feed pour votre blog statique comme alternative moderne au RSS."},
+      "accessible-skip-link-generator": {"name": "Generateur de lien d'evitement accessible", "summary": "Generez un lien de saut accessible avec CSS pour la navigation clavier et lecteur d'ecran."},
+      "html-landmark-checker": {"name": "Verificateur de landmarks HTML", "summary": "Collez du HTML et verifiez les elements landmark ARIA pour la navigation au lecteur d'ecran."},
+      "input-attributes-generator": {"name": "Generateur d'attributs input", "summary": "Generez des elements input HTML avec attributs specifiques au type pour les formulaires."},
+      "dynamic-viewport-units-generator": {"name": "Generateur d'unites de viewport dynamiques", "summary": "Generez du CSS avec unites de viewport dynamiques (dvh, svh, lvh) avec fallbacks."},
+      "css-logical-properties-converter": {"name": "Convertisseur de proprietes logiques CSS", "summary": "Convertissez les proprietes CSS physiques en proprietes logiques pour un meilleur support RTL."}
     }
   },
   "es": {
@@ -427,7 +459,23 @@
       "github-pages-workflow-generator": {"name": "Generador de workflow GitHub Pages", "summary": "Genera un YAML de workflow de GitHub Actions para desplegar sitios estaticos en GitHub Pages."},
       "speculation-rules-generator": {"name": "Generador de reglas de especulacion", "summary": "Genera JSON Speculation Rules para prerendering y prefetching de paginas en Chrome y Edge."},
       "permissions-policy-generator": {"name": "Generador de cabecera Permissions-Policy", "summary": "Genera una cabecera HTTP Permissions-Policy para controlar el acceso a las funciones del navegador en tu sitio."},
-      "csp-starter-policy-generator": {"name": "Generador de politica CSP para sitios estaticos", "summary": "Genera una cabecera Content-Security-Policy para sitios estaticos con opciones de CDN, analiticas, fuentes y embebidos."}
+      "csp-starter-policy-generator": {"name": "Generador de politica CSP para sitios estaticos", "summary": "Genera una cabecera Content-Security-Policy para sitios estaticos con opciones de CDN, analiticas, fuentes y embebidos."},
+      "web-app-manifest-generator": {"name": "Generador de manifiesto de app web", "summary": "Genera un archivo JSON site.webmanifest para sitios estaticos listos para PWA."},
+      "markdown-front-matter-generator": {"name": "Generador de front matter Markdown", "summary": "Genera bloques YAML front matter para Jekyll, Hugo, Astro, 11ty y otros generadores de sitios estaticos."},
+      "toc-anchor-generator": {"name": "Generador de indice con anclas", "summary": "Pega HTML con encabezados y obten un indice anidado con enlaces de anclaje."},
+      "rss-feed-starter-generator": {"name": "Generador de feed RSS", "summary": "Genera un feed RSS 2.0 XML completo para tu blog estatico."},
+      "dialog-modal-html-generator": {"name": "Generador HTML de dialogo modal", "summary": "Genera un dialogo modal HTML nativo con botones de abrir y cerrar."},
+      "css-scroll-snap-generator": {"name": "Generador CSS scroll-snap", "summary": "Genera reglas CSS scroll-snap para carruseles, galerias y desplazamiento horizontal."},
+      "container-query-snippet-generator": {"name": "Generador de container queries CSS", "summary": "Genera reglas @container CSS para diseno responsive basado en componentes."},
+      "aspect-ratio-placeholder-calculator": {"name": "Calculadora de relacion de aspecto", "summary": "Calcula valores CSS aspect-ratio y fallbacks padding-bottom para evitar layout shift."},
+      "no-js-redirect-page-generator": {"name": "Generador de pagina de redireccion sin JS", "summary": "Genera una pagina HTML de redireccion completa usando meta refresh sin JavaScript."},
+      "static-404-page-template-generator": {"name": "Generador de plantilla pagina 404 estatica", "summary": "Genera una pagina 404 amigable con enlaces de navegacion para sitios estaticos."},
+      "json-feed-starter-generator": {"name": "Generador de feed JSON Feed", "summary": "Genera un archivo JSON Feed para tu blog estatico como alternativa moderna al RSS."},
+      "accessible-skip-link-generator": {"name": "Generador de enlace de salto accesible", "summary": "Genera un enlace de salto accesible con CSS para navegacion por teclado."},
+      "html-landmark-checker": {"name": "Comprobador de landmarks HTML", "summary": "Pega HTML y verifica elementos landmark ARIA para navegacion con lector de pantalla."},
+      "input-attributes-generator": {"name": "Generador de atributos input", "summary": "Genera elementos input HTML con atributos especificos por tipo para formularios."},
+      "dynamic-viewport-units-generator": {"name": "Generador de unidades viewport dinamicas", "summary": "Genera CSS con unidades viewport dinamicas (dvh, svh, lvh) con fallbacks."},
+      "css-logical-properties-converter": {"name": "Conversor de propiedades logicas CSS", "summary": "Convierte propiedades CSS fisicas en logicas para mejor soporte RTL."}
     }
   },
   "ja": {
@@ -492,7 +540,23 @@
       "github-pages-workflow-generator": {"name": "GitHub Pagesワークフロージェネレーター", "summary": "静的サイトをGitHub PagesにデプロイするためのGitHub ActionsワークフローYAMLを生成します。"},
       "speculation-rules-generator": {"name": "投機ルールジェネレーター", "summary": "ChromeとEdgeでページのプリレンダリングとプリフェッチを行うためのSpeculation Rules JSONを生成します。"},
       "permissions-policy-generator": {"name": "Permissions-Policyヘッダージェネレーター", "summary": "サイト全体のブラウザ機能アクセスを制御するPermissions-Policy HTTPヘッダーを生成します。"},
-      "csp-starter-policy-generator": {"name": "静的サイト向けCSPポリシージェネレーター", "summary": "CDN、アナリティクス、フォント、埋め込みオプション付きの静的サイト向けContent-Security-Policyヘッダーを生成します。"}
+      "csp-starter-policy-generator": {"name": "静的サイト向けCSPポリシージェネレーター", "summary": "CDN、アナリティクス、フォント、埋め込みオプション付きの静的サイト向けContent-Security-Policyヘッダーを生成します。"},
+      "web-app-manifest-generator": {"name": "Webアプリマニフェストジェネレーター", "summary": "PWA対応静的サイト向けのsite.webmanifest JSONファイルを生成します。"},
+      "markdown-front-matter-generator": {"name": "Markdownフロントマタージェネレーター", "summary": "Jekyll、Hugo、Astro、11tyなどの静的サイトジェネレーター向けのYAMLフロントマターブロックを生成します。"},
+      "toc-anchor-generator": {"name": "目次アンカージェネレーター", "summary": "見出し付きHTMLを貼り付けて、アンカーリンク付きの入れ子の目次を取得します。"},
+      "rss-feed-starter-generator": {"name": "RSSフィードスタータージェネレーター", "summary": "静的ブログ向けの完全なRSS 2.0 XMLフィードを生成します。"},
+      "dialog-modal-html-generator": {"name": "ダイアログモーダルHTMLジェネレーター", "summary": "開閉ボタン付きのネイティブHTMLダイアログモーダルを生成します。"},
+      "css-scroll-snap-generator": {"name": "CSSスクロールスナップジェネレーター", "summary": "カルーセル、ギャラリー、水平スクロールセクション向けのCSSスクロールスナップルールを生成します。"},
+      "container-query-snippet-generator": {"name": "コンテナクエリスニペットジェネレーター", "summary": "コンポーネントベースのレスポンシブデザイン向けの@container CSSルールを生成します。"},
+      "aspect-ratio-placeholder-calculator": {"name": "アスペクト比プレースホルダー計算ツール", "summary": "レイアウトシフトを防ぐためのaspect-ratio CSS値とpadding-bottomフォールバックを計算します。"},
+      "no-js-redirect-page-generator": {"name": "No-JSリダイレクトページジェネレーター", "summary": "JavaScript不要のmeta refreshタグを使った完全なHTMLリダイレクトページを生成します。"},
+      "static-404-page-template-generator": {"name": "静的404ページテンプレートジェネレーター", "summary": "静的サイトとGitHub Pages向けのナビゲーションリンク付きフレンドリーな404ページを生成します。"},
+      "json-feed-starter-generator": {"name": "JSONフィードスタータージェネレーター", "summary": "RSSのモダンな代替として静的ブログ向けのJSON Feedファイルを生成します。"},
+      "accessible-skip-link-generator": {"name": "アクセシブルスキップリンクジェネレーター", "summary": "キーボードとスクリーンリーダーナビゲーション用のアクセシブルなスキップリンクを生成します。"},
+      "html-landmark-checker": {"name": "HTMLランドマークチェッカー", "summary": "HTMLを貼り付けてスクリーンリーダーナビゲーション用のARIAランドマーク要素をチェックします。"},
+      "input-attributes-generator": {"name": "入力属性ジェネレーター", "summary": "タイプ別の属性を持つHTML入力要素を生成します。"},
+      "dynamic-viewport-units-generator": {"name": "動的ビューポート単位ジェネレーター", "summary": "フォールバック付きの動的ビューポート単位（dvh, svh, lvh）を使用したCSSを生成します。"},
+      "css-logical-properties-converter": {"name": "CSS論理プロパティコンバーター", "summary": "物理的なCSSプロパティをRTLサポート向上のための論理プロパティに変換します。"}
     }
   },
   "nl": {
@@ -557,7 +621,23 @@
       "github-pages-workflow-generator": {"name": "GitHub Pages Workflow Generator", "summary": "Genereer een GitHub Actions workflow YAML om statische sites naar GitHub Pages te deployen."},
       "speculation-rules-generator": {"name": "Speculation Rules Generator", "summary": "Genereer Speculation Rules JSON voor prerendering en prefetching in Chrome en Edge."},
       "permissions-policy-generator": {"name": "Permissions-Policy Header Generator", "summary": "Genereer een Permissions-Policy HTTP-header om de toegang tot browserfuncties op je site te beheren."},
-      "csp-starter-policy-generator": {"name": "CSP Starter Policy Generator", "summary": "Genereer een Content-Security-Policy header voor statische sites met CDN-, analytics-, lettertype- en embedopties."}
+      "csp-starter-policy-generator": {"name": "CSP Starter Policy Generator", "summary": "Genereer een Content-Security-Policy header voor statische sites met CDN-, analytics-, lettertype- en embedopties."},
+      "web-app-manifest-generator": {"name": "Web App Manifest Generator", "summary": "Genereer een site.webmanifest JSON-bestand voor PWA-klare statische websites."},
+      "markdown-front-matter-generator": {"name": "Markdown Front Matter Generator", "summary": "Genereer YAML front matter blokken voor Jekyll, Hugo, Astro, 11ty en andere static site generators."},
+      "toc-anchor-generator": {"name": "Inhoudsopgave Anker Generator", "summary": "Plak HTML met koppen en krijg een geneste inhoudsopgave met ankerlinks."},
+      "rss-feed-starter-generator": {"name": "RSS Feed Starter Generator", "summary": "Genereer een complete RSS 2.0 XML feed voor je statische blog."},
+      "dialog-modal-html-generator": {"name": "Dialog Modal HTML Generator", "summary": "Genereer een native HTML dialog modal met open- en sluitknoppen."},
+      "css-scroll-snap-generator": {"name": "CSS Scroll Snap Generator", "summary": "Genereer CSS scroll-snap regels voor carrousels, galerijen en horizontale scrollsecties."},
+      "container-query-snippet-generator": {"name": "Container Query Snippet Generator", "summary": "Genereer @container CSS regels voor componentgebaseerd responsive design."},
+      "aspect-ratio-placeholder-calculator": {"name": "Aspect Ratio Placeholder Calculator", "summary": "Bereken aspect-ratio CSS waarden en padding-bottom fallbacks tegen layout shift."},
+      "no-js-redirect-page-generator": {"name": "No-JS Redirect Pagina Generator", "summary": "Genereer een complete HTML redirect pagina met de meta refresh tag zonder JavaScript."},
+      "static-404-page-template-generator": {"name": "Statische 404 Pagina Template Generator", "summary": "Genereer een vriendelijke 404 foutpagina met navigatielinks voor statische websites."},
+      "json-feed-starter-generator": {"name": "JSON Feed Starter Generator", "summary": "Genereer een JSON Feed bestand voor je statische blog als modern alternatief voor RSS."},
+      "accessible-skip-link-generator": {"name": "Toegankelijke Skip Link Generator", "summary": "Genereer een toegankelijke skip link met CSS voor toetsenbord- en screenreadernavigatie."},
+      "html-landmark-checker": {"name": "HTML Landmark Checker", "summary": "Plak HTML en controleer op ARIA landmark elementen voor screenreadernavigatie."},
+      "input-attributes-generator": {"name": "Input Attributes Generator", "summary": "Genereer HTML input elementen met typespecifieke attributen voor formulieren."},
+      "dynamic-viewport-units-generator": {"name": "Dynamische Viewport Units Generator", "summary": "Genereer CSS met dynamische viewport units (dvh, svh, lvh) met fallbacks."},
+      "css-logical-properties-converter": {"name": "CSS Logical Properties Converter", "summary": "Converteer fysieke CSS eigenschappen naar logische eigenschappen voor betere RTL-ondersteuning."}
     }
   }
 }

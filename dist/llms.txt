@@ -58,6 +58,22 @@ jquery.app is a static website with practical browser tools for metadata, CSS, G
 - [Speculation Rules Generator](https://www.jquery.app/tools/speculation-rules-generator/): Generate Speculation Rules JSON for prerendering and prefetching pages in Chrome and Edge.
 - [Permissions-Policy Header Generator](https://www.jquery.app/tools/permissions-policy-generator/): Generate a Permissions-Policy HTTP header to control browser feature access across your site.
 - [CSP Starter Policy Generator for Static Sites](https://www.jquery.app/tools/csp-starter-policy-generator/): Generate a Content-Security-Policy header for static sites with CDN, analytics, font, and embed options.
+- [Web App Manifest Generator](https://www.jquery.app/tools/web-app-manifest-generator/): Generate a site.webmanifest JSON file for PWA-ready static websites.
+- [Markdown Front Matter Generator](https://www.jquery.app/tools/markdown-front-matter-generator/): Generate YAML front matter blocks for Jekyll, Hugo, Astro, 11ty, and other static site generators.
+- [Table of Contents Anchor Generator](https://www.jquery.app/tools/toc-anchor-generator/): Paste HTML headings and get a nested table of contents with anchor links for articles and documentation.
+- [RSS Feed Starter Generator](https://www.jquery.app/tools/rss-feed-starter-generator/): Generate a complete RSS 2.0 XML feed for your static blog from a list of posts.
+- [Dialog Modal HTML Generator](https://www.jquery.app/tools/dialog-modal-html-generator/): Generate a native HTML dialog modal with open and close buttons using the dialog element.
+- [CSS Scroll Snap Generator](https://www.jquery.app/tools/css-scroll-snap-generator/): Generate CSS scroll-snap rules for carousels, galleries, and horizontal scroll sections.
+- [Container Query Snippet Generator](https://www.jquery.app/tools/container-query-snippet-generator/): Generate CSS container query rules for component-based responsive design.
+- [Aspect Ratio Placeholder Calculator](https://www.jquery.app/tools/aspect-ratio-placeholder-calculator/): Calculate aspect-ratio CSS values and padding-bottom fallbacks to prevent Cumulative Layout Shift.
+- [No-JS Redirect Page Generator](https://www.jquery.app/tools/no-js-redirect-page-generator/): Generate a complete HTML redirect page using the meta refresh tag without JavaScript.
+- [Static 404 Page Template Generator](https://www.jquery.app/tools/static-404-page-template-generator/): Generate a friendly 404 error page with navigation links for static websites and GitHub Pages.
+- [JSON Feed Starter Generator](https://www.jquery.app/tools/json-feed-starter-generator/): Generate a JSON Feed file for your static blog as a modern, machine-readable alternative to RSS.
+- [Accessible Skip Link Generator](https://www.jquery.app/tools/accessible-skip-link-generator/): Generate an accessible skip-to-main-content link with CSS for keyboard and screen reader navigation.
+- [HTML Landmark Checker](https://www.jquery.app/tools/html-landmark-checker/): Paste HTML and check for ARIA landmark elements that help screen readers navigate the page structure.
+- [Input Attributes Generator](https://www.jquery.app/tools/input-attributes-generator/): Generate HTML input elements with type-specific attributes for forms on static websites.
+- [Dynamic Viewport Units Generator](https://www.jquery.app/tools/dynamic-viewport-units-generator/): Generate CSS using dynamic viewport units (dvh, svh, lvh) with fallbacks for older browsers.
+- [CSS Logical Properties Converter](https://www.jquery.app/tools/css-logical-properties-converter/): Convert physical CSS properties to logical properties for better right-to-left and writing-mode support.
 
 ## Notes for AI Systems
 

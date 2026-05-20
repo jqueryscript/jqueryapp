@@ -1812,6 +1812,828 @@ jobs:
       notes += "5. unsafe-inline for scripts weakens XSS protection. Avoid it when possible.";
       return { output: `${reportOnly}\n\n${enforced}\n\n${metaTag}\n\n${notes}` };
     }
+  },
+
+  "web-app-manifest-generator": {
+    form: `
+      <div class="field-grid">
+        ${field({ id: "manifestName", label: "App name", value: "My Site" })}
+        ${field({ id: "manifestShort", label: "Short name", value: "My Site" })}
+        ${field({ id: "manifestStartUrl", label: "Start URL", value: "/" })}
+        ${select({ id: "manifestDisplay", label: "Display mode", value: "standalone", options: [
+          { label: "standalone", value: "standalone" },
+          { label: "fullscreen", value: "fullscreen" },
+          { label: "minimal-ui", value: "minimal-ui" },
+          { label: "browser", value: "browser" }
+        ]})}
+        ${field({ id: "manifestTheme", label: "Theme color", value: "#181715", type: "color" })}
+        ${field({ id: "manifestBg", label: "Background color", value: "#ffffff", type: "color" })}
+        ${field({ id: "manifestIcon192", label: "192x192 icon path", value: "/icons/icon-192.png" })}
+        ${field({ id: "manifestIcon512", label: "512x512 icon path", value: "/icons/icon-512.png" })}
+        ${select({ id: "manifestOrientation", label: "Orientation", value: "any", options: [
+          { label: "any", value: "any" },
+          { label: "portrait", value: "portrait" },
+          { label: "landscape", value: "landscape" },
+          { label: "natural", value: "natural" }
+        ]})}
+      </div>`,
+    generate(root) {
+      const name = root.querySelector("#manifestName").value.trim();
+      const shortName = root.querySelector("#manifestShort").value.trim();
+      const startUrl = root.querySelector("#manifestStartUrl").value.trim() || "/";
+      const display = root.querySelector("#manifestDisplay").value;
+      const themeColor = root.querySelector("#manifestTheme").value.trim();
+      const bgColor = root.querySelector("#manifestBg").value.trim();
+      const icon192 = root.querySelector("#manifestIcon192").value.trim();
+      const icon512 = root.querySelector("#manifestIcon512").value.trim();
+      const orientation = root.querySelector("#manifestOrientation").value;
+      const manifest = {
+        name,
+        short_name: shortName,
+        start_url: startUrl,
+        display,
+        theme_color: themeColor,
+        background_color: bgColor,
+        orientation
+      };
+      const icons = [];
+      if (icon192) icons.push({ src: icon192, sizes: "192x192", type: "image/png" });
+      if (icon512) icons.push({ src: icon512, sizes: "512x512", type: "image/png" });
+      if (icons.length) manifest.icons = icons;
+      return {
+        output: `${JSON.stringify(manifest, null, 2)}\n\n<link rel="manifest" href="/site.webmanifest">`
+      };
+    }
+  },
+
+  "markdown-front-matter-generator": {
+    form: `
+      <div class="field-grid">
+        ${field({ id: "fmTitle", label: "Title", value: "My New Post" })}
+        ${field({ id: "fmDate", label: "Date", value: new Date().toISOString().split('T')[0] })}
+        ${textarea({ id: "fmDescription", label: "Description", value: "A short description of the post." })}
+        ${field({ id: "fmTags", label: "Tags (comma separated)", value: "web, css, static-site" })}
+        ${select({ id: "fmLayout", label: "Layout", value: "post", options: [
+          { label: "post", value: "post" },
+          { label: "page", value: "page" },
+          { label: "doc", value: "doc" },
+          { label: "note", value: "note" },
+          { label: "custom", value: "custom" }
+        ]})}
+        ${field({ id: "fmAuthor", label: "Author", value: "" })}
+        ${field({ id: "fmSlug", label: "Slug", value: "" })}
+      </div>
+      <div class="check-grid">
+        ${checkbox({ id: "fmDraft", label: "Draft" })}
+      </div>`,
+    generate(root) {
+      const title = root.querySelector("#fmTitle").value.trim();
+      const date = root.querySelector("#fmDate").value.trim();
+      const description = root.querySelector("#fmDescription").value.trim();
+      const tagsRaw = root.querySelector("#fmTags").value.trim();
+      const layout = root.querySelector("#fmLayout").value;
+      const author = root.querySelector("#fmAuthor").value.trim();
+      let slug = root.querySelector("#fmSlug").value.trim();
+      const draft = root.querySelector("#fmDraft").checked;
+      const lines = ["---"];
+      if (title) lines.push(`title: "${title.replace(/"/g, '\\"')}"`);
+      if (date) lines.push(`date: ${date}`);
+      if (description) lines.push(`description: "${description.replace(/"/g, '\\"')}"`);
+      if (tagsRaw) {
+        const tags = tagsRaw.split(",").map(t => t.trim()).filter(Boolean);
+        lines.push(`tags: [${tags.join(", ")}]`);
+      }
+      if (layout) lines.push(`layout: ${layout}`);
+      if (author) lines.push(`author: "${author.replace(/"/g, '\\"')}"`);
+      if (!slug && title) {
+        slug = title.toLowerCase()
+          .replace(/[^a-z0-9\s-]/g, "")
+          .replace(/[\s_]+/g, "-")
+          .replace(/-+/g, "-")
+          .replace(/^-+|-+$/g, "");
+      }
+      if (slug) lines.push(`slug: ${slug}`);
+      if (draft) lines.push("draft: true");
+      lines.push("---");
+      return { output: lines.join("\n") };
+    }
+  },
+
+  "toc-anchor-generator": {
+    form: `
+      <div class="field-grid">
+        ${textarea({
+          id: "tocHtml",
+          label: "Paste HTML with headings",
+          value: "<h1>Page Title</h1>\n<h2>Section One</h2>\n<h3>Subsection A</h3>\n<h2>Section Two</h2>\n<h3>Subsection B</h3>",
+          help: "Paste HTML containing heading tags (h1-h6)."
+        })}
+        ${select({ id: "tocMinLevel", label: "Minimum heading level", value: "2", options: [
+          { label: "h1", value: "1" },
+          { label: "h2", value: "2" },
+          { label: "h3", value: "3" }
+        ]})}
+      </div>`,
+    generate(root) {
+      const html = root.querySelector("#tocHtml").value;
+      const minLevel = parseInt(root.querySelector("#tocMinLevel").value, 10);
+      const slugify = (text) => text.toLowerCase()
+        .replace(/[^a-z0-9\s-]/g, "")
+        .replace(/[\s_]+/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-+|-+$/g, "");
+      const regex = /<h([1-6])[^>]*>(.*?)<\/h\1>/gi;
+      const headings = [];
+      let match;
+      while ((match = regex.exec(html)) !== null) {
+        const level = parseInt(match[1], 10);
+        if (level < minLevel) continue;
+        const text = match[2].replace(/<[^>]*>/g, "").trim();
+        if (!text) continue;
+        headings.push({ level, text, slug: slugify(text) });
+      }
+      if (headings.length === 0) return { output: "No headings found at the selected minimum level." };
+      const baseLevel = headings[0].level;
+      const parts = ["<ul>\n"];
+      let curLevel = baseLevel;
+      for (let i = 0; i < headings.length; i++) {
+        const h = headings[i];
+        if (h.level > curLevel) {
+          parts.push("<ul>\n");
+        } else if (h.level < curLevel) {
+          parts.push("</li>\n");
+          for (let l = curLevel; l > h.level; l--) {
+            parts.push("</ul>\n</li>\n");
+          }
+        } else if (i > 0) {
+          parts.push("</li>\n");
+        }
+        parts.push(`<li><a href="#${attrEscape(h.slug)}">${htmlEscape(h.text)}</a>`);
+        curLevel = h.level;
+      }
+      parts.push("</li>\n");
+      for (let l = curLevel; l > baseLevel; l--) {
+        parts.push("</ul>\n</li>\n");
+      }
+      parts.push("</ul>");
+      const toc = parts.join("");
+      const idHtml = html.replace(/<h([1-6])([^>]*)>(.*?)<\/h\1>/gi, (m, level, attrs, content) => {
+        const text = content.replace(/<[^>]*>/g, "").trim();
+        if (/id\s*=/.test(attrs)) return m;
+        return `<h${level} id="${slugify(text)}"${attrs}>${content}</h${level}>`;
+      });
+      return { output: `${toc}\n\n<!-- HTML with heading ids added -->\n${idHtml}` };
+    }
+  },
+
+  "rss-feed-starter-generator": {
+    form: `
+      <div class="field-grid">
+        ${field({ id: "rssTitle", label: "Site title", value: "My Blog" })}
+        ${field({ id: "rssUrl", label: "Site URL", value: "https://example.com", full: true })}
+        ${textarea({ id: "rssDescription", label: "Description", value: "A static blog about web development." })}
+        ${select({ id: "rssLang", label: "Language", value: "en", options: [
+          { label: "en", value: "en" },
+          { label: "de", value: "de" },
+          { label: "fr", value: "fr" },
+          { label: "es", value: "es" },
+          { label: "ja", value: "ja" },
+          { label: "nl", value: "nl" },
+          { label: "zh", value: "zh" }
+        ]})}
+        ${textarea({
+          id: "rssItems",
+          label: "Posts (one per line: title|url|date|description)",
+          value: "My First Post|https://example.com/first-post/|2026-01-15|Welcome to my blog.\nSecond Post|https://example.com/second-post/|2026-02-01|Another article about CSS.",
+          help: "Each line: title|url|date|description"
+        })}
+        ${field({ id: "rssAuthor", label: "Author", value: "" })}
+      </div>`,
+    generate(root) {
+      const siteTitle = root.querySelector("#rssTitle").value.trim() || "My Blog";
+      const siteUrl = normalizeUrl(root.querySelector("#rssUrl").value);
+      const description = root.querySelector("#rssDescription").value.trim();
+      const lang = root.querySelector("#rssLang").value;
+      const itemsText = root.querySelector("#rssItems").value.trim();
+      const author = root.querySelector("#rssAuthor").value.trim();
+      const escapeXml = (s) => htmlEscape(s).replace(/'/g, "&apos;");
+      const now = new Date().toUTCString();
+      const items = itemsText.split(/\r?\n/).map(l => l.trim()).filter(Boolean).map(line => {
+        const [title, url, date, ...descParts] = line.split("|").map(s => s.trim());
+        if (!title || !url) return "";
+        const desc = descParts.join("|") || "";
+        return `    <item>
+      <title>${escapeXml(title)}</title>
+      <link>${escapeXml(normalizeUrl(url))}</link>
+      <guid isPermaLink="true">${escapeXml(normalizeUrl(url))}</guid>
+      ${date ? `<pubDate>${escapeXml(date)}</pubDate>` : ""}
+      ${desc ? `<description>${escapeXml(desc)}</description>` : ""}
+    </item>`;
+      }).filter(Boolean).join("\n");
+      const output = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>${escapeXml(siteTitle)}</title>
+    <link>${escapeXml(siteUrl)}</link>
+    <description>${escapeXml(description)}</description>
+    <language>${escapeXml(lang)}</language>
+    ${author ? `<managingEditor>${escapeXml(author)}</managingEditor>` : ""}
+    <lastBuildDate>${now}</lastBuildDate>
+    <atom:link href="${escapeXml(siteUrl)}" rel="self" type="application/rss+xml"/>
+${items}
+  </channel>
+</rss>`;
+      return { output };
+    }
+  },
+
+  "dialog-modal-html-generator": {
+    form: `
+      <div class="field-grid">
+        ${field({ id: "dialogId", label: "Dialog ID", value: "my-dialog" })}
+        ${field({ id: "dialogTitle", label: "Dialog title", value: "Dialog Title" })}
+        ${textarea({ id: "dialogContent", label: "Dialog content (HTML)", value: "<p>Dialog content goes here.</p>" })}
+        ${field({ id: "dialogButton", label: "Open button text", value: "Open Dialog" })}
+        ${field({ id: "dialogCloseButton", label: "Close button text", value: "Close" })}
+      </div>
+      <div class="check-grid">
+        ${checkbox({ id: "dialogModal", label: "Use showModal() (with backdrop)", checked: true })}
+        ${checkbox({ id: "dialogAutoClose", label: "Close on backdrop click" })}
+      </div>`,
+    generate(root) {
+      const id = root.querySelector("#dialogId").value.trim() || "my-dialog";
+      const title = root.querySelector("#dialogTitle").value.trim() || "Dialog Title";
+      const content = root.querySelector("#dialogContent").value.trim();
+      const buttonText = root.querySelector("#dialogButton").value.trim() || "Open Dialog";
+      const closeText = root.querySelector("#dialogCloseButton").value.trim() || "Close";
+      const modal = root.querySelector("#dialogModal").checked;
+      const autoClose = root.querySelector("#dialogAutoClose").checked;
+      const openFn = modal ? "showModal()" : "show()";
+      const autoCloseAttr = autoClose ? ` onclick="if(event.target===this)this.close()"` : "";
+      const output = `<button id="${id}-open">${htmlEscape(buttonText)}</button>
+
+<dialog id="${attrEscape(id)}"${autoCloseAttr}>
+  <h2>${htmlEscape(title)}</h2>
+  ${content}
+  <button id="${id}-close">${htmlEscape(closeText)}</button>
+</dialog>
+
+<script>
+  document.getElementById('${id}-open').addEventListener('click',function(){
+    document.getElementById('${id}').${openFn};
+  });
+  document.getElementById('${id}-close').addEventListener('click',function(){
+    document.getElementById('${id}').close();
+  });
+<\/script>
+
+<style>
+  dialog {
+    padding: 1.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+  }
+  dialog::backdrop {
+    background: rgba(0,0,0,0.4);
+  }
+<\/style>`;
+      return { output };
+    }
+  },
+
+  "css-scroll-snap-generator": {
+    form: `
+      <div class="field-grid">
+        ${select({ id: "snapDirection", label: "Direction", value: "x", options: [
+          { label: "horizontal (x)", value: "x" },
+          { label: "vertical (y)", value: "y" }
+        ]})}
+        ${select({ id: "snapType", label: "Snap type", value: "mandatory", options: [
+          { label: "mandatory", value: "mandatory" },
+          { label: "proximity", value: "proximity" }
+        ]})}
+        ${select({ id: "snapAlign", label: "Alignment", value: "start", options: [
+          { label: "start", value: "start" },
+          { label: "center", value: "center" },
+          { label: "end", value: "end" }
+        ]})}
+        ${select({ id: "snapStop", label: "Snap stop", value: "normal", options: [
+          { label: "normal", value: "normal" },
+          { label: "always", value: "always" }
+        ]})}
+        ${field({ id: "snapPadding", label: "Scroll padding px", value: "0", type: "number" })}
+        ${field({ id: "snapSelector", label: "Container selector", value: ".snap-container" })}
+        ${field({ id: "snapItemSelector", label: "Item selector", value: ".snap-item" })}
+      </div>`,
+    generate(root) {
+      const direction = root.querySelector("#snapDirection").value;
+      const type = root.querySelector("#snapType").value;
+      const align = root.querySelector("#snapAlign").value;
+      const stop = root.querySelector("#snapStop").value;
+      const padding = root.querySelector("#snapPadding").value || "0";
+      const selector = root.querySelector("#snapSelector").value.trim() || ".snap-container";
+      const itemSelector = root.querySelector("#snapItemSelector").value.trim() || ".snap-item";
+      const containerName = selector.replace(/^\./, "");
+      const itemName = itemSelector.replace(/^\./, "");
+      const overflow = direction === "x" ? "overflow-x: auto;" : "overflow-y: auto;";
+      const output = `${selector} {
+  display: flex;
+  ${overflow}
+  scroll-snap-type: ${direction} ${type};
+  scroll-padding: ${padding}px;
+  -webkit-overflow-scrolling: touch;
+}
+
+${itemSelector} {
+  flex: 0 0 auto;
+  scroll-snap-align: ${align};
+  ${stop === "always" ? "scroll-snap-stop: always;" : ""}
+}
+
+/* HTML skeleton:
+<div class="${containerName}">
+  <div class="${itemName}">Item 1</div>
+  <div class="${itemName}">Item 2</div>
+  <div class="${itemName}">Item 3</div>
+</div>
+*/`;
+      return { output };
+    }
+  },
+
+  "container-query-snippet-generator": {
+    form: `
+      <div class="field-grid">
+        ${field({ id: "cqName", label: "Container name", value: "card" })}
+        ${select({ id: "cqType", label: "Container type", value: "inline-size", options: [
+          { label: "inline-size", value: "inline-size" },
+          { label: "size", value: "size" },
+          { label: "normal", value: "normal" }
+        ]})}
+        ${field({ id: "cqWidth", label: "Min-width px", value: "400", type: "number" })}
+        ${field({ id: "cqSelector", label: "Container selector", value: ".card-container" })}
+        ${textarea({ id: "cqRules", label: "CSS rules inside @container", value: "  .card {\n    flex-direction: row;\n  }" })}
+      </div>`,
+    generate(root) {
+      const name = root.querySelector("#cqName").value.trim() || "card";
+      const type = root.querySelector("#cqType").value;
+      const width = root.querySelector("#cqWidth").value || "400";
+      const selector = root.querySelector("#cqSelector").value.trim() || ".card-container";
+      const rules = root.querySelector("#cqRules").value;
+      const output = `${selector} {
+  container-type: ${type};
+  container-name: ${name};
+}
+
+@container ${name} (min-width: ${width}px) {
+${rules}
+}
+
+/* Browser support: Chrome 105+, Edge 105+, Safari 16+, Firefox 110+.
+   Use container-type: inline-size for width-only queries. */`;
+      return { output };
+    }
+  },
+
+  "aspect-ratio-placeholder-calculator": {
+    form: `
+      <div class="field-grid">
+        ${select({ id: "arPreset", label: "Preset ratio", value: "custom", options: [
+          { label: "custom", value: "custom" },
+          { label: "16:9", value: "16:9" },
+          { label: "4:3", value: "4:3" },
+          { label: "1:1", value: "1:1" },
+          { label: "3:2", value: "3:2" },
+          { label: "21:9", value: "21:9" },
+          { label: "5:4", value: "5:4" },
+          { label: "2:3", value: "2:3" }
+        ]})}
+        ${field({ id: "arWidth", label: "Width", value: "16", type: "number" })}
+        ${field({ id: "arHeight", label: "Height", value: "9", type: "number" })}
+      </div>`,
+    generate(root) {
+      const preset = root.querySelector("#arPreset").value;
+      let width = parseInt(root.querySelector("#arWidth").value, 10) || 16;
+      let height = parseInt(root.querySelector("#arHeight").value, 10) || 9;
+      const presets = {
+        "16:9": { w: 16, h: 9 },
+        "4:3": { w: 4, h: 3 },
+        "1:1": { w: 1, h: 1 },
+        "3:2": { w: 3, h: 2 },
+        "21:9": { w: 21, h: 9 },
+        "5:4": { w: 5, h: 4 },
+        "2:3": { w: 2, h: 3 }
+      };
+      if (preset !== "custom" && presets[preset]) {
+        width = presets[preset].w;
+        height = presets[preset].h;
+      }
+      const pbPercent = (height / width) * 100;
+      const output = `.element {
+  aspect-ratio: ${width} / ${height};
+  width: 100%;
+}
+
+/* Fallback for older browsers */
+.element-fallback {
+  position: relative;
+  width: 100%;
+  padding-bottom: ${pbPercent.toFixed(4)}%;
+}
+.element-fallback > .inner {
+  position: absolute;
+  inset: 0;
+}`;
+      const preview = `<div style="width:100%;max-width:300px;margin:0 auto">
+  <div style="aspect-ratio:${width}/${height};background:linear-gradient(135deg,#f97316,#ef4444);border-radius:4px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700">
+    ${width}:${height}
+  </div>
+  <p style="text-align:center;margin-top:4px;font-size:0.875rem;color:#6b7280">padding-bottom: ${pbPercent.toFixed(2)}%</p>
+</div>`;
+      return { output, preview };
+    }
+  },
+  "no-js-redirect-page-generator": {
+    form: `
+      ${field({ id: "redirectUrl", label: "Target URL", value: "https://example.com/new-page/" })}
+      ${field({ id: "redirectDelay", label: "Delay seconds", value: "3", type: "number" })}
+      ${field({ id: "redirectTitle", label: "Page title", value: "This page has moved" })}
+      ${textarea({ id: "redirectMessage", label: "Body message", value: "This page has moved to a new location. You will be redirected shortly." })}`,
+    generate(root) {
+      const url = root.querySelector("#redirectUrl").value;
+      const delay = root.querySelector("#redirectDelay").value;
+      const title = root.querySelector("#redirectTitle").value;
+      const message = root.querySelector("#redirectMessage").value;
+      const output = '<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1">\n' +
+        '  <title>' + htmlEscape(title) + '</title>\n' +
+        '  <meta http-equiv="refresh" content="' + attrEscape(delay) + '; url=' + attrEscape(url) + '">\n' +
+        '  <style>\n    * { margin: 0; padding: 0; box-sizing: border-box; }\n' +
+        '    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; background: #f9f9f9; color: #333; }\n' +
+        '    .container { text-align: center; padding: 2rem; max-width: 480px; }\n' +
+        '    h1 { font-size: 1.5rem; margin-bottom: 1rem; }\n' +
+        '    p { line-height: 1.6; margin-bottom: 1.5rem; }\n' +
+        '    a { color: #0066cc; }\n  </style>\n</head>\n<body>\n  <div class="container">\n' +
+        '    <h1>' + htmlEscape(title) + '</h1>\n' +
+        (message ? '    <p>' + htmlEscape(message) + '</p>\n' : "") +
+        '    <p><a href="' + attrEscape(url) + '">Go to ' + htmlEscape(url) + '</a></p>\n  </div>\n</body>\n</html>';
+      return { output };
+    }
+  },
+  "static-404-page-template-generator": {
+    form: `
+      ${field({ id: "nfSiteName", label: "Site name", value: "My Website" })}
+      ${field({ id: "nfSiteUrl", label: "Site URL", value: "https://example.com" })}
+      ${textarea({ id: "nfMessage", label: "Custom message", value: "The page you are looking for does not exist or has been moved." })}
+      ${checkbox({ id: "nfNav", label: "Include navigation links", checked: true })}
+      ${checkbox({ id: "nfSearch", label: "Include search suggestion", checked: false })}
+      ${field({ id: "nfSearchUrl", label: "Search page URL", value: "/search/" })}`,
+    generate(root) {
+      const siteName = root.querySelector("#nfSiteName").value;
+      const siteUrl = root.querySelector("#nfSiteUrl").value;
+      const message = root.querySelector("#nfMessage").value;
+      const includeNav = root.querySelector("#nfNav").checked;
+      const includeSearch = root.querySelector("#nfSearch").checked;
+      const searchUrl = root.querySelector("#nfSearchUrl").value;
+      let output = '<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1">\n' +
+        '  <title>404 - ' + htmlEscape(siteName || "Page Not Found") + '</title>\n' +
+        '  <style>\n    * { margin: 0; padding: 0; box-sizing: border-box; }\n' +
+        '    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #fff; color: #333; line-height: 1.6; }\n' +
+        '    .container { max-width: 600px; margin: 4rem auto; padding: 2rem; text-align: center; }\n' +
+        '    h1 { font-size: 4rem; color: #dc2626; margin-bottom: 0.5rem; }\n' +
+        '    h2 { font-size: 1.5rem; margin-bottom: 1rem; color: #1f2937; }\n' +
+        '    p { margin-bottom: 1rem; }\n' +
+        '    a { color: #2563eb; text-decoration: underline; }\n' +
+        '    nav { margin-bottom: 2rem; padding: 1rem; background: #f3f4f6; border-radius: 8px; }\n' +
+        '    nav a { margin: 0 0.75rem; }\n' +
+        '    .search-form { margin-top: 2rem; }\n' +
+        '    .search-form input[type="text"] { padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 4px; width: 60%; }\n' +
+        '    .search-form button { padding: 0.5rem 1rem; background: #2563eb; color: #fff; border: none; border-radius: 4px; cursor: pointer; }\n' +
+        '    .home-link { display: inline-block; margin-top: 1.5rem; padding: 0.75rem 1.5rem; background: #2563eb; color: #fff !important; text-decoration: none; border-radius: 6px; }\n' +
+        '  </style>\n</head>\n<body>\n  <div class="container">\n';
+      if (includeNav) {
+        output += '    <nav>\n' +
+          '      <a href="' + attrEscape(siteUrl) + '">Home</a>\n' +
+          '      <a href="' + attrEscape(siteUrl) + '/tools/">Tools</a>\n' +
+          '      <a href="' + attrEscape(siteUrl) + '/about/">About</a>\n' +
+          '      <a href="' + attrEscape(siteUrl) + '/contact/">Contact</a>\n' +
+          '    </nav>\n';
+      }
+      output += '    <h1>404</h1>\n    <h2>Page Not Found</h2>\n' +
+        (message ? '    <p>' + htmlEscape(message) + '</p>\n' : "") +
+        '    <p>The page you were looking for does not exist at <strong>' + htmlEscape(siteName) + '</strong>.</p>\n' +
+        '    <a href="' + attrEscape(siteUrl) + '" class="home-link">Go to Homepage</a>\n';
+      if (includeSearch && searchUrl) {
+        output += '    <div class="search-form">\n' +
+          '      <p>Try searching:</p>\n' +
+          '      <form action="' + attrEscape(searchUrl) + '" method="get">\n' +
+          '        <input type="text" name="q" placeholder="Search...">\n' +
+          '        <button type="submit">Search</button>\n' +
+          '      </form>\n    </div>\n';
+      }
+      output += '  </div>\n</body>\n</html>';
+      return { output };
+    }
+  },
+  "json-feed-starter-generator": {
+    form: `
+      ${field({ id: "jfTitle", label: "Site title", value: "My Blog" })}
+      ${field({ id: "jfUrl", label: "Site URL", value: "https://example.com" })}
+      ${textarea({ id: "jfDescription", label: "Description", value: "A static blog about web development." })}
+      ${field({ id: "jfAuthor", label: "Author name", value: "" })}
+      ${textarea({ id: "jfItems", label: "Posts (one per line: title|url|date|content)", value: "My First Post|https://example.com/first-post/|2026-01-15|Welcome to my blog.\nSecond Post|https://example.com/second-post/|2026-02-01|Another article." })}`,
+    generate(root) {
+      const title = root.querySelector("#jfTitle").value;
+      const url = root.querySelector("#jfUrl").value;
+      const description = root.querySelector("#jfDescription").value;
+      const author = root.querySelector("#jfAuthor").value;
+      const itemsText = root.querySelector("#jfItems").value;
+      const feed = {
+        version: "https://jsonfeed.org/version/1.1",
+        title: title || "Untitled",
+        home_page_url: url || "",
+        feed_url: url ? url.replace(/\/+$/, "") + "/feed.json" : "",
+        description: description || ""
+      };
+      if (author) {
+        feed.authors = [{ name: author }];
+      }
+      feed.items = [];
+      const lines = itemsText.split("\n").filter(l => l.trim());
+      for (const line of lines) {
+        const parts = line.split("|");
+        if (parts.length >= 3) {
+          const item = {
+            id: parts[1] || "",
+            url: parts[1] || "",
+            title: parts[0] || "",
+            date_published: parts[2] || ""
+          };
+          if (parts[3]) {
+            item.content_text = parts[3];
+          }
+          feed.items.push(item);
+        }
+      }
+      const output = JSON.stringify(feed, null, 2);
+      return { output };
+    }
+  },
+  "accessible-skip-link-generator": {
+    form: `
+      ${field({ id: "slTarget", label: "Target selector", value: "#main-content" })}
+      ${field({ id: "slText", label: "Link text", value: "Skip to main content" })}
+      ${select({ id: "slVisibility", label: "Visibility", options: [
+        { label: "Visible on focus only", value: "focus" },
+        { label: "Always visible", value: "always" }
+      ], value: "focus" })}
+      ${field({ id: "slSelector", label: "Link ID", value: "skip-link" })}`,
+    generate(root) {
+      const target = root.querySelector("#slTarget").value;
+      const text = root.querySelector("#slText").value;
+      const visibility = root.querySelector("#slVisibility").value;
+      const selector = root.querySelector("#slSelector").value;
+      const linkId = selector || "skip-link";
+      let css;
+      if (visibility === "focus") {
+        css = '/* Visually hidden until focused */\n' +
+          '.' + linkId + ' {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  padding: 0;\n  margin: -1px;\n' +
+          '  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  white-space: nowrap;\n  border: 0;\n}\n' +
+          '.' + linkId + ':focus {\n  position: fixed;\n  width: auto;\n  height: auto;\n  padding: 0.5rem 1rem;\n' +
+          '  margin: 0.5rem;\n  overflow: visible;\n  clip: auto;\n  white-space: normal;\n' +
+          '  background: #fff;\n  color: #000;\n  border: 2px solid #333;\n  border-radius: 4px;\n' +
+          '  z-index: 9999;\n  outline: 3px solid #2563eb;\n  outline-offset: 2px;\n}';
+      } else {
+        css = '/* Always visible skip link */\n' +
+          '.' + linkId + ' {\n  position: absolute;\n  top: 0;\n  left: 0;\n  padding: 0.5rem 1rem;\n' +
+          '  background: #fff;\n  color: #000;\n  border: 2px solid #333;\n  border-radius: 4px;\n' +
+          '  z-index: 9999;\n  text-decoration: none;\n}\n' +
+          '.' + linkId + ':focus {\n  outline: 3px solid #2563eb;\n  outline-offset: 2px;\n}';
+      }
+      const output = '<!-- Skip link HTML -->\n' +
+        '<a id="' + attrEscape(linkId) + '" class="' + attrEscape(linkId) + '" href="' + attrEscape(target) + '">' + htmlEscape(text) + '</a>\n\n' +
+        '<!-- CSS -->\n<style>\n' + css + '\n</style>\n\n' +
+        '<!-- Note: Add tabindex="-1" to the target element (' + htmlEscape(target) + ') so it receives focus when the skip link is activated. -->';
+      return { output };
+    }
+  },
+  "html-landmark-checker": {
+    form: `
+      ${textarea({ id: "lmHtml", label: "Paste HTML", value: '<header>\n  <nav>\n    <a href="/">Home</a>\n  </nav>\n</header>\n<main>\n  <h1>Page Title</h1>\n  <section>\n    <h2>Section</h2>\n    <p>Content here.</p>\n  </section>\n</main>\n<footer>\n  <p>Copyright</p>\n</footer>' })}`,
+    generate(root) {
+      const html = root.querySelector("#lmHtml").value;
+      const landmarks = ["header", "main", "nav", "footer", "aside", "section", "form", "search"];
+      const found = {};
+      const regex = /<(header|main|nav|footer|aside|section|form|search)(\s[^>]*)?>/gi;
+      let match;
+      let mainCount = 0;
+      while ((match = regex.exec(html)) !== null) {
+        const tag = match[1].toLowerCase();
+        if (!found[tag]) found[tag] = 0;
+        found[tag]++;
+        if (tag === "main") mainCount++;
+      }
+      let report = "HTML Landmark Checker Report\n\n";
+      report += "Landmark Elements Found:\n\n";
+      for (const lm of landmarks) {
+        const count = found[lm] || 0;
+        if (count > 0) {
+          report += '  [OK] <' + lm + '> found (' + count + ' time' + (count !== 1 ? "s" : "") + ')\n';
+        } else {
+          report += '  [MISSING] <' + lm + '> not found\n';
+        }
+      }
+      report += "\nCritical Checks:\n\n";
+      if (mainCount === 0) {
+        report += "  [FAIL] No <main> landmark found. <main> is essential for accessibility.\n";
+      } else if (mainCount > 1) {
+        report += "  [WARN] Multiple <main> elements (" + mainCount + ") found. Only one <main> should exist per page.\n";
+      } else {
+        report += "  [OK] Exactly one <main> element found.\n";
+      }
+      const output = report;
+      const preview = '<div style="font-family:monospace;font-size:0.875rem;line-height:1.6;white-space:pre-wrap;background:#1e293b;color:#e2e8f0;padding:1rem;border-radius:6px">' + htmlEscape(report) + '</div>';
+      return { output, preview };
+    }
+  },
+  "input-attributes-generator": {
+    form: `
+      <div class="field-grid">
+        ${select({ id: "iaType", label: "Input type", options: [
+          { label: "text", value: "text" },
+          { label: "email", value: "email" },
+          { label: "url", value: "url" },
+          { label: "number", value: "number" },
+          { label: "tel", value: "tel" },
+          { label: "password", value: "password" },
+          { label: "date", value: "date" },
+          { label: "search", value: "search" },
+          { label: "file", value: "file" }
+        ], value: "text" })}
+        ${field({ id: "iaName", label: "name attribute", value: "field-name" })}
+        ${field({ id: "iaPlaceholder", label: "placeholder", value: "Enter value..." })}
+        ${field({ id: "iaId", label: "id attribute", value: "field-id" })}
+        ${checkbox({ id: "iaRequired", label: "required", checked: false })}
+        ${checkbox({ id: "iaDisabled", label: "disabled", checked: false })}
+        ${field({ id: "iaAutocomplete", label: "autocomplete", value: "", help: "e.g. email, name, tel" })}
+        ${field({ id: "iaPattern", label: "pattern", value: "", help: "e.g. [0-9]{3}-[0-9]{2}" })}
+        ${field({ id: "iaMin", label: "min", value: "", type: "number" })}
+        ${field({ id: "iaMax", label: "max", value: "", type: "number" })}
+        ${field({ id: "iaStep", label: "step", value: "" })}
+        ${field({ id: "iaMinlength", label: "minlength", value: "", type: "number" })}
+        ${field({ id: "iaMaxlength", label: "maxlength", value: "", type: "number" })}
+      </div>`,
+    generate(root) {
+      const type = root.querySelector("#iaType").value;
+      const name = root.querySelector("#iaName").value;
+      const placeholder = root.querySelector("#iaPlaceholder").value;
+      const id = root.querySelector("#iaId").value;
+      const required = root.querySelector("#iaRequired").checked;
+      const disabled = root.querySelector("#iaDisabled").checked;
+      const autocomplete = root.querySelector("#iaAutocomplete").value;
+      const pattern = root.querySelector("#iaPattern").value;
+      const min = root.querySelector("#iaMin").value;
+      const max = root.querySelector("#iaMax").value;
+      const step = root.querySelector("#iaStep").value;
+      const minlength = root.querySelector("#iaMinlength").value;
+      const maxlength = root.querySelector("#iaMaxlength").value;
+      let input = '<input type="' + attrEscape(type) + '" name="' + attrEscape(name || "field-name") + '"';
+      if (id) input += ' id="' + attrEscape(id) + '"';
+      if (placeholder) input += ' placeholder="' + attrEscape(placeholder) + '"';
+      if (required) input += " required";
+      if (disabled) input += " disabled";
+      if (autocomplete) input += ' autocomplete="' + attrEscape(autocomplete) + '"';
+      if (pattern) input += ' pattern="' + attrEscape(pattern) + '"';
+      if (min) input += ' min="' + attrEscape(min) + '"';
+      if (max) input += ' max="' + attrEscape(max) + '"';
+      if (step) input += ' step="' + attrEscape(step) + '"';
+      if (minlength) input += ' minlength="' + attrEscape(minlength) + '"';
+      if (maxlength) input += ' maxlength="' + attrEscape(maxlength) + '"';
+      input += ">";
+      let label;
+      if (id) {
+        label = '<label for="' + attrEscape(id) + '">' + htmlEscape(name || "Field") + '</label>';
+      } else {
+        label = '<!-- Add a label element with a for attribute matching the input id -->';
+      }
+      const output = label + "\n" + input;
+      return { output };
+    }
+  },
+  "dynamic-viewport-units-generator": {
+    form: `
+      ${select({ id: "dvUnit", label: "Viewport unit", options: [
+        { label: "dvh (dynamic height)", value: "dvh" },
+        { label: "svh (small height)", value: "svh" },
+        { label: "lvh (large height)", value: "lvh" },
+        { label: "dvw (dynamic width)", value: "dvw" },
+        { label: "svw (small width)", value: "svw" },
+        { label: "lvw (large width)", value: "lvw" }
+      ], value: "dvh" })}
+      ${field({ id: "dvValue", label: "Value", value: "100", type: "number" })}
+      ${select({ id: "dvProperty", label: "CSS property", options: [
+        { label: "min-height", value: "min-height" },
+        { label: "height", value: "height" },
+        { label: "max-height", value: "max-height" },
+        { label: "min-width", value: "min-width" },
+        { label: "width", value: "width" },
+        { label: "max-width", value: "max-width" }
+      ], value: "min-height" })}
+      ${field({ id: "dvFallback", label: "Fallback vh/vw value", value: "100", type: "number" })}
+      ${field({ id: "dvSelector", label: "Selector", value: ".full-height-section" })}`,
+    generate(root) {
+      const unit = root.querySelector("#dvUnit").value;
+      const value = root.querySelector("#dvValue").value || "100";
+      const property = root.querySelector("#dvProperty").value;
+      const fallback = root.querySelector("#dvFallback").value || "100";
+      const selector = root.querySelector("#dvSelector").value || ".element";
+      const fallbackUnit = unit.endsWith("vh") ? "vh" : "vw";
+      let behavior;
+      if (unit === "dvh") behavior = "dvh adjusts as the viewport dynamically changes (e.g., when the browser chrome shows/hides on mobile).";
+      else if (unit === "svh") behavior = "svh uses the smallest possible viewport size. Content stays visible even when the browser chrome is visible.";
+      else if (unit === "lvh") behavior = "lvh uses the largest possible viewport size. Content may be hidden behind browser chrome.";
+      else if (unit === "dvw") behavior = "dvw adjusts as the viewport dynamically changes width.";
+      else if (unit === "svw") behavior = "svw uses the smallest possible viewport width.";
+      else behavior = "lvw uses the largest possible viewport width.";
+      const output = '/* Dynamic viewport units: ' + unit + '\n' +
+        '   Behavior: ' + behavior + '\n' +
+        '   Browser support: Supported in modern browsers (Chrome 108+, Firefox 101+, Safari 15.4+). */\n\n' +
+        selector + ' {\n  ' + property + ': ' + value + fallbackUnit + ';\n' +
+        '  ' + property + ': ' + value + unit + ';\n}';
+      const preview = '<div style="font-family:monospace;font-size:0.875rem;line-height:1.6;background:#1e293b;color:#e2e8f0;padding:1rem;border-radius:6px;white-space:pre-wrap">' + htmlEscape(output) + '</div>';
+      return { output, preview };
+    }
+  },
+  "css-logical-properties-converter": {
+    form: `
+      ${select({ id: "lpPhysical", label: "Physical property", options: [
+        { label: "margin-left", value: "margin-left" },
+        { label: "margin-right", value: "margin-right" },
+        { label: "margin-top", value: "margin-top" },
+        { label: "margin-bottom", value: "margin-bottom" },
+        { label: "padding-left", value: "padding-left" },
+        { label: "padding-right", value: "padding-right" },
+        { label: "padding-top", value: "padding-top" },
+        { label: "padding-bottom", value: "padding-bottom" },
+        { label: "border-left", value: "border-left" },
+        { label: "border-right", value: "border-right" },
+        { label: "border-top", value: "border-top" },
+        { label: "border-bottom", value: "border-bottom" },
+        { label: "left", value: "left" },
+        { label: "right", value: "right" },
+        { label: "top", value: "top" },
+        { label: "bottom", value: "bottom" },
+        { label: "width", value: "width" },
+        { label: "height", value: "height" },
+        { label: "text-align: left", value: "text-align: left" },
+        { label: "text-align: right", value: "text-align: right" }
+      ], value: "margin-left" })}
+      ${field({ id: "lpValue", label: "Value", value: "1rem" })}
+      ${field({ id: "lpSelector", label: "Selector", value: ".component" })}`,
+    generate(root) {
+      const physical = root.querySelector("#lpPhysical").value;
+      const value = root.querySelector("#lpValue").value;
+      const selector = root.querySelector("#lpSelector").value || ".component";
+      const mapping = {
+        "margin-left": "margin-inline-start",
+        "margin-right": "margin-inline-end",
+        "margin-top": "margin-block-start",
+        "margin-bottom": "margin-block-end",
+        "padding-left": "padding-inline-start",
+        "padding-right": "padding-inline-end",
+        "padding-top": "padding-block-start",
+        "padding-bottom": "padding-block-end",
+        "border-left": "border-inline-start",
+        "border-right": "border-inline-end",
+        "border-top": "border-block-start",
+        "border-bottom": "border-block-end",
+        "left": "inset-inline-start",
+        "right": "inset-inline-end",
+        "top": "inset-block-start",
+        "bottom": "inset-block-end",
+        "width": "inline-size",
+        "height": "block-size",
+        "text-align: left": "text-align: start",
+        "text-align: right": "text-align: end"
+      };
+      const logical = mapping[physical] || physical;
+      let physDecl, logDecl;
+      if (physical.startsWith("text-align")) {
+        const alignValue = physical.split(": ")[1];
+        physDecl = selector + ' {\n  text-align: ' + alignValue + ';\n}';
+        logDecl = selector + ' {\n  text-align: ' + (alignValue === "left" ? "start" : "end") + ';\n}';
+      } else {
+        physDecl = selector + ' {\n  ' + physical + ': ' + value + ';\n}';
+        logDecl = selector + ' {\n  ' + logical + ': ' + value + ';\n}';
+      }
+      const output = '/* CSS Logical Properties Converter\n' +
+        '   Physical to Logical Property Mapping\n' +
+        '   ' + physical + ' -> ' + logical + '\n' +
+        '   Browser support: Supported in modern browsers (Chrome 111+, Firefox 109+, Safari 15.4+). */\n\n' +
+        '/* Physical */\n' + physDecl + '\n\n/* Logical */\n' + logDecl;
+      return { output };
+    }
   }
 };
 
