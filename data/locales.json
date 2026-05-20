@@ -233,7 +233,9 @@
       "iframe-sandbox-allow-generator": {"name": "Iframe-Sandbox-und-Allow-Generator", "summary": "Generiere sicheres Iframe-Markup mit Sandbox-Flags und Allow-Berechtigungen nach Embed-Typ."},
       "static-sitemap-xml-builder": {"name": "Statischer-Sitemap-XML-Builder", "summary": "Fuge eine URL-Liste ein und erhalte eine vollstandige sitemap.xml fur statisches Hosting und GitHub Pages."},
       "github-pages-workflow-generator": {"name": "GitHub-Pages-Workflow-Generator", "summary": "Generiere eine GitHub-Actions-Workflow-YAML zum Deployen statischer Sites auf GitHub Pages."},
-      "speculation-rules-generator": {"name": "Speculation-Rules-Generator", "summary": "Generiere Speculation-Rules-JSON zum Prerendering und Prefetching von Seiten in Chrome und Edge."}
+      "speculation-rules-generator": {"name": "Speculation-Rules-Generator", "summary": "Generiere Speculation-Rules-JSON zum Prerendering und Prefetching von Seiten in Chrome und Edge."},
+      "permissions-policy-generator": {"name": "Permissions-Policy-Header-Generator", "summary": "Generiere einen Permissions-Policy-HTTP-Header zur Kontrolle des Browser-Feature-Zugriffs auf deiner Website."},
+      "csp-starter-policy-generator": {"name": "CSP-Starter-Policy-Generator", "summary": "Generiere einen Content-Security-Policy-Header fur statische Sites mit CDN-, Analyse-, Schrift- und Embed-Optionen."}
     }
   },
   "fr": {
@@ -358,7 +360,9 @@
       "iframe-sandbox-allow-generator": {"name": "Generateur iframe sandbox et allow", "summary": "Generez du balisage iframe securise avec les drapeaux sandbox et les permissions allow par type d'integration."},
       "static-sitemap-xml-builder": {"name": "Constructeur sitemap.xml statique", "summary": "Collez une liste d'URL et obtenez un fichier sitemap.xml complet pour l'hebergement statique et GitHub Pages."},
       "github-pages-workflow-generator": {"name": "Generateur de workflow GitHub Pages", "summary": "Generez un YAML de workflow GitHub Actions pour deployer un site statique sur GitHub Pages."},
-      "speculation-rules-generator": {"name": "Generateur de regles de speculation", "summary": "Generez du JSON Speculation Rules pour le prerendering et le prefetching dans Chrome et Edge."}
+      "speculation-rules-generator": {"name": "Generateur de regles de speculation", "summary": "Generez du JSON Speculation Rules pour le prerendering et le prefetching dans Chrome et Edge."},
+      "permissions-policy-generator": {"name": "Generateur d'en-tete Permissions-Policy", "summary": "Generez un en-tete HTTP Permissions-Policy pour controler l'acces aux fonctionnalites du navigateur sur votre site."},
+      "csp-starter-policy-generator": {"name": "Generateur de politique CSP pour sites statiques", "summary": "Generez un en-tete Content-Security-Policy pour les sites statiques avec options CDN, analytics, polices et embeds."}
     }
   },
   "es": {
@@ -421,7 +425,9 @@
       "iframe-sandbox-allow-generator": {"name": "Generador iframe sandbox y allow", "summary": "Genera marcado iframe seguro con banderas sandbox y permisos allow por tipo de insercion."},
       "static-sitemap-xml-builder": {"name": "Constructor sitemap.xml estatico", "summary": "Pega una lista de URLs y obten un archivo sitemap.xml completo para hosting estatico y GitHub Pages."},
       "github-pages-workflow-generator": {"name": "Generador de workflow GitHub Pages", "summary": "Genera un YAML de workflow de GitHub Actions para desplegar sitios estaticos en GitHub Pages."},
-      "speculation-rules-generator": {"name": "Generador de reglas de especulacion", "summary": "Genera JSON Speculation Rules para prerendering y prefetching de paginas en Chrome y Edge."}
+      "speculation-rules-generator": {"name": "Generador de reglas de especulacion", "summary": "Genera JSON Speculation Rules para prerendering y prefetching de paginas en Chrome y Edge."},
+      "permissions-policy-generator": {"name": "Generador de cabecera Permissions-Policy", "summary": "Genera una cabecera HTTP Permissions-Policy para controlar el acceso a las funciones del navegador en tu sitio."},
+      "csp-starter-policy-generator": {"name": "Generador de politica CSP para sitios estaticos", "summary": "Genera una cabecera Content-Security-Policy para sitios estaticos con opciones de CDN, analiticas, fuentes y embebidos."}
     }
   },
   "ja": {
@@ -484,7 +490,9 @@
       "iframe-sandbox-allow-generator": {"name": "iframeサンドボックス・許可属性ジェネレーター", "summary": "埋め込みタイプ別にサンドボックスフラグと許可属性を設定した安全なiframeマークアップを生成します。"},
       "static-sitemap-xml-builder": {"name": "静的サイトマップXMLビルダー", "summary": "URLリストを貼り付けて、静的ホスティングとGitHub Pages用の完全なsitemap.xmlを取得します。"},
       "github-pages-workflow-generator": {"name": "GitHub Pagesワークフロージェネレーター", "summary": "静的サイトをGitHub PagesにデプロイするためのGitHub ActionsワークフローYAMLを生成します。"},
-      "speculation-rules-generator": {"name": "投機ルールジェネレーター", "summary": "ChromeとEdgeでページのプリレンダリングとプリフェッチを行うためのSpeculation Rules JSONを生成します。"}
+      "speculation-rules-generator": {"name": "投機ルールジェネレーター", "summary": "ChromeとEdgeでページのプリレンダリングとプリフェッチを行うためのSpeculation Rules JSONを生成します。"},
+      "permissions-policy-generator": {"name": "Permissions-Policyヘッダージェネレーター", "summary": "サイト全体のブラウザ機能アクセスを制御するPermissions-Policy HTTPヘッダーを生成します。"},
+      "csp-starter-policy-generator": {"name": "静的サイト向けCSPポリシージェネレーター", "summary": "CDN、アナリティクス、フォント、埋め込みオプション付きの静的サイト向けContent-Security-Policyヘッダーを生成します。"}
     }
   },
   "nl": {
@@ -547,7 +555,9 @@
       "iframe-sandbox-allow-generator": {"name": "Iframe Sandbox & Allow Generator", "summary": "Genereer veilige iframe markup met sandbox vlaggen en allow permissies per embedtype."},
       "static-sitemap-xml-builder": {"name": "Statische Sitemap XML Builder", "summary": "Plak een URL-lijst en krijg een complete sitemap.xml voor statische hosting en GitHub Pages."},
       "github-pages-workflow-generator": {"name": "GitHub Pages Workflow Generator", "summary": "Genereer een GitHub Actions workflow YAML om statische sites naar GitHub Pages te deployen."},
-      "speculation-rules-generator": {"name": "Speculation Rules Generator", "summary": "Genereer Speculation Rules JSON voor prerendering en prefetching in Chrome en Edge."}
+      "speculation-rules-generator": {"name": "Speculation Rules Generator", "summary": "Genereer Speculation Rules JSON voor prerendering en prefetching in Chrome en Edge."},
+      "permissions-policy-generator": {"name": "Permissions-Policy Header Generator", "summary": "Genereer een Permissions-Policy HTTP-header om de toegang tot browserfuncties op je site te beheren."},
+      "csp-starter-policy-generator": {"name": "CSP Starter Policy Generator", "summary": "Genereer een Content-Security-Policy header voor statische sites met CDN-, analytics-, lettertype- en embedopties."}
     }
   }
 }

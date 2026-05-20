@@ -1625,6 +1625,193 @@ jobs:
       }
       return { output: `<script type="speculationrules">\n${JSON.stringify(rules, null, 2)}\n</script>\n\n<!-- Place in <head> or near the end of <body>.\n     Chrome 109+ and Edge 109+ support Speculation Rules.\n     Other browsers ignore the script tag — safe as progressive enhancement.\n     Prerendering = full page fetch and render (fastest, more bandwidth).\n     Prefetching = document resource only (lighter, less bandwidth). -->` };
     }
+  },
+
+  "permissions-policy-generator": {
+    form: `
+      <div class="field-grid">
+        ${select({
+          id: "ppPreset",
+          label: "Policy preset",
+          value: "minimal",
+          options: [
+            { label: "Minimal (deny all)", value: "minimal" },
+            { label: "Media site (camera, mic, fullscreen)", value: "media" },
+            { label: "Payment page", value: "payment" },
+            { label: "Custom", value: "custom" }
+          ]
+        })}
+      </div>
+      <div class="check-grid" style="margin-top:12px">
+        <label style="font-weight:700;display:block;margin-bottom:6px">Browser features</label>
+        ${[
+          { id: "ppCamera", label: "camera" },
+          { id: "ppMicrophone", label: "microphone" },
+          { id: "ppGeolocation", label: "geolocation" },
+          { id: "ppFullscreen", label: "fullscreen" },
+          { id: "ppPayment", label: "payment" },
+          { id: "ppAutoplay", label: "autoplay" },
+          { id: "ppDisplayCapture", label: "display-capture" },
+          { id: "ppWakeLock", label: "screen-wake-lock" }
+        ].map((f) => `
+          <div class="field" style="display:flex;align-items:center;gap:8px">
+            <label for="${f.id}" style="min-width:130px">${f.label}</label>
+            <select id="${f.id}" style="flex:1">
+              <option value="deny">Deny</option>
+              <option value="self">Allow self</option>
+              <option value="*">Allow *</option>
+            </select>
+          </div>
+        `).join("")}
+      </div>`,
+    generate(root) {
+      const preset = root.querySelector("#ppPreset").value;
+      const features = [
+        { id: "ppCamera", name: "camera" },
+        { id: "ppMicrophone", name: "microphone" },
+        { id: "ppGeolocation", name: "geolocation" },
+        { id: "ppFullscreen", name: "fullscreen" },
+        { id: "ppPayment", name: "payment" },
+        { id: "ppAutoplay", name: "autoplay" },
+        { id: "ppDisplayCapture", name: "display-capture" },
+        { id: "ppWakeLock", name: "screen-wake-lock" }
+      ];
+      const presets = {
+        minimal: {},
+        media: { ppCamera: "self", ppFullscreen: "self", ppAutoplay: "self" },
+        payment: { ppPayment: "self", ppFullscreen: "self" },
+        custom: null
+      };
+      if (preset !== "custom" && presets[preset]) {
+        Object.entries(presets[preset]).forEach(([id, val]) => {
+          const sel = root.querySelector(`#${id}`);
+          if (sel) sel.value = val;
+        });
+        features.forEach((f) => {
+          if (!presets[preset][f.id]) {
+            const sel = root.querySelector(`#${f.id}`);
+            if (sel) sel.value = "deny";
+          }
+        });
+      }
+      const directives = features.map((f) => {
+        const val = root.querySelector(`#${f.id}`).value;
+        if (val === "deny") return `${f.name}=()`;
+        if (val === "self") return `${f.name}=(self)`;
+        return `${f.name}=*`;
+      });
+      const header = `Permissions-Policy: ${directives.join(", ")}`;
+      const allowAttrs = features.filter((f) => {
+        const val = root.querySelector(`#${f.id}`).value;
+        return val !== "deny";
+      }).map((f) => {
+        const val = root.querySelector(`#${f.id}`).value;
+        return val === "*" ? `${f.name} *` : `${f.name} 'self'`;
+      });
+      const metaTag = `<meta http-equiv="Permissions-Policy" content="${directives.join(", ")}">`;
+      let notes = "Use this as an HTTP header or the meta tag equivalent.\n\n";
+      notes += "Per-iframe allow override:\n<iframe allow=\"" + allowAttrs.join("; ") + "\" ...>\n\n";
+      notes += "Static hosting notes:\n";
+      notes += "- Netlify / Cloudflare Pages / Vercel: add the header in your config file.\n";
+      notes += "- GitHub Pages: custom headers are not supported. Use the meta tag above.\n";
+      notes += "- The meta tag works in all modern browsers for most directives.";
+      return { output: `${header}\n\n${metaTag}\n\n${notes}` };
+    }
+  },
+
+  "csp-starter-policy-generator": {
+    form: `
+      <div class="field-grid">
+        ${select({
+          id: "cspPreset",
+          label: "Site type",
+          value: "static",
+          options: [
+            { label: "Plain static site (self only)", value: "static" },
+            { label: "Static + CDN (Bootstrap, Tailwind)", value: "cdn" },
+            { label: "Static + analytics + fonts", value: "analytics" },
+            { label: "Static + embeds (YouTube, maps)", value: "embeds" },
+            { label: "Custom", value: "custom" }
+          ]
+        })}
+      </div>
+      <div class="check-grid" style="margin-top:12px">
+        <label style="font-weight:700;display:block;margin-bottom:6px">Additional sources</label>
+        ${checkbox({ id: "cspGAnalytics", label: "Google Analytics / Tag Manager" })}
+        ${checkbox({ id: "cspGFonts", label: "Google Fonts" })}
+        ${checkbox({ id: "cspCDN", label: "CDN (cdn.jsdelivr.net, unpkg.com)" })}
+        ${checkbox({ id: "cspYouTube", label: "YouTube embeds" })}
+        ${checkbox({ id: "cspMaps", label: "Google Maps embeds" })}
+        ${checkbox({ id: "cspInlines", label: "Allow inline styles (unsafe-inline)" })}
+      </div>`,
+    generate(root) {
+      const preset = root.querySelector("#cspPreset").value;
+      const presets = {
+        static: [],
+        cdn: ["cspCDN"],
+        analytics: ["cspGAnalytics", "cspGFonts"],
+        embeds: ["cspYouTube", "cspMaps", "cspGFonts"],
+        custom: null
+      };
+      if (preset !== "custom" && presets[preset]) {
+        ["cspGAnalytics","cspGFonts","cspCDN","cspYouTube","cspMaps","cspInlines"].forEach((id) => {
+          const cb = root.querySelector(`#${id}`);
+          if (cb) cb.checked = presets[preset].includes(id);
+        });
+      }
+      const defaultSrc = ["'self'"];
+      const scriptSrc = ["'self'"];
+      const styleSrc = ["'self'"];
+      const imgSrc = ["'self'", "data:"];
+      const fontSrc = ["'self'"];
+      const frameSrc = ["'self'"];
+      const connectSrc = ["'self'"];
+      if (root.querySelector("#cspGAnalytics").checked) {
+        scriptSrc.push("https://www.googletagmanager.com", "https://www.google-analytics.com");
+        connectSrc.push("https://www.google-analytics.com");
+        imgSrc.push("https://www.google-analytics.com");
+      }
+      if (root.querySelector("#cspGFonts").checked) {
+        styleSrc.push("https://fonts.googleapis.com");
+        fontSrc.push("https://fonts.gstatic.com");
+      }
+      if (root.querySelector("#cspCDN").checked) {
+        scriptSrc.push("https://cdn.jsdelivr.net", "https://unpkg.com");
+        styleSrc.push("https://cdn.jsdelivr.net", "https://unpkg.com");
+      }
+      if (root.querySelector("#cspYouTube").checked) {
+        frameSrc.push("https://www.youtube.com", "https://www.youtube-nocookie.com");
+      }
+      if (root.querySelector("#cspMaps").checked) {
+        frameSrc.push("https://www.google.com/maps");
+        imgSrc.push("https://*.googleapis.com");
+        scriptSrc.push("https://maps.googleapis.com");
+      }
+      if (root.querySelector("#cspInlines").checked) {
+        styleSrc.push("'unsafe-inline'");
+      }
+      const dirs = [
+        `default-src ${defaultSrc.join(" ")};`,
+        `script-src ${scriptSrc.join(" ")};`,
+        `style-src ${styleSrc.join(" ")};`,
+        `img-src ${imgSrc.join(" ")};`,
+        `font-src ${fontSrc.join(" ")};`,
+        `frame-src ${frameSrc.join(" ")};`,
+        `connect-src ${connectSrc.join(" ")};`,
+        "base-uri 'self';",
+        "form-action 'self';"
+      ];
+      const csp = dirs.join(" ");
+      const reportOnly = `Content-Security-Policy-Report-Only: ${csp}`;
+      const enforced = `Content-Security-Policy: ${csp}`;
+      const metaTag = `<meta http-equiv="Content-Security-Policy" content="${attrEscape(csp)}">`;
+      let notes = "1. Deploy the Report-Only header first and check the browser console for violations.\n";
+      notes += "2. When no violations appear, switch to the enforce header or meta tag.\n";
+      notes += "3. GitHub Pages: Custom HTTP headers are not supported. Use the meta tag.\n";
+      notes += "4. frame-ancestors and report-uri do not work via meta tag — use headers for those.\n";
+      notes += "5. unsafe-inline for scripts weakens XSS protection. Avoid it when possible.";
+      return { output: `${reportOnly}\n\n${enforced}\n\n${metaTag}\n\n${notes}` };
+    }
   }
 };
 

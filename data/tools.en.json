@@ -1592,5 +1592,103 @@
         "answer": "Prerender fetches and fully renders the page including subresources, making navigation feel instant. Prefetch fetches only the main document, which is lighter on bandwidth."
       }
     ]
+  },
+  {
+    "id": "permissions-policy-generator",
+    "name": "Permissions-Policy Header Generator",
+    "category": "seo",
+    "summary": "Generate a Permissions-Policy HTTP header to control browser feature access across your site.",
+    "description": "Choose which browser features to allow or deny, set per-feature origin policies, and get the Permissions-Policy header plus matching iframe allow examples.",
+    "keywords": ["permissions policy generator", "feature policy header", "browser permissions policy", "iframe allow permissions"],
+    "whatIs": "The Permissions-Policy header (formerly Feature-Policy) tells the browser which APIs and features the page and its embedded iframes can use. It controls access to camera, microphone, geolocation, fullscreen, payment, and other browser features. This is useful for static sites that want to set a clear security baseline without complex server configuration.",
+    "howToUse": [
+      "Select a preset that matches your site type, or choose Custom to set each permission individually.",
+      "For each browser feature, choose whether to allow it for all origins, same origin only, or deny it entirely.",
+      "Copy the generated Permissions-Policy header into your server or hosting configuration.",
+      "Use the iframe allow examples when you need per-iframe overrides."
+    ],
+    "useCases": [
+      "Set a default deny-all policy and only enable features your site actually uses.",
+      "Allow fullscreen and autoplay for a media-rich static site.",
+      "Prepare a security header for Netlify, Cloudflare Pages, Vercel, or GitHub Pages."
+    ],
+    "examples": [
+      {
+        "title": "Minimal static site policy",
+        "text": "A content site with no camera, mic, or payment needs denies everything except fullscreen for embedded videos. The generator creates a clean one-line header."
+      },
+      {
+        "title": "Media tool site policy",
+        "text": "A web tool site that uses camera and fullscreen can allow those features for its own origin while blocking everything else, including in embedded iframes."
+      }
+    ],
+    "mistakes": [
+      "Setting a restrictive policy header but forgetting that iframes need their own allow attribute overrides.",
+      "Allowing sensitive features such as camera or microphone for all origins with a wildcard.",
+      "Forgetting that GitHub Pages does not support custom HTTP headers, so the generated policy must be delivered via a meta tag or applied at the CDN level."
+    ],
+    "faq": [
+      {
+        "question": "Can Permissions-Policy be delivered as a meta tag?",
+        "answer": "Yes. You can use <meta http-equiv=\"Permissions-Policy\" content=\"...\"> as an alternative when server headers are not available, such as on GitHub Pages."
+      },
+      {
+        "question": "What is the difference between Permissions-Policy and iframe allow?",
+        "answer": "The Permissions-Policy header sets the default policy for the page and all embedded contexts. The iframe allow attribute can only relax restrictions, never tighten them beyond the page policy."
+      },
+      {
+        "question": "Which browsers support Permissions-Policy?",
+        "answer": "Chrome 88+, Edge 88+, Firefox 116+, and Safari 16.1+. The older Feature-Policy header is deprecated and should be replaced with Permissions-Policy."
+      }
+    ]
+  },
+  {
+    "id": "csp-starter-policy-generator",
+    "name": "CSP Starter Policy Generator for Static Sites",
+    "category": "seo",
+    "summary": "Generate a Content-Security-Policy header for static sites with CDN, analytics, font, and embed options.",
+    "description": "Choose preset templates for common static site setups or customize each directive. Get a Content-Security-Policy header and a report-only version for testing.",
+    "keywords": ["content security policy generator", "csp static site", "csp header builder", "github pages csp"],
+    "whatIs": "Content-Security-Policy (CSP) is a browser security header that controls which resources a page is allowed to load. It helps prevent cross-site scripting, data injection, and other code injection attacks. For static sites, a CSP header can be simple and conservative because most static pages load resources from predictable, controlled origins.",
+    "howToUse": [
+      "Pick a preset that matches your site type: static, with CDN, with analytics, or with embedded content.",
+      "Review the generated directives and toggle additional sources your site needs.",
+      "Copy the CSP header into your hosting configuration or as a meta tag.",
+      "Deploy the report-only version first and check the browser console for violations before enforcing."
+    ],
+    "useCases": [
+      "Create a conservative CSP for a plain HTML static site with no external resources.",
+      "Add script and font sources for Google Fonts, Bootstrap CDN, or Google Analytics.",
+      "Prepare a CSP for GitHub Pages that accounts for the hosting origin."
+    ],
+    "examples": [
+      {
+        "title": "Plain static site CSP",
+        "text": "A hand-coded HTML site with no CDN, no analytics, and no embeds gets a minimal CSP that allows its own origin for all resource types."
+      },
+      {
+        "title": "Static site with CDN and analytics",
+        "text": "A site using a CSS framework CDN, Google Fonts, and Google Analytics gets a CSP that allows those origins while blocking everything else."
+      }
+    ],
+    "mistakes": [
+      "Deploying a CSP in enforce mode without testing in report-only mode first, which can break legitimate resources.",
+      "Using 'unsafe-inline' for scripts without understanding that it disables most of the XSS protection CSP provides.",
+      "Forgetting to add the GitHub Pages preview domain or CDN origin to the policy, causing the site to break on deployment."
+    ],
+    "faq": [
+      {
+        "question": "Can CSP be delivered as a meta tag?",
+        "answer": "Yes. Use <meta http-equiv=\"Content-Security-Policy\" content=\"...\"> in the page head. Note that some directives such as frame-ancestors and report-uri do not work in the meta tag."
+      },
+      {
+        "question": "Should I start with report-only mode?",
+        "answer": "Yes. Deploy with Content-Security-Policy-Report-Only first, monitor the browser console for violations, adjust the policy, and only switch to enforce mode when no unexpected violations appear."
+      },
+      {
+        "question": "What is the safest default-src for a static site?",
+        "answer": "default-src 'self' is a practical starting point. It allows resources from the same origin and blocks everything else. Add specific origins for CDNs, fonts, and analytics as needed."
+      }
+    ]
   }
 ]

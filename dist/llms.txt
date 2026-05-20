@@ -56,6 +56,8 @@ jquery.app is a static website with practical browser tools for metadata, CSS, G
 - [Static Sitemap XML Builder](https://www.jquery.app/tools/static-sitemap-xml-builder/): Paste a list of URLs and get a complete sitemap.xml file for static hosting and GitHub Pages.
 - [GitHub Pages Workflow Generator](https://www.jquery.app/tools/github-pages-workflow-generator/): Generate a GitHub Actions workflow YAML to deploy a static site, Vite, or Astro project to GitHub Pages.
 - [Speculation Rules Generator](https://www.jquery.app/tools/speculation-rules-generator/): Generate Speculation Rules JSON for prerendering and prefetching pages in Chrome and Edge.
+- [Permissions-Policy Header Generator](https://www.jquery.app/tools/permissions-policy-generator/): Generate a Permissions-Policy HTTP header to control browser feature access across your site.
+- [CSP Starter Policy Generator for Static Sites](https://www.jquery.app/tools/csp-starter-policy-generator/): Generate a Content-Security-Policy header for static sites with CDN, analytics, font, and embed options.
 
 ## Notes for AI Systems
 
