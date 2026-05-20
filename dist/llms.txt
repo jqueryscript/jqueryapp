@@ -74,6 +74,16 @@ jquery.app is a static website with practical browser tools for metadata, CSS, G
 - [Input Attributes Generator](https://www.jquery.app/tools/input-attributes-generator/): Generate HTML input elements with type-specific attributes for forms on static websites.
 - [Dynamic Viewport Units Generator](https://www.jquery.app/tools/dynamic-viewport-units-generator/): Generate CSS using dynamic viewport units (dvh, svh, lvh) with fallbacks for older browsers.
 - [CSS Logical Properties Converter](https://www.jquery.app/tools/css-logical-properties-converter/): Convert physical CSS properties to logical properties for better right-to-left and writing-mode support.
+- [Fetch Priority Attribute Generator](https://www.jquery.app/tools/fetch-priority-attribute-generator/): Generate fetchpriority attributes for images, scripts, and link tags to improve Core Web Vitals.
+- [Preload Tag Builder](https://www.jquery.app/tools/preload-tag-builder/): Generate correct preload link tags for fonts, hero images, CSS, and scripts with the right as and crossorigin attributes.
+- [Modulepreload Tag Generator](https://www.jquery.app/tools/modulepreload-tag-generator/): Generate modulepreload link tags for ES module scripts in Vite, Astro, and modern static sites.
+- [Image Loading Attribute Builder](https://www.jquery.app/tools/image-loading-attribute-builder/): Build optimized img tags by combining loading, decoding, and fetchpriority for hero images, galleries, and article content.
+- [Referrer Policy Tag Generator](https://www.jquery.app/tools/referrer-policy-tag-generator/): Generate a Referrer-Policy header or meta tag to control how much referrer information is sent with outbound links.
+- [CSS Anchor Positioning Generator](https://www.jquery.app/tools/css-anchor-positioning-generator/): Generate CSS anchor positioning rules for tooltips, dropdowns, and callouts aligned to trigger elements.
+- [Scroll-Driven Animation Generator](https://www.jquery.app/tools/scroll-driven-animation-generator/): Generate CSS scroll-driven animations with animation-timeline for reading progress bars, reveal effects, and parallax.
+- [Discrete Transition Generator](https://www.jquery.app/tools/discrete-transition-generator/): Generate CSS for animating elements that enter or leave the page using transition-behavior, @starting-style, and overlay.
+- [CSS Light-Dark Function Generator](https://www.jquery.app/tools/css-light-dark-function-generator/): Generate CSS color-scheme and light-dark() function rules for basic dark mode without duplicate variables.
+- [HTML Details Accordion Generator](https://www.jquery.app/tools/html-details-accordion-generator/): Generate FAQ accordions and collapsible disclosure panels using the native details and summary elements without JavaScript.
 
 ## Notes for AI Systems
 

@@ -251,7 +251,17 @@
       "html-landmark-checker": {"name": "HTML-Landmark-Prufer", "summary": "Fuge HTML ein und prufe auf ARIA-Landmark-Elemente fur Screenreader-Navigation."},
       "input-attributes-generator": {"name": "Input-Attribute-Generator", "summary": "Generiere HTML-Input-Elemente mit typspezifischen Attributen fur Formulare."},
       "dynamic-viewport-units-generator": {"name": "Dynamische-Viewport-Einheiten-Generator", "summary": "Generiere CSS mit dynamischen Viewport-Einheiten (dvh, svh, lvh) mit Fallbacks."},
-      "css-logical-properties-converter": {"name": "CSS-Logical-Properties-Konverter", "summary": "Konvertiere physische CSS-Eigenschaften in logische Eigenschaften fur bessere RTL-Unterstutzung."}
+      "css-logical-properties-converter": {"name": "CSS-Logical-Properties-Konverter", "summary": "Konvertiere physische CSS-Eigenschaften in logische Eigenschaften fur bessere RTL-Unterstutzung."},
+      "fetch-priority-attribute-generator": {"name": "Fetch-Priority-Attribut-Generator", "summary": "Generiere fetchpriority-Attribute fur Bilder, Skripte und Link-Tags zur Verbesserung der Core Web Vitals."},
+      "preload-tag-builder": {"name": "Preload-Tag-Builder", "summary": "Generiere korrekte Preload-Link-Tags fur Schriftarten, Hero-Bilder, CSS und Skripte."},
+      "modulepreload-tag-generator": {"name": "Modulepreload-Tag-Generator", "summary": "Generiere modulepreload-Link-Tags fur ES-Module in Vite-, Astro- und modernen statischen Sites."},
+      "image-loading-attribute-builder": {"name": "Bild-Ladeattribut-Builder", "summary": "Erstelle optimierte img-Tags durch Kombination von loading, decoding und fetchpriority."},
+      "referrer-policy-tag-generator": {"name": "Referrer-Policy-Tag-Generator", "summary": "Generiere einen Referrer-Policy-Header oder Meta-Tag zur Kontrolle der Referrer-Informationen."},
+      "css-anchor-positioning-generator": {"name": "CSS-Anchor-Positioning-Generator", "summary": "Generiere CSS-Anchor-Positioning-Regeln fur Tooltips, Dropdowns und Callouts."},
+      "scroll-driven-animation-generator": {"name": "Scroll-Driven-Animation-Generator", "summary": "Generiere CSS-Scroll-Animationen mit animation-timeline fur Lesefortschritt und Reveal-Effekte."},
+      "discrete-transition-generator": {"name": "Diskreter-Ubergangs-Generator", "summary": "Generiere CSS fur ein- und ausblendende Elemente mit transition-behavior und @starting-style."},
+      "css-light-dark-function-generator": {"name": "CSS-Light-Dark-Funktions-Generator", "summary": "Generiere CSS color-scheme und light-dark()-Regeln fur Dark Mode ohne doppelte Variablen."},
+      "html-details-accordion-generator": {"name": "HTML-Details-Akkordeon-Generator", "summary": "Generiere FAQ-Akkordeons mit den nativen details- und summary-Elementen ohne JavaScript."}
     }
   },
   "fr": {
@@ -394,7 +404,17 @@
       "html-landmark-checker": {"name": "Verificateur de landmarks HTML", "summary": "Collez du HTML et verifiez les elements landmark ARIA pour la navigation au lecteur d'ecran."},
       "input-attributes-generator": {"name": "Generateur d'attributs input", "summary": "Generez des elements input HTML avec attributs specifiques au type pour les formulaires."},
       "dynamic-viewport-units-generator": {"name": "Generateur d'unites de viewport dynamiques", "summary": "Generez du CSS avec unites de viewport dynamiques (dvh, svh, lvh) avec fallbacks."},
-      "css-logical-properties-converter": {"name": "Convertisseur de proprietes logiques CSS", "summary": "Convertissez les proprietes CSS physiques en proprietes logiques pour un meilleur support RTL."}
+      "css-logical-properties-converter": {"name": "Convertisseur de proprietes logiques CSS", "summary": "Convertissez les proprietes CSS physiques en proprietes logiques pour un meilleur support RTL."},
+      "fetch-priority-attribute-generator": {"name": "Generateur d'attribut fetchpriority", "summary": "Generez des attributs fetchpriority pour les images, scripts et balises link."},
+      "preload-tag-builder": {"name": "Constructeur de balises preload", "summary": "Generez des balises link preload correctes pour les polices, images hero, CSS et scripts."},
+      "modulepreload-tag-generator": {"name": "Generateur de balises modulepreload", "summary": "Generez des balises link modulepreload pour les modules ES dans Vite, Astro et sites statiques modernes."},
+      "image-loading-attribute-builder": {"name": "Constructeur d'attributs de chargement d'image", "summary": "Creez des balises img optimisees en combinant loading, decoding et fetchpriority."},
+      "referrer-policy-tag-generator": {"name": "Generateur de balise Referrer-Policy", "summary": "Generez un en-tete ou meta tag Referrer-Policy pour controler les informations de referrer."},
+      "css-anchor-positioning-generator": {"name": "Generateur CSS anchor positioning", "summary": "Generez des regles CSS anchor positioning pour les tooltips, menus deroulants et callouts."},
+      "scroll-driven-animation-generator": {"name": "Generateur d'animations au defilement", "summary": "Generez des animations CSS au defilement avec animation-timeline."},
+      "discrete-transition-generator": {"name": "Generateur de transitions discretes", "summary": "Generez du CSS pour animer les elements qui apparaissent ou disparaissent."},
+      "css-light-dark-function-generator": {"name": "Generateur de fonction CSS light-dark()", "summary": "Generez des regles CSS color-scheme et light-dark() pour le mode sombre."},
+      "html-details-accordion-generator": {"name": "Generateur d'accordeon HTML details", "summary": "Generez des accordeons FAQ avec les elements natifs details et summary sans JavaScript."}
     }
   },
   "es": {
@@ -475,7 +495,17 @@
       "html-landmark-checker": {"name": "Comprobador de landmarks HTML", "summary": "Pega HTML y verifica elementos landmark ARIA para navegacion con lector de pantalla."},
       "input-attributes-generator": {"name": "Generador de atributos input", "summary": "Genera elementos input HTML con atributos especificos por tipo para formularios."},
       "dynamic-viewport-units-generator": {"name": "Generador de unidades viewport dinamicas", "summary": "Genera CSS con unidades viewport dinamicas (dvh, svh, lvh) con fallbacks."},
-      "css-logical-properties-converter": {"name": "Conversor de propiedades logicas CSS", "summary": "Convierte propiedades CSS fisicas en logicas para mejor soporte RTL."}
+      "css-logical-properties-converter": {"name": "Conversor de propiedades logicas CSS", "summary": "Convierte propiedades CSS fisicas en logicas para mejor soporte RTL."},
+      "fetch-priority-attribute-generator": {"name": "Generador de atributo fetchpriority", "summary": "Genera atributos fetchpriority para imagenes, scripts y etiquetas link."},
+      "preload-tag-builder": {"name": "Constructor de etiquetas preload", "summary": "Genera etiquetas link preload correctas para fuentes, imagenes hero, CSS y scripts."},
+      "modulepreload-tag-generator": {"name": "Generador de etiquetas modulepreload", "summary": "Genera etiquetas link modulepreload para modulos ES en Vite, Astro y sitios estaticos modernos."},
+      "image-loading-attribute-builder": {"name": "Constructor de atributos de carga de imagen", "summary": "Crea etiquetas img optimizadas combinando loading, decoding y fetchpriority."},
+      "referrer-policy-tag-generator": {"name": "Generador de etiqueta Referrer-Policy", "summary": "Genera un encabezado o meta tag Referrer-Policy para controlar informacion de referrer."},
+      "css-anchor-positioning-generator": {"name": "Generador CSS anchor positioning", "summary": "Genera reglas CSS anchor positioning para tooltips, dropdowns y callouts."},
+      "scroll-driven-animation-generator": {"name": "Generador de animaciones de desplazamiento", "summary": "Genera animaciones CSS de desplazamiento con animation-timeline."},
+      "discrete-transition-generator": {"name": "Generador de transiciones discretas", "summary": "Genera CSS para animar elementos que aparecen o desaparecen."},
+      "css-light-dark-function-generator": {"name": "Generador de funcion CSS light-dark()", "summary": "Genera reglas CSS color-scheme y light-dark() para modo oscuro."},
+      "html-details-accordion-generator": {"name": "Generador de acordeon HTML details", "summary": "Genera acordeones FAQ con elementos nativos details y summary sin JavaScript."}
     }
   },
   "ja": {
@@ -556,7 +586,17 @@
       "html-landmark-checker": {"name": "HTMLランドマークチェッカー", "summary": "HTMLを貼り付けてスクリーンリーダーナビゲーション用のARIAランドマーク要素をチェックします。"},
       "input-attributes-generator": {"name": "入力属性ジェネレーター", "summary": "タイプ別の属性を持つHTML入力要素を生成します。"},
       "dynamic-viewport-units-generator": {"name": "動的ビューポート単位ジェネレーター", "summary": "フォールバック付きの動的ビューポート単位（dvh, svh, lvh）を使用したCSSを生成します。"},
-      "css-logical-properties-converter": {"name": "CSS論理プロパティコンバーター", "summary": "物理的なCSSプロパティをRTLサポート向上のための論理プロパティに変換します。"}
+      "css-logical-properties-converter": {"name": "CSS論理プロパティコンバーター", "summary": "物理的なCSSプロパティをRTLサポート向上のための論理プロパティに変換します。"},
+      "fetch-priority-attribute-generator": {"name": "Fetch Priority属性ジェネレーター", "summary": "Core Web Vitalsを改善するためのfetchpriority属性を画像、スクリプト、リンクタグに生成します。"},
+      "preload-tag-builder": {"name": "Preloadタグビルダー", "summary": "フォント、ヒーロー画像、CSS、スクリプトのための正しいpreloadリンクタグを生成します。"},
+      "modulepreload-tag-generator": {"name": "Modulepreloadタグジェネレーター", "summary": "Vite、Astro、最新静的サイト向けにESモジュール用のmodulepreloadリンクタグを生成します。"},
+      "image-loading-attribute-builder": {"name": "画像読み込み属性ビルダー", "summary": "loading、decoding、fetchpriorityを組み合わせて最適化されたimgタグを作成します。"},
+      "referrer-policy-tag-generator": {"name": "Referrer Policyタグジェネレーター", "summary": "リファラー情報を制御するためのReferrer-Policyヘッダーまたはメタタグを生成します。"},
+      "css-anchor-positioning-generator": {"name": "CSSアンカーポジショニングジェネレーター", "summary": "ツールチップ、ドロップダウン、コールアウト用のCSSアンカーポジショニングを生成します。"},
+      "scroll-driven-animation-generator": {"name": "スクロール駆動アニメーションジェネレーター", "summary": "animation-timelineを使用したスクロール駆動CSSアニメーションを生成します。"},
+      "discrete-transition-generator": {"name": "ディスクリートトランジションジェネレーター", "summary": "表示・非表示が切り替わる要素をアニメーションするCSSを生成します。"},
+      "css-light-dark-function-generator": {"name": "CSS light-dark()関数ジェネレーター", "summary": "変数の重複なしでダークモード用のcolor-schemeとlight-dark()ルールを生成します。"},
+      "html-details-accordion-generator": {"name": "HTML Detailsアコーディオンジェネレーター", "summary": "JavaScriptなしでdetails要素とsummary要素を使ったFAQアコーディオンを生成します。"}
     }
   },
   "nl": {
@@ -637,7 +677,17 @@
       "html-landmark-checker": {"name": "HTML Landmark Checker", "summary": "Plak HTML en controleer op ARIA landmark elementen voor screenreadernavigatie."},
       "input-attributes-generator": {"name": "Input Attributes Generator", "summary": "Genereer HTML input elementen met typespecifieke attributen voor formulieren."},
       "dynamic-viewport-units-generator": {"name": "Dynamische Viewport Units Generator", "summary": "Genereer CSS met dynamische viewport units (dvh, svh, lvh) met fallbacks."},
-      "css-logical-properties-converter": {"name": "CSS Logical Properties Converter", "summary": "Converteer fysieke CSS eigenschappen naar logische eigenschappen voor betere RTL-ondersteuning."}
+      "css-logical-properties-converter": {"name": "CSS Logical Properties Converter", "summary": "Converteer fysieke CSS eigenschappen naar logische eigenschappen voor betere RTL-ondersteuning."},
+      "fetch-priority-attribute-generator": {"name": "Fetch Priority Attribute Generator", "summary": "Genereer fetchpriority attributen voor afbeeldingen, scripts en link tags."},
+      "preload-tag-builder": {"name": "Preload Tag Builder", "summary": "Genereer correcte preload link tags voor lettertypen, hero afbeeldingen, CSS en scripts."},
+      "modulepreload-tag-generator": {"name": "Modulepreload Tag Generator", "summary": "Genereer modulepreload link tags voor ES modules in Vite, Astro en moderne statische sites."},
+      "image-loading-attribute-builder": {"name": "Afbeelding Laadattribuut Bouwer", "summary": "Maak geoptimaliseerde img tags door loading, decoding en fetchpriority te combineren."},
+      "referrer-policy-tag-generator": {"name": "Referrer Policy Tag Generator", "summary": "Genereer een Referrer-Policy header of meta tag om referrer-informatie te beheren."},
+      "css-anchor-positioning-generator": {"name": "CSS Anchor Positioning Generator", "summary": "Genereer CSS anchor positioning regels voor tooltips, dropdowns en callouts."},
+      "scroll-driven-animation-generator": {"name": "Scroll-Driven Animation Generator", "summary": "Genereer CSS scroll-gedreven animaties met animation-timeline."},
+      "discrete-transition-generator": {"name": "Discrete Transitie Generator", "summary": "Genereer CSS voor het animeren van elementen die verschijnen of verdwijnen."},
+      "css-light-dark-function-generator": {"name": "CSS Light-Dark Functie Generator", "summary": "Genereer CSS color-scheme en light-dark() regels voor donkere modus."},
+      "html-details-accordion-generator": {"name": "HTML Details Accordion Generator", "summary": "Genereer FAQ accordeons met de native details en summary elementen zonder JavaScript."}
     }
   }
 }

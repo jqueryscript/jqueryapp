@@ -2634,6 +2634,450 @@ ${rules}
         '/* Physical */\n' + physDecl + '\n\n/* Logical */\n' + logDecl;
       return { output };
     }
+  },
+
+  "fetch-priority-attribute-generator": {
+    form: `
+      <div class="field-grid">
+        ${select({ id: "fpType", label: "Resource type", options: [{label:"img (image)",value:"img"},{label:"link (stylesheet)",value:"link"},{label:"script",value:"script"}], value: "img"})}
+        ${select({ id: "fpUseCase", label: "Use case", options: [{label:"LCP hero image",value:"lcp"},{label:"Above-the-fold critical",value:"critical"},{label:"Below-the-fold",value:"below"},{label:"Footer / non-critical",value:"low"}], value: "lcp"})}
+        ${field({ id: "fpSrc", label: "Resource URL", value: "/assets/hero.webp" })}
+      </div>`,
+    generate(root) {
+      const type = root.querySelector("#fpType").value;
+      const useCase = root.querySelector("#fpUseCase").value;
+      const src = root.querySelector("#fpSrc").value.trim();
+      let fpValue;
+      if (useCase === "lcp" || useCase === "critical") {
+        fpValue = "high";
+      } else if (useCase === "low") {
+        fpValue = "low";
+      } else {
+        fpValue = "auto";
+      }
+      let tag;
+      if (type === "img") {
+        tag = `<img src="${attrEscape(src)}" fetchpriority="${fpValue}" width="..." height="..." alt="...">`;
+      } else if (type === "link") {
+        tag = `<link rel="stylesheet" href="${attrEscape(src)}" fetchpriority="${fpValue}">`;
+      } else {
+        tag = `<script src="${attrEscape(src)}" fetchpriority="${fpValue}"><\/script>`;
+      }
+      let note = "\n\n/* Usage note: Place this tag in the <head> of your document.\n";
+      if (useCase === "lcp") {
+        note += "   This is an LCP candidate. Do NOT add loading=\"lazy\" to this element.\n";
+      } else if (useCase === "low") {
+        note += "   Consider adding loading=\"lazy\" for images in this category.\n";
+      } else {
+        note += "   Combine with loading=\"lazy\" or \"eager\" as appropriate.\n";
+      }
+      note += "   Only use fetchpriority on the most critical resource to avoid prioritization dilution. */";
+      return { output: tag + note };
+    }
+  },
+
+  "preload-tag-builder": {
+    form: `
+      <div class="field-grid">
+        ${select({ id: "plType", label: "Resource type", options: [{label:"font",value:"font"},{label:"image",value:"image"},{label:"style (CSS)",value:"style"},{label:"script",value:"script"},{label:"fetch",value:"fetch"}], value: "font"})}
+        ${field({ id: "plHref", label: "Resource URL", value: "/assets/font.woff2" })}
+        ${checkbox({ id: "plCrossorigin", label: "crossorigin (required for fonts)", checked: true })}
+        ${field({ id: "plTypeAttr", label: "MIME type", value: "font/woff2" })}
+      </div>`,
+    generate(root) {
+      const type = root.querySelector("#plType").value;
+      const href = root.querySelector("#plHref").value.trim();
+      const crossorigin = root.querySelector("#plCrossorigin").checked;
+      const typeAttr = root.querySelector("#plTypeAttr").value.trim();
+      const attrs = [`rel="preload"`, `href="${attrEscape(href)}"`, `as="${attrEscape(type)}"`];
+      if (crossorigin) attrs.push("crossorigin");
+      if (typeAttr && (type === "font" || type === "fetch")) {
+        attrs.push(`type="${attrEscape(typeAttr)}"`);
+      }
+      let output = `<link ${attrs.join(" ")}>`;
+      if (type === "image") {
+        output += `\n<!-- For responsive images, add imagesrcset and imagesizes:\n     <link rel="preload" as="image" href="..." imagesrcset="..." imagesizes="..."> -->`;
+      }
+      output += `\n\n<!-- Place this tag in <head> before the CSS or JS that uses this resource. -->`;
+      return { output };
+    }
+  },
+
+  "modulepreload-tag-generator": {
+    form: `
+      <div class="field-grid">
+        ${field({ id: "mpHref", label: "Module script URL", value: "/assets/app.js" })}
+        ${select({ id: "mpOrigin", label: "Origin", options: [{label:"same-origin",value:"same"},{label:"cross-origin (CDN)",value:"cross"}], value: "same"})}
+        ${field({ id: "mpIntegrity", label: "integrity hash (optional)", value: "" })}
+      </div>`,
+    generate(root) {
+      const href = root.querySelector("#mpHref").value.trim();
+      const origin = root.querySelector("#mpOrigin").value;
+      const integrity = root.querySelector("#mpIntegrity").value.trim();
+      const attrs = [`rel="modulepreload"`, `href="${attrEscape(href)}"`];
+      if (origin === "cross") attrs.push("crossorigin");
+      if (integrity) attrs.push(`integrity="${attrEscape(integrity)}"`);
+      const output = `<link ${attrs.join(" ")} />\n\n<!-- Browser support: Chrome 74+, Edge 79+, Firefox 115+, Safari 16.4+.\n     Unlike standard preload, modulepreload understands ES module dependency graphs\n     and will fetch all dependencies. Works with both static and dynamic imports. -->`;
+      return { output };
+    }
+  },
+
+  "image-loading-attribute-builder": {
+    form: `
+      <div class="field-grid">
+        ${select({ id: "ilUseCase", label: "Use case", options: [{label:"LCP hero image",value:"hero"},{label:"Above-the-fold content image",value:"above"},{label:"Article body image",value:"article"},{label:"Gallery thumbnail",value:"gallery"},{label:"Footer / decorative",value:"footer"}], value: "hero"})}
+        ${field({ id: "ilSrc", label: "Image URL", value: "/assets/hero.webp" })}
+        ${field({ id: "ilAlt", label: "Alt text", value: "Hero image description" })}
+        ${field({ id: "ilWidth", label: "Width", value: "1200", type: "number" })}
+        ${field({ id: "ilHeight", label: "Height", value: "630", type: "number" })}
+      </div>`,
+    generate(root) {
+      const useCase = root.querySelector("#ilUseCase").value;
+      const src = root.querySelector("#ilSrc").value.trim();
+      const alt = root.querySelector("#ilAlt").value.trim();
+      const width = root.querySelector("#ilWidth").value || "1200";
+      const height = root.querySelector("#ilHeight").value || "630";
+      let loading, decoding, fp;
+      let comment;
+      if (useCase === "hero") {
+        loading = "eager"; decoding = "sync"; fp = "high";
+        comment = "LCP hero image: Load immediately with eager loading and sync decoding to prevent layout shift. fetchpriority=high signals this is the most important image on the page.";
+      } else if (useCase === "above") {
+        loading = "eager"; decoding = "async"; fp = "";
+        comment = "Above-the-fold content: eager loading ensures it is visible immediately. async decoding avoids blocking the main thread.";
+      } else if (useCase === "article") {
+        loading = "lazy"; decoding = "async"; fp = "";
+        comment = "Article body image: lazy loading defers the request until the image approaches the viewport, saving bandwidth for initial page load.";
+      } else if (useCase === "gallery") {
+        loading = "lazy"; decoding = "async"; fp = "";
+        comment = "Gallery thumbnail: lazy loading ensures only visible thumbnails are fetched. async decoding keeps the UI responsive.";
+      } else {
+        loading = "lazy"; decoding = "async"; fp = "low";
+        comment = "Footer / decorative: lazy loading with fetchpriority=low defers this image as much as possible. It is the lowest priority fetch on the page.";
+      }
+      const attrs = [`src="${attrEscape(src)}"`, `alt="${attrEscape(alt)}"`, `width="${attrEscape(width)}"`, `height="${attrEscape(height)}"`, `loading="${loading}"`, `decoding="${decoding}"`];
+      if (fp) attrs.push(`fetchpriority="${fp}"`);
+      const output = `<!-- ${comment} -->\n<img\n  ${attrs.join("\n  ")}\n>`;
+      return { output };
+    }
+  },
+
+  "referrer-policy-tag-generator": {
+    form: `
+      <div class="field-grid">
+        ${select({ id: "rpPolicy", label: "Referrer Policy", options: [{label:"strict-origin-when-cross-origin (recommended)",value:"strict-origin-when-cross-origin"},{label:"no-referrer (send nothing)",value:"no-referrer"},{label:"no-referrer-when-downgrade",value:"no-referrer-when-downgrade"},{label:"origin (send only origin)",value:"origin"},{label:"origin-when-cross-origin",value:"origin-when-cross-origin"},{label:"same-origin",value:"same-origin"},{label:"strict-origin",value:"strict-origin"},{label:"unsafe-url (send full URL)",value:"unsafe-url"}], value: "strict-origin-when-cross-origin"})}
+      </div>`,
+    generate(root) {
+      const policy = root.querySelector("#rpPolicy").value;
+      const descriptions = {
+        "strict-origin-when-cross-origin": "Sends the full URL to same-origin destinations, sends only the origin to cross-origin destinations, and sends no Referer header when navigating from HTTPS to HTTP. This is the modern recommended default.",
+        "no-referrer": "Never sends the Referer header. No referrer information is included with requests from this page.",
+        "no-referrer-when-downgrade": "Sends the full URL for same-origin and HTTPS-to-HTTPS requests. Sends nothing when navigating from HTTPS to HTTP.",
+        "origin": "Sends only the origin (scheme + host + port) in all requests, regardless of destination.",
+        "origin-when-cross-origin": "Sends the full URL for same-origin requests. Sends only the origin for cross-origin requests.",
+        "same-origin": "Sends the full URL for same-origin requests. Sends nothing for cross-origin requests.",
+        "strict-origin": "Sends only the origin for all requests. Sends nothing when navigating from HTTPS to HTTP.",
+        "unsafe-url": "Sends the full URL for all requests, including cross-origin and HTTPS-to-HTTP. This leaks the full URL and is not recommended."
+      };
+      const desc = descriptions[policy] || "";
+      const output = `<!-- HTTP Header (preferred) -->\nReferrer-Policy: ${policy}\n\n<!-- HTML Meta Tag -->\n<meta name="referrer" content="${policy}">\n\n<!-- Description:\n     ${desc} -->\n\n<!-- Per-element example: -->\n<a href="https://example.com" referrerpolicy="${policy}">Link</a>`;
+      return { output };
+    }
+  },
+
+  "css-anchor-positioning-generator": {
+    form: `
+      <div class="field-grid">
+        ${field({ id: "apAnchorName", label: "Anchor name", value: "--my-anchor" })}
+        ${field({ id: "apAnchorSelector", label: "Anchor element selector", value: ".trigger" })}
+        ${select({ id: "apPositionArea", label: "Position area", options: [{label:"top",value:"top"},{label:"bottom",value:"bottom"},{label:"left",value:"left"},{label:"right",value:"right"},{label:"top left",value:"top left"},{label:"top right",value:"top right"},{label:"bottom left",value:"bottom left"},{label:"bottom right",value:"bottom right"}], value: "top"})}
+        ${field({ id: "apTargetSelector", label: "Positioned element selector", value: ".tooltip" })}
+        ${field({ id: "apInset", label: "Inset spacing", value: "0.5rem" })}
+      </div>`,
+    generate(root) {
+      const anchorName = root.querySelector("#apAnchorName").value.trim() || "--my-anchor";
+      const anchorSelector = root.querySelector("#apAnchorSelector").value.trim() || ".trigger";
+      const positionArea = root.querySelector("#apPositionArea").value;
+      const targetSelector = root.querySelector("#apTargetSelector").value.trim() || ".tooltip";
+      const inset = root.querySelector("#apInset").value.trim() || "0.5rem";
+      const areaParts = positionArea.split(" ");
+      let fallbackCSS = "";
+      areaParts.forEach((part) => {
+        if (part === "top") fallbackCSS += "  bottom: 100%; margin-bottom: " + attrEscape(inset) + ";\n";
+        if (part === "bottom") fallbackCSS += "  top: 100%; margin-top: " + attrEscape(inset) + ";\n";
+        if (part === "left") fallbackCSS += "  right: 100%; margin-right: " + attrEscape(inset) + ";\n";
+        if (part === "right") fallbackCSS += "  left: 100%; margin-left: " + attrEscape(inset) + ";\n";
+      });
+      const output = `/* CSS Anchor Positioning */
+/* Browser support: Chrome 125+, Edge 125+, Safari (partial).
+   Use with a fallback positioning approach. */
+
+/* Anchor element */
+${anchorSelector} {
+  anchor-name: ${anchorName};
+}
+
+/* Positioned element */
+${targetSelector} {
+  position: fixed;
+  position-anchor: ${anchorName};
+  position-area: ${positionArea};
+}
+
+/* Fallback using absolute/relative positioning */
+/*
+${anchorSelector} {
+  position: relative;
+}
+
+${targetSelector} {
+  position: absolute;
+${fallbackCSS}}
+*/`;
+      return { output };
+    }
+  },
+
+  "scroll-driven-animation-generator": {
+    form: `
+      <div class="field-grid">
+        ${select({ id: "sdType", label: "Timeline type", options: [{label:"scroll() - scroll container progress",value:"scroll"},{label:"view() - element visibility in viewport",value:"view"}], value: "scroll"})}
+        ${select({ id: "sdEffect", label: "Effect", options: [{label:"Reading progress bar",value:"progress"},{label:"Fade in on scroll (reveal)",value:"reveal"},{label:"Slide up on reveal",value:"slide"},{label:"Parallax background",value:"parallax"},{label:"Scale on scroll",value:"scale"}], value: "progress"})}
+        ${field({ id: "sdSelector", label: "Animated element selector", value: ".progress-bar" })}
+        ${field({ id: "sdColor", label: "Accent color", value: "#0f766e" })}
+      </div>`,
+    generate(root) {
+      const type = root.querySelector("#sdType").value;
+      const effect = root.querySelector("#sdEffect").value;
+      const selector = root.querySelector("#sdSelector").value.trim() || ".element";
+      const color = root.querySelector("#sdColor").value.trim() || "#0f766e";
+      let keyframes, elementCSS, timelineNote;
+      if (effect === "progress") {
+        keyframes = `@keyframes progress-grow {\n  from { width: 0%; }\n  to { width: 100%; }\n}`;
+        elementCSS = `${selector} {\n  width: 100%;\n  height: 4px;\n  background: ${color};\n  position: fixed;\n  top: 0;\n  left: 0;\n  animation: progress-grow linear;\n  animation-timeline: ${type}();\n}`;
+        timelineNote = "Scroll progress bar animates from 0% to 100% width based on scroll position.";
+      } else if (effect === "reveal") {
+        keyframes = `@keyframes fade-in {\n  from { opacity: 0; }\n  to { opacity: 1; }\n}`;
+        elementCSS = `${selector} {\n  animation: fade-in linear;\n  animation-timeline: ${type}();\n  animation-range: entry 0% entry 100%;\n}`;
+        timelineNote = "Fades in as the element enters the viewport or scroll container.";
+      } else if (effect === "slide") {
+        keyframes = `@keyframes slide-up {\n  from {\n    opacity: 0;\n    transform: translateY(40px);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}`;
+        elementCSS = `${selector} {\n  animation: slide-up linear;\n  animation-timeline: ${type}();\n  animation-range: entry 0% entry 100%;\n}`;
+        timelineNote = "Slides up and fades in as the element enters view or scroll container.";
+      } else if (effect === "parallax") {
+        keyframes = `@keyframes parallax-bg {\n  from { background-position-y: 0%; }\n  to { background-position-y: 100%; }\n}`;
+        elementCSS = `${selector} {\n  background-image: url('...');\n  background-size: cover;\n  background-repeat: no-repeat;\n  animation: parallax-bg linear;\n  animation-timeline: scroll();\n}`;
+        timelineNote = "Parallax background effect driven by the scroll container progress.";
+      } else {
+        keyframes = `@keyframes scale-in {\n  from { transform: scale(0.8); }\n  to { transform: scale(1); }\n}`;
+        elementCSS = `${selector} {\n  animation: scale-in linear;\n  animation-timeline: ${type}();\n  animation-range: entry 0% entry 100%;\n}`;
+        timelineNote = "Scales in as the element enters the viewport or scroll container.";
+      }
+      const output = `/* Scroll-Driven Animation */
+/* ${timelineNote} */
+/* Browser support: Chrome 115+, Edge 115+, Firefox (in development). */
+
+@media (prefers-reduced-motion: no-preference) {
+${keyframes}
+
+${elementCSS}
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ${selector} {
+    animation: none;
+  }
+}`;
+      return { output };
+    }
+  },
+
+  "discrete-transition-generator": {
+    form: `
+      <div class="field-grid">
+        ${select({ id: "dtElement", label: "Element type", options: [{label:"Dialog modal",value:"dialog"},{label:"Popover",value:"popover"},{label:"Details disclosure",value:"details"},{label:"Custom (display toggle)",value:"custom"}], value: "dialog"})}
+        ${select({ id: "dtEffect", label: "Animation effect", options: [{label:"Fade in/out",value:"fade"},{label:"Slide down/up",value:"slide-down"},{label:"Scale + fade",value:"scale-fade"},{label:"Slide from right",value:"slide-right"}], value: "fade"})}
+        ${field({ id: "dtSelector", label: "Element selector", value: ".my-dialog" })}
+        ${field({ id: "dtDuration", label: "Duration ms", value: "300", type: "number" })}
+      </div>`,
+    generate(root) {
+      const element = root.querySelector("#dtElement").value;
+      const effect = root.querySelector("#dtEffect").value;
+      let selector = root.querySelector("#dtSelector").value.trim() || ".my-dialog";
+      const duration = root.querySelector("#dtDuration").value || "300";
+      let transitionCSS, startingCSS, displayCSS, triggerNote;
+      if (effect === "fade") {
+        transitionCSS = `transition: opacity ${duration}ms;`;
+        startingCSS = `  opacity: 0;`;
+        displayCSS = `  opacity: 1;`;
+      } else if (effect === "slide-down") {
+        transitionCSS = `transition: opacity ${duration}ms, transform ${duration}ms;`;
+        startingCSS = `  opacity: 0;\n  transform: translateY(-20px);`;
+        displayCSS = `  opacity: 1;\n  transform: translateY(0);`;
+      } else if (effect === "scale-fade") {
+        transitionCSS = `transition: opacity ${duration}ms, transform ${duration}ms, display ${duration}ms allow-discrete, overlay ${duration}ms allow-discrete;`;
+        startingCSS = `  opacity: 0;\n  transform: scale(0.9);`;
+        displayCSS = `  opacity: 1;\n  transform: scale(1);`;
+      } else {
+        transitionCSS = `transition: opacity ${duration}ms, transform ${duration}ms;`;
+        startingCSS = `  opacity: 0;\n  transform: translateX(30px);`;
+        displayCSS = `  opacity: 1;\n  transform: translateX(0);`;
+      }
+      if (element === "dialog") {
+        triggerNote = "Trigger: element.showModal() to open, element.close() to close.";
+      } else if (element === "popover") {
+        triggerNote = "Trigger: popover attribute or element.showPopover() / hidePopover().";
+      } else if (element === "details") {
+        selector = `${selector}[open]`;
+        triggerNote = "Trigger: toggle open attribute on the <details> element.";
+      } else {
+        triggerNote = "Trigger: toggle display between none and block.";
+      }
+      const output = `/* Discrete Transition for ${element.charAt(0).toUpperCase() + element.slice(1)} */
+/* Browser support: Chrome 117+, Edge 117+, Safari 18+ */
+
+@starting-style {
+  ${selector} {
+${startingCSS}
+  }
+}
+
+${selector} {
+${displayCSS}
+  ${transitionCSS}
+  transition-behavior: allow-discrete;
+}
+
+/* ${triggerNote}
+   transition-behavior: allow-discrete enables transitioning on display and overlay.
+   @starting-style defines the initial appearance state. */`;
+      return { output };
+    }
+  },
+
+  "css-light-dark-function-generator": {
+    form: `
+      <div class="field-grid">
+        ${field({ id: "ldSelector", label: "Root selector", value: ":root" })}
+        ${checkbox({ id: "ldColorScheme", label: "Set color-scheme on root", checked: true })}
+        ${field({ id: "ldLightBg", label: "Background (light)", value: "#ffffff" })}
+        ${field({ id: "ldDarkBg", label: "Background (dark)", value: "#1a1a2e" })}
+        ${field({ id: "ldLightText", label: "Text color (light)", value: "#1a1a2e" })}
+        ${field({ id: "ldDarkText", label: "Text color (dark)", value: "#e5e7eb" })}
+        ${field({ id: "ldLightAccent", label: "Accent / border (light)", value: "#e5e7eb" })}
+        ${field({ id: "ldDarkAccent", label: "Accent / border (dark)", value: "#334155" })}
+      </div>`,
+    generate(root) {
+      const rootSelector = root.querySelector("#ldSelector").value.trim() || ":root";
+      const colorScheme = root.querySelector("#ldColorScheme").checked;
+      const lightBg = root.querySelector("#ldLightBg").value.trim() || "#ffffff";
+      const darkBg = root.querySelector("#ldDarkBg").value.trim() || "#1a1a2e";
+      const lightText = root.querySelector("#ldLightText").value.trim() || "#1a1a2e";
+      const darkText = root.querySelector("#ldDarkText").value.trim() || "#e5e7eb";
+      const lightAccent = root.querySelector("#ldLightAccent").value.trim() || "#e5e7eb";
+      const darkAccent = root.querySelector("#ldDarkAccent").value.trim() || "#334155";
+      const lines = [];
+      lines.push(`<!-- Meta tag for color-scheme -->`);
+      lines.push(`<meta name="color-scheme" content="light dark">`);
+      lines.push("");
+      lines.push(`/* CSS with light-dark() function */`);
+      lines.push(`${rootSelector} {`);
+      if (colorScheme) lines.push(`  color-scheme: light dark;`);
+      lines.push(`  --bg: light-dark(${lightBg}, ${darkBg});`);
+      lines.push(`  --text: light-dark(${lightText}, ${darkText});`);
+      lines.push(`  --accent: light-dark(${lightAccent}, ${darkAccent});`);
+      lines.push(`}`);
+      lines.push("");
+      lines.push(`/* Usage example */`);
+      lines.push(`body {`);
+      lines.push(`  background: ${lightBg}; /* fallback */`);
+      lines.push(`  background: var(--bg);`);
+      lines.push(`  color: ${lightText}; /* fallback */`);
+      lines.push(`  color: var(--text);`);
+      lines.push(`}`);
+      lines.push("");
+      lines.push(`/* Browser support: Chrome 123+, Edge 123+, Safari 17.5+, Firefox 120+ */`);
+      lines.push(`/* Fallback: set the light value directly first, override with light-dark(). */`);
+      return { output: lines.join("\n") };
+    }
+  },
+
+  "html-details-accordion-generator": {
+    form: `
+      <div class="field-grid">
+        ${select({ id: "daMode", label: "Accordion mode", options: [{label:"Exclusive (one open at a time)",value:"exclusive"},{label:"Multiple (independent toggles)",value:"multiple"}], value: "exclusive"})}
+        ${field({ id: "daName", label: "Group name (for exclusive mode)", value: "faq" })}
+        ${textarea({ id: "daItems", label: "Items (one per line: title|content)", value: "What is this tool?|This tool generates HTML details accordion markup.\nHow do I use it?|Enter your items and copy the generated HTML.\nIs JavaScript required?|No. The details element works natively." })}
+        ${checkbox({ id: "daStyled", label: "Include CSS styling", checked: true })}
+      </div>`,
+    generate(root) {
+      const mode = root.querySelector("#daMode").value;
+      const name = root.querySelector("#daName").value.trim();
+      const itemsText = root.querySelector("#daItems").value.trim();
+      const styled = root.querySelector("#daStyled").checked;
+      const items = itemsText.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
+      if (items.length === 0) return { output: "Add at least one item to generate the accordion." };
+      const isExclusive = mode === "exclusive";
+      const detailsHtml = items.map((line) => {
+        const [title, ...contentParts] = line.split("|");
+        const content = contentParts.join("|").trim();
+        if (!title || !content) return "";
+        const nameAttr = isExclusive && name ? ` name="${attrEscape(name)}"` : "";
+        return `<details${nameAttr}>\n  <summary>${htmlEscape(title.trim())}</summary>\n  <div class="accordion-content">\n    <p>${htmlEscape(content)}</p>\n  </div>\n</details>`;
+      }).filter(Boolean).join("\n\n");
+      let css = "";
+      if (styled) {
+        css = `\n\n<style>
+.accordion {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.accordion details {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.accordion details:last-child {
+  border-bottom: none;
+}
+
+.accordion summary {
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  background: #f9fafb;
+  user-select: none;
+}
+
+.accordion summary:hover {
+  background: #f3f4f6;
+}
+
+.accordion details[open] summary {
+  background: #f3f4f6;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.accordion-content {
+  padding: 1rem;
+}
+
+.accordion-content p {
+  margin: 0;
+  line-height: 1.6;
+}
+</style>`;
+      }
+      let modeNote;
+      if (isExclusive) {
+        modeNote = "Exclusive mode: only one item open at a time (name=\"" + name + "\").";
+      } else {
+        modeNote = "Multiple mode: each item opens independently.";
+      }
+      const output = `<div class="accordion">\n${detailsHtml.replace(/\n/g, "\n  ")}\n</div>${css}\n\n<!-- Notes:\n     - ${modeNote}\n     - No JavaScript required. The <details> element works natively.\n     - For multi-open mode, add open="open" to all items to expand all.\n     - For exclusive mode, clicking an item closes any other open item with the same name. -->`;
+      return { output };
+    }
   }
 };
 

@@ -2410,5 +2410,455 @@
         "answer": "For multilingual sites with RTL or vertical language support, yes. For English-only sites, logical properties are still fine to use but physical properties remain valid and are simpler to read."
       }
     ]
+  },
+  {
+    "id": "fetch-priority-attribute-generator",
+    "name": "Fetch Priority Attribute Generator",
+    "category": "html",
+    "summary": "Generate fetchpriority attributes for images, scripts, and link tags to improve Core Web Vitals.",
+    "description": "Add fetchpriority='high' or fetchpriority='low' to img, link, and script tags based on use case. Get recommended combos for LCP images, below-the-fold content, and non-critical resources.",
+    "keywords": ["fetchpriority generator", "fetchpriority high", "lcp image fetchpriority", "resource priority"],
+    "whatIs": "Fetchpriority is an HTML attribute that hints to the browser which resources to load sooner. It helps improve Largest Contentful Paint when applied to hero images and can de-prioritize non-critical resources. It is different from preload and loading='lazy'. Use it to signal relative importance of images, scripts, and stylesheets to the browser.",
+    "howToUse": [
+      "Select the resource type: image, script, or link tag.",
+      "Choose the use case: LCP hero image, below-the-fold content, or non-critical script.",
+      "The tool recommends the fetchpriority value based on your selection.",
+      "Copy the generated tag and test with Lighthouse to confirm LCP improvement."
+    ],
+    "useCases": [
+      "Apply fetchpriority='high' to the LCP hero image for faster loading.",
+      "De-prioritize below-the-fold images with fetchpriority='low'.",
+      "Prioritize critical scripts and stylesheets that block rendering."
+    ],
+    "examples": [
+      {
+        "title": "LCP hero image optimization",
+        "text": "A hero image that is the LCP element gets fetchpriority='high' plus an optimized srcset. The browser loads this image before other resources."
+      },
+      {
+        "title": "Low-priority footer images",
+        "text": "Footer images and third-party embeds get fetchpriority='low' to reduce contention with critical resources above the fold."
+      }
+    ],
+    "mistakes": [
+      "Applying fetchpriority='high' to many resources which cancels the benefit.",
+      "Using fetchpriority on preloaded resources where it already applies to the preload tag.",
+      "Forgetting to combine fetchpriority with appropriate loading and decoding attributes."
+    ],
+    "faq": [
+      {
+        "question": "How many resources should get fetchpriority='high'?",
+        "answer": "One or two critical resources at most. If everything is high priority, nothing is."
+      },
+      {
+        "question": "Does fetchpriority guarantee faster loading?",
+        "answer": "No, it is a hint. The browser decides the final loading order based on many factors."
+      }
+    ]
+  },
+  {
+    "id": "preload-tag-builder",
+    "name": "Preload Tag Builder",
+    "category": "html",
+    "summary": "Generate correct preload link tags for fonts, hero images, CSS, and scripts with the right as and crossorigin attributes.",
+    "description": "Build preload tags by resource type. The tool ensures the correct as attribute, optional crossorigin, type, and media values are included. Avoids common preload mistakes.",
+    "keywords": ["preload tag generator", "rel preload as font", "preload image tag", "preload css link"],
+    "whatIs": "Preload tells the browser to fetch a resource early before it would normally be discovered. It speeds up loading for fonts, hero images, critical CSS, and scripts. The as attribute is required to tell the browser what type of resource to expect. Missing as or incorrect crossorigin are common mistakes.",
+    "howToUse": [
+      "Select the resource type you need to preload: font, image, CSS, or script.",
+      "Enter the URL or file path of the resource.",
+      "The tool adds the correct as and crossorigin attributes for the selected type.",
+      "Copy the link tag into the page head before other resource references."
+    ],
+    "useCases": [
+      "Preload a critical font file so text renders correctly on the first paint.",
+      "Preload a hero image to improve Largest Contentful Paint.",
+      "Preload a critical CSS file or JavaScript module for faster rendering."
+    ],
+    "examples": [
+      {
+        "title": "Web font preloading",
+        "text": "A page uses a custom web font. The preload tag with as='font' and crossorigin fetches it early, reducing the flash of invisible text."
+      },
+      {
+        "title": "Hero image preloading for LCP",
+        "text": "A landing page preloads the hero background image with as='image' to reduce Largest Contentful Paint timing by several hundred milliseconds."
+      }
+    ],
+    "mistakes": [
+      "Preloading too many resources which wastes bandwidth.",
+      "Using preload without the required as attribute.",
+      "Adding preload for cross-origin fonts without crossorigin."
+    ],
+    "faq": [
+      {
+        "question": "What is the difference between preload and prefetch?",
+        "answer": "Preload fetches resources needed for the current page as early as possible. Prefetch fetches resources likely needed for the next navigation."
+      },
+      {
+        "question": "Should I preload everything?",
+        "answer": "No. Preload a small number of truly critical resources. Too many preload hints delay important resources."
+      }
+    ]
+  },
+  {
+    "id": "modulepreload-tag-generator",
+    "name": "Modulepreload Tag Generator",
+    "category": "html",
+    "summary": "Generate modulepreload link tags for ES module scripts in Vite, Astro, and modern static sites.",
+    "description": "Build rel='modulepreload' link tags with the correct crossorigin attribute. Designed for modern JavaScript module workflows in Vite, Astro, SvelteKit, and vanilla ES module projects.",
+    "keywords": ["modulepreload generator", "rel modulepreload", "vite modulepreload", "es module preload"],
+    "whatIs": "Modulepreload is a specialized preload for ES module scripts. Unlike standard preload, modulepreload understands module dependency graphs. It is commonly used in Vite and Astro output. It needs the correct crossorigin attribute for cross-origin modules.",
+    "howToUse": [
+      "Enter the module script path or URL.",
+      "Choose whether the module is same-origin or cross-origin.",
+      "The tool adds the correct crossorigin attribute for the selected origin type.",
+      "Copy the tag into the page head before other module scripts."
+    ],
+    "useCases": [
+      "Add modulepreload for a Vite-built JavaScript entry module.",
+      "Preload a shared ES module chunk for faster page transitions.",
+      "Optimize module loading on a static site built with Astro or SvelteKit."
+    ],
+    "examples": [
+      {
+        "title": "Vite vendor chunk preloading",
+        "text": "A Vite project outputs a vendor chunk that multiple pages use. Modulepreload fetches it early so navigation between pages feels instant."
+      },
+      {
+        "title": "Astro site with CDN-hosted modules",
+        "text": "A static site built with Astro uses modulepreload for the main entry script with crossorigin for CDN hosting."
+      }
+    ],
+    "mistakes": [
+      "Using standard preload instead of modulepreload for ES modules.",
+      "Forgetting crossorigin on cross-origin module URLs.",
+      "Adding modulepreload for non-module scripts."
+    ],
+    "faq": [
+      {
+        "question": "Can I use modulepreload for non-module scripts?",
+        "answer": "No. Use standard preload for regular scripts. Modulepreload is specifically designed for ES module dependency graphs."
+      },
+      {
+        "question": "Which browsers support modulepreload?",
+        "answer": "Chrome 66+, Edge 79+, Firefox 115+, Safari 17.2+. It is safe as a progressive enhancement."
+      }
+    ]
+  },
+  {
+    "id": "image-loading-attribute-builder",
+    "name": "Image Loading Attribute Builder",
+    "category": "html",
+    "summary": "Build optimized img tags by combining loading, decoding, and fetchpriority for hero images, galleries, and article content.",
+    "description": "Choose an image use case and get a complete img tag with the right combination of loading, decoding, fetchpriority, width, height, and alt attributes. Covers hero images, thumbnails, article images, and galleries.",
+    "keywords": ["img loading decoding fetchpriority", "image performance attributes", "lazy loading decoding async image"],
+    "whatIs": "Modern img tags benefit from several performance attributes used together: loading controls lazy loading, decoding controls how the image is decoded, and fetchpriority signals importance. Using them correctly together is better than setting them in isolation.",
+    "howToUse": [
+      "Choose the image use case that matches where the image appears on the page.",
+      "The tool sets the recommended attribute combination for that use case.",
+      "Enter the image path, dimensions, and alt text.",
+      "Copy the complete img tag into your page."
+    ],
+    "useCases": [
+      "Build a hero img with loading='eager', decoding='sync', and fetchpriority='high'.",
+      "Create lazy-loaded article images with loading='lazy' and decoding='async'.",
+      "Optimize thumbnail galleries with appropriate loading and decoding attributes."
+    ],
+    "examples": [
+      {
+        "title": "LCP hero image tag",
+        "text": "An LCP hero image gets loading='eager', decoding='sync', and fetchpriority='high' for fastest possible render."
+      },
+      {
+        "title": "Below-the-fold article image",
+        "text": "A below-the-fold article image gets loading='lazy', decoding='async', and no fetchpriority to avoid competing with critical resources."
+      }
+    ],
+    "mistakes": [
+      "Using loading='lazy' on the LCP image which delays it significantly.",
+      "Setting decoding='sync' on every image instead of only the critical ones.",
+      "Using fetchpriority='high' on multiple images which dilutes the priority hint."
+    ],
+    "faq": [
+      {
+        "question": "When should I use loading='lazy'?",
+        "answer": "For images that are below the fold and not essential for the initial page render. Never use it on the LCP image."
+      },
+      {
+        "question": "What does decoding='async' do?",
+        "answer": "It tells the browser to decode the image asynchronously, allowing other content to render first before the image finishes decoding."
+      }
+    ]
+  },
+  {
+    "id": "referrer-policy-tag-generator",
+    "name": "Referrer Policy Tag Generator",
+    "category": "seo",
+    "summary": "Generate a Referrer-Policy header or meta tag to control how much referrer information is sent with outbound links.",
+    "description": "Build a Referrer-Policy for privacy, analytics, affiliate links, and cross-origin embeds. Generates both the HTTP header and the meta tag version. Explains each policy value.",
+    "keywords": ["referrerpolicy attribute generator", "referrer policy meta tag", "no referrer when downgrade"],
+    "whatIs": "The Referrer-Policy controls how much of the referring URL is sent when a visitor clicks an outbound link or loads a cross-origin resource. It is useful for privacy, analytics control, and affiliate link handling. The policy can be set as an HTTP header, meta tag, or per-element attribute.",
+    "howToUse": [
+      "Choose the policy value that matches your privacy and analytics needs.",
+      "The tool explains what referrer information is sent with each option.",
+      "Copy the header or meta tag into your site configuration.",
+      "Apply per-element referrerpolicy attributes for fine-grained control on specific links."
+    ],
+    "useCases": [
+      "Strip referrer information for privacy-focused sites.",
+      "Keep full referrer information for analytics and marketing attribution.",
+      "Set a site-wide policy with per-element overrides for specific links."
+    ],
+    "examples": [
+      {
+        "title": "Privacy-conscious blog",
+        "text": "A privacy-focused blog uses strict-origin-when-cross-origin to send only the origin on cross-origin requests while keeping full referrer data on same-origin links."
+      },
+      {
+        "title": "Affiliate link handling",
+        "text": "An affiliate site uses no-referrer-when-downgrade to keep referrer data on HTTPS links while stripping it for plain HTTP destinations."
+      }
+    ],
+    "mistakes": [
+      "Setting no-referrer and breaking analytics that depend on referrer data.",
+      "Using unsafe-url which leaks full URLs including query parameters to external sites.",
+      "Forgetting that the meta tag policy can be overridden by the HTTP header."
+    ],
+    "faq": [
+      {
+        "question": "Should I use a header or a meta tag?",
+        "answer": "The HTTP header is stronger because it applies to all resources including images and scripts. The meta tag works when you cannot set headers, such as on GitHub Pages."
+      },
+      {
+        "question": "Which policy is the safest default?",
+        "answer": "Strict-origin-when-cross-origin balances privacy with functionality by sending the full referrer on same-origin requests but only the origin on cross-origin requests."
+      }
+    ]
+  },
+  {
+    "id": "css-anchor-positioning-generator",
+    "name": "CSS Anchor Positioning Generator",
+    "category": "css",
+    "summary": "Generate CSS anchor positioning rules for tooltips, dropdowns, and callouts aligned to trigger elements.",
+    "description": "Build anchor positioning CSS with anchor-name, position-anchor, and position-area. Create tooltips, dropdown menus, callouts, and popovers that align to their trigger element without JavaScript positioning libraries.",
+    "keywords": ["css anchor positioning generator", "position-anchor example", "anchor positioning tooltip css", "css anchor name"],
+    "whatIs": "CSS anchor positioning lets you tether one element to another using only CSS. You assign an anchor-name to the anchor element and use position-anchor on the positioned element. It eliminates the need for JavaScript positioning libraries for tooltips, dropdowns, and popovers. It is a new CSS feature supported in Chrome 125+.",
+    "howToUse": [
+      "Set an anchor name for the trigger element using the anchor-name property.",
+      "Choose the positioning area for the anchored element relative to the trigger.",
+      "The tool generates the CSS for both the anchor and the positioned element.",
+      "Copy the CSS and pair it with your trigger and popover HTML."
+    ],
+    "useCases": [
+      "Position a tooltip that follows a button or link.",
+      "Create a dropdown menu aligned to its trigger element.",
+      "Build a callout that points to a specific UI element on the page."
+    ],
+    "examples": [
+      {
+        "title": "Button tooltip with anchor positioning",
+        "text": "A tooltip appears above a button using position-area: top and position-anchor. The tooltip stays aligned to the button regardless of surrounding layout."
+      },
+      {
+        "title": "Nav dropdown menu",
+        "text": "A dropdown menu anchors to the bottom of its nav trigger item, automatically following the trigger's position on the page."
+      }
+    ],
+    "mistakes": [
+      "Not providing a fallback for browsers that do not support anchor positioning.",
+      "Using anchor positioning for content that must remain accessible when CSS is disabled.",
+      "Forgetting that the anchor and positioned element must be in the same containing block."
+    ],
+    "faq": [
+      {
+        "question": "Which browsers support anchor positioning?",
+        "answer": "Chrome 125+, Edge 125+. Safari and Firefox are developing support. Provide a fallback position for unsupported browsers."
+      },
+      {
+        "question": "Does anchor positioning work with the Popover API?",
+        "answer": "Yes. Popovers can use anchor positioning to align to their trigger element."
+      }
+    ]
+  },
+  {
+    "id": "scroll-driven-animation-generator",
+    "name": "Scroll-Driven Animation Generator",
+    "category": "css",
+    "summary": "Generate CSS scroll-driven animations with animation-timeline for reading progress bars, reveal effects, and parallax.",
+    "description": "Build scroll() and view() timeline animations. Create reading progress bars, fade-in-on-scroll effects, parallax sections, and scroll-linked background animations without JavaScript.",
+    "keywords": ["scroll timeline generator", "view-timeline css", "scroll driven animation css", "animation-timeline scroll"],
+    "whatIs": "Scroll-driven animations use the scroll position or viewport position of an element as the animation timeline instead of time. The scroll() function tracks the scroll container position, and the view() function tracks an element's position in the viewport. This enables reading progress bars, reveal effects, and scroll-linked animations with pure CSS.",
+    "howToUse": [
+      "Choose the timeline type: scroll (tracks scroll container) or view (tracks element position in viewport).",
+      "Set the animation range and keyframes for the desired effect.",
+      "The tool generates the CSS for the animated element.",
+      "Copy the CSS and test on a scrollable page to verify the animation."
+    ],
+    "useCases": [
+      "Create a reading progress bar at the top of a blog post.",
+      "Build fade-in or slide-up reveal effects as sections scroll into view.",
+      "Add a parallax or scroll-linked background animation to a page."
+    ],
+    "examples": [
+      {
+        "title": "Blog reading progress bar",
+        "text": "A blog post shows a horizontal progress bar that fills as the reader scrolls, using animation-timeline: scroll() on the article container."
+      },
+      {
+        "title": "Scroll-triggered section reveals",
+        "text": "Sections fade in as they enter the viewport using animation-timeline: view() with a custom range starting at 0% and ending at 50% of the element's visibility."
+      }
+    ],
+    "mistakes": [
+      "Creating animations that trigger too frequently and hurt scroll performance.",
+      "Not testing on mobile where scroll behavior differs from desktop.",
+      "Using scroll-driven animations for critical content without a static fallback."
+    ],
+    "faq": [
+      {
+        "question": "Which browsers support scroll-driven animations?",
+        "answer": "Chrome 115+, Edge 115+. Safari and Firefox are developing support. Provide a static fallback."
+      },
+      {
+        "question": "What is the difference between scroll() and view()?",
+        "answer": "Scroll() tracks the scroll position of a container. View() tracks the position of the element relative to the viewport."
+      }
+    ]
+  },
+  {
+    "id": "discrete-transition-generator",
+    "name": "Discrete Transition Generator",
+    "category": "css",
+    "summary": "Generate CSS for animating elements that enter or leave the page using transition-behavior, @starting-style, and overlay.",
+    "description": "Build CSS transitions for elements that toggle display, such as dialogs, popovers, disclosure panels, and menus. Uses transition-behavior: allow-discrete and @starting-style for smooth enter and exit animations.",
+    "keywords": ["transition display none css", "transition-behavior allow-discrete", "starting-style generator", "discrete animation css"],
+    "whatIs": "CSS traditionally cannot transition between display: none and display: block. The transition-behavior: allow-discrete property and @starting-style rule now enable smooth transitions for appearing and disappearing elements. This is essential for dialogs, popovers, tooltips, and disclosure panels.",
+    "howToUse": [
+      "Choose the element type you want to animate: dialog, popover, or disclosure panel.",
+      "Set enter and exit animation properties such as opacity and transform.",
+      "The tool generates the @starting-style and transition CSS.",
+      "Copy the CSS and apply it to your dialog, popover, or details element."
+    ],
+    "useCases": [
+      "Add a fade-in effect to a dialog modal when it opens.",
+      "Create a slide-down animation for disclosure panels.",
+      "Build smooth enter and exit animations for popovers."
+    ],
+    "examples": [
+      {
+        "title": "Dialog fade-in animation",
+        "text": "A dialog fades in with opacity and scales up from 0.9 to 1 using @starting-style. On close, it fades back out using the same transition."
+      },
+      {
+        "title": "Popover slide transition",
+        "text": "A popover slides in from the top with a smooth transition and fades out on close, using overlay and transition-behavior: allow-discrete."
+      }
+    ],
+    "mistakes": [
+      "Forgetting to add transition-behavior: allow-discrete to the transitioning element.",
+      "Not accounting for the overlay property in dialog and popover transitions.",
+      "Creating animations that are too slow and frustrate users."
+    ],
+    "faq": [
+      {
+        "question": "What does transition-behavior: allow-discrete do?",
+        "answer": "It enables transitions for properties that normally cannot be transitioned, such as display and overlay."
+      },
+      {
+        "question": "Do I need @starting-style?",
+        "answer": "Yes. It defines the initial state of the element before it appears, such as opacity: 0 or transform values. Without it, the element appears at its final state first."
+      }
+    ]
+  },
+  {
+    "id": "css-light-dark-function-generator",
+    "name": "CSS Light-Dark Function Generator",
+    "category": "css",
+    "summary": "Generate CSS color-scheme and light-dark() function rules for basic dark mode without duplicate variables.",
+    "description": "Build a color-scheme declaration and light-dark() color pairs. Set up basic dark mode with a single CSS function that swaps colors based on the user's system preference. No JavaScript required.",
+    "keywords": ["light-dark css generator", "css light dark function", "color-scheme light dark", "dark mode css no js"],
+    "whatIs": "The light-dark() CSS function takes two color values and automatically picks the first for light mode and the second for dark mode based on the color-scheme property. This eliminates the need for duplicate CSS custom property blocks or a JavaScript theme toggle for basic dark mode support.",
+    "howToUse": [
+      "Choose the color properties you want to theme, such as text color or background.",
+      "Enter a light color and a dark color for each property.",
+      "The tool generates the color-scheme declaration and light-dark() function calls.",
+      "Copy the CSS and add the color-scheme meta tag to your page head."
+    ],
+    "useCases": [
+      "Add basic dark mode to a static site without JavaScript.",
+      "Create light and dark color pairs for text, backgrounds, and borders.",
+      "Build a small design token system using light-dark() for theme consistency."
+    ],
+    "examples": [
+      {
+        "title": "Static blog dark mode",
+        "text": "A static blog adds color-scheme: light dark to the root element and uses light-dark(#333, #eee) for body text. Dark mode activates automatically based on the visitor's system preference."
+      },
+      {
+        "title": "Tool site card theming",
+        "text": "A tool site uses light-dark() for card backgrounds and borders so both color schemes render correctly without separate variable definitions."
+      }
+    ],
+    "mistakes": [
+      "Only setting color-scheme without providing light-dark() color pairs.",
+      "Using light-dark() without setting color-scheme on the root element.",
+      "Forgetting to test both light and dark modes across all themed elements."
+    ],
+    "faq": [
+      {
+        "question": "Does light-dark() work in all browsers?",
+        "answer": "Chrome 123+, Edge 123+, Safari 17.5+, Firefox 120+. Provide fallback colors for older browsers by declaring the light mode color first."
+      },
+      {
+        "question": "Can light-dark() replace CSS custom properties?",
+        "answer": "It can handle basic cases, but custom properties are still better for complex design systems with many color tokens."
+      }
+    ]
+  },
+  {
+    "id": "html-details-accordion-generator",
+    "name": "HTML Details Accordion Generator",
+    "category": "html",
+    "summary": "Generate FAQ accordions and collapsible disclosure panels using the native details and summary elements without JavaScript.",
+    "description": "Build accessible accordion and disclosure panels using the details and summary HTML elements. Create FAQ sections, collapsible content blocks, and expandable panels with CSS styling. Works without JavaScript.",
+    "keywords": ["details summary accordion generator", "html accordion no javascript", "faq accordion html", "details summary css"],
+    "whatIs": "The details and summary elements create native collapsible panels in HTML. The summary is always visible and acts as the toggle. When clicked, the rest of the details content expands. Multiple open details can be exclusive, which creates accordion behavior, with the name attribute. This works without any JavaScript.",
+    "howToUse": [
+      "Enter the items you want in the accordion as title|content pairs, one per line.",
+      "Choose exclusive or multiple-open mode for the accordion behavior.",
+      "The tool generates the details/summary HTML with CSS styling.",
+      "Copy the markup and CSS into your page."
+    ],
+    "useCases": [
+      "Build a FAQ accordion for a product or service page.",
+      "Create collapsible documentation sections for a reference site.",
+      "Add expandable content blocks to a blog post for long-form content."
+    ],
+    "examples": [
+      {
+        "title": "FAQ page with exclusive accordion",
+        "text": "A FAQ page uses exclusive accordion mode so opening one question closes the others. The name attribute on each details element enforces this behavior."
+      },
+      {
+        "title": "Recipe page with collapsible sections",
+        "text": "A recipe page uses collapsible sections for ingredients and instructions. Each section opens independently since the accordion uses multiple-open mode."
+      }
+    ],
+    "mistakes": [
+      "Hiding the default disclosure triangle without providing a visible toggle indicator.",
+      "Using details for critical content that must always be visible.",
+      "Not styling the summary element to look clickable with a hover or cursor style."
+    ],
+    "faq": [
+      {
+        "question": "How do I make only one details open at a time?",
+        "answer": "Add the same name attribute to each details element. This creates exclusive accordion behavior where opening one closes the others."
+      },
+      {
+        "question": "Does the details element work in all browsers?",
+        "answer": "Chrome 12+, Edge 79+, Safari 6+, Firefox 49+. It has near-universal support."
+      }
+    ]
   }
 ]
