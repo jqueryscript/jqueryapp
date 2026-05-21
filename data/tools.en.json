@@ -2860,5 +2860,230 @@
         "answer": "Chrome 12+, Edge 79+, Safari 6+, Firefox 49+. It has near-universal support."
       }
     ]
+  },
+  {
+    "id": "css-color-mix-generator",
+    "name": "CSS Color Mix Generator",
+    "category": "css",
+    "summary": "Generate CSS color-mix() function calls for hover states, borders, backgrounds, and muted text from a base color.",
+    "description": "Enter a base color and get color-mix() CSS for hover, border, subtle background, and muted text colors. Uses the oklab color space for perceptually uniform mixing.",
+    "keywords": ["color-mix generator", "css color mix oklab", "css color-mix hover", "color mix css"],
+    "whatIs": "The CSS color-mix() function mixes two colors in a specified color space. It creates color variations directly in CSS without a preprocessor like Sass. Using oklab produces more perceptually uniform results than srgb. Common use cases include hover states, borders, subtle backgrounds, and muted text -- all derived from a single base color.",
+    "howToUse": [
+      "Enter a base color as a hex value.",
+      "Review the calculated color-mix() variants using white, black, or transparent.",
+      "Copy each color-mix() declaration into your CSS.",
+      "Use the generated custom properties for consistent color theming."
+    ],
+    "useCases": [
+      "Create hover states by mixing a color with white or black.",
+      "Generate subtle background tints from a brand color.",
+      "Build border colors that are slightly darker than the background."
+    ],
+    "examples": [
+      {
+        "title": "Button hover state with color-mix",
+        "text": "A button uses the base brand color for its background and color-mix() for the hover state."
+      },
+      {
+        "title": "Card background tint",
+        "text": "A card uses color-mix() to create a subtle tint background from the site accent color."
+      }
+    ],
+    "mistakes": [
+      "Using srgb instead of oklab for color mixing, which produces less natural results.",
+      "Applying color-mix() without checking browser support.",
+      "Using color-mix() where a simple opacity change would work."
+    ],
+    "faq": [
+      {
+        "question": "Why use oklab instead of srgb?",
+        "answer": "oklab produces perceptually uniform color mixing. Mixing in srgb can produce gray, muddy intermediates."
+      },
+      {
+        "question": "Does color-mix() work in all browsers?",
+        "answer": "Chrome 111+, Edge 111+, Safari 16.2+, Firefox 113+. It has broad modern support."
+      }
+    ]
+  },
+  {
+    "id": "css-relative-color-syntax-generator",
+    "name": "CSS Relative Color Syntax Generator",
+    "category": "css",
+    "summary": "Generate CSS relative color syntax to create alpha, lighter, darker, and channel-adjusted variants from any base color.",
+    "description": "Use the CSS relative color syntax (from keyword) to derive new colors from a base. Create alpha transparency, lighter and darker shades, muted tones, and individual channel adjustments without a preprocessor.",
+    "keywords": ["relative color syntax generator", "css relative colors", "css from color", "css color channel adjustment"],
+    "whatIs": "CSS relative color syntax lets you start from an existing color and modify its channels individually. Using rgb(from color r g b / alpha) or hsl(from color h s l / alpha) syntax, you can adjust lightness, saturation, alpha, or individual channels. This is more powerful than color-mix() for precise channel manipulation.",
+    "howToUse": [
+      "Enter a base color in hex, RGB, or HSL format.",
+      "Choose the output color space and the channel adjustments.",
+      "The tool generates the relative color syntax CSS.",
+      "Copy the declaration into your stylesheet."
+    ],
+    "useCases": [
+      "Create semi-transparent variants of a brand color.",
+      "Generate a lighter or darker shade by adjusting the lightness channel.",
+      "Boost or reduce saturation for hover and active states."
+    ],
+    "examples": [
+      {
+        "title": "Brand color with alpha transparency",
+        "text": "A designer converts a hex brand color to an 80% opacity variant using rgb(from #3b82f6 r g b / 0.8)."
+      },
+      {
+        "title": "Lighter card backgrounds via oklch",
+        "text": "A theme generates lighter and darker card backgrounds by adjusting the L channel in oklch."
+      }
+    ],
+    "mistakes": [
+      "Using the wrong color space for the desired channel manipulation.",
+      "Nesting relative colors too deeply and hurting readability.",
+      "Not providing a fallback for browsers that do not support relative color syntax."
+    ],
+    "faq": [
+      {
+        "question": "What is the difference between color-mix() and relative color syntax?",
+        "answer": "color-mix() blends two colors. Relative color syntax takes one color and adjusts its channels. Use color-mix() for blending and relative syntax for channel manipulation."
+      },
+      {
+        "question": "Which browsers support relative color syntax?",
+        "answer": "Chrome 119+, Edge 119+, Safari 16.4+, Firefox 128+. Provide a static color fallback."
+      }
+    ]
+  },
+  {
+    "id": "css-print-styles-generator",
+    "name": "CSS Print Styles Generator",
+    "category": "css",
+    "summary": "Generate a print stylesheet that hides navigation, shows link URLs, avoids page breaks in important blocks, and sets print margins.",
+    "description": "Build a print-ready CSS block that hides non-content elements, expands link URLs for reference, avoids awkward page breaks, and sets sensible print margins and page size. Designed for documentation, recipes, checklists, and long articles.",
+    "keywords": ["print css generator", "print stylesheet", "css print page break", "@media print css"],
+    "whatIs": "A print stylesheet is CSS inside @media print that styles the page when someone prints or saves as PDF. It should hide navigation, sidebars, and footers, show full URLs after links, prevent page breaks inside important blocks like tables and code, and set sensible margins. This is especially useful for documentation, recipes, invoices, and articles.",
+    "howToUse": [
+      "Select the elements you want to hide when printing.",
+      "Choose whether to show URLs after links.",
+      "Set margin and page size preferences.",
+      "Copy the @media print block into your stylesheet and test with print preview."
+    ],
+    "useCases": [
+      "Prepare a recipe page for clean printing without navigation and ads.",
+      "Make documentation pages print with full link URLs for reference.",
+      "Style invoices and checklists for professional printed output."
+    ],
+    "examples": [
+      {
+        "title": "Recipe card print styles",
+        "text": "A recipe blog adds print styles so readers can print a clean recipe card without the header, sidebar, and comments."
+      },
+      {
+        "title": "Documentation with expanded URLs",
+        "text": "A documentation site prints with expanded link URLs so readers can follow references on paper."
+      }
+    ],
+    "mistakes": [
+      "Hiding all images instead of just decorative ones.",
+      "Using display:none on everything without testing the printed output.",
+      "Not setting page-break-inside: avoid on tables and code blocks."
+    ],
+    "faq": [
+      {
+        "question": "How do I test print styles?",
+        "answer": "Use the browser print preview (Ctrl+P) or DevTools rendering tab to emulate print media."
+      },
+      {
+        "question": "Should print styles be in a separate file?",
+        "answer": "You can use a separate print.css or embed @media print in your main stylesheet. Both approaches work."
+      }
+    ]
+  },
+  {
+    "id": "external-link-attribute-generator",
+    "name": "External Link Attribute Generator",
+    "category": "html",
+    "summary": "Generate external link markup with the correct rel attributes for security, SEO, sponsored content, and user-generated content.",
+    "description": "Build external link anchor tags with the right combination of target, rel (noopener, noreferrer, nofollow, sponsored, ugc), and optional aria labels. Covers standard external links, affiliate links, sponsored content, and UGC links.",
+    "keywords": ["rel noopener noreferrer generator", "external link attributes", "nofollow sponsored ugc", "external link rel"],
+    "whatIs": "External links should use target='_blank' with rel='noopener noreferrer' for security. For SEO, bloggers use rel='nofollow' for untrusted links, rel='sponsored' for paid or affiliate links, and rel='ugc' for user-generated content links. Using the right rel values helps both security and search engine understanding of link intent.",
+    "howToUse": [
+      "Choose the link type that matches your use case.",
+      "Enter the destination URL and link text.",
+      "The tool generates the anchor tag with the correct attributes.",
+      "Copy and paste the anchor tag into your HTML."
+    ],
+    "useCases": [
+      "Create secure external links with noopener and noreferrer.",
+      "Mark affiliate links with sponsored and nofollow.",
+      "Tag user-generated content links with ugc."
+    ],
+    "examples": [
+      {
+        "title": "Secure external reference link",
+        "text": "A blog post links to an external reference with target='_blank' and rel='noopener noreferrer'."
+      },
+      {
+        "title": "Affiliate link disclosure",
+        "text": "An affiliate disclosure page uses rel='sponsored nofollow' for all affiliate links."
+      }
+    ],
+    "mistakes": [
+      "Using target='_blank' without noopener which creates a security vulnerability.",
+      "Adding nofollow to internal links and hurting internal link equity.",
+      "Using both nofollow and sponsored when sponsored alone is sufficient."
+    ],
+    "faq": [
+      {
+        "question": "Should every external link use noopener?",
+        "answer": "Every target='_blank' link should include rel='noopener'. It prevents the opened page from accessing window.opener."
+      },
+      {
+        "question": "Does rel='nofollow' affect SEO?",
+        "answer": "It tells search engines not to pass ranking credit to the linked page. Use it for untrusted or paid links."
+      }
+    ]
+  },
+  {
+    "id": "html-script-loading-strategy-builder",
+    "name": "HTML Script Loading Strategy Builder",
+    "category": "html",
+    "summary": "Generate script tags with the right loading strategy -- normal, defer, async, or type module -- based on use case.",
+    "description": "Choose a use case and get the recommended script tag with the correct loading attribute. Covers analytics scripts, app bundles, third-party widgets, ES modules, and inline scripts. Explains when to use each strategy.",
+    "keywords": ["script async defer generator", "module script defer async", "script loading strategy", "script tag attributes"],
+    "whatIs": "How a script loads affects page performance and script execution order. A normal script blocks HTML parsing. defer downloads in parallel and executes after HTML parsing. async downloads in parallel and executes as soon as it is ready. type='module' scripts are deferred by default. Choosing the right strategy depends on whether the script is critical, depends on other scripts, or is independent.",
+    "howToUse": [
+      "Select the script type that matches your use case.",
+      "Enter the script URL.",
+      "The tool recommends the best loading attribute.",
+      "Copy the script tag with the correct attributes."
+    ],
+    "useCases": [
+      "Add a deferred application bundle that runs after the page parses.",
+      "Include an async analytics script that loads independently.",
+      "Set up a module script for a Vite or Astro entry point."
+    ],
+    "examples": [
+      {
+        "title": "Analytics script with async",
+        "text": "An analytics script uses async so it loads without blocking the page."
+      },
+      {
+        "title": "App bundle with defer",
+        "text": "An app bundle uses defer to maintain execution order while not blocking HTML parsing."
+      }
+    ],
+    "mistakes": [
+      "Using async for scripts that depend on DOM elements or other scripts.",
+      "Using defer for scripts that must run immediately regardless of parse state.",
+      "Using type='module' for scripts that are not ES modules."
+    ],
+    "faq": [
+      {
+        "question": "What is the difference between defer and async?",
+        "answer": "defer downloads in parallel and waits for HTML parsing to finish before executing, preserving script order. async downloads in parallel and executes immediately when ready, ignoring order."
+      },
+      {
+        "question": "Does type='module' need defer?",
+        "answer": "No. Module scripts are deferred by default and do not need an explicit defer attribute."
+      }
+    ]
   }
 ]

@@ -261,7 +261,12 @@
       "scroll-driven-animation-generator": {"name": "Scroll-Driven-Animation-Generator", "summary": "Generiere CSS-Scroll-Animationen mit animation-timeline fur Lesefortschritt und Reveal-Effekte."},
       "discrete-transition-generator": {"name": "Diskreter-Ubergangs-Generator", "summary": "Generiere CSS fur ein- und ausblendende Elemente mit transition-behavior und @starting-style."},
       "css-light-dark-function-generator": {"name": "CSS-Light-Dark-Funktions-Generator", "summary": "Generiere CSS color-scheme und light-dark()-Regeln fur Dark Mode ohne doppelte Variablen."},
-      "html-details-accordion-generator": {"name": "HTML-Details-Akkordeon-Generator", "summary": "Generiere FAQ-Akkordeons mit den nativen details- und summary-Elementen ohne JavaScript."}
+      "html-details-accordion-generator": {"name": "HTML-Details-Akkordeon-Generator", "summary": "Generiere FAQ-Akkordeons mit den nativen details- und summary-Elementen ohne JavaScript."},
+      "css-color-mix-generator": {"name": "CSS-Color-Mix-Generator", "summary": "Generiere CSS color-mix()-Aufrufe fur Hover, Rahmen, Hintergrunde und zuruckhaltenden Text."},
+      "css-relative-color-syntax-generator": {"name": "CSS-Relative-Color-Syntax-Generator", "summary": "Generiere relative CSS-Farbsyntax fur Alpha-, hellere, dunklere und kanalangepasste Varianten."},
+      "css-print-styles-generator": {"name": "CSS-Druckstil-Generator", "summary": "Generiere ein Druck-Stylesheet zum Ausblenden von Navigation, Anzeigen von Link-URLs und Vermeiden von Seitenumbruchen."},
+      "external-link-attribute-generator": {"name": "Externer-Link-Attribut-Generator", "summary": "Generiere externes Link-Markup mit korrekten rel-Attributen fur Sicherheit und SEO."},
+      "html-script-loading-strategy-builder": {"name": "HTML-Script-Ladestrategie-Builder", "summary": "Generiere Script-Tags mit der richtigen Ladestrategie — normal, defer, async oder type module."}
     }
   },
   "fr": {
@@ -414,7 +419,12 @@
       "scroll-driven-animation-generator": {"name": "Generateur d'animations au defilement", "summary": "Generez des animations CSS au defilement avec animation-timeline."},
       "discrete-transition-generator": {"name": "Generateur de transitions discretes", "summary": "Generez du CSS pour animer les elements qui apparaissent ou disparaissent."},
       "css-light-dark-function-generator": {"name": "Generateur de fonction CSS light-dark()", "summary": "Generez des regles CSS color-scheme et light-dark() pour le mode sombre."},
-      "html-details-accordion-generator": {"name": "Generateur d'accordeon HTML details", "summary": "Generez des accordeons FAQ avec les elements natifs details et summary sans JavaScript."}
+      "html-details-accordion-generator": {"name": "Generateur d'accordeon HTML details", "summary": "Generez des accordeons FAQ avec les elements natifs details et summary sans JavaScript."},
+      "css-color-mix-generator": {"name": "Generateur CSS color-mix()", "summary": "Generez des appels color-mix() CSS pour les etats hover, bordures, fonds et texte discret."},
+      "css-relative-color-syntax-generator": {"name": "Generateur de syntaxe de couleur relative CSS", "summary": "Generez la syntaxe de couleur relative CSS pour des variantes alpha, claires, sombres et ajustees."},
+      "css-print-styles-generator": {"name": "Generateur de styles d'impression CSS", "summary": "Generez une feuille de style d'impression pour masquer la navigation et afficher les URLs."},
+      "external-link-attribute-generator": {"name": "Generateur d'attributs de lien externe", "summary": "Generez du markup de lien externe avec les attributs rel corrects pour la securite et le SEO."},
+      "html-script-loading-strategy-builder": {"name": "Constructeur de strategie de chargement de script", "summary": "Generez des balises script avec la bonne strategie — normal, defer, async ou type module."}
     }
   },
   "es": {
@@ -505,7 +515,12 @@
       "scroll-driven-animation-generator": {"name": "Generador de animaciones de desplazamiento", "summary": "Genera animaciones CSS de desplazamiento con animation-timeline."},
       "discrete-transition-generator": {"name": "Generador de transiciones discretas", "summary": "Genera CSS para animar elementos que aparecen o desaparecen."},
       "css-light-dark-function-generator": {"name": "Generador de funcion CSS light-dark()", "summary": "Genera reglas CSS color-scheme y light-dark() para modo oscuro."},
-      "html-details-accordion-generator": {"name": "Generador de acordeon HTML details", "summary": "Genera acordeones FAQ con elementos nativos details y summary sin JavaScript."}
+      "html-details-accordion-generator": {"name": "Generador de acordeon HTML details", "summary": "Genera acordeones FAQ con elementos nativos details y summary sin JavaScript."},
+      "css-color-mix-generator": {"name": "Generador CSS color-mix()", "summary": "Genera llamadas color-mix() CSS para estados hover, bordes, fondos y texto atenuado."},
+      "css-relative-color-syntax-generator": {"name": "Generador de sintaxis de color relativa CSS", "summary": "Genera sintaxis de color relativa CSS para variantes alfa, claras, oscuras y ajustadas."},
+      "css-print-styles-generator": {"name": "Generador de estilos de impresion CSS", "summary": "Genera una hoja de estilo de impresion para ocultar navegacion y mostrar URLs."},
+      "external-link-attribute-generator": {"name": "Generador de atributos de enlace externo", "summary": "Genera marcado de enlace externo con atributos rel correctos para seguridad y SEO."},
+      "html-script-loading-strategy-builder": {"name": "Constructor de estrategia de carga de script", "summary": "Genera etiquetas script con la estrategia correcta — normal, defer, async o type module."}
     }
   },
   "ja": {
@@ -596,7 +611,12 @@
       "scroll-driven-animation-generator": {"name": "スクロール駆動アニメーションジェネレーター", "summary": "animation-timelineを使用したスクロール駆動CSSアニメーションを生成します。"},
       "discrete-transition-generator": {"name": "ディスクリートトランジションジェネレーター", "summary": "表示・非表示が切り替わる要素をアニメーションするCSSを生成します。"},
       "css-light-dark-function-generator": {"name": "CSS light-dark()関数ジェネレーター", "summary": "変数の重複なしでダークモード用のcolor-schemeとlight-dark()ルールを生成します。"},
-      "html-details-accordion-generator": {"name": "HTML Detailsアコーディオンジェネレーター", "summary": "JavaScriptなしでdetails要素とsummary要素を使ったFAQアコーディオンを生成します。"}
+      "html-details-accordion-generator": {"name": "HTML Detailsアコーディオンジェネレーター", "summary": "JavaScriptなしでdetails要素とsummary要素を使ったFAQアコーディオンを生成します。"},
+      "css-color-mix-generator": {"name": "CSS color-mix()ジェネレーター", "summary": "ホバー、ボーダー、背景、控えめなテキスト用のCSS color-mix()呼び出しを生成します。"},
+      "css-relative-color-syntax-generator": {"name": "CSS相対カラー構文ジェネレーター", "summary": "アルファ、明るい、暗い、チャンネル調整バリアント用のCSS相対カラー構文を生成します。"},
+      "css-print-styles-generator": {"name": "CSS印刷スタイルジェネレーター", "summary": "ナビゲーションを非表示にし、リンクURLを表示し、改ページを回避する印刷用スタイルシートを生成します。"},
+      "external-link-attribute-generator": {"name": "外部リンク属性ジェネレーター", "summary": "セキュリティとSEOのための正しいrel属性を持つ外部リンクマークアップを生成します。"},
+      "html-script-loading-strategy-builder": {"name": "HTMLスクリプト読み込み戦略ビルダー", "summary": "normal、defer、async、type moduleの適切な読み込み戦略でscriptタグを生成します。"}
     }
   },
   "nl": {
@@ -687,7 +707,12 @@
       "scroll-driven-animation-generator": {"name": "Scroll-Driven Animation Generator", "summary": "Genereer CSS scroll-gedreven animaties met animation-timeline."},
       "discrete-transition-generator": {"name": "Discrete Transitie Generator", "summary": "Genereer CSS voor het animeren van elementen die verschijnen of verdwijnen."},
       "css-light-dark-function-generator": {"name": "CSS Light-Dark Functie Generator", "summary": "Genereer CSS color-scheme en light-dark() regels voor donkere modus."},
-      "html-details-accordion-generator": {"name": "HTML Details Accordion Generator", "summary": "Genereer FAQ accordeons met de native details en summary elementen zonder JavaScript."}
+      "html-details-accordion-generator": {"name": "HTML Details Accordion Generator", "summary": "Genereer FAQ accordeons met de native details en summary elementen zonder JavaScript."},
+      "css-color-mix-generator": {"name": "CSS Color Mix Generator", "summary": "Genereer CSS color-mix() aanroepen voor hover, borders, achtergronden en ingetogen tekst."},
+      "css-relative-color-syntax-generator": {"name": "CSS Relative Color Syntax Generator", "summary": "Genereer CSS relatieve kleursyntax voor alfa-, lichtere, donkerdere en kanaalaangepaste varianten."},
+      "css-print-styles-generator": {"name": "CSS Printstijlen Generator", "summary": "Genereer een printstylesheet om navigatie te verbergen, link-URLs te tonen en pagina-einden te vermijden."},
+      "external-link-attribute-generator": {"name": "Externe Link Attribuut Generator", "summary": "Genereer externe link markup met correcte rel attributen voor beveiliging en SEO."},
+      "html-script-loading-strategy-builder": {"name": "HTML Script Laadstrategie Bouwer", "summary": "Genereer script tags met de juiste laadstrategie — normal, defer, async of type module."}
     }
   }
 }

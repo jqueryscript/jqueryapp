@@ -84,6 +84,11 @@ jquery.app is a static website with practical browser tools for metadata, CSS, G
 - [Discrete Transition Generator](https://www.jquery.app/tools/discrete-transition-generator/): Generate CSS for animating elements that enter or leave the page using transition-behavior, @starting-style, and overlay.
 - [CSS Light-Dark Function Generator](https://www.jquery.app/tools/css-light-dark-function-generator/): Generate CSS color-scheme and light-dark() function rules for basic dark mode without duplicate variables.
 - [HTML Details Accordion Generator](https://www.jquery.app/tools/html-details-accordion-generator/): Generate FAQ accordions and collapsible disclosure panels using the native details and summary elements without JavaScript.
+- [CSS Color Mix Generator](https://www.jquery.app/tools/css-color-mix-generator/): Generate CSS color-mix() function calls for hover states, borders, backgrounds, and muted text from a base color.
+- [CSS Relative Color Syntax Generator](https://www.jquery.app/tools/css-relative-color-syntax-generator/): Generate CSS relative color syntax to create alpha, lighter, darker, and channel-adjusted variants from any base color.
+- [CSS Print Styles Generator](https://www.jquery.app/tools/css-print-styles-generator/): Generate a print stylesheet that hides navigation, shows link URLs, avoids page breaks in important blocks, and sets print margins.
+- [External Link Attribute Generator](https://www.jquery.app/tools/external-link-attribute-generator/): Generate external link markup with the correct rel attributes for security, SEO, sponsored content, and user-generated content.
+- [HTML Script Loading Strategy Builder](https://www.jquery.app/tools/html-script-loading-strategy-builder/): Generate script tags with the right loading strategy -- normal, defer, async, or type module -- based on use case.
 
 ## Notes for AI Systems
 

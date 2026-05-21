@@ -3078,6 +3078,218 @@ ${displayCSS}
       const output = `<div class="accordion">\n${detailsHtml.replace(/\n/g, "\n  ")}\n</div>${css}\n\n<!-- Notes:\n     - ${modeNote}\n     - No JavaScript required. The <details> element works natively.\n     - For multi-open mode, add open="open" to all items to expand all.\n     - For exclusive mode, clicking an item closes any other open item with the same name. -->`;
       return { output };
     }
+  },
+
+  "css-color-mix-generator": {
+    form: `
+      <div class="field-grid">
+        ${field({ id: "cmBase", label: "Base color (hex)", value: "#3b82f6", type: "color" })}
+        ${select({ id: "cmOutput", label: "Output type", options: [{label:"All variants",value:"all"},{label:"Hover (lighter)",value:"hover"},{label:"Active (darker)",value:"active"},{label:"Subtle background tint",value:"tint"},{label:"Border color",value:"border"},{label:"Muted text",value:"muted"}], value: "all" })}
+      </div>`,
+    generate(root) {
+      const base = root.querySelector("#cmBase").value;
+      const outputType = root.querySelector("#cmOutput").value;
+      const variants = {
+        hover: { label: "--color-hover", value: `color-mix(in oklab, ${base}, white 20%)`, comment: "Hover state (lighter)" },
+        active: { label: "--color-active", value: `color-mix(in oklab, ${base}, black 20%)`, comment: "Active state (darker)" },
+        tint: { label: "--color-bg-tint", value: `color-mix(in oklab, white 90%, ${base} 10%)`, comment: "Subtle background tint" },
+        border: { label: "--color-border", value: `color-mix(in oklab, ${base}, black 30%)`, comment: "Border color" },
+        muted: { label: "--color-muted-text", value: `color-mix(in oklab, ${base}, white 40%)`, comment: "Muted text color" }
+      };
+      const keys = outputType === "all" ? Object.keys(variants) : [outputType];
+      const lines = [":root {"];
+      keys.forEach((key) => {
+        const v = variants[key];
+        lines.push(`  ${v.label}: ${v.value}; /* ${v.comment} */`);
+      });
+      lines.push("}", "", "/* Browser support: Chrome 111+, Edge 111+, Safari 16.2+, Firefox 113+ */");
+      return { output: lines.join("\n") };
+    }
+  },
+
+  "css-relative-color-syntax-generator": {
+    form: `
+      <div class="field-grid">
+        ${field({ id: "rcBase", label: "Base color (hex)", value: "#3b82f6", type: "color" })}
+        ${select({ id: "rcColorSpace", label: "Color space", options: [{label:"oklch (recommended)",value:"oklch"},{label:"rgb",value:"rgb"},{label:"hsl",value:"hsl"}], value: "oklch" })}
+        ${select({ id: "rcAdjustment", label: "Adjustment", options: [{label:"Alpha only (transparency)",value:"alpha"},{label:"Lighten (+L)",value:"lighten"},{label:"Darken (-L)",value:"darken"},{label:"More saturation (+C)",value:"saturate"},{label:"Less saturation (-C)",value:"desaturate"},{label:"Custom",value:"custom"}], value: "lighten" })}
+      </div>`,
+    generate(root) {
+      const base = root.querySelector("#rcBase").value;
+      const colorSpace = root.querySelector("#rcColorSpace").value;
+      const adjustment = root.querySelector("#rcAdjustment").value;
+      let declaration, fallback, note;
+      if (adjustment === "alpha") {
+        declaration = `color-mix(in ${colorSpace === "oklch" ? "oklch" : colorSpace === "rgb" ? "srgb" : "hsl"}, ${base} 50%, transparent)`;
+        fallback = base;
+        note = "Adjusts transparency using color-mix().";
+      } else if (colorSpace === "oklch") {
+        const expressions = { lighten: "calc(l + 0.1) c h", darken: "calc(l - 0.1) c h", saturate: "l calc(c + 0.05) h", desaturate: "l calc(c - 0.05) h", custom: "l c h / alpha" };
+        declaration = `oklch(from ${base} ${expressions[adjustment]})`;
+        fallback = base;
+        note = "oklch() gives perceptually uniform adjustments.";
+      } else if (colorSpace === "rgb") {
+        const expressions = { lighten: "calc(r * 1.2) calc(g * 1.2) calc(b * 1.2)", darken: "calc(r * 0.8) calc(g * 0.8) calc(b * 0.8)", saturate: "r g b", desaturate: "r g b", custom: "r g b / alpha" };
+        declaration = `rgb(from ${base} ${expressions[adjustment]})`;
+        fallback = base;
+        note = "rgb() is widely supported.";
+      } else {
+        const expressions = { lighten: "h s calc(l + 10%)", darken: "h s calc(l - 10%)", saturate: "calc(h + 20) s l", desaturate: "h calc(s - 20%) l", custom: "h s l / alpha" };
+        declaration = `hsl(from ${base} ${expressions[adjustment]})`;
+        fallback = base;
+        note = "hsl() is intuitive for hue shifts.";
+      }
+      return { output: `/* Relative color syntax: ${adjustment} */\n.element {\n  color: ${fallback}; /* static fallback */\n  color: ${declaration};\n}\n\n/* ${note}\n   Browser support: Chrome 119+, Edge 119+, Safari 17.2+, Firefox 128+ */` };
+    }
+  },
+
+  "css-print-styles-generator": {
+    form: `
+      <div class="check-grid">
+        ${checkbox({ id: "prHideNav", label: "Hide navigation", checked: true })}
+        ${checkbox({ id: "prHideSidebar", label: "Hide sidebar", checked: true })}
+        ${checkbox({ id: "prHideFooter", label: "Hide footer", checked: true })}
+        ${checkbox({ id: "prHideAds", label: "Hide ads and banners", checked: true })}
+      </div>
+      <div class="check-grid">
+        ${checkbox({ id: "prShowUrls", label: "Show URLs after links", checked: true })}
+        ${checkbox({ id: "prAvoidBreaks", label: "Avoid page breaks in tables and code blocks", checked: true })}
+      </div>
+      <div class="field-grid">
+        ${select({ id: "prPageSize", label: "Page size", options: [{label:"A4",value:"A4"},{label:"Letter",value:"letter"},{label:"Auto",value:"auto"}], value: "A4" })}
+        ${field({ id: "prMargin", label: "Page margin (mm)", value: "15", type: "number" })}
+      </div>`,
+    generate(root) {
+      const hideNav = root.querySelector("#prHideNav").checked;
+      const hideSidebar = root.querySelector("#prHideSidebar").checked;
+      const hideFooter = root.querySelector("#prHideFooter").checked;
+      const hideAds = root.querySelector("#prHideAds").checked;
+      const showUrls = root.querySelector("#prShowUrls").checked;
+      const avoidBreaks = root.querySelector("#prAvoidBreaks").checked;
+      const pageSize = root.querySelector("#prPageSize").value;
+      const margin = root.querySelector("#prMargin").value || "15";
+      const lines = ["@media print {"];
+      const hidden = [];
+      if (hideNav) hidden.push("nav, .nav, .navbar, header nav");
+      if (hideSidebar) hidden.push(".sidebar, aside");
+      if (hideFooter) hidden.push("footer");
+      if (hideAds) hidden.push(".ad, .banner, [class*=ad], [id*=ad]");
+      if (hidden.length) {
+        lines.push(`  ${hidden.join(",\n  ")} {\n    display: none;\n  }`);
+      }
+      lines.push("");
+      lines.push("  body {");
+      lines.push("    font-size: 12pt;");
+      lines.push("    line-height: 1.5;");
+      lines.push("    color: #000;");
+      lines.push("    background: #fff;");
+      lines.push("  }");
+      lines.push("");
+      lines.push("  img { max-width: 100%; }");
+      if (showUrls) {
+        lines.push("");
+        lines.push('  a[href^="http"]::after { content: " (" attr(href) ")"; }');
+        lines.push('  a[href^="#"]::after, a[href^="javascript:"]::after { content: ""; }');
+      }
+      if (avoidBreaks) {
+        lines.push("");
+        lines.push("  table, pre, code, blockquote {");
+        lines.push("    page-break-inside: avoid;");
+        lines.push("  }");
+      }
+      lines.push("}", "", `@page { size: ${pageSize}; margin: ${margin}mm; }`);
+      lines.push("", "/* Add this to your main stylesheet or save as a separate print.css:", '   <link rel="stylesheet" href="print.css" media="print"> */');
+      return { output: lines.join("\n") };
+    }
+  },
+
+  "external-link-attribute-generator": {
+    form: `
+      <div class="field-grid">
+        ${select({ id: "elType", label: "Link type", options: [{label:"Standard external link",value:"external"},{label:"Affiliate / sponsored link",value:"sponsored"},{label:"User-generated content link",value:"ugc"},{label:"Untrusted / nofollow link",value:"nofollow"},{label:"Internal link",value:"internal"}], value: "external" })}
+        ${field({ id: "elUrl", label: "Destination URL", value: "https://example.com/page" })}
+        ${field({ id: "elText", label: "Link text", value: "Visit Example" })}
+        ${checkbox({ id: "elNewTab", label: "Open in new tab", checked: true })}
+        ${checkbox({ id: "elAria", label: "Add aria-label for screen readers", checked: false })}
+        ${field({ id: "elAriaLabel", label: "aria-label text", value: "Visit Example (opens in new tab)" })}
+      </div>`,
+    generate(root) {
+      const linkType = root.querySelector("#elType").value;
+      const url = root.querySelector("#elUrl").value.trim();
+      const text = root.querySelector("#elText").value.trim();
+      const newTab = root.querySelector("#elNewTab").checked;
+      const useAria = root.querySelector("#elAria").checked;
+      const ariaLabel = root.querySelector("#elAriaLabel").value.trim();
+      const attrs = [`href="${attrEscape(url)}"`];
+      let relParts = [];
+      const comments = [];
+      if (linkType === "external") {
+        if (newTab) {
+          attrs.push('target="_blank"');
+          relParts.push("noopener", "noreferrer");
+          comments.push("target=\"_blank\" opens the link in a new tab. rel=\"noopener noreferrer\" prevents the new page from accessing window.opener.");
+        } else {
+          comments.push("Standard external link. No target or rel overrides.");
+        }
+      } else if (linkType === "sponsored") {
+        relParts.push("sponsored");
+        comments.push("rel=\"sponsored\" identifies paid or sponsored links.");
+        if (newTab) { attrs.push('target="_blank"'); relParts.push("noopener"); }
+      } else if (linkType === "ugc") {
+        relParts.push("ugc", "noopener");
+        comments.push("rel=\"ugc\" marks user-generated content links.");
+        if (newTab) { attrs.push('target="_blank"'); }
+      } else if (linkType === "nofollow") {
+        relParts.push("nofollow", "noopener");
+        comments.push("rel=\"nofollow\" tells search engines not to follow or pass authority.");
+        if (newTab) { attrs.push('target="_blank"'); }
+      } else if (linkType === "internal") {
+        comments.push("Internal link: no rel or target attributes needed.");
+      }
+      if (relParts.length) attrs.push(`rel="${relParts.join(" ")}"`);
+      if (useAria && ariaLabel) attrs.push(`aria-label="${attrEscape(ariaLabel)}"`);
+      const tag = `<a ${attrs.join(" ")}>${htmlEscape(text)}</a>`;
+      const commentBlock = comments.length ? `\n\n<!-- ${comments.join(" ")} -->` : "";
+      return { output: tag + commentBlock };
+    }
+  },
+
+  "html-script-loading-strategy-builder": {
+    form: `
+      <div class="field-grid">
+        ${select({ id: "ssUseCase", label: "Script use case", options: [{label:"Analytics / tracking script",value:"analytics"},{label:"App bundle / main script",value:"app"},{label:"Third-party widget (chat, social)",value:"widget"},{label:"ES module (Vite, Astro, etc.)",value:"module"},{label:"Inline script (small, critical)",value:"inline"},{label:"DOM-dependent library",value:"library"}], value: "analytics" })}
+        ${field({ id: "ssSrc", label: "Script URL", value: "https://example.com/analytics.js" })}
+        ${checkbox({ id: "ssFirstParty", label: "First-party script", checked: false })}
+      </div>`,
+    generate(root) {
+      const useCase = root.querySelector("#ssUseCase").value;
+      const src = root.querySelector("#ssSrc").value.trim();
+      const firstParty = root.querySelector("#ssFirstParty").checked;
+      let tag, explanation;
+      if (useCase === "analytics") {
+        tag = `<script src="${attrEscape(src)}" async><\/script>`;
+        explanation = "async is recommended for analytics because the script is independent and must not block page rendering.";
+      } else if (useCase === "app") {
+        tag = `<script src="${attrEscape(src)}" defer><\/script>`;
+        explanation = "defer runs the script after HTML parsing, preserving execution order for application bundles.";
+      } else if (useCase === "widget") {
+        tag = `<script src="${attrEscape(src)}" async><\/script>`;
+        explanation = "async allows third-party widgets to load independently without delaying page content.";
+      } else if (useCase === "module") {
+        tag = `<script type="module" src="${attrEscape(src)}"><\/script>`;
+        explanation = "ES modules are deferred by default. type=\"module\" enables import and export syntax.";
+      } else if (useCase === "inline") {
+        tag = "<script>\n  /* critical inline script here */\n<\/script>";
+        explanation = "Inline scripts execute immediately during parsing. Place in <head> for critical logic or at end of <body> for DOM-dependent code.";
+      } else {
+        tag = `<script src="${attrEscape(src)}" defer><\/script>`;
+        explanation = "defer runs the script after DOM parsing, making it safe for libraries that require the DOM to be ready.";
+      }
+      if (firstParty && useCase !== "inline") {
+        explanation += " As a first-party script, defer is more reliable than async because server response is predictable.";
+      }
+      return { output: `${tag}\n\n<!-- ${explanation} -->` };
+    }
   }
 };
 
