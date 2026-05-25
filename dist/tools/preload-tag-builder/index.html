@@ -120,6 +120,21 @@
     </article>
   </div>
 </section>
+<section class="section comparison-band">
+  <div class="wrap content-layout">
+    <div class="section-heading">
+      <p class="eyebrow">Comparison</p>
+      <h2>preload vs prefetch vs modulepreload</h2>
+    </div>
+    <div>
+      <table class="comparison-table">
+        <thead><tr><th>Aspect</th><th>preload</th><th>prefetch</th><th>modulepreload</th></tr></thead>
+        <tbody><tr><td>What it loads</td><td>Resources needed for the current page</td><td>Resources likely needed for the next navigation</td><td>ES module scripts for the current page</td></tr><tr><td>When the browser fetches it</td><td>Immediately, at high priority during page load</td><td>During idle time after the current page finishes loading</td><td>Immediately at high priority, similar to preload, but fetches the module and its dependencies</td></tr><tr><td>What it is best for</td><td>Critical fonts, hero images, above-the-fold CSS</td><td>Next-page resources such as docs, images, or scripts for the likely next page</td><td>ES module entry points and their dependency trees in modern bundler output</td></tr><tr><td>Required attributes</td><td>rel=&quot;preload&quot; and the as attribute</td><td>rel=&quot;prefetch&quot;</td><td>rel=&quot;modulepreload&quot;</td></tr><tr><td>Browser support milestone</td><td>Chrome 50+, Safari 9+, Firefox 56+</td><td>Chrome 50+, Safari 9+, Firefox 2+</td><td>Chrome 80+, Safari 15+, Firefox 115+</td></tr></tbody>
+      </table>
+      <p class="comparison-summary">Preload fetches current-page resources early at high priority. Prefetch fetches likely next-page resources during idle time. Modulepreload is a specialized preload for ES module scripts and their dependencies.</p>
+    </div>
+  </div>
+</section>
 <section class="section faq-band">
   <div class="wrap content-layout">
     <div class="section-heading">

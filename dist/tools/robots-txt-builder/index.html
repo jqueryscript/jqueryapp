@@ -120,6 +120,21 @@
     </article>
   </div>
 </section>
+<section class="section comparison-band">
+  <div class="wrap content-layout">
+    <div class="section-heading">
+      <p class="eyebrow">Comparison</p>
+      <h2>robots.txt vs meta robots vs X-Robots-Tag</h2>
+    </div>
+    <div>
+      <table class="comparison-table">
+        <thead><tr><th>Aspect</th><th>robots.txt</th><th>meta robots</th><th>X-Robots-Tag</th></tr></thead>
+        <tbody><tr><td>Scope</td><td>Site-wide or directory-level</td><td>Per-page only</td><td>Per-page or per-file type via HTTP response</td></tr><tr><td>Which crawlers read it</td><td>All compliant crawlers. Bad actors may ignore it.</td><td>All compliant crawlers. Same compliance model as robots.txt.</td><td>All compliant crawlers. Read from the HTTP header regardless of file type.</td></tr><tr><td>Available directives</td><td>allow, disallow, sitemap, crawl-delay</td><td>index, noindex, follow, nofollow, noarchive, nosnippet, max-snippet, max-image-preview, noimageindex</td><td>Same directives as meta robots plus noindex and nofollow for non-HTML files such as PDFs and images</td></tr><tr><td>Use cases</td><td>Prevent crawling of admin areas, staging directories, or search pages</td><td>Prevent indexing of a specific thank-you page or thin content page</td><td>Block indexing of PDFs, images, or other non-HTML resources served from the same domain</td></tr></tbody>
+      </table>
+      <p class="comparison-summary">robots.txt controls crawl access at the site level, meta robots controls indexing per HTML page, and X-Robots-Tag offers the same per-page control as meta robots but works for any file type via the HTTP response header.</p>
+    </div>
+  </div>
+</section>
 <section class="section faq-band">
   <div class="wrap content-layout">
     <div class="section-heading">

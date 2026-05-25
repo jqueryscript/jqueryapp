@@ -227,6 +227,30 @@ function faqMarkup(items = []) {
 </details>`).join("");
 }
 
+function comparisonMarkup(comparison) {
+  if (!comparison) return "";
+  const headerCells = comparison.columns.map((col) => `<th>${escapeHtml(col)}</th>`).join("");
+  const bodyRows = comparison.rows.map((row) => {
+    const cells = row.map((cell) => `<td>${escapeHtml(cell)}</td>`).join("");
+    return `<tr>${cells}</tr>`;
+  }).join("");
+  return `<section class="section comparison-band">
+  <div class="wrap content-layout">
+    <div class="section-heading">
+      <p class="eyebrow">Comparison</p>
+      <h2>${escapeHtml(comparison.title)}</h2>
+    </div>
+    <div>
+      <table class="comparison-table">
+        <thead><tr>${headerCells}</tr></thead>
+        <tbody>${bodyRows}</tbody>
+      </table>
+      ${comparison.summary ? `<p class="comparison-summary">${escapeHtml(comparison.summary)}</p>` : ""}
+    </div>
+  </div>
+</section>`;
+}
+
 function examplesMarkup(items = []) {
   return items.map((item) => `<article class="example-item">
   <p class="eyebrow">Example</p>
@@ -721,6 +745,7 @@ ${tool.examples?.length ? `<section class="section soft-band">
     </article>
   </div>
 </section>
+${comparisonMarkup(tool.comparison)}
 ${tool.faq?.length ? `<section class="section faq-band">
   <div class="wrap content-layout">
     <div class="section-heading">

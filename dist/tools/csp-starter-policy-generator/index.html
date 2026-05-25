@@ -120,6 +120,21 @@
     </article>
   </div>
 </section>
+<section class="section comparison-band">
+  <div class="wrap content-layout">
+    <div class="section-heading">
+      <p class="eyebrow">Comparison</p>
+      <h2>CSP vs Permissions-Policy vs Referrer-Policy</h2>
+    </div>
+    <div>
+      <table class="comparison-table">
+        <thead><tr><th>Aspect</th><th>Content-Security-Policy</th><th>Permissions-Policy</th><th>Referrer-Policy</th></tr></thead>
+        <tbody><tr><td>What it controls</td><td>Which resources (scripts, styles, images, fonts) the page can load and from which origins</td><td>Which browser features (camera, microphone, geolocation, payment) the page can access</td><td>How much referrer information is sent when the page navigates to or loads a resource from another origin</td></tr><tr><td>Example directives</td><td>default-src 'self'; script-src 'self' cdn.example.com; img-src *</td><td>camera=(), geolocation=(self), fullscreen=*</td><td>strict-origin-when-cross-origin, no-referrer, same-origin</td></tr><tr><td>Delivered as header or meta</td><td>Both. HTTP header is preferred. Meta tag works but does not support frame-ancestors or report-uri.</td><td>HTTP header only. Meta tag is not supported for Permissions-Policy.</td><td>Both. Meta tag works and is commonly used for static pages.</td></tr><tr><td>What happens if misconfigured</td><td>Resources are blocked. The page may appear broken with missing styles, scripts, or images.</td><td>Features silently fail. JavaScript calls to blocked APIs throw without visible browser UI.</td><td>Referrer data is sent with unintended detail or is missing when analytics need it.</td></tr></tbody>
+      </table>
+      <p class="comparison-summary">CSP controls resource loading, Permissions-Policy controls feature access, and Referrer-Policy controls referrer data sent to other origins. They are complementary security headers that serve different purposes.</p>
+    </div>
+  </div>
+</section>
 <section class="section faq-band">
   <div class="wrap content-layout">
     <div class="section-heading">

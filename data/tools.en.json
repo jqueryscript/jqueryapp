@@ -313,6 +313,17 @@
       "Use the URL Inspection tool in Google Search Console to verify which URL Google considers canonical for each page.",
       "Check that the canonical URL in the HTML head matches the intended URL exactly, including scheme and trailing slash."
     ],
+    "comparison": {
+      "title": "canonical vs hreflang vs sitemap",
+      "columns": ["Aspect", "canonical", "hreflang", "sitemap"],
+      "rows": [
+        ["Purpose", "Declares the preferred URL when duplicate or near-duplicate content exists", "Maps equivalent pages in different languages or regions", "Lists all important URLs for crawler discovery and prioritization"],
+        ["Where it goes", "In the HTML head as a link tag or in the HTTP header", "In the HTML head as a link tag with hreflang attribute", "Standalone XML file at the site root"],
+        ["What happens if missing", "Search engines may choose a different URL or treat multiple URLs as separate pages", "Search engines may serve the wrong language version or no language-specific result", "Deep pages may not be discovered by crawlers"],
+        ["Affects ranking or discovery", "Ranking. Helps consolidate ranking signals to one URL.", "Discovery and ranking. Helps match the correct language page to the searcher.", "Discovery. Helps crawlers find pages but does not directly affect ranking."]
+      ],
+      "summary": "Canonical tags manage duplicate URLs, hreflang tags connect language versions, and sitemaps help crawlers discover pages. Each serves a distinct purpose."
+    },
     "updatedAt": "2026-05-25"
   },
   {
@@ -618,6 +629,17 @@
       "Test the generated robots.txt using Google Search Console robots.txt Tester tool.",
       "Verify the file is served from the site root with a 200 status code and Content-Type: text/plain."
     ],
+    "comparison": {
+      "title": "robots.txt vs meta robots vs X-Robots-Tag",
+      "columns": ["Aspect", "robots.txt", "meta robots", "X-Robots-Tag"],
+      "rows": [
+        ["Scope", "Site-wide or directory-level", "Per-page only", "Per-page or per-file type via HTTP response"],
+        ["Which crawlers read it", "All compliant crawlers. Bad actors may ignore it.", "All compliant crawlers. Same compliance model as robots.txt.", "All compliant crawlers. Read from the HTTP header regardless of file type."],
+        ["Available directives", "allow, disallow, sitemap, crawl-delay", "index, noindex, follow, nofollow, noarchive, nosnippet, max-snippet, max-image-preview, noimageindex", "Same directives as meta robots plus noindex and nofollow for non-HTML files such as PDFs and images"],
+        ["Use cases", "Prevent crawling of admin areas, staging directories, or search pages", "Prevent indexing of a specific thank-you page or thin content page", "Block indexing of PDFs, images, or other non-HTML resources served from the same domain"]
+      ],
+      "summary": "robots.txt controls crawl access at the site level, meta robots controls indexing per HTML page, and X-Robots-Tag offers the same per-page control as meta robots but works for any file type via the HTTP response header."
+    },
     "updatedAt": "2026-05-25"
   },
   {
@@ -1766,6 +1788,17 @@
       "Deploy the CSP in report-only mode first by using Content-Security-Policy-Report-Only and check the browser console for violation reports.",
       "Switch to the enforce header only after confirming no legitimate resources are being blocked."
     ],
+    "comparison": {
+      "title": "CSP vs Permissions-Policy vs Referrer-Policy",
+      "columns": ["Aspect", "Content-Security-Policy", "Permissions-Policy", "Referrer-Policy"],
+      "rows": [
+        ["What it controls", "Which resources (scripts, styles, images, fonts) the page can load and from which origins", "Which browser features (camera, microphone, geolocation, payment) the page can access", "How much referrer information is sent when the page navigates to or loads a resource from another origin"],
+        ["Example directives", "default-src 'self'; script-src 'self' cdn.example.com; img-src *", "camera=(), geolocation=(self), fullscreen=*", "strict-origin-when-cross-origin, no-referrer, same-origin"],
+        ["Delivered as header or meta", "Both. HTTP header is preferred. Meta tag works but does not support frame-ancestors or report-uri.", "HTTP header only. Meta tag is not supported for Permissions-Policy.", "Both. Meta tag works and is commonly used for static pages."],
+        ["What happens if misconfigured", "Resources are blocked. The page may appear broken with missing styles, scripts, or images.", "Features silently fail. JavaScript calls to blocked APIs throw without visible browser UI.", "Referrer data is sent with unintended detail or is missing when analytics need it."]
+      ],
+      "summary": "CSP controls resource loading, Permissions-Policy controls feature access, and Referrer-Policy controls referrer data sent to other origins. They are complementary security headers that serve different purposes."
+    },
     "updatedAt": "2026-05-25"
   },
   {
@@ -2553,6 +2586,18 @@
       "Open Chrome DevTools Network panel and inspect the Priority column to confirm the fetchpriority hint is reflected in the browser loading order.",
       "Compare LCP timing with and without the attribute using the Performance panel to verify actual improvement."
     ],
+    "comparison": {
+      "title": "fetchpriority vs loading=\"lazy\"",
+      "columns": ["Aspect", "fetchpriority", "loading=\"lazy\""],
+      "rows": [
+        ["What it controls", "Relative loading priority of a resource compared to other resources on the same page", "Whether the browser delays loading the resource until it is near the viewport"],
+        ["When to use", "On the LCP element to load it sooner, or on non-critical resources to deprioritize them", "On images and iframes below the fold to defer their load until the user scrolls near them"],
+        ["Effect on LCP", "Can improve LCP when set to high on the hero image", "Can worsen LCP if applied above the fold. Only use below the fold."],
+        ["Valid on which elements", "img, link, script, iframe", "img, iframe"],
+        ["Browser support", "Chrome 101+, Edge 101+, Safari 16+, Firefox 122+", "Chrome 77+, Edge 79+, Safari 15.4+, Firefox 75+"]
+      ],
+      "summary": "fetchpriority hints at relative priority for loading while loading=\"lazy\" defers loading until the element is near the viewport. They address different performance concerns and can be used together on the same element."
+    },
     "updatedAt": "2026-05-25"
   },
   {
@@ -2609,6 +2654,18 @@
       "Open Chrome DevTools Network panel and verify the preloaded resource appears early in the request waterfall with the correct Priority.",
       "Check the browser console for missing preload warnings such as 'The resource was already loaded and preload was not used'."
     ],
+    "comparison": {
+      "title": "preload vs prefetch vs modulepreload",
+      "columns": ["Aspect", "preload", "prefetch", "modulepreload"],
+      "rows": [
+        ["What it loads", "Resources needed for the current page", "Resources likely needed for the next navigation", "ES module scripts for the current page"],
+        ["When the browser fetches it", "Immediately, at high priority during page load", "During idle time after the current page finishes loading", "Immediately at high priority, similar to preload, but fetches the module and its dependencies"],
+        ["What it is best for", "Critical fonts, hero images, above-the-fold CSS", "Next-page resources such as docs, images, or scripts for the likely next page", "ES module entry points and their dependency trees in modern bundler output"],
+        ["Required attributes", "rel=\"preload\" and the as attribute", "rel=\"prefetch\"", "rel=\"modulepreload\""],
+        ["Browser support milestone", "Chrome 50+, Safari 9+, Firefox 56+", "Chrome 50+, Safari 9+, Firefox 2+", "Chrome 80+, Safari 15+, Firefox 115+"]
+      ],
+      "summary": "Preload fetches current-page resources early at high priority. Prefetch fetches likely next-page resources during idle time. Modulepreload is a specialized preload for ES module scripts and their dependencies."
+    },
     "updatedAt": "2026-05-25"
   },
   {
@@ -3304,6 +3361,18 @@
       "Open Chrome DevTools Network panel and check the Initiator and Waterfall columns to confirm when each script starts loading and executing.",
       "Test page rendering and interactivity timing with different strategies using the Performance panel."
     ],
+    "comparison": {
+      "title": "async vs defer vs type=\"module\"",
+      "columns": ["Aspect", "async", "defer", "type=\"module\""],
+      "rows": [
+        ["Execution timing", "Executes as soon as the script finishes downloading, before DOMContentLoaded", "Executes after HTML parsing is complete, just before DOMContentLoaded", "Executes after HTML parsing is complete, same as defer behavior"],
+        ["Script order guarantee", "No. Scripts execute in the order they finish downloading.", "Yes. Scripts execute in the order they appear in the HTML.", "Yes. Scripts execute in the order they appear, same as defer."],
+        ["Blocks HTML parsing", "Does not block HTML parsing. Downloads in parallel.", "Does not block HTML parsing. Downloads in parallel.", "Does not block HTML parsing. Downloads in parallel."],
+        ["Use cases", "Independent scripts such as analytics, A/B testing, or social widgets", "Scripts that need the full DOM such as app bundles that query or modify the page", "Modern ES module code where import/export syntax is used"],
+        ["Default behavior without attribute", "Without any attribute, the script blocks HTML parsing until it downloads and executes", "N/A", "type=\"module\" scripts are deferred by default and do not need an explicit defer attribute"]
+      ],
+      "summary": "Async downloads in parallel and runs on completion. Defer downloads in parallel but waits for the HTML to finish parsing. Module scripts are deferred by default and support ES module dependency graphs."
+    },
     "updatedAt": "2026-05-25"
   }
 ]

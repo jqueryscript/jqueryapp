@@ -104,6 +104,21 @@
     </article>
   </div>
 </section>
+<section class="section comparison-band">
+  <div class="wrap content-layout">
+    <div class="section-heading">
+      <p class="eyebrow">Comparison</p>
+      <h2>fetchpriority vs loading=&quot;lazy&quot;</h2>
+    </div>
+    <div>
+      <table class="comparison-table">
+        <thead><tr><th>Aspect</th><th>fetchpriority</th><th>loading=&quot;lazy&quot;</th></tr></thead>
+        <tbody><tr><td>What it controls</td><td>Relative loading priority of a resource compared to other resources on the same page</td><td>Whether the browser delays loading the resource until it is near the viewport</td></tr><tr><td>When to use</td><td>On the LCP element to load it sooner, or on non-critical resources to deprioritize them</td><td>On images and iframes below the fold to defer their load until the user scrolls near them</td></tr><tr><td>Effect on LCP</td><td>Can improve LCP when set to high on the hero image</td><td>Can worsen LCP if applied above the fold. Only use below the fold.</td></tr><tr><td>Valid on which elements</td><td>img, link, script, iframe</td><td>img, iframe</td></tr><tr><td>Browser support</td><td>Chrome 101+, Edge 101+, Safari 16+, Firefox 122+</td><td>Chrome 77+, Edge 79+, Safari 15.4+, Firefox 75+</td></tr></tbody>
+      </table>
+      <p class="comparison-summary">fetchpriority hints at relative priority for loading while loading=&quot;lazy&quot; defers loading until the element is near the viewport. They address different performance concerns and can be used together on the same element.</p>
+    </div>
+  </div>
+</section>
 <section class="section faq-band">
   <div class="wrap content-layout">
     <div class="section-heading">

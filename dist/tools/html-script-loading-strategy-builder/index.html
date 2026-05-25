@@ -120,6 +120,21 @@
     </article>
   </div>
 </section>
+<section class="section comparison-band">
+  <div class="wrap content-layout">
+    <div class="section-heading">
+      <p class="eyebrow">Comparison</p>
+      <h2>async vs defer vs type=&quot;module&quot;</h2>
+    </div>
+    <div>
+      <table class="comparison-table">
+        <thead><tr><th>Aspect</th><th>async</th><th>defer</th><th>type=&quot;module&quot;</th></tr></thead>
+        <tbody><tr><td>Execution timing</td><td>Executes as soon as the script finishes downloading, before DOMContentLoaded</td><td>Executes after HTML parsing is complete, just before DOMContentLoaded</td><td>Executes after HTML parsing is complete, same as defer behavior</td></tr><tr><td>Script order guarantee</td><td>No. Scripts execute in the order they finish downloading.</td><td>Yes. Scripts execute in the order they appear in the HTML.</td><td>Yes. Scripts execute in the order they appear, same as defer.</td></tr><tr><td>Blocks HTML parsing</td><td>Does not block HTML parsing. Downloads in parallel.</td><td>Does not block HTML parsing. Downloads in parallel.</td><td>Does not block HTML parsing. Downloads in parallel.</td></tr><tr><td>Use cases</td><td>Independent scripts such as analytics, A/B testing, or social widgets</td><td>Scripts that need the full DOM such as app bundles that query or modify the page</td><td>Modern ES module code where import/export syntax is used</td></tr><tr><td>Default behavior without attribute</td><td>Without any attribute, the script blocks HTML parsing until it downloads and executes</td><td>N/A</td><td>type=&quot;module&quot; scripts are deferred by default and do not need an explicit defer attribute</td></tr></tbody>
+      </table>
+      <p class="comparison-summary">Async downloads in parallel and runs on completion. Defer downloads in parallel but waits for the HTML to finish parsing. Module scripts are deferred by default and support ES module dependency graphs.</p>
+    </div>
+  </div>
+</section>
 <section class="section faq-band">
   <div class="wrap content-layout">
     <div class="section-heading">

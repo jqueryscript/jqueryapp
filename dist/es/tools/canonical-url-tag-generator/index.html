@@ -104,6 +104,21 @@
     </article>
   </div>
 </section>
+<section class="section comparison-band">
+  <div class="wrap content-layout">
+    <div class="section-heading">
+      <p class="eyebrow">Comparison</p>
+      <h2>canonical vs hreflang vs sitemap</h2>
+    </div>
+    <div>
+      <table class="comparison-table">
+        <thead><tr><th>Aspect</th><th>canonical</th><th>hreflang</th><th>sitemap</th></tr></thead>
+        <tbody><tr><td>Purpose</td><td>Declares the preferred URL when duplicate or near-duplicate content exists</td><td>Maps equivalent pages in different languages or regions</td><td>Lists all important URLs for crawler discovery and prioritization</td></tr><tr><td>Where it goes</td><td>In the HTML head as a link tag or in the HTTP header</td><td>In the HTML head as a link tag with hreflang attribute</td><td>Standalone XML file at the site root</td></tr><tr><td>What happens if missing</td><td>Search engines may choose a different URL or treat multiple URLs as separate pages</td><td>Search engines may serve the wrong language version or no language-specific result</td><td>Deep pages may not be discovered by crawlers</td></tr><tr><td>Affects ranking or discovery</td><td>Ranking. Helps consolidate ranking signals to one URL.</td><td>Discovery and ranking. Helps match the correct language page to the searcher.</td><td>Discovery. Helps crawlers find pages but does not directly affect ranking.</td></tr></tbody>
+      </table>
+      <p class="comparison-summary">Canonical tags manage duplicate URLs, hreflang tags connect language versions, and sitemaps help crawlers discover pages. Each serves a distinct purpose.</p>
+    </div>
+  </div>
+</section>
 <section class="section faq-band">
   <div class="wrap content-layout">
     <div class="section-heading">
