@@ -3,10 +3,10 @@
     "name": "English",
     "nativeName": "English",
     "site": {
-      "tagline": "Small web tools for building, designing, and publishing",
-      "description": "Practical browser tools for web developers, designers, and bloggers. No accounts, no uploads, no AI dependency.",
-      "seoTitle": "Small Web Tools for Building, Designing & Publishing",
-      "seoDescription": "Free browser tools for web developers, designers, and bloggers: CSS generators, SEO helpers, HTML checkers, GitHub Pages utilities, and more."
+      "tagline": "You might not need AI for every web task",
+      "description": "Solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with fast browser tools. No uploads, accounts, or AI token costs.",
+      "seoTitle": "Small No-AI Web Tools for Developers & Designers | jquery.app",
+      "seoDescription": "Solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with fast browser tools. No uploads, accounts or AI token costs."
     },
     "ui": {
       "tools": "Tools",
@@ -57,11 +57,11 @@
       "copy": "Copy",
       "copied": "Copied",
       "forLastMile": "For the last mile of publishing",
-      "homeIntroTitle": "Practical fixes for static sites, blogs, and everyday front-end work.",
-      "homeIntroText": "Some jobs are too small for a dashboard and too important to do by memory. Open a tool, make the change, copy the result, and get back to the page you were trying to ship.",
+      "homeIntroTitle": "Small browser tools for developers, designers and publishers.",
+      "homeIntroText": "Fix HTML, shape CSS, check SEO, prepare mobile UI, and finish web work — without token costs, accounts, or uploads. Each tool gives you a result you can inspect, copy, and use right away.",
       "homeWhyTitle": "Most tiny web problems are not AI problems.",
-      "homeWhyText": "Missing canonical tags, broken favicon paths, awkward mobile padding, and messy social previews need a reliable answer more than another chat box.",
-      "homeProof": ["No uploads", "No accounts", "No server-side processing", "Ready for static hosting"],
+      "homeWhyText": "Deterministic output. No tokens. No hallucinations. Missing canonical tags, broken favicon paths, awkward mobile padding, and messy social previews need a reliable answer — not another chat session.",
+      "homeProof": ["No AI tokens", "No uploads", "No accounts", "Deterministic output", "Ready for static hosting"],
       "homeToolsTitle": "Small tools with a clear finish line",
       "homeToolsText": "Each tool is designed to produce something you can inspect, copy, and use right away.",
       "toolsPageTitle": "Small web tools that run in your browser",

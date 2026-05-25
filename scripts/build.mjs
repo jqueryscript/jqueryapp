@@ -63,7 +63,7 @@ function absoluteUrl(locale, pathname = "") {
   return new URL(urlFor(locale, pathname), site.baseUrl).toString();
 }
 
-function pageShell({ locale, title, description, pathname, body, scripts = "", current = "", extraHead = "", canonicalOverride = "", skipAlternates = false }) {
+function pageShell({ locale, title, description, pathname, body, scripts = "", current = "", extraHead = "", canonicalOverride = "", skipAlternates = false, image = "" }) {
   const canonical = canonicalOverride || absoluteUrl(locale, pathname);
   const lang = localePack(locale);
   const defaultCanonical = absoluteUrl(site.defaultLocale, pathname);
@@ -102,7 +102,11 @@ function pageShell({ locale, title, description, pathname, body, scripts = "", c
   <meta property="og:description" content="${attr(description)}">
   <meta property="og:url" content="${attr(canonical)}">
   <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary">
+  ${image ? `<meta property="og:image" content="${attr(image)}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="${attr(image)}">` : `<meta name="twitter:card" content="summary">`}
 ${alternateLinks}
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta name="theme-color" content="#181715">
@@ -321,7 +325,8 @@ function homePage(locale, tools, categories, collections) {
       "@context": "https://schema.org",
       "@type": "Organization",
       name: site.siteName,
-      url: absoluteUrl(locale)
+      url: absoluteUrl(site.defaultLocale),
+      description: localizedSite.description
     }),
     jsonLd(itemListSchema(locale, "jquery.app tools", tools.slice(0, 6)))
   ].join("");
@@ -382,7 +387,8 @@ ${collections ? `<section class="section">
     pathname: "",
     body,
     scripts,
-    current: "home"
+    current: "home",
+    image: absoluteUrl(locale, "assets/social/og-home.png")
   });
 }
 
@@ -430,6 +436,7 @@ function toolsIndexPage(locale, tools, categories) {
     pathname: "tools",
     body,
     scripts,
+    image: absoluteUrl(locale, "assets/social/og-tools.png"),
     current: "tools"
   });
 }
@@ -506,7 +513,8 @@ ${details.faq?.length ? `<section class="section faq-band">
     pathname: `tools/${category}`,
     body,
     scripts,
-    current: category
+    current: category,
+    image: absoluteUrl(locale, `assets/social/og-${category}.png`)
   });
 }
 
@@ -577,7 +585,8 @@ ${details.faq?.length ? `<section class="section faq-band">
     pathname: `collections/${collectionId}`,
     body,
     scripts,
-    current: "collections"
+    current: "collections",
+    image: absoluteUrl(locale, `assets/social/og-${collectionId}.png`)
   });
 }
 
@@ -727,6 +736,7 @@ ${crossCategory.length ? `<section class="section">
     pathname: `tools/${tool.id}`,
     body,
     scripts,
+    image: absoluteUrl(locale, `assets/social/og-${tool.category}.png`),
     current: tool.category
   });
 }
@@ -770,7 +780,7 @@ function simplePages(locale) {
     privacy: {
       title: "Privacy Policy",
       description: "The current tools are designed to work locally in your browser and avoid unnecessary collection.",
-      content: `<h2>Local tool inputs</h2><p>The current tools process the values you enter in your browser. They do not require an account, and the site does not intentionally send tool inputs or generated output to a jquery.app application server.</p><h2>Hosting and technical logs</h2><p>jquery.app is published as a static website. Hosting providers, CDN services, browsers, and security systems may process standard request information such as IP address, user agent, referrer, requested URL, timestamps, and basic diagnostic data.</p><h2>Cookies and analytics</h2><p>The preview version of jquery.app does not need cookies for the tools to work. If analytics, advertising, embedded media, or third-party widgets are added later, this policy should be updated before those services are enabled.</p><h2>External links</h2><p>Some pages may link to GitHub, documentation sites, browser tools, or other third-party resources. Those sites have their own privacy practices.</p>`
+      content: `<h2>Local tool inputs</h2><p>The current tools process the values you enter in your browser. They do not require an account, and the site does not intentionally send tool inputs or generated output to a jquery.app application server.</p><h2>Hosting and technical logs</h2><p>jquery.app is published as a static website. Hosting providers, CDN services, browsers, and security systems may process standard request information such as IP address, user agent, referrer, requested URL, timestamps, and basic diagnostic data.</p><h2>Cookies and analytics</h2><p>jquery.app does not set cookies for the tools to work. If analytics, advertising, embedded media, or third-party widgets are added in the future, this policy will be updated before those services are enabled.</p><h2>External links</h2><p>Some pages may link to GitHub, documentation sites, browser tools, or other third-party resources. Those sites have their own privacy practices.</p>`
     },
     terms: {
       title: "Terms of Use",
@@ -780,7 +790,7 @@ function simplePages(locale) {
     contact: {
       title: "Contact",
       description: "Report broken tools, outdated guidance, accessibility issues, or privacy concerns.",
-      content: `<h2>Send a useful report</h2><p>If something is broken, include the tool name, the page URL, what you entered, what you expected, and what happened instead. Clear reports make small tools easier to keep accurate.</p><h2>Suggested contact options</h2><p>This preview site is published from GitHub. A public issue tracker is the best fit for bug reports and small corrections because it keeps changes visible. Add your preferred GitHub issue link or contact email here before wider promotion.</p><h2>What to report</h2><ul><li>Broken form behavior or copy buttons.</li><li>Outdated guidance about GitHub Pages, SEO tags, browser support, or HTML output.</li><li>Accessibility problems, keyboard traps, visual contrast issues, or mobile layout problems.</li><li>Privacy concerns or third-party service questions.</li></ul>`
+      content: `<h2>Send a useful report</h2><p>If something is broken, include the tool name, the page URL, what you entered, what you expected, and what happened instead. Clear reports make small tools easier to keep accurate.</p><h2>Report an issue</h2><p>Please report bugs, outdated guidance, or accessibility problems at <a href="https://github.com/jqueryscript/jqueryapp/issues">github.com/jqueryscript/jqueryapp/issues</a>. Every report helps keep the tools accurate and trustworthy.</p><h2>What to report</h2><ul><li>Broken form behavior or copy buttons.</li><li>Outdated guidance about GitHub Pages, SEO tags, browser support, or HTML output.</li><li>Accessibility problems, keyboard traps, visual contrast issues, or mobile layout problems.</li><li>Privacy concerns or third-party service questions.</li></ul>`
     }
   };
 
@@ -895,9 +905,20 @@ function llmsTxt(tools, categories) {
 
   return `# ${site.siteName}
 
+> You might not need AI for every web task. jquery.app provides small browser tools that solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with deterministic output — no uploads, accounts, or AI token costs.
+
 ${site.description}
 
-jquery.app is a static website with practical browser tools for metadata, CSS, GitHub Pages, static site publishing, and launch checks. The tools are designed to produce copyable output that visitors can review before using on a live website.
+## Core Workflows
+
+- [GitHub Pages publishing workflow](${absoluteUrl(site.defaultLocale, "collections/github-pages-workflow")}): CNAME, DNS, sitemap, robots.txt, 404, canonical checks — the full static publishing checklist.
+- [Blog publisher toolkit](${absoluteUrl(site.defaultLocale, "collections/blog-publisher")}): Front matter, URL slugs, reading time, RSS/JSON feeds, social previews.
+- [Multilingual site setup](${absoluteUrl(site.defaultLocale, "collections/multilingual-site")}): Hreflang tags, canonical URLs, sitemap planning for translated pages.
+- [Beginner CSS tools](${absoluteUrl(site.defaultLocale, "collections/beginner-css")}): Clamp calculator, safe area insets, flexbox generator, border radius builder, and more.
+
+## Tool Categories
+
+${categoryLines}
 
 ## Important Pages
 

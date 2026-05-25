@@ -57,10 +57,11 @@ function mountTool(root, config) {
       <div class="result-box">
         <div class="result-header">
           <h2>${htmlEscape(outputLabel)}</h2>
-          <button class="copy-button" type="button" data-role="copy">${htmlEscape(copyLabel)}</button>
+          <button class="copy-button" type="button" data-role="copy" aria-label="Copy output to clipboard">${htmlEscape(copyLabel)}</button>
         </div>
-        <pre class="output" data-role="output"></pre>
+        <pre class="output" data-role="output" tabindex="0" aria-live="polite" aria-label="Tool output"></pre>
         <div data-role="preview"></div>
+        <div class="copy-status" data-role="copy-status" role="status" aria-live="assertive"></div>
       </div>
     </div>`;
 
@@ -68,6 +69,7 @@ function mountTool(root, config) {
   const output = root.querySelector("[data-role='output']");
   const preview = root.querySelector("[data-role='preview']");
   const copy = root.querySelector("[data-role='copy']");
+  const copyStatus = root.querySelector("[data-role='copy-status']");
 
   const update = () => {
     const result = config.generate(root);
@@ -78,11 +80,17 @@ function mountTool(root, config) {
   form.addEventListener("input", update);
   form.addEventListener("change", update);
   copy.addEventListener("click", async () => {
-    await navigator.clipboard.writeText(output.textContent);
-    copy.textContent = copiedLabel;
-    setTimeout(() => {
-      copy.textContent = copyLabel;
-    }, 1200);
+    try {
+      await navigator.clipboard.writeText(output.textContent);
+      copy.textContent = copiedLabel;
+      copyStatus.textContent = "Copied to clipboard";
+      setTimeout(() => {
+        copy.textContent = copyLabel;
+        copyStatus.textContent = "";
+      }, 1200);
+    } catch {
+      copyStatus.textContent = "Copy failed. Select and copy the output manually.";
+    }
   });
 
   update();
@@ -2663,7 +2671,14 @@ ${rules}
       } else {
         tag = `<script src="${attrEscape(src)}" fetchpriority="${fpValue}"><\/script>`;
       }
-      let note = "\n\n/* Usage note: Place this tag in the <head> of your document.\n";
+      let note = "\n\n/* Usage note: ";
+      if (type === "img") {
+        note += "Place this img tag in your page body where the image should appear.\n";
+      } else if (type === "link") {
+        note += "Place this link tag in the <head> of your document.\n";
+      } else {
+        note += "Place this script tag near the end of <body> or in <head> with defer/async.\n";
+      }
       if (useCase === "lcp") {
         note += "   This is an LCP candidate. Do NOT add loading=\"lazy\" to this element.\n";
       } else if (useCase === "low") {

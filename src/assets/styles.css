@@ -72,6 +72,16 @@ button {
   top: 16px;
 }
 
+.copy-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .wrap {
   width: min(1200px, calc(100% - 40px));
   margin-inline: auto;

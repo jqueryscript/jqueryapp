@@ -4,6 +4,6 @@
   "defaultLocale": "en",
   "locales": ["en", "de", "fr", "es", "ja", "nl"],
   "siteName": "jquery.app",
-  "tagline": "Small web tools for building, designing, and publishing",
-  "description": "Practical browser tools for web developers, designers, and bloggers. No accounts, no uploads, no AI dependency."
+  "tagline": "You might not need AI for every web task",
+  "description": "Solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with fast browser tools. No uploads, accounts, or AI token costs."
 }

@@ -1,8 +1,23 @@
 # jquery.app
 
-Practical browser tools for web developers, designers, and bloggers. No accounts, no uploads, no AI dependency.
+> You might not need AI for every web task. jquery.app provides small browser tools that solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with deterministic output — no uploads, accounts, or AI token costs.
 
-jquery.app is a static website with practical browser tools for metadata, CSS, GitHub Pages, static site publishing, and launch checks. The tools are designed to produce copyable output that visitors can review before using on a live website.
+Solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with fast browser tools. No uploads, accounts, or AI token costs.
+
+## Core Workflows
+
+- [GitHub Pages publishing workflow](https://www.jquery.app/collections/github-pages-workflow/): CNAME, DNS, sitemap, robots.txt, 404, canonical checks — the full static publishing checklist.
+- [Blog publisher toolkit](https://www.jquery.app/collections/blog-publisher/): Front matter, URL slugs, reading time, RSS/JSON feeds, social previews.
+- [Multilingual site setup](https://www.jquery.app/collections/multilingual-site/): Hreflang tags, canonical URLs, sitemap planning for translated pages.
+- [Beginner CSS tools](https://www.jquery.app/collections/beginner-css/): Clamp calculator, safe area insets, flexbox generator, border radius builder, and more.
+
+## Tool Categories
+
+- [SEO Tools](https://www.jquery.app/tools/seo/): Small browser tools for metadata, indexing, canonical URLs, social previews, and static site launch checks.
+- [HTML Tools](https://www.jquery.app/tools/html/): Copy-paste helpers for cleaner HTML tags, head markup, snippets, and publishing workflows.
+- [CSS Tools](https://www.jquery.app/tools/css/): Practical CSS generators for responsive layouts, spacing, mobile polish, and everyday UI fixes.
+- [Image & Asset Tools](https://www.jquery.app/tools/assets/): Local helpers for icons, image markup, asset paths, and static website files.
+- [GitHub Pages Tools](https://www.jquery.app/tools/github-pages/): Tools for custom domains, static publishing, launch checks, and GitHub Pages website maintenance.
 
 ## Important Pages
 
