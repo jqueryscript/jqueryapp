@@ -5,3 +5,10 @@ Thumbs.db
 rollout-*.jsonl
 CLAUDE.md
 todo.md
+design.md
+plans.md
+.agents/
+.claude/
+scripts/split-tools.mjs
+scripts/add-imports.mjs
+data/tool-ids.json
