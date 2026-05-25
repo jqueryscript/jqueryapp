@@ -1,0 +1,35 @@
+import { field, textarea, select, checkbox, htmlEscape, attrEscape, normalizeUrl } from "../tool-core.js";
+
+export default {
+    form: `
+      <div class="field-grid">
+        ${field({ id: "cqName", label: "Container name", value: "card" })}
+        ${select({ id: "cqType", label: "Container type", value: "inline-size", options: [
+          { label: "inline-size", value: "inline-size" },
+          { label: "size", value: "size" },
+          { label: "normal", value: "normal" }
+        ]})}
+        ${field({ id: "cqWidth", label: "Min-width px", value: "400", type: "number" })}
+        ${field({ id: "cqSelector", label: "Container selector", value: ".card-container" })}
+        ${textarea({ id: "cqRules", label: "CSS rules inside @container", value: "  .card {\n    flex-direction: row;\n  }" })}
+      </div>`,
+    generate(root) {
+      const name = root.querySelector("#cqName").value.trim() || "card";
+      const type = root.querySelector("#cqType").value;
+      const width = root.querySelector("#cqWidth").value || "400";
+      const selector = root.querySelector("#cqSelector").value.trim() || ".card-container";
+      const rules = root.querySelector("#cqRules").value;
+      const output = `${selector} {
+  container-type: ${type};
+  container-name: ${name};
+}
+
+@container ${name} (min-width: ${width}px) {
+${rules}
+}
+
+/* Browser support: Chrome 105+, Edge 105+, Safari 16+, Firefox 110+.
+   Use container-type: inline-size for width-only queries. */`;
+      return { output };
+    }
+  };

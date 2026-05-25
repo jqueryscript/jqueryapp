@@ -1,0 +1,24 @@
+import { field, textarea, select, checkbox, htmlEscape, attrEscape, normalizeUrl } from "../tool-core.js";
+
+export default {
+    form: `
+      <div class="field-grid">
+        ${textarea({
+          id: "readingContent",
+          label: "Paste your content",
+          value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+          help: "Paste or type text to estimate reading time."
+        })}
+        ${field({ id: "wpm", label: "Words per minute", value: "225", type: "number", help: "Average adult reading speed is 200–250 wpm." })}
+      </div>`,
+    generate(root) {
+      const content = root.querySelector("#readingContent").value.trim();
+      const wpm = Number(root.querySelector("#wpm").value) || 225;
+      const words = content ? content.split(/\s+/).length : 0;
+      const minutes = words / wpm;
+      const readingTime = minutes < 1 ? "< 1 min read" : `${Math.max(1, Math.round(minutes))} min read`;
+      return {
+        output: `Word count: ${words}\nReading time: ${readingTime}\n(at ${wpm} words per minute)`
+      };
+    }
+  };

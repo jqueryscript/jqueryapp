@@ -1,0 +1,46 @@
+import { field, textarea, select, checkbox, htmlEscape, attrEscape, normalizeUrl } from "../tool-core.js";
+
+export default {
+    form: `
+      ${field({ id: "jfTitle", label: "Site title", value: "My Blog" })}
+      ${field({ id: "jfUrl", label: "Site URL", value: "https://example.com" })}
+      ${textarea({ id: "jfDescription", label: "Description", value: "A static blog about web development." })}
+      ${field({ id: "jfAuthor", label: "Author name", value: "" })}
+      ${textarea({ id: "jfItems", label: "Posts (one per line: title|url|date|content)", value: "My First Post|https://example.com/first-post/|2026-01-15|Welcome to my blog.\nSecond Post|https://example.com/second-post/|2026-02-01|Another article." })}`,
+    generate(root) {
+      const title = root.querySelector("#jfTitle").value;
+      const url = root.querySelector("#jfUrl").value;
+      const description = root.querySelector("#jfDescription").value;
+      const author = root.querySelector("#jfAuthor").value;
+      const itemsText = root.querySelector("#jfItems").value;
+      const feed = {
+        version: "https://jsonfeed.org/version/1.1",
+        title: title || "Untitled",
+        home_page_url: url || "",
+        feed_url: url ? url.replace(/\/+$/, "") + "/feed.json" : "",
+        description: description || ""
+      };
+      if (author) {
+        feed.authors = [{ name: author }];
+      }
+      feed.items = [];
+      const lines = itemsText.split("\n").filter(l => l.trim());
+      for (const line of lines) {
+        const parts = line.split("|");
+        if (parts.length >= 3) {
+          const item = {
+            id: parts[1] || "",
+            url: parts[1] || "",
+            title: parts[0] || "",
+            date_published: parts[2] || ""
+          };
+          if (parts[3]) {
+            item.content_text = parts[3];
+          }
+          feed.items.push(item);
+        }
+      }
+      const output = JSON.stringify(feed, null, 2);
+      return { output };
+    }
+  };

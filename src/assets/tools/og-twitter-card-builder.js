@@ -1,0 +1,35 @@
+import { field, textarea, select, checkbox, htmlEscape, attrEscape, normalizeUrl } from "../tool-core.js";
+
+export default {
+    form: `
+      <div class="field-grid">
+        ${field({ id: "title", label: "Title", value: "Small web tools for quick fixes" })}
+        ${field({ id: "site", label: "Site name", value: "jquery.app" })}
+        ${textarea({ id: "description", label: "Description", value: "Browser-based tools for people who build, publish, and maintain websites.", full: true })}
+        ${field({ id: "url", label: "Page URL", value: "https://www.jquery.app/tools/" })}
+        ${field({ id: "image", label: "Image URL", value: "https://www.jquery.app/assets/social-preview.png" })}
+        ${select({ id: "type", label: "Open Graph type", value: "website", options: [{ label: "website", value: "website" }, { label: "article", value: "article" }] })}
+      </div>`,
+    generate(root) {
+      const title = root.querySelector("#title").value.trim();
+      const description = root.querySelector("#description").value.trim();
+      const url = normalizeUrl(root.querySelector("#url").value);
+      const image = normalizeUrl(root.querySelector("#image").value);
+      const site = root.querySelector("#site").value.trim();
+      const type = root.querySelector("#type").value;
+      const output = [
+        `<meta property="og:type" content="${attrEscape(type)}">`,
+        `<meta property="og:site_name" content="${attrEscape(site)}">`,
+        `<meta property="og:title" content="${attrEscape(title)}">`,
+        `<meta property="og:description" content="${attrEscape(description)}">`,
+        `<meta property="og:url" content="${attrEscape(url)}">`,
+        `<meta property="og:image" content="${attrEscape(image)}">`,
+        `<meta name="twitter:card" content="summary_large_image">`,
+        `<meta name="twitter:title" content="${attrEscape(title)}">`,
+        `<meta name="twitter:description" content="${attrEscape(description)}">`,
+        `<meta name="twitter:image" content="${attrEscape(image)}">`
+      ].join("\n");
+      const preview = `<div class="preview-card"><span>${htmlEscape(site || url)}</span><strong>${htmlEscape(title)}</strong><p>${htmlEscape(description)}</p></div>`;
+      return { output, preview };
+    }
+  };

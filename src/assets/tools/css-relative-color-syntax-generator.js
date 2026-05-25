@@ -1,0 +1,37 @@
+import { field, textarea, select, checkbox, htmlEscape, attrEscape, normalizeUrl } from "../tool-core.js";
+
+export default {
+    form: `
+      <div class="field-grid">
+        ${field({ id: "rcBase", label: "Base color (hex)", value: "#3b82f6", type: "color" })}
+        ${select({ id: "rcColorSpace", label: "Color space", options: [{label:"oklch (recommended)",value:"oklch"},{label:"rgb",value:"rgb"},{label:"hsl",value:"hsl"}], value: "oklch" })}
+        ${select({ id: "rcAdjustment", label: "Adjustment", options: [{label:"Alpha only (transparency)",value:"alpha"},{label:"Lighten (+L)",value:"lighten"},{label:"Darken (-L)",value:"darken"},{label:"More saturation (+C)",value:"saturate"},{label:"Less saturation (-C)",value:"desaturate"},{label:"Custom",value:"custom"}], value: "lighten" })}
+      </div>`,
+    generate(root) {
+      const base = root.querySelector("#rcBase").value;
+      const colorSpace = root.querySelector("#rcColorSpace").value;
+      const adjustment = root.querySelector("#rcAdjustment").value;
+      let declaration, fallback, note;
+      if (adjustment === "alpha") {
+        declaration = `color-mix(in ${colorSpace === "oklch" ? "oklch" : colorSpace === "rgb" ? "srgb" : "hsl"}, ${base} 50%, transparent)`;
+        fallback = base;
+        note = "Adjusts transparency using color-mix().";
+      } else if (colorSpace === "oklch") {
+        const expressions = { lighten: "calc(l + 0.1) c h", darken: "calc(l - 0.1) c h", saturate: "l calc(c + 0.05) h", desaturate: "l calc(c - 0.05) h", custom: "l c h / alpha" };
+        declaration = `oklch(from ${base} ${expressions[adjustment]})`;
+        fallback = base;
+        note = "oklch() gives perceptually uniform adjustments.";
+      } else if (colorSpace === "rgb") {
+        const expressions = { lighten: "calc(r * 1.2) calc(g * 1.2) calc(b * 1.2)", darken: "calc(r * 0.8) calc(g * 0.8) calc(b * 0.8)", saturate: "r g b", desaturate: "r g b", custom: "r g b / alpha" };
+        declaration = `rgb(from ${base} ${expressions[adjustment]})`;
+        fallback = base;
+        note = "rgb() is widely supported.";
+      } else {
+        const expressions = { lighten: "h s calc(l + 10%)", darken: "h s calc(l - 10%)", saturate: "calc(h + 20) s l", desaturate: "h calc(s - 20%) l", custom: "h s l / alpha" };
+        declaration = `hsl(from ${base} ${expressions[adjustment]})`;
+        fallback = base;
+        note = "hsl() is intuitive for hue shifts.";
+      }
+      return { output: `/* Relative color syntax: ${adjustment} */\n.element {\n  color: ${fallback}; /* static fallback */\n  color: ${declaration};\n}\n\n/* ${note}\n   Browser support: Chrome 119+, Edge 119+, Safari 17.2+, Firefox 128+ */` };
+    }
+  };

@@ -1,0 +1,33 @@
+import { field, textarea, select, checkbox, htmlEscape, attrEscape, normalizeUrl } from "../tool-core.js";
+
+export default {
+    form: `
+      <div class="field-grid">
+        ${field({ id: "dnsDomain", label: "Domain name", value: "www.example.com", full: true, help: "Protocol, path, and trailing slash are stripped automatically." })}
+      </div>`,
+    generate(root) {
+      let domain = root.querySelector("#dnsDomain").value.trim();
+      domain = domain.replace(/^https?:\/\//, "").replace(/\/.*$/, "").trim();
+      if (!domain) domain = "www.example.com";
+      const apex = domain.replace(/^www\./, "");
+      const lines = [
+        `DNS records for: ${domain}`,
+        "",
+        `A       ${domain} → 185.199.108.153`,
+        `        Points domain to an IPv4 address.`,
+        "",
+        `AAAA    ${domain} → 2606:50c0:8000::153`,
+        `        Points domain to an IPv6 address.`,
+        "",
+        `CNAME   www → ${apex}`,
+        `        Aliases one domain to another.`,
+        "",
+        `MX      ${domain} → mail.${apex} (priority 10)`,
+        `        Mail server for the domain.`,
+        "",
+        `TXT     ${domain} → "v=spf1 include:_spf.${apex} ~all"`,
+        `        Text records for verification and SPF.`
+      ];
+      return { output: lines.join("\n") };
+    }
+  };

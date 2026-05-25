@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"J:\\\\网站\\\\jqueryapp\" -Depth 0)",
+      "Bash(Format-Table Name, Mode)",
+      "Bash(npm run *)",
+      "Bash(git *)",
+      "Bash(node *)",
+      "PowerShell(Test-Path *)",
+      "Bash(Get-Content *)",
+      "WebFetch(domain:github.com)",
+      "Bash(npx skills *)",
+      "PowerShell($file = \"J:\\\\网站\\\\jqueryapp\\\\src\\\\assets\\\\tool-core.js\"; $content = [System.IO.File]::ReadAllText\\($file\\); if \\(-not $content.TrimEnd\\(\\).EndsWith\\(\"}\"\\)\\) { $content += \"`n}\"; [System.IO.File]::WriteAllText\\($file, $content\\); Write-Host \"Added closing brace\" } else { Write-Host \"Already has closing brace\" })",
+      "Bash(awk '{print $5, \"bytes\"}')"
+    ]
+  }
+}

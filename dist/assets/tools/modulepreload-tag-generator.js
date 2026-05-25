@@ -1,0 +1,20 @@
+import { field, textarea, select, checkbox, htmlEscape, attrEscape, normalizeUrl } from "../tool-core.js";
+
+export default {
+    form: `
+      <div class="field-grid">
+        ${field({ id: "mpHref", label: "Module script URL", value: "/assets/app.js" })}
+        ${select({ id: "mpOrigin", label: "Origin", options: [{label:"same-origin",value:"same"},{label:"cross-origin (CDN)",value:"cross"}], value: "same"})}
+        ${field({ id: "mpIntegrity", label: "integrity hash (optional)", value: "" })}
+      </div>`,
+    generate(root) {
+      const href = root.querySelector("#mpHref").value.trim();
+      const origin = root.querySelector("#mpOrigin").value;
+      const integrity = root.querySelector("#mpIntegrity").value.trim();
+      const attrs = [`rel="modulepreload"`, `href="${attrEscape(href)}"`];
+      if (origin === "cross") attrs.push("crossorigin");
+      if (integrity) attrs.push(`integrity="${attrEscape(integrity)}"`);
+      const output = `<link ${attrs.join(" ")} />\n\n<!-- Browser support: Chrome 74+, Edge 79+, Firefox 115+, Safari 16.4+.\n     Unlike standard preload, modulepreload understands ES module dependency graphs\n     and will fetch all dependencies. Works with both static and dynamic imports. -->`;
+      return { output };
+    }
+  };

@@ -1,0 +1,61 @@
+import { field, textarea, select, checkbox, htmlEscape, attrEscape, normalizeUrl } from "../tool-core.js";
+
+export default {
+    form: `
+      <div class="field-grid">
+        ${select({ id: "snapDirection", label: "Direction", value: "x", options: [
+          { label: "horizontal (x)", value: "x" },
+          { label: "vertical (y)", value: "y" }
+        ]})}
+        ${select({ id: "snapType", label: "Snap type", value: "mandatory", options: [
+          { label: "mandatory", value: "mandatory" },
+          { label: "proximity", value: "proximity" }
+        ]})}
+        ${select({ id: "snapAlign", label: "Alignment", value: "start", options: [
+          { label: "start", value: "start" },
+          { label: "center", value: "center" },
+          { label: "end", value: "end" }
+        ]})}
+        ${select({ id: "snapStop", label: "Snap stop", value: "normal", options: [
+          { label: "normal", value: "normal" },
+          { label: "always", value: "always" }
+        ]})}
+        ${field({ id: "snapPadding", label: "Scroll padding px", value: "0", type: "number" })}
+        ${field({ id: "snapSelector", label: "Container selector", value: ".snap-container" })}
+        ${field({ id: "snapItemSelector", label: "Item selector", value: ".snap-item" })}
+      </div>`,
+    generate(root) {
+      const direction = root.querySelector("#snapDirection").value;
+      const type = root.querySelector("#snapType").value;
+      const align = root.querySelector("#snapAlign").value;
+      const stop = root.querySelector("#snapStop").value;
+      const padding = root.querySelector("#snapPadding").value || "0";
+      const selector = root.querySelector("#snapSelector").value.trim() || ".snap-container";
+      const itemSelector = root.querySelector("#snapItemSelector").value.trim() || ".snap-item";
+      const containerName = selector.replace(/^\./, "");
+      const itemName = itemSelector.replace(/^\./, "");
+      const overflow = direction === "x" ? "overflow-x: auto;" : "overflow-y: auto;";
+      const output = `${selector} {
+  display: flex;
+  ${overflow}
+  scroll-snap-type: ${direction} ${type};
+  scroll-padding: ${padding}px;
+  -webkit-overflow-scrolling: touch;
+}
+
+${itemSelector} {
+  flex: 0 0 auto;
+  scroll-snap-align: ${align};
+  ${stop === "always" ? "scroll-snap-stop: always;" : ""}
+}
+
+/* HTML skeleton:
+<div class="${containerName}">
+  <div class="${itemName}">Item 1</div>
+  <div class="${itemName}">Item 2</div>
+  <div class="${itemName}">Item 3</div>
+</div>
+*/`;
+      return { output };
+    }
+  };

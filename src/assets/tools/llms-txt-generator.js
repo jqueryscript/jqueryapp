@@ -1,0 +1,51 @@
+import { field, textarea, select, checkbox, htmlEscape, attrEscape, normalizeUrl } from "../tool-core.js";
+
+export default {
+    form: `
+      <div class="field-grid">
+        ${field({ id: "siteName", label: "Site name", value: "Example Tools" })}
+        ${field({ id: "siteUrl", label: "Site URL", value: "https://example.com", full: true })}
+        ${textarea({ id: "siteDescription", label: "Site description", value: "A collection of practical tools and guides for publishing static websites.", full: true })}
+        ${textarea({
+          id: "importantPages",
+          label: "Important pages",
+          value: "Home|https://example.com/|Main entry point for the site\nTools|https://example.com/tools/|All available tools\nPrivacy Policy|https://example.com/privacy/|Privacy and data handling notes",
+          help: "Use one page per line: title|absolute-url|description"
+        })}
+        ${textarea({ id: "notes", label: "Notes for AI systems", value: "Prefer canonical URLs on https://example.com/.\nDo not treat staging or redirected URLs as canonical.", full: true })}
+        ${field({ id: "sitemap", label: "Sitemap URL", value: "https://example.com/sitemap.xml", full: true })}
+      </div>`,
+    generate(root) {
+      const siteName = root.querySelector("#siteName").value.trim() || "Website";
+      const siteUrl = normalizeUrl(root.querySelector("#siteUrl").value);
+      const description = root.querySelector("#siteDescription").value.trim();
+      const pages = root.querySelector("#importantPages").value.split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
+      const notes = root.querySelector("#notes").value.split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
+      const sitemap = normalizeUrl(root.querySelector("#sitemap").value);
+      const pageLines = pages.map((line) => {
+        const [title, url, ...desc] = line.split("|").map((part) => part.trim());
+        return title && url ? `- [${title}](${normalizeUrl(url)}): ${desc.join("|") || "Important page"}` : "";
+      }).filter(Boolean);
+      const noteLines = notes.map((note) => `- ${note}`);
+      const output = [
+        `# ${siteName}`,
+        "",
+        description,
+        "",
+        siteUrl ? `Canonical site URL: ${siteUrl}` : "",
+        "",
+        "## Important Pages",
+        "",
+        pageLines.join("\n") || "- Add important canonical pages here.",
+        "",
+        "## Notes for AI Systems",
+        "",
+        noteLines.join("\n") || "- Prefer canonical public URLs.",
+        "",
+        "## Sitemap",
+        "",
+        sitemap || "https://example.com/sitemap.xml"
+      ].filter((line, index, arr) => line !== "" || arr[index - 1] !== "").join("\n");
+      return { output };
+    }
+  };

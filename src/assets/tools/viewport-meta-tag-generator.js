@@ -1,0 +1,38 @@
+import { field, textarea, select, checkbox, htmlEscape, attrEscape, normalizeUrl } from "../tool-core.js";
+
+export default {
+    form: `
+      <div class="field-grid">
+        ${select({
+          id: "vpWidth",
+          label: "Width",
+          value: "device-width",
+          options: [
+            { label: "device-width", value: "device-width" },
+            { label: "414", value: "414" },
+            { label: "768", value: "768" },
+            { label: "1024", value: "1024" }
+          ]
+        })}
+        ${field({ id: "vpScale", label: "initial-scale", value: "1.0", type: "number", attrs: "step=\"0.1\"" })}
+        ${checkbox({ id: "vpScalable", label: "user-scalable", checked: true })}
+        ${field({ id: "vpThemeColor", label: "theme-color", value: "#181715", type: "color" })}
+        ${field({ id: "vpAppleIcon", label: "apple-touch-icon path", value: "/icons/apple-touch-icon.png" })}
+        ${field({ id: "vpSiteName", label: "apple-mobile-web-app-title", value: "" })}
+      </div>`,
+    generate(root) {
+      const width = root.querySelector("#vpWidth").value;
+      const scale = root.querySelector("#vpScale").value || "1.0";
+      const scalable = root.querySelector("#vpScalable").checked;
+      const themeColor = root.querySelector("#vpThemeColor").value.trim();
+      const appleIcon = root.querySelector("#vpAppleIcon").value.trim();
+      const siteName = root.querySelector("#vpSiteName").value.trim();
+      let viewport = `width=${width}, initial-scale=${scale}`;
+      if (!scalable) viewport += ", user-scalable=no";
+      const tags = [`<meta name="viewport" content="${viewport}">`];
+      if (themeColor) tags.push(`<meta name="theme-color" content="${themeColor}">`);
+      if (appleIcon) tags.push(`<link rel="apple-touch-icon" href="${appleIcon}">`);
+      if (siteName) tags.push(`<meta name="apple-mobile-web-app-title" content="${siteName}">`);
+      return { output: tags.join("\n") };
+    }
+  };

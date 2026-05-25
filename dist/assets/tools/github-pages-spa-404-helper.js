@@ -1,0 +1,52 @@
+import { field, textarea, select, checkbox, htmlEscape, attrEscape, normalizeUrl } from "../tool-core.js";
+
+export default {
+    form: `
+      <div class="field-grid">
+        ${field({ id: "basePath", label: "App base path", value: "/", help: "Use / for custom domains, or /repo-name/ for project pages." })}
+        ${select({
+          id: "mode",
+          label: "Preserve path as",
+          value: "query",
+          options: [
+            { label: "Query string (?p=/route)", value: "query" },
+            { label: "Hash (#/route)", value: "hash" }
+          ]
+        })}
+        ${field({ id: "delay", label: "Redirect delay ms", value: "0", type: "number" })}
+      </div>`,
+    generate(root) {
+      let basePath = root.querySelector("#basePath").value.trim() || "/";
+      if (!basePath.startsWith("/")) basePath = `/${basePath}`;
+      if (!basePath.endsWith("/")) basePath = `${basePath}/`;
+      const mode = root.querySelector("#mode").value;
+      const delay = Number(root.querySelector("#delay").value) || 0;
+      const targetExpression = mode === "hash"
+        ? `base + "#" + path + search + hash`
+        : `base + "?p=" + encodeURIComponent(path + search + hash)`;
+      const output = `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <title>Redirecting...</title>
+</head>
+<body>
+  <script>
+    (function () {
+      var base = ${JSON.stringify(basePath)};
+      var path = location.pathname;
+      var search = location.search || "";
+      var hash = location.hash || "";
+      var target = ${targetExpression};
+      setTimeout(function () {
+        location.replace(target);
+      }, ${delay});
+    }());
+  </script>
+  <p>Redirecting...</p>
+</body>
+</html>`;
+      return { output };
+    }
+  };

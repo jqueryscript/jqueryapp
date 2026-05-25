@@ -1,0 +1,61 @@
+import { field, textarea, select, checkbox, htmlEscape, attrEscape, normalizeUrl } from "../tool-core.js";
+
+export default {
+    form: `
+      <div class="check-grid">
+        ${checkbox({ id: "prHideNav", label: "Hide navigation", checked: true })}
+        ${checkbox({ id: "prHideSidebar", label: "Hide sidebar", checked: true })}
+        ${checkbox({ id: "prHideFooter", label: "Hide footer", checked: true })}
+        ${checkbox({ id: "prHideAds", label: "Hide ads and banners", checked: true })}
+      </div>
+      <div class="check-grid">
+        ${checkbox({ id: "prShowUrls", label: "Show URLs after links", checked: true })}
+        ${checkbox({ id: "prAvoidBreaks", label: "Avoid page breaks in tables and code blocks", checked: true })}
+      </div>
+      <div class="field-grid">
+        ${select({ id: "prPageSize", label: "Page size", options: [{label:"A4",value:"A4"},{label:"Letter",value:"letter"},{label:"Auto",value:"auto"}], value: "A4" })}
+        ${field({ id: "prMargin", label: "Page margin (mm)", value: "15", type: "number" })}
+      </div>`,
+    generate(root) {
+      const hideNav = root.querySelector("#prHideNav").checked;
+      const hideSidebar = root.querySelector("#prHideSidebar").checked;
+      const hideFooter = root.querySelector("#prHideFooter").checked;
+      const hideAds = root.querySelector("#prHideAds").checked;
+      const showUrls = root.querySelector("#prShowUrls").checked;
+      const avoidBreaks = root.querySelector("#prAvoidBreaks").checked;
+      const pageSize = root.querySelector("#prPageSize").value;
+      const margin = root.querySelector("#prMargin").value || "15";
+      const lines = ["@media print {"];
+      const hidden = [];
+      if (hideNav) hidden.push("nav, .nav, .navbar, header nav");
+      if (hideSidebar) hidden.push(".sidebar, aside");
+      if (hideFooter) hidden.push("footer");
+      if (hideAds) hidden.push(".ad, .banner, [class*=ad], [id*=ad]");
+      if (hidden.length) {
+        lines.push(`  ${hidden.join(",\n  ")} {\n    display: none;\n  }`);
+      }
+      lines.push("");
+      lines.push("  body {");
+      lines.push("    font-size: 12pt;");
+      lines.push("    line-height: 1.5;");
+      lines.push("    color: #000;");
+      lines.push("    background: #fff;");
+      lines.push("  }");
+      lines.push("");
+      lines.push("  img { max-width: 100%; }");
+      if (showUrls) {
+        lines.push("");
+        lines.push('  a[href^="http"]::after { content: " (" attr(href) ")"; }');
+        lines.push('  a[href^="#"]::after, a[href^="javascript:"]::after { content: ""; }');
+      }
+      if (avoidBreaks) {
+        lines.push("");
+        lines.push("  table, pre, code, blockquote {");
+        lines.push("    page-break-inside: avoid;");
+        lines.push("  }");
+      }
+      lines.push("}", "", `@page { size: ${pageSize}; margin: ${margin}mm; }`);
+      lines.push("", "/* Add this to your main stylesheet or save as a separate print.css:", '   <link rel="stylesheet" href="print.css" media="print"> */');
+      return { output: lines.join("\n") };
+    }
+  };

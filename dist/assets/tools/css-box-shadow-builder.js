@@ -1,0 +1,24 @@
+import { field, textarea, select, checkbox, htmlEscape, attrEscape, normalizeUrl } from "../tool-core.js";
+
+export default {
+    form: `
+      <div class="field-grid">
+        ${field({ id: "ox", label: "Offset-X", value: "0", type: "number" })}
+        ${field({ id: "oy", label: "Offset-Y", value: "4", type: "number" })}
+        ${field({ id: "blur", label: "Blur", value: "8", type: "number" })}
+        ${field({ id: "spread", label: "Spread", value: "0", type: "number" })}
+        ${field({ id: "color", label: "Color", value: "rgba(0,0,0,0.15)" })}
+        ${checkbox({ id: "inset", label: "Inset" })}
+      </div>`,
+    generate(root) {
+      const ox = root.querySelector("#ox").value || "0";
+      const oy = root.querySelector("#oy").value || "0";
+      const blur = root.querySelector("#blur").value || "0";
+      const spread = root.querySelector("#spread").value || "0";
+      const color = root.querySelector("#color").value.trim() || "rgba(0,0,0,0.15)";
+      const inset = root.querySelector("#inset").checked ? "inset " : "";
+      const css = `box-shadow: ${inset}${ox}px ${oy}px ${blur}px ${spread}px ${color};`;
+      const preview = `<div style="width:200px;height:120px;border-radius:8px;background:#fff;${css}margin:1rem auto;border:1px solid #e5e7eb"></div>`;
+      return { output: css, preview };
+    }
+  };

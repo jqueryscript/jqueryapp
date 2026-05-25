@@ -1,4 +1,4 @@
-import { mkdir, readFile, rm, writeFile, copyFile } from "node:fs/promises";
+import { mkdir, readFile, rm, writeFile, copyFile, readdir } from "node:fs/promises";
 import path from "node:path";
 
 const root = process.cwd();
@@ -310,6 +310,18 @@ function localizeTools(sourceTools, locale) {
   });
 }
 
+function localizeCollections(sourceCollections, locale) {
+  if (locale === site.defaultLocale) return sourceCollections;
+  const overrides = localePack(locale).collections || {};
+  return Object.fromEntries(Object.entries(sourceCollections).map(([key, details]) => [
+    key,
+    {
+      ...details,
+      ...(overrides[key] || {})
+    }
+  ]));
+}
+
 function homePage(locale, tools, categories, collections) {
   const localizedSite = localeSite(locale);
   const scripts = [
@@ -395,8 +407,8 @@ ${collections ? `<section class="section">
 function toolsIndexPage(locale, tools, categories) {
   const scripts = [
     jsonLd(breadcrumbSchema(locale, [
-      { name: "Home", pathname: "" },
-      { name: "Tools", pathname: "tools" }
+      { name: ui(locale, "home"), pathname: "" },
+      { name: ui(locale, "tools"), pathname: "tools" }
     ])),
     jsonLd(itemListSchema(locale, "Free web tools", tools))
   ].join("");
@@ -456,8 +468,8 @@ function categoryPage(locale, category, details, tools) {
   } : null;
   const scripts = [
     jsonLd(breadcrumbSchema(locale, [
-      { name: "Home", pathname: "" },
-      { name: "Tools", pathname: "tools" },
+      { name: ui(locale, "home"), pathname: "" },
+      { name: ui(locale, "tools"), pathname: "tools" },
       { name: details.name, pathname: `tools/${category}` }
     ])),
     jsonLd(itemListSchema(locale, details.name, tools)),
@@ -483,8 +495,8 @@ function categoryPage(locale, category, details, tools) {
   <div class="wrap content-layout">
     <aside class="content-rail">
       <span>${escapeHtml(details.name)}</span>
-      <span>Runs in your browser</span>
-      <span>No account required</span>
+      <span>${escapeHtml(ui(locale, "browserOnly"))}</span>
+      <span>${escapeHtml(ui(locale, "noAccountRequired"))}</span>
     </aside>
     <article class="tool-article">
       <h2>${escapeHtml(ui(locale, "whatCollectionHelps"))}</h2>
@@ -530,7 +542,7 @@ function collectionPage(locale, collectionId, details, tools, categories) {
   } : null;
   const scripts = [
     jsonLd(breadcrumbSchema(locale, [
-      { name: "Home", pathname: "" },
+      { name: ui(locale, "home"), pathname: "" },
       { name: ui(locale, "collections"), pathname: "collections" },
       { name: details.name, pathname: `collections/${collectionId}` }
     ])),
@@ -630,13 +642,13 @@ function toolPage(locale, tool, allTools, categories) {
   const scripts = [
     jsonLd(webAppSchema),
     jsonLd(breadcrumbSchema(locale, [
-      { name: "Home", pathname: "" },
-      { name: "Tools", pathname: "tools" },
+      { name: ui(locale, "home"), pathname: "" },
+      { name: ui(locale, "tools"), pathname: "tools" },
       { name: categoryName, pathname: `tools/${tool.category}` },
       { name: tool.name, pathname: `tools/${tool.id}` }
     ])),
     faqSchema ? jsonLd(faqSchema) : "",
-    `<script src="/assets/tools.js" defer></script>`
+    `<script type="module" src="/assets/tool-core.js"></script>`
   ].filter(Boolean).join("");
 
   const body = `<section class="tool-hero">
@@ -690,7 +702,7 @@ ${tool.examples?.length ? `<section class="section soft-band">
 <section class="section">
   <div class="wrap content-layout">
     <aside class="content-rail">
-      <span>Before publishing</span>
+      <span>${escapeHtml(ui(locale, "beforePublishing"))}</span>
       <span>${escapeHtml(ui(locale, "checkOutput"))}</span>
     </aside>
     <article class="tool-article">
@@ -796,13 +808,13 @@ function simplePages(locale) {
 
   const localized = {
     de: {
-      about: { title: "Uber jquery.app", description: "Ein kleiner Arbeitsbereich fur die Details zwischen Aufbau und Veroffentlichung.", content: `<h2>Warum diese Seite existiert</h2><p>jquery.app sammelt kleine Webtools fur wiederkehrende Aufgaben vor der Veroffentlichung: Canonical-Tags, Social-Preview-Metadaten, CSS-Werte, GitHub-Pages-Details und Launch-Checks.</p><h2>Wie die Tools arbeiten</h2><p>Die aktuellen Tools laufen im Browser, fragen nur die notigen Werte ab und liefern eine Ausgabe, die du vor dem Kopieren lesen kannst.</p><h2>Grenzen</h2><p>Die Tools ersetzen keine professionelle Prufung, kein Browser-Testing, keine Search-Console-Daten und kein vollstandiges technisches Audit.</p>` },
-      privacy: { title: "Datenschutz", description: "Die aktuellen Tools arbeiten lokal im Browser und vermeiden unnotige Datenerfassung.", content: `<h2>Tool-Eingaben</h2><p>Die aktuellen Tools verarbeiten Eingaben im Browser. Es ist kein Konto erforderlich, und Eingaben werden nicht absichtlich an einen jquery.app-Anwendungsserver gesendet.</p><h2>Hosting-Protokolle</h2><p>Hosting-, CDN- und Sicherheitsdienste konnen ubliche technische Informationen wie IP-Adresse, Browserdaten, Referrer, URL und Zeitpunkt verarbeiten.</p><h2>Cookies und Analyse</h2><p>Die Tools benotigen keine Cookies. Wenn spater Analyse, Werbung oder eingebettete Dienste hinzukommen, sollte diese Richtlinie vorher aktualisiert werden.</p>` },
-      terms: { title: "Nutzungsbedingungen", description: "Nutze die Tools frei, aber prufe die Ausgabe vor dem Einsatz auf einer Live-Seite.", content: `<h2>Nutzung</h2><p>jquery.app stellt kostenlose Webtools fur Publishing- und Entwicklungsaufgaben bereit. Du kannst die Ausgabe in eigenen, kommerziellen und Kundenprojekten nutzen, wenn du sie selbst prufst.</p><h2>Keine Fachberatung</h2><p>Die Inhalte sind informativ und keine Rechts-, Sicherheits-, Compliance-, Barrierefreiheits- oder SEO-Beratung.</p><h2>Keine Gewahrleistung</h2><p>Die Seite wird ohne Garantie bereitgestellt. Browser, Suchmaschinen und Hosting-Regeln konnen sich andern.</p>` },
-      contact: { title: "Kontakt", description: "Melde defekte Tools, veraltete Hinweise, Barrierefreiheitsprobleme oder Datenschutzfragen.", content: `<h2>Hilfreiche Meldungen</h2><p>Nenne bei Fehlern den Toolnamen, die URL, deine Eingabe, das erwartete Ergebnis und das tatsachliche Verhalten.</p><h2>Geeignete Themen</h2><ul><li>Defekte Formulare oder Kopierbuttons.</li><li>Veraltete Hinweise zu GitHub Pages, SEO-Tags oder Browsern.</li><li>Probleme mit Tastatur, Kontrast, Layout oder Mobilansicht.</li><li>Datenschutz- oder Drittanbieterfragen.</li></ul>` }
+      about: { title: "Über jquery.app", description: "Ein kleiner Arbeitsbereich für die Details zwischen Aufbau und Veröffentlichung.", content: `<h2>Warum diese Seite existiert</h2><p>jquery.app sammelt kleine Webtools für wiederkehrende Aufgaben vor der Veröffentlichung: Canonical-Tags, Social-Preview-Metadaten, CSS-Werte, GitHub-Pages-Details und Launch-Checks.</p><h2>Wie die Tools arbeiten</h2><p>Die aktuellen Tools laufen im Browser, fragen nur die nötigen Werte ab und liefern eine Ausgabe, die du vor dem Kopieren lesen kannst.</p><h2>Grenzen</h2><p>Die Tools ersetzen keine professionelle Prüfung, kein Browser-Testing, keine Search-Console-Daten und kein vollständiges technisches Audit.</p>` },
+      privacy: { title: "Datenschutz", description: "Die aktuellen Tools arbeiten lokal im Browser und vermeiden unnötige Datenerfassung.", content: `<h2>Tool-Eingaben</h2><p>Die aktuellen Tools verarbeiten Eingaben im Browser. Es ist kein Konto erforderlich, und Eingaben werden nicht absichtlich an einen jquery.app-Anwendungsserver gesendet.</p><h2>Hosting-Protokolle</h2><p>Hosting-, CDN- und Sicherheitsdienste können übliche technische Informationen wie IP-Adresse, Browserdaten, Referrer, URL und Zeitpunkt verarbeiten.</p><h2>Cookies und Analyse</h2><p>Die Tools benötigen keine Cookies. Wenn später Analyse, Werbung oder eingebettete Dienste hinzukommen, sollte diese Richtlinie vorher aktualisiert werden.</p>` },
+      terms: { title: "Nutzungsbedingungen", description: "Nutze die Tools frei, aber prüfe die Ausgabe vor dem Einsatz auf einer Live-Seite.", content: `<h2>Nutzung</h2><p>jquery.app stellt kostenlose Webtools für Publishing- und Entwicklungsaufgaben bereit. Du kannst die Ausgabe in eigenen, kommerziellen und Kundenprojekten nutzen, wenn du sie selbst prüfst.</p><h2>Keine Fachberatung</h2><p>Die Inhalte sind informativ und keine Rechts-, Sicherheits-, Compliance-, Barrierefreiheits- oder SEO-Beratung.</p><h2>Keine Gewährleistung</h2><p>Die Seite wird ohne Garantie bereitgestellt. Browser, Suchmaschinen und Hosting-Regeln können sich ändern.</p>` },
+      contact: { title: "Kontakt", description: "Melde defekte Tools, veraltete Hinweise, Barrierefreiheitsprobleme oder Datenschutzfragen.", content: `<h2>Hilfreiche Meldungen</h2><p>Nenne bei Fehlern den Toolnamen, die URL, deine Eingabe, das erwartete Ergebnis und das tatsächliche Verhalten.</p><h2>Geeignete Themen</h2><ul><li>Defekte Formulare oder Kopierbuttons.</li><li>Veraltete Hinweise zu GitHub Pages, SEO-Tags oder Browsern.</li><li>Probleme mit Tastatur, Kontrast, Layout oder Mobilansicht.</li><li>Datenschutz- oder Drittanbieterfragen.</li></ul>` }
     },
     fr: {
-      about: { title: "A propos de jquery.app", description: "Un petit atelier pour les details entre creation et publication.", content: `<h2>Pourquoi ce site existe</h2><p>jquery.app regroupe de petits outils web pour les taches qui reviennent avant publication : canonical, apercus sociaux, valeurs CSS, details GitHub Pages et controles de lancement.</p><h2>Fonctionnement</h2><p>Les outils actuels fonctionnent dans le navigateur, demandent seulement les champs utiles et affichent une sortie lisible avant copie.</p><h2>Limites</h2><p>Ils ne remplacent pas un jugement professionnel, des tests navigateur, les donnees Search Console ou un audit technique complet.</p>` },
+      about: { title: "À propos de jquery.app", description: "Un petit atelier pour les détails entre création et publication.", content: `<h2>Pourquoi ce site existe</h2><p>jquery.app regroupe de petits outils web pour les tâches qui reviennent avant publication : canonical, aperçus sociaux, valeurs CSS, details GitHub Pages et contrôles de lancement.</p><h2>Fonctionnement</h2><p>Les outils actuels fonctionnent dans le navigateur, demandent seulement les champs utiles et affichent une sortie lisible avant copie.</p><h2>Limites</h2><p>Ils ne remplacent pas un jugement professionnel, des tests navigateur, les donnees Search Console ou un audit technique complet.</p>` },
       privacy: { title: "Politique de confidentialite", description: "Les outils actuels fonctionnent localement dans le navigateur et limitent la collecte.", content: `<h2>Saisies dans les outils</h2><p>Les outils actuels traitent les valeurs dans votre navigateur. Aucun compte n'est requis et les donnees ne sont pas volontairement envoyees a un serveur applicatif jquery.app.</p><h2>Logs techniques</h2><p>L'hebergement, le CDN et les systemes de securite peuvent traiter des informations techniques standard comme IP, navigateur, referrer, URL et horodatage.</p><h2>Cookies et analytics</h2><p>Les outils n'ont pas besoin de cookies. Si analytics, publicite ou widgets tiers sont ajoutes plus tard, cette page devra etre mise a jour.</p>` },
       terms: { title: "Conditions d'utilisation", description: "Utilisez les outils librement, mais verifiez la sortie avant publication.", content: `<h2>Utilisation</h2><p>jquery.app fournit des outils web gratuits pour les taches de publication. Vous pouvez utiliser la sortie dans des projets personnels, commerciaux ou clients apres verification.</p><h2>Pas de conseil professionnel</h2><p>Les contenus sont informatifs et ne constituent pas un conseil juridique, securite, conformite, accessibilite ou SEO.</p><h2>Pas de garantie</h2><p>Le site est fourni tel quel. Les navigateurs, moteurs de recherche et regles d'hebergement peuvent changer.</p>` },
       contact: { title: "Contact", description: "Signalez un outil casse, une information obsolete, un probleme d'accessibilite ou une question de confidentialite.", content: `<h2>Envoyer un signalement utile</h2><p>Indiquez le nom de l'outil, l'URL, votre saisie, le resultat attendu et le resultat observe.</p><h2>Sujets utiles</h2><ul><li>Formulaire ou bouton de copie casse.</li><li>Information obsolete sur GitHub Pages, SEO ou navigateurs.</li><li>Problemes de contraste, clavier, mobile ou mise en page.</li><li>Questions de confidentialite ou de service tiers.</li></ul>` }
@@ -958,7 +970,17 @@ async function copyAssets() {
   const target = path.join(distDir, "assets");
   await mkdir(target, { recursive: true });
   await copyFile(path.join(assetsDir, "styles.css"), path.join(target, "styles.css"));
-  await copyFile(path.join(assetsDir, "tools.js"), path.join(target, "tools.js"));
+  await copyFile(path.join(assetsDir, "tool-core.js"), path.join(target, "tool-core.js"));
+  // Copy per-tool modules
+  const toolsSrcDir = path.join(assetsDir, "tools");
+  const toolsDstDir = path.join(target, "tools");
+  await mkdir(toolsDstDir, { recursive: true });
+  const toolFiles = await readdir(toolsSrcDir);
+  for (const f of toolFiles) {
+    if (f.endsWith(".js")) {
+      await copyFile(path.join(toolsSrcDir, f), path.join(toolsDstDir, f));
+    }
+  }
   await copyFile(path.join(assetsDir, "favicon.svg"), path.join(distDir, "favicon.svg"));
 }
 
@@ -968,7 +990,7 @@ async function buildLocale(locale) {
   const sourceCollections = JSON.parse(await readFile(path.join(dataDir, "collections.en.json"), "utf8"));
   const tools = localizeTools(sourceTools, locale);
   const categories = localizeCategories(sourceCategories, locale);
-  const collections = sourceCollections;
+  const collections = localizeCollections(sourceCollections, locale);
   const localeDir = locale === site.defaultLocale ? distDir : path.join(distDir, locale);
   const sitemapUrls = [];
 
