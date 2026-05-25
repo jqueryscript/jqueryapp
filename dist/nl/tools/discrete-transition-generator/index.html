@@ -11,11 +11,11 @@
   <meta property="og:description" content="Genereer CSS voor het animeren van elementen die verschijnen of verdwijnen.">
   <meta property="og:url" content="https://www.jquery.app/nl/tools/discrete-transition-generator/">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://www.jquery.app/nl/assets/social/og-css.png/">
+  <meta property="og:image" content="https://www.jquery.app/assets/social/og-css.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://www.jquery.app/nl/assets/social/og-css.png/">
+  <meta name="twitter:image" content="https://www.jquery.app/assets/social/og-css.png">
   <link rel="alternate" hreflang="en" href="https://www.jquery.app/tools/discrete-transition-generator/">
   <link rel="alternate" hreflang="de" href="https://www.jquery.app/de/tools/discrete-transition-generator/">
   <link rel="alternate" hreflang="fr" href="https://www.jquery.app/fr/tools/discrete-transition-generator/">
@@ -81,6 +81,8 @@
     <article class="tool-article">
       <h2>Wat is Discrete Transitie Generator?</h2>
       <p>Discrete Transitie Generator is een browsertool voor deze taak: Genereer CSS voor het animeren van elementen die verschijnen of verdwijnen. De uitvoer blijft leesbaar, zodat je die kunt controleren voordat je hem publiceert.</p>
+      <div class="quick-answer"><h3>Quick answer</h3><p>Discrete transitions enable CSS transitions for display:none and other discrete properties when an element enters or leaves the DOM. Use @starting-style to define the initial state before the element appears.</p></div>
+      <h3>Limitations</h3><ul><li>Discrete transitions for display require Chrome 117+ or Safari 17.5+. Firefox support is behind a flag as of early 2026.</li><li>@starting-style is required for the entry animation. Without it the element snaps into its final state before starting the transition.</li><li>Discrete transitions only animate the entry and exit where display changes. Mid-state transitions between intermediate values are not supported for discrete properties.</li></ul>
       <h2>Zo gebruik je deze tool</h2>
       <ol><li>Open de tool en vul de relevante waarden in.</li><li>Controleer de uitvoer in het resultaatpaneel.</li><li>Kopieer alleen het deel dat bij je página past.</li><li>Test de wijziging voordat je publiceert.</li></ol>
       <h2>Waarvoor je het kunt gebruiken</h2>
@@ -98,6 +100,7 @@
     <article class="tool-article">
       <h2>Veelgemaakte fouten</h2>
       <ul><li>Uitvoer kopieren zonder controle.</li><li>Lokale URL's gebruiken in plaats van publieke URL's.</li><li>Na de build niet controleren of het bestand in de publicatiemap staat.</li></ul>
+      <h2>Verification</h2><ol><li>Test the entry and exit transitions in Chrome or Safari and verify the animation plays in both directions.</li><li>Check the browser console for any CSS transition warnings related to discrete properties.</li></ol>
     </article>
   </div>
 </section>
@@ -124,21 +127,21 @@
     <h2>Meer css-tools</h2>
   </div>
   <div class="wrap tool-grid compact">
-    <article class="tool-card">
+    <article class="tool-card" data-tool-name="CSS clamp() calculator" data-category="css" data-category-label="Css" data-keywords="css clamp calculator fluid typography calculator responsive font size">
   <div>
     <p class="card-kicker">Css</p>
     <h2><a href="/nl/tools/css-clamp-calculator/">CSS clamp() calculator</a></h2>
     <p>Bereken responsive CSS clamp-waarden voor lettergroottes en spacing.</p>
   </div>
   <a class="card-link" href="/nl/tools/css-clamp-calculator/">Open tool</a>
-</article><article class="tool-card">
+</article><article class="tool-card" data-tool-name="CSS safe-area-insets generator" data-category="css" data-category-label="Css" data-keywords="css safe area inset iphone notch css safe area padding generator">
   <div>
     <p class="card-kicker">Css</p>
     <h2><a href="/nl/tools/css-safe-area-insets-generator/">CSS safe-area-insets generator</a></h2>
     <p>Genereer CSS voor safe-area insets op telefoons met notch of ronde hoeken.</p>
   </div>
   <a class="card-link" href="/nl/tools/css-safe-area-insets-generator/">Open tool</a>
-</article><article class="tool-card">
+</article><article class="tool-card" data-tool-name="CSS Kleurcontrast Checker" data-category="css" data-category-label="Css" data-keywords="color contrast checker wcag contrast accessibility checker color accessibility">
   <div>
     <p class="card-kicker">Css</p>
     <h2><a href="/nl/tools/css-color-contrast-checker/">CSS Kleurcontrast Checker</a></h2>
@@ -154,21 +157,21 @@
     <h2>Probeer ook</h2>
   </div>
   <div class="wrap tool-grid compact">
-    <article class="tool-card">
+    <article class="tool-card" data-tool-name="HTML link rel generator" data-category="html" data-category-label="Html" data-keywords="html link rel generator preload tag generator preconnect generator">
   <div>
     <p class="card-kicker">Html</p>
     <h2><a href="/nl/tools/html-link-rel-generator/">HTML link rel generator</a></h2>
     <p>Genereer link-tags voor preload, preconnect, dns-prefetch, canonical en alternate.</p>
   </div>
   <a class="card-link" href="/nl/tools/html-link-rel-generator/">Open tool</a>
-</article><article class="tool-card">
+</article><article class="tool-card" data-tool-name="Responsive iframe-embedgenerator" data-category="html" data-category-label="Html" data-keywords="responsive iframe generator iframe embed code aspect ratio iframe">
   <div>
     <p class="card-kicker">Html</p>
     <h2><a href="/nl/tools/responsive-iframe-embed-generator/">Responsive iframe-embedgenerator</a></h2>
     <p>Genereer responsive iframe-embedmarkup voor video's, kaarten, demo's en documentatie.</p>
   </div>
   <a class="card-link" href="/nl/tools/responsive-iframe-embed-generator/">Open tool</a>
-</article><article class="tool-card">
+</article><article class="tool-card" data-tool-name="URL Slug Generator" data-category="html" data-category-label="Html" data-keywords="url slug generator seo slug url friendly string slugify">
   <div>
     <p class="card-kicker">Html</p>
     <h2><a href="/nl/tools/url-slug-generator/">URL Slug Generator</a></h2>

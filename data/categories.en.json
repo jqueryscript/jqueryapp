@@ -13,14 +13,34 @@
       "Build Open Graph and Twitter Card markup for clean link previews.",
       "Create robots meta tags and launch checklists without memorizing directive syntax."
     ],
+    "taskGuide": "Use SEO tools after your content is written and before you submit pages to search engines. Start with the Static Site SEO Checklist to identify gaps across your pages, then address specific needs: canonical tags for duplicate content, hreflang tags for multilingual pages, robots meta tags for indexing control, and Open Graph tags for social sharing. Work through indexing directives before social previews, because a page that is blocked from indexing does not need social cards. Save JSON-LD structured data for last, since it depends on final page content and URL decisions made during earlier steps.",
+    "checklist": [
+      "Verify canonical URLs point to the correct version, not a draft or staging URL.",
+      "Confirm hreflang tags form complete reciprocal groups with no orphaned language entries.",
+      "Check robots meta directives match your intent: noindex pages that should not appear in search results.",
+      "Validate social preview images exist at the referenced paths and meet platform size recommendations.",
+      "Review structured data with Google's Rich Results Test before deploying."
+    ],
     "faq": [
       {
-        "question": "Are these tools a replacement for a full SEO audit?",
-        "answer": "No. They help with recurring page-level tasks. A full audit still needs crawl data, search performance, content review, internal linking, and technical checks."
+        "question": "Should I add all SEO tags to every page?",
+        "answer": "No. Add tags only when they serve a purpose. Every page needs a title and description. Canonical tags matter when duplicate content exists. Hreflang tags apply only to translated pages. Social preview tags matter for pages shared on social platforms. Unnecessary tags add clutter and increase the chance of conflicting signals."
       },
       {
-        "question": "Do static websites still need SEO metadata?",
-        "answer": "Yes. Static hosting does not create titles, descriptions, canonical URLs, social tags, or structured data for you unless your build system adds them."
+        "question": "Do canonical tags affect internal link anchor text?",
+        "answer": "No. The canonical tag tells search engines which URL should be treated as the primary version of a page. It does not affect how anchor text is interpreted on the page that links to it."
+      },
+      {
+        "question": "Can I use the same Open Graph image across all pages?",
+        "answer": "For small sites with a consistent look, one default image is acceptable, but each page should have its own og:title and og:description. Pages with unique images should reference them in og:image to produce richer link previews."
+      },
+      {
+        "question": "Does noindex on a page save crawl budget?",
+        "answer": "Noindex tells search engines not to show a page in results after it is crawled. If you want to save crawl budget, use a robots.txt disallow directive to block crawling entirely before indexing is considered."
+      },
+      {
+        "question": "Should I include both hreflang and canonical tags on the same page?",
+        "answer": "Yes, when the page has translated versions. The hreflang tags identify language alternatives, and the canonical tag declares the preferred URL among duplicates within the same language. They serve different purposes and can coexist."
       }
     ]
   },
@@ -38,14 +58,34 @@
       "Prepare reusable snippets for posts, pages, and small tools.",
       "Check generated HTML before it is added to a template."
     ],
+    "taskGuide": "Use HTML tools when you need structured head markup, link relationships, or embed code for a page. Start by identifying what you need: preload and prefetch hints for performance-critical resources, link rel tags for SEO and documentation relationships, or responsive iframe embeds for external content. Review the generated output against your page structure before pasting it into your template or CMS. For repeated snippets across many pages, keep a consistent pattern by using the same tool inputs for every post.",
+    "checklist": [
+      "Verify generated tags match the HTML5 doctype requirements for your document.",
+      "Check that all attribute values, such as href and src paths, resolve to the correct URLs in your final output.",
+      "Confirm preload and prefetch hints reference actual resources that exist on your server or CDN.",
+      "Test responsive iframe embeds at multiple screen widths, especially the narrowest breakpoint.",
+      "Validate the output against the W3C markup validator before publishing."
+    ],
     "faq": [
       {
-        "question": "Can generated HTML be pasted directly into a production page?",
-        "answer": "Use it as a starting point and review it in your own template. The right final markup depends on your framework, document structure, and publishing workflow."
+        "question": "Can I paste generated snippets directly into production?",
+        "answer": "Use generated snippets as a starting point and review them in your template. The final markup depends on your framework, content management system, and document structure. Always validate output before deploying."
       },
       {
-        "question": "Why use a helper instead of writing the tags by hand?",
-        "answer": "A helper is useful when the syntax is repetitive, easy to mistype, or needs the same structure across many pages."
+        "question": "Where in the document should preload tags go?",
+        "answer": "Preload link tags belong in the head element. They tell the browser to fetch resources early during page load. Placing them outside the head, such as in the body, may cause some browsers to ignore them."
+      },
+      {
+        "question": "How many link rel values should a single page have?",
+        "answer": "Include only the link relationships that apply to the page. Common values include canonical, stylesheet, and alternate hreflang links. Adding unnecessary relationships like prev and next on pages outside a paginated sequence adds noise without benefit."
+      },
+      {
+        "question": "Do responsive iframe embeds affect page speed scores?",
+        "answer": "Iframes can slow page load because they load external content. The responsive iframe embed generator helps prevent layout shift but does not control the external page size or resource count. Consider lazy loading iframes below the fold."
+      },
+      {
+        "question": "Should I use preload or prefetch for my hero image?",
+        "answer": "Use preload for resources needed during the current navigation, such as a hero image above the fold. Use prefetch for resources likely needed during a future navigation, such as the next page post. The wrong choice can waste bandwidth on resources the browser does not need yet."
       }
     ]
   },
@@ -63,14 +103,34 @@
       "Check responsive ranges before adding them to a layout.",
       "Document CSS decisions in a form other people can read."
     ],
+    "taskGuide": "Use CSS tools when you need precise responsive values for typography, spacing, or layout features without writing media queries by hand. Start with the clamp calculator to define fluid type sizes and spacing across your chosen viewport range. Add safe-area-inset support after your layout is stable if your audience includes mobile users with notched screens. For iframe embeds, add responsive containers before your layout goes live to prevent overflow on small viewports. Review each generated value at your actual breakpoints, not just the viewport extremes.",
+    "checklist": [
+      "Test generated CSS values at every breakpoint and at intermediate viewport widths where the browser transitions between them.",
+      "Verify clamp() values render correctly in target browsers, including browsers that do not support clamp() natively.",
+      "Check safe-area-inset fallbacks for devices that do not support env() variables.",
+      "Validate responsive embed containers with actual content, not just placeholder boxes.",
+      "Ensure generated CSS variable references match the names defined in your stylesheet."
+    ],
     "faq": [
       {
-        "question": "Should generated CSS replace design review?",
-        "answer": "No. Generated CSS gives you a precise starting point. You still need to test the result across real content, browser widths, and device conditions."
+        "question": "Should I test generated CSS values at every breakpoint?",
+        "answer": "Yes. A clamp() value that looks correct at 375px and 1440px may produce unexpected sizing at an intermediate width. Check the rendered output at 768px and 1024px to catch mid-range sizing issues."
       },
       {
-        "question": "Why use clamp() for responsive sizing?",
-        "answer": "clamp() sets a minimum, preferred, and maximum value in one declaration, which keeps type and spacing responsive without adding several media queries."
+        "question": "Do I need fallbacks for modern CSS features like clamp()?",
+        "answer": "Yes, if your audience includes visitors on older browsers. Add a static fallback value before the clamp() declaration so browsers that do not support modern CSS functions still render a reasonable size."
+      },
+      {
+        "question": "Can I use clamp() for margins and padding?",
+        "answer": "Yes. clamp() works with any CSS property that accepts length values, including margin, padding, gap, and width. Use it when you want spacing to scale fluidly between minimum and maximum values across viewport sizes."
+      },
+      {
+        "question": "Will safe-area-inset values work on desktop browsers?",
+        "answer": "Desktop browsers typically return zero for safe-area-inset environment variables because they do not have notches or rounded corners. The fallback values you provide become the effective spacing on desktop, which is usually the correct behavior."
+      },
+      {
+        "question": "Should I use rem or px inside clamp()?",
+        "answer": "Both work, but rem is preferred for typography because it respects the user font size preference. Use px for fine-grained spacing that should not scale with the browser font size."
       }
     ]
   },
@@ -88,14 +148,34 @@
       "Plan favicon and asset paths for static hosting.",
       "Review files that must be copied into the published output."
     ],
+    "taskGuide": "Use asset tools when you prepare image markup, favicon references, and static files for a site launch or redesign. Start by gathering all image files and icon assets in a dedicated folder that mirrors your final published structure. Generate favicon HTML tags only after you have the actual icon files in the correct sizes and formats. Create responsive image markup with multiple source candidates and appropriate alt text for accessibility. Verify every asset path before deployment, because a broken image path produces a 404 or a missing visual element that no SEO tag can fix.",
+    "checklist": [
+      "Verify every image and asset file path relative to your published site root, not your project folder structure.",
+      "Confirm favicon files exist at the referenced sizes and paths before adding the HTML tags to your page.",
+      "Check that responsive image srcset candidates are ordered correctly, with the smallest image first.",
+      "Validate alt text on every image for accessibility, not only on decorative elements that should use alt=\"\".",
+      "Ensure asset files are included in your build or publish step so they reach the public folder."
+    ],
     "faq": [
       {
-        "question": "Do asset tools upload my images?",
-        "answer": "The current tools are designed around local browser work and copyable output. Review each tool page for the exact behavior before using sensitive files."
+        "question": "Why do asset paths break after deployment?",
+        "answer": "Static builds often publish from a generated output folder. A path that works during local development may fail if the asset is not copied to the same public location. Always use paths relative to the published site root, not your source folder."
       },
       {
-        "question": "Why do asset paths break after deployment?",
-        "answer": "Static builds often publish from a generated output folder. A path that works locally can fail if the asset is not copied to the same public location."
+        "question": "Do I need all icon sizes for a simple website?",
+        "answer": "No. A minimal favicon setup needs only a 32x32 favicon.ico and a 180x180 apple-touch-icon for iOS bookmarks. The other sizes in the generated tag list are optional and benefit larger directories or link aggregators that display rich icons."
+      },
+      {
+        "question": "Should I use absolute or relative URLs for image src attributes?",
+        "answer": "Use absolute URLs when images are served from a CDN or when the page may appear at multiple URL paths. Use relative URLs for local assets on a site with a stable folder structure to avoid broken paths during domain migration."
+      },
+      {
+        "question": "Do I need both WebP and JPEG versions of every image?",
+        "answer": "Provide a WebP source for browsers that support it and a JPEG or PNG fallback for compatibility. The responsive image markup generator creates both options when you supply the filenames, but skipping WebP is acceptable for small personal sites with minimal traffic."
+      },
+      {
+        "question": "What happens if I use apple-touch-icon without the actual icon file?",
+        "answer": "iOS Safari looks for apple-touch-icon references in the head and requests the file when a user bookmarks the page. If the file does not exist, the request returns a 404, and iOS shows a generic icon instead of your custom one."
       }
     ]
   },
@@ -113,14 +193,34 @@
       "Separate DNS notes from GitHub Pages repository settings.",
       "Review launch details before enabling HTTPS and sharing the URL."
     ],
+    "taskGuide": "Use GitHub Pages tools when you set up a new site, move an existing site to a custom domain, or troubleshoot a deployment that is not serving correctly. Start by confirming your site repository settings: the publishing source branch and folder. Use the CNAME helper to prepare a custom domain file and verify your DNS configuration before enabling HTTPS. Add a 404 HTML page for single-page applications that handle client-side routing. Finish with the SEO checklist to verify that your generated output includes essential files like robots.txt, sitemap.xml, and proper metadata.",
+    "checklist": [
+      "Confirm the CNAME file exists in the root of your published output, not your project source root, and matches your custom domain exactly.",
+      "Verify that the GitHub Pages publishing source setting points to the correct branch and folder, such as main /root or gh-pages /docs.",
+      "Check DNS records for your custom domain: a CNAME record for www and either ALIAS or A records for the apex domain.",
+      "Test the site URL after HTTPS is provisioned, as GitHub Pages can take several minutes to issue a certificate.",
+      "Enable HTTPS enforcement only after confirming the site loads correctly over both HTTP and HTTPS."
+    ],
     "faq": [
       {
-        "question": "Where should the CNAME file live?",
-        "answer": "It must be in the published site root. If GitHub Pages serves a dist folder or build output, the CNAME file must be generated inside that output."
+        "question": "Why does my CNAME disappear after every deploy?",
+        "answer": "The CNAME file must be part of your published output. If your build tool generates a dist folder and GitHub Pages serves from that folder, the CNAME file must be created or copied into dist during the build. A CNAME file outside the published folder is ignored and disappears on re-deploy."
       },
       {
-        "question": "Why can GitHub Pages show 404 after a successful push?",
-        "answer": "Common causes include publishing from the wrong branch or folder, missing index.html, delayed Pages deployment, or a custom domain pointing at the wrong repository."
+        "question": "Should I use A records or CNAME records for my apex domain?",
+        "answer": "For the apex domain such as example.com, GitHub Pages recommends ALIAS or ANAME records because apex domains cannot use standard CNAME records per DNS standards. The alternative is to redirect the apex to a www subdomain and use a CNAME record on the www subdomain."
+      },
+      {
+        "question": "Why does GitHub Pages show a 404 after a successful push?",
+        "answer": "Common causes include publishing from the wrong branch or folder, a missing index.html in the published root, delayed Pages deployment queue time, or a custom domain that does not resolve to the correct GitHub Pages IP address."
+      },
+      {
+        "question": "Can I use GitHub Pages with a private repository?",
+        "answer": "Yes, but the published site is public even if the repository is private. GitHub Pages serves site content publicly regardless of repository visibility."
+      },
+      {
+        "question": "Do I need a separate CNAME for every subdomain?",
+        "answer": "If you host multiple sites from separate repositories under subdomains of the same apex domain, each repository needs its own CNAME file with the matching subdomain. One CNAME file cannot cover multiple subdomains."
       }
     ]
   }

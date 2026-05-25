@@ -11,11 +11,11 @@
   <meta property="og:description" content="Générez du balisage iframe securise avec les drapeaux sandbox et les permissions allow par type d&#39;integration.">
   <meta property="og:url" content="https://www.jquery.app/fr/tools/iframe-sandbox-allow-generator/">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://www.jquery.app/fr/assets/social/og-html.png/">
+  <meta property="og:image" content="https://www.jquery.app/assets/social/og-html.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://www.jquery.app/fr/assets/social/og-html.png/">
+  <meta name="twitter:image" content="https://www.jquery.app/assets/social/og-html.png">
   <link rel="alternate" hreflang="en" href="https://www.jquery.app/tools/iframe-sandbox-allow-generator/">
   <link rel="alternate" hreflang="de" href="https://www.jquery.app/de/tools/iframe-sandbox-allow-generator/">
   <link rel="alternate" hreflang="fr" href="https://www.jquery.app/fr/tools/iframe-sandbox-allow-generator/">
@@ -81,6 +81,8 @@
     <article class="tool-article">
       <h2>Qu'est-ce que Generateur iframe sandbox et allow ?</h2>
       <p>Generateur iframe sandbox et allow est un outil dans le navigateur pour cette tâche : Générez du balisage iframe securise avec les drapeaux sandbox et les permissions allow par type d'integration. La sortie reste lisible afin de la vérifier avant de l'utiliser sur un site publié.</p>
+      <div class="quick-answer"><h3>Quick answer</h3><p>Use the sandbox attribute on iframes to restrict what the embedded content can do -- such as submitting forms, opening popups, or running scripts. Add allow values one at a time and only as needed.</p></div>
+      <h3>Limitations</h3><ul><li>The sandbox attribute does not protect against clickjacking on the parent page. Use a Content-Security-Policy with frame-ancestors for that.</li><li>Some iframe features, such as storage access and top-level navigation, behave differently across browsers when sandbox is applied.</li><li>Removing sandbox does not retroactively expose APIs -- the iframe must be reloaded for sandbox changes to take effect.</li></ul>
       <h2>Comment utiliser cet outil</h2>
       <ol><li>Ouvrez l'outil et saisissez les valeurs utiles.</li><li>Vérifiez la sortie dans le panneau de résultat.</li><li>Copiez seulement la partie adaptéeà votre page.</li><li>Testez la modification avant publication.</li></ol>
       <h2>A quoi il sert</h2>
@@ -98,6 +100,7 @@
     <article class="tool-article">
       <h2>Erreurs frequentes</h2>
       <ul><li>Copier la sortie sans verification.</li><li>Utiliser des URL locales au lieu des URL publiques finales.</li><li>Oublier de vérifier le dossier publié après le build.</li></ul>
+      <h2>Verification</h2><ol><li>Open the page in a browser and interact with the iframe content. Check DevTools Console for sandbox-related violations.</li><li>Test the iframe in Chrome, Firefox, and Safari to confirm sandbox restrictions behave consistently.</li></ol>
     </article>
   </div>
 </section>
@@ -124,21 +127,21 @@
     <h2>Autres outils outils html</h2>
   </div>
   <div class="wrap tool-grid compact">
-    <article class="tool-card">
+    <article class="tool-card" data-tool-name="Generateur HTML link rel" data-category="html" data-category-label="Html" data-keywords="html link rel generator preload tag generator preconnect generator">
   <div>
     <p class="card-kicker">Html</p>
     <h2><a href="/fr/tools/html-link-rel-generator/">Generateur HTML link rel</a></h2>
     <p>Générez des balises link pour preload, preconnect, dns-prefetch, canonical et alternate.</p>
   </div>
   <a class="card-link" href="/fr/tools/html-link-rel-generator/">Ouvrir l'outil</a>
-</article><article class="tool-card">
+</article><article class="tool-card" data-tool-name="Generateur d&#39;embed iframe responsive" data-category="html" data-category-label="Html" data-keywords="responsive iframe generator iframe embed code aspect ratio iframe">
   <div>
     <p class="card-kicker">Html</p>
     <h2><a href="/fr/tools/responsive-iframe-embed-generator/">Generateur d'embed iframe responsive</a></h2>
     <p>Créez du balisage iframe responsive pour video, cartes, demos et documentation.</p>
   </div>
   <a class="card-link" href="/fr/tools/responsive-iframe-embed-generator/">Ouvrir l'outil</a>
-</article><article class="tool-card">
+</article><article class="tool-card" data-tool-name="Generateur de slug URL" data-category="html" data-category-label="Html" data-keywords="url slug generator seo slug url friendly string slugify">
   <div>
     <p class="card-kicker">Html</p>
     <h2><a href="/fr/tools/url-slug-generator/">Generateur de slug URL</a></h2>
@@ -154,21 +157,21 @@
     <h2>A essayer aussi</h2>
   </div>
   <div class="wrap tool-grid compact">
-    <article class="tool-card">
+    <article class="tool-card" data-tool-name="Generateur de balises hreflang" data-category="seo" data-category-label="Seo" data-keywords="hreflang generator alternate language tag multilingual seo">
   <div>
     <p class="card-kicker">Seo</p>
     <h2><a href="/fr/tools/hreflang-tag-generator/">Generateur de balises hreflang</a></h2>
     <p>Générez des balises hreflang propres pour sites statiques multilingües.</p>
   </div>
   <a class="card-link" href="/fr/tools/hreflang-tag-generator/">Ouvrir l'outil</a>
-</article><article class="tool-card">
+</article><article class="tool-card" data-tool-name="Generateur Open Graph et Twitter Card" data-category="seo" data-category-label="Seo" data-keywords="open graph generator twitter card generator social preview meta tags">
   <div>
     <p class="card-kicker">Seo</p>
     <h2><a href="/fr/tools/og-twitter-card-builder/">Generateur Open Graph et Twitter Card</a></h2>
     <p>Créez des balises d'apercu social pour articles et pages statiques.</p>
   </div>
   <a class="card-link" href="/fr/tools/og-twitter-card-builder/">Ouvrir l'outil</a>
-</article><article class="tool-card">
+</article><article class="tool-card" data-tool-name="Checklist SEO pour site statique" data-category="seo" data-category-label="Seo" data-keywords="static site seo checklist github pages seo checklist website launch checklist">
   <div>
     <p class="card-kicker">Seo</p>
     <h2><a href="/fr/tools/static-site-seo-checklist-generator/">Checklist SEO pour site statique</a></h2>

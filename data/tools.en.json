@@ -46,7 +46,18 @@
         "question": "Can I use relative URLs in hreflang tags?",
         "answer": "Absolute URLs are safer and easier to audit. Use the final public URL that visitors and search engines can access."
       }
-    ]
+    ],
+    "quickAnswer": "Use hreflang tags to tell search engines which language or regional version of a page to show to users. Every page in a language group must link to every other version, including itself.",
+    "limitations": [
+      "Hreflang tags do not work on non-indexed pages. Each page in the group must be indexable by search engines.",
+      "Incorrect or mismatched language codes cause search engines to ignore the entire hreflang set.",
+      "Google uses hreflang as a hint. The wrong language version may still appear in search results for some queries."
+    ],
+    "verificationSteps": [
+      "Verify hreflang tags across all language versions using Google Search Console International Targeting report.",
+      "Check that every page in the language group links to every other version, including itself, using identical absolute URLs."
+    ],
+    "updatedAt": "2026-05-25"
   },
   {
     "id": "og-twitter-card-builder",
@@ -291,7 +302,18 @@
         "question": "Do canonical tags replace redirects?",
         "answer": "No. Redirects control visitor and crawler navigation. Canonical tags are indexing signals for equivalent content."
       }
-    ]
+    ],
+    "quickAnswer": "Use the canonical URL tag to tell search engines which version of a page is the authoritative one when duplicate or near-duplicate content exists across multiple URLs.",
+    "limitations": [
+      "A canonical tag is a hint, not a directive. Google may choose a different URL as canonical.",
+      "Canonical tags on pages with fundamentally different content are ignored by search engines.",
+      "Self-referencing canonicals are recommended. Every page should link to itself as canonical unless there is a specific consolidation reason."
+    ],
+    "verificationSteps": [
+      "Use the URL Inspection tool in Google Search Console to verify which URL Google considers canonical for each page.",
+      "Check that the canonical URL in the HTML head matches the intended URL exactly, including scheme and trailing slash."
+    ],
+    "updatedAt": "2026-05-25"
   },
   {
     "id": "html-link-rel-generator",
@@ -585,7 +607,18 @@
         "question": "Should I block AI crawlers by default?",
         "answer": "That is a policy choice. If AI visibility matters, avoid blocking crawlers unless you have a clear business or privacy reason."
       }
-    ]
+    ],
+    "quickAnswer": "Use robots.txt to tell crawlers which parts of your site they should not access. It controls crawl traffic, not indexing -- directives like noindex belong in meta tags or HTTP headers.",
+    "limitations": [
+      "robots.txt directives are advisory. Bad actors and some AI crawlers may ignore them entirely.",
+      "Blocking a page in robots.txt does not prevent indexing if other pages link to it. Use noindex meta tags or HTTP headers to prevent indexing.",
+      "Each subdomain needs its own robots.txt file. The file at example.com/robots.txt does not apply to subdomain.example.com."
+    ],
+    "verificationSteps": [
+      "Test the generated robots.txt using Google Search Console robots.txt Tester tool.",
+      "Verify the file is served from the site root with a 200 status code and Content-Type: text/plain."
+    ],
+    "updatedAt": "2026-05-25"
   },
   {
     "id": "json-ld-starter-builder",
@@ -1456,7 +1489,18 @@
         "question": "Should every iframe have a sandbox attribute?",
         "answer": "A sandbox with the right restrictions is a security best practice for third-party content. For first-party embeds, test whether the restrictions break expected behavior."
       }
-    ]
+    ],
+    "quickAnswer": "Use the sandbox attribute on iframes to restrict what the embedded content can do -- such as submitting forms, opening popups, or running scripts. Add allow values one at a time and only as needed.",
+    "limitations": [
+      "The sandbox attribute does not protect against clickjacking on the parent page. Use a Content-Security-Policy with frame-ancestors for that.",
+      "Some iframe features, such as storage access and top-level navigation, behave differently across browsers when sandbox is applied.",
+      "Removing sandbox does not retroactively expose APIs -- the iframe must be reloaded for sandbox changes to take effect."
+    ],
+    "verificationSteps": [
+      "Open the page in a browser and interact with the iframe content. Check DevTools Console for sandbox-related violations.",
+      "Test the iframe in Chrome, Firefox, and Safari to confirm sandbox restrictions behave consistently."
+    ],
+    "updatedAt": "2026-05-25"
   },
   {
     "id": "static-sitemap-xml-builder",
@@ -1501,7 +1545,18 @@
         "question": "Where should sitemap.xml be placed?",
         "answer": "At the published site root, such as https://example.com/sitemap.xml. Reference it from robots.txt with Sitemap: <url>."
       }
-    ]
+    ],
+    "quickAnswer": "An XML sitemap helps search engines discover all pages on a static site, especially pages not linked from the main navigation. Submit the sitemap URL through Google Search Console after publishing.",
+    "limitations": [
+      "Sitemaps do not guarantee indexing. Search engines may choose not to crawl or index listed pages.",
+      "Sitemaps have a 50,000 URL limit per file and a 50 MB uncompressed file size limit. Use a sitemap index file for larger sites.",
+      "GitHub Pages serves sitemap.xml without any special configuration as long as the file exists at the site root."
+    ],
+    "verificationSteps": [
+      "Submit the sitemap URL through Google Search Console and check for crawl errors or warnings.",
+      "Inspect the generated XML with a validator to ensure all required tags, such as loc, are present and correctly formatted."
+    ],
+    "updatedAt": "2026-05-25"
   },
   {
     "id": "github-pages-workflow-generator",
@@ -1640,7 +1695,18 @@
         "question": "Which browsers support Permissions-Policy?",
         "answer": "Chrome 88+, Edge 88+, Firefox 116+, and Safari 16.1+. The older Feature-Policy header is deprecated and should be replaced with Permissions-Policy."
       }
-    ]
+    ],
+    "quickAnswer": "Use Permissions-Policy to disable browser features -- such as camera, microphone, geolocation, and autoplay -- that your site does not need. This improves privacy and prevents third-party scripts from accessing sensitive APIs.",
+    "limitations": [
+      "Permissions-Policy requires deployment via an HTTP header. GitHub Pages and many static hosts do not support custom headers; use the allow attribute on iframes or configure the host to send the header.",
+      "The older Feature-Policy header is deprecated. Browsers that support Permissions-Policy no longer process Feature-Policy.",
+      "Some browser features such as gamepad and screen-wake-lock are not yet supported in all browser engines."
+    ],
+    "verificationSteps": [
+      "Inspect the Response Headers tab in DevTools Network panel to confirm the Permissions-Policy header is present.",
+      "Test that blocked features generate a clear console warning rather than silently failing."
+    ],
+    "updatedAt": "2026-05-25"
   },
   {
     "id": "csp-starter-policy-generator",
@@ -1689,7 +1755,18 @@
         "question": "What is the safest default-src for a static site?",
         "answer": "default-src 'self' is a practical starting point. It allows resources from the same origin and blocks everything else. Add specific origins for CDNs, fonts, and analytics as needed."
       }
-    ]
+    ],
+    "quickAnswer": "A Content Security Policy blocks cross-site scripting and data injection attacks by restricting which resources the browser can load. Start with a restrictive policy and widen only when needed.",
+    "limitations": [
+      "CSP does not protect against server-side vulnerabilities or compromised third-party libraries already included in the policy.",
+      "Inline event handlers and javascript: URLs are blocked unless 'unsafe-inline' or a hash/nonce is set.",
+      "GitHub Pages does not support custom HTTP headers; use a meta tag-based CSP instead, which has limited directive support compared to the HTTP header."
+    ],
+    "verificationSteps": [
+      "Deploy the CSP in report-only mode first by using Content-Security-Policy-Report-Only and check the browser console for violation reports.",
+      "Switch to the enforce header only after confirming no legitimate resources are being blocked."
+    ],
+    "updatedAt": "2026-05-25"
   },
   {
     "id": "web-app-manifest-generator",
@@ -2004,7 +2081,18 @@
         "question": "What is the difference between inline-size and size for container-type?",
         "answer": "inline-size establishes a query container that responds to the inline dimension only, which is width in horizontal writing modes. size establishes a container that responds to both width and height but requires contain: layout style on the container, which can affect layout behavior."
       }
-    ]
+    ],
+    "quickAnswer": "Use container queries to style an element based on the size of its parent container instead of the viewport. They are the component-level equivalent of media queries and are useful for reusable widget layouts.",
+    "limitations": [
+      "Container queries require Chrome 105+, Edge 105+, Firefox 110+, and Safari 16+. Older browsers ignore the feature entirely.",
+      "The container-name property must reference a container-type ancestor in the DOM. Elements outside the container tree cannot query it.",
+      "Container query units (cqw, cqh, cqi, cqb, cqmin, cqmax) are only meaningful inside a @container block and may produce unexpected values outside one."
+    ],
+    "verificationSteps": [
+      "Resize the container element in DevTools and verify that child elements respond to container size changes, not viewport changes.",
+      "Check fallback styles in unsupported browsers by setting base styles outside the @container block."
+    ],
+    "updatedAt": "2026-05-25"
   },
   {
     "id": "aspect-ratio-placeholder-calculator",
@@ -2454,7 +2542,18 @@
         "question": "Does fetchpriority guarantee faster loading?",
         "answer": "No, it is a hint. The browser decides the final loading order based on many factors."
       }
-    ]
+    ],
+    "quickAnswer": "Use fetchpriority='high' only for the one image or resource most likely to become the Largest Contentful Paint element. Do not mark many resources as high priority -- the browser still decides loading order.",
+    "limitations": [
+      "fetchpriority is a hint, not a directive. The browser may ignore it based on heuristics.",
+      "Older browsers including Safari 15.4 and below do not support fetchpriority.",
+      "Overusing fetchpriority='high' on many resources dilutes the hint and may not improve loading performance."
+    ],
+    "verificationSteps": [
+      "Open Chrome DevTools Network panel and inspect the Priority column to confirm the fetchpriority hint is reflected in the browser loading order.",
+      "Compare LCP timing with and without the attribute using the Performance panel to verify actual improvement."
+    ],
+    "updatedAt": "2026-05-25"
   },
   {
     "id": "preload-tag-builder",
@@ -2499,7 +2598,18 @@
         "question": "Should I preload everything?",
         "answer": "No. Preload a small number of truly critical resources. Too many preload hints delay important resources."
       }
-    ]
+    ],
+    "quickAnswer": "Use preload to fetch critical resources -- such as hero images, fonts, or above-the-fold CSS -- before the parser discovers them. Only preload a few resources per page to avoid bandwidth contention.",
+    "limitations": [
+      "Preload requires the as attribute. Omitting it or using an incorrect value may cause the browser to fetch the resource twice.",
+      "Cross-origin preloaded resources such as fonts from a CDN must include the crossorigin attribute.",
+      "Excessive preloading delays other resources and can hurt performance instead of helping."
+    ],
+    "verificationSteps": [
+      "Open Chrome DevTools Network panel and verify the preloaded resource appears early in the request waterfall with the correct Priority.",
+      "Check the browser console for missing preload warnings such as 'The resource was already loaded and preload was not used'."
+    ],
+    "updatedAt": "2026-05-25"
   },
   {
     "id": "modulepreload-tag-generator",
@@ -2544,7 +2654,18 @@
         "question": "Which browsers support modulepreload?",
         "answer": "Chrome 66+, Edge 79+, Firefox 115+, Safari 17.2+. It is safe as a progressive enhancement."
       }
-    ]
+    ],
+    "quickAnswer": "Use modulepreload to speculatively fetch, parse, and compile ES module dependencies before they are needed. It works like preload but is designed specifically for JavaScript module scripts.",
+    "limitations": [
+      "modulepreload is only effective for ES module scripts (type='module'). It does not apply to classic scripts.",
+      "Browser support lags behind standard preload. Firefox added support in 115+, Safari in 17.2+.",
+      "modulepreload fetches the module but does not execute it. Execution still happens when the module script tag is encountered."
+    ],
+    "verificationSteps": [
+      "Open Chrome DevTools Network panel and verify module scripts fetched via modulepreload appear early in the waterfall.",
+      "Check the Coverage panel to confirm the module is being used and not fetched unnecessarily."
+    ],
+    "updatedAt": "2026-05-25"
   },
   {
     "id": "image-loading-attribute-builder",
@@ -2589,7 +2710,18 @@
         "question": "What does decoding='async' do?",
         "answer": "It tells the browser to decode the image asynchronously, allowing other content to render first before the image finishes decoding."
       }
-    ]
+    ],
+    "quickAnswer": "Use loading='lazy' for below-the-fold images to defer loading until the user scrolls near them. Use loading='eager' or omit the attribute for above-the-fold images that should load immediately.",
+    "limitations": [
+      "Lazy loading defers image requests but does not reduce total page weight -- images still download when scrolled into view.",
+      "The browser reserves placeholder space for lazy images even before they load, which can affect layout if width and height attributes are missing.",
+      "Using loading='lazy' on above-the-fold images can delay LCP and hurt user experience."
+    ],
+    "verificationSteps": [
+      "Open Chrome DevTools Network panel and scroll the page to confirm lazy images only load when they enter the viewport.",
+      "Check the Performance panel and verify that above-the-fold images with loading='eager' appear in the initial request waterfall."
+    ],
+    "updatedAt": "2026-05-25"
   },
   {
     "id": "referrer-policy-tag-generator",
@@ -2634,7 +2766,18 @@
         "question": "Which policy is the safest default?",
         "answer": "Strict-origin-when-cross-origin balances privacy with functionality by sending the full referrer on same-origin requests but only the origin on cross-origin requests."
       }
-    ]
+    ],
+    "quickAnswer": "Use Referrer-Policy to control how much referrer information is sent when a visitor clicks a link on your site. strict-origin-when-cross-origin is a balanced default that sends full URLs on same-origin requests but only the origin on cross-origin requests.",
+    "limitations": [
+      "Referrer-Policy set via a meta tag or link attribute is a hint. Browsers may override it based on user privacy settings.",
+      "The no-referrer policy may break analytics, referral tracking, and logging that depend on the Referer header.",
+      "HTTP header-based Referrer-Policy takes precedence over meta tags. Both should be set consistently."
+    ],
+    "verificationSteps": [
+      "Click a link from your page and inspect the Referer header using DevTools Network panel.",
+      "Test different policy values and verify the referrer value in the Network panel request headers."
+    ],
+    "updatedAt": "2026-05-25"
   },
   {
     "id": "css-anchor-positioning-generator",
@@ -2679,7 +2822,18 @@
         "question": "Does anchor positioning work with the Popover API?",
         "answer": "Yes. Popovers can use anchor positioning to align to their trigger element."
       }
-    ]
+    ],
+    "quickAnswer": "Anchor positioning lets you attach an element to another element on the page using CSS alone, without JavaScript. It replaces most manual position calculations for tooltips, popovers, and dropdown menus.",
+    "limitations": [
+      "Anchor positioning is only supported in Chrome 125+. Firefox and Safari do not yet support it as of early 2026.",
+      "The anchor element must be a DOM ancestor or referenced by anchor-name. Elements in different shadow roots may not work.",
+      "Fallback positioning with position-fallback is experimental and behavior varies across supported browsers."
+    ],
+    "verificationSteps": [
+      "Test the positioned element in Chrome and verify it tracks the anchor element correctly on scroll and resize.",
+      "Provide a JavaScript-based fallback for unsupported browsers, such as using getBoundingClientRect() to position the element."
+    ],
+    "updatedAt": "2026-05-25"
   },
   {
     "id": "scroll-driven-animation-generator",
@@ -2724,7 +2878,18 @@
         "question": "What is the difference between scroll() and view()?",
         "answer": "Scroll() tracks the scroll position of a container. View() tracks the position of the element relative to the viewport."
       }
-    ]
+    ],
+    "quickAnswer": "Scroll-driven animations let you link an animation progress directly to the scroll position of a container, eliminating the need for scroll event listeners and JavaScript-based parallax libraries.",
+    "limitations": [
+      "Chrome 115+ and Edge 115+ support scroll-driven animations. Firefox and Safari do not yet support the ScrollTimeline API.",
+      "Scroll-driven animations use the Web Animations API. CSS @keyframes are still required for defining animation states.",
+      "Scroll() and view() timing progress is determined by scroll distance. Animations may behave differently on very short or very long content."
+    ],
+    "verificationSteps": [
+      "Test the animation in Chrome and verify the element animates smoothly as the page scrolls.",
+      "Check the animation in Firefox and Safari to confirm it degrades gracefully without breaking page layout or functionality."
+    ],
+    "updatedAt": "2026-05-25"
   },
   {
     "id": "discrete-transition-generator",
@@ -2769,7 +2934,18 @@
         "question": "Do I need @starting-style?",
         "answer": "Yes. It defines the initial state of the element before it appears, such as opacity: 0 or transform values. Without it, the element appears at its final state first."
       }
-    ]
+    ],
+    "quickAnswer": "Discrete transitions enable CSS transitions for display:none and other discrete properties when an element enters or leaves the DOM. Use @starting-style to define the initial state before the element appears.",
+    "limitations": [
+      "Discrete transitions for display require Chrome 117+ or Safari 17.5+. Firefox support is behind a flag as of early 2026.",
+      "@starting-style is required for the entry animation. Without it the element snaps into its final state before starting the transition.",
+      "Discrete transitions only animate the entry and exit where display changes. Mid-state transitions between intermediate values are not supported for discrete properties."
+    ],
+    "verificationSteps": [
+      "Test the entry and exit transitions in Chrome or Safari and verify the animation plays in both directions.",
+      "Check the browser console for any CSS transition warnings related to discrete properties."
+    ],
+    "updatedAt": "2026-05-25"
   },
   {
     "id": "css-light-dark-function-generator",
@@ -2814,7 +2990,18 @@
         "question": "Can light-dark() replace CSS custom properties?",
         "answer": "It can handle basic cases, but custom properties are still better for complex design systems with many color tokens."
       }
-    ]
+    ],
+    "quickAnswer": "The light-dark() CSS function returns one of two color values based on the current color scheme, making it easy to support light and dark modes without duplicating CSS rules.",
+    "limitations": [
+      "light-dark() only works when the color-scheme property is set on the document or element. Without it the function defaults to the first color.",
+      "The function accepts exactly two color values -- one for light and one for dark. Complex theme switching still requires custom properties or media queries.",
+      "Older browsers do not support light-dark(). Provide a fallback color before the light-dark() function in the property declaration."
+    ],
+    "verificationSteps": [
+      "Toggle the page between light and dark mode using DevTools Rendering or the OS setting and verify colors switch correctly.",
+      "Test in a browser that does not support light-dark() to confirm the fallback color is applied."
+    ],
+    "updatedAt": "2026-05-25"
   },
   {
     "id": "html-details-accordion-generator",
@@ -2859,7 +3046,18 @@
         "question": "Does the details element work in all browsers?",
         "answer": "Chrome 12+, Edge 79+, Safari 6+, Firefox 49+. It has near-universal support."
       }
-    ]
+    ],
+    "quickAnswer": "Use the native HTML details and summary elements to create an accordion that works without JavaScript. Each details element is independent and can be opened or closed by the user.",
+    "limitations": [
+      "Native details elements do not support closing one section automatically when another opens. That behavior requires custom JavaScript or the name attribute for exclusive accordion behavior.",
+      "The open attribute controls whether the details element starts expanded. Only one boolean state is available -- there is no partial expand.",
+      "Safari 17 and below do not support animating the details element open and close. Transitions require a CSS discrete transition polyfill."
+    ],
+    "verificationSteps": [
+      "Click each accordion section to verify it opens and closes independently without JavaScript errors.",
+      "Test the page with JavaScript disabled to confirm the accordion still works as progressive enhancement."
+    ],
+    "updatedAt": "2026-05-25"
   },
   {
     "id": "css-color-mix-generator",
@@ -2904,7 +3102,18 @@
         "question": "Does color-mix() work in all browsers?",
         "answer": "Chrome 111+, Edge 111+, Safari 16.2+, Firefox 113+. It has broad modern support."
       }
-    ]
+    ],
+    "quickAnswer": "Use color-mix() to blend two colors in a specified color space, such as oklab or srgb. It is useful for creating tint, shade, and hover variants from a single base color without a preprocessor.",
+    "limitations": [
+      "color-mix() requires Chrome 111+, Edge 111+, Safari 16.2+, and Firefox 113+. Older browsers do not support it and will ignore the declaration.",
+      "The oklab color space produces more perceptually uniform results than srgb. Mixing in srgb can create muddy intermediates.",
+      "color-mix() may not reference CSS custom properties that contain color-mix() output in some older browser versions due to property cycle detection."
+    ],
+    "verificationSteps": [
+      "Inspect the element in DevTools Styles panel and verify the computed color value matches the expected mix of the two inputs.",
+      "Test the fallback color declaration in a browser that does not support color-mix(), such as an older Chrome or Firefox version."
+    ],
+    "updatedAt": "2026-05-25"
   },
   {
     "id": "css-relative-color-syntax-generator",
@@ -3084,6 +3293,17 @@
         "question": "Does type='module' need defer?",
         "answer": "No. Module scripts are deferred by default and do not need an explicit defer attribute."
       }
-    ]
+    ],
+    "quickAnswer": "Choose a script loading strategy based on when the script must execute. Use defer for scripts that need the full DOM but can download in parallel. Use async for independent scripts like analytics. Use type='module' for modern ES module code.",
+    "limitations": [
+      "defer preserves script execution order; async does not. Choose based on whether script order matters.",
+      "async scripts execute as soon as they finish downloading, which can block rendering if the script is large.",
+      "type='module' scripts are deferred by default and do not need an additional defer attribute."
+    ],
+    "verificationSteps": [
+      "Open Chrome DevTools Network panel and check the Initiator and Waterfall columns to confirm when each script starts loading and executing.",
+      "Test page rendering and interactivity timing with different strategies using the Performance panel."
+    ],
+    "updatedAt": "2026-05-25"
   }
 ]

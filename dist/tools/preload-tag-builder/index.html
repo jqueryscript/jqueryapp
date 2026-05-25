@@ -11,11 +11,11 @@
   <meta property="og:description" content="Generate correct preload link tags for fonts, hero images, CSS, and scripts with the right as and crossorigin attributes. Free in your browser, with no account or upload.">
   <meta property="og:url" content="https://www.jquery.app/tools/preload-tag-builder/">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://www.jquery.app/assets/social/og-html.png/">
+  <meta property="og:image" content="https://www.jquery.app/assets/social/og-html.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://www.jquery.app/assets/social/og-html.png/">
+  <meta name="twitter:image" content="https://www.jquery.app/assets/social/og-html.png">
   <link rel="alternate" hreflang="en" href="https://www.jquery.app/tools/preload-tag-builder/">
   <link rel="alternate" hreflang="de" href="https://www.jquery.app/de/tools/preload-tag-builder/">
   <link rel="alternate" hreflang="fr" href="https://www.jquery.app/fr/tools/preload-tag-builder/">
@@ -81,6 +81,8 @@
     <article class="tool-article">
       <h2>What is Preload Tag Builder?</h2>
       <p>Preload tells the browser to fetch a resource early before it would normally be discovered. It speeds up loading for fonts, hero images, critical CSS, and scripts. The as attribute is required to tell the browser what type of resource to expect. Missing as or incorrect crossorigin are common mistakes.</p>
+      <div class="quick-answer"><h3>Quick answer</h3><p>Use preload to fetch critical resources -- such as hero images, fonts, or above-the-fold CSS -- before the parser discovers them. Only preload a few resources per page to avoid bandwidth contention.</p></div>
+      <h3>Limitations</h3><ul><li>Preload requires the as attribute. Omitting it or using an incorrect value may cause the browser to fetch the resource twice.</li><li>Cross-origin preloaded resources such as fonts from a CDN must include the crossorigin attribute.</li><li>Excessive preloading delays other resources and can hurt performance instead of helping.</li></ul>
       <h2>How to use this tool</h2>
       <ol><li>Select the resource type you need to preload: font, image, CSS, or script.</li><li>Enter the URL or file path of the resource.</li><li>The tool adds the correct as and crossorigin attributes for the selected type.</li><li>Copy the link tag into the page head before other resource references.</li></ol>
       <h2>What you can use it for</h2>
@@ -114,6 +116,7 @@
     <article class="tool-article">
       <h2>Common mistakes</h2>
       <ul><li>Preloading too many resources which wastes bandwidth.</li><li>Using preload without the required as attribute.</li><li>Adding preload for cross-origin fonts without crossorigin.</li></ul>
+      <h2>Verification</h2><ol><li>Open Chrome DevTools Network panel and verify the preloaded resource appears early in the request waterfall with the correct Priority.</li><li>Check the browser console for missing preload warnings such as 'The resource was already loaded and preload was not used'.</li></ol>
     </article>
   </div>
 </section>
@@ -140,21 +143,21 @@
     <h2>More html tools</h2>
   </div>
   <div class="wrap tool-grid compact">
-    <article class="tool-card">
+    <article class="tool-card" data-tool-name="HTML Link Rel Generator" data-category="html" data-category-label="Html" data-keywords="html link rel generator preload tag generator preconnect generator">
   <div>
     <p class="card-kicker">Html</p>
     <h2><a href="/tools/html-link-rel-generator/">HTML Link Rel Generator</a></h2>
     <p>Generate link tags for preload, preconnect, dns-prefetch, canonical, and alternate URLs.</p>
   </div>
   <a class="card-link" href="/tools/html-link-rel-generator/">Open tool</a>
-</article><article class="tool-card">
+</article><article class="tool-card" data-tool-name="Responsive Iframe Embed Generator" data-category="html" data-category-label="Html" data-keywords="responsive iframe generator iframe embed code aspect ratio iframe">
   <div>
     <p class="card-kicker">Html</p>
     <h2><a href="/tools/responsive-iframe-embed-generator/">Responsive Iframe Embed Generator</a></h2>
     <p>Generate responsive iframe embed markup for videos, maps, demos, and docs.</p>
   </div>
   <a class="card-link" href="/tools/responsive-iframe-embed-generator/">Open tool</a>
-</article><article class="tool-card">
+</article><article class="tool-card" data-tool-name="URL Slug Generator" data-category="html" data-category-label="Html" data-keywords="url slug generator seo slug url friendly string slugify">
   <div>
     <p class="card-kicker">Html</p>
     <h2><a href="/tools/url-slug-generator/">URL Slug Generator</a></h2>
@@ -170,21 +173,21 @@
     <h2>Also try</h2>
   </div>
   <div class="wrap tool-grid compact">
-    <article class="tool-card">
+    <article class="tool-card" data-tool-name="Hreflang Tag Generator" data-category="seo" data-category-label="Seo" data-keywords="hreflang generator alternate language tag multilingual seo">
   <div>
     <p class="card-kicker">Seo</p>
     <h2><a href="/tools/hreflang-tag-generator/">Hreflang Tag Generator</a></h2>
     <p>Generate clean hreflang tags for multilingual static websites.</p>
   </div>
   <a class="card-link" href="/tools/hreflang-tag-generator/">Open tool</a>
-</article><article class="tool-card">
+</article><article class="tool-card" data-tool-name="Open Graph &amp; Twitter Card Builder" data-category="seo" data-category-label="Seo" data-keywords="open graph generator twitter card generator social preview meta tags">
   <div>
     <p class="card-kicker">Seo</p>
     <h2><a href="/tools/og-twitter-card-builder/">Open Graph &amp; Twitter Card Builder</a></h2>
     <p>Build social preview meta tags for blog posts and static pages.</p>
   </div>
   <a class="card-link" href="/tools/og-twitter-card-builder/">Open tool</a>
-</article><article class="tool-card">
+</article><article class="tool-card" data-tool-name="Static Site SEO Checklist Generator" data-category="seo" data-category-label="Seo" data-keywords="static site seo checklist github pages seo checklist website launch checklist">
   <div>
     <p class="card-kicker">Seo</p>
     <h2><a href="/tools/static-site-seo-checklist-generator/">Static Site SEO Checklist Generator</a></h2>

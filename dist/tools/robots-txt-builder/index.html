@@ -11,11 +11,11 @@
   <meta property="og:description" content="Generate a simple robots.txt file with sitemap and crawler rules. Free in your browser, with no account or upload.">
   <meta property="og:url" content="https://www.jquery.app/tools/robots-txt-builder/">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://www.jquery.app/assets/social/og-seo.png/">
+  <meta property="og:image" content="https://www.jquery.app/assets/social/og-seo.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://www.jquery.app/assets/social/og-seo.png/">
+  <meta name="twitter:image" content="https://www.jquery.app/assets/social/og-seo.png">
   <link rel="alternate" hreflang="en" href="https://www.jquery.app/tools/robots-txt-builder/">
   <link rel="alternate" hreflang="de" href="https://www.jquery.app/de/tools/robots-txt-builder/">
   <link rel="alternate" hreflang="fr" href="https://www.jquery.app/fr/tools/robots-txt-builder/">
@@ -81,6 +81,8 @@
     <article class="tool-article">
       <h2>What is robots.txt Builder?</h2>
       <p>A robots.txt file gives crawlers site-level access rules. It can allow or disallow paths, point to the sitemap, and document crawler policies. Static sites often need a small, predictable robots.txt file because build outputs and GitHub Pages deployments only publish what exists in the final folder.</p>
+      <div class="quick-answer"><h3>Quick answer</h3><p>Use robots.txt to tell crawlers which parts of your site they should not access. It controls crawl traffic, not indexing -- directives like noindex belong in meta tags or HTTP headers.</p></div>
+      <h3>Limitations</h3><ul><li>robots.txt directives are advisory. Bad actors and some AI crawlers may ignore them entirely.</li><li>Blocking a page in robots.txt does not prevent indexing if other pages link to it. Use noindex meta tags or HTTP headers to prevent indexing.</li><li>Each subdomain needs its own robots.txt file. The file at example.com/robots.txt does not apply to subdomain.example.com.</li></ul>
       <h2>How to use this tool</h2>
       <ol><li>Enter the public site URL and sitemap URL.</li><li>Choose whether normal crawlers should be allowed across the site.</li><li>Add disallowed paths only when there is a real reason to block crawling.</li><li>Copy the result into robots.txt at the published site root.</li></ol>
       <h2>What you can use it for</h2>
@@ -114,6 +116,7 @@
     <article class="tool-article">
       <h2>Common mistakes</h2>
       <ul><li>Blocking important pages and expecting them to rank.</li><li>Using robots.txt to remove a page that is already indexed instead of using noindex or removal tools.</li><li>Forgetting to publish robots.txt into the final build output.</li></ul>
+      <h2>Verification</h2><ol><li>Test the generated robots.txt using Google Search Console robots.txt Tester tool.</li><li>Verify the file is served from the site root with a 200 status code and Content-Type: text/plain.</li></ol>
     </article>
   </div>
 </section>
@@ -143,21 +146,21 @@
     <h2>More seo tools</h2>
   </div>
   <div class="wrap tool-grid compact">
-    <article class="tool-card">
+    <article class="tool-card" data-tool-name="Hreflang Tag Generator" data-category="seo" data-category-label="Seo" data-keywords="hreflang generator alternate language tag multilingual seo">
   <div>
     <p class="card-kicker">Seo</p>
     <h2><a href="/tools/hreflang-tag-generator/">Hreflang Tag Generator</a></h2>
     <p>Generate clean hreflang tags for multilingual static websites.</p>
   </div>
   <a class="card-link" href="/tools/hreflang-tag-generator/">Open tool</a>
-</article><article class="tool-card">
+</article><article class="tool-card" data-tool-name="Open Graph &amp; Twitter Card Builder" data-category="seo" data-category-label="Seo" data-keywords="open graph generator twitter card generator social preview meta tags">
   <div>
     <p class="card-kicker">Seo</p>
     <h2><a href="/tools/og-twitter-card-builder/">Open Graph &amp; Twitter Card Builder</a></h2>
     <p>Build social preview meta tags for blog posts and static pages.</p>
   </div>
   <a class="card-link" href="/tools/og-twitter-card-builder/">Open tool</a>
-</article><article class="tool-card">
+</article><article class="tool-card" data-tool-name="Static Site SEO Checklist Generator" data-category="seo" data-category-label="Seo" data-keywords="static site seo checklist github pages seo checklist website launch checklist">
   <div>
     <p class="card-kicker">Seo</p>
     <h2><a href="/tools/static-site-seo-checklist-generator/">Static Site SEO Checklist Generator</a></h2>
@@ -173,21 +176,21 @@
     <h2>Also try</h2>
   </div>
   <div class="wrap tool-grid compact">
-    <article class="tool-card">
+    <article class="tool-card" data-tool-name="HTML Link Rel Generator" data-category="html" data-category-label="Html" data-keywords="html link rel generator preload tag generator preconnect generator">
   <div>
     <p class="card-kicker">Html</p>
     <h2><a href="/tools/html-link-rel-generator/">HTML Link Rel Generator</a></h2>
     <p>Generate link tags for preload, preconnect, dns-prefetch, canonical, and alternate URLs.</p>
   </div>
   <a class="card-link" href="/tools/html-link-rel-generator/">Open tool</a>
-</article><article class="tool-card">
+</article><article class="tool-card" data-tool-name="Responsive Iframe Embed Generator" data-category="html" data-category-label="Html" data-keywords="responsive iframe generator iframe embed code aspect ratio iframe">
   <div>
     <p class="card-kicker">Html</p>
     <h2><a href="/tools/responsive-iframe-embed-generator/">Responsive Iframe Embed Generator</a></h2>
     <p>Generate responsive iframe embed markup for videos, maps, demos, and docs.</p>
   </div>
   <a class="card-link" href="/tools/responsive-iframe-embed-generator/">Open tool</a>
-</article><article class="tool-card">
+</article><article class="tool-card" data-tool-name="URL Slug Generator" data-category="html" data-category-label="Html" data-keywords="url slug generator seo slug url friendly string slugify">
   <div>
     <p class="card-kicker">Html</p>
     <h2><a href="/tools/url-slug-generator/">URL Slug Generator</a></h2>

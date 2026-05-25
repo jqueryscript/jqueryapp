@@ -11,11 +11,11 @@
   <meta property="og:description" content="Generate a Content-Security-Policy header for static sites with CDN, analytics, font, and embed options. Free in your browser, with no account or upload.">
   <meta property="og:url" content="https://www.jquery.app/tools/csp-starter-policy-generator/">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://www.jquery.app/assets/social/og-seo.png/">
+  <meta property="og:image" content="https://www.jquery.app/assets/social/og-seo.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://www.jquery.app/assets/social/og-seo.png/">
+  <meta name="twitter:image" content="https://www.jquery.app/assets/social/og-seo.png">
   <link rel="alternate" hreflang="en" href="https://www.jquery.app/tools/csp-starter-policy-generator/">
   <link rel="alternate" hreflang="de" href="https://www.jquery.app/de/tools/csp-starter-policy-generator/">
   <link rel="alternate" hreflang="fr" href="https://www.jquery.app/fr/tools/csp-starter-policy-generator/">
@@ -81,6 +81,8 @@
     <article class="tool-article">
       <h2>What is CSP Starter Policy Generator for Static Sites?</h2>
       <p>Content-Security-Policy (CSP) is a browser security header that controls which resources a page is allowed to load. It helps prevent cross-site scripting, data injection, and other code injection attacks. For static sites, a CSP header can be simple and conservative because most static pages load resources from predictable, controlled origins.</p>
+      <div class="quick-answer"><h3>Quick answer</h3><p>A Content Security Policy blocks cross-site scripting and data injection attacks by restricting which resources the browser can load. Start with a restrictive policy and widen only when needed.</p></div>
+      <h3>Limitations</h3><ul><li>CSP does not protect against server-side vulnerabilities or compromised third-party libraries already included in the policy.</li><li>Inline event handlers and javascript: URLs are blocked unless 'unsafe-inline' or a hash/nonce is set.</li><li>GitHub Pages does not support custom HTTP headers; use a meta tag-based CSP instead, which has limited directive support compared to the HTTP header.</li></ul>
       <h2>How to use this tool</h2>
       <ol><li>Pick a preset that matches your site type: static, with CDN, with analytics, or with embedded content.</li><li>Review the generated directives and toggle additional sources your site needs.</li><li>Copy the CSP header into your hosting configuration or as a meta tag.</li><li>Deploy the report-only version first and check the browser console for violations before enforcing.</li></ol>
       <h2>What you can use it for</h2>
@@ -114,6 +116,7 @@
     <article class="tool-article">
       <h2>Common mistakes</h2>
       <ul><li>Deploying a CSP in enforce mode without testing in report-only mode first, which can break legitimate resources.</li><li>Using 'unsafe-inline' for scripts without understanding that it disables most of the XSS protection CSP provides.</li><li>Forgetting to add the GitHub Pages preview domain or CDN origin to the policy, causing the site to break on deployment.</li></ul>
+      <h2>Verification</h2><ol><li>Deploy the CSP in report-only mode first by using Content-Security-Policy-Report-Only and check the browser console for violation reports.</li><li>Switch to the enforce header only after confirming no legitimate resources are being blocked.</li></ol>
     </article>
   </div>
 </section>
@@ -143,21 +146,21 @@
     <h2>More seo tools</h2>
   </div>
   <div class="wrap tool-grid compact">
-    <article class="tool-card">
+    <article class="tool-card" data-tool-name="Hreflang Tag Generator" data-category="seo" data-category-label="Seo" data-keywords="hreflang generator alternate language tag multilingual seo">
   <div>
     <p class="card-kicker">Seo</p>
     <h2><a href="/tools/hreflang-tag-generator/">Hreflang Tag Generator</a></h2>
     <p>Generate clean hreflang tags for multilingual static websites.</p>
   </div>
   <a class="card-link" href="/tools/hreflang-tag-generator/">Open tool</a>
-</article><article class="tool-card">
+</article><article class="tool-card" data-tool-name="Open Graph &amp; Twitter Card Builder" data-category="seo" data-category-label="Seo" data-keywords="open graph generator twitter card generator social preview meta tags">
   <div>
     <p class="card-kicker">Seo</p>
     <h2><a href="/tools/og-twitter-card-builder/">Open Graph &amp; Twitter Card Builder</a></h2>
     <p>Build social preview meta tags for blog posts and static pages.</p>
   </div>
   <a class="card-link" href="/tools/og-twitter-card-builder/">Open tool</a>
-</article><article class="tool-card">
+</article><article class="tool-card" data-tool-name="Static Site SEO Checklist Generator" data-category="seo" data-category-label="Seo" data-keywords="static site seo checklist github pages seo checklist website launch checklist">
   <div>
     <p class="card-kicker">Seo</p>
     <h2><a href="/tools/static-site-seo-checklist-generator/">Static Site SEO Checklist Generator</a></h2>
@@ -173,21 +176,21 @@
     <h2>Also try</h2>
   </div>
   <div class="wrap tool-grid compact">
-    <article class="tool-card">
+    <article class="tool-card" data-tool-name="HTML Link Rel Generator" data-category="html" data-category-label="Html" data-keywords="html link rel generator preload tag generator preconnect generator">
   <div>
     <p class="card-kicker">Html</p>
     <h2><a href="/tools/html-link-rel-generator/">HTML Link Rel Generator</a></h2>
     <p>Generate link tags for preload, preconnect, dns-prefetch, canonical, and alternate URLs.</p>
   </div>
   <a class="card-link" href="/tools/html-link-rel-generator/">Open tool</a>
-</article><article class="tool-card">
+</article><article class="tool-card" data-tool-name="Responsive Iframe Embed Generator" data-category="html" data-category-label="Html" data-keywords="responsive iframe generator iframe embed code aspect ratio iframe">
   <div>
     <p class="card-kicker">Html</p>
     <h2><a href="/tools/responsive-iframe-embed-generator/">Responsive Iframe Embed Generator</a></h2>
     <p>Generate responsive iframe embed markup for videos, maps, demos, and docs.</p>
   </div>
   <a class="card-link" href="/tools/responsive-iframe-embed-generator/">Open tool</a>
-</article><article class="tool-card">
+</article><article class="tool-card" data-tool-name="URL Slug Generator" data-category="html" data-category-label="Html" data-keywords="url slug generator seo slug url friendly string slugify">
   <div>
     <p class="card-kicker">Html</p>
     <h2><a href="/tools/url-slug-generator/">URL Slug Generator</a></h2>

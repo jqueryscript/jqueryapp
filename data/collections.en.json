@@ -15,16 +15,71 @@
       "robots-txt-builder",
       "responsive-image-markup-generator"
     ],
-    "faq": [
+    "workflowSteps": [
       {
-        "question": "What order should I use these tools?",
-        "answer": "Start with the CNAME helper to set up your domain, then the SEO checklist to verify pages, then the robots.txt builder for crawler rules, then responsive image markup for media, and finally the SPA 404 helper if your site is a single-page app."
+        "step": 1,
+        "name": "Set up your repository",
+        "description": "Create or configure your GitHub repository with the correct publishing source. Choose the branch and folder that GitHub Pages will serve from, such as main /root for user sites or gh-pages /docs for project sites."
       },
       {
-        "question": "Do I need all of these for a simple GitHub Pages site?",
-        "answer": "Not necessarily. A minimal setup might only need the CNAME helper and the SEO checklist. Add the other tools as your site grows or when you notice missing favicons, broken social previews, or crawler issues."
+        "step": 2,
+        "name": "Configure your custom domain",
+        "description": "Prepare a CNAME file with your custom domain and place it in the published output root. Configure the custom domain field in your repository settings."
+      },
+      {
+        "step": 3,
+        "name": "Update DNS records",
+        "description": "Create a CNAME record for your www subdomain pointing to your GitHub Pages URL. Configure an ALIAS, ANAME, or A record for your apex domain if you use one."
+      },
+      {
+        "step": 4,
+        "name": "Run the SEO checklist",
+        "description": "Use the static site SEO checklist generator to review your page metadata, indexing directives, and required files before pushing."
+      },
+      {
+        "step": 5,
+        "name": "Push and wait for HTTPS",
+        "description": "Push your changes and wait for GitHub Pages to deploy and provision an HTTPS certificate. This can take several minutes for a new custom domain."
+      },
+      {
+        "step": 6,
+        "name": "Verify the live site",
+        "description": "Test the published URL over both HTTP and HTTPS. Check that CNAME, robots.txt, sitemap.xml, and all assets serve correctly from the published output."
       }
-    ]
+    ],
+    "checklist": [
+      "CNAME file exists in the published output root and contains only the custom domain name with no extra characters.",
+      "DNS records for the custom domain have propagated, confirmed with a DNS lookup tool.",
+      "Repository publishing source setting matches the branch and folder used in the build.",
+      "HTTPS certificate is active and the site redirects HTTP to HTTPS automatically.",
+      "Sitemap.xml and robots.txt exist in the published root and reference correct URLs.",
+      "All assets referenced in pages, such as CSS, images, and JavaScript, return 200 status and not 404."
+    ],
+    "prerequisites": [
+      "A GitHub account with a repository configured for Pages publishing.",
+      "A custom domain name with DNS management access through your registrar or DNS provider.",
+      "Static site files ready to publish, including an index.html in the output root.",
+      "A build system or CI workflow that generates a dist folder or output directory for publishing."
+    ],
+    "faq": [
+      {
+        "question": "What happens if I change my publishing source after the site is live?",
+        "answer": "Changing the publishing source can cause a temporary outage. GitHub Pages needs to redeploy from the new source, and your custom domain may lose its HTTPS certificate during the transition. Make this change during low traffic."
+      },
+      {
+        "question": "Can I use GitHub Pages with a static site generator?",
+        "answer": "Yes. GitHub Pages works with any static site generator. The CI workflow typically runs the build command and deploys the output. Just make sure the generated output folder matches the publishing source setting."
+      },
+      {
+        "question": "Do I need to add a .nojekyll file?",
+        "answer": "If your site uses files or folders starting with an underscore, GitHub Pages may skip them because Jekyll treats underscored paths as special. Add a .nojekyll file to the published output root to disable Jekyll processing."
+      },
+      {
+        "question": "Why does my custom domain show a certificate error?",
+        "answer": "Certificate errors usually mean DNS has not propagated, the custom domain is misconfigured in repository settings, or GitHub Pages has not finished provisioning the certificate. Check that the CNAME file matches the repository custom domain field and that DNS points to the correct GitHub Pages IP addresses."
+      }
+    ],
+    "relatedCollections": ["multilingual-site", "blog-publisher"]
   },
   "blog-publisher": {
     "name": "Blog Publisher Toolkit",
@@ -42,16 +97,71 @@
       "responsive-image-markup-generator",
       "json-ld-starter-builder"
     ],
-    "faq": [
+    "workflowSteps": [
       {
-        "question": "Should every blog post have Open Graph tags?",
-        "answer": "Yes. Each post should carry its own og:title, og:description, og:url, and og:image tags so that sharing the post on social platforms produces a useful preview. The og-twitter-card-builder handles both Open Graph and Twitter Card markup in one step."
+        "step": 1,
+        "name": "Write and finalize your post content",
+        "description": "Complete your article text, headline, excerpt, and featured image before generating metadata. Final content ensures your social preview text, structured data, and canonical URL reflect the published version."
       },
       {
-        "question": "Do I need structured data on every article?",
-        "answer": "Article structured data helps search engines understand the content type, headline, author, and publication date. It is useful for blogs and news sites but optional for simple personal pages."
+        "step": 2,
+        "name": "Create social preview tags",
+        "description": "Use the OG and Twitter Card builder to generate Open Graph and Twitter Card tags with your post title, description, URL, and image. These tags control how your post appears when shared on social platforms."
+      },
+      {
+        "step": 3,
+        "name": "Set the canonical URL",
+        "description": "Generate a canonical link tag that points to the published URL of the post. This prevents duplicate content issues if the post appears on multiple paths, such as category and tag archive pages."
+      },
+      {
+        "step": 4,
+        "name": "Add structured data",
+        "description": "Use the JSON-LD starter builder to generate Article schema with your post headline, publication date, author, and featured image. Structured data helps search engines display rich results for your content."
+      },
+      {
+        "step": 5,
+        "name": "Configure link relationships",
+        "description": "Generate link rel tags for pagination, alternate formats, and related content. Include prev and next tags for multi-page articles and alternate tags for translated versions if applicable."
+      },
+      {
+        "step": 6,
+        "name": "Prepare responsive images",
+        "description": "Generate responsive image markup with multiple source sizes and formats for your featured and inline images. Use srcset and picture elements to serve the appropriate image size for each viewport."
       }
-    ]
+    ],
+    "checklist": [
+      "Each post has unique og:title and og:description that match the post content, not a site-wide default.",
+      "Canonical URL is set to the final published URL and matches any URL parameters or trailing slash conventions used on the site.",
+      "JSON-LD structured data includes required Article properties: headline, datePublished, author, and image.",
+      "Link rel prev and next tags only appear on paginated post series, not on individual single-page posts.",
+      "Responsive image srcset includes at least two source sizes with the correct ordering from smallest to largest.",
+      "Social preview image URL is absolute or resolves correctly when shared outside the site context."
+    ],
+    "prerequisites": [
+      "A blog or article page with finalized headline, excerpt, and featured image file.",
+      "A publishing platform or static site generator that supports custom head markup per page.",
+      "Access to your site template or CMS custom fields to insert generated meta tags and structured data.",
+      "A content workflow that tracks the canonical URL and publication date for each post."
+    ],
+    "faq": [
+      {
+        "question": "Should I use the same social preview image for every blog post?",
+        "answer": "A shared default image is acceptable for small blogs, but unique images per post produce richer previews on social platforms and give readers context before they click. Create at least a post-specific og:title when a custom image is not available."
+      },
+      {
+        "question": "Do I need JSON-LD structured data for every post?",
+        "answer": "Article structured data helps search engines understand your content type and can enable rich results in search. It is useful for any blog that wants better search visibility, though it is not required for indexing or ranking."
+      },
+      {
+        "question": "Should I set a canonical URL on a post that is only published once?",
+        "answer": "Yes. If the post might appear on category, tag, author, or archive pages, those URLs could be treated as duplicate content. Setting a canonical on the main post URL keeps the signal clear."
+      },
+      {
+        "question": "How do responsive images affect blog performance?",
+        "answer": "Responsive images reduce unnecessary data transfer by serving smaller files to smaller screens. This improves load time on mobile devices and reduces bandwidth usage without sacrificing image quality on larger displays."
+      }
+    ],
+    "relatedCollections": ["multilingual-site", "github-pages-workflow"]
   },
   "beginner-css": {
     "name": "Beginner CSS Starter Kit",
@@ -67,16 +177,64 @@
       "css-safe-area-insets-generator",
       "responsive-iframe-embed-generator"
     ],
-    "faq": [
+    "workflowSteps": [
       {
-        "question": "Do I need to understand clamp() to use the CSS tools?",
-        "answer": "No. The clamp calculator handles the math for you. Enter your minimum and maximum sizes and viewport widths, and the tool produces a usable clamp() declaration with explanatory comments."
+        "step": 1,
+        "name": "Set base font sizes and viewport range",
+        "description": "Decide the minimum and maximum font sizes for your body text and headings. Choose a viewport range, typically from 375px to 1440px, that covers your target devices."
       },
       {
-        "question": "What is safe-area-inset and when should I use it?",
-        "answer": "Safe-area insets are CSS environment variables that describe the visible area of a phone screen that is not covered by a notch, rounded corners, or a home indicator. Use them when you need padding or margins that respect those device features."
+        "step": 2,
+        "name": "Generate clamp values for typography",
+        "description": "Use the clamp calculator to create fluid type declarations for body text, headings, and any large display text. Enter your chosen sizes and viewport range to produce ready-to-copy CSS."
+      },
+      {
+        "step": 3,
+        "name": "Add responsive spacing values",
+        "description": "Generate clamp values for margins, padding, and gaps between layout sections. Use the same viewport range you chose for typography to keep spacing consistent with text scaling."
+      },
+      {
+        "step": 4,
+        "name": "Apply safe-area-inset support",
+        "description": "Use the safe-area-inset generator to create CSS for fixed headers, bottom navigation, and full-width elements that need to avoid phone notches and rounded corners. Add these values after your main layout is stable."
+      },
+      {
+        "step": 5,
+        "name": "Create responsive embed containers",
+        "description": "Use the responsive iframe embed generator to wrap embeds in containers that maintain aspect ratio across screen sizes. Test with actual embed URLs from video, map, or documentation sources."
       }
-    ]
+    ],
+    "checklist": [
+      "Text is readable at every viewport width between the minimum and maximum, with no unexpected jumps at breakpoints.",
+      "Clamp() values include a static fallback for browsers that do not support the function.",
+      "Safe-area-inset values have fallbacks using regular padding values for desktop browsers that return zero for env().",
+      "Responsive embed containers display correctly at the narrowest viewport width without horizontal overflow.",
+      "All generated CSS uses the same viewport range so typography, spacing, and layout scale together."
+    ],
+    "prerequisites": [
+      "A working HTML page with an existing stylesheet where the generated CSS values will be inserted.",
+      "A clear idea of minimum and maximum viewport widths your design targets, such as 375px mobile to 1440px desktop.",
+      "Basic familiarity with your browser developer tools to inspect and test CSS values after applying them."
+    ],
+    "faq": [
+      {
+        "question": "Should I use the same viewport range for all clamp values?",
+        "answer": "Yes, using the same viewport range across all clamp() declarations keeps typography, spacing, and layout elements scaling at the same rate. Mixing ranges can cause one element to grow faster than another."
+      },
+      {
+        "question": "Do I need to add clamp support for every CSS property?",
+        "answer": "Only properties where you want fluid responsive behavior need clamp(). Static properties like borders, small padding, and fixed-width elements can use traditional unit values without clamp()."
+      },
+      {
+        "question": "How do I test safe-area-inset values without a notched phone?",
+        "answer": "Chrome DevTools and Safari Web Inspector both offer device emulation with notch simulation. You can also test by applying the safe-area values and checking that padding increases appropriately when the environment variable is not zero."
+      },
+      {
+        "question": "Can I use the responsive embed generator for any external content?",
+        "answer": "The generator works best with content that has a fixed aspect ratio, such as YouTube videos, Google Maps, and embedded documents. It is less suitable for interactive embeds that change height based on user interaction."
+      }
+    ],
+    "relatedCollections": []
   },
   "multilingual-site": {
     "name": "Multilingual Website Setup",
@@ -94,15 +252,69 @@
       "html-link-rel-generator",
       "robots-txt-builder"
     ],
-    "faq": [
+    "workflowSteps": [
       {
-        "question": "Should every language page include the same hreflang set?",
-        "answer": "Yes. Each equivalent page should link to every alternate version, including itself. This reciprocal pattern helps search engines understand the full language group and select the right version for each visitor."
+        "step": 1,
+        "name": "Identify all language versions of each page",
+        "description": "List every page on your site that has translated equivalents. Each page in the group should have the same content in a different language. Note the URL of every version including the default language page."
       },
       {
-        "question": "Do I need hreflang tags for a site with only two languages?",
-        "answer": "Yes. Even two-language sites benefit from hreflang tags because they remove ambiguity about which version of a page should appear in search results for each language audience."
+        "step": 2,
+        "name": "Generate hreflang tags",
+        "description": "Use the hreflang tag generator to create link tags that connect all language versions of a page. Include self-referencing tags so each page links to every alternate version including itself."
+      },
+      {
+        "step": 3,
+        "name": "Set canonical URLs per language",
+        "description": "Generate a canonical tag for each language version pointing to the equivalent page in that same language. The canonical URL should match the hreflang entry so search engines see consistent signals."
+      },
+      {
+        "step": 4,
+        "name": "Create localized social preview tags",
+        "description": "Generate Open Graph and Twitter Card tags for each language version. Translate the og:title, og:description, and og:url for each language. Use language-specific images when the featured image contains text that needs translation."
+      },
+      {
+        "step": 5,
+        "name": "Configure robots directives for translated content",
+        "description": "Use the robots.txt builder to add language-specific sections if search engines should crawl translated pages differently. In most cases, all language versions should be crawlable and indexable."
+      },
+      {
+        "step": 6,
+        "name": "Add link rel alternate tags",
+        "description": "Generate alternate link tags in the head of each page to indicate available language alternatives. These tags complement hreflang and help search engines and browsers understand the language options."
       }
-    ]
+    ],
+    "checklist": [
+      "Every page in a language group has a complete set of hreflang tags linking to all versions including itself.",
+      "Canonical URLs on translated pages point to the same-language URL, not the default language version.",
+      "Hreflang tags use the correct language codes from the ISO 639-1 standard, not invented codes or country codes alone.",
+      "Open Graph tags on translated pages use translated text, not the default language title and description.",
+      "The x-default hreflang entry is set if you have a language selector or fallback page for unspecified language preferences.",
+      "Robots.txt does not block translated pages from crawling unless there is a specific reason such as thin content."
+    ],
+    "prerequisites": [
+      "A site with content translated into at least two languages, each on its own URL path.",
+      "A consistent URL structure for language versions, such as example.com/en/page and example.com/fr/page or subdomain-based patterns like en.example.com.",
+      "ISO 639-1 language codes for all languages used, such as en for English, fr for French, ja for Japanese."
+    ],
+    "faq": [
+      {
+        "question": "Should I use subdirectories or subdomains for language versions?",
+        "answer": "Subdirectories are simpler to manage and keep link equity consolidated under one domain. Subdomains are treated as separate sites by search engines and require separate SEO work for each one. Choose subdirectories unless you have a business reason for separate domains per language."
+      },
+      {
+        "question": "Do I need a separate sitemap for each language?",
+        "answer": "One sitemap can include all language versions with the correct hreflang annotations. You do not need separate sitemaps per language, but each URL entry must include the full set of alternate language links."
+      },
+      {
+        "question": "What happens if I add a new language to an existing site without updating hreflang?",
+        "answer": "Search engines will continue to serve the existing language versions, but may not show the new language pages to users who search in that language. Missing hreflang links can also cause incorrect language targeting."
+      },
+      {
+        "question": "Should translated pages use translated URLs or keep the original URL slug?",
+        "answer": "Translated URLs with localized slugs are preferred because they help search engines understand the page language and give users a readable URL. Translating the slug also avoids duplicate content signals from identical URL paths."
+      }
+    ],
+    "relatedCollections": ["blog-publisher", "github-pages-workflow"]
   }
 }

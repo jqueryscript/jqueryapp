@@ -11,11 +11,11 @@
   <meta property="og:description" content="Enter a domain name and see example A, AAAA, CNAME, MX, and TXT records with setup notes. Free in your browser, with no account or upload.">
   <meta property="og:url" content="https://www.jquery.app/tools/dns-record-quick-reference/">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://www.jquery.app/assets/social/og-github-pages.png/">
+  <meta property="og:image" content="https://www.jquery.app/assets/social/og-github-pages.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://www.jquery.app/assets/social/og-github-pages.png/">
+  <meta name="twitter:image" content="https://www.jquery.app/assets/social/og-github-pages.png">
   <link rel="alternate" hreflang="en" href="https://www.jquery.app/tools/dns-record-quick-reference/">
   <link rel="alternate" hreflang="de" href="https://www.jquery.app/de/tools/dns-record-quick-reference/">
   <link rel="alternate" hreflang="fr" href="https://www.jquery.app/fr/tools/dns-record-quick-reference/">
@@ -81,6 +81,8 @@
     <article class="tool-article">
       <h2>What is DNS Record Quick Reference?</h2>
       <p>DNS records translate human-readable domain names into the instructions that route traffic, deliver email, and verify domain ownership. Beginners encounter A, AAAA, CNAME, MX, and TXT records most often when setting up custom domains for hosting services such as GitHub Pages. Each record type serves a different purpose: A records point to IPv4 addresses, AAAA records point to IPv6 addresses, CNAME records alias one name to another, MX records direct email, and TXT records hold verification and policy data. This tool provides example values and setup context without requiring command-line knowledge.</p>
+      
+      
       <h2>How to use this tool</h2>
       <ol><li>Enter your domain name. The tool generates example DNS records based on common hosting scenarios.</li><li>Review the generated table of record types, each with an example value and a short explanation.</li><li>Read the setup notes under each record type for practical configuration guidance.</li><li>Use the examples as a starting point for your actual DNS configuration at your domain provider.</li></ol>
       <h2>What you can use it for</h2>
@@ -114,6 +116,7 @@
     <article class="tool-article">
       <h2>Common mistakes</h2>
       <ul><li>Confusing CNAME and A records and using a CNAME where an A record is needed or vice versa.</li><li>Adding a CNAME at the apex or root of a domain, which is not allowed by the DNS specification.</li><li>Forgetting to set TTL values, leaving the default TTL which may be longer than intended for change management.</li></ul>
+      
     </article>
   </div>
 </section>
@@ -140,21 +143,21 @@
     <h2>More github pages tools</h2>
   </div>
   <div class="wrap tool-grid compact">
-    <article class="tool-card">
+    <article class="tool-card" data-tool-name="GitHub Pages CNAME Helper" data-category="github-pages" data-category-label="Github Pages" data-keywords="github pages cname github pages custom domain cname file generator">
   <div>
     <p class="card-kicker">Github Pages</p>
     <h2><a href="/tools/github-pages-cname-helper/">GitHub Pages CNAME Helper</a></h2>
     <p>Create the CNAME file content and DNS notes for a GitHub Pages custom domain.</p>
   </div>
   <a class="card-link" href="/tools/github-pages-cname-helper/">Open tool</a>
-</article><article class="tool-card">
+</article><article class="tool-card" data-tool-name="GitHub Pages SPA 404 Helper" data-category="github-pages" data-category-label="Github Pages" data-keywords="github pages spa 404 github pages client side routing 404 fallback generator">
   <div>
     <p class="card-kicker">Github Pages</p>
     <h2><a href="/tools/github-pages-spa-404-helper/">GitHub Pages SPA 404 Helper</a></h2>
     <p>Generate a 404.html fallback for single-page apps on GitHub Pages.</p>
   </div>
   <a class="card-link" href="/tools/github-pages-spa-404-helper/">Open tool</a>
-</article><article class="tool-card">
+</article><article class="tool-card" data-tool-name="GitHub Pages Workflow Generator" data-category="github-pages" data-category-label="Github Pages" data-keywords="github pages workflow deploy static site action github pages yaml pages deploy action">
   <div>
     <p class="card-kicker">Github Pages</p>
     <h2><a href="/tools/github-pages-workflow-generator/">GitHub Pages Workflow Generator</a></h2>
@@ -170,21 +173,21 @@
     <h2>Also try</h2>
   </div>
   <div class="wrap tool-grid compact">
-    <article class="tool-card">
+    <article class="tool-card" data-tool-name="Hreflang Tag Generator" data-category="seo" data-category-label="Seo" data-keywords="hreflang generator alternate language tag multilingual seo">
   <div>
     <p class="card-kicker">Seo</p>
     <h2><a href="/tools/hreflang-tag-generator/">Hreflang Tag Generator</a></h2>
     <p>Generate clean hreflang tags for multilingual static websites.</p>
   </div>
   <a class="card-link" href="/tools/hreflang-tag-generator/">Open tool</a>
-</article><article class="tool-card">
+</article><article class="tool-card" data-tool-name="Open Graph &amp; Twitter Card Builder" data-category="seo" data-category-label="Seo" data-keywords="open graph generator twitter card generator social preview meta tags">
   <div>
     <p class="card-kicker">Seo</p>
     <h2><a href="/tools/og-twitter-card-builder/">Open Graph &amp; Twitter Card Builder</a></h2>
     <p>Build social preview meta tags for blog posts and static pages.</p>
   </div>
   <a class="card-link" href="/tools/og-twitter-card-builder/">Open tool</a>
-</article><article class="tool-card">
+</article><article class="tool-card" data-tool-name="Static Site SEO Checklist Generator" data-category="seo" data-category-label="Seo" data-keywords="static site seo checklist github pages seo checklist website launch checklist">
   <div>
     <p class="card-kicker">Seo</p>
     <h2><a href="/tools/static-site-seo-checklist-generator/">Static Site SEO Checklist Generator</a></h2>

@@ -11,11 +11,11 @@
   <meta property="og:description" content="Outils pour domaines personnalisés, publication statique, controles de lancement et maintenance GitHub Pages.">
   <meta property="og:url" content="https://www.jquery.app/fr/tools/github-pages/">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://www.jquery.app/fr/assets/social/og-github-pages.png/">
+  <meta property="og:image" content="https://www.jquery.app/assets/social/og-github-pages.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://www.jquery.app/fr/assets/social/og-github-pages.png/">
+  <meta name="twitter:image" content="https://www.jquery.app/assets/social/og-github-pages.png">
   <link rel="alternate" hreflang="en" href="https://www.jquery.app/tools/github-pages/">
   <link rel="alternate" hreflang="de" href="https://www.jquery.app/de/tools/github-pages/">
   <link rel="alternate" hreflang="fr" href="https://www.jquery.app/fr/tools/github-pages/">
@@ -62,28 +62,28 @@
     <h2>Outils GitHub Pages disponibles maintenant</h2>
   </div>
   <div class="wrap tool-grid">
-    <article class="tool-card">
+    <article class="tool-card" data-tool-name="Assistant CNAME GitHub Pages" data-category="github-pages" data-category-label="Github Pages" data-keywords="github pages cname github pages custom domain cname file generator">
   <div>
     <p class="card-kicker">Github Pages</p>
     <h2><a href="/fr/tools/github-pages-cname-helper/">Assistant CNAME GitHub Pages</a></h2>
     <p>Créez le contenu CNAME et les notes DNS pour un domaine GitHub Pages.</p>
   </div>
   <a class="card-link" href="/fr/tools/github-pages-cname-helper/">Ouvrir l'outil</a>
-</article><article class="tool-card">
+</article><article class="tool-card" data-tool-name="Aide 404 SPA GitHub Pages" data-category="github-pages" data-category-label="Github Pages" data-keywords="github pages spa 404 github pages client side routing 404 fallback generator">
   <div>
     <p class="card-kicker">Github Pages</p>
     <h2><a href="/fr/tools/github-pages-spa-404-helper/">Aide 404 SPA GitHub Pages</a></h2>
     <p>Créez un fallback 404.html pour les applications monopages sur GitHub Pages.</p>
   </div>
   <a class="card-link" href="/fr/tools/github-pages-spa-404-helper/">Ouvrir l'outil</a>
-</article><article class="tool-card">
+</article><article class="tool-card" data-tool-name="Reference rapide des enregistrements DNS" data-category="github-pages" data-category-label="Github Pages" data-keywords="dns records dns reference A record CNAME domain setup dns types">
   <div>
     <p class="card-kicker">Github Pages</p>
     <h2><a href="/fr/tools/dns-record-quick-reference/">Reference rapide des enregistrements DNS</a></h2>
     <p>Saisissez un domaine et obtenez des exemples d'enregistrements A, AAAA, CNAME, MX et TXT.</p>
   </div>
   <a class="card-link" href="/fr/tools/dns-record-quick-reference/">Ouvrir l'outil</a>
-</article><article class="tool-card">
+</article><article class="tool-card" data-tool-name="Generateur de workflow GitHub Pages" data-category="github-pages" data-category-label="Github Pages" data-keywords="github pages workflow deploy static site action github pages yaml pages deploy action">
   <div>
     <p class="card-kicker">Github Pages</p>
     <h2><a href="/fr/tools/github-pages-workflow-generator/">Generateur de workflow GitHub Pages</a></h2>
@@ -105,6 +105,8 @@
       <p>GitHub Pages est simple, mais les règles de domaine et de publication sont strictes. Un CNAME au mauvais endroit ou un index manquant peut produire une 404.</p>
       <h2>Ideal pour</h2><ul><li>Préparer un domaine personnalise.</li><li>Vérifier le dossier de sortie avant push.</li><li>Garder CNAME, sitemap et robots.txt dans le dossier publié.</li></ul>
       <h2>Cas d'usage courants</h2><ul><li>Générer le contenu CNAME valide.</li><li>Séparer notes DNS et réglages du depot.</li><li>Vérifier les details avant HTTPS et partage.</li></ul>
+      <h2>Task guide</h2><p>Use GitHub Pages tools when you set up a new site, move an existing site to a custom domain, or troubleshoot a deployment that is not serving correctly. Start by confirming your site repository settings: the publishing source branch and folder. Use the CNAME helper to prepare a custom domain file and verify your DNS configuration before enabling HTTPS. Add a 404 HTML page for single-page applications that handle client-side routing. Finish with the SEO checklist to verify that your generated output includes essential files like robots.txt, sitemap.xml, and proper metadata.</p>
+      <h2>Publishing checklist</h2><ul><li>Confirm the CNAME file exists in the root of your published output, not your project source root, and matches your custom domain exactly.</li><li>Verify that the GitHub Pages publishing source setting points to the correct branch and folder, such as main /root or gh-pages /docs.</li><li>Check DNS records for your custom domain: a CNAME record for www and either ALIAS or A records for the apex domain.</li><li>Test the site URL after HTTPS is provisioned, as GitHub Pages can take several minutes to issue a certificate.</li><li>Enable HTTPS enforcement only after confirming the site loads correctly over both HTTP and HTTPS.</li></ul>
     </article>
   </div>
 </section>

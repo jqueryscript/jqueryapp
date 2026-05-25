@@ -11,11 +11,11 @@
   <meta property="og:description" content="Tools for social previews, clean HTML markup, canonical URLs, structured data, and responsive images for blog posts and article pages.">
   <meta property="og:url" content="https://www.jquery.app/collections/blog-publisher/">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://www.jquery.app/assets/social/og-blog-publisher.png/">
+  <meta property="og:image" content="https://www.jquery.app/assets/social/og-blog-publisher.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://www.jquery.app/assets/social/og-blog-publisher.png/">
+  <meta name="twitter:image" content="https://www.jquery.app/assets/social/og-blog-publisher.png">
   <link rel="alternate" hreflang="en" href="https://www.jquery.app/collections/blog-publisher/">
   <link rel="alternate" hreflang="de" href="https://www.jquery.app/de/collections/blog-publisher/">
   <link rel="alternate" hreflang="fr" href="https://www.jquery.app/fr/collections/blog-publisher/">
@@ -62,35 +62,35 @@
     <h2>Blog Publisher Toolkit you can use now</h2>
   </div>
   <div class="wrap tool-grid">
-    <article class="tool-card">
+    <article class="tool-card" data-tool-name="Open Graph &amp; Twitter Card Builder" data-category="seo" data-category-label="Seo" data-keywords="open graph generator twitter card generator social preview meta tags">
   <div>
     <p class="card-kicker">Seo</p>
     <h2><a href="/tools/og-twitter-card-builder/">Open Graph &amp; Twitter Card Builder</a></h2>
     <p>Build social preview meta tags for blog posts and static pages.</p>
   </div>
   <a class="card-link" href="/tools/og-twitter-card-builder/">Open tool</a>
-</article><article class="tool-card">
+</article><article class="tool-card" data-tool-name="Canonical URL Tag Generator" data-category="seo" data-category-label="Seo" data-keywords="canonical tag generator canonical url seo link tag">
   <div>
     <p class="card-kicker">Seo</p>
     <h2><a href="/tools/canonical-url-tag-generator/">Canonical URL Tag Generator</a></h2>
     <p>Generate canonical link tags for static pages and blog posts.</p>
   </div>
   <a class="card-link" href="/tools/canonical-url-tag-generator/">Open tool</a>
-</article><article class="tool-card">
+</article><article class="tool-card" data-tool-name="HTML Link Rel Generator" data-category="html" data-category-label="Html" data-keywords="html link rel generator preload tag generator preconnect generator">
   <div>
     <p class="card-kicker">Html</p>
     <h2><a href="/tools/html-link-rel-generator/">HTML Link Rel Generator</a></h2>
     <p>Generate link tags for preload, preconnect, dns-prefetch, canonical, and alternate URLs.</p>
   </div>
   <a class="card-link" href="/tools/html-link-rel-generator/">Open tool</a>
-</article><article class="tool-card">
+</article><article class="tool-card" data-tool-name="JSON-LD Starter Builder" data-category="seo" data-category-label="Seo" data-keywords="json-ld generator schema markup generator structured data builder">
   <div>
     <p class="card-kicker">Seo</p>
     <h2><a href="/tools/json-ld-starter-builder/">JSON-LD Starter Builder</a></h2>
     <p>Generate starter JSON-LD for WebSite, Organization, Article, FAQ, or BreadcrumbList.</p>
   </div>
   <a class="card-link" href="/tools/json-ld-starter-builder/">Open tool</a>
-</article><article class="tool-card">
+</article><article class="tool-card" data-tool-name="Responsive Image Markup Generator" data-category="assets" data-category-label="Assets" data-keywords="responsive image generator srcset generator picture tag generator">
   <div>
     <p class="card-kicker">Assets</p>
     <h2><a href="/tools/responsive-image-markup-generator/">Responsive Image Markup Generator</a></h2>
@@ -110,6 +110,10 @@
       <h2>What this collection helps with</h2>
       <p>Blog posts and article pages carry a small set of repeating metadata needs: social preview tags, canonical URLs, link relationships, image markup, and structured data. These details are easy to miss when publishing on a schedule. This collection helps keep them consistent across every post.</p>
       <h2>Best for</h2><ul><li>Preparing social share previews for blog posts.</li><li>Keeping canonical URLs and link tags consistent across article templates.</li><li>Adding structured data and image markup to content-heavy pages.</li></ul>
+      <h2>Workflow steps</h2><ol><li><strong>Write and finalize your post content</strong>: Complete your article text, headline, excerpt, and featured image before generating metadata. Final content ensures your social preview text, structured data, and canonical URL reflect the published version.</li><li><strong>Create social preview tags</strong>: Use the OG and Twitter Card builder to generate Open Graph and Twitter Card tags with your post title, description, URL, and image. These tags control how your post appears when shared on social platforms.</li><li><strong>Set the canonical URL</strong>: Generate a canonical link tag that points to the published URL of the post. This prevents duplicate content issues if the post appears on multiple paths, such as category and tag archive pages.</li><li><strong>Add structured data</strong>: Use the JSON-LD starter builder to generate Article schema with your post headline, publication date, author, and featured image. Structured data helps search engines display rich results for your content.</li><li><strong>Configure link relationships</strong>: Generate link rel tags for pagination, alternate formats, and related content. Include prev and next tags for multi-page articles and alternate tags for translated versions if applicable.</li><li><strong>Prepare responsive images</strong>: Generate responsive image markup with multiple source sizes and formats for your featured and inline images. Use srcset and picture elements to serve the appropriate image size for each viewport.</li></ol>
+      <h2>Prerequisites</h2><ul><li>A blog or article page with finalized headline, excerpt, and featured image file.</li><li>A publishing platform or static site generator that supports custom head markup per page.</li><li>Access to your site template or CMS custom fields to insert generated meta tags and structured data.</li><li>A content workflow that tracks the canonical URL and publication date for each post.</li></ul>
+      <h2>Publishing checklist</h2><ul><li>Each post has unique og:title and og:description that match the post content, not a site-wide default.</li><li>Canonical URL is set to the final published URL and matches any URL parameters or trailing slash conventions used on the site.</li><li>JSON-LD structured data includes required Article properties: headline, datePublished, author, and image.</li><li>Link rel prev and next tags only appear on paginated post series, not on individual single-page posts.</li><li>Responsive image srcset includes at least two source sizes with the correct ordering from smallest to largest.</li><li>Social preview image URL is absolute or resolves correctly when shared outside the site context.</li></ul>
+      <h2>Related collections</h2><p><a href="/collections/multilingual-site/">Multilingual Website Setup</a>, <a href="/collections/github-pages-workflow/">GitHub Pages Publishing Workflow</a></p>
     </article>
   </div>
 </section>
@@ -121,11 +125,17 @@
     </div>
     <div class="faq-list">
       <details class="faq-item">
-  <summary>Should every blog post have Open Graph tags?</summary>
-  <p>Yes. Each post should carry its own og:title, og:description, og:url, and og:image tags so that sharing the post on social platforms produces a useful preview. The og-twitter-card-builder handles both Open Graph and Twitter Card markup in one step.</p>
+  <summary>Should I use the same social preview image for every blog post?</summary>
+  <p>A shared default image is acceptable for small blogs, but unique images per post produce richer previews on social platforms and give readers context before they click. Create at least a post-specific og:title when a custom image is not available.</p>
 </details><details class="faq-item">
-  <summary>Do I need structured data on every article?</summary>
-  <p>Article structured data helps search engines understand the content type, headline, author, and publication date. It is useful for blogs and news sites but optional for simple personal pages.</p>
+  <summary>Do I need JSON-LD structured data for every post?</summary>
+  <p>Article structured data helps search engines understand your content type and can enable rich results in search. It is useful for any blog that wants better search visibility, though it is not required for indexing or ranking.</p>
+</details><details class="faq-item">
+  <summary>Should I set a canonical URL on a post that is only published once?</summary>
+  <p>Yes. If the post might appear on category, tag, author, or archive pages, those URLs could be treated as duplicate content. Setting a canonical on the main post URL keeps the signal clear.</p>
+</details><details class="faq-item">
+  <summary>How do responsive images affect blog performance?</summary>
+  <p>Responsive images reduce unnecessary data transfer by serving smaller files to smaller screens. This improves load time on mobile devices and reduces bandwidth usage without sacrificing image quality on larger displays.</p>
 </details>
     </div>
   </div>
@@ -158,6 +168,6 @@
       </div>
     </div>
   </footer>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Collections","item":"https://www.jquery.app/collections/"},{"@type":"ListItem","position":3,"name":"Blog Publisher Toolkit","item":"https://www.jquery.app/collections/blog-publisher/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Blog Publisher Toolkit","itemListElement":[{"@type":"ListItem","position":1,"name":"Open Graph & Twitter Card Builder","url":"https://www.jquery.app/tools/og-twitter-card-builder/"},{"@type":"ListItem","position":2,"name":"Canonical URL Tag Generator","url":"https://www.jquery.app/tools/canonical-url-tag-generator/"},{"@type":"ListItem","position":3,"name":"HTML Link Rel Generator","url":"https://www.jquery.app/tools/html-link-rel-generator/"},{"@type":"ListItem","position":4,"name":"JSON-LD Starter Builder","url":"https://www.jquery.app/tools/json-ld-starter-builder/"},{"@type":"ListItem","position":5,"name":"Responsive Image Markup Generator","url":"https://www.jquery.app/tools/responsive-image-markup-generator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Should every blog post have Open Graph tags?","acceptedAnswer":{"@type":"Answer","text":"Yes. Each post should carry its own og:title, og:description, og:url, and og:image tags so that sharing the post on social platforms produces a useful preview. The og-twitter-card-builder handles both Open Graph and Twitter Card markup in one step."}},{"@type":"Question","name":"Do I need structured data on every article?","acceptedAnswer":{"@type":"Answer","text":"Article structured data helps search engines understand the content type, headline, author, and publication date. It is useful for blogs and news sites but optional for simple personal pages."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Collections","item":"https://www.jquery.app/collections/"},{"@type":"ListItem","position":3,"name":"Blog Publisher Toolkit","item":"https://www.jquery.app/collections/blog-publisher/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Blog Publisher Toolkit","itemListElement":[{"@type":"ListItem","position":1,"name":"Open Graph & Twitter Card Builder","url":"https://www.jquery.app/tools/og-twitter-card-builder/"},{"@type":"ListItem","position":2,"name":"Canonical URL Tag Generator","url":"https://www.jquery.app/tools/canonical-url-tag-generator/"},{"@type":"ListItem","position":3,"name":"HTML Link Rel Generator","url":"https://www.jquery.app/tools/html-link-rel-generator/"},{"@type":"ListItem","position":4,"name":"JSON-LD Starter Builder","url":"https://www.jquery.app/tools/json-ld-starter-builder/"},{"@type":"ListItem","position":5,"name":"Responsive Image Markup Generator","url":"https://www.jquery.app/tools/responsive-image-markup-generator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Should I use the same social preview image for every blog post?","acceptedAnswer":{"@type":"Answer","text":"A shared default image is acceptable for small blogs, but unique images per post produce richer previews on social platforms and give readers context before they click. Create at least a post-specific og:title when a custom image is not available."}},{"@type":"Question","name":"Do I need JSON-LD structured data for every post?","acceptedAnswer":{"@type":"Answer","text":"Article structured data helps search engines understand your content type and can enable rich results in search. It is useful for any blog that wants better search visibility, though it is not required for indexing or ranking."}},{"@type":"Question","name":"Should I set a canonical URL on a post that is only published once?","acceptedAnswer":{"@type":"Answer","text":"Yes. If the post might appear on category, tag, author, or archive pages, those URLs could be treated as duplicate content. Setting a canonical on the main post URL keeps the signal clear."}},{"@type":"Question","name":"How do responsive images affect blog performance?","acceptedAnswer":{"@type":"Answer","text":"Responsive images reduce unnecessary data transfer by serving smaller files to smaller screens. This improves load time on mobile devices and reduces bandwidth usage without sacrificing image quality on larger displays."}}]}</script>
 </body>
 </html>

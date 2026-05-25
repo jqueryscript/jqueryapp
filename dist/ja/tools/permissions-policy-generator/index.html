@@ -11,11 +11,11 @@
   <meta property="og:description" content="サイト全体のブラウザ機能アクセスを制御するPermissions-Policy HTTPヘッダーを生成します。">
   <meta property="og:url" content="https://www.jquery.app/ja/tools/permissions-policy-generator/">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://www.jquery.app/ja/assets/social/og-seo.png/">
+  <meta property="og:image" content="https://www.jquery.app/assets/social/og-seo.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://www.jquery.app/ja/assets/social/og-seo.png/">
+  <meta name="twitter:image" content="https://www.jquery.app/assets/social/og-seo.png">
   <link rel="alternate" hreflang="en" href="https://www.jquery.app/tools/permissions-policy-generator/">
   <link rel="alternate" hreflang="de" href="https://www.jquery.app/de/tools/permissions-policy-generator/">
   <link rel="alternate" hreflang="fr" href="https://www.jquery.app/fr/tools/permissions-policy-generator/">
@@ -81,6 +81,8 @@
     <article class="tool-article">
       <h2>Permissions-Policyヘッダージェネレーターとは</h2>
       <p>Permissions-Policyヘッダージェネレーターは、サイト全体のブラウザ機能アクセスを制御するPermissions-Policy HTTPヘッダーを生成します。 出力は公開サイトに使う前に確認しやすい形で表示されます。</p>
+      <div class="quick-answer"><h3>Quick answer</h3><p>Use Permissions-Policy to disable browser features -- such as camera, microphone, geolocation, and autoplay -- that your site does not need. This improves privacy and prevents third-party scripts from accessing sensitive APIs.</p></div>
+      <h3>Limitations</h3><ul><li>Permissions-Policy requires deployment via an HTTP header. GitHub Pages and many static hosts do not support custom headers; use the allow attribute on iframes or configure the host to send the header.</li><li>The older Feature-Policy header is deprecated. Browsers that support Permissions-Policy no longer process Feature-Policy.</li><li>Some browser features such as gamepad and screen-wake-lock are not yet supported in all browser engines.</li></ul>
       <h2>使い方</h2>
       <ol><li>必要な値を入力します。</li><li>結果パネルの出力を確認します。</li><li>ページに合う部分だけコピーします。</li><li>公開前にブラウザとホスティング環境で確認します。</li></ol>
       <h2>主な用途</h2>
@@ -98,6 +100,7 @@
     <article class="tool-article">
       <h2>よくあるミス</h2>
       <ul><li>出力を確認せず本番に入れる。</li><li>公開URLではなくローカルURLを使う。</li><li>build後に公開フォルダ内のファイルを確認しない。</li></ul>
+      <h2>Verification</h2><ol><li>Inspect the Response Headers tab in DevTools Network panel to confirm the Permissions-Policy header is present.</li><li>Test that blocked features generate a clear console warning rather than silently failing.</li></ol>
     </article>
   </div>
 </section>
@@ -124,21 +127,21 @@
     <h2>その他のseoツール</h2>
   </div>
   <div class="wrap tool-grid compact">
-    <article class="tool-card">
+    <article class="tool-card" data-tool-name="Hreflangタグ生成ツール" data-category="seo" data-category-label="Seo" data-keywords="hreflang generator alternate language tag multilingual seo">
   <div>
     <p class="card-kicker">Seo</p>
     <h2><a href="/ja/tools/hreflang-tag-generator/">Hreflangタグ生成ツール</a></h2>
     <p>多言語の静的サイト向けにhreflangタグを生成します。</p>
   </div>
   <a class="card-link" href="/ja/tools/hreflang-tag-generator/">ツールを開く</a>
-</article><article class="tool-card">
+</article><article class="tool-card" data-tool-name="Open Graph・Twitter Card生成ツール" data-category="seo" data-category-label="Seo" data-keywords="open graph generator twitter card generator social preview meta tags">
   <div>
     <p class="card-kicker">Seo</p>
     <h2><a href="/ja/tools/og-twitter-card-builder/">Open Graph・Twitter Card生成ツール</a></h2>
     <p>記事や静的ページ向けのSNSプレビューメタタグを作成します。</p>
   </div>
   <a class="card-link" href="/ja/tools/og-twitter-card-builder/">ツールを開く</a>
-</article><article class="tool-card">
+</article><article class="tool-card" data-tool-name="静的サイトSEOチェックリスト生成ツール" data-category="seo" data-category-label="Seo" data-keywords="static site seo checklist github pages seo checklist website launch checklist">
   <div>
     <p class="card-kicker">Seo</p>
     <h2><a href="/ja/tools/static-site-seo-checklist-generator/">静的サイトSEOチェックリスト生成ツール</a></h2>
@@ -154,21 +157,21 @@
     <h2>こちらもお試しください</h2>
   </div>
   <div class="wrap tool-grid compact">
-    <article class="tool-card">
+    <article class="tool-card" data-tool-name="HTML link rel生成ツール" data-category="html" data-category-label="Html" data-keywords="html link rel generator preload tag generator preconnect generator">
   <div>
     <p class="card-kicker">Html</p>
     <h2><a href="/ja/tools/html-link-rel-generator/">HTML link rel生成ツール</a></h2>
     <p>preload、preconnect、dns-prefetch、canonical、alternateのlinkタグを作成します。</p>
   </div>
   <a class="card-link" href="/ja/tools/html-link-rel-generator/">ツールを開く</a>
-</article><article class="tool-card">
+</article><article class="tool-card" data-tool-name="レスポンシブiframe埋め込み生成ツール" data-category="html" data-category-label="Html" data-keywords="responsive iframe generator iframe embed code aspect ratio iframe">
   <div>
     <p class="card-kicker">Html</p>
     <h2><a href="/ja/tools/responsive-iframe-embed-generator/">レスポンシブiframe埋め込み生成ツール</a></h2>
     <p>動画、地図、デモ、ドキュメント向けのレスポンシブiframe埋め込みコードを生成します。</p>
   </div>
   <a class="card-link" href="/ja/tools/responsive-iframe-embed-generator/">ツールを開く</a>
-</article><article class="tool-card">
+</article><article class="tool-card" data-tool-name="URLスラッグジェネレーター" data-category="html" data-category-label="Html" data-keywords="url slug generator seo slug url friendly string slugify">
   <div>
     <p class="card-kicker">Html</p>
     <h2><a href="/ja/tools/url-slug-generator/">URLスラッグジェネレーター</a></h2>

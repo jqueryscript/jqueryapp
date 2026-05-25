@@ -185,7 +185,8 @@ function hero({ eyebrow, title, description, actions = "" }) {
 }
 
 function toolCard(tool, locale) {
-  return `<article class="tool-card">
+  const keywords = (tool.keywords || []).join(" ");
+  return `<article class="tool-card" data-tool-name="${attr(tool.name)}" data-category="${attr(tool.category)}" data-category-label="${attr(titleCase(tool.category))}" data-keywords="${attr(keywords)}">
   <div>
     <p class="card-kicker">${escapeHtml(titleCase(tool.category))}</p>
     <h2><a href="${urlFor(locale, `tools/${tool.id}`)}">${escapeHtml(tool.name)}</a></h2>
@@ -400,7 +401,7 @@ ${collections ? `<section class="section">
     body,
     scripts,
     current: "home",
-    image: absoluteUrl(locale, "assets/social/og-home.png")
+    image: `${site.baseUrl}/assets/social/og-home.png`
   });
 }
 
@@ -447,8 +448,8 @@ function toolsIndexPage(locale, tools, categories) {
     description: ui(locale, "freeWebToolsDescription"),
     pathname: "tools",
     body,
-    scripts,
-    image: absoluteUrl(locale, "assets/social/og-tools.png"),
+    scripts: scripts + `<script src="/assets/tool-directory-filter.js" defer></script>`,
+    image: `${site.baseUrl}/assets/social/og-tools.png`,
     current: "tools"
   });
 }
@@ -503,6 +504,8 @@ function categoryPage(locale, category, details, tools) {
       <p>${escapeHtml(details.intro || details.description)}</p>
       ${details.bestFor?.length ? `<h2>${escapeHtml(ui(locale, "bestFor"))}</h2><ul>${listItems(details.bestFor)}</ul>` : ""}
       ${details.useCases?.length ? `<h2>${escapeHtml(ui(locale, "commonUseCases"))}</h2><ul>${listItems(details.useCases)}</ul>` : ""}
+      ${details.taskGuide ? `<h2>${escapeHtml(ui(locale, "taskGuide"))}</h2><p>${escapeHtml(details.taskGuide)}</p>` : ""}
+      ${details.checklist?.length ? `<h2>${escapeHtml(ui(locale, "publishingChecklist"))}</h2><ul>${listItems(details.checklist)}</ul>` : ""}
     </article>
   </div>
 </section>
@@ -526,11 +529,11 @@ ${details.faq?.length ? `<section class="section faq-band">
     body,
     scripts,
     current: category,
-    image: absoluteUrl(locale, `assets/social/og-${category}.png`)
+    image: `${site.baseUrl}/assets/social/og-${category}.png`
   });
 }
 
-function collectionPage(locale, collectionId, details, tools, categories) {
+function collectionPage(locale, collectionId, details, tools, categories, collections) {
   const faqSchema = details.faq?.length ? {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -575,6 +578,10 @@ function collectionPage(locale, collectionId, details, tools, categories) {
       <h2>${escapeHtml(ui(locale, "whatCollectionHelps"))}</h2>
       <p>${escapeHtml(details.intro || details.description)}</p>
       ${details.bestFor?.length ? `<h2>${escapeHtml(ui(locale, "bestFor"))}</h2><ul>${listItems(details.bestFor)}</ul>` : ""}
+      ${details.workflowSteps?.length ? `<h2>${escapeHtml(ui(locale, "workflowSteps"))}</h2><ol>${details.workflowSteps.map(step => `<li><strong>${escapeHtml(step.name)}</strong>: ${escapeHtml(step.description)}</li>`).join("")}</ol>` : ""}
+      ${details.prerequisites?.length ? `<h2>${escapeHtml(ui(locale, "prerequisites"))}</h2><ul>${listItems(details.prerequisites)}</ul>` : ""}
+      ${details.checklist?.length ? `<h2>${escapeHtml(ui(locale, "publishingChecklist"))}</h2><ul>${listItems(details.checklist)}</ul>` : ""}
+      ${details.relatedCollections?.length ? `<h2>${escapeHtml(ui(locale, "relatedCollections"))}</h2><p>${details.relatedCollections.map(id => `<a href="${urlFor(locale, `collections/${id}`)}">${escapeHtml(collections?.[id]?.name || id)}</a>`).join(", ")}</p>` : ""}
     </article>
   </div>
 </section>
@@ -598,7 +605,7 @@ ${details.faq?.length ? `<section class="section faq-band">
     body,
     scripts,
     current: "collections",
-    image: absoluteUrl(locale, `assets/social/og-${collectionId}.png`)
+    image: `${site.baseUrl}/assets/social/og-${collectionId}.png`
   });
 }
 
@@ -683,6 +690,8 @@ function toolPage(locale, tool, allTools, categories) {
     <article class="tool-article">
       <h2>${escapeHtml(template(locale, "whatIs", { name: tool.name }))}</h2>
       <p>${escapeHtml(tool.whatIs || tool.description)}</p>
+      ${tool.quickAnswer ? `<div class="quick-answer"><h3>Quick answer</h3><p>${escapeHtml(tool.quickAnswer)}</p></div>` : ""}
+      ${tool.limitations?.length ? `<h3>Limitations</h3><ul>${listItems(tool.limitations)}</ul>` : ""}
       <h2>${escapeHtml(ui(locale, "howToUse"))}</h2>
       <ol>${listItems(tool.howToUse || [])}</ol>
       <h2>${escapeHtml(ui(locale, "whatUseFor"))}</h2>
@@ -708,6 +717,7 @@ ${tool.examples?.length ? `<section class="section soft-band">
     <article class="tool-article">
       <h2>${escapeHtml(ui(locale, "commonMistakes"))}</h2>
       <ul>${listItems(tool.mistakes)}</ul>
+      ${tool.verificationSteps?.length ? `<h2>Verification</h2><ol>${listItems(tool.verificationSteps)}</ol>` : ""}
     </article>
   </div>
 </section>
@@ -748,7 +758,7 @@ ${crossCategory.length ? `<section class="section">
     pathname: `tools/${tool.id}`,
     body,
     scripts,
-    image: absoluteUrl(locale, `assets/social/og-${tool.category}.png`),
+    image: `${site.baseUrl}/assets/social/og-${tool.category}.png`,
     current: tool.category
   });
 }
@@ -971,6 +981,7 @@ async function copyAssets() {
   await mkdir(target, { recursive: true });
   await copyFile(path.join(assetsDir, "styles.css"), path.join(target, "styles.css"));
   await copyFile(path.join(assetsDir, "tool-core.js"), path.join(target, "tool-core.js"));
+  await copyFile(path.join(assetsDir, "tool-directory-filter.js"), path.join(target, "tool-directory-filter.js"));
   // Copy per-tool modules
   const toolsSrcDir = path.join(assetsDir, "tools");
   const toolsDstDir = path.join(target, "tools");
@@ -1019,7 +1030,7 @@ async function buildLocale(locale) {
   for (const [collectionId, details] of Object.entries(collections)) {
     const collectionTools = tools.filter((tool) => details.tools?.includes(tool.id));
     if (collectionTools.length) {
-      await writePage(path.join(localeDir, "collections", collectionId, "index.html"), collectionPage(locale, collectionId, details, collectionTools, categories));
+      await writePage(path.join(localeDir, "collections", collectionId, "index.html"), collectionPage(locale, collectionId, details, collectionTools, categories, collections));
       addSitemapUrl(`collections/${collectionId}`);
     }
   }

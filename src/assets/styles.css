@@ -578,6 +578,94 @@ button {
   text-decoration: none;
 }
 
+.tool-filters {
+  margin-bottom: 20px;
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.filter-search {
+  flex: 1 1 240px;
+  min-width: 0;
+  padding: 10px 14px;
+  border: 1px solid var(--border, #d1d5db);
+  border-radius: 8px;
+  font: inherit;
+  font-size: 15px;
+  background: #fff;
+}
+
+.filter-search:focus {
+  outline: 2px solid var(--accent, #0f766e);
+  outline-offset: -2px;
+}
+
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  padding: 6px 13px;
+  border: 1px solid var(--border, #d1d5db);
+  border-radius: 20px;
+  background: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  white-space: nowrap;
+  color: var(--text, #333);
+}
+
+.chip:hover {
+  background: var(--surface, #f5f5f5);
+}
+
+.chip.active {
+  background: var(--accent, #0f766e);
+  color: #fff;
+  border-color: var(--accent, #0f766e);
+}
+
+.chip-clear {
+  background: transparent;
+  border-style: dashed;
+  font-size: 12px;
+}
+
+.filter-count {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #666;
+}
+
+.quick-answer {
+  background: #f0f9ff;
+  border-left: 3px solid var(--accent, #0f766e);
+  padding: 14px 16px;
+  border-radius: 0 6px 6px 0;
+  margin: 16px 0;
+}
+
+.quick-answer h3 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 6px;
+  color: var(--accent, #0f766e);
+}
+
+.quick-answer p {
+  margin: 0;
+  font-size: 15px;
+}
+
 .tool-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
