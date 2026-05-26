@@ -112,6 +112,13 @@ ${alternateLinks}
   <meta name="theme-color" content="#181715">
   <link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt">
   <link rel="stylesheet" href="/assets/styles.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QLFECKZQ9S"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-QLFECKZQ9S', { send_page_view: true });
+  </script>
   ${extraHead}
 </head>
 <body>
@@ -827,7 +834,7 @@ function simplePages(locale) {
     privacy: {
       title: "Privacy Policy",
       description: "The current tools are designed to work locally in your browser and avoid unnecessary collection.",
-      content: `<h2>Local tool inputs</h2><p>The current tools process the values you enter in your browser. They do not require an account, and the site does not intentionally send tool inputs or generated output to a jquery.app application server.</p><h2>Hosting and technical logs</h2><p>jquery.app is published as a static website. Hosting providers, CDN services, browsers, and security systems may process standard request information such as IP address, user agent, referrer, requested URL, timestamps, and basic diagnostic data.</p><h2>Cookies and analytics</h2><p>jquery.app does not set cookies for the tools to work. If analytics, advertising, embedded media, or third-party widgets are added in the future, this policy will be updated before those services are enabled.</p><h2>External links</h2><p>Some pages may link to GitHub, documentation sites, browser tools, or other third-party resources. Those sites have their own privacy practices.</p>`
+      content: `<h2>Local tool inputs</h2><p>The current tools process the values you enter in your browser. They do not require an account, and the site does not intentionally send tool inputs or generated output to a jquery.app application server.</p><h2>Hosting and technical logs</h2><p>jquery.app is published as a static website. Hosting providers, CDN services, browsers, and security systems may process standard request information such as IP address, user agent, referrer, requested URL, timestamps, and basic diagnostic data.</p><h2>Cookies and analytics</h2><p>jquery.app uses Google Analytics 4 (GA4) to measure page views and basic site usage patterns. GA4 may set first-party cookies for session tracking. The site does not track tool inputs, generated outputs, copied content, or any information you type into the tools. If advertising, embedded media, or additional third-party widgets are added in the future, this policy will be updated before those services are enabled.</p><h2>External links</h2><p>Some pages may link to GitHub, documentation sites, browser tools, or other third-party resources. Those sites have their own privacy practices.</p>`
     },
     terms: {
       title: "Terms of Use",
@@ -1018,6 +1025,9 @@ async function copyAssets() {
     }
   }
   await copyFile(path.join(assetsDir, "favicon.svg"), path.join(distDir, "favicon.svg"));
+  // GSC verification file
+  const gscFile = path.join(root, "google9d00cdf8df0ddc4e.html");
+  try { await copyFile(gscFile, path.join(distDir, "google9d00cdf8df0ddc4e.html")); } catch {}
 }
 
 async function buildLocale(locale) {
