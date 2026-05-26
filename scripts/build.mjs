@@ -67,6 +67,16 @@ function pageShell({ locale, title, description, pathname, body, scripts = "", c
   const canonical = canonicalOverride || absoluteUrl(locale, pathname);
   const lang = localePack(locale);
   const defaultCanonical = absoluteUrl(site.defaultLocale, pathname);
+  // Nav icons — inline SVG from Lucide (24x24, stroke-width 2)
+  const navIcons = {
+    tools: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>`,
+    seo: `<svg width="18" height="18" viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 1-9 9m9-9a9 9 0 0 0-9-9m9 9H3m9 9a9 9 0 0 1-9-9m9 9c1.66 0 3-4.03 3-9s-1.34-9-3-9m0 18c-1.66 0-3-4.03-3-9s1.34-9 3-9m-9 9a9 9 0 0 1 9-9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+    html: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>`,
+    css: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l9 4-2 14-7 4-7-4-2-14z"/><path d="M12 2v20"/><path d="m7 7 5-1 5 1"/><path d="m7 12 5 1 5-1"/></svg>`,
+    assets: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.09-3.09a2 2 0 0 0-2.82 0L9 18"/></svg>`,
+    "github-pages": `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65A3.7 3.7 0 0 1 8 18c-1.15.1-2.18-.4-3-1.5 0 0-1.5-2-3.5-1.5"/></svg>`
+  };
+
   const navItems = [
     [ui(locale, "tools"), urlFor(locale, "tools"), "tools"],
     [ui(locale, "seo"), urlFor(locale, "tools/seo"), "seo"],
@@ -82,13 +92,13 @@ function pageShell({ locale, title, description, pathname, body, scripts = "", c
     mainNavHtml = navItems.map(([label, href, key]) => {
       const tools = navTools[key] || [];
       const isCurrent = current === key;
-      const megaId = `mega-${key}`;
+      const icon = navIcons[key] || "";
       if (!tools.length) {
-        return `<a href="${href}" ${isCurrent ? 'aria-current="page"' : ""}>${label}</a>`;
+        return `<a href="${href}" ${isCurrent ? 'aria-current="page"' : ""}>${icon}<span>${label}</span></a>`;
       }
-      return `<div class="nav-item" data-mega="${megaId}">
-        <a href="${href}" class="nav-trigger" ${isCurrent ? 'aria-current="page"' : ""}>${label}<span class="nav-arrow" aria-hidden="true">&#9662;</span></a>
-        <div class="mega-panel" id="${megaId}" role="region" aria-label="${label} tools">
+      return `<div class="nav-item">
+        <a href="${href}" class="nav-trigger" ${isCurrent ? 'aria-current="page"' : ""}>${icon}<span>${label}</span><span class="nav-arrow" aria-hidden="true">&#9662;</span></a>
+        <div class="mega-panel" role="region" aria-label="${label} tools">
           <div class="mega-inner">
             <div class="mega-tools">
               ${tools.map((t) => `<a href="${urlFor(locale, `tools/${t.id}`)}">${escapeHtml(t.name)}</a>`).join("")}
@@ -99,9 +109,10 @@ function pageShell({ locale, title, description, pathname, body, scripts = "", c
       </div>`;
     }).join("");
   } else {
-    mainNavHtml = navItems.map(([label, href, key]) =>
-      `<a href="${href}" ${current === key ? 'aria-current="page"' : ""}>${label}</a>`
-    ).join("");
+    mainNavHtml = navItems.map(([label, href, key]) => {
+      const icon = navIcons[key] || "";
+      return `<a href="${href}" ${current === key ? 'aria-current="page"' : ""}>${icon}<span>${label}</span></a>`;
+    }).join("");
   }
 
   const alternateLinks = skipAlternates ? "" : site.locales
@@ -173,11 +184,14 @@ ${alternateLinks}
   <div class="offcanvas" id="offcanvas" role="dialog" aria-label="Navigation menu">
     <div class="offcanvas-inner">
       <nav class="offcanvas-nav">
+        <a href="${urlFor(locale, "tools")}" class="offcanvas-all">${escapeHtml(ui(locale, "browseTools"))}</a>
         ${navItems.map(([label, href, key]) => {
+          const oicon = navIcons[key] || "";
           const tools = navTools ? (navTools[key] || []) : [];
           return `<details class="offcanvas-group">
-            <summary><a href="${href}">${label}</a></summary>
-            ${tools.map((t) => `<a href="${urlFor(locale, `tools/${t.id}`)}">${escapeHtml(t.name)}</a>`).join("")}
+            <summary>${oicon}${label}</summary>
+            ${tools.length ? tools.map((t) => `<a href="${urlFor(locale, `tools/${t.id}`)}">${escapeHtml(t.name)}</a>`).join("") : ""}
+            <a href="${href}" class="offcanvas-view-all">All ${label}</a>
           </details>`;
         }).join("")}
       </nav>
@@ -191,15 +205,50 @@ ${alternateLinks}
   </main>
   <script>
     (function(){
+      // Offcanvas toggle
       var btn = document.getElementById('menu-toggle');
       var panel = document.getElementById('offcanvas');
       var overlay = document.getElementById('offcanvas-overlay');
-      if(!btn||!panel||!overlay)return;
-      function open(){btn.setAttribute('aria-expanded','true');panel.classList.add('open');overlay.classList.add('open');document.body.style.overflow='hidden';}
-      function close(){btn.setAttribute('aria-expanded','false');panel.classList.remove('open');overlay.classList.remove('open');document.body.style.overflow='';}
-      btn.addEventListener('click',function(){btn.getAttribute('aria-expanded')==='true'?close():open();});
-      overlay.addEventListener('click',close);
-      document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+      if(btn&&panel&&overlay){
+        function open(){btn.setAttribute('aria-expanded','true');panel.classList.add('open');overlay.classList.add('open');document.body.style.overflow='hidden';}
+        function close(){btn.setAttribute('aria-expanded','false');panel.classList.remove('open');overlay.classList.remove('open');document.body.style.overflow='';}
+        btn.addEventListener('click',function(){btn.getAttribute('aria-expanded')==='true'?close():open();});
+        overlay.addEventListener('click',close);
+        document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+      }
+      // Mega menu hover with delay to bridge the gap
+      var items = document.querySelectorAll('.nav-item');
+      var openTimer = null;
+      var currentOpen = null;
+      items.forEach(function(item){
+        var panel = item.querySelector('.mega-panel');
+        if(!panel)return;
+        function show(){
+          if(openTimer){clearTimeout(openTimer);openTimer=null;}
+          if(currentOpen&&currentOpen!==panel){currentOpen.classList.remove('open');}
+          panel.classList.add('open');
+          currentOpen = panel;
+        }
+        function hide(){
+          openTimer = setTimeout(function(){
+            panel.classList.remove('open');
+            if(currentOpen===panel)currentOpen=null;
+          }, 150);
+        }
+        item.addEventListener('mouseenter', show);
+        item.addEventListener('mouseleave', hide);
+        panel.addEventListener('mouseenter', function(){
+          if(openTimer){clearTimeout(openTimer);openTimer=null;}
+        });
+        panel.addEventListener('mouseleave', hide);
+        // Keep open when focus is inside mega panel
+        panel.addEventListener('focusin', show);
+        panel.addEventListener('focusout', function(e){
+          if(!panel.contains(e.relatedTarget) && e.relatedTarget!==item){
+            hide();
+          }
+        });
+      });
     })();
   </script>
   <footer class="site-footer">

@@ -171,7 +171,8 @@ button {
   min-height: 40px;
   display: inline-flex;
   align-items: center;
-  padding: 0 14px;
+  gap: 8px;
+  padding: 0 16px;
   border-radius: 8px;
   color: var(--muted);
   font-size: 14px;
@@ -184,10 +185,21 @@ button {
   font-family: inherit;
 }
 
+.main-nav a svg,
+.nav-trigger svg {
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
 .main-nav a:hover,
 .nav-trigger:hover {
   background: var(--surface-card);
   color: var(--ink);
+}
+
+.main-nav a:hover svg,
+.nav-trigger:hover svg {
+  opacity: 1;
 }
 
 .main-nav a[aria-current="page"],
@@ -196,9 +208,14 @@ button {
   color: var(--ink);
 }
 
+.main-nav a[aria-current="page"] svg,
+.nav-trigger[aria-current="page"] svg {
+  opacity: 1;
+}
+
 .nav-arrow {
   font-size: 10px;
-  margin-left: 5px;
+  margin-left: 2px;
   color: var(--muted);
 }
 
@@ -220,9 +237,7 @@ button {
   padding: 24px 0 20px;
 }
 
-.nav-item:hover .mega-panel,
-.nav-trigger:focus + .mega-panel,
-.mega-panel:focus-within {
+.mega-panel.open {
   display: block;
 }
 
@@ -350,8 +365,10 @@ button {
 }
 
 .offcanvas-nav a,
-.offcanvas-group summary a {
-  display: block;
+.offcanvas-group summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   padding: 12px 8px;
   font-size: 16px;
   font-weight: 500;
@@ -362,6 +379,11 @@ button {
 
 .offcanvas-nav a:hover {
   background: var(--surface-card);
+}
+
+.offcanvas-all {
+  margin-bottom: 8px;
+  color: var(--primary-active) !important;
 }
 
 .offcanvas-group {
@@ -379,20 +401,32 @@ button {
 
 .offcanvas-group summary::after {
   content: "+";
-  float: right;
+  margin-left: auto;
   font-size: 18px;
   color: var(--muted);
-  margin-top: 8px;
+  flex-shrink: 0;
 }
 
 .offcanvas-group[open] summary::after {
   content: "-";
 }
 
+.offcanvas-group summary svg {
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
 .offcanvas-group a {
-  padding-left: 24px !important;
+  padding-left: 36px !important;
   font-size: 14px !important;
   color: var(--body) !important;
+}
+
+.offcanvas-view-all {
+  font-weight: 600 !important;
+  color: var(--primary-active) !important;
+  padding-left: 36px !important;
+  font-size: 13px !important;
 }
 
 .offcanvas-lang {
