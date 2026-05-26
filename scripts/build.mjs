@@ -63,11 +63,11 @@ function absoluteUrl(locale, pathname = "") {
   return new URL(urlFor(locale, pathname), site.baseUrl).toString();
 }
 
-function pageShell({ locale, title, description, pathname, body, scripts = "", current = "", extraHead = "", canonicalOverride = "", skipAlternates = false, image = "" }) {
+function pageShell({ locale, title, description, pathname, body, scripts = "", current = "", extraHead = "", canonicalOverride = "", skipAlternates = false, image = "", navTools = null }) {
   const canonical = canonicalOverride || absoluteUrl(locale, pathname);
   const lang = localePack(locale);
   const defaultCanonical = absoluteUrl(site.defaultLocale, pathname);
-  const nav = [
+  const navItems = [
     [ui(locale, "tools"), urlFor(locale, "tools"), "tools"],
     [ui(locale, "seo"), urlFor(locale, "tools/seo"), "seo"],
     [ui(locale, "html"), urlFor(locale, "tools/html"), "html"],
@@ -75,6 +75,35 @@ function pageShell({ locale, title, description, pathname, body, scripts = "", c
     [ui(locale, "assets"), urlFor(locale, "tools/assets"), "assets"],
     [ui(locale, "githubPages"), urlFor(locale, "tools/github-pages"), "github-pages"]
   ];
+
+  // Build mega menu nav or simple nav
+  let mainNavHtml = "";
+  if (navTools) {
+    mainNavHtml = navItems.map(([label, href, key]) => {
+      const tools = navTools[key] || [];
+      const isCurrent = current === key;
+      const megaId = `mega-${key}`;
+      if (!tools.length) {
+        return `<a href="${href}" ${isCurrent ? 'aria-current="page"' : ""}>${label}</a>`;
+      }
+      return `<div class="nav-item" data-mega="${megaId}">
+        <a href="${href}" class="nav-trigger" ${isCurrent ? 'aria-current="page"' : ""}>${label}<span class="nav-arrow" aria-hidden="true">&#9662;</span></a>
+        <div class="mega-panel" id="${megaId}" role="region" aria-label="${label} tools">
+          <div class="mega-inner">
+            <div class="mega-tools">
+              ${tools.map((t) => `<a href="${urlFor(locale, `tools/${t.id}`)}">${escapeHtml(t.name)}</a>`).join("")}
+            </div>
+            <a class="mega-all" href="${href}">All ${label} &rarr;</a>
+          </div>
+        </div>
+      </div>`;
+    }).join("");
+  } else {
+    mainNavHtml = navItems.map(([label, href, key]) =>
+      `<a href="${href}" ${current === key ? 'aria-current="page"' : ""}>${label}</a>`
+    ).join("");
+  }
+
   const alternateLinks = skipAlternates ? "" : site.locales
     .map((item) => `  <link rel="alternate" hreflang="${attr(item)}" href="${attr(absoluteUrl(item, pathname))}">`)
     .concat(`  <link rel="alternate" hreflang="x-default" href="${attr(defaultCanonical)}">`)
@@ -130,14 +159,49 @@ ${alternateLinks}
         <span>${escapeHtml(site.siteName)}</span>
       </a>
       <nav class="main-nav" aria-label="Main navigation">
-        ${nav.map(([label, href, key]) => `<a href="${href}" ${current === key ? 'aria-current="page"' : ""}>${label}</a>`).join("")}
+        ${mainNavHtml}
       </nav>
-      ${languageMenu}
+      <div class="nav-actions">
+        ${languageMenu}
+        <button class="hamburger" aria-label="Menu" aria-expanded="false" id="menu-toggle">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </header>
+  <div class="offcanvas-overlay" id="offcanvas-overlay"></div>
+  <div class="offcanvas" id="offcanvas" role="dialog" aria-label="Navigation menu">
+    <div class="offcanvas-inner">
+      <nav class="offcanvas-nav">
+        ${navItems.map(([label, href, key]) => {
+          const tools = navTools ? (navTools[key] || []) : [];
+          return `<details class="offcanvas-group">
+            <summary><a href="${href}">${label}</a></summary>
+            ${tools.map((t) => `<a href="${urlFor(locale, `tools/${t.id}`)}">${escapeHtml(t.name)}</a>`).join("")}
+          </details>`;
+        }).join("")}
+      </nav>
+      <div class="offcanvas-lang">
+        ${languageLinks}
+      </div>
+    </div>
+  </div>
   <main id="main">
     ${body}
   </main>
+  <script>
+    (function(){
+      var btn = document.getElementById('menu-toggle');
+      var panel = document.getElementById('offcanvas');
+      var overlay = document.getElementById('offcanvas-overlay');
+      if(!btn||!panel||!overlay)return;
+      function open(){btn.setAttribute('aria-expanded','true');panel.classList.add('open');overlay.classList.add('open');document.body.style.overflow='hidden';}
+      function close(){btn.setAttribute('aria-expanded','false');panel.classList.remove('open');overlay.classList.remove('open');document.body.style.overflow='';}
+      btn.addEventListener('click',function(){btn.getAttribute('aria-expanded')==='true'?close():open();});
+      overlay.addEventListener('click',close);
+      document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+    })();
+  </script>
   <footer class="site-footer">
     <div class="wrap footer-grid">
       <div>
@@ -791,6 +855,13 @@ ${crossCategory.length ? `<section class="section">
   </div>
 </section>` : ""}`;
 
+  // Build navTools: group tools by category for mega menu, limit to ~10 per category
+  const navToolMap = {};
+  for (const t of allTools) {
+    if (!navToolMap[t.category]) navToolMap[t.category] = [];
+    if (navToolMap[t.category].length < 10) navToolMap[t.category].push(t);
+  }
+
   return pageShell({
     locale,
     title: `${tool.name} - ${site.siteName}`,
@@ -799,7 +870,8 @@ ${crossCategory.length ? `<section class="section">
     body,
     scripts,
     image: `${site.baseUrl}/assets/social/og-${tool.category}.png`,
-    current: tool.category
+    current: tool.category,
+    navTools: navToolMap
   });
 }
 

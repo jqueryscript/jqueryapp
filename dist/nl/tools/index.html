@@ -47,14 +47,48 @@
       <nav class="main-nav" aria-label="Main navigation">
         <a href="/nl/tools/" aria-current="page">Tools</a><a href="/nl/tools/seo/" >SEO</a><a href="/nl/tools/html/" >HTML</a><a href="/nl/tools/css/" >CSS</a><a href="/nl/tools/assets/" >Assets</a><a href="/nl/tools/github-pages/" >GitHub Pages</a>
       </nav>
-      <details class="language-menu">
+      <div class="nav-actions">
+        <details class="language-menu">
         <summary>Nederlands</summary>
         <div>
           <a href="/tools/" >English</a><a href="/de/tools/" >Deutsch</a><a href="/fr/tools/" >Francais</a><a href="/es/tools/" >Espanol</a><a href="/ja/tools/" >日本語</a><a href="/nl/tools/" aria-current="true">Nederlands</a>
         </div>
       </details>
+        <button class="hamburger" aria-label="Menu" aria-expanded="false" id="menu-toggle">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </header>
+  <div class="offcanvas-overlay" id="offcanvas-overlay"></div>
+  <div class="offcanvas" id="offcanvas" role="dialog" aria-label="Navigation menu">
+    <div class="offcanvas-inner">
+      <nav class="offcanvas-nav">
+        <details class="offcanvas-group">
+            <summary><a href="/nl/tools/">Tools</a></summary>
+            
+          </details><details class="offcanvas-group">
+            <summary><a href="/nl/tools/seo/">SEO</a></summary>
+            
+          </details><details class="offcanvas-group">
+            <summary><a href="/nl/tools/html/">HTML</a></summary>
+            
+          </details><details class="offcanvas-group">
+            <summary><a href="/nl/tools/css/">CSS</a></summary>
+            
+          </details><details class="offcanvas-group">
+            <summary><a href="/nl/tools/assets/">Assets</a></summary>
+            
+          </details><details class="offcanvas-group">
+            <summary><a href="/nl/tools/github-pages/">GitHub Pages</a></summary>
+            
+          </details>
+      </nav>
+      <div class="offcanvas-lang">
+        <a href="/tools/" >English</a><a href="/de/tools/" >Deutsch</a><a href="/fr/tools/" >Francais</a><a href="/es/tools/" >Espanol</a><a href="/ja/tools/" >日本語</a><a href="/nl/tools/" aria-current="true">Nederlands</a>
+      </div>
+    </div>
+  </div>
   <main id="main">
     <section class="page-hero">
   <div class="wrap narrow">
@@ -578,6 +612,19 @@
   </div>
 </section>
   </main>
+  <script>
+    (function(){
+      var btn = document.getElementById('menu-toggle');
+      var panel = document.getElementById('offcanvas');
+      var overlay = document.getElementById('offcanvas-overlay');
+      if(!btn||!panel||!overlay)return;
+      function open(){btn.setAttribute('aria-expanded','true');panel.classList.add('open');overlay.classList.add('open');document.body.style.overflow='hidden';}
+      function close(){btn.setAttribute('aria-expanded','false');panel.classList.remove('open');overlay.classList.remove('open');document.body.style.overflow='';}
+      btn.addEventListener('click',function(){btn.getAttribute('aria-expanded')==='true'?close():open();});
+      overlay.addEventListener('click',close);
+      document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+    })();
+  </script>
   <footer class="site-footer">
     <div class="wrap footer-grid">
       <div>
