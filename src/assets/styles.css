@@ -762,30 +762,62 @@ button {
 }
 
 .tool-side-note {
-  display: grid;
-  gap: 10px;
-  padding: 26px;
+  width: 300px;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
   border-radius: 12px;
   background: var(--surface-card);
 }
 
-.tool-side-note strong {
-  font-family: var(--display);
-  font-size: 28px;
-  font-weight: 400;
-  line-height: 1.15;
-}
-
-.tool-side-note span {
+.tool-side-note .tool-meta-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 1.45;
   color: var(--body);
 }
 
-.tool-side-note a {
-  width: max-content;
-  margin-top: 8px;
-  color: var(--primary-active);
+.tool-side-note .tool-meta-list strong {
   font-weight: 600;
+  color: var(--near-black);
+}
+
+.tool-side-note .tool-side-links {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tool-side-note .tool-side-links strong {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--body);
+  margin-bottom: 4px;
+}
+
+.tool-side-note .tool-side-links a {
+  font-size: 14px;
+  color: var(--primary-active);
   text-decoration: none;
+  padding: 3px 0;
+}
+
+.tool-side-note .tool-side-links a:hover {
+  text-decoration: underline;
+}
+
+.tool-side-note .side-privacy {
+  font-size: 11px;
+  color: #999;
+  text-align: center;
+  margin-top: auto;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
 }
 
 .tool-workspace-section {
@@ -950,9 +982,24 @@ button {
   font-size: 14px;
 }
 
-.content-rail span {
-  padding: 10px 0;
-  border-top: 1px solid var(--hairline);
+.content-rail .rail-link {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--near-black);
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 6px;
+}
+
+.content-rail a {
+  font-size: 14px;
+  color: var(--primary-active);
+  text-decoration: none;
+  padding: 4px 0;
+}
+
+.content-rail a:hover {
+  text-decoration: underline;
 }
 
 .tool-article {
@@ -1167,10 +1214,15 @@ button {
     grid-template-columns: 1fr;
   }
 
+  .tool-side-note {
+    width: 100%;
+  }
+
   .content-rail {
     position: static;
     display: flex;
     flex-wrap: wrap;
+    gap: 8px;
   }
 
   .content-rail span {

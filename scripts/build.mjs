@@ -697,10 +697,18 @@ function toolPage(locale, tool, allTools, categories) {
       <p class="lede">${escapeHtml(tool.description)}</p>
     </div>
     <aside class="tool-side-note">
-      <p class="eyebrow">${escapeHtml(ui(locale, "browserOnly"))}</p>
-      <strong>${escapeHtml(ui(locale, "privateByDefault"))}</strong>
-      <span>${escapeHtml(ui(locale, "privateNote"))}</span>
-      <a href="#tool">${escapeHtml(ui(locale, "useTool"))}</a>
+      <p class="eyebrow">${escapeHtml(ui(locale, "quickReference"))}</p>
+      <div class="tool-meta-list">
+        <span><strong>${escapeHtml(ui(locale, "category"))}:</strong> ${escapeHtml(categoryName)}</span>
+        ${tool.limitations?.[0] ? `<span><strong>${escapeHtml(ui(locale, "note"))}:</strong> ${escapeHtml(tool.limitations[0])}</span>` : ""}
+        <span><strong>${escapeHtml(ui(locale, "output"))}:</strong> ${escapeHtml(tool.summary)}</span>
+      </div>
+      ${related.length ? `<div class="tool-side-links">
+        <strong>${escapeHtml(ui(locale, "alsoTry"))}</strong>
+        ${related.slice(0, 3).map((r) => `<a href="${urlFor(locale, `tools/${r.id}`)}">${escapeHtml(r.name)}</a>`).join("")}
+      </div>` : ""}
+      <a class="button primary" href="#tool">${escapeHtml(ui(locale, "useTool"))}</a>
+      <small class="side-privacy">${escapeHtml(ui(locale, "privateByDefault"))}</small>
     </aside>
   </div>
 </section>
@@ -714,9 +722,9 @@ function toolPage(locale, tool, allTools, categories) {
 <section class="section article-band">
   <div class="wrap content-layout">
     <aside class="content-rail">
-      <span>${escapeHtml(categoryName)}</span>
-      <span>${escapeHtml(ui(locale, "browserOnly"))}</span>
-      <span>${escapeHtml(ui(locale, "privateByDefault"))}</span>
+      <span class="rail-link">${escapeHtml(categoryName)}</span>
+      ${related.length ? related.slice(0, 4).map((r) => `<a href="${urlFor(locale, `tools/${r.id}`)}">${escapeHtml(r.name)}</a>`).join("") : ""}
+      <a href="${urlFor(locale, `tools/${tool.category}`)}">More ${escapeHtml(categoryName)}</a>
     </aside>
     <article class="tool-article">
       <h2>${escapeHtml(template(locale, "whatIs", { name: tool.name }))}</h2>
