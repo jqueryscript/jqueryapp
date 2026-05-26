@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Wat is Input Attributes Generator?</h2>
       <p>Input Attributes Generator is een browsertool voor deze taak: Genereer HTML input elementen met typespecifieke attributen voor formulieren. De uitvoer blijft leesbaar, zodat je die kunt controleren voordat je hem publiceert.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate an HTML input element with the correct type and type-specific attributes. Choose from common input types and configure placeholder, required, pattern, autocomplete, min, max, and step.</p></div>
+      <h3>Limitations</h3><ul><li>The tool generates the input tag only. You must wrap it in a form element and add a visible label for accessibility compliance.</li><li>Browser validation styles and error messages vary significantly between browsers. Custom error messages require the constraint validation API.</li><li>The pattern attribute uses JavaScript-like regex syntax but does not support flags such as g or i. Pattern validation is always case-sensitive.</li></ul>
       <h2>Zo gebruik je deze tool</h2>
       <ol><li>Open de tool en vul de relevante waarden in.</li><li>Controleer de uitvoer in het resultaatpaneel.</li><li>Kopieer alleen het deel dat bij je página past.</li><li>Test de wijziging voordat je publiceert.</li></ol>
       <h2>Waarvoor je het kunt gebruiken</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Veelgemaakte fouten</h2>
       <ul><li>Uitvoer kopieren zonder controle.</li><li>Lokale URL's gebruiken in plaats van publieke URL's.</li><li>Na de build niet controleren of het bestand in de publicatiemap staat.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Wrap the generated input in a form and submit it with invalid data to confirm browser validation triggers the expected error behavior.</li><li>Test the input with a screen reader to verify the label, required state, and any error messages are announced correctly.</li></ol>
     </article>
   </div>
 </section>

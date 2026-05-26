@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>What is HTML Entity Quick Reference?</h2>
       <p>HTML entities let you display special characters that either have meaning in HTML markup, such as &amp;lt; and &amp;amp;, or characters that are hard to type directly on a keyboard, such as em-dashes, copyright symbols, and accented letters. Beginners often search for these symbols by name or by visual appearance. This reference puts the most frequently used HTML entities in one categorized table with their entity name, decimal code, and rendered character, so you can find and copy the entity you need without leaving your text editor.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>A categorized reference of common HTML entities with entity names, decimal codes, and rendered characters. Browse or search the table, then click any entity to copy it and paste it into your HTML.</p></div>
+      <h3>Limitations</h3><ul><li>This is a static reference list of the most commonly used entities. It does not include every Unicode entity or every named character reference defined in the HTML specification.</li><li>Some newer HTML entities added in HTML5.2 and later may not appear in this list. For complete coverage, consult the official HTML entity reference.</li><li>Decimal and hexadecimal numeric references are not listed. This reference covers named entities only.</li></ul>
       <h2>How to use this tool</h2>
       <ol><li>Browse the categorized list of entities or type in the search field to filter by name or character.</li><li>Click any entity row to copy the entity name, such as &amp;mdash;, to your clipboard.</li><li>Paste the entity into your HTML wherever the special character should appear.</li><li>Use the character preview column to confirm what the entity will look like when rendered in a browser.</li></ol>
       <h2>What you can use it for</h2>
@@ -123,7 +123,7 @@
     <article class="tool-article">
       <h2>Common mistakes</h2>
       <ul><li>Using a hyphen where an en-dash or em-dash is typographically correct, resulting in less polished text formatting.</li><li>Typing raw &amp;lt; or &amp;gt; symbols in HTML that get interpreted as tag delimiters and break the page parsing.</li><li>Forgetting that HTML entity names are case-sensitive, so &amp;copy; works but &amp;Copy; does not.</li></ul>
-      
+      <h2>Verification</h2><ol><li>After pasting an entity into your HTML, view the page in a browser and confirm the rendered character matches your expectation.</li><li>Validate your HTML with the W3C Markup Validation Service to catch any entity names that are not recognized or are misspelled.</li></ol>
     </article>
   </div>
 </section>
@@ -141,6 +141,9 @@
 </details><details class="faq-item">
   <summary>Do I need entities for UTF-8 pages?</summary>
   <p>UTF-8 pages can display most special characters directly, but HTML entities are still useful for characters that have reserved meaning in HTML such as &amp;lt; and &amp;amp;, or for characters that are easier to type as named entities.</p>
+</details><details class="faq-item">
+  <summary>Are entity names case-sensitive?</summary>
+  <p>Yes. HTML entity names are case-sensitive. For example, &amp;copy; produces the copyright symbol, but &amp;Copy; does not work. Always use the exact casing shown in the reference.</p>
 </details>
     </div>
   </div>
@@ -233,6 +236,6 @@
       </div>
     </div>
   </footer>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"HTML Entity Quick Reference","description":"Search and copy common HTML entities including arrows, dashes, quotes, math symbols, and special characters.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/html-entity-quick-reference/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"HTML Tools","item":"https://www.jquery.app/tools/html/"},{"@type":"ListItem","position":4,"name":"HTML Entity Quick Reference","item":"https://www.jquery.app/tools/html-entity-quick-reference/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the difference between &mdash; and &ndash;?","acceptedAnswer":{"@type":"Answer","text":"&mdash; produces an em-dash, which is the width of the letter m and is used for parenthetical breaks. &ndash; produces an en-dash, the width of the letter n, used for number ranges such as 2010 to 2015."}},{"@type":"Question","name":"Do I need entities for UTF-8 pages?","acceptedAnswer":{"@type":"Answer","text":"UTF-8 pages can display most special characters directly, but HTML entities are still useful for characters that have reserved meaning in HTML such as &lt; and &amp;, or for characters that are easier to type as named entities."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"HTML Entity Quick Reference","description":"Search and copy common HTML entities including arrows, dashes, quotes, math symbols, and special characters.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/html-entity-quick-reference/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"HTML Tools","item":"https://www.jquery.app/tools/html/"},{"@type":"ListItem","position":4,"name":"HTML Entity Quick Reference","item":"https://www.jquery.app/tools/html-entity-quick-reference/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the difference between &mdash; and &ndash;?","acceptedAnswer":{"@type":"Answer","text":"&mdash; produces an em-dash, which is the width of the letter m and is used for parenthetical breaks. &ndash; produces an en-dash, the width of the letter n, used for number ranges such as 2010 to 2015."}},{"@type":"Question","name":"Do I need entities for UTF-8 pages?","acceptedAnswer":{"@type":"Answer","text":"UTF-8 pages can display most special characters directly, but HTML entities are still useful for characters that have reserved meaning in HTML such as &lt; and &amp;, or for characters that are easier to type as named entities."}},{"@type":"Question","name":"Are entity names case-sensitive?","acceptedAnswer":{"@type":"Answer","text":"Yes. HTML entity names are case-sensitive. For example, &copy; produces the copyright symbol, but &Copy; does not work. Always use the exact casing shown in the reference."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
 </body>
 </html>

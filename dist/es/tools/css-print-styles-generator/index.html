@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Qué es Generador de estilos de impresion CSS?</h2>
       <p>Generador de estilos de impresion CSS es una herramienta de navegador para esta tarea: Genera una hoja de estilo de impresion para ocultar navegación y mostrar URLs. La salida es fácil de revisar antes de usarla en un sitio publicado.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate a @media print block that hides navigation, shows link URLs, controls page breaks, and sets sensible print margins. Essential for making articles, recipes, documentation, and invoices print cleanly.</p></div>
+      <h3>Limitations</h3><ul><li>Page-break rules such as page-break-inside: avoid are hints to the browser print engine, not guarantees. The engine may still break content if the block does not fit on one page.</li><li>Browser print engines render CSS differently. Chrome, Firefox, and Safari each produce slightly different printed output, especially with background colors, page margins, and multi-column layouts.</li></ul>
       <h2>Cómo usar esta herramienta</h2>
       <ol><li>Abre la herramienta y escribe los valores necesarios.</li><li>Revisa la salida en el panel de resultado.</li><li>Copia solo la parte que encaja con tu página.</li><li>Prueba el cambio antes de publicar.</li></ol>
       <h2>Para qué puedes usarla</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Errores comunes</h2>
       <ul><li>Copiar la salida sin revisarla.</li><li>Usar URLs locales en lugar de URLs públicas finales.</li><li>No confirmar que el archivo esté en la carpeta publicada.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Use print preview in Chrome, Firefox, and Safari to verify the page prints without navigation, with expanded link URLs, and with appropriate page breaks.</li><li>Save the page as PDF from each browser and compare the output for consistency in margins, font sizes, and page break placement.</li></ol>
     </article>
   </div>
 </section>

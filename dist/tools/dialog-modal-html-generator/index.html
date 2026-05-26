@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>What is Dialog Modal HTML Generator?</h2>
       <p>The HTML dialog element provides a native browser-controlled modal dialog that does not require external libraries. The showModal() method opens a modal that blocks interaction with the rest of the page, while show() opens a non-modal dialog. For static sites, the dialog element removes the need for a JavaScript framework or custom modal logic.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate a native HTML dialog modal with trigger button, close button, content area, and backdrop styling. Works without JavaScript libraries in all modern browsers using the native dialog element.</p></div>
+      <h3>Limitations</h3><ul><li>Older browsers such as Safari 14 and Firefox 92 and below do not support the dialog element natively. No polyfill is included in the generated markup.</li><li>Complex keyboard trap scenarios such as nested dialogs or dialogs with embedded scrollable content may need additional JavaScript for full accessibility.</li><li>The ::backdrop pseudo-element styling is not inherited from the dialog styles. Backdrop and dialog styles must be declared as separate CSS rules.</li></ul>
       <h2>How to use this tool</h2>
       <ol><li>Enter the button text and the heading for your modal dialog.</li><li>Write the body content for the modal using plain text or HTML tags.</li><li>Choose whether to use showModal() for a blocking modal or show() for a modeless overlay.</li><li>Copy the generated HTML, CSS, and JavaScript into your page. Include all three parts for the modal to work.</li></ol>
       <h2>What you can use it for</h2>
@@ -123,7 +123,7 @@
     <article class="tool-article">
       <h2>Common mistakes</h2>
       <ul><li>Adding the dialog HTML and CSS but forgetting the JavaScript open and close calls, which leaves the dialog hidden and nonfunctional.</li><li>Not styling the dialog::backdrop pseudo-element, which leaves the backdrop transparent and fails to visually separate the modal from the page.</li><li>Making the close button difficult to find or removing it entirely, which traps users inside the modal.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Open the dialog and press Tab repeatedly to confirm focus cycles within the dialog and does not escape to the background page.</li><li>Press Escape to close the dialog and verify that keyboard focus returns to the trigger button that opened it.</li></ol>
     </article>
   </div>
 </section>
@@ -141,6 +141,12 @@
 </details><details class="faq-item">
   <summary>Can I style the backdrop of a dialog?</summary>
   <p>Yes. Use the ::backdrop pseudo-element in CSS. For example, dialog::backdrop { background: rgba(0, 0, 0, 0.5); } creates a semi-transparent dark overlay behind the modal.</p>
+</details><details class="faq-item">
+  <summary>What is the difference between show() and showModal()?</summary>
+  <p>showModal() opens the dialog as a modal that blocks interaction with the rest of the page and displays the backdrop overlay. show() opens a non-modal dialog that allows interaction with other page elements while the dialog stays open.</p>
+</details><details class="faq-item">
+  <summary>Does the dialog element trap focus?</summary>
+  <p>Yes. When a dialog is opened with showModal(), the browser automatically traps keyboard focus inside the dialog. Pressing Tab cycles through focusable elements within the dialog without reaching the background page.</p>
 </details>
     </div>
   </div>
@@ -233,6 +239,6 @@
       </div>
     </div>
   </footer>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Dialog Modal HTML Generator","description":"Generate a native HTML dialog modal with open and close buttons using the dialog element.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/dialog-modal-html-generator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"HTML Tools","item":"https://www.jquery.app/tools/html/"},{"@type":"ListItem","position":4,"name":"Dialog Modal HTML Generator","item":"https://www.jquery.app/tools/dialog-modal-html-generator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which browsers support the dialog element?","acceptedAnswer":{"@type":"Answer","text":"All modern browsers support the dialog element as of 2025. No polyfill is needed for current Chrome, Firefox, Safari, and Edge releases."}},{"@type":"Question","name":"Can I style the backdrop of a dialog?","acceptedAnswer":{"@type":"Answer","text":"Yes. Use the ::backdrop pseudo-element in CSS. For example, dialog::backdrop { background: rgba(0, 0, 0, 0.5); } creates a semi-transparent dark overlay behind the modal."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Dialog Modal HTML Generator","description":"Generate a native HTML dialog modal with open and close buttons using the dialog element.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/dialog-modal-html-generator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"HTML Tools","item":"https://www.jquery.app/tools/html/"},{"@type":"ListItem","position":4,"name":"Dialog Modal HTML Generator","item":"https://www.jquery.app/tools/dialog-modal-html-generator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which browsers support the dialog element?","acceptedAnswer":{"@type":"Answer","text":"All modern browsers support the dialog element as of 2025. No polyfill is needed for current Chrome, Firefox, Safari, and Edge releases."}},{"@type":"Question","name":"Can I style the backdrop of a dialog?","acceptedAnswer":{"@type":"Answer","text":"Yes. Use the ::backdrop pseudo-element in CSS. For example, dialog::backdrop { background: rgba(0, 0, 0, 0.5); } creates a semi-transparent dark overlay behind the modal."}},{"@type":"Question","name":"What is the difference between show() and showModal()?","acceptedAnswer":{"@type":"Answer","text":"showModal() opens the dialog as a modal that blocks interaction with the rest of the page and displays the backdrop overlay. show() opens a non-modal dialog that allows interaction with other page elements while the dialog stays open."}},{"@type":"Question","name":"Does the dialog element trap focus?","acceptedAnswer":{"@type":"Answer","text":"Yes. When a dialog is opened with showModal(), the browser automatically traps keyboard focus inside the dialog. Pressing Tab cycles through focusable elements within the dialog without reaching the background page."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
 </body>
 </html>

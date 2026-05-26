@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Qué es Generador HTML link rel?</h2>
       <p>Generador HTML link rel es una herramienta de navegador para esta tarea: Genera etiquetas link para preload, preconnect, dns-prefetch, canonical y alternate. La salida es fácil de revisar antes de usarla en un sitio publicado.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Create valid HTML link tags for preload, preconnect, dns-prefetch, canonical, and alternate URLs without guessing the required attributes. Each rel value has specific requirements such as as, type, or crossorigin.</p></div>
+      <h3>Limitations</h3><ul><li>The as attribute is required for preload links. Without it, the browser cannot prioritize or apply the correct Content Security Policy to the preloaded resource.</li><li>Preloading too many resources is counterproductive and can delay the loading of real critical content. Limit preload hints to one to three important resources per page.</li><li>The crossorigin attribute is required for preloading fonts and other cross-origin resources. Omitting it causes the preload to be discarded by the browser.</li></ul>
       <h2>Cómo usar esta herramienta</h2>
       <ol><li>Abre la herramienta y escribe los valores necesarios.</li><li>Revisa la salida en el panel de resultado.</li><li>Copia solo la parte que encaja con tu página.</li><li>Prueba el cambio antes de publicar.</li></ol>
       <h2>Para qué puedes usarla</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Errores comunes</h2>
       <ul><li>Copiar la salida sin revisarla.</li><li>Usar URLs locales en lugar de URLs públicas finales.</li><li>No confirmar que el archivo esté en la carpeta publicada.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Inspect the generated link tag in the browser DevTools Elements panel to confirm that all required attributes are present for the selected rel value.</li><li>Open the Network panel and verify preloaded resources appear with the correct priority indicator and are not duplicated as later requests.</li></ol>
     </article>
   </div>
 </section>

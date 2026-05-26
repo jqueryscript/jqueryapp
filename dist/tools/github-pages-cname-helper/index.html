@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>What is GitHub Pages CNAME Helper?</h2>
       <p>A CNAME file tells GitHub Pages which custom domain should be attached to a published site. The file must contain only the domain name, with no protocol, path, or extra text. This helper keeps the file content and DNS notes separate, which helps prevent small publishing mistakes.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Create the CNAME file for a GitHub Pages custom domain and get the matching DNS guidance for www or apex setups. The file must contain only the bare domain name with no protocol or path.</p></div>
+      <h3>Limitations</h3><ul><li>The CNAME file must exist in the published site root, typically inside your dist or build output folder. If your build tool regenerates the output folder, the CNAME file must be re-added each time.</li><li>DNS propagation after updating CNAME or A records can take minutes to 48 hours depending on your domain provider and TTL settings.</li><li>Apex domain setup requires A records pointing to GitHub Pages IP addresses, not a CNAME record. CNAME records at the apex are not allowed by DNS standards for most providers.</li></ul>
       <h2>How to use this tool</h2>
       <ol><li>Enter the custom domain you want to use for GitHub Pages.</li><li>Choose whether the site will use a www subdomain or an apex domain.</li><li>Copy the CNAME file content into a file named CNAME at the published site root.</li><li>Apply the DNS notes at your domain provider, then enable HTTPS in GitHub Pages settings.</li></ol>
       <h2>What you can use it for</h2>
@@ -123,7 +123,7 @@
     <article class="tool-article">
       <h2>Common mistakes</h2>
       <ul><li>Putting https:// in the CNAME file.</li><li>Adding a path after the domain name.</li><li>Mixing apex A records with an unrelated CNAME record.</li></ul>
-      
+      <h2>Verification</h2><ol><li>After deploying, visit https://yourdomain.com and confirm the site loads. Check GitHub Pages settings for the green DNS check mark.</li><li>Verify the CNAME file is present by visiting https://yourdomain.com/CNAME in a browser. It should display only the domain name.</li></ol>
     </article>
   </div>
 </section>
@@ -144,6 +144,9 @@
 </details><details class="faq-item">
   <summary>Why does my custom domain disappear after deployment?</summary>
   <p>Many build tools delete and regenerate the output folder. Make sure the CNAME file is copied into the final build output every time.</p>
+</details><details class="faq-item">
+  <summary>Why does my CNAME disappear after every deploy?</summary>
+  <p>Most static site generators and CI pipelines clean the output folder before rebuilding. If the CNAME file is not in your source repository or your build process does not copy it, the file will be missing after each deployment. Add CNAME to your source tree or configure your build tool to keep it.</p>
 </details>
     </div>
   </div>
@@ -236,6 +239,6 @@
       </div>
     </div>
   </footer>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"GitHub Pages CNAME Helper","description":"Create the CNAME file content and DNS notes for a GitHub Pages custom domain.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/github-pages-cname-helper/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"GitHub Pages Tools","item":"https://www.jquery.app/tools/github-pages/"},{"@type":"ListItem","position":4,"name":"GitHub Pages CNAME Helper","item":"https://www.jquery.app/tools/github-pages-cname-helper/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Should the CNAME file include https://?","acceptedAnswer":{"@type":"Answer","text":"No. The CNAME file should contain only the domain name, such as www.example.com."}},{"@type":"Question","name":"Where should the CNAME file be placed?","acceptedAnswer":{"@type":"Answer","text":"Place it at the root of the published site. If you deploy a dist folder, the CNAME file must exist inside that published output."}},{"@type":"Question","name":"Why does my custom domain disappear after deployment?","acceptedAnswer":{"@type":"Answer","text":"Many build tools delete and regenerate the output folder. Make sure the CNAME file is copied into the final build output every time."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"GitHub Pages CNAME Helper","description":"Create the CNAME file content and DNS notes for a GitHub Pages custom domain.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/github-pages-cname-helper/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"GitHub Pages Tools","item":"https://www.jquery.app/tools/github-pages/"},{"@type":"ListItem","position":4,"name":"GitHub Pages CNAME Helper","item":"https://www.jquery.app/tools/github-pages-cname-helper/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Should the CNAME file include https://?","acceptedAnswer":{"@type":"Answer","text":"No. The CNAME file should contain only the domain name, such as www.example.com."}},{"@type":"Question","name":"Where should the CNAME file be placed?","acceptedAnswer":{"@type":"Answer","text":"Place it at the root of the published site. If you deploy a dist folder, the CNAME file must exist inside that published output."}},{"@type":"Question","name":"Why does my custom domain disappear after deployment?","acceptedAnswer":{"@type":"Answer","text":"Many build tools delete and regenerate the output folder. Make sure the CNAME file is copied into the final build output every time."}},{"@type":"Question","name":"Why does my CNAME disappear after every deploy?","acceptedAnswer":{"@type":"Answer","text":"Most static site generators and CI pipelines clean the output folder before rebuilding. If the CNAME file is not in your source repository or your build process does not copy it, the file will be missing after each deployment. Add CNAME to your source tree or configure your build tool to keep it."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
 </body>
 </html>

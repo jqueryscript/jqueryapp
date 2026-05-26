@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Qu'est-ce que Generateur de front matter Markdown ?</h2>
       <p>Generateur de front matter Markdown est un outil dans le navigateur pour cette tâche : Générez des blocs YAML front matter pour Jekyll, Hugo, Astro, 11ty et autres generateurs de site statique. La sortie reste lisible afin de la vérifier avant de l'utiliser sur un site publié.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Front matter is YAML or TOML metadata at the top of a Markdown file that tells your static site generator the page title, layout, publish date, tags, and other settings. It is separated from content by triple dashes.</p></div>
+      <h3>Limitations</h3><ul><li>The specific front matter fields vary by static site generator. Jekyll, Hugo, Astro, and 11ty each use different field names and conventions.</li><li>This tool generates YAML format only. Generators that prefer TOML or JSON front matter will need a different format.</li><li>Front matter values are case-sensitive in most static site generators. layout: post and Layout: post are treated as different fields.</li></ul>
       <h2>Comment utiliser cet outil</h2>
       <ol><li>Ouvrez l'outil et saisissez les valeurs utiles.</li><li>Vérifiez la sortie dans le panneau de résultat.</li><li>Copiez seulement la partie adaptéeà votre page.</li><li>Testez la modification avant publication.</li></ol>
       <h2>A quoi il sert</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Erreurs frequentes</h2>
       <ul><li>Copier la sortie sans verification.</li><li>Utiliser des URL locales au lieu des URL publiques finales.</li><li>Oublier de vérifier le dossier publié après le build.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Build the site with your static site generator and confirm the page renders with the correct layout, title, and metadata from the front matter.</li><li>Check that special characters in front matter values are quoted to avoid YAML parse errors during build.</li></ol>
     </article>
   </div>
 </section>

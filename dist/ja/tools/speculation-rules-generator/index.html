@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>投機ルールジェネレーターとは</h2>
       <p>投機ルールジェネレーターは、ChromeとEdgeでページのプリレンダリングとプリフェッチを行うためのSpeculation Rules JSONを生成します。 出力は公開サイトに使う前に確認しやすい形で表示されます。</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Speculation Rules use JSON to tell Chrome and Edge which pages to prefetch or prerender before the user clicks. Prerender loads the full page for instant navigation; prefetch fetches only the main document.</p></div>
+      <h3>Limitations</h3><ul><li>Speculation Rules only work in Chrome and Edge. Other browsers ignore the script tag entirely.</li><li>Eager prerendering of many pages can waste significant bandwidth and memory, especially on mobile devices.</li><li>Cross-origin prerendering has strict privacy constraints. Browsers may strip cookies and storage access from cross-origin prerendered pages.</li></ul>
       <h2>使い方</h2>
       <ol><li>必要な値を入力します。</li><li>結果パネルの出力を確認します。</li><li>ページに合う部分だけコピーします。</li><li>公開前にブラウザとホスティング環境で確認します。</li></ol>
       <h2>主な用途</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>よくあるミス</h2>
       <ul><li>出力を確認せず本番に入れる。</li><li>公開URLではなくローカルURLを使う。</li><li>build後に公開フォルダ内のファイルを確認しない。</li></ul>
-      
+      <h2>Verification</h2><ol><li>Open Chrome DevTools, go to Application &gt; Speculation Rules to verify the rules are parsed correctly.</li><li>In the Network panel, check that prerendered or prefetched pages show the Proxied or Prefetched status in the Size column.</li></ol>
     </article>
   </div>
 </section>

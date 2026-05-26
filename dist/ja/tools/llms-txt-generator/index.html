@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>llms.txt生成ツールとは</h2>
       <p>llms.txt生成ツールは、AI検索エンジン向けのllms.txtファイルを作成します。 出力は公開サイトに使う前に確認しやすい形で表示されます。</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Create an llms.txt file to give AI systems a concise guide to your static site: a summary, important page links, and contextual notes. Publish it at the site root alongside robots.txt and sitemap.xml.</p></div>
+      <h3>Limitations</h3><ul><li>llms.txt is a discovery guide, not a ranking factor. AI systems may use it to understand site structure, but it does not directly influence search engine rankings.</li><li>AI systems may not read the llms.txt file at all. Many large language models and answer engines use their own crawl and retrieval pipelines that may or may not reference this file.</li><li>An over-long llms.txt file loses focus. Keep the file concise and list only the most important pages to avoid diluting the signal for AI readers.</li></ul>
       <h2>使い方</h2>
       <ol><li>必要な値を入力します。</li><li>結果パネルの出力を確認します。</li><li>ページに合う部分だけコピーします。</li><li>公開前にブラウザとホスティング環境で確認します。</li></ol>
       <h2>主な用途</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>よくあるミス</h2>
       <ul><li>出力を確認せず本番に入れる。</li><li>公開URLではなくローカルURLを使う。</li><li>build後に公開フォルダ内のファイルを確認しない。</li></ul>
-      
+      <h2>Verification</h2><ol><li>Visit https://yoursite.com/llms.txt in a browser and confirm it renders as plain text with correct URLs and descriptions.</li><li>Check that every URL listed in llms.txt resolves to a valid published page and that the file links to the sitemap.</li></ol>
     </article>
   </div>
 </section>

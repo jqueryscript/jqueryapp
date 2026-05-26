@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>What is Responsive Iframe Embed Generator?</h2>
       <p>Responsive iframe markup keeps embeds from overflowing, shifting layout, or missing accessibility attributes. It is useful for videos, maps, demos, slides, and documentation widgets. A good embed includes a title, lazy loading when appropriate, a stable aspect ratio, and only the permissions the embed needs.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate responsive iframe embed markup with aspect ratio, lazy loading, sandbox restrictions, and title attributes. The output includes CSS and HTML for a stable embed that avoids layout shifts.</p></div>
+      <h3>Limitations</h3><ul><li>Sandbox restrictions may break embedded content that relies on scripts, forms, popups, or same-origin storage. Add sandbox tokens selectively and test the embed after applying restrictions.</li><li>The aspect-ratio CSS property is a newer approach than the classic padding-bottom hack. Older browsers may need the padding-bottom fallback for responsive iframes to maintain aspect ratio.</li><li>Lazy loading (loading=lazy) may delay above-the-fold embeds from rendering. For embeds visible near the top of the page, consider eager loading or loading the embed without lazy attributes.</li></ul>
       <h2>How to use this tool</h2>
       <ol><li>Paste the iframe source URL and write a clear title.</li><li>Choose the aspect ratio and whether lazy loading should be enabled.</li><li>Enable sandbox only when the embedded page can work with the selected restrictions.</li><li>Copy the HTML and CSS into the page where the embed should appear.</li></ol>
       <h2>What you can use it for</h2>
@@ -123,7 +123,7 @@
     <article class="tool-article">
       <h2>Common mistakes</h2>
       <ul><li>Embedding iframes without a title.</li><li>Using fixed width and height values that break on mobile.</li><li>Adding sandbox restrictions without testing the embedded page.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Load the page in a browser and confirm the iframe renders at the expected aspect ratio without overflow or scrollbars on mobile and desktop viewports.</li><li>Test the sandbox behavior by interacting with the embedded content. If the embed fails, review the sandbox tokens and add permissions as needed.</li></ol>
     </article>
   </div>
 </section>
@@ -144,6 +144,9 @@
 </details><details class="faq-item">
   <summary>Is sandbox always safe?</summary>
   <p>Sandbox can improve containment, but strict settings may break scripts, forms, or same-origin behavior. Test the embed.</p>
+</details><details class="faq-item">
+  <summary>What if the embedded content requires scripts or same-origin access?</summary>
+  <p>The sandbox attribute blocks scripts and same-origin access by default. If the embed needs JavaScript or cookies, add the allow-scripts and allow-same-origin tokens and test thoroughly to avoid breaking the embedded page.</p>
 </details>
     </div>
   </div>
@@ -236,6 +239,6 @@
       </div>
     </div>
   </footer>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Responsive Iframe Embed Generator","description":"Generate responsive iframe embed markup for videos, maps, demos, and docs.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/responsive-iframe-embed-generator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"HTML Tools","item":"https://www.jquery.app/tools/html/"},{"@type":"ListItem","position":4,"name":"Responsive Iframe Embed Generator","item":"https://www.jquery.app/tools/responsive-iframe-embed-generator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Should iframe embeds use lazy loading?","acceptedAnswer":{"@type":"Answer","text":"Use lazy loading for embeds below the fold. For important above-the-fold embeds, test whether lazy loading delays useful content."}},{"@type":"Question","name":"What aspect ratio should I choose?","acceptedAnswer":{"@type":"Answer","text":"Use 16:9 for most videos, 4:3 for older slides or demos, and 1:1 for square interactive previews."}},{"@type":"Question","name":"Is sandbox always safe?","acceptedAnswer":{"@type":"Answer","text":"Sandbox can improve containment, but strict settings may break scripts, forms, or same-origin behavior. Test the embed."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Responsive Iframe Embed Generator","description":"Generate responsive iframe embed markup for videos, maps, demos, and docs.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/responsive-iframe-embed-generator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"HTML Tools","item":"https://www.jquery.app/tools/html/"},{"@type":"ListItem","position":4,"name":"Responsive Iframe Embed Generator","item":"https://www.jquery.app/tools/responsive-iframe-embed-generator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Should iframe embeds use lazy loading?","acceptedAnswer":{"@type":"Answer","text":"Use lazy loading for embeds below the fold. For important above-the-fold embeds, test whether lazy loading delays useful content."}},{"@type":"Question","name":"What aspect ratio should I choose?","acceptedAnswer":{"@type":"Answer","text":"Use 16:9 for most videos, 4:3 for older slides or demos, and 1:1 for square interactive previews."}},{"@type":"Question","name":"Is sandbox always safe?","acceptedAnswer":{"@type":"Answer","text":"Sandbox can improve containment, but strict settings may break scripts, forms, or same-origin behavior. Test the embed."}},{"@type":"Question","name":"What if the embedded content requires scripts or same-origin access?","acceptedAnswer":{"@type":"Answer","text":"The sandbox attribute blocks scripts and same-origin access by default. If the embed needs JavaScript or cookies, add the allow-scripts and allow-same-origin tokens and test thoroughly to avoid breaking the embedded page."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
 </body>
 </html>

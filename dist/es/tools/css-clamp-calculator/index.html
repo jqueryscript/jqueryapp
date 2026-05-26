@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Qué es Calculadora CSS clamp()?</h2>
       <p>Calculadora CSS clamp() es una herramienta de navegador para esta tarea: Calcula valores CSS clamp responsive para tipografía y espaciado. La salida es fácil de revisar antes de usarla en un sitio publicado.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Calculate a responsive CSS clamp expression for fluid typography, spacing, or layout values. Enter minimum and maximum sizes with viewport ranges to generate a value that scales smoothly between them.</p></div>
+      <h3>Limitations</h3><ul><li>Clamp() values are static once generated. They do not adapt to changes in the DOM, user interactions, or container dimensions. For layout-aware scaling, consider container query units instead.</li><li>The viewport-based preferred value may need adjustment at extreme screen sizes. Test the generated clamp value on very small and very large viewports to confirm the curve feels natural.</li><li>This tool uses viewport width (vw) for the preferred value. It does not account for container query units (cqw) or other newer CSS units that behave differently.</li></ul>
       <h2>Cómo usar esta herramienta</h2>
       <ol><li>Abre la herramienta y escribe los valores necesarios.</li><li>Revisa la salida en el panel de resultado.</li><li>Copia solo la parte que encaja con tu página.</li><li>Prueba el cambio antes de publicar.</li></ol>
       <h2>Para qué puedes usarla</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Errores comunes</h2>
       <ul><li>Copiar la salida sin revisarla.</li><li>Usar URLs locales en lugar de URLs públicas finales.</li><li>No confirmar que el archivo esté en la carpeta publicada.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Inspect the element using browser DevTools and verify the clamp() value resolves to expected pixel values at minimum, mid-range, and maximum viewport widths.</li><li>Resize the browser window slowly from mobile width to desktop width and confirm the property value transitions smoothly without jumps.</li></ol>
     </article>
   </div>
 </section>

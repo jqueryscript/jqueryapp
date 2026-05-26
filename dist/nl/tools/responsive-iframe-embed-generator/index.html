@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Wat is Responsive iframe-embedgenerator?</h2>
       <p>Responsive iframe-embedgenerator is een browsertool voor deze taak: Genereer responsive iframe-embedmarkup voor video's, kaarten, demo's en documentatie. De uitvoer blijft leesbaar, zodat je die kunt controleren voordat je hem publiceert.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate responsive iframe embed markup with aspect ratio, lazy loading, sandbox restrictions, and title attributes. The output includes CSS and HTML for a stable embed that avoids layout shifts.</p></div>
+      <h3>Limitations</h3><ul><li>Sandbox restrictions may break embedded content that relies on scripts, forms, popups, or same-origin storage. Add sandbox tokens selectively and test the embed after applying restrictions.</li><li>The aspect-ratio CSS property is a newer approach than the classic padding-bottom hack. Older browsers may need the padding-bottom fallback for responsive iframes to maintain aspect ratio.</li><li>Lazy loading (loading=lazy) may delay above-the-fold embeds from rendering. For embeds visible near the top of the page, consider eager loading or loading the embed without lazy attributes.</li></ul>
       <h2>Zo gebruik je deze tool</h2>
       <ol><li>Open de tool en vul de relevante waarden in.</li><li>Controleer de uitvoer in het resultaatpaneel.</li><li>Kopieer alleen het deel dat bij je página past.</li><li>Test de wijziging voordat je publiceert.</li></ol>
       <h2>Waarvoor je het kunt gebruiken</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Veelgemaakte fouten</h2>
       <ul><li>Uitvoer kopieren zonder controle.</li><li>Lokale URL's gebruiken in plaats van publieke URL's.</li><li>Na de build niet controleren of het bestand in de publicatiemap staat.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Load the page in a browser and confirm the iframe renders at the expected aspect ratio without overflow or scrollbars on mobile and desktop viewports.</li><li>Test the sandbox behavior by interacting with the embedded content. If the embed fails, review the sandbox tokens and add permissions as needed.</li></ol>
     </article>
   </div>
 </section>

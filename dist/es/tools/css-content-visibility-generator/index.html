@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Qué es Generador CSS content-visibility?</h2>
       <p>Generador CSS content-visibility es una herramienta de navegador para esta tarea: Genera CSS para content-visibility y contain-intrinsic-size para acelerar páginas largas. La salida es fácil de revisar antes de usarla en un sitio publicado.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Use content-visibility: auto to skip rendering off-screen elements until they approach the viewport. This can improve initial page load performance on long pages with many repeated sections.</p></div>
+      <h3>Limitations</h3><ul><li>Browser support varies. Chrome 85+, Edge 85+, Firefox 125+, and Safari 18.2+ support content-visibility. Older browsers ignore the property and render all content as normal.</li><li>Anchor links may not scroll correctly to elements with content-visibility: auto because the browser has not rendered the target area before the scroll attempt.</li></ul>
       <h2>Cómo usar esta herramienta</h2>
       <ol><li>Abre la herramienta y escribe los valores necesarios.</li><li>Revisa la salida en el panel de resultado.</li><li>Copia solo la parte que encaja con tu página.</li><li>Prueba el cambio antes de publicar.</li></ol>
       <h2>Para qué puedes usarla</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Errores comunes</h2>
       <ul><li>Copiar la salida sin revisarla.</li><li>Usar URLs locales en lugar de URLs públicas finales.</li><li>No confirmar que el archivo esté en la carpeta publicada.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Scroll the page and confirm off-screen sections render in smoothly without scrollbar jumps or visual gaps.</li><li>Test anchor links or URL hash navigation to sections that use content-visibility to ensure they scroll to the correct position.</li></ol>
     </article>
   </div>
 </section>

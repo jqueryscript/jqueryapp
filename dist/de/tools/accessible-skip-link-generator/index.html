@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Was ist Barrierefreier-Skip-Link-Generator?</h2>
       <p>Barrierefreier-Skip-Link-Generator ist ein Browser-Tool für diese Aufgabe: Generiere einen barrierefreien Skip-Link mit CSS für Tastatur- und Screenreader-Navigation. Die Ausgabe bleibt lesbar, damit du sie vor dem Einbau in eine Live-Seite prüfen kannst.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate an accessible skip navigation link that appears on Tab focus, letting keyboard and screen reader users jump past repeated navigation blocks to the main content area.</p></div>
+      <h3>Limitations</h3><ul><li>The skip link requires that the target element with the matching id exists in the DOM. If the target id is missing or misspelled, the link navigates to a non-existent element.</li><li>Visual-only testing may miss focus-order issues that affect screen reader navigation. Always test with a screen reader after adding the skip link.</li><li>Skip links that jump to non-focusable elements may not move the keyboard focus correctly. The target element must have tabindex=&quot;-1&quot; to receive programmatic focus.</li></ul>
       <h2>So nutzt du dieses Tool</h2>
       <ol><li>Öffne das Tool und trage die relevanten Werte ein.</li><li>Prüfe die erzeugte Ausgabe im Ergebnisfeld.</li><li>Kopiere nur den Teil, der zu deiner Seite passt.</li><li>Teste die Änderung im Browser, bevor du sie veröffentlichst.</li></ol>
       <h2>Wofür du es nutzen kannst</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Haufige Fehler</h2>
       <ul><li>Ausgabe ungepruft in Produktion kopieren.</li><li>Lokale URLs statt finaler öffentlich erreichbarer URLs verwenden.</li><li>Nach dem Build nicht prüfen, ob die Datei im veröffentlichten Ordner liegt.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Load the page and press Tab immediately after the page loads. The skip link should appear and be the first focusable element on the page.</li><li>Activate the skip link and confirm the keyboard focus moves to the main content area. Continue tabbing to verify the focus follows the expected content order from that point.</li></ol>
     </article>
   </div>
 </section>

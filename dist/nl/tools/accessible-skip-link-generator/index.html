@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Wat is Toegankelijke Skip Link Generator?</h2>
       <p>Toegankelijke Skip Link Generator is een browsertool voor deze taak: Genereer een toegankelijke skip link met CSS voor toetsenbord- en screenreadernavigatie. De uitvoer blijft leesbaar, zodat je die kunt controleren voordat je hem publiceert.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate an accessible skip navigation link that appears on Tab focus, letting keyboard and screen reader users jump past repeated navigation blocks to the main content area.</p></div>
+      <h3>Limitations</h3><ul><li>The skip link requires that the target element with the matching id exists in the DOM. If the target id is missing or misspelled, the link navigates to a non-existent element.</li><li>Visual-only testing may miss focus-order issues that affect screen reader navigation. Always test with a screen reader after adding the skip link.</li><li>Skip links that jump to non-focusable elements may not move the keyboard focus correctly. The target element must have tabindex=&quot;-1&quot; to receive programmatic focus.</li></ul>
       <h2>Zo gebruik je deze tool</h2>
       <ol><li>Open de tool en vul de relevante waarden in.</li><li>Controleer de uitvoer in het resultaatpaneel.</li><li>Kopieer alleen het deel dat bij je página past.</li><li>Test de wijziging voordat je publiceert.</li></ol>
       <h2>Waarvoor je het kunt gebruiken</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Veelgemaakte fouten</h2>
       <ul><li>Uitvoer kopieren zonder controle.</li><li>Lokale URL's gebruiken in plaats van publieke URL's.</li><li>Na de build niet controleren of het bestand in de publicatiemap staat.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Load the page and press Tab immediately after the page loads. The skip link should appear and be the first focusable element on the page.</li><li>Activate the skip link and confirm the keyboard focus moves to the main content area. Continue tabbing to verify the focus follows the expected content order from that point.</li></ol>
     </article>
   </div>
 </section>

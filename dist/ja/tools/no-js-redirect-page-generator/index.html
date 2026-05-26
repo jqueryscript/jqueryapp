@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>No-JSリダイレクトページジェネレーターとは</h2>
       <p>No-JSリダイレクトページジェネレーターは、JavaScript不要のmeta refreshタグを使った完全なHTMLリダイレクトページを生成します。 出力は公開サイトに使う前に確認しやすい形で表示されます。</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Create a complete HTML page that redirects visitors to a new URL using the meta refresh tag. Works on any static hosting platform such as GitHub Pages without JavaScript or server configuration.</p></div>
+      <h3>Limitations</h3><ul><li>Meta refresh is not a true HTTP 301 redirect. Search engines treat it as a weaker signal. Permanent URL moves should use a server-level 301 redirect when possible.</li><li>Some browsers and security tools allow users to disable meta refresh redirects, which leaves visitors on the redirect page without automatic forwarding.</li><li>Meta refresh redirects have lower SEO value than server-side redirects. Use them on static hosting only when server-side redirects are not available.</li></ul>
       <h2>使い方</h2>
       <ol><li>必要な値を入力します。</li><li>結果パネルの出力を確認します。</li><li>ページに合う部分だけコピーします。</li><li>公開前にブラウザとホスティング環境で確認します。</li></ol>
       <h2>主な用途</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>よくあるミス</h2>
       <ul><li>出力を確認せず本番に入れる。</li><li>公開URLではなくローカルURLを使う。</li><li>build後に公開フォルダ内のファイルを確認しない。</li></ul>
-      
+      <h2>Verification</h2><ol><li>Open the generated HTML page in a browser and confirm the redirect fires after the specified delay.</li><li>Use a web crawler tool or browser extension to verify the redirect chain and confirm the final destination URL is correct.</li></ol>
     </article>
   </div>
 </section>

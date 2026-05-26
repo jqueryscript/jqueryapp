@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>What is CSS Overscroll Behavior Generator?</h2>
       <p>overscroll-behavior controls what happens when a scrollable area reaches its boundary. On mobile devices, overscrolling can trigger pull-to-refresh or let scroll bleed from a modal into the page behind it. This property lets you contain or prevent overscroll effects on body, modal, sidebar, and carousel elements.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Control what happens when a scrollable element reaches its boundary. Use contain to stop scroll chaining while keeping the bounce effect, or none to remove all overscroll effects including pull-to-refresh.</p></div>
+      <h3>Limitations</h3><ul><li>Overscroll-behavior is primarily a mobile concern. Desktop browsers apply minimal or no overscroll effects, so the property has little visible impact on desktop.</li><li>Testing overscroll-behavior on desktop requires device emulation in DevTools because mouse scroll behavior differs significantly from touch gestures.</li></ul>
       <h2>How to use this tool</h2>
       <ol><li>Select a scenario that matches where you want to control overscroll behavior.</li><li>Choose the behavior: contain to stop scroll chaining but keep the bounce, or none to prevent all overscroll effects.</li><li>Select the axis if you only want to control horizontal or vertical overscroll separately.</li><li>Copy the CSS and test on a real mobile device to confirm the expected behavior.</li></ol>
       <h2>What you can use it for</h2>
@@ -123,7 +123,7 @@
     <article class="tool-article">
       <h2>Common mistakes</h2>
       <ul><li>Applying overscroll-behavior: none to the body element, which disables pull-to-refresh entirely and may frustrate mobile users.</li><li>Setting overflow: hidden on body for modal scroll locking instead of using overscroll-behavior.</li><li>Forgetting to test on real mobile devices where overscroll effects differ from desktop emulation.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Test the behavior on a real mobile device by scrolling past the boundary of the target element and confirming the expected pull-to-refresh or scroll chain behavior.</li><li>Use Chrome DevTools device mode with touch emulation enabled to approximate mobile overscroll behavior on desktop.</li></ol>
     </article>
   </div>
 </section>
@@ -141,6 +141,12 @@
 </details><details class="faq-item">
   <summary>Should I use overscroll-behavior instead of overflow: hidden for modals?</summary>
   <p>overscroll-behavior is better for preventing scroll bleed while keeping the modal scrollable. Use it together with a position fixed technique, not instead of it.</p>
+</details><details class="faq-item">
+  <summary>Does overscroll-behavior affect pull-to-refresh?</summary>
+  <p>Yes. overscroll-behavior: contain on the body element prevents the browser pull-to-refresh gesture while still allowing normal page scrolling. This is useful for web apps that handle refresh or navigation themselves.</p>
+</details><details class="faq-item">
+  <summary>Can I apply different values to x and y?</summary>
+  <p>Yes. Use the two-value syntax overscroll-behavior: contain auto to set different behaviors for each axis. The first value applies to the x axis and the second value applies to the y axis.</p>
 </details>
     </div>
   </div>
@@ -233,6 +239,6 @@
       </div>
     </div>
   </footer>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CSS Overscroll Behavior Generator","description":"Generate overscroll-behavior CSS to control pull-to-refresh, scroll chaining, and bounce effects.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/css-overscroll-behavior-generator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"CSS Tools","item":"https://www.jquery.app/tools/css/"},{"@type":"ListItem","position":4,"name":"CSS Overscroll Behavior Generator","item":"https://www.jquery.app/tools/css-overscroll-behavior-generator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the difference between contain and none?","acceptedAnswer":{"@type":"Answer","text":"contain stops scroll chaining to the parent but keeps the visual bounce or glow effect at the boundary. none prevents both the chaining and the visual overscroll effect."}},{"@type":"Question","name":"Should I use overscroll-behavior instead of overflow: hidden for modals?","acceptedAnswer":{"@type":"Answer","text":"overscroll-behavior is better for preventing scroll bleed while keeping the modal scrollable. Use it together with a position fixed technique, not instead of it."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CSS Overscroll Behavior Generator","description":"Generate overscroll-behavior CSS to control pull-to-refresh, scroll chaining, and bounce effects.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/css-overscroll-behavior-generator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"CSS Tools","item":"https://www.jquery.app/tools/css/"},{"@type":"ListItem","position":4,"name":"CSS Overscroll Behavior Generator","item":"https://www.jquery.app/tools/css-overscroll-behavior-generator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the difference between contain and none?","acceptedAnswer":{"@type":"Answer","text":"contain stops scroll chaining to the parent but keeps the visual bounce or glow effect at the boundary. none prevents both the chaining and the visual overscroll effect."}},{"@type":"Question","name":"Should I use overscroll-behavior instead of overflow: hidden for modals?","acceptedAnswer":{"@type":"Answer","text":"overscroll-behavior is better for preventing scroll bleed while keeping the modal scrollable. Use it together with a position fixed technique, not instead of it."}},{"@type":"Question","name":"Does overscroll-behavior affect pull-to-refresh?","acceptedAnswer":{"@type":"Answer","text":"Yes. overscroll-behavior: contain on the body element prevents the browser pull-to-refresh gesture while still allowing normal page scrolling. This is useful for web apps that handle refresh or navigation themselves."}},{"@type":"Question","name":"Can I apply different values to x and y?","acceptedAnswer":{"@type":"Answer","text":"Yes. Use the two-value syntax overscroll-behavior: contain auto to set different behaviors for each axis. The first value applies to the x axis and the second value applies to the y axis."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
 </body>
 </html>

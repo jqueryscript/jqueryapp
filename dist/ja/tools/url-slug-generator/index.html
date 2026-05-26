@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>URLスラッグジェネレーターとは</h2>
       <p>URLスラッグジェネレーターは、タイトルをクリーンな小文字のハイフン区切りURLスラッグに変換します。 出力は公開サイトに使う前に確認しやすい形で表示されます。</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate a URL slug from any text by converting it to lowercase, replacing spaces with hyphens, and removing special characters. Use the output as a page URL, file name, or anchor link ID.</p></div>
+      <h3>Limitations</h3><ul><li>The tool does not detect duplicate slugs across your site. Always check whether the generated slug conflicts with an existing page URL before publishing.</li><li>Very long input text produces very long slugs. Edit the output manually if the slug exceeds a reasonable length.</li><li>The slug uses strict ASCII transliteration. Non-ASCII characters such as accented letters are removed, which may not match the expected URL format for some languages.</li></ul>
       <h2>使い方</h2>
       <ol><li>必要な値を入力します。</li><li>結果パネルの出力を確認します。</li><li>ページに合う部分だけコピーします。</li><li>公開前にブラウザとホスティング環境で確認します。</li></ol>
       <h2>主な用途</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>よくあるミス</h2>
       <ul><li>出力を確認せず本番に入れる。</li><li>公開URLではなくローカルURLを使う。</li><li>build後に公開フォルダ内のファイルを確認しない。</li></ul>
-      
+      <h2>Verification</h2><ol><li>Copy the generated slug and test it as part of a full URL. Open the URL in a browser to confirm it resolves to the correct page.</li><li>Check that the slug does not contain double hyphens or trailing hyphens, which may look inconsistent in published URLs.</li></ol>
     </article>
   </div>
 </section>

@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Wat is GitHub Pages Workflow Generator?</h2>
       <p>GitHub Pages Workflow Generator is een browsertool voor deze taak: Genereer een GitHub Actions workflow YAML om statische sites naar GitHub Pages te deployen. De uitvoer blijft leesbaar, zodat je die kunt controleren voordat je hem publiceert.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>A GitHub Actions workflow automates building and deploying your static site to GitHub Pages on every push. The generated YAML includes the standard permissions, concurrency settings, and build steps.</p></div>
+      <h3>Limitations</h3><ul><li>The generated workflow is a standard template. Custom build tools, monorepos, or multi-step pipelines may need additional job steps or custom actions.</li><li>GitHub Pages deployment via Actions only works for public repositories or private repositories with GitHub Pro, Team, or Enterprise plans.</li><li>The CNAME placeholder file must be created or copied into the output directory if the site uses a custom domain.</li></ul>
       <h2>Zo gebruik je deze tool</h2>
       <ol><li>Open de tool en vul de relevante waarden in.</li><li>Controleer de uitvoer in het resultaatpaneel.</li><li>Kopieer alleen het deel dat bij je página past.</li><li>Test de wijziging voordat je publiceert.</li></ol>
       <h2>Waarvoor je het kunt gebruiken</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Veelgemaakte fouten</h2>
       <ul><li>Uitvoer kopieren zonder controle.</li><li>Lokale URL's gebruiken in plaats van publieke URL's.</li><li>Na de build niet controleren of het bestand in de publicatiemap staat.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Push the workflow file to your repository and check the Actions tab to confirm the workflow runs successfully.</li><li>After a successful run, visit your GitHub Pages URL and verify the site content matches the expected output.</li></ol>
     </article>
   </div>
 </section>

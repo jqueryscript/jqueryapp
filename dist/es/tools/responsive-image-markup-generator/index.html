@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Qué es Generador de marcado de imagen responsive?</h2>
       <p>Generador de marcado de imagen responsive es una herramienta de navegador para esta tarea: Crea marcado img o picture con srcset, sizes, ancho, alto y texto alt. La salida es fácil de revisar antes de usarla en un sitio publicado.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate responsive img or picture markup with srcset, sizes, width, height, and alt text. Helps avoid layout shift, missing image candidates, and inaccessible alt attributes on static sites.</p></div>
+      <h3>Limitations</h3><ul><li>Srcset candidates must exist at the specified paths in the published output. The generated markup references file paths; you must ensure each image file is copied to the correct location.</li><li>The sizes attribute affects which srcset candidate the browser selects. An incorrect sizes value can cause the browser to download a larger or smaller image than needed.</li><li>WebP source in a picture element requires a fallback img src for older browsers that do not support WebP. Without a fallback, unsupported browsers will show no image.</li></ul>
       <h2>Cómo usar esta herramienta</h2>
       <ol><li>Abre la herramienta y escribe los valores necesarios.</li><li>Revisa la salida en el panel de resultado.</li><li>Copia solo la parte que encaja con tu página.</li><li>Prueba el cambio antes de publicar.</li></ol>
       <h2>Para qué puedes usarla</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Errores comunes</h2>
       <ul><li>Copiar la salida sin revisarla.</li><li>Usar URLs locales en lugar de URLs públicas finales.</li><li>No confirmar que el archivo esté en la carpeta publicada.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Open the published page, resize the browser, and confirm the browser loads different image candidates at different viewport widths using the Network panel.</li><li>Verify the alt attribute provides accurate descriptions for meaningful images or is empty for decorative images using browser DevTools or a screen reader.</li></ol>
     </article>
   </div>
 </section>

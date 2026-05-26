@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Was ist Web-App-Manifest-Generator?</h2>
       <p>Web-App-Manifest-Generator ist ein Browser-Tool für diese Aufgabe: Generiere eine site.webmanifest-JSON-Datei für PWA-fahige statische Websites. Die Ausgabe bleibt lesbar, damit du sie vor dem Einbau in eine Live-Seite prüfen kannst.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>A web app manifest controls how your site looks when installed on a device home screen. It sets the app name, icons, theme color, and launch behavior for PWA-ready static sites.</p></div>
+      <h3>Limitations</h3><ul><li>The manifest only works over HTTPS. HTTP sites cannot use the manifest for install prompts.</li><li>The manifest requires actual icon image files at the specified paths. Missing or incorrectly named icons cause the browser to reject the manifest.</li><li>Install behavior differs between Android and iOS. Android uses the manifest for install prompts, while iOS relies on Apple touch icon meta tags and does not support full PWA install from the manifest.</li></ul>
       <h2>So nutzt du dieses Tool</h2>
       <ol><li>Öffne das Tool und trage die relevanten Werte ein.</li><li>Prüfe die erzeugte Ausgabe im Ergebnisfeld.</li><li>Kopiere nur den Teil, der zu deiner Seite passt.</li><li>Teste die Änderung im Browser, bevor du sie veröffentlichst.</li></ol>
       <h2>Wofür du es nutzen kannst</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Haufige Fehler</h2>
       <ul><li>Ausgabe ungepruft in Produktion kopieren.</li><li>Lokale URLs statt finaler öffentlich erreichbarer URLs verwenden.</li><li>Nach dem Build nicht prüfen, ob die Datei im veröffentlichten Ordner liegt.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Open Chrome DevTools &gt; Application &gt; Manifest to verify the manifest is parsed correctly and icons are accessible.</li><li>Test the site over HTTPS on an Android device using Chrome and confirm the Add to Home Screen prompt appears.</li></ol>
     </article>
   </div>
 </section>

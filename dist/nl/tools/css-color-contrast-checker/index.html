@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Wat is CSS Kleurcontrast Checker?</h2>
       <p>CSS Kleurcontrast Checker is een browsertool voor deze taak: Controleer de contrastverhouding tussen twee kleuren tegen WCAG-richtlijnen. De uitvoer blijft leesbaar, zodat je die kunt controleren voordat je hem publiceert.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Check whether two color combinations meet WCAG contrast standards before publishing. The tool calculates the precise ratio and tells you whether normal text, large text, and UI components pass AA or AAA levels.</p></div>
+      <h3>Limitations</h3><ul><li>The color picker returns hex values only. It does not support RGB, HSL, or named color inputs directly.</li><li>The tool checks solid color pairs. It does not evaluate contrast on gradient text, box-shadow text, or background images where luminance varies across the element.</li><li>Contrast ratios are calculated from the colors you enter. If either color is transparent the result will not reflect the actual visible contrast against the underlying page background.</li></ul>
       <h2>Zo gebruik je deze tool</h2>
       <ol><li>Open de tool en vul de relevante waarden in.</li><li>Controleer de uitvoer in het resultaatpaneel.</li><li>Kopieer alleen het deel dat bij je página past.</li><li>Test de wijziging voordat je publiceert.</li></ol>
       <h2>Waarvoor je het kunt gebruiken</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Veelgemaakte fouten</h2>
       <ul><li>Uitvoer kopieren zonder controle.</li><li>Lokale URL's gebruiken in plaats van publieke URL's.</li><li>Na de build niet controleren of het bestand in de publicatiemap staat.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Test the final color pair in a browser by zooming to confirm text is readable at small sizes.</li><li>Compare the tool result against the WCAG contrast checker in Chrome DevTools Accessibility panel for a second opinion.</li></ol>
     </article>
   </div>
 </section>

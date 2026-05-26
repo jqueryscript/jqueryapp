@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Was ist CSS-Druckstil-Generator?</h2>
       <p>CSS-Druckstil-Generator ist ein Browser-Tool für diese Aufgabe: Generiere ein Druck-Stylesheet zum Ausblenden von Navigation, Anzeigen von Link-URLs und Vermeiden von Seitenumbruchen. Die Ausgabe bleibt lesbar, damit du sie vor dem Einbau in eine Live-Seite prüfen kannst.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate a @media print block that hides navigation, shows link URLs, controls page breaks, and sets sensible print margins. Essential for making articles, recipes, documentation, and invoices print cleanly.</p></div>
+      <h3>Limitations</h3><ul><li>Page-break rules such as page-break-inside: avoid are hints to the browser print engine, not guarantees. The engine may still break content if the block does not fit on one page.</li><li>Browser print engines render CSS differently. Chrome, Firefox, and Safari each produce slightly different printed output, especially with background colors, page margins, and multi-column layouts.</li></ul>
       <h2>So nutzt du dieses Tool</h2>
       <ol><li>Öffne das Tool und trage die relevanten Werte ein.</li><li>Prüfe die erzeugte Ausgabe im Ergebnisfeld.</li><li>Kopiere nur den Teil, der zu deiner Seite passt.</li><li>Teste die Änderung im Browser, bevor du sie veröffentlichst.</li></ol>
       <h2>Wofür du es nutzen kannst</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Haufige Fehler</h2>
       <ul><li>Ausgabe ungepruft in Produktion kopieren.</li><li>Lokale URLs statt finaler öffentlich erreichbarer URLs verwenden.</li><li>Nach dem Build nicht prüfen, ob die Datei im veröffentlichten Ordner liegt.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Use print preview in Chrome, Firefox, and Safari to verify the page prints without navigation, with expanded link URLs, and with appropriate page breaks.</li><li>Save the page as PDF from each browser and compare the output for consistency in margins, font sizes, and page break placement.</li></ol>
     </article>
   </div>
 </section>

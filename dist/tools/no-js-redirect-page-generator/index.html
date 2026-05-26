@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>What is No-JS Redirect Page Generator?</h2>
       <p>A meta refresh redirect is an HTML-only way to send visitors from one URL to another. It works on static hosting (GitHub Pages, Netlify, etc.) where server redirects are not available. The tag sits in the page head with a delay and destination URL.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Create a complete HTML page that redirects visitors to a new URL using the meta refresh tag. Works on any static hosting platform such as GitHub Pages without JavaScript or server configuration.</p></div>
+      <h3>Limitations</h3><ul><li>Meta refresh is not a true HTTP 301 redirect. Search engines treat it as a weaker signal. Permanent URL moves should use a server-level 301 redirect when possible.</li><li>Some browsers and security tools allow users to disable meta refresh redirects, which leaves visitors on the redirect page without automatic forwarding.</li><li>Meta refresh redirects have lower SEO value than server-side redirects. Use them on static hosting only when server-side redirects are not available.</li></ul>
       <h2>How to use this tool</h2>
       <ol><li>Enter the target URL and redirect delay in seconds.</li><li>Add a page title and optional body text for the redirect notice page.</li><li>Copy the generated HTML into a file at the old URL location.</li><li>Publish the file and test that the redirect fires correctly.</li></ol>
       <h2>What you can use it for</h2>
@@ -123,7 +123,7 @@
     <article class="tool-article">
       <h2>Common mistakes</h2>
       <ul><li>Setting the delay to 0, which gives visitors no time to read the redirect notice before the page changes.</li><li>Pointing to a broken or relative URL that does not resolve when the redirect fires.</li><li>Not adding a manual click link in case the meta refresh does not fire or is blocked by the browser.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Open the generated HTML page in a browser and confirm the redirect fires after the specified delay.</li><li>Use a web crawler tool or browser extension to verify the redirect chain and confirm the final destination URL is correct.</li></ol>
     </article>
   </div>
 </section>
@@ -141,6 +141,9 @@
 </details><details class="faq-item">
   <summary>Is meta refresh better than JavaScript redirects?</summary>
   <p>Meta refresh works without JavaScript and is simpler to implement. Both are less ideal than server-side redirects but are practical options on static hosting platforms.</p>
+</details><details class="faq-item">
+  <summary>What delay should I use?</summary>
+  <p>Use 0 seconds for an immediate redirect. Search engines treat a 0-second meta refresh as a permanent redirect signal. Use a delay of 3 to 5 seconds only when the visitor needs time to read a notice before being forwarded.</p>
 </details>
     </div>
   </div>
@@ -233,6 +236,6 @@
       </div>
     </div>
   </footer>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"No-JS Redirect Page Generator","description":"Generate a complete HTML redirect page using the meta refresh tag without JavaScript.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/no-js-redirect-page-generator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"HTML Tools","item":"https://www.jquery.app/tools/html/"},{"@type":"ListItem","position":4,"name":"No-JS Redirect Page Generator","item":"https://www.jquery.app/tools/no-js-redirect-page-generator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do search engines follow meta refresh redirects?","acceptedAnswer":{"@type":"Answer","text":"Google treats a 0-second meta refresh as a permanent redirect in most cases. Longer delays are treated as temporary. Meta refresh is not as strong as a 301 server redirect but is the only option on static hosting."}},{"@type":"Question","name":"Is meta refresh better than JavaScript redirects?","acceptedAnswer":{"@type":"Answer","text":"Meta refresh works without JavaScript and is simpler to implement. Both are less ideal than server-side redirects but are practical options on static hosting platforms."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"No-JS Redirect Page Generator","description":"Generate a complete HTML redirect page using the meta refresh tag without JavaScript.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/no-js-redirect-page-generator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"HTML Tools","item":"https://www.jquery.app/tools/html/"},{"@type":"ListItem","position":4,"name":"No-JS Redirect Page Generator","item":"https://www.jquery.app/tools/no-js-redirect-page-generator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do search engines follow meta refresh redirects?","acceptedAnswer":{"@type":"Answer","text":"Google treats a 0-second meta refresh as a permanent redirect in most cases. Longer delays are treated as temporary. Meta refresh is not as strong as a 301 server redirect but is the only option on static hosting."}},{"@type":"Question","name":"Is meta refresh better than JavaScript redirects?","acceptedAnswer":{"@type":"Answer","text":"Meta refresh works without JavaScript and is simpler to implement. Both are less ideal than server-side redirects but are practical options on static hosting platforms."}},{"@type":"Question","name":"What delay should I use?","acceptedAnswer":{"@type":"Answer","text":"Use 0 seconds for an immediate redirect. Search engines treat a 0-second meta refresh as a permanent redirect signal. Use a delay of 3 to 5 seconds only when the visitor needs time to read a notice before being forwarded."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
 </body>
 </html>

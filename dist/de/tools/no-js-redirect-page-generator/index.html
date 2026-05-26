@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Was ist No-JS-Weiterleitungsseiten-Generator?</h2>
       <p>No-JS-Weiterleitungsseiten-Generator ist ein Browser-Tool für diese Aufgabe: Generiere eine vollstandige HTML-Weiterleitungsseite mit dem Meta-Refresh-Tag ohne JavaScript. Die Ausgabe bleibt lesbar, damit du sie vor dem Einbau in eine Live-Seite prüfen kannst.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Create a complete HTML page that redirects visitors to a new URL using the meta refresh tag. Works on any static hosting platform such as GitHub Pages without JavaScript or server configuration.</p></div>
+      <h3>Limitations</h3><ul><li>Meta refresh is not a true HTTP 301 redirect. Search engines treat it as a weaker signal. Permanent URL moves should use a server-level 301 redirect when possible.</li><li>Some browsers and security tools allow users to disable meta refresh redirects, which leaves visitors on the redirect page without automatic forwarding.</li><li>Meta refresh redirects have lower SEO value than server-side redirects. Use them on static hosting only when server-side redirects are not available.</li></ul>
       <h2>So nutzt du dieses Tool</h2>
       <ol><li>Öffne das Tool und trage die relevanten Werte ein.</li><li>Prüfe die erzeugte Ausgabe im Ergebnisfeld.</li><li>Kopiere nur den Teil, der zu deiner Seite passt.</li><li>Teste die Änderung im Browser, bevor du sie veröffentlichst.</li></ol>
       <h2>Wofür du es nutzen kannst</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Haufige Fehler</h2>
       <ul><li>Ausgabe ungepruft in Produktion kopieren.</li><li>Lokale URLs statt finaler öffentlich erreichbarer URLs verwenden.</li><li>Nach dem Build nicht prüfen, ob die Datei im veröffentlichten Ordner liegt.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Open the generated HTML page in a browser and confirm the redirect fires after the specified delay.</li><li>Use a web crawler tool or browser extension to verify the redirect chain and confirm the final destination URL is correct.</li></ol>
     </article>
   </div>
 </section>

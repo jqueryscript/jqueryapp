@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Was ist Markdown-Front-Matter-Generator?</h2>
       <p>Markdown-Front-Matter-Generator ist ein Browser-Tool für diese Aufgabe: Generiere YAML-Front-Matter-Blocke für Jekyll, Hugo, Astro, 11ty und andere Static-Site-Generators. Die Ausgabe bleibt lesbar, damit du sie vor dem Einbau in eine Live-Seite prüfen kannst.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Front matter is YAML or TOML metadata at the top of a Markdown file that tells your static site generator the page title, layout, publish date, tags, and other settings. It is separated from content by triple dashes.</p></div>
+      <h3>Limitations</h3><ul><li>The specific front matter fields vary by static site generator. Jekyll, Hugo, Astro, and 11ty each use different field names and conventions.</li><li>This tool generates YAML format only. Generators that prefer TOML or JSON front matter will need a different format.</li><li>Front matter values are case-sensitive in most static site generators. layout: post and Layout: post are treated as different fields.</li></ul>
       <h2>So nutzt du dieses Tool</h2>
       <ol><li>Öffne das Tool und trage die relevanten Werte ein.</li><li>Prüfe die erzeugte Ausgabe im Ergebnisfeld.</li><li>Kopiere nur den Teil, der zu deiner Seite passt.</li><li>Teste die Änderung im Browser, bevor du sie veröffentlichst.</li></ol>
       <h2>Wofür du es nutzen kannst</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Haufige Fehler</h2>
       <ul><li>Ausgabe ungepruft in Produktion kopieren.</li><li>Lokale URLs statt finaler öffentlich erreichbarer URLs verwenden.</li><li>Nach dem Build nicht prüfen, ob die Datei im veröffentlichten Ordner liegt.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Build the site with your static site generator and confirm the page renders with the correct layout, title, and metadata from the front matter.</li><li>Check that special characters in front matter values are quoted to avoid YAML parse errors during build.</li></ol>
     </article>
   </div>
 </section>

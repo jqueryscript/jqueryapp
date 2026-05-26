@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>What is Favicon HTML Tag Generator?</h2>
       <p>Favicon markup tells browsers and devices which icons to use for tabs, bookmarks, home screen shortcuts, and web app installs. A small static site can still need several icon formats because desktop browsers, mobile browsers, and saved web apps use different files.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate favicon HTML tags, Apple touch icon references, and web app manifest entries for static websites. Include both SVG and fallback icon paths for broad browser support.</p></div>
+      <h3>Limitations</h3><ul><li>Icon files must exist at the specified paths in the published output. The generated tags are only references; you must create or place the actual icon files at those paths.</li><li>The Apple touch icon has specific size expectations. Apple devices expect a 180 by 180 pixel PNG for best results when users save the page to their home screen.</li><li>The web manifest snippet requires valid JSON. A single syntax error in the manifest file can prevent browsers from reading the app metadata entirely.</li></ul>
       <h2>How to use this tool</h2>
       <ol><li>Enter the base path where your icon files will be published.</li><li>Add the app or site name plus theme and background colors.</li><li>Copy the generated link and meta tags into your HTML head.</li><li>Copy the manifest JSON snippet into your site.webmanifest file if you use one.</li></ol>
       <h2>What you can use it for</h2>
@@ -123,7 +123,7 @@
     <article class="tool-article">
       <h2>Common mistakes</h2>
       <ul><li>Using icon paths that break after deployment under a subfolder.</li><li>Forgetting an Apple touch icon for mobile home screen saves.</li><li>Using a theme color that does not match the actual site header.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Open the published page and check the browser tab for the favicon. If the icon does not appear, verify the image path matches the actual file location.</li><li>On an iOS device or simulator, use Share &gt; Add to Home Screen and confirm the saved shortcut uses the Apple touch icon image.</li></ol>
     </article>
   </div>
 </section>
@@ -144,6 +144,9 @@
 </details><details class="faq-item">
   <summary>Is a web manifest required?</summary>
   <p>No. It is optional for a normal website, but useful if you want better saved-app behavior on mobile and desktop.</p>
+</details><details class="faq-item">
+  <summary>Do I still need favicon.ico or is SVG enough?</summary>
+  <p>SVG favicons work in modern browsers, but favicon.ico remains a useful fallback for older browsers, bookmarks, and browser tabs. A practical setup includes both an SVG icon in the head and a small favicon.ico at the site root.</p>
 </details>
     </div>
   </div>
@@ -229,6 +232,6 @@
       </div>
     </div>
   </footer>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Favicon HTML Tag Generator","description":"Generate favicon and web app icon tags for static websites.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/favicon-html-tag-generator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"Image & Asset Tools","item":"https://www.jquery.app/tools/assets/"},{"@type":"ListItem","position":4,"name":"Favicon HTML Tag Generator","item":"https://www.jquery.app/tools/favicon-html-tag-generator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do I still need favicon.ico?","acceptedAnswer":{"@type":"Answer","text":"It is still useful as a broad fallback. Many modern setups also include SVG and PNG icons."}},{"@type":"Question","name":"Where should icon files live?","acceptedAnswer":{"@type":"Answer","text":"Use a stable public folder such as /icons or /assets/icons, and make sure the same path exists in the built output."}},{"@type":"Question","name":"Is a web manifest required?","acceptedAnswer":{"@type":"Answer","text":"No. It is optional for a normal website, but useful if you want better saved-app behavior on mobile and desktop."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Favicon HTML Tag Generator","description":"Generate favicon and web app icon tags for static websites.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/favicon-html-tag-generator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"Image & Asset Tools","item":"https://www.jquery.app/tools/assets/"},{"@type":"ListItem","position":4,"name":"Favicon HTML Tag Generator","item":"https://www.jquery.app/tools/favicon-html-tag-generator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do I still need favicon.ico?","acceptedAnswer":{"@type":"Answer","text":"It is still useful as a broad fallback. Many modern setups also include SVG and PNG icons."}},{"@type":"Question","name":"Where should icon files live?","acceptedAnswer":{"@type":"Answer","text":"Use a stable public folder such as /icons or /assets/icons, and make sure the same path exists in the built output."}},{"@type":"Question","name":"Is a web manifest required?","acceptedAnswer":{"@type":"Answer","text":"No. It is optional for a normal website, but useful if you want better saved-app behavior on mobile and desktop."}},{"@type":"Question","name":"Do I still need favicon.ico or is SVG enough?","acceptedAnswer":{"@type":"Answer","text":"SVG favicons work in modern browsers, but favicon.ico remains a useful fallback for older browsers, bookmarks, and browser tabs. A practical setup includes both an SVG icon in the head and a small favicon.ico at the site root."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
 </body>
 </html>

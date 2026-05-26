@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Qu'est-ce que Aide 404 SPA GitHub Pages ?</h2>
       <p>Aide 404 SPA GitHub Pages est un outil dans le navigateur pour cette tâche : Créez un fallback 404.html pour les applications monopages sur GitHub Pages. La sortie reste lisible afin de la vérifier avant de l'utiliser sur un site publié.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate a 404.html fallback for single-page apps deployed on GitHub Pages. The fallback redirects deep client-side routes to the app entry point while preserving the original path for the router to handle.</p></div>
+      <h3>Limitations</h3><ul><li>This is a generic client-side fallback, not a server-side redirect configuration. It relies on JavaScript in the browser to extract the original path and pass it to the router.</li><li>The client-side router must be configured to read the preserved path from the query string or hash and render the matching route. Not all routers handle this redirect pattern automatically.</li><li>This approach does not fix navigation or refresh behavior within the SPA after the initial redirect. Router-level configuration is still needed for full client-side routing support.</li></ul>
       <h2>Comment utiliser cet outil</h2>
       <ol><li>Ouvrez l'outil et saisissez les valeurs utiles.</li><li>Vérifiez la sortie dans le panneau de résultat.</li><li>Copiez seulement la partie adaptéeà votre page.</li><li>Testez la modification avant publication.</li></ol>
       <h2>A quoi il sert</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Erreurs frequentes</h2>
       <ul><li>Copier la sortie sans verification.</li><li>Utiliser des URL locales au lieu des URL publiques finales.</li><li>Oublier de vérifier le dossier publié après le build.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Deploy the site with the generated 404.html at the root, then open a deep route URL such as https://yoursite.com/some/deep/route directly in a browser.</li><li>Confirm the page loads the SPA entry point and the router navigates to the deep route without showing a 404 or blank page.</li></ol>
     </article>
   </div>
 </section>

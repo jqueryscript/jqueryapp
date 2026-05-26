@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Qué es Generador CSS overscroll-behavior?</h2>
       <p>Generador CSS overscroll-behavior es una herramienta de navegador para esta tarea: Genera CSS overscroll-behavior para controlar pull-to-refresh y encadenamiento de desplazamiento. La salida es fácil de revisar antes de usarla en un sitio publicado.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Control what happens when a scrollable element reaches its boundary. Use contain to stop scroll chaining while keeping the bounce effect, or none to remove all overscroll effects including pull-to-refresh.</p></div>
+      <h3>Limitations</h3><ul><li>Overscroll-behavior is primarily a mobile concern. Desktop browsers apply minimal or no overscroll effects, so the property has little visible impact on desktop.</li><li>Testing overscroll-behavior on desktop requires device emulation in DevTools because mouse scroll behavior differs significantly from touch gestures.</li></ul>
       <h2>Cómo usar esta herramienta</h2>
       <ol><li>Abre la herramienta y escribe los valores necesarios.</li><li>Revisa la salida en el panel de resultado.</li><li>Copia solo la parte que encaja con tu página.</li><li>Prueba el cambio antes de publicar.</li></ol>
       <h2>Para qué puedes usarla</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Errores comunes</h2>
       <ul><li>Copiar la salida sin revisarla.</li><li>Usar URLs locales en lugar de URLs públicas finales.</li><li>No confirmar que el archivo esté en la carpeta publicada.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Test the behavior on a real mobile device by scrolling past the boundary of the target element and confirming the expected pull-to-refresh or scroll chain behavior.</li><li>Use Chrome DevTools device mode with touch emulation enabled to approximate mobile overscroll behavior on desktop.</li></ol>
     </article>
   </div>
 </section>

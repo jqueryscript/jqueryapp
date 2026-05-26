@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>What is CSS Box Shadow Builder?</h2>
       <p>box-shadow is one of the most commonly used CSS properties for adding depth and elevation to elements, but its multi-value syntax can be confusing, especially when combining offset, blur, spread, color, and the inset keyword. This tool makes the property visual by showing a live preview as you adjust each value, so you can see exactly how the shadow behaves before adding it to your stylesheet.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate a box-shadow declaration by adjusting offset, blur, spread, color, and inset. The live preview shows the shadow on a static div so you can tune the values before adding them to your stylesheet.</p></div>
+      <h3>Limitations</h3><ul><li>The preview is a static div with no surrounding context. A shadow that looks correct in isolation may appear different against a real page background or near other elements.</li><li>The tool generates one shadow at a time. For layered or multiple shadows you must combine the values manually in your stylesheet.</li></ul>
       <h2>How to use this tool</h2>
       <ol><li>Adjust the horizontal and vertical offset to move the shadow position.</li><li>Set the blur radius and spread to control softness and size.</li><li>Pick a shadow color and toggle inset if the shadow should appear inside the element.</li><li>Copy the generated CSS declaration and paste it into your stylesheet.</li></ol>
       <h2>What you can use it for</h2>
@@ -123,7 +123,7 @@
     <article class="tool-article">
       <h2>Common mistakes</h2>
       <ul><li>Forgetting to add a color value, which can cause the shadow to render as black or inherit unexpected browser defaults.</li><li>Using a blur radius that is too large, making the shadow nearly invisible on small elements.</li><li>Not checking that the inset keyword produces the expected inner shadow behavior on the target element.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Paste the generated CSS into your actual page and inspect the shadow on the real element with its background and adjacent content.</li><li>Test the shadow at different element sizes to confirm blur and spread scale as expected.</li></ol>
     </article>
   </div>
 </section>
@@ -141,6 +141,12 @@
 </details><details class="faq-item">
   <summary>How do I add multiple shadows?</summary>
   <p>Separate each shadow declaration with a comma. The builder can be used once per shadow, then you combine the values in your stylesheet.</p>
+</details><details class="faq-item">
+  <summary>How do I layer multiple shadows?</summary>
+  <p>Write each shadow declaration separated by a comma within the same box-shadow property. The first shadow renders on top and subsequent shadows render underneath. Combine multiple shadows for realistic multi-light-source effects.</p>
+</details><details class="faq-item">
+  <summary>When should I use the drop-shadow filter instead?</summary>
+  <p>Use the drop-shadow CSS filter when you need a shadow that follows the exact shape of an element with a transparent background or clipped corners. box-shadow always follows the element CSS box, while drop-shadow follows the rendered pixel contour.</p>
 </details>
     </div>
   </div>
@@ -233,6 +239,6 @@
       </div>
     </div>
   </footer>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CSS Box Shadow Builder","description":"Build box-shadow CSS visually by adjusting offset, blur, spread, and color.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/css-box-shadow-builder/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"CSS Tools","item":"https://www.jquery.app/tools/css/"},{"@type":"ListItem","position":4,"name":"CSS Box Shadow Builder","item":"https://www.jquery.app/tools/css-box-shadow-builder/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does the spread value do?","acceptedAnswer":{"@type":"Answer","text":"Spread expands or contracts the shadow size. A positive spread makes the shadow larger, while a negative spread shrinks it. Zero spread keeps the shadow the same size as the element."}},{"@type":"Question","name":"How do I add multiple shadows?","acceptedAnswer":{"@type":"Answer","text":"Separate each shadow declaration with a comma. The builder can be used once per shadow, then you combine the values in your stylesheet."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CSS Box Shadow Builder","description":"Build box-shadow CSS visually by adjusting offset, blur, spread, and color.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/css-box-shadow-builder/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"CSS Tools","item":"https://www.jquery.app/tools/css/"},{"@type":"ListItem","position":4,"name":"CSS Box Shadow Builder","item":"https://www.jquery.app/tools/css-box-shadow-builder/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does the spread value do?","acceptedAnswer":{"@type":"Answer","text":"Spread expands or contracts the shadow size. A positive spread makes the shadow larger, while a negative spread shrinks it. Zero spread keeps the shadow the same size as the element."}},{"@type":"Question","name":"How do I add multiple shadows?","acceptedAnswer":{"@type":"Answer","text":"Separate each shadow declaration with a comma. The builder can be used once per shadow, then you combine the values in your stylesheet."}},{"@type":"Question","name":"How do I layer multiple shadows?","acceptedAnswer":{"@type":"Answer","text":"Write each shadow declaration separated by a comma within the same box-shadow property. The first shadow renders on top and subsequent shadows render underneath. Combine multiple shadows for realistic multi-light-source effects."}},{"@type":"Question","name":"When should I use the drop-shadow filter instead?","acceptedAnswer":{"@type":"Answer","text":"Use the drop-shadow CSS filter when you need a shadow that follows the exact shape of an element with a transparent background or clipped corners. box-shadow always follows the element CSS box, while drop-shadow follows the rendered pixel contour."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
 </body>
 </html>

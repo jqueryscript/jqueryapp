@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Qué es Generador CSS Flexbox?</h2>
       <p>Generador CSS Flexbox es una herramienta de navegador para esta tarea: Genera CSS flexbox y esqueleto HTMLà partir de las propiedades flex selecciónadas. La salida es fácil de revisar antes de usarla en un sitio publicado.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate flexbox container CSS by selecting direction, wrap, alignment, and justification values. The output includes the container rules and an HTML skeleton so you can test the layout immediately.</p></div>
+      <h3>Limitations</h3><ul><li>The tool generates container-level flex properties only. It does not generate item-level flex properties such as flex-grow, flex-shrink, flex-basis, or align-self.</li><li>The generated CSS applies to the flex container only. You still need to add your own content markup and styling for the child flex items.</li></ul>
       <h2>Cómo usar esta herramienta</h2>
       <ol><li>Abre la herramienta y escribe los valores necesarios.</li><li>Revisa la salida en el panel de resultado.</li><li>Copia solo la parte que encaja con tu página.</li><li>Prueba el cambio antes de publicar.</li></ol>
       <h2>Para qué puedes usarla</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Errores comunes</h2>
       <ul><li>Copiar la salida sin revisarla.</li><li>Usar URLs locales en lugar de URLs públicas finales.</li><li>No confirmar que el archivo esté en la carpeta publicada.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Add the generated container CSS to a page with test child elements and resize the viewport to verify wrap and alignment behavior.</li><li>Toggle between different flex-direction values to confirm children reflow along the correct axis.</li></ol>
     </article>
   </div>
 </section>

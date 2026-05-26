@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Qu'est-ce que Assistant CNAME GitHub Pages ?</h2>
       <p>Assistant CNAME GitHub Pages est un outil dans le navigateur pour cette tâche : Créez le contenu CNAME et les notes DNS pour un domaine GitHub Pages. La sortie reste lisible afin de la vérifier avant de l'utiliser sur un site publié.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Create the CNAME file for a GitHub Pages custom domain and get the matching DNS guidance for www or apex setups. The file must contain only the bare domain name with no protocol or path.</p></div>
+      <h3>Limitations</h3><ul><li>The CNAME file must exist in the published site root, typically inside your dist or build output folder. If your build tool regenerates the output folder, the CNAME file must be re-added each time.</li><li>DNS propagation after updating CNAME or A records can take minutes to 48 hours depending on your domain provider and TTL settings.</li><li>Apex domain setup requires A records pointing to GitHub Pages IP addresses, not a CNAME record. CNAME records at the apex are not allowed by DNS standards for most providers.</li></ul>
       <h2>Comment utiliser cet outil</h2>
       <ol><li>Ouvrez l'outil et saisissez les valeurs utiles.</li><li>Vérifiez la sortie dans le panneau de résultat.</li><li>Copiez seulement la partie adaptéeà votre page.</li><li>Testez la modification avant publication.</li></ol>
       <h2>A quoi il sert</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Erreurs frequentes</h2>
       <ul><li>Copier la sortie sans verification.</li><li>Utiliser des URL locales au lieu des URL publiques finales.</li><li>Oublier de vérifier le dossier publié après le build.</li></ul>
-      
+      <h2>Verification</h2><ol><li>After deploying, visit https://yourdomain.com and confirm the site loads. Check GitHub Pages settings for the green DNS check mark.</li><li>Verify the CNAME file is present by visiting https://yourdomain.com/CNAME in a browser. It should display only the domain name.</li></ol>
     </article>
   </div>
 </section>

@@ -105,7 +105,21 @@
       {
         "question": "Can one page use both Open Graph and Twitter tags?",
         "answer": "Yes. Most pages should use both. Open Graph covers many platforms, while Twitter Card tags give extra control for X-style previews."
+      },
+      {
+        "question": "What image size should I use for social previews?",
+        "answer": "A 1200 by 630 pixel image is a practical default for large link previews. Keep important text away from the edges so the preview renders correctly."
       }
+    ],
+    "quickAnswer": "Generate Open Graph and Twitter Card meta tags to control how your page appears when shared on social platforms, messaging apps, and link preview tools. Use absolute URLs for images and test after publishing.",
+    "limitations": [
+      "Generated tags must be placed in the HTML head section of each page. Social platforms and messaging apps read these tags when the page is fetched, not when the page is built.",
+      "Social platforms cache previews aggressively. After updating og or twitter tags, use each platform's debugger or share tester to force a cache refresh.",
+      "Some platforms ignore certain tags. X reads twitter:card while Facebook and LinkedIn use og: tags. Not every platform supports every directive."
+    ],
+    "verificationSteps": [
+      "Test the published page using the Facebook Sharing Debugger, LinkedIn Post Inspector, and X Card Validator to confirm each platform reads the expected preview.",
+      "Verify that the og:url value matches the canonical URL and that the og:image URL is absolute and accessible."
     ]
   },
   {
@@ -154,7 +168,21 @@
       {
         "question": "Why does my custom domain disappear after deployment?",
         "answer": "Many build tools delete and regenerate the output folder. Make sure the CNAME file is copied into the final build output every time."
+      },
+      {
+        "question": "Why does my CNAME disappear after every deploy?",
+        "answer": "Most static site generators and CI pipelines clean the output folder before rebuilding. If the CNAME file is not in your source repository or your build process does not copy it, the file will be missing after each deployment. Add CNAME to your source tree or configure your build tool to keep it."
       }
+    ],
+    "quickAnswer": "Create the CNAME file for a GitHub Pages custom domain and get the matching DNS guidance for www or apex setups. The file must contain only the bare domain name with no protocol or path.",
+    "limitations": [
+      "The CNAME file must exist in the published site root, typically inside your dist or build output folder. If your build tool regenerates the output folder, the CNAME file must be re-added each time.",
+      "DNS propagation after updating CNAME or A records can take minutes to 48 hours depending on your domain provider and TTL settings.",
+      "Apex domain setup requires A records pointing to GitHub Pages IP addresses, not a CNAME record. CNAME records at the apex are not allowed by DNS standards for most providers."
+    ],
+    "verificationSteps": [
+      "After deploying, visit https://yourdomain.com and confirm the site loads. Check GitHub Pages settings for the green DNS check mark.",
+      "Verify the CNAME file is present by visiting https://yourdomain.com/CNAME in a browser. It should display only the domain name."
     ]
   },
   {
@@ -203,7 +231,21 @@
       {
         "question": "Does a GitHub Pages site need SEO tags?",
         "answer": "Yes. Static hosting does not remove the need for titles, descriptions, canonical URLs, internal links, and indexable HTML."
+      },
+      {
+        "question": "How does this checklist differ from a technical SEO audit?",
+        "answer": "This checklist focuses on common static site issues before or shortly after launch. A technical SEO audit examines crawl data, server logs, duplicate content clusters, backlink profiles, and historical ranking trends. Use both for a complete picture."
       }
+    ],
+    "quickAnswer": "Generate a practical launch checklist for your static site that covers metadata, indexing, links, performance, and multilingual setup. Select your site type and features, then review each item before publishing.",
+    "limitations": [
+      "This checklist is a launch review, not ongoing monitoring. It helps catch issues before publishing but does not track ranking changes, crawl errors, or content decay over time.",
+      "The checklist does not evaluate content quality, keyword targeting, or backlinks. Those require separate editorial and link analysis workflows.",
+      "Some checklist items require manual verification outside this tool, such as checking Google Search Console or testing page speed with real browser tools."
+    ],
+    "verificationSteps": [
+      "Run each item on the generated checklist against your published site. Mark items as verified only when you have confirmed the result.",
+      "After launch, compare the checklist against Google Search Console reports to catch issues the checklist may have missed."
     ]
   },
   {
@@ -252,7 +294,21 @@
       {
         "question": "What is the safest default?",
         "answer": "For normal public pages, index and follow is the normal default. Add restrictions only when the page has a specific reason."
+      },
+      {
+        "question": "How long does it take for a noindex directive to work?",
+        "answer": "After the page is crawled again and the updated robots meta tag is discovered, it can take days to weeks for the page to be removed from search results. Use the URL Removal tool in Google Search Console for faster action when needed."
       }
+    ],
+    "quickAnswer": "Build page-level robots meta tags to control search engine indexing, link following, snippet length, and archive behavior without changing robots.txt. Use index and follow as the default for public pages.",
+    "limitations": [
+      "Pages blocked by robots.txt cannot be read by crawlers, so any noindex directive on those pages will not be seen. Use robots.txt for crawl control and meta tags for indexing control separately.",
+      "Conflicting directives such as both index and noindex or contradictory snippet settings can cause unpredictable crawler behavior. Most crawlers use the most restrictive directive.",
+      "Some crawlers ignore meta robots directives entirely. Malicious bots, AI crawlers, and automated scrapers may not respect page-level instructions."
+    ],
+    "verificationSteps": [
+      "Inspect the generated meta tag in the page HTML source. Confirm the directive combination reflects what you intended, especially when combining noindex with follow or snippet rules.",
+      "Use the URL Inspection tool in Google Search Console to verify the discovered robots directives and any crawl issues."
     ]
   },
   {
@@ -372,7 +428,21 @@
       {
         "question": "Do preconnect tags improve every page?",
         "answer": "No. Preconnect is useful for important third-party origins. Extra preconnect tags can waste browser resources."
+      },
+      {
+        "question": "When should I use preload instead of an inline script or style?",
+        "answer": "Use preload when a resource is critical but cannot be inlined, such as a large font file or a hero image. Inline scripts and styles are better for small critical-path code because they eliminate an extra network request."
       }
+    ],
+    "quickAnswer": "Create valid HTML link tags for preload, preconnect, dns-prefetch, canonical, and alternate URLs without guessing the required attributes. Each rel value has specific requirements such as as, type, or crossorigin.",
+    "limitations": [
+      "The as attribute is required for preload links. Without it, the browser cannot prioritize or apply the correct Content Security Policy to the preloaded resource.",
+      "Preloading too many resources is counterproductive and can delay the loading of real critical content. Limit preload hints to one to three important resources per page.",
+      "The crossorigin attribute is required for preloading fonts and other cross-origin resources. Omitting it causes the preload to be discarded by the browser."
+    ],
+    "verificationSteps": [
+      "Inspect the generated link tag in the browser DevTools Elements panel to confirm that all required attributes are present for the selected rel value.",
+      "Open the Network panel and verify preloaded resources appear with the correct priority indicator and are not duplicated as later requests."
     ]
   },
   {
@@ -421,7 +491,21 @@
       {
         "question": "Is a web manifest required?",
         "answer": "No. It is optional for a normal website, but useful if you want better saved-app behavior on mobile and desktop."
+      },
+      {
+        "question": "Do I still need favicon.ico or is SVG enough?",
+        "answer": "SVG favicons work in modern browsers, but favicon.ico remains a useful fallback for older browsers, bookmarks, and browser tabs. A practical setup includes both an SVG icon in the head and a small favicon.ico at the site root."
       }
+    ],
+    "quickAnswer": "Generate favicon HTML tags, Apple touch icon references, and web app manifest entries for static websites. Include both SVG and fallback icon paths for broad browser support.",
+    "limitations": [
+      "Icon files must exist at the specified paths in the published output. The generated tags are only references; you must create or place the actual icon files at those paths.",
+      "The Apple touch icon has specific size expectations. Apple devices expect a 180 by 180 pixel PNG for best results when users save the page to their home screen.",
+      "The web manifest snippet requires valid JSON. A single syntax error in the manifest file can prevent browsers from reading the app metadata entirely."
+    ],
+    "verificationSteps": [
+      "Open the published page and check the browser tab for the favicon. If the icon does not appear, verify the image path matches the actual file location.",
+      "On an iOS device or simulator, use Share > Add to Home Screen and confirm the saved shortcut uses the Apple touch icon image."
     ]
   },
   {
@@ -470,7 +554,21 @@
       {
         "question": "Should I use px or rem?",
         "answer": "Both can work. Rem is often better for font sizes because it respects user font settings, while px is simpler for quick layout calculations."
+      },
+      {
+        "question": "Should I use px or rem inside clamp()?",
+        "answer": "Rem is preferred for font sizes inside clamp() because it respects user preferences and scales with the browser base font size. Px can be simpler for fixed layout spacing where scaling is not desired."
       }
+    ],
+    "quickAnswer": "Calculate a responsive CSS clamp expression for fluid typography, spacing, or layout values. Enter minimum and maximum sizes with viewport ranges to generate a value that scales smoothly between them.",
+    "limitations": [
+      "Clamp() values are static once generated. They do not adapt to changes in the DOM, user interactions, or container dimensions. For layout-aware scaling, consider container query units instead.",
+      "The viewport-based preferred value may need adjustment at extreme screen sizes. Test the generated clamp value on very small and very large viewports to confirm the curve feels natural.",
+      "This tool uses viewport width (vw) for the preferred value. It does not account for container query units (cqw) or other newer CSS units that behave differently."
+    ],
+    "verificationSteps": [
+      "Inspect the element using browser DevTools and verify the clamp() value resolves to expected pixel values at minimum, mid-range, and maximum viewport widths.",
+      "Resize the browser window slowly from mobile width to desktop width and confirm the property value transitions smoothly without jumps."
     ]
   },
   {
@@ -519,7 +617,21 @@
       {
         "question": "Should I apply safe-area padding to the whole page?",
         "answer": "Usually no. Apply it to fixed bars, app shells, or sections that need edge protection."
+      },
+      {
+        "question": "Will safe-area-inset values work on desktop browsers?",
+        "answer": "Desktop browsers without display notches return zero for env(safe-area-inset-*) variables. Including a fallback value ensures your layout looks correct on both mobile and desktop without side effects."
       }
+    ],
+    "quickAnswer": "Generate CSS padding, margin, or position offset rules using env(safe-area-inset-*) with fallback values. This keeps content away from phone notches, rounded screen corners, and home indicators on modern mobile devices.",
+    "limitations": [
+      "Safe-area inset variables are only relevant on notched mobile devices and phones with rounded corners or home indicators. Desktop and older mobile browsers return zero for all safe-area values.",
+      "A fallback value is essential. Without a fallback, browsers that do not support env() variables will use the default of zero, which can cause content to overlap with page edges.",
+      "The viewport-fit=cover meta tag must be present in the HTML head for safe-area variables to produce the intended effect on iOS Safari. Without it, the page may letterbox."
+    ],
+    "verificationSteps": [
+      "Open the published page on a notched mobile device or in Chrome DevTools with a device like iPhone X or Pixel 6. Confirm fixed elements do not overlap with the notch or home indicator.",
+      "Set the viewport-fit=cover meta tag in the head and verify the page extends edge to edge while safe-area padding keeps content clear of obstructions."
     ]
   },
   {
@@ -568,7 +680,21 @@
       {
         "question": "Should every page be listed?",
         "answer": "No. List the pages that best explain the site, its tools, its documentation, and its policies."
+      },
+      {
+        "question": "Should every page be listed in llms.txt?",
+        "answer": "No. llms.txt should highlight the most important entry points: the homepage, tool or documentation indexes, category pages, sitemap, and key policy pages. Listing every individual article or post dilutes the purpose of the file."
       }
+    ],
+    "quickAnswer": "Create an llms.txt file to give AI systems a concise guide to your static site: a summary, important page links, and contextual notes. Publish it at the site root alongside robots.txt and sitemap.xml.",
+    "limitations": [
+      "llms.txt is a discovery guide, not a ranking factor. AI systems may use it to understand site structure, but it does not directly influence search engine rankings.",
+      "AI systems may not read the llms.txt file at all. Many large language models and answer engines use their own crawl and retrieval pipelines that may or may not reference this file.",
+      "An over-long llms.txt file loses focus. Keep the file concise and list only the most important pages to avoid diluting the signal for AI readers."
+    ],
+    "verificationSteps": [
+      "Visit https://yoursite.com/llms.txt in a browser and confirm it renders as plain text with correct URLs and descriptions.",
+      "Check that every URL listed in llms.txt resolves to a valid published page and that the file links to the sitemap."
     ]
   },
   {
@@ -688,7 +814,21 @@
       {
         "question": "Do I need to validate it?",
         "answer": "Yes. Validate the published page and make sure the structured data matches visible content."
+      },
+      {
+        "question": "Does JSON-LD need to be in a specific location in the page HTML?",
+        "answer": "JSON-LD can appear in either the head or body of the HTML. Search engines read both. For static sites, placing it in the head near other metadata is easier to maintain."
       }
+    ],
+    "quickAnswer": "Generate starter JSON-LD structured data for WebSite, Organization, Article, FAQ, and BreadcrumbList schema types. Fill in the key fields and paste the script block into your page HTML.",
+    "limitations": [
+      "Schema markup must match the visible content on the page. Search engines may ignore or penalize structured data that describes content the user cannot see.",
+      "This tool generates starter markup but does not validate the output against Schema.org schemas. Run the generated JSON-LD through Google Rich Results Test or Schema.org Validator before publishing.",
+      "Some rich result types have strict requirements beyond basic schema fields. Article, FAQ, and Review types may require additional properties for eligibility in search result enhancements."
+    ],
+    "verificationSteps": [
+      "Open the published page URL in Google Rich Results Test or Schema.org Validator and confirm no errors or warnings are reported.",
+      "Check that the JSON-LD values match the visible page content, especially the name, description, URL, and date fields."
     ]
   },
   {
@@ -737,7 +877,21 @@
       {
         "question": "Should every image be lazy loaded?",
         "answer": "No. Lazy loading is useful below the fold. Important above-the-fold images may need eager loading."
+      },
+      {
+        "question": "When should alt text be empty vs descriptive?",
+        "answer": "Use empty alt text for purely decorative images that do not convey information. Use descriptive alt text for meaningful images such as screenshots, diagrams, charts, and product photos. The alt text should describe the content or function of the image."
       }
+    ],
+    "quickAnswer": "Generate responsive img or picture markup with srcset, sizes, width, height, and alt text. Helps avoid layout shift, missing image candidates, and inaccessible alt attributes on static sites.",
+    "limitations": [
+      "Srcset candidates must exist at the specified paths in the published output. The generated markup references file paths; you must ensure each image file is copied to the correct location.",
+      "The sizes attribute affects which srcset candidate the browser selects. An incorrect sizes value can cause the browser to download a larger or smaller image than needed.",
+      "WebP source in a picture element requires a fallback img src for older browsers that do not support WebP. Without a fallback, unsupported browsers will show no image."
+    ],
+    "verificationSteps": [
+      "Open the published page, resize the browser, and confirm the browser loads different image candidates at different viewport widths using the Network panel.",
+      "Verify the alt attribute provides accurate descriptions for meaningful images or is empty for decorative images using browser DevTools or a screen reader."
     ]
   },
   {
@@ -786,7 +940,21 @@
       {
         "question": "Is sandbox always safe?",
         "answer": "Sandbox can improve containment, but strict settings may break scripts, forms, or same-origin behavior. Test the embed."
+      },
+      {
+        "question": "What if the embedded content requires scripts or same-origin access?",
+        "answer": "The sandbox attribute blocks scripts and same-origin access by default. If the embed needs JavaScript or cookies, add the allow-scripts and allow-same-origin tokens and test thoroughly to avoid breaking the embedded page."
       }
+    ],
+    "quickAnswer": "Generate responsive iframe embed markup with aspect ratio, lazy loading, sandbox restrictions, and title attributes. The output includes CSS and HTML for a stable embed that avoids layout shifts.",
+    "limitations": [
+      "Sandbox restrictions may break embedded content that relies on scripts, forms, popups, or same-origin storage. Add sandbox tokens selectively and test the embed after applying restrictions.",
+      "The aspect-ratio CSS property is a newer approach than the classic padding-bottom hack. Older browsers may need the padding-bottom fallback for responsive iframes to maintain aspect ratio.",
+      "Lazy loading (loading=lazy) may delay above-the-fold embeds from rendering. For embeds visible near the top of the page, consider eager loading or loading the embed without lazy attributes."
+    ],
+    "verificationSteps": [
+      "Load the page in a browser and confirm the iframe renders at the expected aspect ratio without overflow or scrollbars on mobile and desktop viewports.",
+      "Test the sandbox behavior by interacting with the embedded content. If the embed fails, review the sandbox tokens and add permissions as needed."
     ]
   },
   {
@@ -835,7 +1003,21 @@
       {
         "question": "Should normal static sites use this?",
         "answer": "Usually no. A normal static site should publish real HTML files for important pages instead of routing everything through a fallback."
+      },
+      {
+        "question": "Does this work for all client-side routers?",
+        "answer": "No. The fallback preserves the requested path via query string or hash, but your client-side router must be configured to read that preserved path and render the correct view. Some routers need additional setup to handle this redirect pattern."
       }
+    ],
+    "quickAnswer": "Generate a 404.html fallback for single-page apps deployed on GitHub Pages. The fallback redirects deep client-side routes to the app entry point while preserving the original path for the router to handle.",
+    "limitations": [
+      "This is a generic client-side fallback, not a server-side redirect configuration. It relies on JavaScript in the browser to extract the original path and pass it to the router.",
+      "The client-side router must be configured to read the preserved path from the query string or hash and render the matching route. Not all routers handle this redirect pattern automatically.",
+      "This approach does not fix navigation or refresh behavior within the SPA after the initial redirect. Router-level configuration is still needed for full client-side routing support."
+    ],
+    "verificationSteps": [
+      "Deploy the site with the generated 404.html at the root, then open a deep route URL such as https://yoursite.com/some/deep/route directly in a browser.",
+      "Confirm the page loads the SPA entry point and the router navigates to the deep route without showing a 404 or blank page."
     ]
   },
   {
@@ -880,7 +1062,25 @@
       {
         "question": "Does WCAG apply to decorative text?",
         "answer": "WCAG applies to information-bearing text. Purely decorative text that carries no meaning and is not part of a user interface element does not need to meet contrast thresholds."
+      },
+      {
+        "question": "Does WCAG AA apply to all text on a page?",
+        "answer": "WCAG AA applies to standard body text. Large text above 18px or 14px bold can pass AA at a lower ratio of 3:1. Logos, decorative text, and inactive UI elements are exempt from contrast requirements."
+      },
+      {
+        "question": "What color formats does this tool accept?",
+        "answer": "The tool accepts hex color codes and provides a color picker. Enter colors as six-digit hex values such as #333333 or #ffffff. The color picker returns hex values only."
       }
+    ],
+    "quickAnswer": "Check whether two color combinations meet WCAG contrast standards before publishing. The tool calculates the precise ratio and tells you whether normal text, large text, and UI components pass AA or AAA levels.",
+    "limitations": [
+      "The color picker returns hex values only. It does not support RGB, HSL, or named color inputs directly.",
+      "The tool checks solid color pairs. It does not evaluate contrast on gradient text, box-shadow text, or background images where luminance varies across the element.",
+      "Contrast ratios are calculated from the colors you enter. If either color is transparent the result will not reflect the actual visible contrast against the underlying page background."
+    ],
+    "verificationSteps": [
+      "Test the final color pair in a browser by zooming to confirm text is readable at small sizes.",
+      "Compare the tool result against the WCAG contrast checker in Chrome DevTools Accessibility panel for a second opinion."
     ]
   },
   {
@@ -925,7 +1125,24 @@
       {
         "question": "How do I add multiple shadows?",
         "answer": "Separate each shadow declaration with a comma. The builder can be used once per shadow, then you combine the values in your stylesheet."
+      },
+      {
+        "question": "How do I layer multiple shadows?",
+        "answer": "Write each shadow declaration separated by a comma within the same box-shadow property. The first shadow renders on top and subsequent shadows render underneath. Combine multiple shadows for realistic multi-light-source effects."
+      },
+      {
+        "question": "When should I use the drop-shadow filter instead?",
+        "answer": "Use the drop-shadow CSS filter when you need a shadow that follows the exact shape of an element with a transparent background or clipped corners. box-shadow always follows the element CSS box, while drop-shadow follows the rendered pixel contour."
       }
+    ],
+    "quickAnswer": "Generate a box-shadow declaration by adjusting offset, blur, spread, color, and inset. The live preview shows the shadow on a static div so you can tune the values before adding them to your stylesheet.",
+    "limitations": [
+      "The preview is a static div with no surrounding context. A shadow that looks correct in isolation may appear different against a real page background or near other elements.",
+      "The tool generates one shadow at a time. For layered or multiple shadows you must combine the values manually in your stylesheet."
+    ],
+    "verificationSteps": [
+      "Paste the generated CSS into your actual page and inspect the shadow on the real element with its background and adjacent content.",
+      "Test the shadow at different element sizes to confirm blur and spread scale as expected."
     ]
   },
   {
@@ -970,7 +1187,24 @@
       {
         "question": "What does align-items do vs align-content?",
         "answer": "align-items controls the alignment of individual items along the cross axis within a single line. align-content controls the spacing between wrapped lines when there are multiple lines of items."
+      },
+      {
+        "question": "What does align-items center do vs justify-content center?",
+        "answer": "justify-content: center centers items along the main axis, which is horizontal by default. align-items: center centers items along the cross axis, which is vertical by default. Using both together centers items perfectly in both dimensions."
+      },
+      {
+        "question": "Do I need prefixes for flexbox?",
+        "answer": "Modern flexbox is supported without vendor prefixes in all current browsers. Only very old browsers such as Internet Explorer 10 or early Android browsers need the -ms- prefix. For most projects today, unprefixed flexbox is safe to use."
       }
+    ],
+    "quickAnswer": "Generate flexbox container CSS by selecting direction, wrap, alignment, and justification values. The output includes the container rules and an HTML skeleton so you can test the layout immediately.",
+    "limitations": [
+      "The tool generates container-level flex properties only. It does not generate item-level flex properties such as flex-grow, flex-shrink, flex-basis, or align-self.",
+      "The generated CSS applies to the flex container only. You still need to add your own content markup and styling for the child flex items."
+    ],
+    "verificationSteps": [
+      "Add the generated container CSS to a page with test child elements and resize the viewport to verify wrap and alignment behavior.",
+      "Toggle between different flex-direction values to confirm children reflow along the correct axis."
     ]
   },
   {
@@ -1015,7 +1249,24 @@
       {
         "question": "What unit should I use for border-radius?",
         "answer": "Use rem for radii that should scale with the base font size and px for fixed-size decorative elements. Use percentage for circular shapes and fluid rounding."
+      },
+      {
+        "question": "How do I make a perfect pill shape?",
+        "answer": "Set border-radius to a value larger than the element height, such as 999px, on a rectangular button or badge. The browser renders fully rounded ends regardless of the element width, creating a pill shape."
+      },
+      {
+        "question": "Can I use percentage values for border-radius?",
+        "answer": "Yes, but percentage values refer to the element dimensions. A value of 50% on a square element creates a perfect circle. On a rectangle, 50% produces an elliptical shape because the percentage applies to both width and height independently."
       }
+    ],
+    "quickAnswer": "Set rounded corners on any element by adjusting each corner independently or using a uniform value. Choose px, rem, or percentage units and see a live preview of the result.",
+    "limitations": [
+      "The tool shows uniform and individual corner radius values. It does not support the elliptical syntax that uses a slash to set separate horizontal and vertical radii per corner.",
+      "Percentage border-radius values are relative to the element dimensions and may produce unexpected elliptical corners on elements with dynamic sizing."
+    ],
+    "verificationSteps": [
+      "Test the generated border-radius on the target element at different sizes and screen widths to confirm corner proportions remain consistent.",
+      "Inspect the element in DevTools to verify the computed border-radius values match the declaration."
     ]
   },
   {
@@ -1052,6 +1303,7 @@
       "Forgetting to check whether the slug duplicates an existing page URL.",
       "Stripping meaningful words that help readers and search engines understand the page topic."
     ],
+    "quickAnswer": "Generate a URL slug from any text by converting it to lowercase, replacing spaces with hyphens, and removing special characters. Use the output as a page URL, file name, or anchor link ID.",
     "faq": [
       {
         "question": "What characters are removed from slugs?",
@@ -1060,7 +1312,20 @@
       {
         "question": "How long should a URL slug be?",
         "answer": "Aim for three to five words. Short slugs are easier to read, type, and share while still conveying what the page is about."
+      },
+      {
+        "question": "Should I include stop words in a URL slug?",
+        "answer": "Stop words such as a, an, the, and, of, and in can often be removed from slugs to keep them shorter without losing meaning. For example, tips-for-better-typography is shorter than tips-for-improving-your-typography."
       }
+    ],
+    "limitations": [
+      "The tool does not detect duplicate slugs across your site. Always check whether the generated slug conflicts with an existing page URL before publishing.",
+      "Very long input text produces very long slugs. Edit the output manually if the slug exceeds a reasonable length.",
+      "The slug uses strict ASCII transliteration. Non-ASCII characters such as accented letters are removed, which may not match the expected URL format for some languages."
+    ],
+    "verificationSteps": [
+      "Copy the generated slug and test it as part of a full URL. Open the URL in a browser to confirm it resolves to the correct page.",
+      "Check that the slug does not contain double hyphens or trailing hyphens, which may look inconsistent in published URLs."
     ]
   },
   {
@@ -1097,6 +1362,7 @@
       "Skipping from h2 to h4, creating a gap that makes the hierarchy harder for crawlers to interpret.",
       "Omitting the h1 tag entirely on a page, leaving the document without a top-level heading."
     ],
+    "quickAnswer": "Paste your HTML to see the heading structure as a visual tree and identify skipped levels, missing h1 tags, and other hierarchy problems that affect accessibility and SEO.",
     "faq": [
       {
         "question": "How many h1 tags should a page have?",
@@ -1105,7 +1371,24 @@
       {
         "question": "Is it ok to skip heading levels for styling reasons?",
         "answer": "No. Headings should reflect document structure, not visual appearance. Use CSS to style headings differently rather than skipping levels for a larger or smaller look."
+      },
+      {
+        "question": "Does heading hierarchy affect SEO?",
+        "answer": "Yes. Search engines use heading structure to understand page topics and their relative importance. A clear descending hierarchy helps crawlers interpret the content outline and may influence how pages are understood for relevant queries."
+      },
+      {
+        "question": "Can I fix heading levels with CSS instead?",
+        "answer": "No. CSS changes only the visual appearance, not the semantic heading level. Screen readers and search engines read the actual HTML heading element, not the styled size. Always use the correct h1 through h6 element for each structural level."
       }
+    ],
+    "limitations": [
+      "The tool only scans heading tags in the pasted HTML. It does not read CSS-generated content or detect headings injected by JavaScript after page load.",
+      "The checker validates element names only. It does not evaluate aria-level or role attributes that could override the default heading semantics.",
+      "Pasting partial HTML may show an incomplete heading tree. Paste the full page content for an accurate audit."
+    ],
+    "verificationSteps": [
+      "Compare the heading tree output against the visual page layout to confirm that each visible section has a corresponding heading at the correct level.",
+      "Test the page with a screen reader or browser extension that reads the heading outline to verify the hierarchy works for assistive technology users."
     ]
   },
   {
@@ -1142,6 +1425,7 @@
       "Not accounting for code blocks, images, or tables that add visual scanning time beyond the word count.",
       "Applying the same WPM rate to technical and non-technical content without adjusting for the difference in reading difficulty."
     ],
+    "quickAnswer": "Calculate how long it takes to read a piece of content based on word count and an adjustable reading speed. Use the result as a reading-time label on blog posts and articles to set reader expectations.",
     "faq": [
       {
         "question": "What is the standard reading speed?",
@@ -1150,7 +1434,20 @@
       {
         "question": "Should I include images in the reading time estimate?",
         "answer": "Images add scanning time but are hard to convert into a consistent estimate. Many publishers ignore images in reading time and add a small fudge factor if the page is image-heavy."
+      },
+      {
+        "question": "Does reading time affect SEO?",
+        "answer": "Reading time itself is not a direct ranking factor, but content length and engagement metrics are correlated with search performance. A reading-time label also helps set reader expectations and may reduce bounce rate."
       }
+    ],
+    "limitations": [
+      "The estimate is based on word count only. It does not account for images, tables, code blocks, or embedded media that add visual scanning time beyond the word count.",
+      "Reading difficulty varies by audience. Technical content, academic writing, and dense analysis take longer to read than conversational blog posts at the same word count.",
+      "The tool counts all pasted text including code examples and list items, which may inflate the estimate for non-prose content."
+    ],
+    "verificationSteps": [
+      "Compare the estimated reading time with the actual time it takes to read the content to calibrate the WPM rate for your specific audience.",
+      "Check that the reading-time label matches the content depth. A long estimate on a short or shallow article may discourage readers from starting."
     ]
   },
   {
@@ -1195,7 +1492,21 @@
       {
         "question": "Do I need Apple touch icons for a website that is not a PWA?",
         "answer": "Apple touch icons are still useful for regular websites because iOS users can save any page to their home screen. Without the icon, iOS uses a screenshot of the page as the icon."
+      },
+      {
+        "question": "Should I disable user-scalable?",
+        "answer": "No. Setting user-scalable=no blocks pinch-to-zoom and creates an accessibility barrier for low-vision users. WCAG requires that users can zoom pages to at least 200%."
       }
+    ],
+    "quickAnswer": "Use the viewport meta tag to control how your page scales on mobile devices. The standard value width=device-width with initial-scale=1 works for nearly every responsive site and ensures readable text without requiring zoom gestures.",
+    "limitations": [
+      "theme-color only affects the browser chrome on supported mobile browsers. Desktop browsers and some browser configurations ignore it entirely.",
+      "Apple touch icon tags require an actual PNG image file at the specified path. A missing or incorrect path produces a broken icon silently on iOS.",
+      "The viewport tag controls initial scale but does not make a non-responsive layout usable on mobile. It must be paired with a responsive design using CSS media queries."
+    ],
+    "verificationSteps": [
+      "Open the published page on an actual mobile device and confirm the content fits the screen width without horizontal scrolling.",
+      "Inspect the generated tags in the HTML head using browser DevTools to verify the viewport, theme-color, and Apple touch icon paths are correct."
     ]
   },
   {
@@ -1240,7 +1551,21 @@
       {
         "question": "Can I use a CNAME at the root domain?",
         "answer": "No. The DNS specification does not allow a CNAME at the apex of a domain. Use A records for the root domain or check whether your DNS provider offers a CNAME flattening or ALIAS feature."
+      },
+      {
+        "question": "What TTL value should I use?",
+        "answer": "Use 300 or 600 seconds during initial DNS setup so changes propagate quickly. Switch to 3600 or higher after everything is working to reduce DNS query load."
       }
+    ],
+    "quickAnswer": "DNS records connect your domain to hosting services by mapping names to IP addresses, mail servers, and verification data. Each record type serves a specific purpose and the wrong type can break your site or email.",
+    "limitations": [
+      "The generated example records are generic. Actual DNS values depend on your hosting provider, email service, and specific requirements.",
+      "DNS changes can take from minutes to several hours to propagate globally depending on TTL values and the domain provider.",
+      "A CNAME record cannot coexist with other record types at the same name. Using a CNAME at the apex will break other services such as email."
+    ],
+    "verificationSteps": [
+      "Use a DNS lookup tool such as dig or a web-based DNS checker to confirm each record resolves to the expected value after propagation.",
+      "Verify the site loads over HTTPS after DNS changes are complete. Some DNS providers may cache stale records longer than the configured TTL."
     ]
   },
   {
@@ -1277,6 +1602,7 @@
       "Typing raw &lt; or &gt; symbols in HTML that get interpreted as tag delimiters and break the page parsing.",
       "Forgetting that HTML entity names are case-sensitive, so &copy; works but &Copy; does not."
     ],
+    "quickAnswer": "A categorized reference of common HTML entities with entity names, decimal codes, and rendered characters. Browse or search the table, then click any entity to copy it and paste it into your HTML.",
     "faq": [
       {
         "question": "What is the difference between &mdash; and &ndash;?",
@@ -1285,7 +1611,20 @@
       {
         "question": "Do I need entities for UTF-8 pages?",
         "answer": "UTF-8 pages can display most special characters directly, but HTML entities are still useful for characters that have reserved meaning in HTML such as &lt; and &amp;, or for characters that are easier to type as named entities."
+      },
+      {
+        "question": "Are entity names case-sensitive?",
+        "answer": "Yes. HTML entity names are case-sensitive. For example, &copy; produces the copyright symbol, but &Copy; does not work. Always use the exact casing shown in the reference."
       }
+    ],
+    "limitations": [
+      "This is a static reference list of the most commonly used entities. It does not include every Unicode entity or every named character reference defined in the HTML specification.",
+      "Some newer HTML entities added in HTML5.2 and later may not appear in this list. For complete coverage, consult the official HTML entity reference.",
+      "Decimal and hexadecimal numeric references are not listed. This reference covers named entities only."
+    ],
+    "verificationSteps": [
+      "After pasting an entity into your HTML, view the page in a browser and confirm the rendered character matches your expectation.",
+      "Validate your HTML with the W3C Markup Validation Service to catch any entity names that are not recognized or are misspelled."
     ]
   },
   {
@@ -1330,7 +1669,24 @@
       {
         "question": "What happens to unlayered styles?",
         "answer": "Unlayered styles always beat layered styles. When migrating to layers, move your existing styles into layers explicitly to avoid unexpected priority."
+      },
+      {
+        "question": "How does !important behave inside @layer?",
+        "answer": "!important inside a layer reverses the normal layer priority. An !important rule in an earlier layer beats !important in a later layer. This can cause confusing override behavior, so use !important sparingly inside layer structures."
+      },
+      {
+        "question": "Should I put third-party CSS in a layer?",
+        "answer": "Yes. Placing third-party CSS in a dedicated layer such as vendors or libs before your own layers ensures your component and utility styles can override third-party defaults without increasing specificity."
       }
+    ],
+    "quickAnswer": "Plan the order of CSS cascade layers for your project so overrides behave predictably. The output is a @layer declaration and skeleton structure for reset, base, component, and utility styles.",
+    "limitations": [
+      "The tool generates a flat layer planning skeleton. It does not handle nested @layer blocks which require a different layered import syntax.",
+      "The generated output assumes a straightforward layer structure. Complex projects with sub-layers inside named layers need manual adjustment beyond the generated skeleton."
+    ],
+    "verificationSteps": [
+      "Test that a style in a later layer correctly overrides an equivalent style in an earlier layer regardless of specificity differences.",
+      "Check that unlayered styles do not unexpectedly beat layered styles by ensuring all page styles are assigned to a named layer."
     ]
   },
   {
@@ -1375,7 +1731,24 @@
       {
         "question": "How does contain-intrinsic-size work?",
         "answer": "It sets a placeholder size for the element before it renders. Use an estimate close to the real average height so the scrollbar does not jump when sections render in."
+      },
+      {
+        "question": "Does content-visibility affect SEO?",
+        "answer": "Content-visibility does not directly affect search engine indexing. Google renders JavaScript and detects visible content normally. However, content that depends on JavaScript and is never scrolled into view may not be indexed. Static HTML content is safe regardless of content-visibility."
+      },
+      {
+        "question": "What happens with anchor links and content-visibility?",
+        "answer": "When a page uses anchor links to jump to a section with content-visibility: auto, the browser may not scroll to the correct position because the target element has not been fully rendered yet. Test anchor link behavior if you apply content-visibility to sections that are linked internally."
       }
+    ],
+    "quickAnswer": "Use content-visibility: auto to skip rendering off-screen elements until they approach the viewport. This can improve initial page load performance on long pages with many repeated sections.",
+    "limitations": [
+      "Browser support varies. Chrome 85+, Edge 85+, Firefox 125+, and Safari 18.2+ support content-visibility. Older browsers ignore the property and render all content as normal.",
+      "Anchor links may not scroll correctly to elements with content-visibility: auto because the browser has not rendered the target area before the scroll attempt."
+    ],
+    "verificationSteps": [
+      "Scroll the page and confirm off-screen sections render in smoothly without scrollbar jumps or visual gaps.",
+      "Test anchor links or URL hash navigation to sections that use content-visibility to ensure they scroll to the correct position."
     ]
   },
   {
@@ -1420,7 +1793,24 @@
       {
         "question": "Should I use overscroll-behavior instead of overflow: hidden for modals?",
         "answer": "overscroll-behavior is better for preventing scroll bleed while keeping the modal scrollable. Use it together with a position fixed technique, not instead of it."
+      },
+      {
+        "question": "Does overscroll-behavior affect pull-to-refresh?",
+        "answer": "Yes. overscroll-behavior: contain on the body element prevents the browser pull-to-refresh gesture while still allowing normal page scrolling. This is useful for web apps that handle refresh or navigation themselves."
+      },
+      {
+        "question": "Can I apply different values to x and y?",
+        "answer": "Yes. Use the two-value syntax overscroll-behavior: contain auto to set different behaviors for each axis. The first value applies to the x axis and the second value applies to the y axis."
       }
+    ],
+    "quickAnswer": "Control what happens when a scrollable element reaches its boundary. Use contain to stop scroll chaining while keeping the bounce effect, or none to remove all overscroll effects including pull-to-refresh.",
+    "limitations": [
+      "Overscroll-behavior is primarily a mobile concern. Desktop browsers apply minimal or no overscroll effects, so the property has little visible impact on desktop.",
+      "Testing overscroll-behavior on desktop requires device emulation in DevTools because mouse scroll behavior differs significantly from touch gestures."
+    ],
+    "verificationSteps": [
+      "Test the behavior on a real mobile device by scrolling past the boundary of the target element and confirming the expected pull-to-refresh or scroll chain behavior.",
+      "Use Chrome DevTools device mode with touch emulation enabled to approximate mobile overscroll behavior on desktop."
     ]
   },
   {
@@ -1457,6 +1847,7 @@
       "Putting interactive form elements inside a popover without testing focus and keyboard navigation.",
       "Forgetting to set a unique id for each popover on the page."
     ],
+    "quickAnswer": "Create a native HTML popover using the Popover API with popovertarget attributes. The generated markup works without JavaScript in supporting browsers by relying on the browser-native popover behavior.",
     "faq": [
       {
         "question": "Does the Popover API work on all browsers?",
@@ -1465,7 +1856,20 @@
       {
         "question": "What happens when JavaScript is disabled?",
         "answer": "The Popover API is built into the browser and works without custom JavaScript. The popover and popovertarget attributes are natively recognized by supporting browsers."
+      },
+      {
+        "question": "Can I nest popovers inside other popovers?",
+        "answer": "Nested popovers are technically possible but not recommended. Auto popovers close when another popover opens, and focus management becomes more complex with multiple layers of nested popover content."
       }
+    ],
+    "limitations": [
+      "Safari and Firefox added Popover API support in recent versions. iOS Safari may have edge cases with light-dismiss on touch interactions.",
+      "Complex interactive content such as forms with multiple fields inside a popover may have focus-trapping and keyboard navigation issues.",
+      "The popover closes on outside click by default in auto mode. Use manual mode or adjust the design if users need to interact with content outside the popover."
+    ],
+    "verificationSteps": [
+      "Open the popover in Chrome, Firefox, and Safari on both desktop and mobile and verify it opens, closes on outside click, and does not trap focus.",
+      "Tab through all interactive elements inside the popover to confirm focus moves in a logical order without getting stuck."
     ]
   },
   {
@@ -1622,7 +2026,21 @@
       {
         "question": "Do I need to configure anything in the repository settings?",
         "answer": "Yes. Go to Settings > Pages and set the source to GitHub Actions. This tells GitHub Pages to use the workflow deployment instead of branch-based deployment."
+      },
+      {
+        "question": "What Node version should I use?",
+        "answer": "Use the Node version that matches your project requirements. Node 20 or 22 are safe choices for most static site generators. The version field in the generated workflow can be adjusted to match your local or CI environment."
       }
+    ],
+    "quickAnswer": "A GitHub Actions workflow automates building and deploying your static site to GitHub Pages on every push. The generated YAML includes the standard permissions, concurrency settings, and build steps.",
+    "limitations": [
+      "The generated workflow is a standard template. Custom build tools, monorepos, or multi-step pipelines may need additional job steps or custom actions.",
+      "GitHub Pages deployment via Actions only works for public repositories or private repositories with GitHub Pro, Team, or Enterprise plans.",
+      "The CNAME placeholder file must be created or copied into the output directory if the site uses a custom domain."
+    ],
+    "verificationSteps": [
+      "Push the workflow file to your repository and check the Actions tab to confirm the workflow runs successfully.",
+      "After a successful run, visit your GitHub Pages URL and verify the site content matches the expected output."
     ]
   },
   {
@@ -1667,7 +2085,21 @@
       {
         "question": "What is the difference between prerender and prefetch?",
         "answer": "Prerender fetches and fully renders the page including subresources, making navigation feel instant. Prefetch fetches only the main document, which is lighter on bandwidth."
+      },
+      {
+        "question": "Should I prerender cross-origin pages?",
+        "answer": "Cross-origin prerendering is limited. Browsers may not send cookies or storage state to cross-origin prerendered pages, and same-origin prerequisites apply. Prefetch is generally safer for cross-origin URLs."
       }
+    ],
+    "quickAnswer": "Speculation Rules use JSON to tell Chrome and Edge which pages to prefetch or prerender before the user clicks. Prerender loads the full page for instant navigation; prefetch fetches only the main document.",
+    "limitations": [
+      "Speculation Rules only work in Chrome and Edge. Other browsers ignore the script tag entirely.",
+      "Eager prerendering of many pages can waste significant bandwidth and memory, especially on mobile devices.",
+      "Cross-origin prerendering has strict privacy constraints. Browsers may strip cookies and storage access from cross-origin prerendered pages."
+    ],
+    "verificationSteps": [
+      "Open Chrome DevTools, go to Application > Speculation Rules to verify the rules are parsed correctly.",
+      "In the Network panel, check that prerendered or prefetched pages show the Proxied or Prefetched status in the Size column."
     ]
   },
   {
@@ -1843,7 +2275,21 @@
       {
         "question": "Does a regular static site need a manifest?",
         "answer": "A manifest is optional but recommended. It is the only way to control how your site appears when a user saves it to their home screen. Without a manifest, the browser uses a generic screenshot as the icon."
+      },
+      {
+        "question": "What icon sizes are required for PWA?",
+        "answer": "At minimum, provide 192x192 and 512x512 PNG icons. The 192x192 icon is used for the home screen and the 512x512 icon is required for the installable PWA badge on Android."
       }
+    ],
+    "quickAnswer": "A web app manifest controls how your site looks when installed on a device home screen. It sets the app name, icons, theme color, and launch behavior for PWA-ready static sites.",
+    "limitations": [
+      "The manifest only works over HTTPS. HTTP sites cannot use the manifest for install prompts.",
+      "The manifest requires actual icon image files at the specified paths. Missing or incorrectly named icons cause the browser to reject the manifest.",
+      "Install behavior differs between Android and iOS. Android uses the manifest for install prompts, while iOS relies on Apple touch icon meta tags and does not support full PWA install from the manifest."
+    ],
+    "verificationSteps": [
+      "Open Chrome DevTools > Application > Manifest to verify the manifest is parsed correctly and icons are accessible.",
+      "Test the site over HTTPS on an Android device using Chrome and confirm the Add to Home Screen prompt appears."
     ]
   },
   {
@@ -1888,7 +2334,21 @@
       {
         "question": "Does every Markdown file need front matter?",
         "answer": "No. Static files like an about page with no special metadata can omit front matter. Most generators treat a file without front matter as a plain HTML passthrough."
+      },
+      {
+        "question": "What is the difference between YAML and TOML front matter?",
+        "answer": "YAML uses indentation-based structure with key: value pairs separated by colons. TOML uses INI-style sections with key = value pairs. Most static site generators default to YAML, but Hugo and some others support TOML as an alternative."
       }
+    ],
+    "quickAnswer": "Front matter is YAML or TOML metadata at the top of a Markdown file that tells your static site generator the page title, layout, publish date, tags, and other settings. It is separated from content by triple dashes.",
+    "limitations": [
+      "The specific front matter fields vary by static site generator. Jekyll, Hugo, Astro, and 11ty each use different field names and conventions.",
+      "This tool generates YAML format only. Generators that prefer TOML or JSON front matter will need a different format.",
+      "Front matter values are case-sensitive in most static site generators. layout: post and Layout: post are treated as different fields."
+    ],
+    "verificationSteps": [
+      "Build the site with your static site generator and confirm the page renders with the correct layout, title, and metadata from the front matter.",
+      "Check that special characters in front matter values are quoted to avoid YAML parse errors during build."
     ]
   },
   {
@@ -1925,6 +2385,7 @@
       "Attempting to generate a TOC from pasted content that contains no heading tags, which produces an empty list.",
       "Generating a TOC with inconsistent heading levels such as jumping from h2 to h4 without h3, which breaks the visual nesting."
     ],
+    "quickAnswer": "Generate a nested table of contents with anchor links from heading tags in your HTML. Each TOC entry links to a slugified id on the corresponding heading for easy page navigation.",
     "faq": [
       {
         "question": "Does this tool add id attributes to my existing headings?",
@@ -1933,7 +2394,20 @@
       {
         "question": "Should every page have a table of contents?",
         "answer": "Only pages with enough content to justify navigation benefit from a TOC. A page with fewer than three or four headings usually does not need one."
+      },
+      {
+        "question": "What heading levels should the TOC include?",
+        "answer": "Include h2 through h3 or h2 through h4 for most articles. Start from h2 because the h1 is usually the page title. Including too many levels such as h5 and h6 makes the TOC cluttered."
       }
+    ],
+    "limitations": [
+      "The tool generates the TOC markup and the heading id values separately. You must manually add the generated id attributes to the heading tags in your HTML for the anchor links to work.",
+      "Headings without text content or headings nested inside non-semantic containers may not be extracted correctly by the parser.",
+      "The generated TOC uses flat nesting based on heading levels. Custom CSS may be needed for multi-level indentation styling."
+    ],
+    "verificationSteps": [
+      "Click each TOC link and confirm the page scrolls to the correct heading section without errors.",
+      "Check the page URL after clicking a TOC link to verify the anchor fragment appears correctly in the address bar."
     ]
   },
   {
@@ -1978,7 +2452,21 @@
       {
         "question": "Do search engines use RSS feeds?",
         "answer": "Yes. Google and other search engines read RSS feeds to discover new content, especially on sites that do not update frequently. An RSS feed can help your new posts get indexed faster."
+      },
+      {
+        "question": "How many items should an RSS feed include?",
+        "answer": "Include the 10 to 20 most recent items in a typical RSS feed. Some aggregators may truncate feeds with too many items, and most readers only need the latest posts."
       }
+    ],
+    "quickAnswer": "RSS is an XML format that lets readers subscribe to your site updates through feed readers and aggregators. A feed.xml file at your site root makes new content discoverable without manual checking.",
+    "limitations": [
+      "The tool generates a static XML file snapshot. You must regenerate and re-upload the file when new content is published.",
+      "RSS 2.0 is generated. Atom and JSON Feed formats are not included. Some feed readers prefer Atom or JSON Feed over RSS.",
+      "The feed must use absolute URLs in all item links and enclosures. Relative URLs will break when the feed is read by external aggregators."
+    ],
+    "verificationSteps": [
+      "Validate the generated feed XML using the W3C Feed Validation Service or a similar tool to catch XML syntax errors.",
+      "Subscribe to the feed URL in a feed reader app to confirm items display correctly with titles, dates, and descriptions."
     ]
   },
   {
@@ -2015,6 +2503,7 @@
       "Not styling the dialog::backdrop pseudo-element, which leaves the backdrop transparent and fails to visually separate the modal from the page.",
       "Making the close button difficult to find or removing it entirely, which traps users inside the modal."
     ],
+    "quickAnswer": "Generate a native HTML dialog modal with trigger button, close button, content area, and backdrop styling. Works without JavaScript libraries in all modern browsers using the native dialog element.",
     "faq": [
       {
         "question": "Which browsers support the dialog element?",
@@ -2023,7 +2512,24 @@
       {
         "question": "Can I style the backdrop of a dialog?",
         "answer": "Yes. Use the ::backdrop pseudo-element in CSS. For example, dialog::backdrop { background: rgba(0, 0, 0, 0.5); } creates a semi-transparent dark overlay behind the modal."
+      },
+      {
+        "question": "What is the difference between show() and showModal()?",
+        "answer": "showModal() opens the dialog as a modal that blocks interaction with the rest of the page and displays the backdrop overlay. show() opens a non-modal dialog that allows interaction with other page elements while the dialog stays open."
+      },
+      {
+        "question": "Does the dialog element trap focus?",
+        "answer": "Yes. When a dialog is opened with showModal(), the browser automatically traps keyboard focus inside the dialog. Pressing Tab cycles through focusable elements within the dialog without reaching the background page."
       }
+    ],
+    "limitations": [
+      "Older browsers such as Safari 14 and Firefox 92 and below do not support the dialog element natively. No polyfill is included in the generated markup.",
+      "Complex keyboard trap scenarios such as nested dialogs or dialogs with embedded scrollable content may need additional JavaScript for full accessibility.",
+      "The ::backdrop pseudo-element styling is not inherited from the dialog styles. Backdrop and dialog styles must be declared as separate CSS rules."
+    ],
+    "verificationSteps": [
+      "Open the dialog and press Tab repeatedly to confirm focus cycles within the dialog and does not escape to the background page.",
+      "Press Escape to close the dialog and verify that keyboard focus returns to the trigger button that opened it."
     ]
   },
   {
@@ -2068,7 +2574,24 @@
       {
         "question": "What is the difference between mandatory and proximity?",
         "answer": "Mandatory always snaps to the nearest snap point, even if the user scrolls slightly. Proximity only snaps when the scroll position is near a snap point, giving the user more freedom to browse without forced snapping."
+      },
+      {
+        "question": "Does scroll-snap work on touch devices?",
+        "answer": "Yes. Scroll-snap works on all modern browsers including mobile Safari and Chrome. Touch gestures, trackpad swipes, and mouse wheel scrolling all trigger the snap behavior consistently."
+      },
+      {
+        "question": "How do I add scroll-snap-stop?",
+        "answer": "Add scroll-snap-stop: always on the child elements to force the scroll to stop at every snap point. This prevents the user from scrolling past multiple items in one gesture. The default value is normal, which lets the browser skip snap points during fast scrolling."
       }
+    ],
+    "quickAnswer": "Generate CSS scroll-snap rules for carousels, galleries, and section-based layouts. Choose direction, snap type, and alignment to control how the scroll position snaps to each child element.",
+    "limitations": [
+      "Mandatory snap type can prevent fast scrolling through long content because the scroll position snaps to every child, making rapid browsing feel rigid.",
+      "Scroll-snap requires the container to have overflow set to scroll or auto. Containers with overflow: hidden will not activate scroll-snap behavior."
+    ],
+    "verificationSteps": [
+      "Test the scroll-snap container on a touch device to confirm snapping feels smooth and predictable at different scroll speeds.",
+      "Verify that all child content is accessible by scrolling and that the snap alignment does not cut off important content at the container edges."
     ]
   },
   {
@@ -2169,7 +2692,24 @@
       {
         "question": "What is a good default aspect ratio for blog images?",
         "answer": "16:9 is a common choice for blog hero images and video embeds. 4:3 works well for screenshots and photos. 1:1 is useful for profile pictures and product thumbnails."
+      },
+      {
+        "question": "Do I still need the padding-bottom hack?",
+        "answer": "The padding-bottom percentage fallback is only needed for browsers that do not support the CSS aspect-ratio property. Most modern browsers support aspect-ratio directly. Use the fallback when you need to support Safari 14 and earlier or older Android browsers."
+      },
+      {
+        "question": "Should I set both width and height with aspect-ratio?",
+        "answer": "Setting both width and height on the element alongside aspect-ratio creates a sizing conflict. The aspect-ratio property calculates the missing dimension from the one you set. Set one dimension with aspect-ratio or use explicit width and height without aspect-ratio."
       }
+    ],
+    "quickAnswer": "Calculate the CSS aspect-ratio value and padding-bottom fallback percentage to prevent Cumulative Layout Shift. Reserve the correct space for images, videos, and embeds before they load.",
+    "limitations": [
+      "The padding-bottom fallback technique requires position: relative on the parent container and position: absolute on the child element for correct sizing behavior.",
+      "Aspect-ratio only works when the element has a defined width. If the element width is auto or not set, the aspect-ratio calculation has no basis to compute the height."
+    ],
+    "verificationSteps": [
+      "Load the page at different viewport widths and verify the placeholder maintains the correct aspect ratio without layout shift when the image loads.",
+      "Test on an older browser by temporarily disabling the aspect-ratio property in DevTools and confirming the padding-bottom fallback preserves the ratio."
     ]
   },
   {
@@ -2206,6 +2746,7 @@
       "Pointing to a broken or relative URL that does not resolve when the redirect fires.",
       "Not adding a manual click link in case the meta refresh does not fire or is blocked by the browser."
     ],
+    "quickAnswer": "Create a complete HTML page that redirects visitors to a new URL using the meta refresh tag. Works on any static hosting platform such as GitHub Pages without JavaScript or server configuration.",
     "faq": [
       {
         "question": "Do search engines follow meta refresh redirects?",
@@ -2214,7 +2755,20 @@
       {
         "question": "Is meta refresh better than JavaScript redirects?",
         "answer": "Meta refresh works without JavaScript and is simpler to implement. Both are less ideal than server-side redirects but are practical options on static hosting platforms."
+      },
+      {
+        "question": "What delay should I use?",
+        "answer": "Use 0 seconds for an immediate redirect. Search engines treat a 0-second meta refresh as a permanent redirect signal. Use a delay of 3 to 5 seconds only when the visitor needs time to read a notice before being forwarded."
       }
+    ],
+    "limitations": [
+      "Meta refresh is not a true HTTP 301 redirect. Search engines treat it as a weaker signal. Permanent URL moves should use a server-level 301 redirect when possible.",
+      "Some browsers and security tools allow users to disable meta refresh redirects, which leaves visitors on the redirect page without automatic forwarding.",
+      "Meta refresh redirects have lower SEO value than server-side redirects. Use them on static hosting only when server-side redirects are not available."
+    ],
+    "verificationSteps": [
+      "Open the generated HTML page in a browser and confirm the redirect fires after the specified delay.",
+      "Use a web crawler tool or browser extension to verify the redirect chain and confirm the final destination URL is correct."
     ]
   },
   {
@@ -2251,6 +2805,7 @@
       "Omitting navigation links from the 404 page, leaving visitors with no way to continue browsing.",
       "Forgetting to publish 404.html in the published site root, which means the default browser 404 page is shown instead."
     ],
+    "quickAnswer": "Generate a complete 404.html page with a helpful error message, navigation links, and an optional search box. Place the file at your site root so static hosts serve it when a page is not found.",
     "faq": [
       {
         "question": "Where should 404.html be placed?",
@@ -2259,7 +2814,24 @@
       {
         "question": "Can I use the same 404 page for every static host?",
         "answer": "Yes. 404.html is a standard convention supported by most static hosting platforms including GitHub Pages, Netlify, Cloudflare Pages, and Vercel."
+      },
+      {
+        "question": "Will this 404 page work with GitHub Pages?",
+        "answer": "Yes. GitHub Pages automatically serves 404.html from the site root for any non-existent page. No special configuration is needed beyond placing the file in the published output."
+      },
+      {
+        "question": "Can I track 404 errors with this static page?",
+        "answer": "This template does not include tracking. To monitor 404 errors, add a pageview event to the 404 page through your analytics provider, or review server log data if your hosting platform exposes it."
       }
+    ],
+    "limitations": [
+      "Custom 404 pages only work on hosting platforms that support them. Some shared hosting environments ignore 404.html and show their own default error page instead.",
+      "The generated page is entirely static and does not log or report 404 occurrences. Add analytics tracking separately if you need to monitor missing pages.",
+      "404.html must be placed at the root of the published output. Files placed in subdirectories or build output subfolders will not be detected as the custom 404 page."
+    ],
+    "verificationSteps": [
+      "Deploy the 404.html file and visit a non-existent URL on your published site to confirm the custom page appears instead of the browser default.",
+      "Check the browser DevTools Network panel to verify the non-existent URL returns a 404 HTTP status code."
     ]
   },
   {
@@ -2304,7 +2876,21 @@
       {
         "question": "Where should feed.json be placed?",
         "answer": "At the site root, such as /feed.json. Link from the HTML head with <link rel=\"alternate\" type=\"application/feed+json\" href=\"/feed.json\"> for auto-discovery."
+      },
+      {
+        "question": "What is the difference between content_text and content_html?",
+        "answer": "content_text is the plain text version of the item content for text-only readers. content_html is the HTML version for rich rendering. Include both fields to support the widest range of feed readers."
       }
+    ],
+    "quickAnswer": "JSON Feed is a modern machine-readable feed format in JSON that serves the same purpose as RSS. Publish feed.json alongside feed.xml to support both legacy and modern feed readers.",
+    "limitations": [
+      "JSON Feed version 1.1 is generated. Future versions of the spec may introduce fields that this tool does not yet support.",
+      "Fewer feed readers support JSON Feed compared to RSS. Many readers still rely on RSS for feed discovery and subscription.",
+      "The feed is a static JSON file and must be manually updated when new entries are published. It does not auto-detect new content."
+    ],
+    "verificationSteps": [
+      "Validate the generated JSON syntax using a JSON validator tool to ensure the feed file is parseable.",
+      "Point a JSON Feed-compatible reader such as NetNewsWire or Micro.blog to the feed URL and confirm items display correctly."
     ]
   },
   {
@@ -2341,6 +2927,7 @@
       "Hiding the link with display: none, which also hides it from screen readers and defeats the purpose.",
       "Forgetting to make the target element focusable with tabindex=\"-1\" so it can receive focus when the skip link is activated."
     ],
+    "quickAnswer": "Generate an accessible skip navigation link that appears on Tab focus, letting keyboard and screen reader users jump past repeated navigation blocks to the main content area.",
     "faq": [
       {
         "question": "Should the skip link always be visible?",
@@ -2349,7 +2936,20 @@
       {
         "question": "What selector should the skip link target?",
         "answer": "The id of the main content element, such as #main-content or #content. The target element should also have tabindex=\"-1\" so it can receive focus when the link is activated."
+      },
+      {
+        "question": "Does the target element need any special attributes?",
+        "answer": "Yes. Add tabindex=\"-1\" to the target element so it can receive programmatic keyboard focus when the skip link is activated. Adding role=\"region\" and a label to the target container also helps screen reader users identify the main content area."
       }
+    ],
+    "limitations": [
+      "The skip link requires that the target element with the matching id exists in the DOM. If the target id is missing or misspelled, the link navigates to a non-existent element.",
+      "Visual-only testing may miss focus-order issues that affect screen reader navigation. Always test with a screen reader after adding the skip link.",
+      "Skip links that jump to non-focusable elements may not move the keyboard focus correctly. The target element must have tabindex=\"-1\" to receive programmatic focus."
+    ],
+    "verificationSteps": [
+      "Load the page and press Tab immediately after the page loads. The skip link should appear and be the first focusable element on the page.",
+      "Activate the skip link and confirm the keyboard focus moves to the main content area. Continue tabbing to verify the focus follows the expected content order from that point."
     ]
   },
   {
@@ -2386,6 +2986,7 @@
       "Wrapping everything in a nav element instead of using it only for actual site navigation.",
       "Using section elements without accessible names, which makes them less useful as ARIA landmarks."
     ],
+    "quickAnswer": "Paste your HTML to check which ARIA landmark elements are present and which are missing. Screen readers use landmarks to help keyboard and assistive technology users navigate between page regions.",
     "faq": [
       {
         "question": "How many main elements should a page have?",
@@ -2394,7 +2995,20 @@
       {
         "question": "Are HTML5 semantic elements the same as ARIA landmarks?",
         "answer": "Yes. Elements like header, main, nav, footer, aside, and form have implicit ARIA landmark roles. Using these semantic elements automatically creates landmarks."
+      },
+      {
+        "question": "Do I need labels on section elements?",
+        "answer": "A section element without an accessible name does not register as a landmark in the accessibility tree. Add an aria-label or aria-labelledby attribute to section elements that represent distinct page regions."
       }
+    ],
+    "limitations": [
+      "The tool scans for element names only. It does not check whether landmarks have accessible names provided through aria-label, aria-labelledby, or visible headings.",
+      "The checker does not validate ARIA role assignments. An element with a role attribute may override or remove the implicit landmark role.",
+      "Pasting partial HTML may miss landmark elements outside the pasted content. Paste the full page HTML for a complete audit."
+    ],
+    "verificationSteps": [
+      "Load the audited page in a browser and use a screen reader or browser extension to navigate by landmarks and confirm the expected regions are present.",
+      "Run the page through a formal accessibility testing tool such as axe DevTools or WAVE to cross-check the landmark audit results."
     ]
   },
   {
@@ -2431,6 +3045,7 @@
       "Forgetting the name attribute, which is required for form submission to work.",
       "Adding the required attribute without a visible indicator or an accessible label for screen readers."
     ],
+    "quickAnswer": "Generate an HTML input element with the correct type and type-specific attributes. Choose from common input types and configure placeholder, required, pattern, autocomplete, min, max, and step.",
     "faq": [
       {
         "question": "Which input types have built-in validation?",
@@ -2439,7 +3054,20 @@
       {
         "question": "Should I use the pattern attribute?",
         "answer": "Use pattern when the input type's built-in validation is not specific enough for your format requirement. Always pair pattern validation with server-side validation."
+      },
+      {
+        "question": "What is the difference between required and aria-required?",
+        "answer": "required triggers built-in browser validation and blocks form submission when the field is empty. aria-required tells assistive technology that the field is required but does not enforce validation. Use required for validation and add aria-required for screen reader clarity."
       }
+    ],
+    "limitations": [
+      "The tool generates the input tag only. You must wrap it in a form element and add a visible label for accessibility compliance.",
+      "Browser validation styles and error messages vary significantly between browsers. Custom error messages require the constraint validation API.",
+      "The pattern attribute uses JavaScript-like regex syntax but does not support flags such as g or i. Pattern validation is always case-sensitive."
+    ],
+    "verificationSteps": [
+      "Wrap the generated input in a form and submit it with invalid data to confirm browser validation triggers the expected error behavior.",
+      "Test the input with a screen reader to verify the label, required state, and any error messages are announced correctly."
     ]
   },
   {
@@ -2484,7 +3112,24 @@
       {
         "question": "Which browsers support dynamic viewport units?",
         "answer": "Chrome 108+, Edge 108+, Safari 15.4+, and Firefox 101+. Provide a classic vh or vw fallback for older browser versions."
+      },
+      {
+        "question": "What is the difference between svh, lvh, and dvh?",
+        "answer": "svh (small viewport height) is the height when the browser UI is expanded. lvh (large viewport height) is the height when the browser UI is retracted. dvh (dynamic viewport height) switches between the two as the UI appears and disappears during scrolling."
+      },
+      {
+        "question": "Do dynamic viewport units work on desktop?",
+        "answer": "On desktop browsers, dvh, svh, and lvh all behave the same as vh because desktop browsers do not have expandable or retractable chrome that changes the viewport size. Dynamic units only make a practical difference on mobile devices."
       }
+    ],
+    "quickAnswer": "Use dynamic viewport units (dvh, svh, lvh) for layouts that need to fill the mobile viewport correctly when the browser UI expands and retracts. Always include a classic vh fallback for older browsers.",
+    "limitations": [
+      "Dynamic viewport units are only relevant on mobile browsers where the address bar and other UI elements expand and retract. On desktop, dvh, svh, and lvh behave identically to vh.",
+      "Some browsers update dvh on scroll end rather than continuously, which may cause a visible jump in element height as the address bar retracts."
+    ],
+    "verificationSteps": [
+      "Load the page on a mobile device or emulator and scroll to confirm the element height adjusts correctly as the browser address bar retracts.",
+      "Test with the browser UI both expanded and retracted to verify svh and lvh values produce the expected visible area."
     ]
   },
   {
@@ -2529,7 +3174,24 @@
       {
         "question": "Should I replace all physical properties with logical ones?",
         "answer": "For multilingual sites with RTL or vertical language support, yes. For English-only sites, logical properties are still fine to use but physical properties remain valid and are simpler to read."
+      },
+      {
+        "question": "What is the difference between inline and block axis?",
+        "answer": "The inline axis follows the direction text flows. In English, the inline axis is horizontal. The block axis runs perpendicular to the text flow, which is vertical in English. In a vertical writing mode these directions swap."
+      },
+      {
+        "question": "Are logical properties supported everywhere?",
+        "answer": "The core logical properties such as margin-inline-start and padding-block-end are widely supported in Chrome 87+, Edge 87+, Safari 15+, and Firefox 66+. Some shorthand logical properties like border-inline have newer support, so check compatibility for the specific variant you plan to use."
       }
+    ],
+    "quickAnswer": "Convert physical CSS properties such as margin-left and padding-right into writing-mode-aware logical equivalents. This helps layouts adapt automatically to right-to-left and vertical writing modes without separate overrides.",
+    "limitations": [
+      "Some shorthand logical properties such as border-inline, border-block, and inset-inline have spotty browser support compared to the core longhand logical properties.",
+      "The converter handles single property conversion. Migrating a large stylesheet to logical properties requires updating each physical-to-logical pair and verifying no mixed-direction edge cases remain."
+    ],
+    "verificationSteps": [
+      "Apply the converted properties to a page and switch the direction attribute from ltr to rtl on the html element to verify the layout flips correctly.",
+      "Test the page in both LTR and RTL modes to confirm spacing, borders, and alignment behave as expected in each direction."
     ]
   },
   {
@@ -3214,7 +3876,21 @@
       {
         "question": "Which browsers support relative color syntax?",
         "answer": "Chrome 119+, Edge 119+, Safari 16.4+, Firefox 128+. Provide a static color fallback."
+      },
+      {
+        "question": "What color spaces can I use with from?",
+        "answer": "You can use rgb, hsl, hwb, oklch, oklab, lab, lch, and srgb-linear. Each space exposes different channels for adjustment. oklch is often preferred for perceptually uniform lightness adjustments."
       }
+    ],
+    "quickAnswer": "CSS relative color syntax lets you create a new color by adjusting individual channels of an existing color. It is more powerful than color-mix() for precise channel-level manipulation without a preprocessor.",
+    "limitations": [
+      "Browser support requires Chrome 119+, Safari 16.4+, and Firefox 128+. Older browsers will ignore the declaration entirely.",
+      "The syntax varies slightly by color space. Not all channels are available in every color space, and channel value ranges differ.",
+      "Complex nested relative color expressions can hurt readability. Use a CSS custom property for the base color to keep declarations clean."
+    ],
+    "verificationSteps": [
+      "Test the generated CSS in Chrome DevTools Styles panel to confirm the color resolves to the expected computed value.",
+      "Verify a static fallback color is declared before the relative color syntax for browsers that do not support the feature."
     ]
   },
   {
@@ -3259,7 +3935,24 @@
       {
         "question": "Should print styles be in a separate file?",
         "answer": "You can use a separate print.css or embed @media print in your main stylesheet. Both approaches work."
+      },
+      {
+        "question": "How do I test print styles before printing?",
+        "answer": "Use the browser print preview (Ctrl+P or Cmd+P) to see how the page will print. In Chrome DevTools, open the Rendering tab and select Print from the Emulate CSS media type dropdown to test styles without triggering the actual print dialog."
+      },
+      {
+        "question": "Can I use a separate print.css file?",
+        "answer": "Yes. Link a separate print stylesheet with <link rel=\"stylesheet\" href=\"print.css\" media=\"print\">. The browser only loads this file when printing, keeping the main stylesheet smaller. Embed @media print rules in your main stylesheet for smaller print blocks."
       }
+    ],
+    "quickAnswer": "Generate a @media print block that hides navigation, shows link URLs, controls page breaks, and sets sensible print margins. Essential for making articles, recipes, documentation, and invoices print cleanly.",
+    "limitations": [
+      "Page-break rules such as page-break-inside: avoid are hints to the browser print engine, not guarantees. The engine may still break content if the block does not fit on one page.",
+      "Browser print engines render CSS differently. Chrome, Firefox, and Safari each produce slightly different printed output, especially with background colors, page margins, and multi-column layouts."
+    ],
+    "verificationSteps": [
+      "Use print preview in Chrome, Firefox, and Safari to verify the page prints without navigation, with expanded link URLs, and with appropriate page breaks.",
+      "Save the page as PDF from each browser and compare the output for consistency in margins, font sizes, and page break placement."
     ]
   },
   {
@@ -3304,7 +3997,21 @@
       {
         "question": "Does rel='nofollow' affect SEO?",
         "answer": "It tells search engines not to pass ranking credit to the linked page. Use it for untrusted or paid links."
+      },
+      {
+        "question": "What is the difference between nofollow and sponsored?",
+        "answer": "nofollow tells search engines not to pass ranking credit for any reason. sponsored is specifically for paid or affiliate links. Use sponsored when the link is part of a commercial agreement and nofollow for general untrusted links."
       }
+    ],
+    "quickAnswer": "External links should use rel='noopener noreferrer' for security when using target='_blank'. For SEO, use rel='nofollow' for untrusted links, rel='sponsored' for paid or affiliate links, and rel='ugc' for user-generated content.",
+    "limitations": [
+      "Rel attributes are hints to search engines, not directives. Search engines may still discover and crawl linked pages regardless of rel values.",
+      "Some platforms such as social media sites and CMS editors strip or ignore custom rel attributes on links.",
+      "Social media platform links may need additional attributes such as aria-label for accessibility beyond the standard rel values."
+    ],
+    "verificationSteps": [
+      "Inspect the generated anchor tag in the HTML source to confirm target, rel, and aria-label attributes are present and correctly formatted.",
+      "Click the link on the published page and verify it opens in a new tab without triggering any security warnings in the browser console."
     ]
   },
   {

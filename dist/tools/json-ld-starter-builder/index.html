@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>What is JSON-LD Starter Builder?</h2>
       <p>JSON-LD is structured data written as a script block in the page head or body. It helps search engines and AI systems understand entities, page purpose, navigation paths, and question-answer content. This builder focuses on starter markup that is easy to inspect and adapt before publishing.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate starter JSON-LD structured data for WebSite, Organization, Article, FAQ, and BreadcrumbList schema types. Fill in the key fields and paste the script block into your page HTML.</p></div>
+      <h3>Limitations</h3><ul><li>Schema markup must match the visible content on the page. Search engines may ignore or penalize structured data that describes content the user cannot see.</li><li>This tool generates starter markup but does not validate the output against Schema.org schemas. Run the generated JSON-LD through Google Rich Results Test or Schema.org Validator before publishing.</li><li>Some rich result types have strict requirements beyond basic schema fields. Article, FAQ, and Review types may require additional properties for eligibility in search result enhancements.</li></ul>
       <h2>How to use this tool</h2>
       <ol><li>Choose the schema type that matches the page.</li><li>Enter the page URL, name, description, and optional organization or FAQ data.</li><li>Copy the generated script block into the page HTML.</li><li>Validate the final page after publishing because schema must match visible content.</li></ol>
       <h2>What you can use it for</h2>
@@ -123,7 +123,7 @@
     <article class="tool-article">
       <h2>Common mistakes</h2>
       <ul><li>Adding schema that does not match visible page content.</li><li>Using placeholder URLs or local file paths.</li><li>Treating schema as a ranking shortcut instead of a clarity layer.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Open the published page URL in Google Rich Results Test or Schema.org Validator and confirm no errors or warnings are reported.</li><li>Check that the JSON-LD values match the visible page content, especially the name, description, URL, and date fields.</li></ol>
     </article>
   </div>
 </section>
@@ -144,6 +144,9 @@
 </details><details class="faq-item">
   <summary>Do I need to validate it?</summary>
   <p>Yes. Validate the published page and make sure the structured data matches visible content.</p>
+</details><details class="faq-item">
+  <summary>Does JSON-LD need to be in a specific location in the page HTML?</summary>
+  <p>JSON-LD can appear in either the head or body of the HTML. Search engines read both. For static sites, placing it in the head near other metadata is easier to maintain.</p>
 </details>
     </div>
   </div>
@@ -236,6 +239,6 @@
       </div>
     </div>
   </footer>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"JSON-LD Starter Builder","description":"Generate starter JSON-LD for WebSite, Organization, Article, FAQ, or BreadcrumbList.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/json-ld-starter-builder/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"SEO Tools","item":"https://www.jquery.app/tools/seo/"},{"@type":"ListItem","position":4,"name":"JSON-LD Starter Builder","item":"https://www.jquery.app/tools/json-ld-starter-builder/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where should JSON-LD go?","acceptedAnswer":{"@type":"Answer","text":"It can live in the head or body. For static pages, placing it near other metadata in the head is easy to maintain."}},{"@type":"Question","name":"Can one page have multiple JSON-LD blocks?","acceptedAnswer":{"@type":"Answer","text":"Yes. A page can use separate blocks for WebSite, BreadcrumbList, FAQ, WebApplication, and other relevant entities."}},{"@type":"Question","name":"Do I need to validate it?","acceptedAnswer":{"@type":"Answer","text":"Yes. Validate the published page and make sure the structured data matches visible content."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"JSON-LD Starter Builder","description":"Generate starter JSON-LD for WebSite, Organization, Article, FAQ, or BreadcrumbList.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/json-ld-starter-builder/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"SEO Tools","item":"https://www.jquery.app/tools/seo/"},{"@type":"ListItem","position":4,"name":"JSON-LD Starter Builder","item":"https://www.jquery.app/tools/json-ld-starter-builder/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where should JSON-LD go?","acceptedAnswer":{"@type":"Answer","text":"It can live in the head or body. For static pages, placing it near other metadata in the head is easy to maintain."}},{"@type":"Question","name":"Can one page have multiple JSON-LD blocks?","acceptedAnswer":{"@type":"Answer","text":"Yes. A page can use separate blocks for WebSite, BreadcrumbList, FAQ, WebApplication, and other relevant entities."}},{"@type":"Question","name":"Do I need to validate it?","acceptedAnswer":{"@type":"Answer","text":"Yes. Validate the published page and make sure the structured data matches visible content."}},{"@type":"Question","name":"Does JSON-LD need to be in a specific location in the page HTML?","acceptedAnswer":{"@type":"Answer","text":"JSON-LD can appear in either the head or body of the HTML. Search engines read both. For static sites, placing it in the head near other metadata is easier to maintain."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
 </body>
 </html>

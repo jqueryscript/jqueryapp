@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Qué es CSS Logical Properties Converter?</h2>
       <p>CSS Logical Properties Converter es una herramienta de navegador para esta tarea: Convert physical CSS properties to logical properties for better right-to-left and writing-mode support. La salida es fácil de revisar antes de usarla en un sitio publicado.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Convert physical CSS properties such as margin-left and padding-right into writing-mode-aware logical equivalents. This helps layouts adapt automatically to right-to-left and vertical writing modes without separate overrides.</p></div>
+      <h3>Limitations</h3><ul><li>Some shorthand logical properties such as border-inline, border-block, and inset-inline have spotty browser support compared to the core longhand logical properties.</li><li>The converter handles single property conversion. Migrating a large stylesheet to logical properties requires updating each physical-to-logical pair and verifying no mixed-direction edge cases remain.</li></ul>
       <h2>Cómo usar esta herramienta</h2>
       <ol><li>Abre la herramienta y escribe los valores necesarios.</li><li>Revisa la salida en el panel de resultado.</li><li>Copia solo la parte que encaja con tu página.</li><li>Prueba el cambio antes de publicar.</li></ol>
       <h2>Para qué puedes usarla</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Errores comunes</h2>
       <ul><li>Copiar la salida sin revisarla.</li><li>Usar URLs locales en lugar de URLs públicas finales.</li><li>No confirmar que el archivo esté en la carpeta publicada.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Apply the converted properties to a page and switch the direction attribute from ltr to rtl on the html element to verify the layout flips correctly.</li><li>Test the page in both LTR and RTL modes to confirm spacing, borders, and alignment behave as expected in each direction.</li></ol>
     </article>
   </div>
 </section>

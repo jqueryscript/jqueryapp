@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>CSS safe-area-insets生成ツールとは</h2>
       <p>CSS safe-area-insets生成ツールは、ノッチや角丸画面向けのsafe-area CSSを生成します。 出力は公開サイトに使う前に確認しやすい形で表示されます。</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate CSS padding, margin, or position offset rules using env(safe-area-inset-*) with fallback values. This keeps content away from phone notches, rounded screen corners, and home indicators on modern mobile devices.</p></div>
+      <h3>Limitations</h3><ul><li>Safe-area inset variables are only relevant on notched mobile devices and phones with rounded corners or home indicators. Desktop and older mobile browsers return zero for all safe-area values.</li><li>A fallback value is essential. Without a fallback, browsers that do not support env() variables will use the default of zero, which can cause content to overlap with page edges.</li><li>The viewport-fit=cover meta tag must be present in the HTML head for safe-area variables to produce the intended effect on iOS Safari. Without it, the page may letterbox.</li></ul>
       <h2>使い方</h2>
       <ol><li>必要な値を入力します。</li><li>結果パネルの出力を確認します。</li><li>ページに合う部分だけコピーします。</li><li>公開前にブラウザとホスティング環境で確認します。</li></ol>
       <h2>主な用途</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>よくあるミス</h2>
       <ul><li>出力を確認せず本番に入れる。</li><li>公開URLではなくローカルURLを使う。</li><li>build後に公開フォルダ内のファイルを確認しない。</li></ul>
-      
+      <h2>Verification</h2><ol><li>Open the published page on a notched mobile device or in Chrome DevTools with a device like iPhone X or Pixel 6. Confirm fixed elements do not overlap with the notch or home indicator.</li><li>Set the viewport-fit=cover meta tag in the head and verify the page extends edge to edge while safe-area padding keeps content clear of obstructions.</li></ol>
     </article>
   </div>
 </section>

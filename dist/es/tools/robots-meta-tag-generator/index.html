@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Qué es Generador de meta robots?</h2>
       <p>Generador de meta robots es una herramienta de navegador para esta tarea: Genera meta robots sin memorizar la sintaxis de directivas. La salida es fácil de revisar antes de usarla en un sitio publicado.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Build page-level robots meta tags to control search engine indexing, link following, snippet length, and archive behavior without changing robots.txt. Use index and follow as the default for public pages.</p></div>
+      <h3>Limitations</h3><ul><li>Pages blocked by robots.txt cannot be read by crawlers, so any noindex directive on those pages will not be seen. Use robots.txt for crawl control and meta tags for indexing control separately.</li><li>Conflicting directives such as both index and noindex or contradictory snippet settings can cause unpredictable crawler behavior. Most crawlers use the most restrictive directive.</li><li>Some crawlers ignore meta robots directives entirely. Malicious bots, AI crawlers, and automated scrapers may not respect page-level instructions.</li></ul>
       <h2>Cómo usar esta herramienta</h2>
       <ol><li>Abre la herramienta y escribe los valores necesarios.</li><li>Revisa la salida en el panel de resultado.</li><li>Copia solo la parte que encaja con tu página.</li><li>Prueba el cambio antes de publicar.</li></ol>
       <h2>Para qué puedes usarla</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Errores comunes</h2>
       <ul><li>Copiar la salida sin revisarla.</li><li>Usar URLs locales en lugar de URLs públicas finales.</li><li>No confirmar que el archivo esté en la carpeta publicada.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Inspect the generated meta tag in the page HTML source. Confirm the directive combination reflects what you intended, especially when combining noindex with follow or snippet rules.</li><li>Use the URL Inspection tool in Google Search Console to verify the discovered robots directives and any crawl issues.</li></ol>
     </article>
   </div>
 </section>

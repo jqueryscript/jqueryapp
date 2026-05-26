@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Wat is HTML link rel generator?</h2>
       <p>HTML link rel generator is een browsertool voor deze taak: Genereer link-tags voor preload, preconnect, dns-prefetch, canonical en alternate. De uitvoer blijft leesbaar, zodat je die kunt controleren voordat je hem publiceert.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Create valid HTML link tags for preload, preconnect, dns-prefetch, canonical, and alternate URLs without guessing the required attributes. Each rel value has specific requirements such as as, type, or crossorigin.</p></div>
+      <h3>Limitations</h3><ul><li>The as attribute is required for preload links. Without it, the browser cannot prioritize or apply the correct Content Security Policy to the preloaded resource.</li><li>Preloading too many resources is counterproductive and can delay the loading of real critical content. Limit preload hints to one to three important resources per page.</li><li>The crossorigin attribute is required for preloading fonts and other cross-origin resources. Omitting it causes the preload to be discarded by the browser.</li></ul>
       <h2>Zo gebruik je deze tool</h2>
       <ol><li>Open de tool en vul de relevante waarden in.</li><li>Controleer de uitvoer in het resultaatpaneel.</li><li>Kopieer alleen het deel dat bij je página past.</li><li>Test de wijziging voordat je publiceert.</li></ol>
       <h2>Waarvoor je het kunt gebruiken</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Veelgemaakte fouten</h2>
       <ul><li>Uitvoer kopieren zonder controle.</li><li>Lokale URL's gebruiken in plaats van publieke URL's.</li><li>Na de build niet controleren of het bestand in de publicatiemap staat.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Inspect the generated link tag in the browser DevTools Elements panel to confirm that all required attributes are present for the selected rel value.</li><li>Open the Network panel and verify preloaded resources appear with the correct priority indicator and are not duplicated as later requests.</li></ol>
     </article>
   </div>
 </section>

@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>HTML link rel生成ツールとは</h2>
       <p>HTML link rel生成ツールは、preload、preconnect、dns-prefetch、canonical、alternateのlinkタグを作成します。 出力は公開サイトに使う前に確認しやすい形で表示されます。</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Create valid HTML link tags for preload, preconnect, dns-prefetch, canonical, and alternate URLs without guessing the required attributes. Each rel value has specific requirements such as as, type, or crossorigin.</p></div>
+      <h3>Limitations</h3><ul><li>The as attribute is required for preload links. Without it, the browser cannot prioritize or apply the correct Content Security Policy to the preloaded resource.</li><li>Preloading too many resources is counterproductive and can delay the loading of real critical content. Limit preload hints to one to three important resources per page.</li><li>The crossorigin attribute is required for preloading fonts and other cross-origin resources. Omitting it causes the preload to be discarded by the browser.</li></ul>
       <h2>使い方</h2>
       <ol><li>必要な値を入力します。</li><li>結果パネルの出力を確認します。</li><li>ページに合う部分だけコピーします。</li><li>公開前にブラウザとホスティング環境で確認します。</li></ol>
       <h2>主な用途</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>よくあるミス</h2>
       <ul><li>出力を確認せず本番に入れる。</li><li>公開URLではなくローカルURLを使う。</li><li>build後に公開フォルダ内のファイルを確認しない。</li></ul>
-      
+      <h2>Verification</h2><ol><li>Inspect the generated link tag in the browser DevTools Elements panel to confirm that all required attributes are present for the selected rel value.</li><li>Open the Network panel and verify preloaded resources appear with the correct priority indicator and are not duplicated as later requests.</li></ol>
     </article>
   </div>
 </section>

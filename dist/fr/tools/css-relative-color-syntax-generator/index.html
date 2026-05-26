@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Qu'est-ce que Generateur de syntaxe de couleur relative CSS ?</h2>
       <p>Generateur de syntaxe de couleur relative CSS est un outil dans le navigateur pour cette tâche : Générez la syntaxe de couleur relative CSS pour des variantes alpha, claires, sombres et ajustees. La sortie reste lisible afin de la vérifier avant de l'utiliser sur un site publié.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>CSS relative color syntax lets you create a new color by adjusting individual channels of an existing color. It is more powerful than color-mix() for precise channel-level manipulation without a preprocessor.</p></div>
+      <h3>Limitations</h3><ul><li>Browser support requires Chrome 119+, Safari 16.4+, and Firefox 128+. Older browsers will ignore the declaration entirely.</li><li>The syntax varies slightly by color space. Not all channels are available in every color space, and channel value ranges differ.</li><li>Complex nested relative color expressions can hurt readability. Use a CSS custom property for the base color to keep declarations clean.</li></ul>
       <h2>Comment utiliser cet outil</h2>
       <ol><li>Ouvrez l'outil et saisissez les valeurs utiles.</li><li>Vérifiez la sortie dans le panneau de résultat.</li><li>Copiez seulement la partie adaptéeà votre page.</li><li>Testez la modification avant publication.</li></ol>
       <h2>A quoi il sert</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Erreurs frequentes</h2>
       <ul><li>Copier la sortie sans verification.</li><li>Utiliser des URL locales au lieu des URL publiques finales.</li><li>Oublier de vérifier le dossier publié après le build.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Test the generated CSS in Chrome DevTools Styles panel to confirm the color resolves to the expected computed value.</li><li>Verify a static fallback color is declared before the relative color syntax for browsers that do not support the feature.</li></ol>
     </article>
   </div>
 </section>

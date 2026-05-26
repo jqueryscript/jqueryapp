@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>What is CSS Scroll Snap Generator?</h2>
       <p>CSS scroll-snap controls the scroll position of a container so it snaps to alignment points you define. It enables carousels, horizontal galleries, and section-by-section scrolling without JavaScript. The browser handles the snapping physics, making it smooth on trackpad, mouse wheel, and touch devices.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate CSS scroll-snap rules for carousels, galleries, and section-based layouts. Choose direction, snap type, and alignment to control how the scroll position snaps to each child element.</p></div>
+      <h3>Limitations</h3><ul><li>Mandatory snap type can prevent fast scrolling through long content because the scroll position snaps to every child, making rapid browsing feel rigid.</li><li>Scroll-snap requires the container to have overflow set to scroll or auto. Containers with overflow: hidden will not activate scroll-snap behavior.</li></ul>
       <h2>How to use this tool</h2>
       <ol><li>Select the scroll direction: horizontal for carousels and galleries, vertical for section-by-section pages.</li><li>Choose the snap type: mandatory always snaps to the nearest point, proximity snaps only when the scroll is near a snap point.</li><li>Pick the alignment: start aligns the child to the container start, center centers it, end aligns to the end.</li><li>Copy the generated CSS and HTML skeleton, then replace the placeholder child content with your own.</li></ol>
       <h2>What you can use it for</h2>
@@ -123,7 +123,7 @@
     <article class="tool-article">
       <h2>Common mistakes</h2>
       <ul><li>Using mandatory snap-type on a container with very long content, which forces the user to snap to every child and makes browsing feel rigid.</li><li>Forgetting to set overflow to scroll or auto on the container, which prevents scroll-snap from activating.</li><li>Not testing scroll-snap on a touch device, where the snapping behavior can feel different than on a mouse or trackpad.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Test the scroll-snap container on a touch device to confirm snapping feels smooth and predictable at different scroll speeds.</li><li>Verify that all child content is accessible by scrolling and that the snap alignment does not cut off important content at the container edges.</li></ol>
     </article>
   </div>
 </section>
@@ -141,6 +141,12 @@
 </details><details class="faq-item">
   <summary>What is the difference between mandatory and proximity?</summary>
   <p>Mandatory always snaps to the nearest snap point, even if the user scrolls slightly. Proximity only snaps when the scroll position is near a snap point, giving the user more freedom to browse without forced snapping.</p>
+</details><details class="faq-item">
+  <summary>Does scroll-snap work on touch devices?</summary>
+  <p>Yes. Scroll-snap works on all modern browsers including mobile Safari and Chrome. Touch gestures, trackpad swipes, and mouse wheel scrolling all trigger the snap behavior consistently.</p>
+</details><details class="faq-item">
+  <summary>How do I add scroll-snap-stop?</summary>
+  <p>Add scroll-snap-stop: always on the child elements to force the scroll to stop at every snap point. This prevents the user from scrolling past multiple items in one gesture. The default value is normal, which lets the browser skip snap points during fast scrolling.</p>
 </details>
     </div>
   </div>
@@ -233,6 +239,6 @@
       </div>
     </div>
   </footer>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CSS Scroll Snap Generator","description":"Generate CSS scroll-snap rules for carousels, galleries, and horizontal scroll sections.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/css-scroll-snap-generator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"CSS Tools","item":"https://www.jquery.app/tools/css/"},{"@type":"ListItem","position":4,"name":"CSS Scroll Snap Generator","item":"https://www.jquery.app/tools/css-scroll-snap-generator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does scroll-snap work on mobile devices?","acceptedAnswer":{"@type":"Answer","text":"Yes. Scroll-snap works on all modern browsers including mobile Safari and Chrome. Touch gestures, trackpad swipes, and mouse wheel scrolling all trigger the snap behavior."}},{"@type":"Question","name":"What is the difference between mandatory and proximity?","acceptedAnswer":{"@type":"Answer","text":"Mandatory always snaps to the nearest snap point, even if the user scrolls slightly. Proximity only snaps when the scroll position is near a snap point, giving the user more freedom to browse without forced snapping."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CSS Scroll Snap Generator","description":"Generate CSS scroll-snap rules for carousels, galleries, and horizontal scroll sections.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/css-scroll-snap-generator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"CSS Tools","item":"https://www.jquery.app/tools/css/"},{"@type":"ListItem","position":4,"name":"CSS Scroll Snap Generator","item":"https://www.jquery.app/tools/css-scroll-snap-generator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does scroll-snap work on mobile devices?","acceptedAnswer":{"@type":"Answer","text":"Yes. Scroll-snap works on all modern browsers including mobile Safari and Chrome. Touch gestures, trackpad swipes, and mouse wheel scrolling all trigger the snap behavior."}},{"@type":"Question","name":"What is the difference between mandatory and proximity?","acceptedAnswer":{"@type":"Answer","text":"Mandatory always snaps to the nearest snap point, even if the user scrolls slightly. Proximity only snaps when the scroll position is near a snap point, giving the user more freedom to browse without forced snapping."}},{"@type":"Question","name":"Does scroll-snap work on touch devices?","acceptedAnswer":{"@type":"Answer","text":"Yes. Scroll-snap works on all modern browsers including mobile Safari and Chrome. Touch gestures, trackpad swipes, and mouse wheel scrolling all trigger the snap behavior consistently."}},{"@type":"Question","name":"How do I add scroll-snap-stop?","acceptedAnswer":{"@type":"Answer","text":"Add scroll-snap-stop: always on the child elements to force the scroll to stop at every snap point. This prevents the user from scrolling past multiple items in one gesture. The default value is normal, which lets the browser skip snap points during fast scrolling."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
 </body>
 </html>

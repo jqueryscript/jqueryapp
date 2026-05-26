@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>What is Accessible Skip Link Generator?</h2>
       <p>A skip link is a hidden link at the top of the page that becomes visible when focused with the Tab key. It lets keyboard and screen reader users jump directly to the main content, skipping the navigation. WCAG requires a way to bypass repeated blocks of content.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate an accessible skip navigation link that appears on Tab focus, letting keyboard and screen reader users jump past repeated navigation blocks to the main content area.</p></div>
+      <h3>Limitations</h3><ul><li>The skip link requires that the target element with the matching id exists in the DOM. If the target id is missing or misspelled, the link navigates to a non-existent element.</li><li>Visual-only testing may miss focus-order issues that affect screen reader navigation. Always test with a screen reader after adding the skip link.</li><li>Skip links that jump to non-focusable elements may not move the keyboard focus correctly. The target element must have tabindex=&quot;-1&quot; to receive programmatic focus.</li></ul>
       <h2>How to use this tool</h2>
       <ol><li>Enter the CSS selector of the main content area, such as #main-content or #content.</li><li>Set the link text that will appear when the skip link is focused.</li><li>Choose whether the link is always visible or only appears on keyboard focus.</li><li>Copy the generated HTML and CSS into your page and test by tabbing from the top of the page.</li></ol>
       <h2>What you can use it for</h2>
@@ -123,7 +123,7 @@
     <article class="tool-article">
       <h2>Common mistakes</h2>
       <ul><li>Setting the target selector to an element that does not exist or is not focusable, which makes the skip link nonfunctional.</li><li>Hiding the link with display: none, which also hides it from screen readers and defeats the purpose.</li><li>Forgetting to make the target element focusable with tabindex=&quot;-1&quot; so it can receive focus when the skip link is activated.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Load the page and press Tab immediately after the page loads. The skip link should appear and be the first focusable element on the page.</li><li>Activate the skip link and confirm the keyboard focus moves to the main content area. Continue tabbing to verify the focus follows the expected content order from that point.</li></ol>
     </article>
   </div>
 </section>
@@ -141,6 +141,9 @@
 </details><details class="faq-item">
   <summary>What selector should the skip link target?</summary>
   <p>The id of the main content element, such as #main-content or #content. The target element should also have tabindex=&quot;-1&quot; so it can receive focus when the link is activated.</p>
+</details><details class="faq-item">
+  <summary>Does the target element need any special attributes?</summary>
+  <p>Yes. Add tabindex=&quot;-1&quot; to the target element so it can receive programmatic keyboard focus when the skip link is activated. Adding role=&quot;region&quot; and a label to the target container also helps screen reader users identify the main content area.</p>
 </details>
     </div>
   </div>
@@ -233,6 +236,6 @@
       </div>
     </div>
   </footer>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Accessible Skip Link Generator","description":"Generate an accessible skip-to-main-content link with CSS for keyboard and screen reader navigation.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/accessible-skip-link-generator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"HTML Tools","item":"https://www.jquery.app/tools/html/"},{"@type":"ListItem","position":4,"name":"Accessible Skip Link Generator","item":"https://www.jquery.app/tools/accessible-skip-link-generator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Should the skip link always be visible?","acceptedAnswer":{"@type":"Answer","text":"It can be visible-on-focus or always visible. Either method is valid as long as the link is accessible to keyboard users when they need it."}},{"@type":"Question","name":"What selector should the skip link target?","acceptedAnswer":{"@type":"Answer","text":"The id of the main content element, such as #main-content or #content. The target element should also have tabindex=\"-1\" so it can receive focus when the link is activated."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Accessible Skip Link Generator","description":"Generate an accessible skip-to-main-content link with CSS for keyboard and screen reader navigation.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/accessible-skip-link-generator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"HTML Tools","item":"https://www.jquery.app/tools/html/"},{"@type":"ListItem","position":4,"name":"Accessible Skip Link Generator","item":"https://www.jquery.app/tools/accessible-skip-link-generator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Should the skip link always be visible?","acceptedAnswer":{"@type":"Answer","text":"It can be visible-on-focus or always visible. Either method is valid as long as the link is accessible to keyboard users when they need it."}},{"@type":"Question","name":"What selector should the skip link target?","acceptedAnswer":{"@type":"Answer","text":"The id of the main content element, such as #main-content or #content. The target element should also have tabindex=\"-1\" so it can receive focus when the link is activated."}},{"@type":"Question","name":"Does the target element need any special attributes?","acceptedAnswer":{"@type":"Answer","text":"Yes. Add tabindex=\"-1\" to the target element so it can receive programmatic keyboard focus when the skip link is activated. Adding role=\"region\" and a label to the target container also helps screen reader users identify the main content area."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
 </body>
 </html>

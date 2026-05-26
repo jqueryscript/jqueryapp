@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Wat is CSS safe-area-insets generator?</h2>
       <p>CSS safe-area-insets generator is een browsertool voor deze taak: Genereer CSS voor safe-area insets op telefoons met notch of ronde hoeken. De uitvoer blijft leesbaar, zodat je die kunt controleren voordat je hem publiceert.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate CSS padding, margin, or position offset rules using env(safe-area-inset-*) with fallback values. This keeps content away from phone notches, rounded screen corners, and home indicators on modern mobile devices.</p></div>
+      <h3>Limitations</h3><ul><li>Safe-area inset variables are only relevant on notched mobile devices and phones with rounded corners or home indicators. Desktop and older mobile browsers return zero for all safe-area values.</li><li>A fallback value is essential. Without a fallback, browsers that do not support env() variables will use the default of zero, which can cause content to overlap with page edges.</li><li>The viewport-fit=cover meta tag must be present in the HTML head for safe-area variables to produce the intended effect on iOS Safari. Without it, the page may letterbox.</li></ul>
       <h2>Zo gebruik je deze tool</h2>
       <ol><li>Open de tool en vul de relevante waarden in.</li><li>Controleer de uitvoer in het resultaatpaneel.</li><li>Kopieer alleen het deel dat bij je página past.</li><li>Test de wijziging voordat je publiceert.</li></ol>
       <h2>Waarvoor je het kunt gebruiken</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Veelgemaakte fouten</h2>
       <ul><li>Uitvoer kopieren zonder controle.</li><li>Lokale URL's gebruiken in plaats van publieke URL's.</li><li>Na de build niet controleren of het bestand in de publicatiemap staat.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Open the published page on a notched mobile device or in Chrome DevTools with a device like iPhone X or Pixel 6. Confirm fixed elements do not overlap with the notch or home indicator.</li><li>Set the viewport-fit=cover meta tag in the head and verify the page extends edge to edge while safe-area padding keeps content clear of obstructions.</li></ol>
     </article>
   </div>
 </section>

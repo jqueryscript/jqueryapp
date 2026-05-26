@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>What is External Link Attribute Generator?</h2>
       <p>External links should use target='_blank' with rel='noopener noreferrer' for security. For SEO, bloggers use rel='nofollow' for untrusted links, rel='sponsored' for paid or affiliate links, and rel='ugc' for user-generated content links. Using the right rel values helps both security and search engine understanding of link intent.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>External links should use rel='noopener noreferrer' for security when using target='_blank'. For SEO, use rel='nofollow' for untrusted links, rel='sponsored' for paid or affiliate links, and rel='ugc' for user-generated content.</p></div>
+      <h3>Limitations</h3><ul><li>Rel attributes are hints to search engines, not directives. Search engines may still discover and crawl linked pages regardless of rel values.</li><li>Some platforms such as social media sites and CMS editors strip or ignore custom rel attributes on links.</li><li>Social media platform links may need additional attributes such as aria-label for accessibility beyond the standard rel values.</li></ul>
       <h2>How to use this tool</h2>
       <ol><li>Choose the link type that matches your use case.</li><li>Enter the destination URL and link text.</li><li>The tool generates the anchor tag with the correct attributes.</li><li>Copy and paste the anchor tag into your HTML.</li></ol>
       <h2>What you can use it for</h2>
@@ -123,7 +123,7 @@
     <article class="tool-article">
       <h2>Common mistakes</h2>
       <ul><li>Using target='_blank' without noopener which creates a security vulnerability.</li><li>Adding nofollow to internal links and hurting internal link equity.</li><li>Using both nofollow and sponsored when sponsored alone is sufficient.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Inspect the generated anchor tag in the HTML source to confirm target, rel, and aria-label attributes are present and correctly formatted.</li><li>Click the link on the published page and verify it opens in a new tab without triggering any security warnings in the browser console.</li></ol>
     </article>
   </div>
 </section>
@@ -141,6 +141,9 @@
 </details><details class="faq-item">
   <summary>Does rel='nofollow' affect SEO?</summary>
   <p>It tells search engines not to pass ranking credit to the linked page. Use it for untrusted or paid links.</p>
+</details><details class="faq-item">
+  <summary>What is the difference between nofollow and sponsored?</summary>
+  <p>nofollow tells search engines not to pass ranking credit for any reason. sponsored is specifically for paid or affiliate links. Use sponsored when the link is part of a commercial agreement and nofollow for general untrusted links.</p>
 </details>
     </div>
   </div>
@@ -233,6 +236,6 @@
       </div>
     </div>
   </footer>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"External Link Attribute Generator","description":"Generate external link markup with the correct rel attributes for security, SEO, sponsored content, and user-generated content.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/external-link-attribute-generator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"HTML Tools","item":"https://www.jquery.app/tools/html/"},{"@type":"ListItem","position":4,"name":"External Link Attribute Generator","item":"https://www.jquery.app/tools/external-link-attribute-generator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Should every external link use noopener?","acceptedAnswer":{"@type":"Answer","text":"Every target='_blank' link should include rel='noopener'. It prevents the opened page from accessing window.opener."}},{"@type":"Question","name":"Does rel='nofollow' affect SEO?","acceptedAnswer":{"@type":"Answer","text":"It tells search engines not to pass ranking credit to the linked page. Use it for untrusted or paid links."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"External Link Attribute Generator","description":"Generate external link markup with the correct rel attributes for security, SEO, sponsored content, and user-generated content.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/external-link-attribute-generator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"HTML Tools","item":"https://www.jquery.app/tools/html/"},{"@type":"ListItem","position":4,"name":"External Link Attribute Generator","item":"https://www.jquery.app/tools/external-link-attribute-generator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Should every external link use noopener?","acceptedAnswer":{"@type":"Answer","text":"Every target='_blank' link should include rel='noopener'. It prevents the opened page from accessing window.opener."}},{"@type":"Question","name":"Does rel='nofollow' affect SEO?","acceptedAnswer":{"@type":"Answer","text":"It tells search engines not to pass ranking credit to the linked page. Use it for untrusted or paid links."}},{"@type":"Question","name":"What is the difference between nofollow and sponsored?","acceptedAnswer":{"@type":"Answer","text":"nofollow tells search engines not to pass ranking credit for any reason. sponsored is specifically for paid or affiliate links. Use sponsored when the link is part of a commercial agreement and nofollow for general untrusted links."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
 </body>
 </html>

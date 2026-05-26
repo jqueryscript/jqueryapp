@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>CSS Logical Properties Converterとは</h2>
       <p>CSS Logical Properties Converterは、Convert physical CSS properties to logical properties for better right-to-left and writing-mode support. 出力は公開サイトに使う前に確認しやすい形で表示されます。</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Convert physical CSS properties such as margin-left and padding-right into writing-mode-aware logical equivalents. This helps layouts adapt automatically to right-to-left and vertical writing modes without separate overrides.</p></div>
+      <h3>Limitations</h3><ul><li>Some shorthand logical properties such as border-inline, border-block, and inset-inline have spotty browser support compared to the core longhand logical properties.</li><li>The converter handles single property conversion. Migrating a large stylesheet to logical properties requires updating each physical-to-logical pair and verifying no mixed-direction edge cases remain.</li></ul>
       <h2>使い方</h2>
       <ol><li>必要な値を入力します。</li><li>結果パネルの出力を確認します。</li><li>ページに合う部分だけコピーします。</li><li>公開前にブラウザとホスティング環境で確認します。</li></ol>
       <h2>主な用途</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>よくあるミス</h2>
       <ul><li>出力を確認せず本番に入れる。</li><li>公開URLではなくローカルURLを使う。</li><li>build後に公開フォルダ内のファイルを確認しない。</li></ul>
-      
+      <h2>Verification</h2><ol><li>Apply the converted properties to a page and switch the direction attribute from ltr to rtl on the html element to verify the layout flips correctly.</li><li>Test the page in both LTR and RTL modes to confirm spacing, borders, and alignment behave as expected in each direction.</li></ol>
     </article>
   </div>
 </section>

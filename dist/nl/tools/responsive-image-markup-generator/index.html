@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Wat is Responsive afbeeldingsmarkupgenerator?</h2>
       <p>Responsive afbeeldingsmarkupgenerator is een browsertool voor deze taak: Genereer img- of picture-markup met srcset, sizes, breedte, hoogte en alt-tekst. De uitvoer blijft leesbaar, zodat je die kunt controleren voordat je hem publiceert.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate responsive img or picture markup with srcset, sizes, width, height, and alt text. Helps avoid layout shift, missing image candidates, and inaccessible alt attributes on static sites.</p></div>
+      <h3>Limitations</h3><ul><li>Srcset candidates must exist at the specified paths in the published output. The generated markup references file paths; you must ensure each image file is copied to the correct location.</li><li>The sizes attribute affects which srcset candidate the browser selects. An incorrect sizes value can cause the browser to download a larger or smaller image than needed.</li><li>WebP source in a picture element requires a fallback img src for older browsers that do not support WebP. Without a fallback, unsupported browsers will show no image.</li></ul>
       <h2>Zo gebruik je deze tool</h2>
       <ol><li>Open de tool en vul de relevante waarden in.</li><li>Controleer de uitvoer in het resultaatpaneel.</li><li>Kopieer alleen het deel dat bij je página past.</li><li>Test de wijziging voordat je publiceert.</li></ol>
       <h2>Waarvoor je het kunt gebruiken</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Veelgemaakte fouten</h2>
       <ul><li>Uitvoer kopieren zonder controle.</li><li>Lokale URL's gebruiken in plaats van publieke URL's.</li><li>Na de build niet controleren of het bestand in de publicatiemap staat.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Open the published page, resize the browser, and confirm the browser loads different image candidates at different viewport widths using the Network panel.</li><li>Verify the alt attribute provides accurate descriptions for meaningful images or is empty for decorative images using browser DevTools or a screen reader.</li></ol>
     </article>
   </div>
 </section>

@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>What is Web App Manifest Generator?</h2>
       <p>A web app manifest is a JSON file that tells browsers about your web application and how it should behave when installed on a user's device. It controls the app name, icons, colors, and launch behavior. For static sites on GitHub Pages, a manifest is the key step toward making the site installable as a Progressive Web App.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>A web app manifest controls how your site looks when installed on a device home screen. It sets the app name, icons, theme color, and launch behavior for PWA-ready static sites.</p></div>
+      <h3>Limitations</h3><ul><li>The manifest only works over HTTPS. HTTP sites cannot use the manifest for install prompts.</li><li>The manifest requires actual icon image files at the specified paths. Missing or incorrectly named icons cause the browser to reject the manifest.</li><li>Install behavior differs between Android and iOS. Android uses the manifest for install prompts, while iOS relies on Apple touch icon meta tags and does not support full PWA install from the manifest.</li></ul>
       <h2>How to use this tool</h2>
       <ol><li>Enter your site name and an optional short name that fits under 12 characters.</li><li>Select the display mode: standalone removes browser chrome for an app-like experience.</li><li>Set icon paths to PNG images at recommended sizes such as 192x192 and 512x512.</li><li>Copy the generated manifest JSON and save it as site.webmanifest in your site root.</li></ol>
       <h2>What you can use it for</h2>
@@ -123,7 +123,7 @@
     <article class="tool-article">
       <h2>Common mistakes</h2>
       <ul><li>Setting icon paths that point to invalid locations or missing files, which causes the browser to reject the manifest.</li><li>Generating a manifest but forgetting the &lt;link rel=&quot;manifest&quot; href=&quot;/site.webmanifest&quot;&gt; tag in the page head, so the browser never reads it.</li><li>Choosing fullscreen or standalone display for a content-heavy site where users still need the address bar for navigation.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Open Chrome DevTools &gt; Application &gt; Manifest to verify the manifest is parsed correctly and icons are accessible.</li><li>Test the site over HTTPS on an Android device using Chrome and confirm the Add to Home Screen prompt appears.</li></ol>
     </article>
   </div>
 </section>
@@ -141,6 +141,9 @@
 </details><details class="faq-item">
   <summary>Does a regular static site need a manifest?</summary>
   <p>A manifest is optional but recommended. It is the only way to control how your site appears when a user saves it to their home screen. Without a manifest, the browser uses a generic screenshot as the icon.</p>
+</details><details class="faq-item">
+  <summary>What icon sizes are required for PWA?</summary>
+  <p>At minimum, provide 192x192 and 512x512 PNG icons. The 192x192 icon is used for the home screen and the 512x512 icon is required for the installable PWA badge on Android.</p>
 </details>
     </div>
   </div>
@@ -226,6 +229,6 @@
       </div>
     </div>
   </footer>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Web App Manifest Generator","description":"Generate a site.webmanifest JSON file for PWA-ready static websites.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/web-app-manifest-generator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"Image & Asset Tools","item":"https://www.jquery.app/tools/assets/"},{"@type":"ListItem","position":4,"name":"Web App Manifest Generator","item":"https://www.jquery.app/tools/web-app-manifest-generator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where should I place the manifest file?","acceptedAnswer":{"@type":"Answer","text":"Place site.webmanifest in your site root and reference it with <link rel=\"manifest\" href=\"/site.webmanifest\"> in the page head. The file must be served with the application/manifest+json MIME type."}},{"@type":"Question","name":"Does a regular static site need a manifest?","acceptedAnswer":{"@type":"Answer","text":"A manifest is optional but recommended. It is the only way to control how your site appears when a user saves it to their home screen. Without a manifest, the browser uses a generic screenshot as the icon."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Web App Manifest Generator","description":"Generate a site.webmanifest JSON file for PWA-ready static websites.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/web-app-manifest-generator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"Image & Asset Tools","item":"https://www.jquery.app/tools/assets/"},{"@type":"ListItem","position":4,"name":"Web App Manifest Generator","item":"https://www.jquery.app/tools/web-app-manifest-generator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where should I place the manifest file?","acceptedAnswer":{"@type":"Answer","text":"Place site.webmanifest in your site root and reference it with <link rel=\"manifest\" href=\"/site.webmanifest\"> in the page head. The file must be served with the application/manifest+json MIME type."}},{"@type":"Question","name":"Does a regular static site need a manifest?","acceptedAnswer":{"@type":"Answer","text":"A manifest is optional but recommended. It is the only way to control how your site appears when a user saves it to their home screen. Without a manifest, the browser uses a generic screenshot as the icon."}},{"@type":"Question","name":"What icon sizes are required for PWA?","acceptedAnswer":{"@type":"Answer","text":"At minimum, provide 192x192 and 512x512 PNG icons. The 192x192 icon is used for the home screen and the 512x512 icon is required for the installable PWA badge on Android."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
 </body>
 </html>

@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Qu'est-ce que Verificateur de landmarks HTML ?</h2>
       <p>Verificateur de landmarks HTML est un outil dans le navigateur pour cette tâche : Collez du HTML et vérifiez les elements landmark ARIA pour la navigation au lecteur d'écran. La sortie reste lisible afin de la vérifier avant de l'utiliser sur un site publié.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Paste your HTML to check which ARIA landmark elements are present and which are missing. Screen readers use landmarks to help keyboard and assistive technology users navigate between page regions.</p></div>
+      <h3>Limitations</h3><ul><li>The tool scans for element names only. It does not check whether landmarks have accessible names provided through aria-label, aria-labelledby, or visible headings.</li><li>The checker does not validate ARIA role assignments. An element with a role attribute may override or remove the implicit landmark role.</li><li>Pasting partial HTML may miss landmark elements outside the pasted content. Paste the full page HTML for a complete audit.</li></ul>
       <h2>Comment utiliser cet outil</h2>
       <ol><li>Ouvrez l'outil et saisissez les valeurs utiles.</li><li>Vérifiez la sortie dans le panneau de résultat.</li><li>Copiez seulement la partie adaptéeà votre page.</li><li>Testez la modification avant publication.</li></ol>
       <h2>A quoi il sert</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Erreurs frequentes</h2>
       <ul><li>Copier la sortie sans verification.</li><li>Utiliser des URL locales au lieu des URL publiques finales.</li><li>Oublier de vérifier le dossier publié après le build.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Load the audited page in a browser and use a screen reader or browser extension to navigate by landmarks and confirm the expected regions are present.</li><li>Run the page through a formal accessibility testing tool such as axe DevTools or WAVE to cross-check the landmark audit results.</li></ol>
     </article>
   </div>
 </section>

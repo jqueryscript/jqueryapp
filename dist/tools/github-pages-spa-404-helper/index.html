@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>What is GitHub Pages SPA 404 Helper?</h2>
       <p>GitHub Pages serves static files and does not know client-side routes unless a matching file exists. A single-page app can show 404 when a visitor opens a deep route directly. A 404 fallback can redirect the browser back to the app entry point while preserving the requested path for the router.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate a 404.html fallback for single-page apps deployed on GitHub Pages. The fallback redirects deep client-side routes to the app entry point while preserving the original path for the router to handle.</p></div>
+      <h3>Limitations</h3><ul><li>This is a generic client-side fallback, not a server-side redirect configuration. It relies on JavaScript in the browser to extract the original path and pass it to the router.</li><li>The client-side router must be configured to read the preserved path from the query string or hash and render the matching route. Not all routers handle this redirect pattern automatically.</li><li>This approach does not fix navigation or refresh behavior within the SPA after the initial redirect. Router-level configuration is still needed for full client-side routing support.</li></ul>
       <h2>How to use this tool</h2>
       <ol><li>Enter the app base path. Use / for a user or custom domain site, or /repo-name/ for a project page.</li><li>Choose whether the fallback should store the original path in the query string or hash.</li><li>Copy the generated 404.html file into the published site root.</li><li>Test a deep route directly after deployment.</li></ol>
       <h2>What you can use it for</h2>
@@ -123,7 +123,7 @@
     <article class="tool-article">
       <h2>Common mistakes</h2>
       <ul><li>Using / as the base path for a project page deployed under /repo-name/.</li><li>Forgetting to copy 404.html into the final dist folder.</li><li>Expecting this fallback to replace server-side redirects.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Deploy the site with the generated 404.html at the root, then open a deep route URL such as https://yoursite.com/some/deep/route directly in a browser.</li><li>Confirm the page loads the SPA entry point and the router navigates to the deep route without showing a 404 or blank page.</li></ol>
     </article>
   </div>
 </section>
@@ -144,6 +144,9 @@
 </details><details class="faq-item">
   <summary>Should normal static sites use this?</summary>
   <p>Usually no. A normal static site should publish real HTML files for important pages instead of routing everything through a fallback.</p>
+</details><details class="faq-item">
+  <summary>Does this work for all client-side routers?</summary>
+  <p>No. The fallback preserves the requested path via query string or hash, but your client-side router must be configured to read that preserved path and render the correct view. Some routers need additional setup to handle this redirect pattern.</p>
 </details>
     </div>
   </div>
@@ -236,6 +239,6 @@
       </div>
     </div>
   </footer>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"GitHub Pages SPA 404 Helper","description":"Generate a 404.html fallback for single-page apps on GitHub Pages.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/github-pages-spa-404-helper/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"GitHub Pages Tools","item":"https://www.jquery.app/tools/github-pages/"},{"@type":"ListItem","position":4,"name":"GitHub Pages SPA 404 Helper","item":"https://www.jquery.app/tools/github-pages-spa-404-helper/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does this work for every router?","acceptedAnswer":{"@type":"Answer","text":"No. It is a generic fallback. Your router still needs to read the preserved path and render the matching route."}},{"@type":"Question","name":"Where should 404.html go?","acceptedAnswer":{"@type":"Answer","text":"Place it in the published site root, next to index.html, CNAME, robots.txt, or other final output files."}},{"@type":"Question","name":"Should normal static sites use this?","acceptedAnswer":{"@type":"Answer","text":"Usually no. A normal static site should publish real HTML files for important pages instead of routing everything through a fallback."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"GitHub Pages SPA 404 Helper","description":"Generate a 404.html fallback for single-page apps on GitHub Pages.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/github-pages-spa-404-helper/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"GitHub Pages Tools","item":"https://www.jquery.app/tools/github-pages/"},{"@type":"ListItem","position":4,"name":"GitHub Pages SPA 404 Helper","item":"https://www.jquery.app/tools/github-pages-spa-404-helper/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does this work for every router?","acceptedAnswer":{"@type":"Answer","text":"No. It is a generic fallback. Your router still needs to read the preserved path and render the matching route."}},{"@type":"Question","name":"Where should 404.html go?","acceptedAnswer":{"@type":"Answer","text":"Place it in the published site root, next to index.html, CNAME, robots.txt, or other final output files."}},{"@type":"Question","name":"Should normal static sites use this?","acceptedAnswer":{"@type":"Answer","text":"Usually no. A normal static site should publish real HTML files for important pages instead of routing everything through a fallback."}},{"@type":"Question","name":"Does this work for all client-side routers?","acceptedAnswer":{"@type":"Answer","text":"No. The fallback preserves the requested path via query string or hash, but your client-side router must be configured to read that preserved path and render the correct view. Some routers need additional setup to handle this redirect pattern."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
 </body>
 </html>

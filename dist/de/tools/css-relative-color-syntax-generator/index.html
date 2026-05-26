@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Was ist CSS-Relative-Color-Syntax-Generator?</h2>
       <p>CSS-Relative-Color-Syntax-Generator ist ein Browser-Tool für diese Aufgabe: Generiere relative CSS-Farbsyntax für Alpha-, hellere, dunklere und kanalangepasste Varianten. Die Ausgabe bleibt lesbar, damit du sie vor dem Einbau in eine Live-Seite prüfen kannst.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>CSS relative color syntax lets you create a new color by adjusting individual channels of an existing color. It is more powerful than color-mix() for precise channel-level manipulation without a preprocessor.</p></div>
+      <h3>Limitations</h3><ul><li>Browser support requires Chrome 119+, Safari 16.4+, and Firefox 128+. Older browsers will ignore the declaration entirely.</li><li>The syntax varies slightly by color space. Not all channels are available in every color space, and channel value ranges differ.</li><li>Complex nested relative color expressions can hurt readability. Use a CSS custom property for the base color to keep declarations clean.</li></ul>
       <h2>So nutzt du dieses Tool</h2>
       <ol><li>Öffne das Tool und trage die relevanten Werte ein.</li><li>Prüfe die erzeugte Ausgabe im Ergebnisfeld.</li><li>Kopiere nur den Teil, der zu deiner Seite passt.</li><li>Teste die Änderung im Browser, bevor du sie veröffentlichst.</li></ol>
       <h2>Wofür du es nutzen kannst</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Haufige Fehler</h2>
       <ul><li>Ausgabe ungepruft in Produktion kopieren.</li><li>Lokale URLs statt finaler öffentlich erreichbarer URLs verwenden.</li><li>Nach dem Build nicht prüfen, ob die Datei im veröffentlichten Ordner liegt.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Test the generated CSS in Chrome DevTools Styles panel to confirm the color resolves to the expected computed value.</li><li>Verify a static fallback color is declared before the relative color syntax for browsers that do not support the feature.</li></ol>
     </article>
   </div>
 </section>

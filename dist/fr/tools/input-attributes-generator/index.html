@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Qu'est-ce que Generateur d'attributs input ?</h2>
       <p>Generateur d'attributs input est un outil dans le navigateur pour cette tâche : Générez des elements input HTML avec attributs specifiques au type pour les formulaires. La sortie reste lisible afin de la vérifier avant de l'utiliser sur un site publié.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate an HTML input element with the correct type and type-specific attributes. Choose from common input types and configure placeholder, required, pattern, autocomplete, min, max, and step.</p></div>
+      <h3>Limitations</h3><ul><li>The tool generates the input tag only. You must wrap it in a form element and add a visible label for accessibility compliance.</li><li>Browser validation styles and error messages vary significantly between browsers. Custom error messages require the constraint validation API.</li><li>The pattern attribute uses JavaScript-like regex syntax but does not support flags such as g or i. Pattern validation is always case-sensitive.</li></ul>
       <h2>Comment utiliser cet outil</h2>
       <ol><li>Ouvrez l'outil et saisissez les valeurs utiles.</li><li>Vérifiez la sortie dans le panneau de résultat.</li><li>Copiez seulement la partie adaptéeà votre page.</li><li>Testez la modification avant publication.</li></ol>
       <h2>A quoi il sert</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Erreurs frequentes</h2>
       <ul><li>Copier la sortie sans verification.</li><li>Utiliser des URL locales au lieu des URL publiques finales.</li><li>Oublier de vérifier le dossier publié après le build.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Wrap the generated input in a form and submit it with invalid data to confirm browser validation triggers the expected error behavior.</li><li>Test the input with a screen reader to verify the label, required state, and any error messages are announced correctly.</li></ol>
     </article>
   </div>
 </section>

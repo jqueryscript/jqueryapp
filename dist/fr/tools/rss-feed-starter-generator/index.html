@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Qu'est-ce que Generateur de flux RSS ?</h2>
       <p>Generateur de flux RSS est un outil dans le navigateur pour cette tâche : Générez un flux RSS 2.0 XML complet pour votre blog statique. La sortie reste lisible afin de la vérifier avant de l'utiliser sur un site publié.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>RSS is an XML format that lets readers subscribe to your site updates through feed readers and aggregators. A feed.xml file at your site root makes new content discoverable without manual checking.</p></div>
+      <h3>Limitations</h3><ul><li>The tool generates a static XML file snapshot. You must regenerate and re-upload the file when new content is published.</li><li>RSS 2.0 is generated. Atom and JSON Feed formats are not included. Some feed readers prefer Atom or JSON Feed over RSS.</li><li>The feed must use absolute URLs in all item links and enclosures. Relative URLs will break when the feed is read by external aggregators.</li></ul>
       <h2>Comment utiliser cet outil</h2>
       <ol><li>Ouvrez l'outil et saisissez les valeurs utiles.</li><li>Vérifiez la sortie dans le panneau de résultat.</li><li>Copiez seulement la partie adaptéeà votre page.</li><li>Testez la modification avant publication.</li></ol>
       <h2>A quoi il sert</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Erreurs frequentes</h2>
       <ul><li>Copier la sortie sans verification.</li><li>Utiliser des URL locales au lieu des URL publiques finales.</li><li>Oublier de vérifier le dossier publié après le build.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Validate the generated feed XML using the W3C Feed Validation Service or a similar tool to catch XML syntax errors.</li><li>Subscribe to the feed URL in a feed reader app to confirm items display correctly with titles, dates, and descriptions.</li></ol>
     </article>
   </div>
 </section>

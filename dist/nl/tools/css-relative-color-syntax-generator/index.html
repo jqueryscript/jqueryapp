@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Wat is CSS Relative Color Syntax Generator?</h2>
       <p>CSS Relative Color Syntax Generator is een browsertool voor deze taak: Genereer CSS relatieve kleursyntax voor alfa-, lichtere, donkerdere en kanaalaangepaste varianten. De uitvoer blijft leesbaar, zodat je die kunt controleren voordat je hem publiceert.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>CSS relative color syntax lets you create a new color by adjusting individual channels of an existing color. It is more powerful than color-mix() for precise channel-level manipulation without a preprocessor.</p></div>
+      <h3>Limitations</h3><ul><li>Browser support requires Chrome 119+, Safari 16.4+, and Firefox 128+. Older browsers will ignore the declaration entirely.</li><li>The syntax varies slightly by color space. Not all channels are available in every color space, and channel value ranges differ.</li><li>Complex nested relative color expressions can hurt readability. Use a CSS custom property for the base color to keep declarations clean.</li></ul>
       <h2>Zo gebruik je deze tool</h2>
       <ol><li>Open de tool en vul de relevante waarden in.</li><li>Controleer de uitvoer in het resultaatpaneel.</li><li>Kopieer alleen het deel dat bij je página past.</li><li>Test de wijziging voordat je publiceert.</li></ol>
       <h2>Waarvoor je het kunt gebruiken</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Veelgemaakte fouten</h2>
       <ul><li>Uitvoer kopieren zonder controle.</li><li>Lokale URL's gebruiken in plaats van publieke URL's.</li><li>Na de build niet controleren of het bestand in de publicatiemap staat.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Test the generated CSS in Chrome DevTools Styles panel to confirm the color resolves to the expected computed value.</li><li>Verify a static fallback color is declared before the relative color syntax for browsers that do not support the feature.</li></ol>
     </article>
   </div>
 </section>

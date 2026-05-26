@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Qué es Generador de plantilla página 404 estática?</h2>
       <p>Generador de plantilla página 404 estática es una herramienta de navegador para esta tarea: Genera una página 404 amigable con enlaces de navegación para sitios estáticos. La salida es fácil de revisar antes de usarla en un sitio publicado.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate a complete 404.html page with a helpful error message, navigation links, and an optional search box. Place the file at your site root so static hosts serve it when a page is not found.</p></div>
+      <h3>Limitations</h3><ul><li>Custom 404 pages only work on hosting platforms that support them. Some shared hosting environments ignore 404.html and show their own default error page instead.</li><li>The generated page is entirely static and does not log or report 404 occurrences. Add analytics tracking separately if you need to monitor missing pages.</li><li>404.html must be placed at the root of the published output. Files placed in subdirectories or build output subfolders will not be detected as the custom 404 page.</li></ul>
       <h2>Cómo usar esta herramienta</h2>
       <ol><li>Abre la herramienta y escribe los valores necesarios.</li><li>Revisa la salida en el panel de resultado.</li><li>Copia solo la parte que encaja con tu página.</li><li>Prueba el cambio antes de publicar.</li></ol>
       <h2>Para qué puedes usarla</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Errores comunes</h2>
       <ul><li>Copiar la salida sin revisarla.</li><li>Usar URLs locales en lugar de URLs públicas finales.</li><li>No confirmar que el archivo esté en la carpeta publicada.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Deploy the 404.html file and visit a non-existent URL on your published site to confirm the custom page appears instead of the browser default.</li><li>Check the browser DevTools Network panel to verify the non-existent URL returns a 404 HTTP status code.</li></ol>
     </article>
   </div>
 </section>

@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>What is CSS Color Contrast Checker?</h2>
       <p>WCAG contrast ratio measures the luminance difference between two colors. A ratio of 4.5:1 meets the AA standard for normal text, and 7:1 meets AAA. These thresholds help ensure that people with low vision, color vision deficiency, or who are reading on a screen in difficult lighting can still read the content. This tool calculates the precise ratio from the hex values you enter and shows whether the combination passes the level you need, helping designers and developers check color combinations before publishing.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Check whether two color combinations meet WCAG contrast standards before publishing. The tool calculates the precise ratio and tells you whether normal text, large text, and UI components pass AA or AAA levels.</p></div>
+      <h3>Limitations</h3><ul><li>The color picker returns hex values only. It does not support RGB, HSL, or named color inputs directly.</li><li>The tool checks solid color pairs. It does not evaluate contrast on gradient text, box-shadow text, or background images where luminance varies across the element.</li><li>Contrast ratios are calculated from the colors you enter. If either color is transparent the result will not reflect the actual visible contrast against the underlying page background.</li></ul>
       <h2>How to use this tool</h2>
       <ol><li>Enter the foreground color using a hex code, RGB value, or color picker.</li><li>Enter the background color the same way.</li><li>Read the contrast ratio result and the WCAG AA and AAA pass/fail indicators for normal text and large text.</li><li>Adjust either color until the ratio meets your target accessibility level.</li></ol>
       <h2>What you can use it for</h2>
@@ -123,7 +123,7 @@
     <article class="tool-article">
       <h2>Common mistakes</h2>
       <ul><li>Relying on visual judgment instead of a measured ratio, which can miss contrast problems.</li><li>Testing only on a bright screen in a well-lit room where low-contrast text may look acceptable.</li><li>Forgetting that large text passes WCAG AA at a lower ratio (3:1) than normal text (4.5:1).</li></ul>
-      
+      <h2>Verification</h2><ol><li>Test the final color pair in a browser by zooming to confirm text is readable at small sizes.</li><li>Compare the tool result against the WCAG contrast checker in Chrome DevTools Accessibility panel for a second opinion.</li></ol>
     </article>
   </div>
 </section>
@@ -141,6 +141,12 @@
 </details><details class="faq-item">
   <summary>Does WCAG apply to decorative text?</summary>
   <p>WCAG applies to information-bearing text. Purely decorative text that carries no meaning and is not part of a user interface element does not need to meet contrast thresholds.</p>
+</details><details class="faq-item">
+  <summary>Does WCAG AA apply to all text on a page?</summary>
+  <p>WCAG AA applies to standard body text. Large text above 18px or 14px bold can pass AA at a lower ratio of 3:1. Logos, decorative text, and inactive UI elements are exempt from contrast requirements.</p>
+</details><details class="faq-item">
+  <summary>What color formats does this tool accept?</summary>
+  <p>The tool accepts hex color codes and provides a color picker. Enter colors as six-digit hex values such as #333333 or #ffffff. The color picker returns hex values only.</p>
 </details>
     </div>
   </div>
@@ -233,6 +239,6 @@
       </div>
     </div>
   </footer>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CSS Color Contrast Checker","description":"Check the contrast ratio between two colors against WCAG accessibility standards.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/css-color-contrast-checker/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"CSS Tools","item":"https://www.jquery.app/tools/css/"},{"@type":"ListItem","position":4,"name":"CSS Color Contrast Checker","item":"https://www.jquery.app/tools/css-color-contrast-checker/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a good contrast ratio?","acceptedAnswer":{"@type":"Answer","text":"For normal text, aim for at least 4.5:1 (WCAG AA) or 7:1 (WCAG AAA). For large text above 18px or 14px bold, 3:1 meets AA."}},{"@type":"Question","name":"Does WCAG apply to decorative text?","acceptedAnswer":{"@type":"Answer","text":"WCAG applies to information-bearing text. Purely decorative text that carries no meaning and is not part of a user interface element does not need to meet contrast thresholds."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CSS Color Contrast Checker","description":"Check the contrast ratio between two colors against WCAG accessibility standards.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/css-color-contrast-checker/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"CSS Tools","item":"https://www.jquery.app/tools/css/"},{"@type":"ListItem","position":4,"name":"CSS Color Contrast Checker","item":"https://www.jquery.app/tools/css-color-contrast-checker/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a good contrast ratio?","acceptedAnswer":{"@type":"Answer","text":"For normal text, aim for at least 4.5:1 (WCAG AA) or 7:1 (WCAG AAA). For large text above 18px or 14px bold, 3:1 meets AA."}},{"@type":"Question","name":"Does WCAG apply to decorative text?","acceptedAnswer":{"@type":"Answer","text":"WCAG applies to information-bearing text. Purely decorative text that carries no meaning and is not part of a user interface element does not need to meet contrast thresholds."}},{"@type":"Question","name":"Does WCAG AA apply to all text on a page?","acceptedAnswer":{"@type":"Answer","text":"WCAG AA applies to standard body text. Large text above 18px or 14px bold can pass AA at a lower ratio of 3:1. Logos, decorative text, and inactive UI elements are exempt from contrast requirements."}},{"@type":"Question","name":"What color formats does this tool accept?","acceptedAnswer":{"@type":"Answer","text":"The tool accepts hex color codes and provides a color picker. Enter colors as six-digit hex values such as #333333 or #ffffff. The color picker returns hex values only."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
 </body>
 </html>

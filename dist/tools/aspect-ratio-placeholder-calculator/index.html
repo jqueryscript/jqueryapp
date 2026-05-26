@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>What is Aspect Ratio Placeholder Calculator?</h2>
       <p>Aspect-ratio is a CSS property that sets a preferred aspect ratio for an element, letting the browser calculate the height from the width before content loads. This prevents Cumulative Layout Shift (CLS), a Core Web Vitals metric that measures visual stability. By reserving the correct space for images, videos, and embeds ahead of time, the page layout stays stable as resources load.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Calculate the CSS aspect-ratio value and padding-bottom fallback percentage to prevent Cumulative Layout Shift. Reserve the correct space for images, videos, and embeds before they load.</p></div>
+      <h3>Limitations</h3><ul><li>The padding-bottom fallback technique requires position: relative on the parent container and position: absolute on the child element for correct sizing behavior.</li><li>Aspect-ratio only works when the element has a defined width. If the element width is auto or not set, the aspect-ratio calculation has no basis to compute the height.</li></ul>
       <h2>How to use this tool</h2>
       <ol><li>Select a preset ratio such as 16:9, 4:3, or 1:1, or enter custom width and height values.</li><li>View the generated aspect-ratio CSS value for modern browsers.</li><li>Copy the padding-bottom fallback for browsers that do not support the aspect-ratio property.</li><li>Apply the wrapper markup to your image or embed element. The placeholder reserves the correct height before the resource loads.</li></ol>
       <h2>What you can use it for</h2>
@@ -123,7 +123,7 @@
     <article class="tool-article">
       <h2>Common mistakes</h2>
       <ul><li>Applying aspect-ratio to an image but not setting a defined width, which leaves the element with zero size in some layout contexts.</li><li>Adding a fixed height attribute on the same element that uses aspect-ratio, which creates a conflict and breaks the ratio.</li><li>Using aspect-ratio without testing the padding-bottom fallback in browsers that do not support it, which causes layout shift in older browsers.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Load the page at different viewport widths and verify the placeholder maintains the correct aspect ratio without layout shift when the image loads.</li><li>Test on an older browser by temporarily disabling the aspect-ratio property in DevTools and confirming the padding-bottom fallback preserves the ratio.</li></ol>
     </article>
   </div>
 </section>
@@ -141,6 +141,12 @@
 </details><details class="faq-item">
   <summary>What is a good default aspect ratio for blog images?</summary>
   <p>16:9 is a common choice for blog hero images and video embeds. 4:3 works well for screenshots and photos. 1:1 is useful for profile pictures and product thumbnails.</p>
+</details><details class="faq-item">
+  <summary>Do I still need the padding-bottom hack?</summary>
+  <p>The padding-bottom percentage fallback is only needed for browsers that do not support the CSS aspect-ratio property. Most modern browsers support aspect-ratio directly. Use the fallback when you need to support Safari 14 and earlier or older Android browsers.</p>
+</details><details class="faq-item">
+  <summary>Should I set both width and height with aspect-ratio?</summary>
+  <p>Setting both width and height on the element alongside aspect-ratio creates a sizing conflict. The aspect-ratio property calculates the missing dimension from the one you set. Set one dimension with aspect-ratio or use explicit width and height without aspect-ratio.</p>
 </details>
     </div>
   </div>
@@ -233,6 +239,6 @@
       </div>
     </div>
   </footer>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Aspect Ratio Placeholder Calculator","description":"Calculate aspect-ratio CSS values and padding-bottom fallbacks to prevent Cumulative Layout Shift.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/aspect-ratio-placeholder-calculator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"CSS Tools","item":"https://www.jquery.app/tools/css/"},{"@type":"ListItem","position":4,"name":"Aspect Ratio Placeholder Calculator","item":"https://www.jquery.app/tools/aspect-ratio-placeholder-calculator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which browsers support the aspect-ratio CSS property?","acceptedAnswer":{"@type":"Answer","text":"Aspect-ratio is supported in all modern browsers as of 2024. Chrome 88, Firefox 87, Safari 15, and Edge 88 all support it. For older browsers, use the padding-bottom percentage fallback."}},{"@type":"Question","name":"What is a good default aspect ratio for blog images?","acceptedAnswer":{"@type":"Answer","text":"16:9 is a common choice for blog hero images and video embeds. 4:3 works well for screenshots and photos. 1:1 is useful for profile pictures and product thumbnails."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Aspect Ratio Placeholder Calculator","description":"Calculate aspect-ratio CSS values and padding-bottom fallbacks to prevent Cumulative Layout Shift.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/aspect-ratio-placeholder-calculator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"CSS Tools","item":"https://www.jquery.app/tools/css/"},{"@type":"ListItem","position":4,"name":"Aspect Ratio Placeholder Calculator","item":"https://www.jquery.app/tools/aspect-ratio-placeholder-calculator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which browsers support the aspect-ratio CSS property?","acceptedAnswer":{"@type":"Answer","text":"Aspect-ratio is supported in all modern browsers as of 2024. Chrome 88, Firefox 87, Safari 15, and Edge 88 all support it. For older browsers, use the padding-bottom percentage fallback."}},{"@type":"Question","name":"What is a good default aspect ratio for blog images?","acceptedAnswer":{"@type":"Answer","text":"16:9 is a common choice for blog hero images and video embeds. 4:3 works well for screenshots and photos. 1:1 is useful for profile pictures and product thumbnails."}},{"@type":"Question","name":"Do I still need the padding-bottom hack?","acceptedAnswer":{"@type":"Answer","text":"The padding-bottom percentage fallback is only needed for browsers that do not support the CSS aspect-ratio property. Most modern browsers support aspect-ratio directly. Use the fallback when you need to support Safari 14 and earlier or older Android browsers."}},{"@type":"Question","name":"Should I set both width and height with aspect-ratio?","acceptedAnswer":{"@type":"Answer","text":"Setting both width and height on the element alongside aspect-ratio creates a sizing conflict. The aspect-ratio property calculates the missing dimension from the one you set. Set one dimension with aspect-ratio or use explicit width and height without aspect-ratio."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
 </body>
 </html>

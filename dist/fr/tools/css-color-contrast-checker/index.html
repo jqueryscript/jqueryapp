@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Qu'est-ce que Verificateur de contraste CSS ?</h2>
       <p>Verificateur de contraste CSS est un outil dans le navigateur pour cette tâche : Vérifiez le rapport de contraste entre deux couleurs selon les normes WCAG. La sortie reste lisible afin de la vérifier avant de l'utiliser sur un site publié.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Check whether two color combinations meet WCAG contrast standards before publishing. The tool calculates the precise ratio and tells you whether normal text, large text, and UI components pass AA or AAA levels.</p></div>
+      <h3>Limitations</h3><ul><li>The color picker returns hex values only. It does not support RGB, HSL, or named color inputs directly.</li><li>The tool checks solid color pairs. It does not evaluate contrast on gradient text, box-shadow text, or background images where luminance varies across the element.</li><li>Contrast ratios are calculated from the colors you enter. If either color is transparent the result will not reflect the actual visible contrast against the underlying page background.</li></ul>
       <h2>Comment utiliser cet outil</h2>
       <ol><li>Ouvrez l'outil et saisissez les valeurs utiles.</li><li>Vérifiez la sortie dans le panneau de résultat.</li><li>Copiez seulement la partie adaptéeà votre page.</li><li>Testez la modification avant publication.</li></ol>
       <h2>A quoi il sert</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Erreurs frequentes</h2>
       <ul><li>Copier la sortie sans verification.</li><li>Utiliser des URL locales au lieu des URL publiques finales.</li><li>Oublier de vérifier le dossier publié après le build.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Test the final color pair in a browser by zooming to confirm text is readable at small sizes.</li><li>Compare the tool result against the WCAG contrast checker in Chrome DevTools Accessibility panel for a second opinion.</li></ol>
     </article>
   </div>
 </section>

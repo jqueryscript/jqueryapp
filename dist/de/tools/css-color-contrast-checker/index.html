@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Was ist CSS-Farbkontrast-Prüfer?</h2>
       <p>CSS-Farbkontrast-Prüfer ist ein Browser-Tool für diese Aufgabe: Prüfe das Kontrastverhaltnis zwischen zwei Farben gegenüber den WCAG-Richtlinien. Die Ausgabe bleibt lesbar, damit du sie vor dem Einbau in eine Live-Seite prüfen kannst.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Check whether two color combinations meet WCAG contrast standards before publishing. The tool calculates the precise ratio and tells you whether normal text, large text, and UI components pass AA or AAA levels.</p></div>
+      <h3>Limitations</h3><ul><li>The color picker returns hex values only. It does not support RGB, HSL, or named color inputs directly.</li><li>The tool checks solid color pairs. It does not evaluate contrast on gradient text, box-shadow text, or background images where luminance varies across the element.</li><li>Contrast ratios are calculated from the colors you enter. If either color is transparent the result will not reflect the actual visible contrast against the underlying page background.</li></ul>
       <h2>So nutzt du dieses Tool</h2>
       <ol><li>Öffne das Tool und trage die relevanten Werte ein.</li><li>Prüfe die erzeugte Ausgabe im Ergebnisfeld.</li><li>Kopiere nur den Teil, der zu deiner Seite passt.</li><li>Teste die Änderung im Browser, bevor du sie veröffentlichst.</li></ol>
       <h2>Wofür du es nutzen kannst</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Haufige Fehler</h2>
       <ul><li>Ausgabe ungepruft in Produktion kopieren.</li><li>Lokale URLs statt finaler öffentlich erreichbarer URLs verwenden.</li><li>Nach dem Build nicht prüfen, ob die Datei im veröffentlichten Ordner liegt.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Test the final color pair in a browser by zooming to confirm text is readable at small sizes.</li><li>Compare the tool result against the WCAG contrast checker in Chrome DevTools Accessibility panel for a second opinion.</li></ol>
     </article>
   </div>
 </section>

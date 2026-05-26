@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>What is CSS Flexbox Generator?</h2>
       <p>Flexbox is the most common CSS layout method for one-dimensional layouts, aligning items along a main axis and a cross axis. Beginners often mix up justify-content (main axis) and align-items (cross axis), which leads to unexpected centering and spacing results. This tool makes both axes explicit by showing the generated CSS alongside the flex properties you select, so you can connect each value to its visible effect.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate flexbox container CSS by selecting direction, wrap, alignment, and justification values. The output includes the container rules and an HTML skeleton so you can test the layout immediately.</p></div>
+      <h3>Limitations</h3><ul><li>The tool generates container-level flex properties only. It does not generate item-level flex properties such as flex-grow, flex-shrink, flex-basis, or align-self.</li><li>The generated CSS applies to the flex container only. You still need to add your own content markup and styling for the child flex items.</li></ul>
       <h2>How to use this tool</h2>
       <ol><li>Select the flex direction and wrap behavior for your container.</li><li>Choose justify-content and align-items values to control item placement.</li><li>Copy the generated CSS for your flex container.</li><li>Use the provided HTML skeleton to test the layout in your own page.</li></ol>
       <h2>What you can use it for</h2>
@@ -123,7 +123,7 @@
     <article class="tool-article">
       <h2>Common mistakes</h2>
       <ul><li>Confusing the main axis with the cross axis, which leads to using justify-content when align-items is needed.</li><li>Forgetting to set display: flex on the container, which causes flex properties to have no effect.</li><li>Not testing wrap behavior at narrow widths, leaving items to overflow instead of wrapping.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Add the generated container CSS to a page with test child elements and resize the viewport to verify wrap and alignment behavior.</li><li>Toggle between different flex-direction values to confirm children reflow along the correct axis.</li></ol>
     </article>
   </div>
 </section>
@@ -141,6 +141,12 @@
 </details><details class="faq-item">
   <summary>What does align-items do vs align-content?</summary>
   <p>align-items controls the alignment of individual items along the cross axis within a single line. align-content controls the spacing between wrapped lines when there are multiple lines of items.</p>
+</details><details class="faq-item">
+  <summary>What does align-items center do vs justify-content center?</summary>
+  <p>justify-content: center centers items along the main axis, which is horizontal by default. align-items: center centers items along the cross axis, which is vertical by default. Using both together centers items perfectly in both dimensions.</p>
+</details><details class="faq-item">
+  <summary>Do I need prefixes for flexbox?</summary>
+  <p>Modern flexbox is supported without vendor prefixes in all current browsers. Only very old browsers such as Internet Explorer 10 or early Android browsers need the -ms- prefix. For most projects today, unprefixed flexbox is safe to use.</p>
 </details>
     </div>
   </div>
@@ -233,6 +239,6 @@
       </div>
     </div>
   </footer>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CSS Flexbox Generator","description":"Generate flexbox container CSS and sample HTML by selecting flex direction, wrap, alignment, and justification.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/css-flexbox-generator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"CSS Tools","item":"https://www.jquery.app/tools/css/"},{"@type":"ListItem","position":4,"name":"CSS Flexbox Generator","item":"https://www.jquery.app/tools/css-flexbox-generator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"When should I use flexbox instead of grid?","acceptedAnswer":{"@type":"Answer","text":"Use flexbox for one-dimensional layouts where items flow along a single axis. Use grid for two-dimensional layouts where you need to control rows and columns simultaneously."}},{"@type":"Question","name":"What does align-items do vs align-content?","acceptedAnswer":{"@type":"Answer","text":"align-items controls the alignment of individual items along the cross axis within a single line. align-content controls the spacing between wrapped lines when there are multiple lines of items."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CSS Flexbox Generator","description":"Generate flexbox container CSS and sample HTML by selecting flex direction, wrap, alignment, and justification.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/css-flexbox-generator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"CSS Tools","item":"https://www.jquery.app/tools/css/"},{"@type":"ListItem","position":4,"name":"CSS Flexbox Generator","item":"https://www.jquery.app/tools/css-flexbox-generator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"When should I use flexbox instead of grid?","acceptedAnswer":{"@type":"Answer","text":"Use flexbox for one-dimensional layouts where items flow along a single axis. Use grid for two-dimensional layouts where you need to control rows and columns simultaneously."}},{"@type":"Question","name":"What does align-items do vs align-content?","acceptedAnswer":{"@type":"Answer","text":"align-items controls the alignment of individual items along the cross axis within a single line. align-content controls the spacing between wrapped lines when there are multiple lines of items."}},{"@type":"Question","name":"What does align-items center do vs justify-content center?","acceptedAnswer":{"@type":"Answer","text":"justify-content: center centers items along the main axis, which is horizontal by default. align-items: center centers items along the cross axis, which is vertical by default. Using both together centers items perfectly in both dimensions."}},{"@type":"Question","name":"Do I need prefixes for flexbox?","acceptedAnswer":{"@type":"Answer","text":"Modern flexbox is supported without vendor prefixes in all current browsers. Only very old browsers such as Internet Explorer 10 or early Android browsers need the -ms- prefix. For most projects today, unprefixed flexbox is safe to use."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
 </body>
 </html>

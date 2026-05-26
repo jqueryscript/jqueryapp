@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>静的404ページテンプレートジェネレーターとは</h2>
       <p>静的404ページテンプレートジェネレーターは、静的サイトとGitHub Pages向けのナビゲーションリンク付きフレンドリーな404ページを生成します。 出力は公開サイトに使う前に確認しやすい形で表示されます。</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate a complete 404.html page with a helpful error message, navigation links, and an optional search box. Place the file at your site root so static hosts serve it when a page is not found.</p></div>
+      <h3>Limitations</h3><ul><li>Custom 404 pages only work on hosting platforms that support them. Some shared hosting environments ignore 404.html and show their own default error page instead.</li><li>The generated page is entirely static and does not log or report 404 occurrences. Add analytics tracking separately if you need to monitor missing pages.</li><li>404.html must be placed at the root of the published output. Files placed in subdirectories or build output subfolders will not be detected as the custom 404 page.</li></ul>
       <h2>使い方</h2>
       <ol><li>必要な値を入力します。</li><li>結果パネルの出力を確認します。</li><li>ページに合う部分だけコピーします。</li><li>公開前にブラウザとホスティング環境で確認します。</li></ol>
       <h2>主な用途</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>よくあるミス</h2>
       <ul><li>出力を確認せず本番に入れる。</li><li>公開URLではなくローカルURLを使う。</li><li>build後に公開フォルダ内のファイルを確認しない。</li></ul>
-      
+      <h2>Verification</h2><ol><li>Deploy the 404.html file and visit a non-existent URL on your published site to confirm the custom page appears instead of the browser default.</li><li>Check the browser DevTools Network panel to verify the non-existent URL returns a 404 HTTP status code.</li></ol>
     </article>
   </div>
 </section>

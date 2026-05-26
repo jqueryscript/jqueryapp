@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Qué es Generador de front matter Markdown?</h2>
       <p>Generador de front matter Markdown es una herramienta de navegador para esta tarea: Genera bloques YAML front matter para Jekyll, Hugo, Astro, 11ty y otros generadores de sitios estáticos. La salida es fácil de revisar antes de usarla en un sitio publicado.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Front matter is YAML or TOML metadata at the top of a Markdown file that tells your static site generator the page title, layout, publish date, tags, and other settings. It is separated from content by triple dashes.</p></div>
+      <h3>Limitations</h3><ul><li>The specific front matter fields vary by static site generator. Jekyll, Hugo, Astro, and 11ty each use different field names and conventions.</li><li>This tool generates YAML format only. Generators that prefer TOML or JSON front matter will need a different format.</li><li>Front matter values are case-sensitive in most static site generators. layout: post and Layout: post are treated as different fields.</li></ul>
       <h2>Cómo usar esta herramienta</h2>
       <ol><li>Abre la herramienta y escribe los valores necesarios.</li><li>Revisa la salida en el panel de resultado.</li><li>Copia solo la parte que encaja con tu página.</li><li>Prueba el cambio antes de publicar.</li></ol>
       <h2>Para qué puedes usarla</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Errores comunes</h2>
       <ul><li>Copiar la salida sin revisarla.</li><li>Usar URLs locales en lugar de URLs públicas finales.</li><li>No confirmar que el archivo esté en la carpeta publicada.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Build the site with your static site generator and confirm the page renders with the correct layout, title, and metadata from the front matter.</li><li>Check that special characters in front matter values are quoted to avoid YAML parse errors during build.</li></ol>
     </article>
   </div>
 </section>

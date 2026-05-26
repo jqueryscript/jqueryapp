@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Was ist Favicon-HTML-Tag-Generator?</h2>
       <p>Favicon-HTML-Tag-Generator ist ein Browser-Tool für diese Aufgabe: Erzeuge Favicon- und Web-App-Icon-Tags für statische Websites. Die Ausgabe bleibt lesbar, damit du sie vor dem Einbau in eine Live-Seite prüfen kannst.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate favicon HTML tags, Apple touch icon references, and web app manifest entries for static websites. Include both SVG and fallback icon paths for broad browser support.</p></div>
+      <h3>Limitations</h3><ul><li>Icon files must exist at the specified paths in the published output. The generated tags are only references; you must create or place the actual icon files at those paths.</li><li>The Apple touch icon has specific size expectations. Apple devices expect a 180 by 180 pixel PNG for best results when users save the page to their home screen.</li><li>The web manifest snippet requires valid JSON. A single syntax error in the manifest file can prevent browsers from reading the app metadata entirely.</li></ul>
       <h2>So nutzt du dieses Tool</h2>
       <ol><li>Öffne das Tool und trage die relevanten Werte ein.</li><li>Prüfe die erzeugte Ausgabe im Ergebnisfeld.</li><li>Kopiere nur den Teil, der zu deiner Seite passt.</li><li>Teste die Änderung im Browser, bevor du sie veröffentlichst.</li></ol>
       <h2>Wofür du es nutzen kannst</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Haufige Fehler</h2>
       <ul><li>Ausgabe ungepruft in Produktion kopieren.</li><li>Lokale URLs statt finaler öffentlich erreichbarer URLs verwenden.</li><li>Nach dem Build nicht prüfen, ob die Datei im veröffentlichten Ordner liegt.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Open the published page and check the browser tab for the favicon. If the icon does not appear, verify the image path matches the actual file location.</li><li>On an iOS device or simulator, use Share &gt; Add to Home Screen and confirm the saved shortcut uses the Apple touch icon image.</li></ol>
     </article>
   </div>
 </section>

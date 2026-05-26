@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Qué es Generador de indice con anclas?</h2>
       <p>Generador de indice con anclas es una herramienta de navegador para esta tarea: Pega HTML con encabezados y obten un indice anidado con enlaces de anclaje. La salida es fácil de revisar antes de usarla en un sitio publicado.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate a nested table of contents with anchor links from heading tags in your HTML. Each TOC entry links to a slugified id on the corresponding heading for easy page navigation.</p></div>
+      <h3>Limitations</h3><ul><li>The tool generates the TOC markup and the heading id values separately. You must manually add the generated id attributes to the heading tags in your HTML for the anchor links to work.</li><li>Headings without text content or headings nested inside non-semantic containers may not be extracted correctly by the parser.</li><li>The generated TOC uses flat nesting based on heading levels. Custom CSS may be needed for multi-level indentation styling.</li></ul>
       <h2>Cómo usar esta herramienta</h2>
       <ol><li>Abre la herramienta y escribe los valores necesarios.</li><li>Revisa la salida en el panel de resultado.</li><li>Copia solo la parte que encaja con tu página.</li><li>Prueba el cambio antes de publicar.</li></ol>
       <h2>Para qué puedes usarla</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Errores comunes</h2>
       <ul><li>Copiar la salida sin revisarla.</li><li>Usar URLs locales en lugar de URLs públicas finales.</li><li>No confirmar que el archivo esté en la carpeta publicada.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Click each TOC link and confirm the page scrolls to the correct heading section without errors.</li><li>Check the page URL after clicking a TOC link to verify the anchor fragment appears correctly in the address bar.</li></ol>
     </article>
   </div>
 </section>

@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Wat is Aspect Ratio Placeholder Calculator?</h2>
       <p>Aspect Ratio Placeholder Calculator is een browsertool voor deze taak: Bereken aspect-ratio CSS waarden en padding-bottom fallbacks tegen layout shift. De uitvoer blijft leesbaar, zodat je die kunt controleren voordat je hem publiceert.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Calculate the CSS aspect-ratio value and padding-bottom fallback percentage to prevent Cumulative Layout Shift. Reserve the correct space for images, videos, and embeds before they load.</p></div>
+      <h3>Limitations</h3><ul><li>The padding-bottom fallback technique requires position: relative on the parent container and position: absolute on the child element for correct sizing behavior.</li><li>Aspect-ratio only works when the element has a defined width. If the element width is auto or not set, the aspect-ratio calculation has no basis to compute the height.</li></ul>
       <h2>Zo gebruik je deze tool</h2>
       <ol><li>Open de tool en vul de relevante waarden in.</li><li>Controleer de uitvoer in het resultaatpaneel.</li><li>Kopieer alleen het deel dat bij je página past.</li><li>Test de wijziging voordat je publiceert.</li></ol>
       <h2>Waarvoor je het kunt gebruiken</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Veelgemaakte fouten</h2>
       <ul><li>Uitvoer kopieren zonder controle.</li><li>Lokale URL's gebruiken in plaats van publieke URL's.</li><li>Na de build niet controleren of het bestand in de publicatiemap staat.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Load the page at different viewport widths and verify the placeholder maintains the correct aspect ratio without layout shift when the image loads.</li><li>Test on an older browser by temporarily disabling the aspect-ratio property in DevTools and confirming the padding-bottom fallback preserves the ratio.</li></ol>
     </article>
   </div>
 </section>

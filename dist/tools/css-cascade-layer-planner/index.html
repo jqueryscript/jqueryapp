@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>What is CSS Cascade Layer Planner?</h2>
       <p>CSS cascade layers let you control which styles win when there are conflicting rules, regardless of specificity. By defining an explicit layer order such as reset, base, components, and utilities, you can make utility classes override component styles without fighting specificity wars. This tool helps you plan the right layer order for your project and generates a starter structure you can copy into your stylesheet.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Plan the order of CSS cascade layers for your project so overrides behave predictably. The output is a @layer declaration and skeleton structure for reset, base, component, and utility styles.</p></div>
+      <h3>Limitations</h3><ul><li>The tool generates a flat layer planning skeleton. It does not handle nested @layer blocks which require a different layered import syntax.</li><li>The generated output assumes a straightforward layer structure. Complex projects with sub-layers inside named layers need manual adjustment beyond the generated skeleton.</li></ul>
       <h2>How to use this tool</h2>
       <ol><li>Choose a preset that matches your project type or select Custom to pick layers individually.</li><li>Select the layers you want in your cascade order. Later layers override earlier ones.</li><li>Copy the @layer order declaration and the example CSS skeleton for each layer.</li><li>Move your existing styles into the matching layers and test that overrides behave as expected.</li></ol>
       <h2>What you can use it for</h2>
@@ -123,7 +123,7 @@
     <article class="tool-article">
       <h2>Common mistakes</h2>
       <ul><li>Placing utilities before components, which means utility classes cannot override component styles.</li><li>Forgetting that unlayered styles always win against layered styles, which can cause confusion during migration.</li><li>Putting third-party CSS in the wrong layer and losing the expected override behavior.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Test that a style in a later layer correctly overrides an equivalent style in an earlier layer regardless of specificity differences.</li><li>Check that unlayered styles do not unexpectedly beat layered styles by ensuring all page styles are assigned to a named layer.</li></ol>
     </article>
   </div>
 </section>
@@ -141,6 +141,12 @@
 </details><details class="faq-item">
   <summary>What happens to unlayered styles?</summary>
   <p>Unlayered styles always beat layered styles. When migrating to layers, move your existing styles into layers explicitly to avoid unexpected priority.</p>
+</details><details class="faq-item">
+  <summary>How does !important behave inside @layer?</summary>
+  <p>!important inside a layer reverses the normal layer priority. An !important rule in an earlier layer beats !important in a later layer. This can cause confusing override behavior, so use !important sparingly inside layer structures.</p>
+</details><details class="faq-item">
+  <summary>Should I put third-party CSS in a layer?</summary>
+  <p>Yes. Placing third-party CSS in a dedicated layer such as vendors or libs before your own layers ensures your component and utility styles can override third-party defaults without increasing specificity.</p>
 </details>
     </div>
   </div>
@@ -233,6 +239,6 @@
       </div>
     </div>
   </footer>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CSS Cascade Layer Planner","description":"Plan @layer order and generate a CSS cascade layer structure with example rules.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/css-cascade-layer-planner/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"CSS Tools","item":"https://www.jquery.app/tools/css/"},{"@type":"ListItem","position":4,"name":"CSS Cascade Layer Planner","item":"https://www.jquery.app/tools/css-cascade-layer-planner/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does layer order matter?","acceptedAnswer":{"@type":"Answer","text":"Yes. Styles in later layers override styles in earlier layers, even if the earlier styles have higher specificity. Place foundational styles first and overrides last."}},{"@type":"Question","name":"What happens to unlayered styles?","acceptedAnswer":{"@type":"Answer","text":"Unlayered styles always beat layered styles. When migrating to layers, move your existing styles into layers explicitly to avoid unexpected priority."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CSS Cascade Layer Planner","description":"Plan @layer order and generate a CSS cascade layer structure with example rules.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/css-cascade-layer-planner/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"CSS Tools","item":"https://www.jquery.app/tools/css/"},{"@type":"ListItem","position":4,"name":"CSS Cascade Layer Planner","item":"https://www.jquery.app/tools/css-cascade-layer-planner/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does layer order matter?","acceptedAnswer":{"@type":"Answer","text":"Yes. Styles in later layers override styles in earlier layers, even if the earlier styles have higher specificity. Place foundational styles first and overrides last."}},{"@type":"Question","name":"What happens to unlayered styles?","acceptedAnswer":{"@type":"Answer","text":"Unlayered styles always beat layered styles. When migrating to layers, move your existing styles into layers explicitly to avoid unexpected priority."}},{"@type":"Question","name":"How does !important behave inside @layer?","acceptedAnswer":{"@type":"Answer","text":"!important inside a layer reverses the normal layer priority. An !important rule in an earlier layer beats !important in a later layer. This can cause confusing override behavior, so use !important sparingly inside layer structures."}},{"@type":"Question","name":"Should I put third-party CSS in a layer?","acceptedAnswer":{"@type":"Answer","text":"Yes. Placing third-party CSS in a dedicated layer such as vendors or libs before your own layers ensures your component and utility styles can override third-party defaults without increasing specificity."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
 </body>
 </html>

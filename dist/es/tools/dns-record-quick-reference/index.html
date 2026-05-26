@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Qué es Referencia rapida de registros DNS?</h2>
       <p>Referencia rapida de registros DNS es una herramienta de navegador para esta tarea: Ingresa un dominio y obtén ejemplos de registros A, AAAA, CNAME, MX y TXT. La salida es fácil de revisar antes de usarla en un sitio publicado.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>DNS records connect your domain to hosting services by mapping names to IP addresses, mail servers, and verification data. Each record type serves a specific purpose and the wrong type can break your site or email.</p></div>
+      <h3>Limitations</h3><ul><li>The generated example records are generic. Actual DNS values depend on your hosting provider, email service, and specific requirements.</li><li>DNS changes can take from minutes to several hours to propagate globally depending on TTL values and the domain provider.</li><li>A CNAME record cannot coexist with other record types at the same name. Using a CNAME at the apex will break other services such as email.</li></ul>
       <h2>Cómo usar esta herramienta</h2>
       <ol><li>Abre la herramienta y escribe los valores necesarios.</li><li>Revisa la salida en el panel de resultado.</li><li>Copia solo la parte que encaja con tu página.</li><li>Prueba el cambio antes de publicar.</li></ol>
       <h2>Para qué puedes usarla</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Errores comunes</h2>
       <ul><li>Copiar la salida sin revisarla.</li><li>Usar URLs locales en lugar de URLs públicas finales.</li><li>No confirmar que el archivo esté en la carpeta publicada.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Use a DNS lookup tool such as dig or a web-based DNS checker to confirm each record resolves to the expected value after propagation.</li><li>Verify the site loads over HTTPS after DNS changes are complete. Some DNS providers may cache stale records longer than the configured TTL.</li></ol>
     </article>
   </div>
 </section>

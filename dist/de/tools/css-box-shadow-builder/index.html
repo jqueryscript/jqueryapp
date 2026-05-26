@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Was ist CSS-Box-Shadow-Builder?</h2>
       <p>CSS-Box-Shadow-Builder ist ein Browser-Tool für diese Aufgabe: Erstelle box-shadow CSS visuell durch Anpassen von Offset, Blur, Spread und Farbe. Die Ausgabe bleibt lesbar, damit du sie vor dem Einbau in eine Live-Seite prüfen kannst.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate a box-shadow declaration by adjusting offset, blur, spread, color, and inset. The live preview shows the shadow on a static div so you can tune the values before adding them to your stylesheet.</p></div>
+      <h3>Limitations</h3><ul><li>The preview is a static div with no surrounding context. A shadow that looks correct in isolation may appear different against a real page background or near other elements.</li><li>The tool generates one shadow at a time. For layered or multiple shadows you must combine the values manually in your stylesheet.</li></ul>
       <h2>So nutzt du dieses Tool</h2>
       <ol><li>Öffne das Tool und trage die relevanten Werte ein.</li><li>Prüfe die erzeugte Ausgabe im Ergebnisfeld.</li><li>Kopiere nur den Teil, der zu deiner Seite passt.</li><li>Teste die Änderung im Browser, bevor du sie veröffentlichst.</li></ol>
       <h2>Wofür du es nutzen kannst</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Haufige Fehler</h2>
       <ul><li>Ausgabe ungepruft in Produktion kopieren.</li><li>Lokale URLs statt finaler öffentlich erreichbarer URLs verwenden.</li><li>Nach dem Build nicht prüfen, ob die Datei im veröffentlichten Ordner liegt.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Paste the generated CSS into your actual page and inspect the shadow on the real element with its background and adjacent content.</li><li>Test the shadow at different element sizes to confirm blur and spread scale as expected.</li></ol>
     </article>
   </div>
 </section>

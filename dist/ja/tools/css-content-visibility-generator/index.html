@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>CSSコンテンツ可視性ジェネレーターとは</h2>
       <p>CSSコンテンツ可視性ジェネレーターは、長いページを高速化するためのcontent-visibilityとcontain-intrinsic-sizeのCSSを生成します。 出力は公開サイトに使う前に確認しやすい形で表示されます。</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Use content-visibility: auto to skip rendering off-screen elements until they approach the viewport. This can improve initial page load performance on long pages with many repeated sections.</p></div>
+      <h3>Limitations</h3><ul><li>Browser support varies. Chrome 85+, Edge 85+, Firefox 125+, and Safari 18.2+ support content-visibility. Older browsers ignore the property and render all content as normal.</li><li>Anchor links may not scroll correctly to elements with content-visibility: auto because the browser has not rendered the target area before the scroll attempt.</li></ul>
       <h2>使い方</h2>
       <ol><li>必要な値を入力します。</li><li>結果パネルの出力を確認します。</li><li>ページに合う部分だけコピーします。</li><li>公開前にブラウザとホスティング環境で確認します。</li></ol>
       <h2>主な用途</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>よくあるミス</h2>
       <ul><li>出力を確認せず本番に入れる。</li><li>公開URLではなくローカルURLを使う。</li><li>build後に公開フォルダ内のファイルを確認しない。</li></ul>
-      
+      <h2>Verification</h2><ol><li>Scroll the page and confirm off-screen sections render in smoothly without scrollbar jumps or visual gaps.</li><li>Test anchor links or URL hash navigation to sections that use content-visibility to ensure they scroll to the correct position.</li></ol>
     </article>
   </div>
 </section>

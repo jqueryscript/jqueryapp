@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>What is JSON Feed Starter Generator?</h2>
       <p>JSON Feed is a modern feed format similar to RSS but in JSON. It is easier to parse for JavaScript apps and modern feed readers. It has a clear spec at jsonfeed.org and supports title, URL, description, items, and author fields.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>JSON Feed is a modern machine-readable feed format in JSON that serves the same purpose as RSS. Publish feed.json alongside feed.xml to support both legacy and modern feed readers.</p></div>
+      <h3>Limitations</h3><ul><li>JSON Feed version 1.1 is generated. Future versions of the spec may introduce fields that this tool does not yet support.</li><li>Fewer feed readers support JSON Feed compared to RSS. Many readers still rely on RSS for feed discovery and subscription.</li><li>The feed is a static JSON file and must be manually updated when new entries are published. It does not auto-detect new content.</li></ul>
       <h2>How to use this tool</h2>
       <ol><li>Enter the site title, URL, description, and author name for the feed channel.</li><li>Add posts one per line using the format: title|url|date|content.</li><li>Review the generated JSON and validate that all URLs are absolute.</li><li>Save the file as feed.json at your site root and link it from the HTML head.</li></ol>
       <h2>What you can use it for</h2>
@@ -123,7 +123,7 @@
     <article class="tool-article">
       <h2>Common mistakes</h2>
       <ul><li>Using relative URLs in feed entries, which fail when the feed is read by an external reader.</li><li>Forgetting to validate the JSON syntax before publishing, which causes feed readers to reject the file.</li><li>Including HTML in content_text without a matching content_html field, which violates the JSON Feed spec.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Validate the generated JSON syntax using a JSON validator tool to ensure the feed file is parseable.</li><li>Point a JSON Feed-compatible reader such as NetNewsWire or Micro.blog to the feed URL and confirm items display correctly.</li></ol>
     </article>
   </div>
 </section>
@@ -141,6 +141,9 @@
 </details><details class="faq-item">
   <summary>Where should feed.json be placed?</summary>
   <p>At the site root, such as /feed.json. Link from the HTML head with &lt;link rel=&quot;alternate&quot; type=&quot;application/feed+json&quot; href=&quot;/feed.json&quot;&gt; for auto-discovery.</p>
+</details><details class="faq-item">
+  <summary>What is the difference between content_text and content_html?</summary>
+  <p>content_text is the plain text version of the item content for text-only readers. content_html is the HTML version for rich rendering. Include both fields to support the widest range of feed readers.</p>
 </details>
     </div>
   </div>
@@ -233,6 +236,6 @@
       </div>
     </div>
   </footer>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"JSON Feed Starter Generator","description":"Generate a JSON Feed file for your static blog as a modern, machine-readable alternative to RSS.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/json-feed-starter-generator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"SEO Tools","item":"https://www.jquery.app/tools/seo/"},{"@type":"ListItem","position":4,"name":"JSON Feed Starter Generator","item":"https://www.jquery.app/tools/json-feed-starter-generator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Should I publish both RSS and JSON Feed?","acceptedAnswer":{"@type":"Answer","text":"Both formats have readers. RSS has broader legacy support. JSON Feed is easier for modern tools. Publishing both covers the widest range of feed readers."}},{"@type":"Question","name":"Where should feed.json be placed?","acceptedAnswer":{"@type":"Answer","text":"At the site root, such as /feed.json. Link from the HTML head with <link rel=\"alternate\" type=\"application/feed+json\" href=\"/feed.json\"> for auto-discovery."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"JSON Feed Starter Generator","description":"Generate a JSON Feed file for your static blog as a modern, machine-readable alternative to RSS.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/json-feed-starter-generator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"SEO Tools","item":"https://www.jquery.app/tools/seo/"},{"@type":"ListItem","position":4,"name":"JSON Feed Starter Generator","item":"https://www.jquery.app/tools/json-feed-starter-generator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Should I publish both RSS and JSON Feed?","acceptedAnswer":{"@type":"Answer","text":"Both formats have readers. RSS has broader legacy support. JSON Feed is easier for modern tools. Publishing both covers the widest range of feed readers."}},{"@type":"Question","name":"Where should feed.json be placed?","acceptedAnswer":{"@type":"Answer","text":"At the site root, such as /feed.json. Link from the HTML head with <link rel=\"alternate\" type=\"application/feed+json\" href=\"/feed.json\"> for auto-discovery."}},{"@type":"Question","name":"What is the difference between content_text and content_html?","acceptedAnswer":{"@type":"Answer","text":"content_text is the plain text version of the item content for text-only readers. content_html is the HTML version for rich rendering. Include both fields to support the widest range of feed readers."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
 </body>
 </html>

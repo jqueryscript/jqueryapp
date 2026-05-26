@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Was ist Speculation-Rules-Generator?</h2>
       <p>Speculation-Rules-Generator ist ein Browser-Tool für diese Aufgabe: Generiere Speculation-Rules-JSON zum Prerendering und Prefetching von Seiten in Chrome und Edge. Die Ausgabe bleibt lesbar, damit du sie vor dem Einbau in eine Live-Seite prüfen kannst.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Speculation Rules use JSON to tell Chrome and Edge which pages to prefetch or prerender before the user clicks. Prerender loads the full page for instant navigation; prefetch fetches only the main document.</p></div>
+      <h3>Limitations</h3><ul><li>Speculation Rules only work in Chrome and Edge. Other browsers ignore the script tag entirely.</li><li>Eager prerendering of many pages can waste significant bandwidth and memory, especially on mobile devices.</li><li>Cross-origin prerendering has strict privacy constraints. Browsers may strip cookies and storage access from cross-origin prerendered pages.</li></ul>
       <h2>So nutzt du dieses Tool</h2>
       <ol><li>Öffne das Tool und trage die relevanten Werte ein.</li><li>Prüfe die erzeugte Ausgabe im Ergebnisfeld.</li><li>Kopiere nur den Teil, der zu deiner Seite passt.</li><li>Teste die Änderung im Browser, bevor du sie veröffentlichst.</li></ol>
       <h2>Wofür du es nutzen kannst</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Haufige Fehler</h2>
       <ul><li>Ausgabe ungepruft in Produktion kopieren.</li><li>Lokale URLs statt finaler öffentlich erreichbarer URLs verwenden.</li><li>Nach dem Build nicht prüfen, ob die Datei im veröffentlichten Ordner liegt.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Open Chrome DevTools, go to Application &gt; Speculation Rules to verify the rules are parsed correctly.</li><li>In the Network panel, check that prerendered or prefetched pages show the Proxied or Prefetched status in the Size column.</li></ol>
     </article>
   </div>
 </section>

@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Favicon HTMLタグ生成ツールとは</h2>
       <p>Favicon HTMLタグ生成ツールは、静的サイト向けfaviconとWebアプリアイコンタグを作成します。 出力は公開サイトに使う前に確認しやすい形で表示されます。</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate favicon HTML tags, Apple touch icon references, and web app manifest entries for static websites. Include both SVG and fallback icon paths for broad browser support.</p></div>
+      <h3>Limitations</h3><ul><li>Icon files must exist at the specified paths in the published output. The generated tags are only references; you must create or place the actual icon files at those paths.</li><li>The Apple touch icon has specific size expectations. Apple devices expect a 180 by 180 pixel PNG for best results when users save the page to their home screen.</li><li>The web manifest snippet requires valid JSON. A single syntax error in the manifest file can prevent browsers from reading the app metadata entirely.</li></ul>
       <h2>使い方</h2>
       <ol><li>必要な値を入力します。</li><li>結果パネルの出力を確認します。</li><li>ページに合う部分だけコピーします。</li><li>公開前にブラウザとホスティング環境で確認します。</li></ol>
       <h2>主な用途</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>よくあるミス</h2>
       <ul><li>出力を確認せず本番に入れる。</li><li>公開URLではなくローカルURLを使う。</li><li>build後に公開フォルダ内のファイルを確認しない。</li></ul>
-      
+      <h2>Verification</h2><ol><li>Open the published page and check the browser tab for the favicon. If the icon does not appear, verify the image path matches the actual file location.</li><li>On an iOS device or simulator, use Share &gt; Add to Home Screen and confirm the saved shortcut uses the Apple touch icon image.</li></ol>
     </article>
   </div>
 </section>

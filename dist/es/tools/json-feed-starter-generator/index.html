@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Qué es Generador de feed JSON Feed?</h2>
       <p>Generador de feed JSON Feed es una herramienta de navegador para esta tarea: Genera un archivo JSON Feed para tu blog estático cómo alternativa moderna al RSS. La salida es fácil de revisar antes de usarla en un sitio publicado.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>JSON Feed is a modern machine-readable feed format in JSON that serves the same purpose as RSS. Publish feed.json alongside feed.xml to support both legacy and modern feed readers.</p></div>
+      <h3>Limitations</h3><ul><li>JSON Feed version 1.1 is generated. Future versions of the spec may introduce fields that this tool does not yet support.</li><li>Fewer feed readers support JSON Feed compared to RSS. Many readers still rely on RSS for feed discovery and subscription.</li><li>The feed is a static JSON file and must be manually updated when new entries are published. It does not auto-detect new content.</li></ul>
       <h2>Cómo usar esta herramienta</h2>
       <ol><li>Abre la herramienta y escribe los valores necesarios.</li><li>Revisa la salida en el panel de resultado.</li><li>Copia solo la parte que encaja con tu página.</li><li>Prueba el cambio antes de publicar.</li></ol>
       <h2>Para qué puedes usarla</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Errores comunes</h2>
       <ul><li>Copiar la salida sin revisarla.</li><li>Usar URLs locales en lugar de URLs públicas finales.</li><li>No confirmar que el archivo esté en la carpeta publicada.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Validate the generated JSON syntax using a JSON validator tool to ensure the feed file is parseable.</li><li>Point a JSON Feed-compatible reader such as NetNewsWire or Micro.blog to the feed URL and confirm items display correctly.</li></ol>
     </article>
   </div>
 </section>

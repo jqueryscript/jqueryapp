@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Open Graph・Twitter Card生成ツールとは</h2>
       <p>Open Graph・Twitter Card生成ツールは、記事や静的ページ向けのSNSプレビューメタタグを作成します。 出力は公開サイトに使う前に確認しやすい形で表示されます。</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate Open Graph and Twitter Card meta tags to control how your page appears when shared on social platforms, messaging apps, and link preview tools. Use absolute URLs for images and test after publishing.</p></div>
+      <h3>Limitations</h3><ul><li>Generated tags must be placed in the HTML head section of each page. Social platforms and messaging apps read these tags when the page is fetched, not when the page is built.</li><li>Social platforms cache previews aggressively. After updating og or twitter tags, use each platform's debugger or share tester to force a cache refresh.</li><li>Some platforms ignore certain tags. X reads twitter:card while Facebook and LinkedIn use og: tags. Not every platform supports every directive.</li></ul>
       <h2>使い方</h2>
       <ol><li>必要な値を入力します。</li><li>結果パネルの出力を確認します。</li><li>ページに合う部分だけコピーします。</li><li>公開前にブラウザとホスティング環境で確認します。</li></ol>
       <h2>主な用途</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>よくあるミス</h2>
       <ul><li>出力を確認せず本番に入れる。</li><li>公開URLではなくローカルURLを使う。</li><li>build後に公開フォルダ内のファイルを確認しない。</li></ul>
-      
+      <h2>Verification</h2><ol><li>Test the published page using the Facebook Sharing Debugger, LinkedIn Post Inspector, and X Card Validator to confirm each platform reads the expected preview.</li><li>Verify that the og:url value matches the canonical URL and that the og:image URL is absolute and accessible.</li></ol>
     </article>
   </div>
 </section>

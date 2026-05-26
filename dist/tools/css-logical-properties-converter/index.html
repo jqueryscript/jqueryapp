@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>What is CSS Logical Properties Converter?</h2>
       <p>CSS logical properties use writing-mode-relative directions instead of physical directions. Inline (text flow direction) and Block (perpendicular direction) replace Left, Right, Top, and Bottom. This means the same CSS works for left-to-right, right-to-left, and vertical languages without overrides. For example, margin-inline-start applies to the left side in LTR and the right side in RTL.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Convert physical CSS properties such as margin-left and padding-right into writing-mode-aware logical equivalents. This helps layouts adapt automatically to right-to-left and vertical writing modes without separate overrides.</p></div>
+      <h3>Limitations</h3><ul><li>Some shorthand logical properties such as border-inline, border-block, and inset-inline have spotty browser support compared to the core longhand logical properties.</li><li>The converter handles single property conversion. Migrating a large stylesheet to logical properties requires updating each physical-to-logical pair and verifying no mixed-direction edge cases remain.</li></ul>
       <h2>How to use this tool</h2>
       <ol><li>Choose the physical CSS property you want to convert, such as margin-left or padding-right.</li><li>Select the logical equivalent from the available suggestions.</li><li>Enter the value for the property.</li><li>Copy the logical property declaration into your stylesheet and test in both LTR and RTL directions.</li></ol>
       <h2>What you can use it for</h2>
@@ -123,7 +123,7 @@
     <article class="tool-article">
       <h2>Common mistakes</h2>
       <ul><li>Converting every physical property without checking browser support for the specific logical property variant.</li><li>Mixing physical and logical properties in the same declaration, which can cause inconsistent behavior across writing modes.</li><li>Assuming all logical properties have full browser support. Some shorthand logical properties are newer than the core set.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Apply the converted properties to a page and switch the direction attribute from ltr to rtl on the html element to verify the layout flips correctly.</li><li>Test the page in both LTR and RTL modes to confirm spacing, borders, and alignment behave as expected in each direction.</li></ol>
     </article>
   </div>
 </section>
@@ -141,6 +141,12 @@
 </details><details class="faq-item">
   <summary>Should I replace all physical properties with logical ones?</summary>
   <p>For multilingual sites with RTL or vertical language support, yes. For English-only sites, logical properties are still fine to use but physical properties remain valid and are simpler to read.</p>
+</details><details class="faq-item">
+  <summary>What is the difference between inline and block axis?</summary>
+  <p>The inline axis follows the direction text flows. In English, the inline axis is horizontal. The block axis runs perpendicular to the text flow, which is vertical in English. In a vertical writing mode these directions swap.</p>
+</details><details class="faq-item">
+  <summary>Are logical properties supported everywhere?</summary>
+  <p>The core logical properties such as margin-inline-start and padding-block-end are widely supported in Chrome 87+, Edge 87+, Safari 15+, and Firefox 66+. Some shorthand logical properties like border-inline have newer support, so check compatibility for the specific variant you plan to use.</p>
 </details>
     </div>
   </div>
@@ -233,6 +239,6 @@
       </div>
     </div>
   </footer>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CSS Logical Properties Converter","description":"Convert physical CSS properties to logical properties for better right-to-left and writing-mode support.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/css-logical-properties-converter/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"CSS Tools","item":"https://www.jquery.app/tools/css/"},{"@type":"ListItem","position":4,"name":"CSS Logical Properties Converter","item":"https://www.jquery.app/tools/css-logical-properties-converter/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do all browsers support logical properties?","acceptedAnswer":{"@type":"Answer","text":"Chrome 87+, Edge 87+, Safari 15+, and Firefox 66+ support the core set of logical properties. Some shorthand variants are newer. Check support for the specific property you plan to use."}},{"@type":"Question","name":"Should I replace all physical properties with logical ones?","acceptedAnswer":{"@type":"Answer","text":"For multilingual sites with RTL or vertical language support, yes. For English-only sites, logical properties are still fine to use but physical properties remain valid and are simpler to read."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CSS Logical Properties Converter","description":"Convert physical CSS properties to logical properties for better right-to-left and writing-mode support.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/css-logical-properties-converter/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"CSS Tools","item":"https://www.jquery.app/tools/css/"},{"@type":"ListItem","position":4,"name":"CSS Logical Properties Converter","item":"https://www.jquery.app/tools/css-logical-properties-converter/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do all browsers support logical properties?","acceptedAnswer":{"@type":"Answer","text":"Chrome 87+, Edge 87+, Safari 15+, and Firefox 66+ support the core set of logical properties. Some shorthand variants are newer. Check support for the specific property you plan to use."}},{"@type":"Question","name":"Should I replace all physical properties with logical ones?","acceptedAnswer":{"@type":"Answer","text":"For multilingual sites with RTL or vertical language support, yes. For English-only sites, logical properties are still fine to use but physical properties remain valid and are simpler to read."}},{"@type":"Question","name":"What is the difference between inline and block axis?","acceptedAnswer":{"@type":"Answer","text":"The inline axis follows the direction text flows. In English, the inline axis is horizontal. The block axis runs perpendicular to the text flow, which is vertical in English. In a vertical writing mode these directions swap."}},{"@type":"Question","name":"Are logical properties supported everywhere?","acceptedAnswer":{"@type":"Answer","text":"The core logical properties such as margin-inline-start and padding-block-end are widely supported in Chrome 87+, Edge 87+, Safari 15+, and Firefox 66+. Some shorthand logical properties like border-inline have newer support, so check compatibility for the specific variant you plan to use."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
 </body>
 </html>

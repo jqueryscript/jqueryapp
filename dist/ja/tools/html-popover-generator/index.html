@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>HTMLポップオーバージェネレーターとは</h2>
       <p>HTMLポップオーバージェネレーターは、popovertargetとPopover APIを使ったJavaScript不要のネイティブHTMLポップオーバーマークアップを生成します。 出力は公開サイトに使う前に確認しやすい形で表示されます。</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Create a native HTML popover using the Popover API with popovertarget attributes. The generated markup works without JavaScript in supporting browsers by relying on the browser-native popover behavior.</p></div>
+      <h3>Limitations</h3><ul><li>Safari and Firefox added Popover API support in recent versions. iOS Safari may have edge cases with light-dismiss on touch interactions.</li><li>Complex interactive content such as forms with multiple fields inside a popover may have focus-trapping and keyboard navigation issues.</li><li>The popover closes on outside click by default in auto mode. Use manual mode or adjust the design if users need to interact with content outside the popover.</li></ul>
       <h2>使い方</h2>
       <ol><li>必要な値を入力します。</li><li>結果パネルの出力を確認します。</li><li>ページに合う部分だけコピーします。</li><li>公開前にブラウザとホスティング環境で確認します。</li></ol>
       <h2>主な用途</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>よくあるミス</h2>
       <ul><li>出力を確認せず本番に入れる。</li><li>公開URLではなくローカルURLを使う。</li><li>build後に公開フォルダ内のファイルを確認しない。</li></ul>
-      
+      <h2>Verification</h2><ol><li>Open the popover in Chrome, Firefox, and Safari on both desktop and mobile and verify it opens, closes on outside click, and does not trap focus.</li><li>Tab through all interactive elements inside the popover to confirm focus moves in a logical order without getting stuck.</li></ol>
     </article>
   </div>
 </section>

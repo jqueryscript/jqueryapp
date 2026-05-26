@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Qu'est-ce que Generateur HTML de dialogue modal ?</h2>
       <p>Generateur HTML de dialogue modal est un outil dans le navigateur pour cette tâche : Générez un dialogue modal HTML natif avec boutons d'ouverture et de fermeture. La sortie reste lisible afin de la vérifier avant de l'utiliser sur un site publié.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate a native HTML dialog modal with trigger button, close button, content area, and backdrop styling. Works without JavaScript libraries in all modern browsers using the native dialog element.</p></div>
+      <h3>Limitations</h3><ul><li>Older browsers such as Safari 14 and Firefox 92 and below do not support the dialog element natively. No polyfill is included in the generated markup.</li><li>Complex keyboard trap scenarios such as nested dialogs or dialogs with embedded scrollable content may need additional JavaScript for full accessibility.</li><li>The ::backdrop pseudo-element styling is not inherited from the dialog styles. Backdrop and dialog styles must be declared as separate CSS rules.</li></ul>
       <h2>Comment utiliser cet outil</h2>
       <ol><li>Ouvrez l'outil et saisissez les valeurs utiles.</li><li>Vérifiez la sortie dans le panneau de résultat.</li><li>Copiez seulement la partie adaptéeà votre page.</li><li>Testez la modification avant publication.</li></ol>
       <h2>A quoi il sert</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Erreurs frequentes</h2>
       <ul><li>Copier la sortie sans verification.</li><li>Utiliser des URL locales au lieu des URL publiques finales.</li><li>Oublier de vérifier le dossier publié après le build.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Open the dialog and press Tab repeatedly to confirm focus cycles within the dialog and does not escape to the background page.</li><li>Press Escape to close the dialog and verify that keyboard focus returns to the trigger button that opened it.</li></ol>
     </article>
   </div>
 </section>

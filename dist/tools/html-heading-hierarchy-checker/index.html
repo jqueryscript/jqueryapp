@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>What is HTML Heading Hierarchy Checker?</h2>
       <p>Heading hierarchy (h1 through h6) is the structural backbone of any HTML document. Screen readers depend on a logical heading order to let users navigate by jumping between sections. Search engines also use headings to understand page topics and their relative importance. Skipping levels, such as jumping from h1 to h3, or using multiple h1 tags on one page, can confuse both assistive technology and crawlers. This tool extracts all headings from pasted HTML and displays them as a nested tree, so structural problems are visible at a glance before the page reaches production.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Paste your HTML to see the heading structure as a visual tree and identify skipped levels, missing h1 tags, and other hierarchy problems that affect accessibility and SEO.</p></div>
+      <h3>Limitations</h3><ul><li>The tool only scans heading tags in the pasted HTML. It does not read CSS-generated content or detect headings injected by JavaScript after page load.</li><li>The checker validates element names only. It does not evaluate aria-level or role attributes that could override the default heading semantics.</li><li>Pasting partial HTML may show an incomplete heading tree. Paste the full page content for an accurate audit.</li></ul>
       <h2>How to use this tool</h2>
       <ol><li>Paste your HTML markup into the textarea. The tool will extract all h1 through h6 heading tags.</li><li>Review the generated heading tree. Each heading appears at its correct depth.</li><li>Look for skipped levels, duplicate h1 tags, or headings that are out of logical order.</li><li>Adjust your HTML to fix any structural issues, then paste again to confirm the hierarchy is clean.</li></ol>
       <h2>What you can use it for</h2>
@@ -123,7 +123,7 @@
     <article class="tool-article">
       <h2>Common mistakes</h2>
       <ul><li>Using headings for visual size instead of structural meaning, which breaks screen reader navigation.</li><li>Skipping from h2 to h4, creating a gap that makes the hierarchy harder for crawlers to interpret.</li><li>Omitting the h1 tag entirely on a page, leaving the document without a top-level heading.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Compare the heading tree output against the visual page layout to confirm that each visible section has a corresponding heading at the correct level.</li><li>Test the page with a screen reader or browser extension that reads the heading outline to verify the hierarchy works for assistive technology users.</li></ol>
     </article>
   </div>
 </section>
@@ -141,6 +141,12 @@
 </details><details class="faq-item">
   <summary>Is it ok to skip heading levels for styling reasons?</summary>
   <p>No. Headings should reflect document structure, not visual appearance. Use CSS to style headings differently rather than skipping levels for a larger or smaller look.</p>
+</details><details class="faq-item">
+  <summary>Does heading hierarchy affect SEO?</summary>
+  <p>Yes. Search engines use heading structure to understand page topics and their relative importance. A clear descending hierarchy helps crawlers interpret the content outline and may influence how pages are understood for relevant queries.</p>
+</details><details class="faq-item">
+  <summary>Can I fix heading levels with CSS instead?</summary>
+  <p>No. CSS changes only the visual appearance, not the semantic heading level. Screen readers and search engines read the actual HTML heading element, not the styled size. Always use the correct h1 through h6 element for each structural level.</p>
 </details>
     </div>
   </div>
@@ -233,6 +239,6 @@
       </div>
     </div>
   </footer>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"HTML Heading Hierarchy Checker","description":"Paste HTML and see the heading structure as a tree. Find skipped levels, missing h1 tags, and hierarchy problems.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/html-heading-hierarchy-checker/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"HTML Tools","item":"https://www.jquery.app/tools/html/"},{"@type":"ListItem","position":4,"name":"HTML Heading Hierarchy Checker","item":"https://www.jquery.app/tools/html-heading-hierarchy-checker/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How many h1 tags should a page have?","acceptedAnswer":{"@type":"Answer","text":"One h1 per page is the standard recommendation. The h1 should describe the overall page topic. Multiple h1 tags can dilute the primary topic signal for search engines."}},{"@type":"Question","name":"Is it ok to skip heading levels for styling reasons?","acceptedAnswer":{"@type":"Answer","text":"No. Headings should reflect document structure, not visual appearance. Use CSS to style headings differently rather than skipping levels for a larger or smaller look."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"HTML Heading Hierarchy Checker","description":"Paste HTML and see the heading structure as a tree. Find skipped levels, missing h1 tags, and hierarchy problems.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/html-heading-hierarchy-checker/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"HTML Tools","item":"https://www.jquery.app/tools/html/"},{"@type":"ListItem","position":4,"name":"HTML Heading Hierarchy Checker","item":"https://www.jquery.app/tools/html-heading-hierarchy-checker/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How many h1 tags should a page have?","acceptedAnswer":{"@type":"Answer","text":"One h1 per page is the standard recommendation. The h1 should describe the overall page topic. Multiple h1 tags can dilute the primary topic signal for search engines."}},{"@type":"Question","name":"Is it ok to skip heading levels for styling reasons?","acceptedAnswer":{"@type":"Answer","text":"No. Headings should reflect document structure, not visual appearance. Use CSS to style headings differently rather than skipping levels for a larger or smaller look."}},{"@type":"Question","name":"Does heading hierarchy affect SEO?","acceptedAnswer":{"@type":"Answer","text":"Yes. Search engines use heading structure to understand page topics and their relative importance. A clear descending hierarchy helps crawlers interpret the content outline and may influence how pages are understood for relevant queries."}},{"@type":"Question","name":"Can I fix heading levels with CSS instead?","acceptedAnswer":{"@type":"Answer","text":"No. CSS changes only the visual appearance, not the semantic heading level. Screen readers and search engines read the actual HTML heading element, not the styled size. Always use the correct h1 through h6 element for each structural level."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
 </body>
 </html>

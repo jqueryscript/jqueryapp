@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>GitHub Pagesワークフロージェネレーターとは</h2>
       <p>GitHub Pagesワークフロージェネレーターは、静的サイトをGitHub PagesにデプロイするためのGitHub ActionsワークフローYAMLを生成します。 出力は公開サイトに使う前に確認しやすい形で表示されます。</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>A GitHub Actions workflow automates building and deploying your static site to GitHub Pages on every push. The generated YAML includes the standard permissions, concurrency settings, and build steps.</p></div>
+      <h3>Limitations</h3><ul><li>The generated workflow is a standard template. Custom build tools, monorepos, or multi-step pipelines may need additional job steps or custom actions.</li><li>GitHub Pages deployment via Actions only works for public repositories or private repositories with GitHub Pro, Team, or Enterprise plans.</li><li>The CNAME placeholder file must be created or copied into the output directory if the site uses a custom domain.</li></ul>
       <h2>使い方</h2>
       <ol><li>必要な値を入力します。</li><li>結果パネルの出力を確認します。</li><li>ページに合う部分だけコピーします。</li><li>公開前にブラウザとホスティング環境で確認します。</li></ol>
       <h2>主な用途</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>よくあるミス</h2>
       <ul><li>出力を確認せず本番に入れる。</li><li>公開URLではなくローカルURLを使う。</li><li>build後に公開フォルダ内のファイルを確認しない。</li></ul>
-      
+      <h2>Verification</h2><ol><li>Push the workflow file to your repository and check the Actions tab to confirm the workflow runs successfully.</li><li>After a successful run, visit your GitHub Pages URL and verify the site content matches the expected output.</li></ol>
     </article>
   </div>
 </section>

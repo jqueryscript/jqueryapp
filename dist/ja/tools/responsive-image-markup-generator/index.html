@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>レスポンシブ画像マークアップ生成ツールとは</h2>
       <p>レスポンシブ画像マークアップ生成ツールは、srcset、sizes、width、height、altテキスト付きのimgまたはpictureタグを生成します。 出力は公開サイトに使う前に確認しやすい形で表示されます。</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate responsive img or picture markup with srcset, sizes, width, height, and alt text. Helps avoid layout shift, missing image candidates, and inaccessible alt attributes on static sites.</p></div>
+      <h3>Limitations</h3><ul><li>Srcset candidates must exist at the specified paths in the published output. The generated markup references file paths; you must ensure each image file is copied to the correct location.</li><li>The sizes attribute affects which srcset candidate the browser selects. An incorrect sizes value can cause the browser to download a larger or smaller image than needed.</li><li>WebP source in a picture element requires a fallback img src for older browsers that do not support WebP. Without a fallback, unsupported browsers will show no image.</li></ul>
       <h2>使い方</h2>
       <ol><li>必要な値を入力します。</li><li>結果パネルの出力を確認します。</li><li>ページに合う部分だけコピーします。</li><li>公開前にブラウザとホスティング環境で確認します。</li></ol>
       <h2>主な用途</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>よくあるミス</h2>
       <ul><li>出力を確認せず本番に入れる。</li><li>公開URLではなくローカルURLを使う。</li><li>build後に公開フォルダ内のファイルを確認しない。</li></ul>
-      
+      <h2>Verification</h2><ol><li>Open the published page, resize the browser, and confirm the browser loads different image candidates at different viewport widths using the Network panel.</li><li>Verify the alt attribute provides accurate descriptions for meaningful images or is empty for decorative images using browser DevTools or a screen reader.</li></ol>
     </article>
   </div>
 </section>

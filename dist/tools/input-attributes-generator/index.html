@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>What is Input Attributes Generator?</h2>
       <p>HTML inputs have many type-specific attributes that are easy to forget. The type attribute changes which attributes are valid: email inputs use pattern and multiple, number inputs use min, max, and step, text inputs use minlength and maxlength. Getting these right helps with form validation and user experience.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate an HTML input element with the correct type and type-specific attributes. Choose from common input types and configure placeholder, required, pattern, autocomplete, min, max, and step.</p></div>
+      <h3>Limitations</h3><ul><li>The tool generates the input tag only. You must wrap it in a form element and add a visible label for accessibility compliance.</li><li>Browser validation styles and error messages vary significantly between browsers. Custom error messages require the constraint validation API.</li><li>The pattern attribute uses JavaScript-like regex syntax but does not support flags such as g or i. Pattern validation is always case-sensitive.</li></ul>
       <h2>How to use this tool</h2>
       <ol><li>Choose the input type that matches the data you are collecting.</li><li>Set common attributes such as name, placeholder, and required.</li><li>Add type-specific attributes like min and max for numbers or pattern for text inputs.</li><li>Copy the complete input tag into your form HTML.</li></ol>
       <h2>What you can use it for</h2>
@@ -123,7 +123,7 @@
     <article class="tool-article">
       <h2>Common mistakes</h2>
       <ul><li>Using type=&quot;text&quot; for email or URL fields instead of the correct semantic input type.</li><li>Forgetting the name attribute, which is required for form submission to work.</li><li>Adding the required attribute without a visible indicator or an accessible label for screen readers.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Wrap the generated input in a form and submit it with invalid data to confirm browser validation triggers the expected error behavior.</li><li>Test the input with a screen reader to verify the label, required state, and any error messages are announced correctly.</li></ol>
     </article>
   </div>
 </section>
@@ -141,6 +141,9 @@
 </details><details class="faq-item">
   <summary>Should I use the pattern attribute?</summary>
   <p>Use pattern when the input type's built-in validation is not specific enough for your format requirement. Always pair pattern validation with server-side validation.</p>
+</details><details class="faq-item">
+  <summary>What is the difference between required and aria-required?</summary>
+  <p>required triggers built-in browser validation and blocks form submission when the field is empty. aria-required tells assistive technology that the field is required but does not enforce validation. Use required for validation and add aria-required for screen reader clarity.</p>
 </details>
     </div>
   </div>
@@ -233,6 +236,6 @@
       </div>
     </div>
   </footer>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Input Attributes Generator","description":"Generate HTML input elements with type-specific attributes for forms on static websites.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/input-attributes-generator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"HTML Tools","item":"https://www.jquery.app/tools/html/"},{"@type":"ListItem","position":4,"name":"Input Attributes Generator","item":"https://www.jquery.app/tools/input-attributes-generator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which input types have built-in validation?","acceptedAnswer":{"@type":"Answer","text":"Email, URL, number, date, and tel inputs validate format automatically in supporting browsers. The browser checks the value against the expected format before allowing form submission."}},{"@type":"Question","name":"Should I use the pattern attribute?","acceptedAnswer":{"@type":"Answer","text":"Use pattern when the input type's built-in validation is not specific enough for your format requirement. Always pair pattern validation with server-side validation."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Input Attributes Generator","description":"Generate HTML input elements with type-specific attributes for forms on static websites.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/input-attributes-generator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"HTML Tools","item":"https://www.jquery.app/tools/html/"},{"@type":"ListItem","position":4,"name":"Input Attributes Generator","item":"https://www.jquery.app/tools/input-attributes-generator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which input types have built-in validation?","acceptedAnswer":{"@type":"Answer","text":"Email, URL, number, date, and tel inputs validate format automatically in supporting browsers. The browser checks the value against the expected format before allowing form submission."}},{"@type":"Question","name":"Should I use the pattern attribute?","acceptedAnswer":{"@type":"Answer","text":"Use pattern when the input type's built-in validation is not specific enough for your format requirement. Always pair pattern validation with server-side validation."}},{"@type":"Question","name":"What is the difference between required and aria-required?","acceptedAnswer":{"@type":"Answer","text":"required triggers built-in browser validation and blocks form submission when the field is empty. aria-required tells assistive technology that the field is required but does not enforce validation. Use required for validation and add aria-required for screen reader clarity."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
 </body>
 </html>

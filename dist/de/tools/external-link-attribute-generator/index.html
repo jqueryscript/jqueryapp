@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Was ist Externer-Link-Attribut-Generator?</h2>
       <p>Externer-Link-Attribut-Generator ist ein Browser-Tool für diese Aufgabe: Generiere externes Link-Markup mit korrekten rel-Attributen für Sicherheit und SEO. Die Ausgabe bleibt lesbar, damit du sie vor dem Einbau in eine Live-Seite prüfen kannst.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>External links should use rel='noopener noreferrer' for security when using target='_blank'. For SEO, use rel='nofollow' for untrusted links, rel='sponsored' for paid or affiliate links, and rel='ugc' for user-generated content.</p></div>
+      <h3>Limitations</h3><ul><li>Rel attributes are hints to search engines, not directives. Search engines may still discover and crawl linked pages regardless of rel values.</li><li>Some platforms such as social media sites and CMS editors strip or ignore custom rel attributes on links.</li><li>Social media platform links may need additional attributes such as aria-label for accessibility beyond the standard rel values.</li></ul>
       <h2>So nutzt du dieses Tool</h2>
       <ol><li>Öffne das Tool und trage die relevanten Werte ein.</li><li>Prüfe die erzeugte Ausgabe im Ergebnisfeld.</li><li>Kopiere nur den Teil, der zu deiner Seite passt.</li><li>Teste die Änderung im Browser, bevor du sie veröffentlichst.</li></ol>
       <h2>Wofür du es nutzen kannst</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Haufige Fehler</h2>
       <ul><li>Ausgabe ungepruft in Produktion kopieren.</li><li>Lokale URLs statt finaler öffentlich erreichbarer URLs verwenden.</li><li>Nach dem Build nicht prüfen, ob die Datei im veröffentlichten Ordner liegt.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Inspect the generated anchor tag in the HTML source to confirm target, rel, and aria-label attributes are present and correctly formatted.</li><li>Click the link on the published page and verify it opens in a new tab without triggering any security warnings in the browser console.</li></ol>
     </article>
   </div>
 </section>

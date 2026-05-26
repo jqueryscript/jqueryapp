@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>What is Table of Contents Anchor Generator?</h2>
       <p>A table of contents is a linked list of headings that lets readers jump to sections within a long page. Anchor links use the id attribute on each heading to create deep-linkable URLs. For static sites with long articles, a TOC improves navigation, accessibility, and reader engagement by letting users preview the article structure.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate a nested table of contents with anchor links from heading tags in your HTML. Each TOC entry links to a slugified id on the corresponding heading for easy page navigation.</p></div>
+      <h3>Limitations</h3><ul><li>The tool generates the TOC markup and the heading id values separately. You must manually add the generated id attributes to the heading tags in your HTML for the anchor links to work.</li><li>Headings without text content or headings nested inside non-semantic containers may not be extracted correctly by the parser.</li><li>The generated TOC uses flat nesting based on heading levels. Custom CSS may be needed for multi-level indentation styling.</li></ul>
       <h2>How to use this tool</h2>
       <ol><li>Paste the HTML of your article or page content into the input area.</li><li>Select which heading levels to include in the TOC, such as h2 through h4.</li><li>Review the generated nested list and click a link to verify the anchor format.</li><li>Copy the TOC HTML and paste it at the top of your article, then add the id attributes to your headings.</li></ol>
       <h2>What you can use it for</h2>
@@ -123,7 +123,7 @@
     <article class="tool-article">
       <h2>Common mistakes</h2>
       <ul><li>Generating a TOC with anchor links but not adding corresponding id attributes to the original headings, which makes the links nonfunctional.</li><li>Attempting to generate a TOC from pasted content that contains no heading tags, which produces an empty list.</li><li>Generating a TOC with inconsistent heading levels such as jumping from h2 to h4 without h3, which breaks the visual nesting.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Click each TOC link and confirm the page scrolls to the correct heading section without errors.</li><li>Check the page URL after clicking a TOC link to verify the anchor fragment appears correctly in the address bar.</li></ol>
     </article>
   </div>
 </section>
@@ -141,6 +141,9 @@
 </details><details class="faq-item">
   <summary>Should every page have a table of contents?</summary>
   <p>Only pages with enough content to justify navigation benefit from a TOC. A page with fewer than three or four headings usually does not need one.</p>
+</details><details class="faq-item">
+  <summary>What heading levels should the TOC include?</summary>
+  <p>Include h2 through h3 or h2 through h4 for most articles. Start from h2 because the h1 is usually the page title. Including too many levels such as h5 and h6 makes the TOC cluttered.</p>
 </details>
     </div>
   </div>
@@ -233,6 +236,6 @@
       </div>
     </div>
   </footer>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Table of Contents Anchor Generator","description":"Paste HTML headings and get a nested table of contents with anchor links for articles and documentation.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/toc-anchor-generator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"HTML Tools","item":"https://www.jquery.app/tools/html/"},{"@type":"ListItem","position":4,"name":"Table of Contents Anchor Generator","item":"https://www.jquery.app/tools/toc-anchor-generator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does this tool add id attributes to my existing headings?","acceptedAnswer":{"@type":"Answer","text":"It generates the id values as part of the TOC links. You must add those id attributes to the corresponding heading tags in your HTML manually or through your site generator."}},{"@type":"Question","name":"Should every page have a table of contents?","acceptedAnswer":{"@type":"Answer","text":"Only pages with enough content to justify navigation benefit from a TOC. A page with fewer than three or four headings usually does not need one."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Table of Contents Anchor Generator","description":"Paste HTML headings and get a nested table of contents with anchor links for articles and documentation.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/toc-anchor-generator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"HTML Tools","item":"https://www.jquery.app/tools/html/"},{"@type":"ListItem","position":4,"name":"Table of Contents Anchor Generator","item":"https://www.jquery.app/tools/toc-anchor-generator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does this tool add id attributes to my existing headings?","acceptedAnswer":{"@type":"Answer","text":"It generates the id values as part of the TOC links. You must add those id attributes to the corresponding heading tags in your HTML manually or through your site generator."}},{"@type":"Question","name":"Should every page have a table of contents?","acceptedAnswer":{"@type":"Answer","text":"Only pages with enough content to justify navigation benefit from a TOC. A page with fewer than three or four headings usually does not need one."}},{"@type":"Question","name":"What heading levels should the TOC include?","acceptedAnswer":{"@type":"Answer","text":"Include h2 through h3 or h2 through h4 for most articles. Start from h2 because the h1 is usually the page title. Including too many levels such as h5 and h6 makes the TOC cluttered."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
 </body>
 </html>

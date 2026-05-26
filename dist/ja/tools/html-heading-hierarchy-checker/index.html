@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>HTML見出し階層チェッカーとは</h2>
       <p>HTML見出し階層チェッカーは、HTMLを貼り付けて見出し構造をツリー表示。スキップされたレベルや不足h1を検出します。 出力は公開サイトに使う前に確認しやすい形で表示されます。</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Paste your HTML to see the heading structure as a visual tree and identify skipped levels, missing h1 tags, and other hierarchy problems that affect accessibility and SEO.</p></div>
+      <h3>Limitations</h3><ul><li>The tool only scans heading tags in the pasted HTML. It does not read CSS-generated content or detect headings injected by JavaScript after page load.</li><li>The checker validates element names only. It does not evaluate aria-level or role attributes that could override the default heading semantics.</li><li>Pasting partial HTML may show an incomplete heading tree. Paste the full page content for an accurate audit.</li></ul>
       <h2>使い方</h2>
       <ol><li>必要な値を入力します。</li><li>結果パネルの出力を確認します。</li><li>ページに合う部分だけコピーします。</li><li>公開前にブラウザとホスティング環境で確認します。</li></ol>
       <h2>主な用途</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>よくあるミス</h2>
       <ul><li>出力を確認せず本番に入れる。</li><li>公開URLではなくローカルURLを使う。</li><li>build後に公開フォルダ内のファイルを確認しない。</li></ul>
-      
+      <h2>Verification</h2><ol><li>Compare the heading tree output against the visual page layout to confirm that each visible section has a corresponding heading at the correct level.</li><li>Test the page with a screen reader or browser extension that reads the heading outline to verify the hierarchy works for assistive technology users.</li></ol>
     </article>
   </div>
 </section>

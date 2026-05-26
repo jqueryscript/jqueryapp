@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>What is RSS Feed Starter Generator?</h2>
       <p>RSS is an XML format that lets readers subscribe to content updates through feed readers, browsers, and aggregators. An RSS feed on a static blog lets regular readers track new posts without visiting the site every day. Search engines also use RSS feeds to discover new and updated content on sites that publish infrequently.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>RSS is an XML format that lets readers subscribe to your site updates through feed readers and aggregators. A feed.xml file at your site root makes new content discoverable without manual checking.</p></div>
+      <h3>Limitations</h3><ul><li>The tool generates a static XML file snapshot. You must regenerate and re-upload the file when new content is published.</li><li>RSS 2.0 is generated. Atom and JSON Feed formats are not included. Some feed readers prefer Atom or JSON Feed over RSS.</li><li>The feed must use absolute URLs in all item links and enclosures. Relative URLs will break when the feed is read by external aggregators.</li></ul>
       <h2>How to use this tool</h2>
       <ol><li>Enter your site title, description, and the full site URL for the channel metadata.</li><li>Add each post on its own line using the format: Post Title|https://example.com/post-slug|2026-05-20|Short description.</li><li>Review the generated XML and validate that all URLs are absolute and dates are in RFC 822 format.</li><li>Save the output as feed.xml in your site root and link to it from your page head with &lt;link rel=&quot;alternate&quot;&gt;.</li></ol>
       <h2>What you can use it for</h2>
@@ -123,7 +123,7 @@
     <article class="tool-article">
       <h2>Common mistakes</h2>
       <ul><li>Using relative URLs for item links and enclosure URLs, which fail when the feed is read by an external reader.</li><li>Generating the feed once and never updating it, which leaves subscribers stuck on old content.</li><li>Entering dates in a format that is not RFC 822, such as 2026-05-20, which causes feed validators to reject the XML.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Validate the generated feed XML using the W3C Feed Validation Service or a similar tool to catch XML syntax errors.</li><li>Subscribe to the feed URL in a feed reader app to confirm items display correctly with titles, dates, and descriptions.</li></ol>
     </article>
   </div>
 </section>
@@ -141,6 +141,9 @@
 </details><details class="faq-item">
   <summary>Do search engines use RSS feeds?</summary>
   <p>Yes. Google and other search engines read RSS feeds to discover new content, especially on sites that do not update frequently. An RSS feed can help your new posts get indexed faster.</p>
+</details><details class="faq-item">
+  <summary>How many items should an RSS feed include?</summary>
+  <p>Include the 10 to 20 most recent items in a typical RSS feed. Some aggregators may truncate feeds with too many items, and most readers only need the latest posts.</p>
 </details>
     </div>
   </div>
@@ -233,6 +236,6 @@
       </div>
     </div>
   </footer>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"RSS Feed Starter Generator","description":"Generate a complete RSS 2.0 XML feed for your static blog from a list of posts.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/rss-feed-starter-generator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"SEO Tools","item":"https://www.jquery.app/tools/seo/"},{"@type":"ListItem","position":4,"name":"RSS Feed Starter Generator","item":"https://www.jquery.app/tools/rss-feed-starter-generator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where should I publish my RSS feed?","acceptedAnswer":{"@type":"Answer","text":"Save the file as feed.xml or index.xml in your site root. Most static site generators and feed readers expect the feed at /feed.xml by convention. Add a <link rel=\"alternate\" type=\"application/rss+xml\"> tag in your page head for auto-discovery."}},{"@type":"Question","name":"Do search engines use RSS feeds?","acceptedAnswer":{"@type":"Answer","text":"Yes. Google and other search engines read RSS feeds to discover new content, especially on sites that do not update frequently. An RSS feed can help your new posts get indexed faster."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"RSS Feed Starter Generator","description":"Generate a complete RSS 2.0 XML feed for your static blog from a list of posts.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/rss-feed-starter-generator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"SEO Tools","item":"https://www.jquery.app/tools/seo/"},{"@type":"ListItem","position":4,"name":"RSS Feed Starter Generator","item":"https://www.jquery.app/tools/rss-feed-starter-generator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where should I publish my RSS feed?","acceptedAnswer":{"@type":"Answer","text":"Save the file as feed.xml or index.xml in your site root. Most static site generators and feed readers expect the feed at /feed.xml by convention. Add a <link rel=\"alternate\" type=\"application/rss+xml\"> tag in your page head for auto-discovery."}},{"@type":"Question","name":"Do search engines use RSS feeds?","acceptedAnswer":{"@type":"Answer","text":"Yes. Google and other search engines read RSS feeds to discover new content, especially on sites that do not update frequently. An RSS feed can help your new posts get indexed faster."}},{"@type":"Question","name":"How many items should an RSS feed include?","acceptedAnswer":{"@type":"Answer","text":"Include the 10 to 20 most recent items in a typical RSS feed. Some aggregators may truncate feeds with too many items, and most readers only need the latest posts."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
 </body>
 </html>

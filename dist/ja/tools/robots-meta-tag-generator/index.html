@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Robotsメタタグ生成ツールとは</h2>
       <p>Robotsメタタグ生成ツールは、robotsディレクティブを覚えなくてもmeta robotsタグを作れます。 出力は公開サイトに使う前に確認しやすい形で表示されます。</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Build page-level robots meta tags to control search engine indexing, link following, snippet length, and archive behavior without changing robots.txt. Use index and follow as the default for public pages.</p></div>
+      <h3>Limitations</h3><ul><li>Pages blocked by robots.txt cannot be read by crawlers, so any noindex directive on those pages will not be seen. Use robots.txt for crawl control and meta tags for indexing control separately.</li><li>Conflicting directives such as both index and noindex or contradictory snippet settings can cause unpredictable crawler behavior. Most crawlers use the most restrictive directive.</li><li>Some crawlers ignore meta robots directives entirely. Malicious bots, AI crawlers, and automated scrapers may not respect page-level instructions.</li></ul>
       <h2>使い方</h2>
       <ol><li>必要な値を入力します。</li><li>結果パネルの出力を確認します。</li><li>ページに合う部分だけコピーします。</li><li>公開前にブラウザとホスティング環境で確認します。</li></ol>
       <h2>主な用途</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>よくあるミス</h2>
       <ul><li>出力を確認せず本番に入れる。</li><li>公開URLではなくローカルURLを使う。</li><li>build後に公開フォルダ内のファイルを確認しない。</li></ul>
-      
+      <h2>Verification</h2><ol><li>Inspect the generated meta tag in the page HTML source. Confirm the directive combination reflects what you intended, especially when combining noindex with follow or snippet rules.</li><li>Use the URL Inspection tool in Google Search Console to verify the discovered robots directives and any crawl issues.</li></ol>
     </article>
   </div>
 </section>

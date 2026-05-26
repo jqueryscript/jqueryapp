@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>CSSカラーコントラストチェッカーとは</h2>
       <p>CSSカラーコントラストチェッカーは、2色間のコントラスト比をWCAG基準でチェックします。 出力は公開サイトに使う前に確認しやすい形で表示されます。</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Check whether two color combinations meet WCAG contrast standards before publishing. The tool calculates the precise ratio and tells you whether normal text, large text, and UI components pass AA or AAA levels.</p></div>
+      <h3>Limitations</h3><ul><li>The color picker returns hex values only. It does not support RGB, HSL, or named color inputs directly.</li><li>The tool checks solid color pairs. It does not evaluate contrast on gradient text, box-shadow text, or background images where luminance varies across the element.</li><li>Contrast ratios are calculated from the colors you enter. If either color is transparent the result will not reflect the actual visible contrast against the underlying page background.</li></ul>
       <h2>使い方</h2>
       <ol><li>必要な値を入力します。</li><li>結果パネルの出力を確認します。</li><li>ページに合う部分だけコピーします。</li><li>公開前にブラウザとホスティング環境で確認します。</li></ol>
       <h2>主な用途</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>よくあるミス</h2>
       <ul><li>出力を確認せず本番に入れる。</li><li>公開URLではなくローカルURLを使う。</li><li>build後に公開フォルダ内のファイルを確認しない。</li></ul>
-      
+      <h2>Verification</h2><ol><li>Test the final color pair in a browser by zooming to confirm text is readable at small sizes.</li><li>Compare the tool result against the WCAG contrast checker in Chrome DevTools Accessibility panel for a second opinion.</li></ol>
     </article>
   </div>
 </section>

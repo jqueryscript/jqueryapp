@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Wat is Externe Link Attribuut Generator?</h2>
       <p>Externe Link Attribuut Generator is een browsertool voor deze taak: Genereer externe link markup met correcte rel attributen voor beveiliging en SEO. De uitvoer blijft leesbaar, zodat je die kunt controleren voordat je hem publiceert.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>External links should use rel='noopener noreferrer' for security when using target='_blank'. For SEO, use rel='nofollow' for untrusted links, rel='sponsored' for paid or affiliate links, and rel='ugc' for user-generated content.</p></div>
+      <h3>Limitations</h3><ul><li>Rel attributes are hints to search engines, not directives. Search engines may still discover and crawl linked pages regardless of rel values.</li><li>Some platforms such as social media sites and CMS editors strip or ignore custom rel attributes on links.</li><li>Social media platform links may need additional attributes such as aria-label for accessibility beyond the standard rel values.</li></ul>
       <h2>Zo gebruik je deze tool</h2>
       <ol><li>Open de tool en vul de relevante waarden in.</li><li>Controleer de uitvoer in het resultaatpaneel.</li><li>Kopieer alleen het deel dat bij je página past.</li><li>Test de wijziging voordat je publiceert.</li></ol>
       <h2>Waarvoor je het kunt gebruiken</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Veelgemaakte fouten</h2>
       <ul><li>Uitvoer kopieren zonder controle.</li><li>Lokale URL's gebruiken in plaats van publieke URL's.</li><li>Na de build niet controleren of het bestand in de publicatiemap staat.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Inspect the generated anchor tag in the HTML source to confirm target, rel, and aria-label attributes are present and correctly formatted.</li><li>Click the link on the published page and verify it opens in a new tab without triggering any security warnings in the browser console.</li></ol>
     </article>
   </div>
 </section>

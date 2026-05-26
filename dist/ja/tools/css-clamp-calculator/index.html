@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>CSS clamp()計算ツールとは</h2>
       <p>CSS clamp()計算ツールは、文字サイズや余白向けのレスポンシブなCSS clamp値を計算します。 出力は公開サイトに使う前に確認しやすい形で表示されます。</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Calculate a responsive CSS clamp expression for fluid typography, spacing, or layout values. Enter minimum and maximum sizes with viewport ranges to generate a value that scales smoothly between them.</p></div>
+      <h3>Limitations</h3><ul><li>Clamp() values are static once generated. They do not adapt to changes in the DOM, user interactions, or container dimensions. For layout-aware scaling, consider container query units instead.</li><li>The viewport-based preferred value may need adjustment at extreme screen sizes. Test the generated clamp value on very small and very large viewports to confirm the curve feels natural.</li><li>This tool uses viewport width (vw) for the preferred value. It does not account for container query units (cqw) or other newer CSS units that behave differently.</li></ul>
       <h2>使い方</h2>
       <ol><li>必要な値を入力します。</li><li>結果パネルの出力を確認します。</li><li>ページに合う部分だけコピーします。</li><li>公開前にブラウザとホスティング環境で確認します。</li></ol>
       <h2>主な用途</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>よくあるミス</h2>
       <ul><li>出力を確認せず本番に入れる。</li><li>公開URLではなくローカルURLを使う。</li><li>build後に公開フォルダ内のファイルを確認しない。</li></ul>
-      
+      <h2>Verification</h2><ol><li>Inspect the element using browser DevTools and verify the clamp() value resolves to expected pixel values at minimum, mid-range, and maximum viewport widths.</li><li>Resize the browser window slowly from mobile width to desktop width and confirm the property value transitions smoothly without jumps.</li></ol>
     </article>
   </div>
 </section>

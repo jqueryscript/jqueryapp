@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Qu'est-ce que Generateur de table des matieres avec ancres ?</h2>
       <p>Generateur de table des matieres avec ancres est un outil dans le navigateur pour cette tâche : Collez du HTML avec des titres et obtenez une table des matieres imbriquee avec des liens d'ancrage. La sortie reste lisible afin de la vérifier avant de l'utiliser sur un site publié.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate a nested table of contents with anchor links from heading tags in your HTML. Each TOC entry links to a slugified id on the corresponding heading for easy page navigation.</p></div>
+      <h3>Limitations</h3><ul><li>The tool generates the TOC markup and the heading id values separately. You must manually add the generated id attributes to the heading tags in your HTML for the anchor links to work.</li><li>Headings without text content or headings nested inside non-semantic containers may not be extracted correctly by the parser.</li><li>The generated TOC uses flat nesting based on heading levels. Custom CSS may be needed for multi-level indentation styling.</li></ul>
       <h2>Comment utiliser cet outil</h2>
       <ol><li>Ouvrez l'outil et saisissez les valeurs utiles.</li><li>Vérifiez la sortie dans le panneau de résultat.</li><li>Copiez seulement la partie adaptéeà votre page.</li><li>Testez la modification avant publication.</li></ol>
       <h2>A quoi il sert</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Erreurs frequentes</h2>
       <ul><li>Copier la sortie sans verification.</li><li>Utiliser des URL locales au lieu des URL publiques finales.</li><li>Oublier de vérifier le dossier publié après le build.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Click each TOC link and confirm the page scrolls to the correct heading section without errors.</li><li>Check the page URL after clicking a TOC link to verify the anchor fragment appears correctly in the address bar.</li></ol>
     </article>
   </div>
 </section>

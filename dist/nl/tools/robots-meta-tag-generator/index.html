@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Wat is Robots metataggenerator?</h2>
       <p>Robots metataggenerator is een browsertool voor deze taak: Genereer robots metatags zonder directives uit je hoofd te kennen. De uitvoer blijft leesbaar, zodat je die kunt controleren voordat je hem publiceert.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Build page-level robots meta tags to control search engine indexing, link following, snippet length, and archive behavior without changing robots.txt. Use index and follow as the default for public pages.</p></div>
+      <h3>Limitations</h3><ul><li>Pages blocked by robots.txt cannot be read by crawlers, so any noindex directive on those pages will not be seen. Use robots.txt for crawl control and meta tags for indexing control separately.</li><li>Conflicting directives such as both index and noindex or contradictory snippet settings can cause unpredictable crawler behavior. Most crawlers use the most restrictive directive.</li><li>Some crawlers ignore meta robots directives entirely. Malicious bots, AI crawlers, and automated scrapers may not respect page-level instructions.</li></ul>
       <h2>Zo gebruik je deze tool</h2>
       <ol><li>Open de tool en vul de relevante waarden in.</li><li>Controleer de uitvoer in het resultaatpaneel.</li><li>Kopieer alleen het deel dat bij je página past.</li><li>Test de wijziging voordat je publiceert.</li></ol>
       <h2>Waarvoor je het kunt gebruiken</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Veelgemaakte fouten</h2>
       <ul><li>Uitvoer kopieren zonder controle.</li><li>Lokale URL's gebruiken in plaats van publieke URL's.</li><li>Na de build niet controleren of het bestand in de publicatiemap staat.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Inspect the generated meta tag in the page HTML source. Confirm the directive combination reflects what you intended, especially when combining noindex with follow or snippet rules.</li><li>Use the URL Inspection tool in Google Search Console to verify the discovered robots directives and any crawl issues.</li></ol>
     </article>
   </div>
 </section>

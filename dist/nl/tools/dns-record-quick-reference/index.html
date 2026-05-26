@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Wat is DNS Record Snelreferentie?</h2>
       <p>DNS Record Snelreferentie is een browsertool voor deze taak: Voer een domein in en zie voorbeeld A-, AAAA-, CNAME-, MX- en TXT-records. De uitvoer blijft leesbaar, zodat je die kunt controleren voordat je hem publiceert.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>DNS records connect your domain to hosting services by mapping names to IP addresses, mail servers, and verification data. Each record type serves a specific purpose and the wrong type can break your site or email.</p></div>
+      <h3>Limitations</h3><ul><li>The generated example records are generic. Actual DNS values depend on your hosting provider, email service, and specific requirements.</li><li>DNS changes can take from minutes to several hours to propagate globally depending on TTL values and the domain provider.</li><li>A CNAME record cannot coexist with other record types at the same name. Using a CNAME at the apex will break other services such as email.</li></ul>
       <h2>Zo gebruik je deze tool</h2>
       <ol><li>Open de tool en vul de relevante waarden in.</li><li>Controleer de uitvoer in het resultaatpaneel.</li><li>Kopieer alleen het deel dat bij je página past.</li><li>Test de wijziging voordat je publiceert.</li></ol>
       <h2>Waarvoor je het kunt gebruiken</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Veelgemaakte fouten</h2>
       <ul><li>Uitvoer kopieren zonder controle.</li><li>Lokale URL's gebruiken in plaats van publieke URL's.</li><li>Na de build niet controleren of het bestand in de publicatiemap staat.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Use a DNS lookup tool such as dig or a web-based DNS checker to confirm each record resolves to the expected value after propagation.</li><li>Verify the site loads over HTTPS after DNS changes are complete. Some DNS providers may cache stale records longer than the configured TTL.</li></ol>
     </article>
   </div>
 </section>

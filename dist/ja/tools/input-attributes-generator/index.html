@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>入力属性ジェネレーターとは</h2>
       <p>入力属性ジェネレーターは、タイプ別の属性を持つHTML入力要素を生成します。 出力は公開サイトに使う前に確認しやすい形で表示されます。</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate an HTML input element with the correct type and type-specific attributes. Choose from common input types and configure placeholder, required, pattern, autocomplete, min, max, and step.</p></div>
+      <h3>Limitations</h3><ul><li>The tool generates the input tag only. You must wrap it in a form element and add a visible label for accessibility compliance.</li><li>Browser validation styles and error messages vary significantly between browsers. Custom error messages require the constraint validation API.</li><li>The pattern attribute uses JavaScript-like regex syntax but does not support flags such as g or i. Pattern validation is always case-sensitive.</li></ul>
       <h2>使い方</h2>
       <ol><li>必要な値を入力します。</li><li>結果パネルの出力を確認します。</li><li>ページに合う部分だけコピーします。</li><li>公開前にブラウザとホスティング環境で確認します。</li></ol>
       <h2>主な用途</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>よくあるミス</h2>
       <ul><li>出力を確認せず本番に入れる。</li><li>公開URLではなくローカルURLを使う。</li><li>build後に公開フォルダ内のファイルを確認しない。</li></ul>
-      
+      <h2>Verification</h2><ol><li>Wrap the generated input in a form and submit it with invalid data to confirm browser validation triggers the expected error behavior.</li><li>Test the input with a screen reader to verify the label, required state, and any error messages are announced correctly.</li></ol>
     </article>
   </div>
 </section>

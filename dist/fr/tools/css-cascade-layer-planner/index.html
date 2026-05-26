@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Qu'est-ce que Planificateur de couches CSS ?</h2>
       <p>Planificateur de couches CSS est un outil dans le navigateur pour cette tâche : Planifiez l'ordre @layer et généré une structure de couches CSS avec des exemples. La sortie reste lisible afin de la vérifier avant de l'utiliser sur un site publié.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Plan the order of CSS cascade layers for your project so overrides behave predictably. The output is a @layer declaration and skeleton structure for reset, base, component, and utility styles.</p></div>
+      <h3>Limitations</h3><ul><li>The tool generates a flat layer planning skeleton. It does not handle nested @layer blocks which require a different layered import syntax.</li><li>The generated output assumes a straightforward layer structure. Complex projects with sub-layers inside named layers need manual adjustment beyond the generated skeleton.</li></ul>
       <h2>Comment utiliser cet outil</h2>
       <ol><li>Ouvrez l'outil et saisissez les valeurs utiles.</li><li>Vérifiez la sortie dans le panneau de résultat.</li><li>Copiez seulement la partie adaptéeà votre page.</li><li>Testez la modification avant publication.</li></ol>
       <h2>A quoi il sert</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Erreurs frequentes</h2>
       <ul><li>Copier la sortie sans verification.</li><li>Utiliser des URL locales au lieu des URL publiques finales.</li><li>Oublier de vérifier le dossier publié après le build.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Test that a style in a later layer correctly overrides an equivalent style in an earlier layer regardless of specificity differences.</li><li>Check that unlayered styles do not unexpectedly beat layered styles by ensuring all page styles are assigned to a named layer.</li></ol>
     </article>
   </div>
 </section>

@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Was ist Statischer-404-Seiten-Template-Generator?</h2>
       <p>Statischer-404-Seiten-Template-Generator ist ein Browser-Tool für diese Aufgabe: Generiere eine freundliche 404-Fehlerseite mit Navigationslinks für statische Websites und GitHub Pages. Die Ausgabe bleibt lesbar, damit du sie vor dem Einbau in eine Live-Seite prüfen kannst.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate a complete 404.html page with a helpful error message, navigation links, and an optional search box. Place the file at your site root so static hosts serve it when a page is not found.</p></div>
+      <h3>Limitations</h3><ul><li>Custom 404 pages only work on hosting platforms that support them. Some shared hosting environments ignore 404.html and show their own default error page instead.</li><li>The generated page is entirely static and does not log or report 404 occurrences. Add analytics tracking separately if you need to monitor missing pages.</li><li>404.html must be placed at the root of the published output. Files placed in subdirectories or build output subfolders will not be detected as the custom 404 page.</li></ul>
       <h2>So nutzt du dieses Tool</h2>
       <ol><li>Öffne das Tool und trage die relevanten Werte ein.</li><li>Prüfe die erzeugte Ausgabe im Ergebnisfeld.</li><li>Kopiere nur den Teil, der zu deiner Seite passt.</li><li>Teste die Änderung im Browser, bevor du sie veröffentlichst.</li></ol>
       <h2>Wofür du es nutzen kannst</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Haufige Fehler</h2>
       <ul><li>Ausgabe ungepruft in Produktion kopieren.</li><li>Lokale URLs statt finaler öffentlich erreichbarer URLs verwenden.</li><li>Nach dem Build nicht prüfen, ob die Datei im veröffentlichten Ordner liegt.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Deploy the 404.html file and visit a non-existent URL on your published site to confirm the custom page appears instead of the browser default.</li><li>Check the browser DevTools Network panel to verify the non-existent URL returns a 404 HTTP status code.</li></ol>
     </article>
   </div>
 </section>

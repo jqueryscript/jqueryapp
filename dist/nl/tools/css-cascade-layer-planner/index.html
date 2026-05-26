@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Wat is CSS Cascade Layer Planner?</h2>
       <p>CSS Cascade Layer Planner is een browsertool voor deze taak: Plan de @layer-volgorde en genereer een CSS-cascadelagenstructuur met voorbeeldregels. De uitvoer blijft leesbaar, zodat je die kunt controleren voordat je hem publiceert.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Plan the order of CSS cascade layers for your project so overrides behave predictably. The output is a @layer declaration and skeleton structure for reset, base, component, and utility styles.</p></div>
+      <h3>Limitations</h3><ul><li>The tool generates a flat layer planning skeleton. It does not handle nested @layer blocks which require a different layered import syntax.</li><li>The generated output assumes a straightforward layer structure. Complex projects with sub-layers inside named layers need manual adjustment beyond the generated skeleton.</li></ul>
       <h2>Zo gebruik je deze tool</h2>
       <ol><li>Open de tool en vul de relevante waarden in.</li><li>Controleer de uitvoer in het resultaatpaneel.</li><li>Kopieer alleen het deel dat bij je página past.</li><li>Test de wijziging voordat je publiceert.</li></ol>
       <h2>Waarvoor je het kunt gebruiken</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Veelgemaakte fouten</h2>
       <ul><li>Uitvoer kopieren zonder controle.</li><li>Lokale URL's gebruiken in plaats van publieke URL's.</li><li>Na de build niet controleren of het bestand in de publicatiemap staat.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Test that a style in a later layer correctly overrides an equivalent style in an earlier layer regardless of specificity differences.</li><li>Check that unlayered styles do not unexpectedly beat layered styles by ensuring all page styles are assigned to a named layer.</li></ol>
     </article>
   </div>
 </section>

@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>What is GitHub Pages Workflow Generator?</h2>
       <p>A GitHub Pages workflow is a GitHub Actions YAML file that automatically builds and deploys your site every time you push to the main branch. Beginners often need a template that includes the correct permissions, concurrency settings, Node setup, build step, and artifact upload. This tool generates a ready-to-use pages.yml with the standard deployment structure.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>A GitHub Actions workflow automates building and deploying your static site to GitHub Pages on every push. The generated YAML includes the standard permissions, concurrency settings, and build steps.</p></div>
+      <h3>Limitations</h3><ul><li>The generated workflow is a standard template. Custom build tools, monorepos, or multi-step pipelines may need additional job steps or custom actions.</li><li>GitHub Pages deployment via Actions only works for public repositories or private repositories with GitHub Pro, Team, or Enterprise plans.</li><li>The CNAME placeholder file must be created or copied into the output directory if the site uses a custom domain.</li></ul>
       <h2>How to use this tool</h2>
       <ol><li>Choose the site type preset or enter custom build settings.</li><li>Set the Node version, build command, and output directory for your project.</li><li>Copy the generated YAML into .github/workflows/pages.yml in your repository.</li><li>Enable GitHub Pages in your repository settings to use GitHub Actions as the source.</li></ol>
       <h2>What you can use it for</h2>
@@ -123,7 +123,7 @@
     <article class="tool-article">
       <h2>Common mistakes</h2>
       <ul><li>Using the wrong output directory, which causes GitHub Pages to serve an empty or incomplete site.</li><li>Forgetting to set the correct permissions for pages and id-token in the workflow.</li><li>Leaving the CNAME placeholder in the workflow when the site does not use a custom domain.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Push the workflow file to your repository and check the Actions tab to confirm the workflow runs successfully.</li><li>After a successful run, visit your GitHub Pages URL and verify the site content matches the expected output.</li></ol>
     </article>
   </div>
 </section>
@@ -141,6 +141,9 @@
 </details><details class="faq-item">
   <summary>Do I need to configure anything in the repository settings?</summary>
   <p>Yes. Go to Settings &gt; Pages and set the source to GitHub Actions. This tells GitHub Pages to use the workflow deployment instead of branch-based deployment.</p>
+</details><details class="faq-item">
+  <summary>What Node version should I use?</summary>
+  <p>Use the Node version that matches your project requirements. Node 20 or 22 are safe choices for most static site generators. The version field in the generated workflow can be adjusted to match your local or CI environment.</p>
 </details>
     </div>
   </div>
@@ -233,6 +236,6 @@
       </div>
     </div>
   </footer>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"GitHub Pages Workflow Generator","description":"Generate a GitHub Actions workflow YAML to deploy a static site, Vite, or Astro project to GitHub Pages.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/github-pages-workflow-generator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"GitHub Pages Tools","item":"https://www.jquery.app/tools/github-pages/"},{"@type":"ListItem","position":4,"name":"GitHub Pages Workflow Generator","item":"https://www.jquery.app/tools/github-pages-workflow-generator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where should the workflow file be saved?","acceptedAnswer":{"@type":"Answer","text":"Save it as .github/workflows/pages.yml in your repository. GitHub Actions automatically detects and runs workflow files in that directory."}},{"@type":"Question","name":"Do I need to configure anything in the repository settings?","acceptedAnswer":{"@type":"Answer","text":"Yes. Go to Settings > Pages and set the source to GitHub Actions. This tells GitHub Pages to use the workflow deployment instead of branch-based deployment."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"GitHub Pages Workflow Generator","description":"Generate a GitHub Actions workflow YAML to deploy a static site, Vite, or Astro project to GitHub Pages.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/github-pages-workflow-generator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"GitHub Pages Tools","item":"https://www.jquery.app/tools/github-pages/"},{"@type":"ListItem","position":4,"name":"GitHub Pages Workflow Generator","item":"https://www.jquery.app/tools/github-pages-workflow-generator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where should the workflow file be saved?","acceptedAnswer":{"@type":"Answer","text":"Save it as .github/workflows/pages.yml in your repository. GitHub Actions automatically detects and runs workflow files in that directory."}},{"@type":"Question","name":"Do I need to configure anything in the repository settings?","acceptedAnswer":{"@type":"Answer","text":"Yes. Go to Settings > Pages and set the source to GitHub Actions. This tells GitHub Pages to use the workflow deployment instead of branch-based deployment."}},{"@type":"Question","name":"What Node version should I use?","acceptedAnswer":{"@type":"Answer","text":"Use the Node version that matches your project requirements. Node 20 or 22 are safe choices for most static site generators. The version field in the generated workflow can be adjusted to match your local or CI environment."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
 </body>
 </html>

@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>What is CSS Safe Area Insets Generator?</h2>
       <p>Safe-area insets are CSS environment variables that help keep content away from phone notches, rounded screen corners, home indicator areas, and other display cutouts. They are useful for mobile web apps, fixed headers, sticky bottom bars, and full-bleed layouts.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>Generate CSS padding, margin, or position offset rules using env(safe-area-inset-*) with fallback values. This keeps content away from phone notches, rounded screen corners, and home indicators on modern mobile devices.</p></div>
+      <h3>Limitations</h3><ul><li>Safe-area inset variables are only relevant on notched mobile devices and phones with rounded corners or home indicators. Desktop and older mobile browsers return zero for all safe-area values.</li><li>A fallback value is essential. Without a fallback, browsers that do not support env() variables will use the default of zero, which can cause content to overlap with page edges.</li><li>The viewport-fit=cover meta tag must be present in the HTML head for safe-area variables to produce the intended effect on iOS Safari. Without it, the page may letterbox.</li></ul>
       <h2>How to use this tool</h2>
       <ol><li>Choose whether you want to generate padding, margin, or inset rules.</li><li>Set a fallback value for browsers and screens that do not need special safe-area spacing.</li><li>Enter the selector that should receive the safe-area spacing.</li><li>Copy the meta viewport tag and CSS into your page, then test on a mobile device or simulator.</li></ol>
       <h2>What you can use it for</h2>
@@ -123,7 +123,7 @@
     <article class="tool-article">
       <h2>Common mistakes</h2>
       <ul><li>Using safe-area variables without a fallback.</li><li>Applying inset padding on desktop layouts where it is not needed.</li><li>Forgetting viewport-fit=cover when testing full-screen mobile layouts.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Open the published page on a notched mobile device or in Chrome DevTools with a device like iPhone X or Pixel 6. Confirm fixed elements do not overlap with the notch or home indicator.</li><li>Set the viewport-fit=cover meta tag in the head and verify the page extends edge to edge while safe-area padding keeps content clear of obstructions.</li></ol>
     </article>
   </div>
 </section>
@@ -144,6 +144,9 @@
 </details><details class="faq-item">
   <summary>Should I apply safe-area padding to the whole page?</summary>
   <p>Usually no. Apply it to fixed bars, app shells, or sections that need edge protection.</p>
+</details><details class="faq-item">
+  <summary>Will safe-area-inset values work on desktop browsers?</summary>
+  <p>Desktop browsers without display notches return zero for env(safe-area-inset-*) variables. Including a fallback value ensures your layout looks correct on both mobile and desktop without side effects.</p>
 </details>
     </div>
   </div>
@@ -236,6 +239,6 @@
       </div>
     </div>
   </footer>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CSS Safe Area Insets Generator","description":"Generate CSS for safe-area insets on phones with notches and rounded corners.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/css-safe-area-insets-generator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"CSS Tools","item":"https://www.jquery.app/tools/css/"},{"@type":"ListItem","position":4,"name":"CSS Safe Area Insets Generator","item":"https://www.jquery.app/tools/css-safe-area-insets-generator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do safe-area variables work on every browser?","acceptedAnswer":{"@type":"Answer","text":"Support is strongest where display cutouts matter. Always include fallback spacing so layouts remain usable elsewhere."}},{"@type":"Question","name":"Why is viewport-fit=cover included?","acceptedAnswer":{"@type":"Answer","text":"It allows the page to extend into the full visual viewport on supported mobile browsers, which makes safe-area spacing meaningful."}},{"@type":"Question","name":"Should I apply safe-area padding to the whole page?","acceptedAnswer":{"@type":"Answer","text":"Usually no. Apply it to fixed bars, app shells, or sections that need edge protection."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CSS Safe Area Insets Generator","description":"Generate CSS for safe-area insets on phones with notches and rounded corners.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://www.jquery.app/tools/css-safe-area-insets-generator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jquery.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.jquery.app/tools/"},{"@type":"ListItem","position":3,"name":"CSS Tools","item":"https://www.jquery.app/tools/css/"},{"@type":"ListItem","position":4,"name":"CSS Safe Area Insets Generator","item":"https://www.jquery.app/tools/css-safe-area-insets-generator/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do safe-area variables work on every browser?","acceptedAnswer":{"@type":"Answer","text":"Support is strongest where display cutouts matter. Always include fallback spacing so layouts remain usable elsewhere."}},{"@type":"Question","name":"Why is viewport-fit=cover included?","acceptedAnswer":{"@type":"Answer","text":"It allows the page to extend into the full visual viewport on supported mobile browsers, which makes safe-area spacing meaningful."}},{"@type":"Question","name":"Should I apply safe-area padding to the whole page?","acceptedAnswer":{"@type":"Answer","text":"Usually no. Apply it to fixed bars, app shells, or sections that need edge protection."}},{"@type":"Question","name":"Will safe-area-inset values work on desktop browsers?","acceptedAnswer":{"@type":"Answer","text":"Desktop browsers without display notches return zero for env(safe-area-inset-*) variables. Including a fallback value ensures your layout looks correct on both mobile and desktop without side effects."}}]}</script><script type="module" src="/assets/tool-core.js"></script>
 </body>
 </html>

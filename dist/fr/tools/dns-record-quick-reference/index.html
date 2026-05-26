@@ -88,8 +88,8 @@
     <article class="tool-article">
       <h2>Qu'est-ce que Reference rapide des enregistrements DNS ?</h2>
       <p>Reference rapide des enregistrements DNS est un outil dans le navigateur pour cette tâche : Saisissez un domaine et obtenez des exemples d'enregistrements A, AAAA, CNAME, MX et TXT. La sortie reste lisible afin de la vérifier avant de l'utiliser sur un site publié.</p>
-      
-      
+      <div class="quick-answer"><h3>Quick answer</h3><p>DNS records connect your domain to hosting services by mapping names to IP addresses, mail servers, and verification data. Each record type serves a specific purpose and the wrong type can break your site or email.</p></div>
+      <h3>Limitations</h3><ul><li>The generated example records are generic. Actual DNS values depend on your hosting provider, email service, and specific requirements.</li><li>DNS changes can take from minutes to several hours to propagate globally depending on TTL values and the domain provider.</li><li>A CNAME record cannot coexist with other record types at the same name. Using a CNAME at the apex will break other services such as email.</li></ul>
       <h2>Comment utiliser cet outil</h2>
       <ol><li>Ouvrez l'outil et saisissez les valeurs utiles.</li><li>Vérifiez la sortie dans le panneau de résultat.</li><li>Copiez seulement la partie adaptéeà votre page.</li><li>Testez la modification avant publication.</li></ol>
       <h2>A quoi il sert</h2>
@@ -107,7 +107,7 @@
     <article class="tool-article">
       <h2>Erreurs frequentes</h2>
       <ul><li>Copier la sortie sans verification.</li><li>Utiliser des URL locales au lieu des URL publiques finales.</li><li>Oublier de vérifier le dossier publié après le build.</li></ul>
-      
+      <h2>Verification</h2><ol><li>Use a DNS lookup tool such as dig or a web-based DNS checker to confirm each record resolves to the expected value after propagation.</li><li>Verify the site loads over HTTPS after DNS changes are complete. Some DNS providers may cache stale records longer than the configured TTL.</li></ol>
     </article>
   </div>
 </section>
