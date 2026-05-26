@@ -266,8 +266,8 @@ button {
 .hero-grid,
 .tool-hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.82fr);
-  gap: 64px;
+  grid-template-columns: 1fr;
+  gap: 24px;
   align-items: center;
 }
 
@@ -762,17 +762,20 @@ button {
 }
 
 .tool-side-note {
-  width: 300px;
-  flex: none;
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  flex-wrap: wrap;
+  gap: 20px;
   padding: 20px;
   border-radius: 12px;
   background: var(--surface-card);
 }
 
+.tool-side-note .eyebrow {
+  flex: 1 0 100%;
+}
+
 .tool-side-note .tool-meta-list {
+  flex: 2 1 350px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -787,6 +790,7 @@ button {
 }
 
 .tool-side-note .tool-side-links {
+  flex: 1 1 200px;
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -811,11 +815,16 @@ button {
   text-decoration: underline;
 }
 
+.tool-side-note .button {
+  flex: 0 0 auto;
+  align-self: center;
+}
+
 .tool-side-note .side-privacy {
+  flex: 1 0 100%;
   font-size: 11px;
   color: #999;
   text-align: center;
-  margin-top: auto;
   padding-top: 8px;
   border-top: 1px solid var(--border);
 }
@@ -1212,10 +1221,6 @@ button {
   .tool-grid.compact,
   .example-grid {
     grid-template-columns: 1fr;
-  }
-
-  .tool-side-note {
-    width: 100%;
   }
 
   .content-rail {
