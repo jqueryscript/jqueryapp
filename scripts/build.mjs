@@ -1026,8 +1026,7 @@ async function copyAssets() {
   }
   await copyFile(path.join(assetsDir, "favicon.svg"), path.join(distDir, "favicon.svg"));
   // GSC verification file
-  const gscFile = path.join(root, "google9d00cdf8df0ddc4e.html");
-  try { await copyFile(gscFile, path.join(distDir, "google9d00cdf8df0ddc4e.html")); } catch {}
+  await copyFile(path.join(root, "src", "google9d00cdf8df0ddc4e.html"), path.join(distDir, "google9d00cdf8df0ddc4e.html"));
 }
 
 async function buildLocale(locale) {
