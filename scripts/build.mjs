@@ -78,7 +78,7 @@ function pageShell({ locale, title, description, pathname, body, scripts = "", c
   };
 
   const navItems = [
-    [ui(locale, "tools"), urlFor(locale, "tools"), "tools"],
+    [uiText(locale, "allTools", "All Tools"), urlFor(locale, "tools"), "tools"],
     [ui(locale, "seo"), urlFor(locale, "tools/seo"), "seo"],
     [ui(locale, "html"), urlFor(locale, "tools/html"), "html"],
     [ui(locale, "css"), urlFor(locale, "tools/css"), "css"],
@@ -103,7 +103,7 @@ function pageShell({ locale, title, description, pathname, body, scripts = "", c
             <div class="mega-tools">
               ${tools.map((t) => `<a href="${urlFor(locale, `tools/${t.id}`)}">${escapeHtml(t.name)}</a>`).join("")}
             </div>
-            <a class="mega-all" href="${href}">All ${label} &rarr;</a>
+            <a class="mega-all" href="${href}">All Free ${label} &rarr;</a>
           </div>
         </div>
       </div>`;
@@ -191,7 +191,7 @@ ${alternateLinks}
           return `<details class="offcanvas-group">
             <summary>${oicon}${label}</summary>
             ${tools.length ? tools.map((t) => `<a href="${urlFor(locale, `tools/${t.id}`)}">${escapeHtml(t.name)}</a>`).join("") : ""}
-            <a href="${href}" class="offcanvas-view-all">All ${label}</a>
+            <a href="${href}" class="offcanvas-view-all">All Free ${label}</a>
           </details>`;
         }).join("")}
       </nav>
@@ -205,50 +205,15 @@ ${alternateLinks}
   </main>
   <script>
     (function(){
-      // Offcanvas toggle
       var btn = document.getElementById('menu-toggle');
       var panel = document.getElementById('offcanvas');
       var overlay = document.getElementById('offcanvas-overlay');
-      if(btn&&panel&&overlay){
-        function open(){btn.setAttribute('aria-expanded','true');panel.classList.add('open');overlay.classList.add('open');document.body.style.overflow='hidden';}
-        function close(){btn.setAttribute('aria-expanded','false');panel.classList.remove('open');overlay.classList.remove('open');document.body.style.overflow='';}
-        btn.addEventListener('click',function(){btn.getAttribute('aria-expanded')==='true'?close():open();});
-        overlay.addEventListener('click',close);
-        document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
-      }
-      // Mega menu hover with delay to bridge the gap
-      var items = document.querySelectorAll('.nav-item');
-      var openTimer = null;
-      var currentOpen = null;
-      items.forEach(function(item){
-        var panel = item.querySelector('.mega-panel');
-        if(!panel)return;
-        function show(){
-          if(openTimer){clearTimeout(openTimer);openTimer=null;}
-          if(currentOpen&&currentOpen!==panel){currentOpen.classList.remove('open');}
-          panel.classList.add('open');
-          currentOpen = panel;
-        }
-        function hide(){
-          openTimer = setTimeout(function(){
-            panel.classList.remove('open');
-            if(currentOpen===panel)currentOpen=null;
-          }, 150);
-        }
-        item.addEventListener('mouseenter', show);
-        item.addEventListener('mouseleave', hide);
-        panel.addEventListener('mouseenter', function(){
-          if(openTimer){clearTimeout(openTimer);openTimer=null;}
-        });
-        panel.addEventListener('mouseleave', hide);
-        // Keep open when focus is inside mega panel
-        panel.addEventListener('focusin', show);
-        panel.addEventListener('focusout', function(e){
-          if(!panel.contains(e.relatedTarget) && e.relatedTarget!==item){
-            hide();
-          }
-        });
-      });
+      if(!btn||!panel||!overlay)return;
+      function open(){btn.setAttribute('aria-expanded','true');panel.classList.add('open');overlay.classList.add('open');document.body.style.overflow='hidden';}
+      function close(){btn.setAttribute('aria-expanded','false');panel.classList.remove('open');overlay.classList.remove('open');document.body.style.overflow='';}
+      btn.addEventListener('click',function(){btn.getAttribute('aria-expanded')==='true'?close():open();});
+      overlay.addEventListener('click',close);
+      document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
     })();
   </script>
   <footer class="site-footer">
