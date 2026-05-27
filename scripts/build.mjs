@@ -1219,6 +1219,115 @@ async function writeLegacyDefaultLocaleRedirects(locale, tools, categories, coll
   }
 }
 
+// --- Minification (zero-dependency, Node.js built-ins only) ---
+
+function minifyCSS(content) {
+  return content
+    .replace(/\/\*[\s\S]*?\*\//g, "")           // remove block comments
+    .replace(/\s+/g, " ")                        // collapse whitespace
+    .replace(/\s*([{}:;,>+~])\s*/g, "$1")       // remove space around operators
+    .replace(/;\s*}/g, "}")                      // remove trailing semicolons before }
+    .replace(/}\s*/g, "}")                       // collapse whitespace after }
+    .trim();
+}
+
+function minifyJS(content) {
+  let out = "";
+  let i = 0;
+  while (i < content.length) {
+    // String literals: pass through unchanged
+    if (content[i] === '"' || content[i] === "'" || content[i] === "`") {
+      const quote = content[i];
+      out += quote;
+      i++;
+      while (i < content.length && content[i] !== quote) {
+        if (content[i] === "\\") { out += content[i] + content[i + 1]; i += 2; }
+        else { out += content[i]; i++; }
+      }
+      if (i < content.length) { out += content[i]; i++; }
+      continue;
+    }
+    // Line comments
+    if (content[i] === "/" && content[i + 1] === "/") {
+      while (i < content.length && content[i] !== "\n") i++;
+      out += " ";
+      continue;
+    }
+    // Block comments
+    if (content[i] === "/" && content[i + 1] === "*") {
+      i += 2;
+      while (i < content.length && !(content[i] === "*" && content[i + 1] === "/")) i++;
+      if (i < content.length) i += 2;
+      out += " ";
+      continue;
+    }
+    // Regex literal (after =, (, [, !, etc. — simple heuristic)
+    if (content[i] === "/" && i > 0 && /[=(\[!?:,;&|^~<>]/.test(content[i - 1] || " ")) {
+      out += "/";
+      i++;
+      while (i < content.length && content[i] !== "/") {
+        if (content[i] === "\\") { out += content[i] + content[i + 1]; i += 2; }
+        else { out += content[i]; i++; }
+      }
+      if (i < content.length) { out += "/"; i++; }
+      // skip regex flags
+      while (i < content.length && /[gimsuy]/.test(content[i])) { out += content[i]; i++; }
+      continue;
+    }
+    out += content[i];
+    i++;
+  }
+  return out
+    .replace(/\n\s+/g, "\n")          // trim leading whitespace per line
+    .replace(/[ \t]+/g, " ")          // collapse horizontal whitespace
+    .replace(/\n{2,}/g, "\n")         // collapse blank lines
+    .replace(/^\s+|\s+$/gm, "")       // trim each line
+    .replace(/\n/g, "")               // join lines
+    .trim();
+}
+
+function minifyHTML(content) {
+  // Protect inline scripts, styles, pre, and textarea
+  const blocks = [];
+  const safe = content
+    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, (m) => { blocks.push(m); return `___BLOCK_${blocks.length - 1}___`; })
+    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, (m) => { blocks.push(m); return `___BLOCK_${blocks.length - 1}___`; })
+    .replace(/<pre\b[^>]*>[\s\S]*?<\/pre>/gi, (m) => { blocks.push(m); return `___BLOCK_${blocks.length - 1}___`; })
+    .replace(/<textarea\b[^>]*>[\s\S]*?<\/textarea>/gi, (m) => { blocks.push(m); return `___BLOCK_${blocks.length - 1}___`; });
+
+  let out = safe
+    .replace(/<!--[\s\S]*?-->/g, "")   // remove HTML comments
+    .replace(/\s+/g, " ")              // collapse whitespace
+    .replace(/>\s+</g, "><")           // remove whitespace between tags
+    .trim();
+
+  // Restore protected blocks
+  blocks.forEach((block, idx) => {
+    out = out.replace(`___BLOCK_${idx}___`, block);
+  });
+
+  return out;
+}
+
+async function minifyDir(dir) {
+  const entries = await readdir(dir, { withFileTypes: true });
+  for (const entry of entries) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      await minifyDir(full);
+    } else if (entry.name.endsWith(".html")) {
+      const raw = await readFile(full, "utf8");
+      await writeFile(full, minifyHTML(raw), "utf8");
+    } else if (entry.name.endsWith(".css")) {
+      const raw = await readFile(full, "utf8");
+      await writeFile(full, minifyCSS(raw), "utf8");
+    } else if (entry.name.endsWith(".js") && !entry.name.includes(".min.")) {
+      const raw = await readFile(full, "utf8");
+      await writeFile(full, minifyJS(raw), "utf8");
+    }
+  }
+}
+
 async function build() {
   await rm(distDir, { recursive: true, force: true });
   await mkdir(distDir, { recursive: true });
@@ -1240,6 +1349,8 @@ Sitemap: ${new URL("/sitemap.xml", site.baseUrl).toString()}
 `, "utf8");
   await writeFile(path.join(distDir, "sitemap.xml"), sitemapXml(sitemapUrls), "utf8");
   await writeFile(path.join(distDir, "llms.txt"), llmsTxt(defaultTools, defaultCategories), "utf8");
+
+  await minifyDir(distDir);
 }
 
 await build();

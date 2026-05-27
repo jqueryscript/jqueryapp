@@ -1,14 +1,1 @@
-import { field, textarea, select, checkbox, htmlEscape, attrEscape, normalizeUrl } from "../tool-core.js";
-
-export default {
-    form: `
-      <div class="field-grid">
-        ${field({ id: "canonical", label: "Canonical URL", value: "https://example.com/page/", full: true })}
-        ${checkbox({ id: "trimIndex", label: "Remove index.html", checked: true })}
-      </div>`,
-    generate(root) {
-      let url = normalizeUrl(root.querySelector("#canonical").value);
-      if (root.querySelector("#trimIndex").checked) url = url.replace(/index\.html?$/i, "");
-      return { output: `<link rel="canonical" href="${attrEscape(url)}">` };
-    }
-  };
+import { field, textarea, select, checkbox, htmlEscape, attrEscape, normalizeUrl } from "../tool-core.js";export default {form: `<div class="field-grid">${field({ id: "canonical", label: "Canonical URL", value: "https://example.com/page/", full: true })}${checkbox({ id: "trimIndex", label: "Remove index.html", checked: true })}</div>`,generate(root) {let url = normalizeUrl(root.querySelector("#canonical").value);if (root.querySelector("#trimIndex").checked) url = url.replace(/index\.html?$/i, "");return { output: `<link rel="canonical" href="${attrEscape(url)}">` };}};
