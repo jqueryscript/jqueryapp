@@ -300,12 +300,25 @@
       var btn = document.getElementById('menu-toggle');
       var panel = document.getElementById('offcanvas');
       var overlay = document.getElementById('offcanvas-overlay');
-      if(!btn||!panel||!overlay)return;
-      function open(){btn.setAttribute('aria-expanded','true');panel.classList.add('open');overlay.classList.add('open');document.body.style.overflow='hidden';}
-      function close(){btn.setAttribute('aria-expanded','false');panel.classList.remove('open');overlay.classList.remove('open');document.body.style.overflow='';}
-      btn.addEventListener('click',function(){btn.getAttribute('aria-expanded')==='true'?close():open();});
-      overlay.addEventListener('click',close);
-      document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+      if(btn&&panel&&overlay){
+        function open(){btn.setAttribute('aria-expanded','true');panel.classList.add('open');overlay.classList.add('open');document.body.style.overflow='hidden';}
+        function close(){btn.setAttribute('aria-expanded','false');panel.classList.remove('open');overlay.classList.remove('open');document.body.style.overflow='';}
+        btn.addEventListener('click',function(){btn.getAttribute('aria-expanded')==='true'?close():open();});
+        overlay.addEventListener('click',close);
+        document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+      }
+      var items = document.querySelectorAll('.nav-item');
+      var timer = null, current = null;
+      items.forEach(function(item){
+        var p = item.querySelector('.mega-panel');
+        if(!p)return;
+        function show(){if(timer){clearTimeout(timer);timer=null;}if(current&&current!==p){current.classList.remove('open');}p.classList.add('open');current=p;}
+        function hide(){timer=setTimeout(function(){p.classList.remove('open');if(current===p)current=null;},150);}
+        item.addEventListener('mouseenter',show);
+        item.addEventListener('mouseleave',hide);
+        p.addEventListener('mouseenter',function(){if(timer){clearTimeout(timer);timer=null;}});
+        p.addEventListener('mouseleave',hide);
+      });
     })();
   </script>
   <footer class="site-footer">

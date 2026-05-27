@@ -102,7 +102,7 @@ button {
 
 .header-inner {
   display: flex;
-  align-items: stretch;
+  align-items: center;
   justify-content: space-between;
   gap: 32px;
   min-height: 68px;
@@ -115,8 +115,6 @@ button {
   color: var(--ink);
   font-weight: 600;
   text-decoration: none;
-  align-self: center;
-  padding: 4px 0;
 }
 
 .brand-mark {
@@ -163,7 +161,7 @@ button {
 
 .main-nav {
   display: flex;
-  align-items: stretch;
+  align-items: center;
   gap: 2px;
   min-width: 0;
 }
@@ -240,11 +238,22 @@ button {
 
 .nav-item {
   position: static;
-  align-self: stretch;
 }
 
-.nav-item:hover .mega-panel,
-.nav-item:focus-within .mega-panel {
+.mega-panel {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  background: var(--canvas);
+  border-bottom: 1px solid var(--hairline);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+  padding: 24px 0 20px;
+}
+
+.mega-panel.open {
   display: block;
 }
 
