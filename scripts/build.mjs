@@ -112,7 +112,7 @@ function pageShell({ locale, title, description, pathname, body, scripts = "", c
             <div class="mega-tools">
               ${tools.map((t) => `<a href="${urlFor(locale, `tools/${t.id}`)}">${escapeHtml(t.name)}</a>`).join("")}
             </div>
-            <a class="mega-all" href="${href}">All Free ${label} &rarr;</a>
+            <a class="mega-all" href="${href}">${escapeHtml(uiText(locale, "megaAllPrefix", "All Free "))}${label} &rarr;</a>
           </div>
         </div>
       </div>`;
@@ -200,7 +200,7 @@ ${alternateLinks}
           return `<details class="offcanvas-group">
             <summary>${oicon}${label}</summary>
             ${tools.length ? tools.map((t) => `<a href="${urlFor(locale, `tools/${t.id}`)}">${escapeHtml(t.name)}</a>`).join("") : ""}
-            <a href="${href}" class="offcanvas-view-all">All Free ${label}</a>
+            <a href="${href}" class="offcanvas-view-all">${escapeHtml(uiText(locale, "megaAllPrefix", "All Free "))}${label}</a>
           </details>`;
         }).join("")}
       </nav>
