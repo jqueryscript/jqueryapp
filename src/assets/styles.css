@@ -171,8 +171,9 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 0 16px;
-  border-radius: 8px;
+  min-height: 44px;
+  padding: 8px 16px;
+  border-radius: 10px;
   color: var(--muted);
   font-size: 14px;
   font-weight: 500;
@@ -182,6 +183,7 @@ button {
   border: 0;
   background: none;
   font-family: inherit;
+  line-height: 1;
 }
 
 .main-nav a svg,
