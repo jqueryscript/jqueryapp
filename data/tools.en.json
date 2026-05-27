@@ -5,7 +5,11 @@
     "category": "seo",
     "summary": "Generate clean hreflang tags for multilingual static websites.",
     "description": "Create alternate language tags from a simple language and URL list. Useful for GitHub Pages, static sites, blogs, documentation sites, and small business websites with translated pages.",
-    "keywords": ["hreflang generator", "alternate language tag", "multilingual seo"],
+    "keywords": [
+      "hreflang generator",
+      "alternate language tag",
+      "multilingual seo"
+    ],
     "whatIs": "A hreflang tag tells search engines which language or regional version of a page should be shown to a visitor. It is most useful when the same content exists in English, Spanish, Chinese, Japanese, or another language. Static sites often need these tags because GitHub Pages and simple HTML exports do not create them automatically.",
     "howToUse": [
       "Enter one language and URL pair per line, using the format language-code|absolute-url.",
@@ -45,6 +49,10 @@
       {
         "question": "Can I use relative URLs in hreflang tags?",
         "answer": "Absolute URLs are safer and easier to audit. Use the final public URL that visitors and search engines can access."
+      },
+      {
+        "question": "What happens if a language code does not match the actual page content language?",
+        "answer": "Search engines may ignore the hreflang annotation entirely if they detect a mismatch between the declared language code and the actual page content. This can cause the wrong language version to appear in search results. Always verify that the language code matches the primary language of the page content, and that the page does not mix multiple languages in a way that confuses language detection."
       }
     ],
     "quickAnswer": "Use hreflang tags to tell search engines which language or regional version of a page to show to users. Every page in a language group must link to every other version, including itself.",
@@ -65,7 +73,11 @@
     "category": "seo",
     "summary": "Build social preview meta tags for blog posts and static pages.",
     "description": "Generate Open Graph and Twitter Card tags from title, description, URL, image, and site name fields. The output is ready to paste into the HTML head.",
-    "keywords": ["open graph generator", "twitter card generator", "social preview meta tags"],
+    "keywords": [
+      "open graph generator",
+      "twitter card generator",
+      "social preview meta tags"
+    ],
     "whatIs": "Open Graph and Twitter Card tags control how a page appears when someone shares it on social platforms, messaging apps, and link preview tools. They define the preview title, description, image, page URL, and card format. They are useful when default previews pull the wrong text or no image at all.",
     "howToUse": [
       "Enter the page title, description, canonical URL, site name, and preview image URL.",
@@ -105,10 +117,6 @@
       {
         "question": "Can one page use both Open Graph and Twitter tags?",
         "answer": "Yes. Most pages should use both. Open Graph covers many platforms, while Twitter Card tags give extra control for X-style previews."
-      },
-      {
-        "question": "What image size should I use for social previews?",
-        "answer": "A 1200 by 630 pixel image is a practical default for large link previews. Keep important text away from the edges so the preview renders correctly."
       }
     ],
     "quickAnswer": "Generate Open Graph and Twitter Card meta tags to control how your page appears when shared on social platforms, messaging apps, and link preview tools. Use absolute URLs for images and test after publishing.",
@@ -128,7 +136,11 @@
     "category": "github-pages",
     "summary": "Create the CNAME file content and DNS notes for a GitHub Pages custom domain.",
     "description": "Enter a domain and get the exact CNAME file content plus common DNS record guidance for apex and www setups.",
-    "keywords": ["github pages cname", "github pages custom domain", "cname file generator"],
+    "keywords": [
+      "github pages cname",
+      "github pages custom domain",
+      "cname file generator"
+    ],
     "whatIs": "A CNAME file tells GitHub Pages which custom domain should be attached to a published site. The file must contain only the domain name, with no protocol, path, or extra text. This helper keeps the file content and DNS notes separate, which helps prevent small publishing mistakes.",
     "howToUse": [
       "Enter the custom domain you want to use for GitHub Pages.",
@@ -168,10 +180,6 @@
       {
         "question": "Why does my custom domain disappear after deployment?",
         "answer": "Many build tools delete and regenerate the output folder. Make sure the CNAME file is copied into the final build output every time."
-      },
-      {
-        "question": "Why does my CNAME disappear after every deploy?",
-        "answer": "Most static site generators and CI pipelines clean the output folder before rebuilding. If the CNAME file is not in your source repository or your build process does not copy it, the file will be missing after each deployment. Add CNAME to your source tree or configure your build tool to keep it."
       }
     ],
     "quickAnswer": "Create the CNAME file for a GitHub Pages custom domain and get the matching DNS guidance for www or apex setups. The file must contain only the bare domain name with no protocol or path.",
@@ -191,7 +199,11 @@
     "category": "seo",
     "summary": "Generate a practical SEO checklist for static websites before launch.",
     "description": "Choose your site type and features, then get a launch checklist for metadata, indexing, links, performance, and multilingual setup.",
-    "keywords": ["static site seo checklist", "github pages seo checklist", "website launch checklist"],
+    "keywords": [
+      "static site seo checklist",
+      "github pages seo checklist",
+      "website launch checklist"
+    ],
     "whatIs": "A static site SEO checklist is a pre-publish review for HTML sites, GitHub Pages projects, static blogs, documentation sites, and small tool websites. It helps catch missing titles, broken internal links, missing canonical tags, missing social tags, and other small issues that can reduce search visibility.",
     "howToUse": [
       "Choose the site type that best matches your project.",
@@ -231,10 +243,6 @@
       {
         "question": "Does a GitHub Pages site need SEO tags?",
         "answer": "Yes. Static hosting does not remove the need for titles, descriptions, canonical URLs, internal links, and indexable HTML."
-      },
-      {
-        "question": "How does this checklist differ from a technical SEO audit?",
-        "answer": "This checklist focuses on common static site issues before or shortly after launch. A technical SEO audit examines crawl data, server logs, duplicate content clusters, backlink profiles, and historical ranking trends. Use both for a complete picture."
       }
     ],
     "quickAnswer": "Generate a practical launch checklist for your static site that covers metadata, indexing, links, performance, and multilingual setup. Select your site type and features, then review each item before publishing.",
@@ -254,7 +262,11 @@
     "category": "seo",
     "summary": "Generate page-level robots meta tags without guessing directive syntax.",
     "description": "Build robots meta tags for indexing, following, snippets, image previews, and archive behavior.",
-    "keywords": ["robots meta tag generator", "noindex generator", "meta robots"],
+    "keywords": [
+      "robots meta tag generator",
+      "noindex generator",
+      "meta robots"
+    ],
     "whatIs": "A robots meta tag gives page-level instructions to search engines. It can allow indexing, prevent indexing, allow or block following links, limit snippets, and control image previews. It is useful when one page needs special treatment without changing the whole site's robots.txt file.",
     "howToUse": [
       "Choose whether the page should be indexed and whether links should be followed.",
@@ -317,7 +329,11 @@
     "category": "seo",
     "summary": "Generate canonical link tags for static pages and blog posts.",
     "description": "Enter the preferred page URL and get a clean canonical tag for your HTML head.",
-    "keywords": ["canonical tag generator", "canonical url", "seo link tag"],
+    "keywords": [
+      "canonical tag generator",
+      "canonical url",
+      "seo link tag"
+    ],
     "whatIs": "A canonical tag tells search engines which URL is the preferred version of a page. It is helpful when the same content can appear with and without a trailing slash, through index.html, through tracking parameters, or through alternate paths. Static sites often need canonical tags because routing and deployment output can create multiple versions of the same page.",
     "howToUse": [
       "Enter the final public URL that should be treated as the preferred version.",
@@ -357,6 +373,10 @@
       {
         "question": "Do canonical tags replace redirects?",
         "answer": "No. Redirects control visitor and crawler navigation. Canonical tags are indexing signals for equivalent content."
+      },
+      {
+        "question": "What should the canonical URL be on a paginated page (page 2, page 3...)?",
+        "answer": "Each paginated page should generally point its canonical URL to itself, not to page 1. Pointing all pages in a series to page 1 tells search engines that only page 1 exists and can prevent deeper content from being indexed. Use self-referencing canonicals on paginated pages and add rel=\"next\" and rel=\"prev\" link tags, or use a View All page as the canonical target if one exists."
       }
     ],
     "quickAnswer": "Use the canonical URL tag to tell search engines which version of a page is the authoritative one when duplicate or near-duplicate content exists across multiple URLs.",
@@ -371,12 +391,37 @@
     ],
     "comparison": {
       "title": "canonical vs hreflang vs sitemap",
-      "columns": ["Aspect", "canonical", "hreflang", "sitemap"],
+      "columns": [
+        "Aspect",
+        "canonical",
+        "hreflang",
+        "sitemap"
+      ],
       "rows": [
-        ["Purpose", "Declares the preferred URL when duplicate or near-duplicate content exists", "Maps equivalent pages in different languages or regions", "Lists all important URLs for crawler discovery and prioritization"],
-        ["Where it goes", "In the HTML head as a link tag or in the HTTP header", "In the HTML head as a link tag with hreflang attribute", "Standalone XML file at the site root"],
-        ["What happens if missing", "Search engines may choose a different URL or treat multiple URLs as separate pages", "Search engines may serve the wrong language version or no language-specific result", "Deep pages may not be discovered by crawlers"],
-        ["Affects ranking or discovery", "Ranking. Helps consolidate ranking signals to one URL.", "Discovery and ranking. Helps match the correct language page to the searcher.", "Discovery. Helps crawlers find pages but does not directly affect ranking."]
+        [
+          "Purpose",
+          "Declares the preferred URL when duplicate or near-duplicate content exists",
+          "Maps equivalent pages in different languages or regions",
+          "Lists all important URLs for crawler discovery and prioritization"
+        ],
+        [
+          "Where it goes",
+          "In the HTML head as a link tag or in the HTTP header",
+          "In the HTML head as a link tag with hreflang attribute",
+          "Standalone XML file at the site root"
+        ],
+        [
+          "What happens if missing",
+          "Search engines may choose a different URL or treat multiple URLs as separate pages",
+          "Search engines may serve the wrong language version or no language-specific result",
+          "Deep pages may not be discovered by crawlers"
+        ],
+        [
+          "Affects ranking or discovery",
+          "Ranking. Helps consolidate ranking signals to one URL.",
+          "Discovery and ranking. Helps match the correct language page to the searcher.",
+          "Discovery. Helps crawlers find pages but does not directly affect ranking."
+        ]
       ],
       "summary": "Canonical tags manage duplicate URLs, hreflang tags connect language versions, and sitemaps help crawlers discover pages. Each serves a distinct purpose."
     },
@@ -388,7 +433,11 @@
     "category": "html",
     "summary": "Generate link tags for preload, preconnect, dns-prefetch, canonical, and alternate URLs.",
     "description": "Choose a rel value, add attributes, and copy a valid link tag for the HTML head.",
-    "keywords": ["html link rel generator", "preload tag generator", "preconnect generator"],
+    "keywords": [
+      "html link rel generator",
+      "preload tag generator",
+      "preconnect generator"
+    ],
     "whatIs": "An HTML link tag connects a page to another resource or declares a relationship in the document head. Developers use link tags for canonical URLs, language alternates, icons, preload hints, preconnect hints, stylesheets, and more. This tool helps keep attributes such as as, type, href, and crossorigin in the right place.",
     "howToUse": [
       "Choose the rel value that matches the relationship or browser hint you need.",
@@ -451,7 +500,11 @@
     "category": "assets",
     "summary": "Generate favicon and web app icon tags for static websites.",
     "description": "Create a practical favicon block for browsers, Apple touch icons, manifest files, and theme colors.",
-    "keywords": ["favicon html generator", "favicon tags", "web app manifest generator"],
+    "keywords": [
+      "favicon html generator",
+      "favicon tags",
+      "web app manifest generator"
+    ],
     "whatIs": "Favicon markup tells browsers and devices which icons to use for tabs, bookmarks, home screen shortcuts, and web app installs. A small static site can still need several icon formats because desktop browsers, mobile browsers, and saved web apps use different files.",
     "howToUse": [
       "Enter the base path where your icon files will be published.",
@@ -491,10 +544,6 @@
       {
         "question": "Is a web manifest required?",
         "answer": "No. It is optional for a normal website, but useful if you want better saved-app behavior on mobile and desktop."
-      },
-      {
-        "question": "Do I still need favicon.ico or is SVG enough?",
-        "answer": "SVG favicons work in modern browsers, but favicon.ico remains a useful fallback for older browsers, bookmarks, and browser tabs. A practical setup includes both an SVG icon in the head and a small favicon.ico at the site root."
       }
     ],
     "quickAnswer": "Generate favicon HTML tags, Apple touch icon references, and web app manifest entries for static websites. Include both SVG and fallback icon paths for broad browser support.",
@@ -514,7 +563,11 @@
     "category": "css",
     "summary": "Calculate responsive CSS clamp values for font sizes and spacing.",
     "description": "Enter minimum and maximum values plus viewport widths to generate a CSS clamp expression for fluid typography, spacing, or layout values.",
-    "keywords": ["css clamp calculator", "fluid typography calculator", "responsive font size"],
+    "keywords": [
+      "css clamp calculator",
+      "fluid typography calculator",
+      "responsive font size"
+    ],
     "whatIs": "CSS clamp sets a minimum value, a preferred fluid value, and a maximum value in one expression. It is commonly used for responsive font sizes and spacing because it can scale smoothly between mobile and desktop without writing several media queries.",
     "howToUse": [
       "Enter the smallest and largest size you want the property to use.",
@@ -554,10 +607,6 @@
       {
         "question": "Should I use px or rem?",
         "answer": "Both can work. Rem is often better for font sizes because it respects user font settings, while px is simpler for quick layout calculations."
-      },
-      {
-        "question": "Should I use px or rem inside clamp()?",
-        "answer": "Rem is preferred for font sizes inside clamp() because it respects user preferences and scales with the browser base font size. Px can be simpler for fixed layout spacing where scaling is not desired."
       }
     ],
     "quickAnswer": "Calculate a responsive CSS clamp expression for fluid typography, spacing, or layout values. Enter minimum and maximum sizes with viewport ranges to generate a value that scales smoothly between them.",
@@ -577,7 +626,11 @@
     "category": "css",
     "summary": "Generate CSS for safe-area insets on phones with notches and rounded corners.",
     "description": "Create padding, margin, or position offset rules using env(safe-area-inset-*) with a fallback value.",
-    "keywords": ["css safe area inset", "iphone notch css", "safe area padding generator"],
+    "keywords": [
+      "css safe area inset",
+      "iphone notch css",
+      "safe area padding generator"
+    ],
     "whatIs": "Safe-area insets are CSS environment variables that help keep content away from phone notches, rounded screen corners, home indicator areas, and other display cutouts. They are useful for mobile web apps, fixed headers, sticky bottom bars, and full-bleed layouts.",
     "howToUse": [
       "Choose whether you want to generate padding, margin, or inset rules.",
@@ -617,10 +670,6 @@
       {
         "question": "Should I apply safe-area padding to the whole page?",
         "answer": "Usually no. Apply it to fixed bars, app shells, or sections that need edge protection."
-      },
-      {
-        "question": "Will safe-area-inset values work on desktop browsers?",
-        "answer": "Desktop browsers without display notches return zero for env(safe-area-inset-*) variables. Including a fallback value ensures your layout looks correct on both mobile and desktop without side effects."
       }
     ],
     "quickAnswer": "Generate CSS padding, margin, or position offset rules using env(safe-area-inset-*) with fallback values. This keeps content away from phone notches, rounded screen corners, and home indicators on modern mobile devices.",
@@ -640,7 +689,11 @@
     "category": "seo",
     "summary": "Create an llms.txt file for AI search and answer engines.",
     "description": "Describe your site, list important pages, and generate a clean llms.txt file for static hosting.",
-    "keywords": ["llms.txt generator", "ai seo", "generative engine optimization"],
+    "keywords": [
+      "llms.txt generator",
+      "ai seo",
+      "generative engine optimization"
+    ],
     "whatIs": "An llms.txt file is a plain text guide that helps AI systems understand the most important parts of a website. It can summarize the site, list canonical URLs, identify useful tool or documentation pages, and point crawlers toward the sitemap. For static sites, it is easy to publish at the site root next to robots.txt and sitemap.xml.",
     "howToUse": [
       "Enter the site name, public URL, and a short description.",
@@ -680,10 +733,6 @@
       {
         "question": "Should every page be listed?",
         "answer": "No. List the pages that best explain the site, its tools, its documentation, and its policies."
-      },
-      {
-        "question": "Should every page be listed in llms.txt?",
-        "answer": "No. llms.txt should highlight the most important entry points: the homepage, tool or documentation indexes, category pages, sitemap, and key policy pages. Listing every individual article or post dilutes the purpose of the file."
       }
     ],
     "quickAnswer": "Create an llms.txt file to give AI systems a concise guide to your static site: a summary, important page links, and contextual notes. Publish it at the site root alongside robots.txt and sitemap.xml.",
@@ -703,7 +752,11 @@
     "category": "seo",
     "summary": "Generate a simple robots.txt file with sitemap and crawler rules.",
     "description": "Build a robots.txt file for static sites, including sitemap location, crawl access, and optional AI crawler notes.",
-    "keywords": ["robots.txt generator", "sitemap robots.txt", "ai crawler robots"],
+    "keywords": [
+      "robots.txt generator",
+      "sitemap robots.txt",
+      "ai crawler robots"
+    ],
     "whatIs": "A robots.txt file gives crawlers site-level access rules. It can allow or disallow paths, point to the sitemap, and document crawler policies. Static sites often need a small, predictable robots.txt file because build outputs and GitHub Pages deployments only publish what exists in the final folder.",
     "howToUse": [
       "Enter the public site URL and sitemap URL.",
@@ -743,6 +796,10 @@
       {
         "question": "Should I block AI crawlers by default?",
         "answer": "That is a policy choice. If AI visibility matters, avoid blocking crawlers unless you have a clear business or privacy reason."
+      },
+      {
+        "question": "Should I use a different robots.txt for staging and production?",
+        "answer": "Yes. A staging or development site should block all crawlers with Disallow: / to prevent duplicate content issues and accidental indexing of in-progress pages. The production robots.txt should be permissive enough to allow crawling of pages you want indexed. Use separate robots.txt files or generate them conditionally during the build process based on the deployment environment."
       }
     ],
     "quickAnswer": "Use robots.txt to tell crawlers which parts of your site they should not access. It controls crawl traffic, not indexing -- directives like noindex belong in meta tags or HTTP headers.",
@@ -757,12 +814,37 @@
     ],
     "comparison": {
       "title": "robots.txt vs meta robots vs X-Robots-Tag",
-      "columns": ["Aspect", "robots.txt", "meta robots", "X-Robots-Tag"],
+      "columns": [
+        "Aspect",
+        "robots.txt",
+        "meta robots",
+        "X-Robots-Tag"
+      ],
       "rows": [
-        ["Scope", "Site-wide or directory-level", "Per-page only", "Per-page or per-file type via HTTP response"],
-        ["Which crawlers read it", "All compliant crawlers. Bad actors may ignore it.", "All compliant crawlers. Same compliance model as robots.txt.", "All compliant crawlers. Read from the HTTP header regardless of file type."],
-        ["Available directives", "allow, disallow, sitemap, crawl-delay", "index, noindex, follow, nofollow, noarchive, nosnippet, max-snippet, max-image-preview, noimageindex", "Same directives as meta robots plus noindex and nofollow for non-HTML files such as PDFs and images"],
-        ["Use cases", "Prevent crawling of admin areas, staging directories, or search pages", "Prevent indexing of a specific thank-you page or thin content page", "Block indexing of PDFs, images, or other non-HTML resources served from the same domain"]
+        [
+          "Scope",
+          "Site-wide or directory-level",
+          "Per-page only",
+          "Per-page or per-file type via HTTP response"
+        ],
+        [
+          "Which crawlers read it",
+          "All compliant crawlers. Bad actors may ignore it.",
+          "All compliant crawlers. Same compliance model as robots.txt.",
+          "All compliant crawlers. Read from the HTTP header regardless of file type."
+        ],
+        [
+          "Available directives",
+          "allow, disallow, sitemap, crawl-delay",
+          "index, noindex, follow, nofollow, noarchive, nosnippet, max-snippet, max-image-preview, noimageindex",
+          "Same directives as meta robots plus noindex and nofollow for non-HTML files such as PDFs and images"
+        ],
+        [
+          "Use cases",
+          "Prevent crawling of admin areas, staging directories, or search pages",
+          "Prevent indexing of a specific thank-you page or thin content page",
+          "Block indexing of PDFs, images, or other non-HTML resources served from the same domain"
+        ]
       ],
       "summary": "robots.txt controls crawl access at the site level, meta robots controls indexing per HTML page, and X-Robots-Tag offers the same per-page control as meta robots but works for any file type via the HTTP response header."
     },
@@ -774,7 +856,11 @@
     "category": "seo",
     "summary": "Generate starter JSON-LD for WebSite, Organization, Article, FAQ, or BreadcrumbList.",
     "description": "Choose a schema type, fill in the main fields, and copy a valid JSON-LD script block.",
-    "keywords": ["json-ld generator", "schema markup generator", "structured data builder"],
+    "keywords": [
+      "json-ld generator",
+      "schema markup generator",
+      "structured data builder"
+    ],
     "whatIs": "JSON-LD is structured data written as a script block in the page head or body. It helps search engines and AI systems understand entities, page purpose, navigation paths, and question-answer content. This builder focuses on starter markup that is easy to inspect and adapt before publishing.",
     "howToUse": [
       "Choose the schema type that matches the page.",
@@ -814,10 +900,6 @@
       {
         "question": "Do I need to validate it?",
         "answer": "Yes. Validate the published page and make sure the structured data matches visible content."
-      },
-      {
-        "question": "Does JSON-LD need to be in a specific location in the page HTML?",
-        "answer": "JSON-LD can appear in either the head or body of the HTML. Search engines read both. For static sites, placing it in the head near other metadata is easier to maintain."
       }
     ],
     "quickAnswer": "Generate starter JSON-LD structured data for WebSite, Organization, Article, FAQ, and BreadcrumbList schema types. Fill in the key fields and paste the script block into your page HTML.",
@@ -837,7 +919,11 @@
     "category": "assets",
     "summary": "Generate img or picture markup with srcset, sizes, width, height, and alt text.",
     "description": "Create responsive image HTML for static pages without forgetting sizing, lazy loading, or accessible alt text.",
-    "keywords": ["responsive image generator", "srcset generator", "picture tag generator"],
+    "keywords": [
+      "responsive image generator",
+      "srcset generator",
+      "picture tag generator"
+    ],
     "whatIs": "Responsive image markup lets the browser choose a suitable image file for the visitor's screen and layout. Good markup also includes width, height, loading, decoding, and useful alt text. Static sites benefit from this because images often have fixed exported filenames and need clear paths in the final build output.",
     "howToUse": [
       "Enter the default image URL, alt text, width, and height.",
@@ -877,10 +963,6 @@
       {
         "question": "Should every image be lazy loaded?",
         "answer": "No. Lazy loading is useful below the fold. Important above-the-fold images may need eager loading."
-      },
-      {
-        "question": "When should alt text be empty vs descriptive?",
-        "answer": "Use empty alt text for purely decorative images that do not convey information. Use descriptive alt text for meaningful images such as screenshots, diagrams, charts, and product photos. The alt text should describe the content or function of the image."
       }
     ],
     "quickAnswer": "Generate responsive img or picture markup with srcset, sizes, width, height, and alt text. Helps avoid layout shift, missing image candidates, and inaccessible alt attributes on static sites.",
@@ -900,7 +982,11 @@
     "category": "html",
     "summary": "Generate responsive iframe embed markup for videos, maps, demos, and docs.",
     "description": "Create a stable iframe wrapper with aspect ratio, loading, referrer, sandbox, and title attributes.",
-    "keywords": ["responsive iframe generator", "iframe embed code", "aspect ratio iframe"],
+    "keywords": [
+      "responsive iframe generator",
+      "iframe embed code",
+      "aspect ratio iframe"
+    ],
     "whatIs": "Responsive iframe markup keeps embeds from overflowing, shifting layout, or missing accessibility attributes. It is useful for videos, maps, demos, slides, and documentation widgets. A good embed includes a title, lazy loading when appropriate, a stable aspect ratio, and only the permissions the embed needs.",
     "howToUse": [
       "Paste the iframe source URL and write a clear title.",
@@ -963,7 +1049,11 @@
     "category": "github-pages",
     "summary": "Generate a 404.html fallback for single-page apps on GitHub Pages.",
     "description": "Create a small GitHub Pages 404 fallback snippet for client-side routing and static SPA deployments.",
-    "keywords": ["github pages spa 404", "github pages client side routing", "404 fallback generator"],
+    "keywords": [
+      "github pages spa 404",
+      "github pages client side routing",
+      "404 fallback generator"
+    ],
     "whatIs": "GitHub Pages serves static files and does not know client-side routes unless a matching file exists. A single-page app can show 404 when a visitor opens a deep route directly. A 404 fallback can redirect the browser back to the app entry point while preserving the requested path for the router.",
     "howToUse": [
       "Enter the app base path. Use / for a user or custom domain site, or /repo-name/ for a project page.",
@@ -1003,10 +1093,6 @@
       {
         "question": "Should normal static sites use this?",
         "answer": "Usually no. A normal static site should publish real HTML files for important pages instead of routing everything through a fallback."
-      },
-      {
-        "question": "Does this work for all client-side routers?",
-        "answer": "No. The fallback preserves the requested path via query string or hash, but your client-side router must be configured to read that preserved path and render the correct view. Some routers need additional setup to handle this redirect pattern."
       }
     ],
     "quickAnswer": "Generate a 404.html fallback for single-page apps deployed on GitHub Pages. The fallback redirects deep client-side routes to the app entry point while preserving the original path for the router to handle.",
@@ -1026,7 +1112,12 @@
     "category": "css",
     "summary": "Check the contrast ratio between two colors against WCAG accessibility standards.",
     "description": "Enter a foreground and background color, and see the contrast ratio with WCAG AA and AAA pass/fail results for normal and large text. Runs entirely in your browser.",
-    "keywords": ["color contrast checker", "wcag contrast", "accessibility checker", "color accessibility"],
+    "keywords": [
+      "color contrast checker",
+      "wcag contrast",
+      "accessibility checker",
+      "color accessibility"
+    ],
     "whatIs": "WCAG contrast ratio measures the luminance difference between two colors. A ratio of 4.5:1 meets the AA standard for normal text, and 7:1 meets AAA. These thresholds help ensure that people with low vision, color vision deficiency, or who are reading on a screen in difficult lighting can still read the content. This tool calculates the precise ratio from the hex values you enter and shows whether the combination passes the level you need, helping designers and developers check color combinations before publishing.",
     "howToUse": [
       "Enter the foreground color using a hex code, RGB value, or color picker.",
@@ -1064,10 +1155,6 @@
         "answer": "WCAG applies to information-bearing text. Purely decorative text that carries no meaning and is not part of a user interface element does not need to meet contrast thresholds."
       },
       {
-        "question": "Does WCAG AA apply to all text on a page?",
-        "answer": "WCAG AA applies to standard body text. Large text above 18px or 14px bold can pass AA at a lower ratio of 3:1. Logos, decorative text, and inactive UI elements are exempt from contrast requirements."
-      },
-      {
         "question": "What color formats does this tool accept?",
         "answer": "The tool accepts hex color codes and provides a color picker. Enter colors as six-digit hex values such as #333333 or #ffffff. The color picker returns hex values only."
       }
@@ -1089,7 +1176,12 @@
     "category": "css",
     "summary": "Build box-shadow CSS visually by adjusting offset, blur, spread, and color.",
     "description": "Adjust horizontal and vertical offset, blur radius, spread, color, and inset to generate a clean box-shadow declaration. See a live preview of the shadow as you build it.",
-    "keywords": ["box shadow generator", "css shadow", "drop shadow css", "box-shadow builder"],
+    "keywords": [
+      "box shadow generator",
+      "css shadow",
+      "drop shadow css",
+      "box-shadow builder"
+    ],
     "whatIs": "box-shadow is one of the most commonly used CSS properties for adding depth and elevation to elements, but its multi-value syntax can be confusing, especially when combining offset, blur, spread, color, and the inset keyword. This tool makes the property visual by showing a live preview as you adjust each value, so you can see exactly how the shadow behaves before adding it to your stylesheet.",
     "howToUse": [
       "Adjust the horizontal and vertical offset to move the shadow position.",
@@ -1127,10 +1219,6 @@
         "answer": "Separate each shadow declaration with a comma. The builder can be used once per shadow, then you combine the values in your stylesheet."
       },
       {
-        "question": "How do I layer multiple shadows?",
-        "answer": "Write each shadow declaration separated by a comma within the same box-shadow property. The first shadow renders on top and subsequent shadows render underneath. Combine multiple shadows for realistic multi-light-source effects."
-      },
-      {
         "question": "When should I use the drop-shadow filter instead?",
         "answer": "Use the drop-shadow CSS filter when you need a shadow that follows the exact shape of an element with a transparent background or clipped corners. box-shadow always follows the element CSS box, while drop-shadow follows the rendered pixel contour."
       }
@@ -1138,7 +1226,8 @@
     "quickAnswer": "Generate a box-shadow declaration by adjusting offset, blur, spread, color, and inset. The live preview shows the shadow on a static div so you can tune the values before adding them to your stylesheet.",
     "limitations": [
       "The preview is a static div with no surrounding context. A shadow that looks correct in isolation may appear different against a real page background or near other elements.",
-      "The tool generates one shadow at a time. For layered or multiple shadows you must combine the values manually in your stylesheet."
+      "The tool generates one shadow at a time. For layered or multiple shadows you must combine the values manually in your stylesheet.",
+      "The box-shadow property creates shadows that follow the element CSS box, not the visible shape. For non-rectangular elements with transparent backgrounds or CSS clip-path shapes, use the drop-shadow filter instead for a shadow that follows the visible contours."
     ],
     "verificationSteps": [
       "Paste the generated CSS into your actual page and inspect the shadow on the real element with its background and adjacent content.",
@@ -1151,7 +1240,12 @@
     "category": "css",
     "summary": "Generate flexbox container CSS and sample HTML by selecting flex direction, wrap, alignment, and justification.",
     "description": "Choose flex direction, wrap behavior, justify-content, and align-items values. The tool outputs complete container CSS and a minimal HTML skeleton you can test immediately.",
-    "keywords": ["flexbox generator", "css flexbox", "flex layout", "flexbox css builder"],
+    "keywords": [
+      "flexbox generator",
+      "css flexbox",
+      "flex layout",
+      "flexbox css builder"
+    ],
     "whatIs": "Flexbox is the most common CSS layout method for one-dimensional layouts, aligning items along a main axis and a cross axis. Beginners often mix up justify-content (main axis) and align-items (cross axis), which leads to unexpected centering and spacing results. This tool makes both axes explicit by showing the generated CSS alongside the flex properties you select, so you can connect each value to its visible effect.",
     "howToUse": [
       "Select the flex direction and wrap behavior for your container.",
@@ -1200,7 +1294,8 @@
     "quickAnswer": "Generate flexbox container CSS by selecting direction, wrap, alignment, and justification values. The output includes the container rules and an HTML skeleton so you can test the layout immediately.",
     "limitations": [
       "The tool generates container-level flex properties only. It does not generate item-level flex properties such as flex-grow, flex-shrink, flex-basis, or align-self.",
-      "The generated CSS applies to the flex container only. You still need to add your own content markup and styling for the child flex items."
+      "The generated CSS applies to the flex container only. You still need to add your own content markup and styling for the child flex items.",
+      "Flexbox alone does not handle two-dimensional layouts well. When items need to align across both rows and columns simultaneously, CSS Grid with grid-template-columns and grid-template-rows provides better control than nested flex containers."
     ],
     "verificationSteps": [
       "Add the generated container CSS to a page with test child elements and resize the viewport to verify wrap and alignment behavior.",
@@ -1213,7 +1308,12 @@
     "category": "css",
     "summary": "Set rounded corners individually for each corner and generate the border-radius CSS declaration.",
     "description": "Control each corner radius separately or use the shorthand. Choose pixel, rem, or percentage units. See a live preview of the rounded element as you adjust values.",
-    "keywords": ["border radius generator", "css rounded corners", "border-radius builder", "css corners"],
+    "keywords": [
+      "border radius generator",
+      "css rounded corners",
+      "border-radius builder",
+      "css corners"
+    ],
     "whatIs": "border-radius controls how much each corner of an element is rounded, but the four-value shorthand and the eight-value elliptical syntax can be confusing. This tool makes the properties visual by letting you set each corner independently and choose between px, rem, and percentage units, so you can see the effect before writing the CSS declaration.",
     "howToUse": [
       "Set a radius value for each corner individually or enable uniform mode to apply one value everywhere.",
@@ -1262,7 +1362,8 @@
     "quickAnswer": "Set rounded corners on any element by adjusting each corner independently or using a uniform value. Choose px, rem, or percentage units and see a live preview of the result.",
     "limitations": [
       "The tool shows uniform and individual corner radius values. It does not support the elliptical syntax that uses a slash to set separate horizontal and vertical radii per corner.",
-      "Percentage border-radius values are relative to the element dimensions and may produce unexpected elliptical corners on elements with dynamic sizing."
+      "Percentage border-radius values are relative to the element dimensions and may produce unexpected elliptical corners on elements with dynamic sizing.",
+      "Rounded corners do not clip child content by default. If a child element has a background or border that extends beyond the rounded corners, add overflow: hidden to the parent to enforce clipping at the rounded boundary."
     ],
     "verificationSteps": [
       "Test the generated border-radius on the target element at different sizes and screen widths to confirm corner proportions remain consistent.",
@@ -1275,7 +1376,12 @@
     "category": "html",
     "summary": "Turn any title or heading into a clean, lowercase, hyphenated URL slug.",
     "description": "Paste a page title, blog post headline, or any string, and get a URL-ready slug with hyphens instead of spaces and special characters removed. A small tool for a daily publishing task.",
-    "keywords": ["url slug generator", "seo slug", "url friendly string", "slugify"],
+    "keywords": [
+      "url slug generator",
+      "seo slug",
+      "url friendly string",
+      "slugify"
+    ],
     "whatIs": "A URL slug is the readable part of a web address, such as my-blog-post in example.com/blog/my-blog-post. Clean slugs help both readers and search engines understand what a page is about before opening it. This tool removes special characters, converts text to lowercase, and replaces spaces with hyphens so you get the standard format used by most content management systems and static site generators.",
     "howToUse": [
       "Paste or type a title, heading, or any text string.",
@@ -1316,6 +1422,14 @@
       {
         "question": "Should I include stop words in a URL slug?",
         "answer": "Stop words such as a, an, the, and, of, and in can often be removed from slugs to keep them shorter without losing meaning. For example, tips-for-better-typography is shorter than tips-for-improving-your-typography."
+      },
+      {
+        "question": "Should I use dashes (-) or underscores (_) in a URL slug?",
+        "answer": "Use dashes. Google treats dashes as word separators, so best-widget-reviews is read as three separate words: best, widget, reviews. Underscores are treated as joiners — best_widget_reviews is read as a single term. This affects how search engines match your URL to user queries. Dashes are also easier for users to type and read in the address bar."
+      },
+      {
+        "question": "How do I handle non-English characters, emoji, or symbols in slugs?",
+        "answer": "Remove accented characters, emoji, symbols, and non-Latin scripts from slugs, or transliterate them to ASCII equivalents. Use a transliteration library or manual mapping to convert characters like ü to u, ñ to n, or ç to c. For entirely non-Latin languages like Chinese or Arabic, consider using a short English keyword slug or a transliterated romanized version of the title."
       }
     ],
     "limitations": [
@@ -1334,7 +1448,12 @@
     "category": "html",
     "summary": "Paste HTML and see the heading structure as a tree. Find skipped levels, missing h1 tags, and hierarchy problems.",
     "description": "Paste any HTML snippet and get a visual tree of h1 through h6 headings. The tool flags skipped heading levels, missing h1 tags, and structural issues that affect accessibility and SEO.",
-    "keywords": ["heading hierarchy checker", "html heading outline", "h1 h2 structure", "heading accessibility"],
+    "keywords": [
+      "heading hierarchy checker",
+      "html heading outline",
+      "h1 h2 structure",
+      "heading accessibility"
+    ],
     "whatIs": "Heading hierarchy (h1 through h6) is the structural backbone of any HTML document. Screen readers depend on a logical heading order to let users navigate by jumping between sections. Search engines also use headings to understand page topics and their relative importance. Skipping levels, such as jumping from h1 to h3, or using multiple h1 tags on one page, can confuse both assistive technology and crawlers. This tool extracts all headings from pasted HTML and displays them as a nested tree, so structural problems are visible at a glance before the page reaches production.",
     "howToUse": [
       "Paste your HTML markup into the textarea. The tool will extract all h1 through h6 heading tags.",
@@ -1375,10 +1494,6 @@
       {
         "question": "Does heading hierarchy affect SEO?",
         "answer": "Yes. Search engines use heading structure to understand page topics and their relative importance. A clear descending hierarchy helps crawlers interpret the content outline and may influence how pages are understood for relevant queries."
-      },
-      {
-        "question": "Can I fix heading levels with CSS instead?",
-        "answer": "No. CSS changes only the visual appearance, not the semantic heading level. Screen readers and search engines read the actual HTML heading element, not the styled size. Always use the correct h1 through h6 element for each structural level."
       }
     ],
     "limitations": [
@@ -1397,7 +1512,12 @@
     "category": "html",
     "summary": "Paste text and get an estimated reading time based on word count and adjustable reading speed.",
     "description": "Paste article content, blog post text, or any body copy. The tool calculates estimated reading time using a configurable words-per-minute rate. A small utility for bloggers and content editors.",
-    "keywords": ["reading time calculator", "read time estimator", "blog reading time", "content length"],
+    "keywords": [
+      "reading time calculator",
+      "read time estimator",
+      "blog reading time",
+      "content length"
+    ],
     "whatIs": "Reading time estimates help readers decide whether they have time to read an article before clicking into it. The standard adult reading speed is 200 to 250 words per minute for typical web content. This tool counts the words in your pasted text and divides by a configurable rate to produce an estimated reading time in minutes. Bloggers can use the result as a reading-time label displayed next to the post date or author byline.",
     "howToUse": [
       "Paste or type the content you want to estimate in the text area.",
@@ -1438,6 +1558,10 @@
       {
         "question": "Does reading time affect SEO?",
         "answer": "Reading time itself is not a direct ranking factor, but content length and engagement metrics are correlated with search performance. A reading-time label also helps set reader expectations and may reduce bounce rate."
+      },
+      {
+        "question": "Should I count code blocks, tables, and lists in reading time?",
+        "answer": "Code blocks and tables slow readers down more than prose, so many reading time estimators count code and table content at a slower rate or exclude it from the word count. A common approach is to count code block words at half the normal reading speed or add a fixed time per code block (such as 5 to 10 seconds). Lists and headings can be counted at the normal reading speed since they scan quickly."
       }
     ],
     "limitations": [
@@ -1456,7 +1580,13 @@
     "category": "seo",
     "summary": "Generate a complete set of viewport meta tags plus theme-color and Apple touch icon links.",
     "description": "Build the standard viewport meta tag, theme-color meta tag, and Apple touch icon link tags from simple input fields. Covers the mobile-first essentials that every HTML page should include.",
-    "keywords": ["viewport meta tag", "mobile meta tags", "theme color", "apple touch icon", "responsive meta"],
+    "keywords": [
+      "viewport meta tag",
+      "mobile meta tags",
+      "theme color",
+      "apple touch icon",
+      "responsive meta"
+    ],
     "whatIs": "The viewport meta tag controls how a page scales on mobile browsers, making it one of the most important tags for responsive design. The theme-color meta tag sets the browser chrome color in mobile browsers and desktop browsers that support it. Apple touch icon link tags define the icon shown when a visitor saves the page to their iOS home screen. Together these tags form the basic mobile-presentation layer that every modern HTML page should include, but each has a specific syntax that is easy to get wrong.",
     "howToUse": [
       "Set the viewport width and initial scale. The standard values are width=device-width and initial-scale=1.",
@@ -1496,6 +1626,10 @@
       {
         "question": "Should I disable user-scalable?",
         "answer": "No. Setting user-scalable=no blocks pinch-to-zoom and creates an accessibility barrier for low-vision users. WCAG requires that users can zoom pages to at least 200%."
+      },
+      {
+        "question": "What happens if I omit the viewport meta tag entirely?",
+        "answer": "Mobile browsers assume the page was designed for desktop and render it at a default width of about 980px, then scale it down to fit the screen. Text becomes tiny and requires zooming to read. The page may also trigger Google Search Console mobile usability errors. Every responsive page should include a viewport meta tag in the head."
       }
     ],
     "quickAnswer": "Use the viewport meta tag to control how your page scales on mobile devices. The standard value width=device-width with initial-scale=1 works for nearly every responsive site and ensures readable text without requiring zoom gestures.",
@@ -1515,7 +1649,14 @@
     "category": "github-pages",
     "summary": "Enter a domain name and see example A, AAAA, CNAME, MX, and TXT records with setup notes.",
     "description": "Enter your domain and get a quick-reference table of common DNS record types with example values for that domain. Covers A, AAAA, CNAME, MX, and TXT records with practical setup notes for each type.",
-    "keywords": ["dns records", "dns reference", "A record", "CNAME", "domain setup", "dns types"],
+    "keywords": [
+      "dns records",
+      "dns reference",
+      "A record",
+      "CNAME",
+      "domain setup",
+      "dns types"
+    ],
     "whatIs": "DNS records translate human-readable domain names into the instructions that route traffic, deliver email, and verify domain ownership. Beginners encounter A, AAAA, CNAME, MX, and TXT records most often when setting up custom domains for hosting services such as GitHub Pages. Each record type serves a different purpose: A records point to IPv4 addresses, AAAA records point to IPv6 addresses, CNAME records alias one name to another, MX records direct email, and TXT records hold verification and policy data. This tool provides example values and setup context without requiring command-line knowledge.",
     "howToUse": [
       "Enter your domain name. The tool generates example DNS records based on common hosting scenarios.",
@@ -1555,6 +1696,10 @@
       {
         "question": "What TTL value should I use?",
         "answer": "Use 300 or 600 seconds during initial DNS setup so changes propagate quickly. Switch to 3600 or higher after everything is working to reduce DNS query load."
+      },
+      {
+        "question": "How do I verify that DNS changes have fully propagated?",
+        "answer": "Use a tool like dig, nslookup, or an online DNS checker to query your domain against multiple public resolvers. Check that all resolvers return the new record values. Propagation timing depends on the TTL: a record with a TTL of 3600 seconds can take up to an hour for all caches to expire. Reduce the TTL to 300 before making a planned change, then raise it after confirming the change is live."
       }
     ],
     "quickAnswer": "DNS records connect your domain to hosting services by mapping names to IP addresses, mail servers, and verification data. Each record type serves a specific purpose and the wrong type can break your site or email.",
@@ -1574,7 +1719,13 @@
     "category": "html",
     "summary": "Search and copy common HTML entities including arrows, dashes, quotes, math symbols, and special characters.",
     "description": "Browse or search a categorized reference of common HTML entities. Click any entity to copy it to your clipboard. Covers typographic characters, arrows, math symbols, currency signs, and more.",
-    "keywords": ["html entities", "special characters", "html symbols", "character codes", "html entity reference"],
+    "keywords": [
+      "html entities",
+      "special characters",
+      "html symbols",
+      "character codes",
+      "html entity reference"
+    ],
     "whatIs": "HTML entities let you display special characters that either have meaning in HTML markup, such as &lt; and &amp;, or characters that are hard to type directly on a keyboard, such as em-dashes, copyright symbols, and accented letters. Beginners often search for these symbols by name or by visual appearance. This reference puts the most frequently used HTML entities in one categorized table with their entity name, decimal code, and rendered character, so you can find and copy the entity you need without leaving your text editor.",
     "howToUse": [
       "Browse the categorized list of entities or type in the search field to filter by name or character.",
@@ -1615,6 +1766,10 @@
       {
         "question": "Are entity names case-sensitive?",
         "answer": "Yes. HTML entity names are case-sensitive. For example, &copy; produces the copyright symbol, but &Copy; does not work. Always use the exact casing shown in the reference."
+      },
+      {
+        "question": "When should I use HTML entities vs typing Unicode characters directly?",
+        "answer": "Use HTML entities for characters that have special meaning in HTML (less than, greater than, ampersand, quotes) because typing them directly can break the HTML structure. For other special characters like ©, \", or —, you can type the Unicode character directly in a UTF-8 document. Entities are useful when the character is hard to type on a keyboard, hard to distinguish in code, or when the source file encoding might not reliably preserve it."
       }
     ],
     "limitations": [
@@ -1633,7 +1788,12 @@
     "category": "css",
     "summary": "Plan @layer order and generate a CSS cascade layer structure with example rules.",
     "description": "Choose a site type and select the layers you need. The tool generates the @layer order statement and a skeleton CSS file with example rules for each layer, so you understand which styles override which.",
-    "keywords": ["css layer generator", "cascade layer planner", "@layer order tool", "css layers"],
+    "keywords": [
+      "css layer generator",
+      "cascade layer planner",
+      "@layer order tool",
+      "css layers"
+    ],
     "whatIs": "CSS cascade layers let you control which styles win when there are conflicting rules, regardless of specificity. By defining an explicit layer order such as reset, base, components, and utilities, you can make utility classes override component styles without fighting specificity wars. This tool helps you plan the right layer order for your project and generates a starter structure you can copy into your stylesheet.",
     "howToUse": [
       "Choose a preset that matches your project type or select Custom to pick layers individually.",
@@ -1682,7 +1842,8 @@
     "quickAnswer": "Plan the order of CSS cascade layers for your project so overrides behave predictably. The output is a @layer declaration and skeleton structure for reset, base, component, and utility styles.",
     "limitations": [
       "The tool generates a flat layer planning skeleton. It does not handle nested @layer blocks which require a different layered import syntax.",
-      "The generated output assumes a straightforward layer structure. Complex projects with sub-layers inside named layers need manual adjustment beyond the generated skeleton."
+      "The generated output assumes a straightforward layer structure. Complex projects with sub-layers inside named layers need manual adjustment beyond the generated skeleton.",
+      "The !important flag reverses layer priority order. An !important rule in an earlier layer overrides !important in a later layer, which is the opposite of normal layer behavior. This reversal makes debugging !important conflicts inside layers significantly harder."
     ],
     "verificationSteps": [
       "Test that a style in a later layer correctly overrides an equivalent style in an earlier layer regardless of specificity differences.",
@@ -1695,7 +1856,12 @@
     "category": "css",
     "summary": "Generate CSS for content-visibility and contain-intrinsic-size to speed up long pages.",
     "description": "Select your content type and get the correct content-visibility CSS with a sensible contain-intrinsic-size estimate. Improves rendering performance for long article feeds, card grids, comment threads, and documentation pages.",
-    "keywords": ["content-visibility generator", "contain-intrinsic-size", "css rendering performance", "content visibility css"],
+    "keywords": [
+      "content-visibility generator",
+      "contain-intrinsic-size",
+      "css rendering performance",
+      "content visibility css"
+    ],
     "whatIs": "content-visibility: auto tells the browser to skip rendering work for off-screen elements until they approach the viewport. Paired with contain-intrinsic-size, it gives the browser an estimated size so the scrollbar behaves correctly. This can significantly improve rendering performance on long pages with many repeated sections such as blog archives, product grids, and documentation.",
     "howToUse": [
       "Choose the content type that best matches your repeating sections.",
@@ -1744,7 +1910,8 @@
     "quickAnswer": "Use content-visibility: auto to skip rendering off-screen elements until they approach the viewport. This can improve initial page load performance on long pages with many repeated sections.",
     "limitations": [
       "Browser support varies. Chrome 85+, Edge 85+, Firefox 125+, and Safari 18.2+ support content-visibility. Older browsers ignore the property and render all content as normal.",
-      "Anchor links may not scroll correctly to elements with content-visibility: auto because the browser has not rendered the target area before the scroll attempt."
+      "Anchor links may not scroll correctly to elements with content-visibility: auto because the browser has not rendered the target area before the scroll attempt.",
+      "Content inside a content-visibility: auto section is not immediately available to screen readers or find-in-page search because the browser has not rendered the off-screen subtree. Use content-visibility: visible or remove the property on sections that must be discoverable by assistive technology."
     ],
     "verificationSteps": [
       "Scroll the page and confirm off-screen sections render in smoothly without scrollbar jumps or visual gaps.",
@@ -1757,7 +1924,12 @@
     "category": "css",
     "summary": "Generate overscroll-behavior CSS to control pull-to-refresh, scroll chaining, and bounce effects.",
     "description": "Pick a scenario such as body, modal, sidebar, or carousel, and choose the overscroll behavior. Copy the CSS to prevent unwanted pull-to-refresh and scroll chaining on mobile.",
-    "keywords": ["overscroll behavior", "disable pull to refresh css", "scroll chaining", "css overscroll"],
+    "keywords": [
+      "overscroll behavior",
+      "disable pull to refresh css",
+      "scroll chaining",
+      "css overscroll"
+    ],
     "whatIs": "overscroll-behavior controls what happens when a scrollable area reaches its boundary. On mobile devices, overscrolling can trigger pull-to-refresh or let scroll bleed from a modal into the page behind it. This property lets you contain or prevent overscroll effects on body, modal, sidebar, and carousel elements.",
     "howToUse": [
       "Select a scenario that matches where you want to control overscroll behavior.",
@@ -1806,7 +1978,8 @@
     "quickAnswer": "Control what happens when a scrollable element reaches its boundary. Use contain to stop scroll chaining while keeping the bounce effect, or none to remove all overscroll effects including pull-to-refresh.",
     "limitations": [
       "Overscroll-behavior is primarily a mobile concern. Desktop browsers apply minimal or no overscroll effects, so the property has little visible impact on desktop.",
-      "Testing overscroll-behavior on desktop requires device emulation in DevTools because mouse scroll behavior differs significantly from touch gestures."
+      "Testing overscroll-behavior on desktop requires device emulation in DevTools because mouse scroll behavior differs significantly from touch gestures.",
+      "overscroll-behavior only controls scroll chaining at the document boundary. It does not prevent scroll propagation within nested scrollable containers that are not at the viewport edge. For internal scroll containment, use overscroll-behavior on the inner container as well."
     ],
     "verificationSteps": [
       "Test the behavior on a real mobile device by scrolling past the boundary of the target element and confirming the expected pull-to-refresh or scroll chain behavior.",
@@ -1819,7 +1992,12 @@
     "category": "html",
     "summary": "Generate native HTML popover markup using popovertarget and the Popover API without JavaScript.",
     "description": "Build a button-triggered popover element with the native HTML Popover API. Set content, position, and popover mode. The generated markup works without any JavaScript libraries.",
-    "keywords": ["html popover generator", "popover api example", "popovertarget html", "popover without javascript"],
+    "keywords": [
+      "html popover generator",
+      "popover api example",
+      "popovertarget html",
+      "popover without javascript"
+    ],
     "whatIs": "The HTML Popover API lets you create popup overlays, dropdowns, tooltips, and small panels using only HTML attributes such as popover and popovertarget. The browser manages opening, closing, light-dismiss, and stacking without custom JavaScript. This is useful for help popovers, notification dropdowns, and simple menus on static sites where you want to avoid pulling in a JavaScript library.",
     "howToUse": [
       "Set a unique popover ID and the text that will appear on the trigger button.",
@@ -1860,6 +2038,10 @@
       {
         "question": "Can I nest popovers inside other popovers?",
         "answer": "Nested popovers are technically possible but not recommended. Auto popovers close when another popover opens, and focus management becomes more complex with multiple layers of nested popover content."
+      },
+      {
+        "question": "Does the Popover API work without any JavaScript at all?",
+        "answer": "Yes. The Popover API uses HTML attributes like popover and popovertarget to create interactive popovers with zero JavaScript. Clicking a button with popovertarget=\"my-popover\" toggles a popover with id=\"my-popover\" and the popover attribute. However, programmatic control such as showing a popover in response to a form validation error or a timer still requires JavaScript."
       }
     ],
     "limitations": [
@@ -1878,7 +2060,12 @@
     "category": "html",
     "summary": "Generate secure iframe markup with sandbox flags and allow permissions by embed type.",
     "description": "Choose an embed type such as YouTube, maps, forms, or payment, and get an iframe tag with the correct sandbox restrictions and allow permissions. Helps avoid over-permissive defaults.",
-    "keywords": ["iframe sandbox generator", "iframe allow attribute", "iframe permissions generator", "secure iframe embed"],
+    "keywords": [
+      "iframe sandbox generator",
+      "iframe allow attribute",
+      "iframe permissions generator",
+      "secure iframe embed"
+    ],
     "whatIs": "The sandbox attribute restricts what an iframe can do, and the allow attribute grants specific feature permissions such as fullscreen, camera, or payment. Together they create a security boundary around embedded content. This tool generates the right sandbox and allow values for common embed types so you do not accidentally allow more permissions than the embed needs.",
     "howToUse": [
       "Select the embed type that best matches what you are embedding.",
@@ -1914,6 +2101,14 @@
       {
         "question": "Should every iframe have a sandbox attribute?",
         "answer": "A sandbox with the right restrictions is a security best practice for third-party content. For first-party embeds, test whether the restrictions break expected behavior."
+      },
+      {
+        "question": "What happens if I use sandbox=\"\" with no allow tokens?",
+        "answer": "An empty sandbox attribute applies all restrictions at maximum strictness: no scripts, no form submission, no popups, no same-origin access, no pointer lock, no top-level navigation. The embedded content runs in a fully isolated environment. This is useful for entirely static content from untrusted sources but will break most interactive embeds."
+      },
+      {
+        "question": "Can I use sandbox with YouTube, Vimeo, or other third-party embeds?",
+        "answer": "Yes, but you need at minimum allow-scripts and allow-same-origin for most video embeds. YouTube and Vimeo iframes use JavaScript to initialize the player. Add allow-presentation for fullscreen. Never add both allow-scripts and allow-same-origin together to third-party content unless you trust the source completely."
       }
     ],
     "quickAnswer": "Use the sandbox attribute on iframes to restrict what the embedded content can do -- such as submitting forms, opening popups, or running scripts. Add allow values one at a time and only as needed.",
@@ -1934,7 +2129,12 @@
     "category": "seo",
     "summary": "Paste a list of URLs and get a complete sitemap.xml file for static hosting and GitHub Pages.",
     "description": "Build a valid sitemap.xml from a pasted URL list. Add optional lastmod dates, changefreq, and priority values. The output is ready to place in your static site root.",
-    "keywords": ["sitemap.xml generator", "static site sitemap", "github pages sitemap", "url list to sitemap"],
+    "keywords": [
+      "sitemap.xml generator",
+      "static site sitemap",
+      "github pages sitemap",
+      "url list to sitemap"
+    ],
     "whatIs": "A sitemap.xml file lists the important URLs on a website so search engines can discover and crawl them efficiently. For static sites without a CMS that auto-generates sitemaps, you need to create the XML file by hand and include it in your build output. This tool converts a simple URL list into valid sitemap.xml format.",
     "howToUse": [
       "Paste one URL per line. Optionally add lastmod, changefreq, and priority separated by |.",
@@ -1970,6 +2170,14 @@
       {
         "question": "Where should sitemap.xml be placed?",
         "answer": "At the published site root, such as https://example.com/sitemap.xml. Reference it from robots.txt with Sitemap: <url>."
+      },
+      {
+        "question": "How many URLs can a single sitemap file contain?",
+        "answer": "A single sitemap.xml file can contain up to 50,000 URLs and must not exceed 50 MiB uncompressed. For larger sites, use a sitemap index file that references multiple sitemap files. Most static sites with fewer than 50,000 pages only need one sitemap file."
+      },
+      {
+        "question": "What is the difference between changefreq and lastmod?",
+        "answer": "lastmod is the date the page content was last meaningfully changed, in W3C Datetime format. changefreq is a hint about how often the page typically changes (always, hourly, daily, weekly, monthly, yearly, never). Search engines may use lastmod for scheduling crawls but treat changefreq as an advisory hint, not a command. The lastmod date is the more important of the two."
       }
     ],
     "quickAnswer": "An XML sitemap helps search engines discover all pages on a static site, especially pages not linked from the main navigation. Submit the sitemap URL through Google Search Console after publishing.",
@@ -1990,7 +2198,12 @@
     "category": "github-pages",
     "summary": "Generate a GitHub Actions workflow YAML to deploy a static site, Vite, or Astro project to GitHub Pages.",
     "description": "Choose your site type, enter the build command and output directory, and get a complete pages.yml workflow file. Includes CNAME placeholder and id-token write for deployment.",
-    "keywords": ["github pages workflow", "deploy static site action", "github pages yaml", "pages deploy action"],
+    "keywords": [
+      "github pages workflow",
+      "deploy static site action",
+      "github pages yaml",
+      "pages deploy action"
+    ],
     "whatIs": "A GitHub Pages workflow is a GitHub Actions YAML file that automatically builds and deploys your site every time you push to the main branch. Beginners often need a template that includes the correct permissions, concurrency settings, Node setup, build step, and artifact upload. This tool generates a ready-to-use pages.yml with the standard deployment structure.",
     "howToUse": [
       "Choose the site type preset or enter custom build settings.",
@@ -2030,6 +2243,10 @@
       {
         "question": "What Node version should I use?",
         "answer": "Use the Node version that matches your project requirements. Node 20 or 22 are safe choices for most static site generators. The version field in the generated workflow can be adjusted to match your local or CI environment."
+      },
+      {
+        "question": "Can I use pnpm or yarn instead of npm in the GitHub Actions workflow?",
+        "answer": "Yes. Replace the npm commands with the equivalent for your package manager. For pnpm, use pnpm/action-setup before the install step. For yarn, replace npm install with yarn install --frozen-lockfile and npm run build with yarn build. Both pnpm and yarn are compatible with GitHub Actions and can be used to build and deploy static sites to GitHub Pages."
       }
     ],
     "quickAnswer": "A GitHub Actions workflow automates building and deploying your static site to GitHub Pages on every push. The generated YAML includes the standard permissions, concurrency settings, and build steps.",
@@ -2049,7 +2266,12 @@
     "category": "seo",
     "summary": "Generate Speculation Rules JSON for prerendering and prefetching pages in Chrome and Edge.",
     "description": "Choose prerender or prefetch mode, pick a URL list or document rules source, and get the script tag with JSON speculation rules. Use to speed up navigation on static sites.",
-    "keywords": ["speculation rules", "prerender json", "prefetch rules", "chrome prerender"],
+    "keywords": [
+      "speculation rules",
+      "prerender json",
+      "prefetch rules",
+      "chrome prerender"
+    ],
     "whatIs": "Speculation Rules are a JSON-based browser feature that lets you tell the browser which pages to prefetch or prerender before the user clicks. Prerendering loads the full page for instant navigation, while prefetching fetches only the document resource. This can make a static site feel fast because subsequent page views load from cache or pre-rendered state.",
     "howToUse": [
       "Choose whether to prerender pages (full render) or prefetch them (document fetch only).",
@@ -2089,6 +2311,10 @@
       {
         "question": "Should I prerender cross-origin pages?",
         "answer": "Cross-origin prerendering is limited. Browsers may not send cookies or storage state to cross-origin prerendered pages, and same-origin prerequisites apply. Prefetch is generally safer for cross-origin URLs."
+      },
+      {
+        "question": "Does prerendering affect analytics pageview counts?",
+        "answer": "Yes, and this is a known issue. A prerendered page fires analytics scripts and counts a pageview even if the user never navigates to the page. To handle this, use the document.prerendering API or the activationStart performance entry to defer analytics until the page is actually activated by user navigation. Without this guard, your analytics will overcount pageviews for prerendered pages."
       }
     ],
     "quickAnswer": "Speculation Rules use JSON to tell Chrome and Edge which pages to prefetch or prerender before the user clicks. Prerender loads the full page for instant navigation; prefetch fetches only the main document.",
@@ -2108,7 +2334,12 @@
     "category": "seo",
     "summary": "Generate a Permissions-Policy HTTP header to control browser feature access across your site.",
     "description": "Choose which browser features to allow or deny, set per-feature origin policies, and get the Permissions-Policy header plus matching iframe allow examples.",
-    "keywords": ["permissions policy generator", "feature policy header", "browser permissions policy", "iframe allow permissions"],
+    "keywords": [
+      "permissions policy generator",
+      "feature policy header",
+      "browser permissions policy",
+      "iframe allow permissions"
+    ],
     "whatIs": "The Permissions-Policy header (formerly Feature-Policy) tells the browser which APIs and features the page and its embedded iframes can use. It controls access to camera, microphone, geolocation, fullscreen, payment, and other browser features. This is useful for static sites that want to set a clear security baseline without complex server configuration.",
     "howToUse": [
       "Select a preset that matches your site type, or choose Custom to set each permission individually.",
@@ -2148,6 +2379,10 @@
       {
         "question": "Which browsers support Permissions-Policy?",
         "answer": "Chrome 88+, Edge 88+, Firefox 116+, and Safari 16.1+. The older Feature-Policy header is deprecated and should be replaced with Permissions-Policy."
+      },
+      {
+        "question": "What happens if I disable a feature that my own page or third-party scripts need?",
+        "answer": "The blocked feature silently fails. For example, disabling camera via Permissions-Policy prevents all getUserMedia calls even from your own JavaScript. Third-party embeds like a map widget may also stop working if their required feature (geolocation) is blocked. Start with a report-only policy, monitor violations, and test thoroughly before enforcing restrictions."
       }
     ],
     "quickAnswer": "Use Permissions-Policy to disable browser features -- such as camera, microphone, geolocation, and autoplay -- that your site does not need. This improves privacy and prevents third-party scripts from accessing sensitive APIs.",
@@ -2168,7 +2403,12 @@
     "category": "seo",
     "summary": "Generate a Content-Security-Policy header for static sites with CDN, analytics, font, and embed options.",
     "description": "Choose preset templates for common static site setups or customize each directive. Get a Content-Security-Policy header and a report-only version for testing.",
-    "keywords": ["content security policy generator", "csp static site", "csp header builder", "github pages csp"],
+    "keywords": [
+      "content security policy generator",
+      "csp static site",
+      "csp header builder",
+      "github pages csp"
+    ],
     "whatIs": "Content-Security-Policy (CSP) is a browser security header that controls which resources a page is allowed to load. It helps prevent cross-site scripting, data injection, and other code injection attacks. For static sites, a CSP header can be simple and conservative because most static pages load resources from predictable, controlled origins.",
     "howToUse": [
       "Pick a preset that matches your site type: static, with CDN, with analytics, or with embedded content.",
@@ -2208,6 +2448,10 @@
       {
         "question": "What is the safest default-src for a static site?",
         "answer": "default-src 'self' is a practical starting point. It allows resources from the same origin and blocks everything else. Add specific origins for CDNs, fonts, and analytics as needed."
+      },
+      {
+        "question": "How do I allow Google Analytics, Google Fonts, or a CDN in CSP?",
+        "answer": "Add the specific origin to the relevant directive. For Google Analytics: script-src https://www.googletagmanager.com and connect-src https://www.google-analytics.com. For Google Fonts: style-src https://fonts.googleapis.com and font-src https://fonts.gstatic.com. For a CDN like cdnjs: script-src https://cdnjs.cloudflare.com. Deploy in report-only mode first so you can catch any additional third-party origins your site loads before enforcing."
       }
     ],
     "quickAnswer": "A Content Security Policy blocks cross-site scripting and data injection attacks by restricting which resources the browser can load. Start with a restrictive policy and widen only when needed.",
@@ -2222,12 +2466,37 @@
     ],
     "comparison": {
       "title": "CSP vs Permissions-Policy vs Referrer-Policy",
-      "columns": ["Aspect", "Content-Security-Policy", "Permissions-Policy", "Referrer-Policy"],
+      "columns": [
+        "Aspect",
+        "Content-Security-Policy",
+        "Permissions-Policy",
+        "Referrer-Policy"
+      ],
       "rows": [
-        ["What it controls", "Which resources (scripts, styles, images, fonts) the page can load and from which origins", "Which browser features (camera, microphone, geolocation, payment) the page can access", "How much referrer information is sent when the page navigates to or loads a resource from another origin"],
-        ["Example directives", "default-src 'self'; script-src 'self' cdn.example.com; img-src *", "camera=(), geolocation=(self), fullscreen=*", "strict-origin-when-cross-origin, no-referrer, same-origin"],
-        ["Delivered as header or meta", "Both. HTTP header is preferred. Meta tag works but does not support frame-ancestors or report-uri.", "HTTP header only. Meta tag is not supported for Permissions-Policy.", "Both. Meta tag works and is commonly used for static pages."],
-        ["What happens if misconfigured", "Resources are blocked. The page may appear broken with missing styles, scripts, or images.", "Features silently fail. JavaScript calls to blocked APIs throw without visible browser UI.", "Referrer data is sent with unintended detail or is missing when analytics need it."]
+        [
+          "What it controls",
+          "Which resources (scripts, styles, images, fonts) the page can load and from which origins",
+          "Which browser features (camera, microphone, geolocation, payment) the page can access",
+          "How much referrer information is sent when the page navigates to or loads a resource from another origin"
+        ],
+        [
+          "Example directives",
+          "default-src 'self'; script-src 'self' cdn.example.com; img-src *",
+          "camera=(), geolocation=(self), fullscreen=*",
+          "strict-origin-when-cross-origin, no-referrer, same-origin"
+        ],
+        [
+          "Delivered as header or meta",
+          "Both. HTTP header is preferred. Meta tag works but does not support frame-ancestors or report-uri.",
+          "HTTP header only. Meta tag is not supported for Permissions-Policy.",
+          "Both. Meta tag works and is commonly used for static pages."
+        ],
+        [
+          "What happens if misconfigured",
+          "Resources are blocked. The page may appear broken with missing styles, scripts, or images.",
+          "Features silently fail. JavaScript calls to blocked APIs throw without visible browser UI.",
+          "Referrer data is sent with unintended detail or is missing when analytics need it."
+        ]
       ],
       "summary": "CSP controls resource loading, Permissions-Policy controls feature access, and Referrer-Policy controls referrer data sent to other origins. They are complementary security headers that serve different purposes."
     },
@@ -2239,7 +2508,12 @@
     "category": "assets",
     "summary": "Generate a site.webmanifest JSON file for PWA-ready static websites.",
     "description": "Create a web app manifest with name, short name, icons, theme color, background color, display mode, and orientation. The output is ready to place in your static site root.",
-    "keywords": ["web app manifest generator", "site.webmanifest", "pwa manifest", "manifest json"],
+    "keywords": [
+      "web app manifest generator",
+      "site.webmanifest",
+      "pwa manifest",
+      "manifest json"
+    ],
     "whatIs": "A web app manifest is a JSON file that tells browsers about your web application and how it should behave when installed on a user's device. It controls the app name, icons, colors, and launch behavior. For static sites on GitHub Pages, a manifest is the key step toward making the site installable as a Progressive Web App.",
     "howToUse": [
       "Enter your site name and an optional short name that fits under 12 characters.",
@@ -2279,6 +2553,10 @@
       {
         "question": "What icon sizes are required for PWA?",
         "answer": "At minimum, provide 192x192 and 512x512 PNG icons. The 192x192 icon is used for the home screen and the 512x512 icon is required for the installable PWA badge on Android."
+      },
+      {
+        "question": "Do I need a service worker for the manifest to work?",
+        "answer": "No. The web app manifest works independently of service workers. The manifest controls how your site appears when saved to a home screen (name, icon, theme color, display mode). A service worker is only required if you want full offline functionality, background sync, or push notifications. You can add a manifest to a regular static site without any service worker."
       }
     ],
     "quickAnswer": "A web app manifest controls how your site looks when installed on a device home screen. It sets the app name, icons, theme color, and launch behavior for PWA-ready static sites.",
@@ -2298,7 +2576,13 @@
     "category": "seo",
     "summary": "Generate YAML front matter blocks for Jekyll, Hugo, Astro, 11ty, and other static site generators.",
     "description": "Build YAML front matter with title, date, description, tags, layout, author, slug, and draft status. Copy the block into the top of your Markdown content files.",
-    "keywords": ["front matter generator", "yaml front matter", "markdown metadata", "jekyll front matter", "hugo front matter"],
+    "keywords": [
+      "front matter generator",
+      "yaml front matter",
+      "markdown metadata",
+      "jekyll front matter",
+      "hugo front matter"
+    ],
     "whatIs": "Front matter is a block of YAML or TOML at the top of a Markdown file that provides metadata to the static site generator. It tells the generator what layout to use, what the page title is, when it was published, and which tags or categories apply. Front matter is the bridge between raw Markdown content and the generated HTML page.",
     "howToUse": [
       "Enter the page title, publish date, and meta description for your post or page.",
@@ -2338,6 +2622,10 @@
       {
         "question": "What is the difference between YAML and TOML front matter?",
         "answer": "YAML uses indentation-based structure with key: value pairs separated by colons. TOML uses INI-style sections with key = value pairs. Most static site generators default to YAML, but Hugo and some others support TOML as an alternative."
+      },
+      {
+        "question": "Can I use custom fields beyond the standard title, date, and layout?",
+        "answer": "Yes. Most static site generators allow arbitrary custom fields in front matter. You can add fields like author, tags, series, featured_image, or any project-specific key. Template engines like Liquid, Nunjucks, or Go templates can read these custom fields and render them in the page layout. Custom fields are also useful for programmatic SEO pages where each page carries data that templates consume at build time."
       }
     ],
     "quickAnswer": "Front matter is YAML or TOML metadata at the top of a Markdown file that tells your static site generator the page title, layout, publish date, tags, and other settings. It is separated from content by triple dashes.",
@@ -2357,7 +2645,12 @@
     "category": "html",
     "summary": "Paste HTML headings and get a nested table of contents with anchor links for articles and documentation.",
     "description": "Extract headings from pasted HTML and build a nested unordered list with anchor links. Each heading gets a slugified ID. Perfect for long blog posts, guides, and documentation pages.",
-    "keywords": ["table of contents generator", "anchor link generator", "toc html", "heading anchor"],
+    "keywords": [
+      "table of contents generator",
+      "anchor link generator",
+      "toc html",
+      "heading anchor"
+    ],
     "whatIs": "A table of contents is a linked list of headings that lets readers jump to sections within a long page. Anchor links use the id attribute on each heading to create deep-linkable URLs. For static sites with long articles, a TOC improves navigation, accessibility, and reader engagement by letting users preview the article structure.",
     "howToUse": [
       "Paste the HTML of your article or page content into the input area.",
@@ -2398,6 +2691,10 @@
       {
         "question": "What heading levels should the TOC include?",
         "answer": "Include h2 through h3 or h2 through h4 for most articles. Start from h2 because the h1 is usually the page title. Including too many levels such as h5 and h6 makes the TOC cluttered."
+      },
+      {
+        "question": "How do I handle duplicate heading text when generating TOC anchors?",
+        "answer": "If two or more headings have identical text, the generated anchor IDs must be unique. Append a numeric suffix to duplicates: #introduction, #introduction-2, #introduction-3. This tool generates unique anchors by appending a counter to duplicate IDs. When writing content, avoid identical heading text where possible to keep TOC links meaningful and predictable."
       }
     ],
     "limitations": [
@@ -2416,7 +2713,12 @@
     "category": "seo",
     "summary": "Generate a complete RSS 2.0 XML feed for your static blog from a list of posts.",
     "description": "Build a valid RSS 2.0 feed with channel metadata and item entries. Enter posts as title|url|date|description lines. The output is ready to publish as feed.xml on your static site.",
-    "keywords": ["rss feed generator", "rss 2.0 xml", "blog rss feed", "static site rss"],
+    "keywords": [
+      "rss feed generator",
+      "rss 2.0 xml",
+      "blog rss feed",
+      "static site rss"
+    ],
     "whatIs": "RSS is an XML format that lets readers subscribe to content updates through feed readers, browsers, and aggregators. An RSS feed on a static blog lets regular readers track new posts without visiting the site every day. Search engines also use RSS feeds to discover new and updated content on sites that publish infrequently.",
     "howToUse": [
       "Enter your site title, description, and the full site URL for the channel metadata.",
@@ -2456,6 +2758,10 @@
       {
         "question": "How many items should an RSS feed include?",
         "answer": "Include the 10 to 20 most recent items in a typical RSS feed. Some aggregators may truncate feeds with too many items, and most readers only need the latest posts."
+      },
+      {
+        "question": "Do I need to update the RSS feed manually each time I publish?",
+        "answer": "On a static site without a build pipeline, yes — you must add each new post to the feed.xml file by hand. Most static site generators (Hugo, Eleventy, Jekyll, Astro) can generate the RSS feed automatically at build time from your content files. If you are editing HTML directly with no generator, budget time to update the feed with each post or create a simple script that reads a posts directory and generates the feed."
       }
     ],
     "quickAnswer": "RSS is an XML format that lets readers subscribe to your site updates through feed readers and aggregators. A feed.xml file at your site root makes new content discoverable without manual checking.",
@@ -2475,7 +2781,12 @@
     "category": "html",
     "summary": "Generate a native HTML dialog modal with open and close buttons using the dialog element.",
     "description": "Build a complete dialog modal with trigger button, content, close button, and styling using the native HTML dialog element. Works without external JavaScript libraries.",
-    "keywords": ["html dialog generator", "dialog modal html", "native dialog element", "modal without javascript"],
+    "keywords": [
+      "html dialog generator",
+      "dialog modal html",
+      "native dialog element",
+      "modal without javascript"
+    ],
     "whatIs": "The HTML dialog element provides a native browser-controlled modal dialog that does not require external libraries. The showModal() method opens a modal that blocks interaction with the rest of the page, while show() opens a non-modal dialog. For static sites, the dialog element removes the need for a JavaScript framework or custom modal logic.",
     "howToUse": [
       "Enter the button text and the heading for your modal dialog.",
@@ -2538,7 +2849,12 @@
     "category": "css",
     "summary": "Generate CSS scroll-snap rules for carousels, galleries, and horizontal scroll sections.",
     "description": "Create CSS scroll-snap container and item rules. Choose direction, snap type, alignment, and stop behavior. Includes a minimal HTML skeleton to test immediately.",
-    "keywords": ["scroll snap css", "css carousel", "scroll snap generator", "horizontal scroll css"],
+    "keywords": [
+      "scroll snap css",
+      "css carousel",
+      "scroll snap generator",
+      "horizontal scroll css"
+    ],
     "whatIs": "CSS scroll-snap controls the scroll position of a container so it snaps to alignment points you define. It enables carousels, horizontal galleries, and section-by-section scrolling without JavaScript. The browser handles the snapping physics, making it smooth on trackpad, mouse wheel, and touch devices.",
     "howToUse": [
       "Select the scroll direction: horizontal for carousels and galleries, vertical for section-by-section pages.",
@@ -2576,10 +2892,6 @@
         "answer": "Mandatory always snaps to the nearest snap point, even if the user scrolls slightly. Proximity only snaps when the scroll position is near a snap point, giving the user more freedom to browse without forced snapping."
       },
       {
-        "question": "Does scroll-snap work on touch devices?",
-        "answer": "Yes. Scroll-snap works on all modern browsers including mobile Safari and Chrome. Touch gestures, trackpad swipes, and mouse wheel scrolling all trigger the snap behavior consistently."
-      },
-      {
         "question": "How do I add scroll-snap-stop?",
         "answer": "Add scroll-snap-stop: always on the child elements to force the scroll to stop at every snap point. This prevents the user from scrolling past multiple items in one gesture. The default value is normal, which lets the browser skip snap points during fast scrolling."
       }
@@ -2587,7 +2899,8 @@
     "quickAnswer": "Generate CSS scroll-snap rules for carousels, galleries, and section-based layouts. Choose direction, snap type, and alignment to control how the scroll position snaps to each child element.",
     "limitations": [
       "Mandatory snap type can prevent fast scrolling through long content because the scroll position snaps to every child, making rapid browsing feel rigid.",
-      "Scroll-snap requires the container to have overflow set to scroll or auto. Containers with overflow: hidden will not activate scroll-snap behavior."
+      "Scroll-snap requires the container to have overflow set to scroll or auto. Containers with overflow: hidden will not activate scroll-snap behavior.",
+      "Scroll snapping can conflict with prefers-reduced-motion user preferences. Users who have requested reduced motion may find forced snap points disorienting. Wrap snap behavior in a @media (prefers-reduced-motion: no-preference) block to respect accessibility settings."
     ],
     "verificationSteps": [
       "Test the scroll-snap container on a touch device to confirm snapping feels smooth and predictable at different scroll speeds.",
@@ -2600,7 +2913,12 @@
     "category": "css",
     "summary": "Generate CSS container query rules for component-based responsive design.",
     "description": "Set up @container rules with container-type and container-name. Enter breakpoint conditions and the CSS to apply. Makes reusable components adapt to their container instead of the viewport.",
-    "keywords": ["container query generator", "@container css", "container-type", "component responsive"],
+    "keywords": [
+      "container query generator",
+      "@container css",
+      "container-type",
+      "component responsive"
+    ],
     "whatIs": "Container queries let you apply CSS styles based on the size of a parent container rather than the viewport. This is different from media queries, which respond to the browser window. For reusable components, container queries mean the same component can render correctly in a narrow sidebar and a wide main content area without duplicating styles.",
     "howToUse": [
       "Set a container-type and optional container-name for the parent element that will be the query reference.",
@@ -2636,6 +2954,14 @@
       {
         "question": "What is the difference between inline-size and size for container-type?",
         "answer": "inline-size establishes a query container that responds to the inline dimension only, which is width in horizontal writing modes. size establishes a container that responds to both width and height but requires contain: layout style on the container, which can affect layout behavior."
+      },
+      {
+        "question": "How do container queries differ from media queries?",
+        "answer": "Media queries respond to the viewport size and global browser conditions. Container queries respond to the size of a parent container element. This means a component styled with container queries adapts to its container regardless of where it is placed — in a wide main column, a narrow sidebar, or a card grid — without needing separate media query breakpoints for each layout context."
+      },
+      {
+        "question": "What happens if I use @container without setting container-type on the parent?",
+        "answer": "The @container rule has no effect and the contained styles are never applied. Every container query requires an ancestor element with container-type set to either inline-size, size, or normal. The browser looks up the ancestor chain for the nearest container context. If none is found, the query fails silently."
       }
     ],
     "quickAnswer": "Use container queries to style an element based on the size of its parent container instead of the viewport. They are the component-level equivalent of media queries and are useful for reusable widget layouts.",
@@ -2656,7 +2982,13 @@
     "category": "css",
     "summary": "Calculate aspect-ratio CSS values and padding-bottom fallbacks to prevent Cumulative Layout Shift.",
     "description": "Choose a preset ratio or enter custom dimensions. Get the modern aspect-ratio CSS and the padding-bottom percentage fallback for older browsers. Reserve space for images and embeds before they load.",
-    "keywords": ["aspect ratio calculator", "css aspect-ratio", "layout shift", "padding-bottom aspect ratio", "cls fix"],
+    "keywords": [
+      "aspect ratio calculator",
+      "css aspect-ratio",
+      "layout shift",
+      "padding-bottom aspect ratio",
+      "cls fix"
+    ],
     "whatIs": "Aspect-ratio is a CSS property that sets a preferred aspect ratio for an element, letting the browser calculate the height from the width before content loads. This prevents Cumulative Layout Shift (CLS), a Core Web Vitals metric that measures visual stability. By reserving the correct space for images, videos, and embeds ahead of time, the page layout stays stable as resources load.",
     "howToUse": [
       "Select a preset ratio such as 16:9, 4:3, or 1:1, or enter custom width and height values.",
@@ -2705,7 +3037,8 @@
     "quickAnswer": "Calculate the CSS aspect-ratio value and padding-bottom fallback percentage to prevent Cumulative Layout Shift. Reserve the correct space for images, videos, and embeds before they load.",
     "limitations": [
       "The padding-bottom fallback technique requires position: relative on the parent container and position: absolute on the child element for correct sizing behavior.",
-      "Aspect-ratio only works when the element has a defined width. If the element width is auto or not set, the aspect-ratio calculation has no basis to compute the height."
+      "Aspect-ratio only works when the element has a defined width. If the element width is auto or not set, the aspect-ratio calculation has no basis to compute the height.",
+      "Using aspect-ratio without a defined width or height on images can cause Cumulative Layout Shift during page load. Always set a width or height attribute on img elements or an explicit CSS dimension alongside aspect-ratio so the browser can reserve space before the image loads."
     ],
     "verificationSteps": [
       "Load the page at different viewport widths and verify the placeholder maintains the correct aspect ratio without layout shift when the image loads.",
@@ -2718,7 +3051,12 @@
     "category": "html",
     "summary": "Generate a complete HTML redirect page using the meta refresh tag without JavaScript.",
     "description": "Create a self-contained HTML page that redirects visitors to a new URL using the meta refresh tag. Works on any static hosting without server configuration or JavaScript.",
-    "keywords": ["html redirect page", "meta refresh redirect", "no javascript redirect", "static redirect page"],
+    "keywords": [
+      "html redirect page",
+      "meta refresh redirect",
+      "no javascript redirect",
+      "static redirect page"
+    ],
     "whatIs": "A meta refresh redirect is an HTML-only way to send visitors from one URL to another. It works on static hosting (GitHub Pages, Netlify, etc.) where server redirects are not available. The tag sits in the page head with a delay and destination URL.",
     "howToUse": [
       "Enter the target URL and redirect delay in seconds.",
@@ -2759,6 +3097,10 @@
       {
         "question": "What delay should I use?",
         "answer": "Use 0 seconds for an immediate redirect. Search engines treat a 0-second meta refresh as a permanent redirect signal. Use a delay of 3 to 5 seconds only when the visitor needs time to read a notice before being forwarded."
+      },
+      {
+        "question": "Will visitors see a flash of content before the meta refresh redirect happens?",
+        "answer": "With a 0-second delay, the redirect is effectively instant and visitors see nothing before being sent to the destination. With a longer delay such as 5 seconds, visitors see the page content before the redirect. This is useful for \"This page has moved\" notices where you want to show a message and a manual link before redirecting. Keep delay text short and always include a clickable manual link."
       }
     ],
     "limitations": [
@@ -2777,7 +3119,12 @@
     "category": "html",
     "summary": "Generate a friendly 404 error page with navigation links for static websites and GitHub Pages.",
     "description": "Build a complete 404.html page with a helpful message, navigation links, and optional search. The output is ready to place in your static site root for GitHub Pages and other static hosting.",
-    "keywords": ["404 page template", "github pages 404", "custom 404 html", "static 404 page"],
+    "keywords": [
+      "404 page template",
+      "github pages 404",
+      "custom 404 html",
+      "static 404 page"
+    ],
     "whatIs": "A 404 page shows when a visitor opens a URL that does not exist. Static hosts automatically serve 404.html from the site root when a page is not found. A good 404 page helps visitors find their way back instead of bouncing.",
     "howToUse": [
       "Enter your site name, URL, and a custom message for the 404 page.",
@@ -2816,10 +3163,6 @@
         "answer": "Yes. 404.html is a standard convention supported by most static hosting platforms including GitHub Pages, Netlify, Cloudflare Pages, and Vercel."
       },
       {
-        "question": "Will this 404 page work with GitHub Pages?",
-        "answer": "Yes. GitHub Pages automatically serves 404.html from the site root for any non-existent page. No special configuration is needed beyond placing the file in the published output."
-      },
-      {
         "question": "Can I track 404 errors with this static page?",
         "answer": "This template does not include tracking. To monitor 404 errors, add a pageview event to the 404 page through your analytics provider, or review server log data if your hosting platform exposes it."
       }
@@ -2840,7 +3183,12 @@
     "category": "seo",
     "summary": "Generate a JSON Feed file for your static blog as a modern, machine-readable alternative to RSS.",
     "description": "Build a JSON Feed version 1.1 file with feed metadata and item entries. Enter posts as title|url|date|content lines. Output is ready to publish as feed.json.",
-    "keywords": ["json feed generator", "json feed 1.1", "feed json", "json rss alternative"],
+    "keywords": [
+      "json feed generator",
+      "json feed 1.1",
+      "feed json",
+      "json rss alternative"
+    ],
     "whatIs": "JSON Feed is a modern feed format similar to RSS but in JSON. It is easier to parse for JavaScript apps and modern feed readers. It has a clear spec at jsonfeed.org and supports title, URL, description, items, and author fields.",
     "howToUse": [
       "Enter the site title, URL, description, and author name for the feed channel.",
@@ -2880,6 +3228,10 @@
       {
         "question": "What is the difference between content_text and content_html?",
         "answer": "content_text is the plain text version of the item content for text-only readers. content_html is the HTML version for rich rendering. Include both fields to support the widest range of feed readers."
+      },
+      {
+        "question": "Is JSON Feed meant to replace RSS and Atom?",
+        "answer": "No. JSON Feed is a complementary format designed for modern JSON-based tooling. RSS and Atom are still more widely supported by feed readers, podcast apps, and content aggregators. JSON Feed is popular among developers because it integrates easily with JavaScript and API-based workflows. Publishing both formats gives you the best coverage: RSS/Atom for broad compatibility and JSON Feed for developer-friendly consumption."
       }
     ],
     "quickAnswer": "JSON Feed is a modern machine-readable feed format in JSON that serves the same purpose as RSS. Publish feed.json alongside feed.xml to support both legacy and modern feed readers.",
@@ -2899,7 +3251,12 @@
     "category": "html",
     "summary": "Generate an accessible skip-to-main-content link with CSS for keyboard and screen reader navigation.",
     "description": "Create a skip navigation link that appears on focus for keyboard users. Essential for accessibility and required by WCAG for pages with repeated navigation blocks.",
-    "keywords": ["skip link generator", "skip to main content", "accessible skip navigation", "wcag skip link"],
+    "keywords": [
+      "skip link generator",
+      "skip to main content",
+      "accessible skip navigation",
+      "wcag skip link"
+    ],
     "whatIs": "A skip link is a hidden link at the top of the page that becomes visible when focused with the Tab key. It lets keyboard and screen reader users jump directly to the main content, skipping the navigation. WCAG requires a way to bypass repeated blocks of content.",
     "howToUse": [
       "Enter the CSS selector of the main content area, such as #main-content or #content.",
@@ -2940,6 +3297,10 @@
       {
         "question": "Does the target element need any special attributes?",
         "answer": "Yes. Add tabindex=\"-1\" to the target element so it can receive programmatic keyboard focus when the skip link is activated. Adding role=\"region\" and a label to the target container also helps screen reader users identify the main content area."
+      },
+      {
+        "question": "Can I have more than one skip link on a page?",
+        "answer": "Yes, but keep it limited. A page can include a skip-to-content link and an additional skip link such as skip-to-search or skip-to-footer. Each skip link must have a unique, descriptive visible text and a unique target id. Too many skip links clutter the tab order and frustrate keyboard users. One to two skip links covers most page layouts."
       }
     ],
     "limitations": [
@@ -2958,7 +3319,12 @@
     "category": "html",
     "summary": "Paste HTML and check for ARIA landmark elements that help screen readers navigate the page structure.",
     "description": "Scan pasted HTML for common landmark elements: header, main, nav, footer, aside, section, form, and search. Flags missing essential landmarks and explains why each one matters for accessibility.",
-    "keywords": ["html landmark checker", "aria landmarks", "html semantics checker", "landmark audit"],
+    "keywords": [
+      "html landmark checker",
+      "aria landmarks",
+      "html semantics checker",
+      "landmark audit"
+    ],
     "whatIs": "ARIA landmarks are HTML elements that define page regions. Screen readers use landmarks to let users jump between page sections. Common landmarks include header, main, nav, footer, aside, and form. Missing landmarks make pages harder to navigate for assistive technology users.",
     "howToUse": [
       "Paste your HTML markup into the input area.",
@@ -2999,6 +3365,10 @@
       {
         "question": "Do I need labels on section elements?",
         "answer": "A section element without an accessible name does not register as a landmark in the accessibility tree. Add an aria-label or aria-labelledby attribute to section elements that represent distinct page regions."
+      },
+      {
+        "question": "What is the difference between the article and section elements?",
+        "answer": "Article represents a self-contained piece of content that makes sense on its own when taken out of the page — a blog post, a news story, a product card, a forum post. Section is a thematic grouping of content that requires context from the rest of the page and typically has a heading. Use article for independent, distributable content and section for dividing a page into thematic areas."
       }
     ],
     "limitations": [
@@ -3017,7 +3387,12 @@
     "category": "html",
     "summary": "Generate HTML input elements with type-specific attributes for forms on static websites.",
     "description": "Choose an input type and configure type-specific attributes such as placeholder, required, pattern, autocomplete, min, max, and step. Copy the complete input tag with all attributes correctly set.",
-    "keywords": ["input attributes generator", "html input tag", "form input builder", "input type attributes"],
+    "keywords": [
+      "input attributes generator",
+      "html input tag",
+      "form input builder",
+      "input type attributes"
+    ],
     "whatIs": "HTML inputs have many type-specific attributes that are easy to forget. The type attribute changes which attributes are valid: email inputs use pattern and multiple, number inputs use min, max, and step, text inputs use minlength and maxlength. Getting these right helps with form validation and user experience.",
     "howToUse": [
       "Choose the input type that matches the data you are collecting.",
@@ -3058,6 +3433,10 @@
       {
         "question": "What is the difference between required and aria-required?",
         "answer": "required triggers built-in browser validation and blocks form submission when the field is empty. aria-required tells assistive technology that the field is required but does not enforce validation. Use required for validation and add aria-required for screen reader clarity."
+      },
+      {
+        "question": "Does the autocomplete attribute work with all input types?",
+        "answer": "Autocomplete works with most text-based input types (text, email, tel, search, url, number) and password fields. It does not apply to checkboxes, radio buttons, file inputs, range sliders, or buttons. For autocomplete to work, the form or input must be inside a form element with a submit button, and the browser must have stored values from a previous submission. Some browsers also require a name or id attribute on the input."
       }
     ],
     "limitations": [
@@ -3076,7 +3455,13 @@
     "category": "css",
     "summary": "Generate CSS using dynamic viewport units (dvh, svh, lvh) with fallbacks for older browsers.",
     "description": "Create CSS declarations using the modern viewport units: small (svh/svw), large (lvh/lvw), and dynamic (dvh/dvw). Each unit behaves differently on mobile browsers. Includes fallback declarations for older browser support.",
-    "keywords": ["dynamic viewport units", "dvh css", "svh css", "lvh css", "viewport height css"],
+    "keywords": [
+      "dynamic viewport units",
+      "dvh css",
+      "svh css",
+      "lvh css",
+      "viewport height css"
+    ],
     "whatIs": "Modern CSS viewport units come in three variants. Small viewport (svh) is the viewport height minus the browser UI. Large viewport (lvh) is the viewport height with the browser UI retracted. Dynamic viewport (dvh) adjusts as the browser UI appears and disappears. These are useful for full-screen layouts on mobile where the browser address bar changes the visible area.",
     "howToUse": [
       "Choose the unit type: svh, lvh, dvh, svw, lvw, or dvw.",
@@ -3125,7 +3510,8 @@
     "quickAnswer": "Use dynamic viewport units (dvh, svh, lvh) for layouts that need to fill the mobile viewport correctly when the browser UI expands and retracts. Always include a classic vh fallback for older browsers.",
     "limitations": [
       "Dynamic viewport units are only relevant on mobile browsers where the address bar and other UI elements expand and retract. On desktop, dvh, svh, and lvh behave identically to vh.",
-      "Some browsers update dvh on scroll end rather than continuously, which may cause a visible jump in element height as the address bar retracts."
+      "Some browsers update dvh on scroll end rather than continuously, which may cause a visible jump in element height as the address bar retracts.",
+      "On mobile browsers, dvh changes when the on-screen keyboard appears. Form inputs, search fields, and chat interfaces that rely on dvh for full-screen layouts may resize unexpectedly when the user starts typing. Consider using svh or a fixed vh fallback for layouts that contain form elements."
     ],
     "verificationSteps": [
       "Load the page on a mobile device or emulator and scroll to confirm the element height adjusts correctly as the browser address bar retracts.",
@@ -3138,7 +3524,13 @@
     "category": "css",
     "summary": "Convert physical CSS properties to logical properties for better right-to-left and writing-mode support.",
     "description": "Turn physical CSS values like margin-left and padding-right into logical equivalents such as margin-inline-start and padding-inline-end. Write CSS once that adapts to LTR, RTL, and vertical writing modes.",
-    "keywords": ["css logical properties", "logical css converter", "rtl css", "writing mode css", "inline block css"],
+    "keywords": [
+      "css logical properties",
+      "logical css converter",
+      "rtl css",
+      "writing mode css",
+      "inline block css"
+    ],
     "whatIs": "CSS logical properties use writing-mode-relative directions instead of physical directions. Inline (text flow direction) and Block (perpendicular direction) replace Left, Right, Top, and Bottom. This means the same CSS works for left-to-right, right-to-left, and vertical languages without overrides. For example, margin-inline-start applies to the left side in LTR and the right side in RTL.",
     "howToUse": [
       "Choose the physical CSS property you want to convert, such as margin-left or padding-right.",
@@ -3178,16 +3570,13 @@
       {
         "question": "What is the difference between inline and block axis?",
         "answer": "The inline axis follows the direction text flows. In English, the inline axis is horizontal. The block axis runs perpendicular to the text flow, which is vertical in English. In a vertical writing mode these directions swap."
-      },
-      {
-        "question": "Are logical properties supported everywhere?",
-        "answer": "The core logical properties such as margin-inline-start and padding-block-end are widely supported in Chrome 87+, Edge 87+, Safari 15+, and Firefox 66+. Some shorthand logical properties like border-inline have newer support, so check compatibility for the specific variant you plan to use."
       }
     ],
     "quickAnswer": "Convert physical CSS properties such as margin-left and padding-right into writing-mode-aware logical equivalents. This helps layouts adapt automatically to right-to-left and vertical writing modes without separate overrides.",
     "limitations": [
       "Some shorthand logical properties such as border-inline, border-block, and inset-inline have spotty browser support compared to the core longhand logical properties.",
-      "The converter handles single property conversion. Migrating a large stylesheet to logical properties requires updating each physical-to-logical pair and verifying no mixed-direction edge cases remain."
+      "The converter handles single property conversion. Migrating a large stylesheet to logical properties requires updating each physical-to-logical pair and verifying no mixed-direction edge cases remain.",
+      "Logical properties map to physical properties based on the writing-mode and direction of the element. A single inline-start maps to left in LTR and right in RTL. This means the generated code behaves differently depending on the document language direction, which requires testing in both LTR and RTL modes."
     ],
     "verificationSteps": [
       "Apply the converted properties to a page and switch the direction attribute from ltr to rtl on the html element to verify the layout flips correctly.",
@@ -3200,7 +3589,12 @@
     "category": "html",
     "summary": "Generate fetchpriority attributes for images, scripts, and link tags to improve Core Web Vitals.",
     "description": "Add fetchpriority='high' or fetchpriority='low' to img, link, and script tags based on use case. Get recommended combos for LCP images, below-the-fold content, and non-critical resources.",
-    "keywords": ["fetchpriority generator", "fetchpriority high", "lcp image fetchpriority", "resource priority"],
+    "keywords": [
+      "fetchpriority generator",
+      "fetchpriority high",
+      "lcp image fetchpriority",
+      "resource priority"
+    ],
     "whatIs": "Fetchpriority is an HTML attribute that hints to the browser which resources to load sooner. It helps improve Largest Contentful Paint when applied to hero images and can de-prioritize non-critical resources. It is different from preload and loading='lazy'. Use it to signal relative importance of images, scripts, and stylesheets to the browser.",
     "howToUse": [
       "Select the resource type: image, script, or link tag.",
@@ -3236,6 +3630,14 @@
       {
         "question": "Does fetchpriority guarantee faster loading?",
         "answer": "No, it is a hint. The browser decides the final loading order based on many factors."
+      },
+      {
+        "question": "Which resources benefit most from fetchpriority=\"high\"?",
+        "answer": "The LCP image (usually the largest hero image visible on page load), the main CSS file that styles above-the-fold content, and critical web fonts used in the first visible text. Only one or two resources should get high priority. If multiple resources compete for high priority, the browser still has to sequence them, which defeats the purpose of the hint."
+      },
+      {
+        "question": "When should I use fetchpriority=\"low\"?",
+        "answer": "Use low priority for images far below the fold, analytics scripts, third-party chat widgets, social media embeds, and other resources that do not contribute to the initial page render. This lets the browser defer them in favor of more critical assets without blocking the load event."
       }
     ],
     "quickAnswer": "Use fetchpriority='high' only for the one image or resource most likely to become the Largest Contentful Paint element. Do not mark many resources as high priority -- the browser still decides loading order.",
@@ -3250,13 +3652,37 @@
     ],
     "comparison": {
       "title": "fetchpriority vs loading=\"lazy\"",
-      "columns": ["Aspect", "fetchpriority", "loading=\"lazy\""],
+      "columns": [
+        "Aspect",
+        "fetchpriority",
+        "loading=\"lazy\""
+      ],
       "rows": [
-        ["What it controls", "Relative loading priority of a resource compared to other resources on the same page", "Whether the browser delays loading the resource until it is near the viewport"],
-        ["When to use", "On the LCP element to load it sooner, or on non-critical resources to deprioritize them", "On images and iframes below the fold to defer their load until the user scrolls near them"],
-        ["Effect on LCP", "Can improve LCP when set to high on the hero image", "Can worsen LCP if applied above the fold. Only use below the fold."],
-        ["Valid on which elements", "img, link, script, iframe", "img, iframe"],
-        ["Browser support", "Chrome 101+, Edge 101+, Safari 16+, Firefox 122+", "Chrome 77+, Edge 79+, Safari 15.4+, Firefox 75+"]
+        [
+          "What it controls",
+          "Relative loading priority of a resource compared to other resources on the same page",
+          "Whether the browser delays loading the resource until it is near the viewport"
+        ],
+        [
+          "When to use",
+          "On the LCP element to load it sooner, or on non-critical resources to deprioritize them",
+          "On images and iframes below the fold to defer their load until the user scrolls near them"
+        ],
+        [
+          "Effect on LCP",
+          "Can improve LCP when set to high on the hero image",
+          "Can worsen LCP if applied above the fold. Only use below the fold."
+        ],
+        [
+          "Valid on which elements",
+          "img, link, script, iframe",
+          "img, iframe"
+        ],
+        [
+          "Browser support",
+          "Chrome 101+, Edge 101+, Safari 16+, Firefox 122+",
+          "Chrome 77+, Edge 79+, Safari 15.4+, Firefox 75+"
+        ]
       ],
       "summary": "fetchpriority hints at relative priority for loading while loading=\"lazy\" defers loading until the element is near the viewport. They address different performance concerns and can be used together on the same element."
     },
@@ -3268,7 +3694,12 @@
     "category": "html",
     "summary": "Generate correct preload link tags for fonts, hero images, CSS, and scripts with the right as and crossorigin attributes.",
     "description": "Build preload tags by resource type. The tool ensures the correct as attribute, optional crossorigin, type, and media values are included. Avoids common preload mistakes.",
-    "keywords": ["preload tag generator", "rel preload as font", "preload image tag", "preload css link"],
+    "keywords": [
+      "preload tag generator",
+      "rel preload as font",
+      "preload image tag",
+      "preload css link"
+    ],
     "whatIs": "Preload tells the browser to fetch a resource early before it would normally be discovered. It speeds up loading for fonts, hero images, critical CSS, and scripts. The as attribute is required to tell the browser what type of resource to expect. Missing as or incorrect crossorigin are common mistakes.",
     "howToUse": [
       "Select the resource type you need to preload: font, image, CSS, or script.",
@@ -3304,6 +3735,14 @@
       {
         "question": "Should I preload everything?",
         "answer": "No. Preload a small number of truly critical resources. Too many preload hints delay important resources."
+      },
+      {
+        "question": "Do I need the as attribute on every preload link?",
+        "answer": "Yes. The as attribute is required on preload links. It tells the browser what type of resource is being loaded (style, script, font, image, fetch, etc.) so it can apply the correct prioritization, Content-Security-Policy checks, and caching rules. A preload without an as attribute is ignored by browsers and triggers a console warning."
+      },
+      {
+        "question": "What happens if a preloaded resource is not used within a few seconds?",
+        "answer": "The browser issues a console warning and the preloaded resource may be discarded. Unused preloads waste bandwidth and compete with genuinely critical resources. Always verify that the preloaded resource is consumed by the page within about 3 seconds of the preload starting. Chrome DevTools shows preload warnings in the Console and Network panels."
       }
     ],
     "quickAnswer": "Use preload to fetch critical resources -- such as hero images, fonts, or above-the-fold CSS -- before the parser discovers them. Only preload a few resources per page to avoid bandwidth contention.",
@@ -3318,13 +3757,43 @@
     ],
     "comparison": {
       "title": "preload vs prefetch vs modulepreload",
-      "columns": ["Aspect", "preload", "prefetch", "modulepreload"],
+      "columns": [
+        "Aspect",
+        "preload",
+        "prefetch",
+        "modulepreload"
+      ],
       "rows": [
-        ["What it loads", "Resources needed for the current page", "Resources likely needed for the next navigation", "ES module scripts for the current page"],
-        ["When the browser fetches it", "Immediately, at high priority during page load", "During idle time after the current page finishes loading", "Immediately at high priority, similar to preload, but fetches the module and its dependencies"],
-        ["What it is best for", "Critical fonts, hero images, above-the-fold CSS", "Next-page resources such as docs, images, or scripts for the likely next page", "ES module entry points and their dependency trees in modern bundler output"],
-        ["Required attributes", "rel=\"preload\" and the as attribute", "rel=\"prefetch\"", "rel=\"modulepreload\""],
-        ["Browser support milestone", "Chrome 50+, Safari 9+, Firefox 56+", "Chrome 50+, Safari 9+, Firefox 2+", "Chrome 80+, Safari 15+, Firefox 115+"]
+        [
+          "What it loads",
+          "Resources needed for the current page",
+          "Resources likely needed for the next navigation",
+          "ES module scripts for the current page"
+        ],
+        [
+          "When the browser fetches it",
+          "Immediately, at high priority during page load",
+          "During idle time after the current page finishes loading",
+          "Immediately at high priority, similar to preload, but fetches the module and its dependencies"
+        ],
+        [
+          "What it is best for",
+          "Critical fonts, hero images, above-the-fold CSS",
+          "Next-page resources such as docs, images, or scripts for the likely next page",
+          "ES module entry points and their dependency trees in modern bundler output"
+        ],
+        [
+          "Required attributes",
+          "rel=\"preload\" and the as attribute",
+          "rel=\"prefetch\"",
+          "rel=\"modulepreload\""
+        ],
+        [
+          "Browser support milestone",
+          "Chrome 50+, Safari 9+, Firefox 56+",
+          "Chrome 50+, Safari 9+, Firefox 2+",
+          "Chrome 80+, Safari 15+, Firefox 115+"
+        ]
       ],
       "summary": "Preload fetches current-page resources early at high priority. Prefetch fetches likely next-page resources during idle time. Modulepreload is a specialized preload for ES module scripts and their dependencies."
     },
@@ -3336,7 +3805,12 @@
     "category": "html",
     "summary": "Generate modulepreload link tags for ES module scripts in Vite, Astro, and modern static sites.",
     "description": "Build rel='modulepreload' link tags with the correct crossorigin attribute. Designed for modern JavaScript module workflows in Vite, Astro, SvelteKit, and vanilla ES module projects.",
-    "keywords": ["modulepreload generator", "rel modulepreload", "vite modulepreload", "es module preload"],
+    "keywords": [
+      "modulepreload generator",
+      "rel modulepreload",
+      "vite modulepreload",
+      "es module preload"
+    ],
     "whatIs": "Modulepreload is a specialized preload for ES module scripts. Unlike standard preload, modulepreload understands module dependency graphs. It is commonly used in Vite and Astro output. It needs the correct crossorigin attribute for cross-origin modules.",
     "howToUse": [
       "Enter the module script path or URL.",
@@ -3372,6 +3846,14 @@
       {
         "question": "Which browsers support modulepreload?",
         "answer": "Chrome 66+, Edge 79+, Firefox 115+, Safari 17.2+. It is safe as a progressive enhancement."
+      },
+      {
+        "question": "Does modulepreload work with import maps?",
+        "answer": "Yes. Modulepreload resolves bare specifiers through import maps just like ES module imports do. If you preload a module that uses bare specifiers, the browser follows the import map to resolve dependencies. Preloaded modules and their dependency graph are fetched and compiled ahead of time, so they execute without delay when imported."
+      },
+      {
+        "question": "What is the difference between modulepreload and regular preload for ES modules?",
+        "answer": "Modulepreload is specifically designed for ES module dependency graphs. Unlike regular preload, it not only fetches the target module but also parses its dependency tree and fetches all static imports. Regular preload only fetches the single specified resource. Use modulepreload for JavaScript modules and regular preload for other resource types like fonts, images, and non-module CSS."
       }
     ],
     "quickAnswer": "Use modulepreload to speculatively fetch, parse, and compile ES module dependencies before they are needed. It works like preload but is designed specifically for JavaScript module scripts.",
@@ -3392,7 +3874,11 @@
     "category": "html",
     "summary": "Build optimized img tags by combining loading, decoding, and fetchpriority for hero images, galleries, and article content.",
     "description": "Choose an image use case and get a complete img tag with the right combination of loading, decoding, fetchpriority, width, height, and alt attributes. Covers hero images, thumbnails, article images, and galleries.",
-    "keywords": ["img loading decoding fetchpriority", "image performance attributes", "lazy loading decoding async image"],
+    "keywords": [
+      "img loading decoding fetchpriority",
+      "image performance attributes",
+      "lazy loading decoding async image"
+    ],
     "whatIs": "Modern img tags benefit from several performance attributes used together: loading controls lazy loading, decoding controls how the image is decoded, and fetchpriority signals importance. Using them correctly together is better than setting them in isolation.",
     "howToUse": [
       "Choose the image use case that matches where the image appears on the page.",
@@ -3428,6 +3914,14 @@
       {
         "question": "What does decoding='async' do?",
         "answer": "It tells the browser to decode the image asynchronously, allowing other content to render first before the image finishes decoding."
+      },
+      {
+        "question": "What is the LCP image and why should I not lazy-load it?",
+        "answer": "LCP (Largest Contentful Paint) is a Core Web Vital metric that measures when the largest visible content element renders. The LCP image is typically the hero image or main visual at the top of the page. Adding loading=\"lazy\" to the LCP image delays its loading until the browser calculates that it is near the viewport — but it is already in the viewport on load, so the calculation itself adds unnecessary delay and hurts the LCP score."
+      },
+      {
+        "question": "What happens if I use loading=\"lazy\" on an image inside a scrolling container or carousel?",
+        "answer": "The lazy loading threshold is measured relative to the viewport, not the scrolling container. Images in a carousel or overflow:scroll container may not load until the container itself scrolls, and the browser may not detect that the images are close to being seen. For carousel images, consider eager loading or use JavaScript to load images based on the component scroll position."
       }
     ],
     "quickAnswer": "Use loading='lazy' for below-the-fold images to defer loading until the user scrolls near them. Use loading='eager' or omit the attribute for above-the-fold images that should load immediately.",
@@ -3448,7 +3942,11 @@
     "category": "seo",
     "summary": "Generate a Referrer-Policy header or meta tag to control how much referrer information is sent with outbound links.",
     "description": "Build a Referrer-Policy for privacy, analytics, affiliate links, and cross-origin embeds. Generates both the HTTP header and the meta tag version. Explains each policy value.",
-    "keywords": ["referrerpolicy attribute generator", "referrer policy meta tag", "no referrer when downgrade"],
+    "keywords": [
+      "referrerpolicy attribute generator",
+      "referrer policy meta tag",
+      "no referrer when downgrade"
+    ],
     "whatIs": "The Referrer-Policy controls how much of the referring URL is sent when a visitor clicks an outbound link or loads a cross-origin resource. It is useful for privacy, analytics control, and affiliate link handling. The policy can be set as an HTTP header, meta tag, or per-element attribute.",
     "howToUse": [
       "Choose the policy value that matches your privacy and analytics needs.",
@@ -3484,6 +3982,14 @@
       {
         "question": "Which policy is the safest default?",
         "answer": "Strict-origin-when-cross-origin balances privacy with functionality by sending the full referrer on same-origin requests but only the origin on cross-origin requests."
+      },
+      {
+        "question": "Does referrer policy affect Google Analytics or other analytics tools?",
+        "answer": "A restrictive referrer policy can reduce the amount of referrer data available in analytics reports. With strict-origin-when-cross-origin, analytics tools still receive the origin of the referring page (such as https://example.com), which is enough for most reporting. No-referrer removes referrer data entirely from cross-origin requests, which can make traffic source analysis harder."
+      },
+      {
+        "question": "What is the difference between no-referrer and strict-origin?",
+        "answer": "No-referrer sends no referrer information on any request, same-origin or cross-origin. Strict-origin sends the full referrer on same-origin requests but only the origin (without path and query) on cross-origin requests when the protocol security level stays the same (HTTPS to HTTPS). No-referrer is the most private; strict-origin balances privacy with useful referral data."
       }
     ],
     "quickAnswer": "Use Referrer-Policy to control how much referrer information is sent when a visitor clicks a link on your site. strict-origin-when-cross-origin is a balanced default that sends full URLs on same-origin requests but only the origin on cross-origin requests.",
@@ -3504,7 +4010,12 @@
     "category": "css",
     "summary": "Generate CSS anchor positioning rules for tooltips, dropdowns, and callouts aligned to trigger elements.",
     "description": "Build anchor positioning CSS with anchor-name, position-anchor, and position-area. Create tooltips, dropdown menus, callouts, and popovers that align to their trigger element without JavaScript positioning libraries.",
-    "keywords": ["css anchor positioning generator", "position-anchor example", "anchor positioning tooltip css", "css anchor name"],
+    "keywords": [
+      "css anchor positioning generator",
+      "position-anchor example",
+      "anchor positioning tooltip css",
+      "css anchor name"
+    ],
     "whatIs": "CSS anchor positioning lets you tether one element to another using only CSS. You assign an anchor-name to the anchor element and use position-anchor on the positioned element. It eliminates the need for JavaScript positioning libraries for tooltips, dropdowns, and popovers. It is a new CSS feature supported in Chrome 125+.",
     "howToUse": [
       "Set an anchor name for the trigger element using the anchor-name property.",
@@ -3540,6 +4051,14 @@
       {
         "question": "Does anchor positioning work with the Popover API?",
         "answer": "Yes. Popovers can use anchor positioning to align to their trigger element."
+      },
+      {
+        "question": "How do I define an anchor element for CSS anchor positioning?",
+        "answer": "Set the anchor-name CSS property on the anchor element: anchor-name: --my-anchor;. Then reference it on the positioned element with position-anchor: --my-anchor; and use anchor() functions for positioning: top: anchor(--my-anchor bottom);. The anchor element and the positioned element can be anywhere in the DOM, not necessarily siblings or parent-child."
+      },
+      {
+        "question": "What happens when the anchor element scrolls out of view?",
+        "answer": "By default, the positioned element follows the anchor and may also scroll out of view. To keep the positioned element visible within the viewport, combine anchor positioning with position: fixed or use the position-try-options property to specify fallback positions when the default position would place the element off-screen. The inset-area property also helps with automatic repositioning."
       }
     ],
     "quickAnswer": "Anchor positioning lets you attach an element to another element on the page using CSS alone, without JavaScript. It replaces most manual position calculations for tooltips, popovers, and dropdown menus.",
@@ -3560,7 +4079,12 @@
     "category": "css",
     "summary": "Generate CSS scroll-driven animations with animation-timeline for reading progress bars, reveal effects, and parallax.",
     "description": "Build scroll() and view() timeline animations. Create reading progress bars, fade-in-on-scroll effects, parallax sections, and scroll-linked background animations without JavaScript.",
-    "keywords": ["scroll timeline generator", "view-timeline css", "scroll driven animation css", "animation-timeline scroll"],
+    "keywords": [
+      "scroll timeline generator",
+      "view-timeline css",
+      "scroll driven animation css",
+      "animation-timeline scroll"
+    ],
     "whatIs": "Scroll-driven animations use the scroll position or viewport position of an element as the animation timeline instead of time. The scroll() function tracks the scroll container position, and the view() function tracks an element's position in the viewport. This enables reading progress bars, reveal effects, and scroll-linked animations with pure CSS.",
     "howToUse": [
       "Choose the timeline type: scroll (tracks scroll container) or view (tracks element position in viewport).",
@@ -3596,6 +4120,14 @@
       {
         "question": "What is the difference between scroll() and view()?",
         "answer": "Scroll() tracks the scroll position of a container. View() tracks the position of the element relative to the viewport."
+      },
+      {
+        "question": "Can I use scroll-driven animations with regular CSS keyframes?",
+        "answer": "Yes. Define standard @keyframes as you normally would, then attach them to a scroll timeline with animation-timeline: scroll() or animation-timeline: view(). The keyframe percentages map to scroll progress: 0% is the start of the scroll range and 100% is the end. No JavaScript is required — the browser drives the animation from the scroll position natively."
+      },
+      {
+        "question": "What performance impact do scroll-driven animations have?",
+        "answer": "Scroll-driven animations run on the compositor thread, not the main JavaScript thread. This means they perform smoothly at 60fps without causing jank, even during busy main-thread work. They are significantly more performant than JavaScript scroll event listeners. However, animating properties that trigger layout or paint (like width, height, or box-shadow) will still cause repaints, so stick to transform and opacity for the best performance."
       }
     ],
     "quickAnswer": "Scroll-driven animations let you link an animation progress directly to the scroll position of a container, eliminating the need for scroll event listeners and JavaScript-based parallax libraries.",
@@ -3616,7 +4148,12 @@
     "category": "css",
     "summary": "Generate CSS for animating elements that enter or leave the page using transition-behavior, @starting-style, and overlay.",
     "description": "Build CSS transitions for elements that toggle display, such as dialogs, popovers, disclosure panels, and menus. Uses transition-behavior: allow-discrete and @starting-style for smooth enter and exit animations.",
-    "keywords": ["transition display none css", "transition-behavior allow-discrete", "starting-style generator", "discrete animation css"],
+    "keywords": [
+      "transition display none css",
+      "transition-behavior allow-discrete",
+      "starting-style generator",
+      "discrete animation css"
+    ],
     "whatIs": "CSS traditionally cannot transition between display: none and display: block. The transition-behavior: allow-discrete property and @starting-style rule now enable smooth transitions for appearing and disappearing elements. This is essential for dialogs, popovers, tooltips, and disclosure panels.",
     "howToUse": [
       "Choose the element type you want to animate: dialog, popover, or disclosure panel.",
@@ -3652,6 +4189,14 @@
       {
         "question": "Do I need @starting-style?",
         "answer": "Yes. It defines the initial state of the element before it appears, such as opacity: 0 or transform values. Without it, the element appears at its final state first."
+      },
+      {
+        "question": "What CSS properties are normally discrete and cannot be transitioned?",
+        "answer": "Display, overlay, content-visibility, and the mix-blend-mode to initial transition are examples of discrete properties. They have no intermediate states — an element is either visible or not, block or none. The transition-behavior: allow-discrete rule tells the browser to wait until the end of the transition-duration before switching states, rather than switching instantly at the start."
+      },
+      {
+        "question": "Can I transition between display: none and display: block?",
+        "answer": "Yes, with transition-behavior: allow-discrete and @starting-style. Define the element in both states: @starting-style sets the initial hidden state (opacity: 0 or transform), the regular rule sets the visible state, and transition-behavior: allow-discrete makes the display switch wait until the transition finishes. The element fades out before display: none is applied, or fades in after display: block is set."
       }
     ],
     "quickAnswer": "Discrete transitions enable CSS transitions for display:none and other discrete properties when an element enters or leaves the DOM. Use @starting-style to define the initial state before the element appears.",
@@ -3672,7 +4217,12 @@
     "category": "css",
     "summary": "Generate CSS color-scheme and light-dark() function rules for basic dark mode without duplicate variables.",
     "description": "Build a color-scheme declaration and light-dark() color pairs. Set up basic dark mode with a single CSS function that swaps colors based on the user's system preference. No JavaScript required.",
-    "keywords": ["light-dark css generator", "css light dark function", "color-scheme light dark", "dark mode css no js"],
+    "keywords": [
+      "light-dark css generator",
+      "css light dark function",
+      "color-scheme light dark",
+      "dark mode css no js"
+    ],
     "whatIs": "The light-dark() CSS function takes two color values and automatically picks the first for light mode and the second for dark mode based on the color-scheme property. This eliminates the need for duplicate CSS custom property blocks or a JavaScript theme toggle for basic dark mode support.",
     "howToUse": [
       "Choose the color properties you want to theme, such as text color or background.",
@@ -3708,6 +4258,14 @@
       {
         "question": "Can light-dark() replace CSS custom properties?",
         "answer": "It can handle basic cases, but custom properties are still better for complex design systems with many color tokens."
+      },
+      {
+        "question": "How does light-dark() detect the user color scheme?",
+        "answer": "The browser reads the prefers-color-scheme media query from the operating system or browser setting. When the user has selected a light theme, light-dark(A, B) returns A. When they have selected a dark theme, it returns B. The detection is automatic and requires no JavaScript. The function must be used within a color property — it cannot be used for non-color values."
+      },
+      {
+        "question": "What is the correct fallback pattern for browsers that do not support light-dark()?",
+        "answer": "Declare the light mode color first, then use light-dark() in a separate declaration: color: #333; color: light-dark(#333, #eee);. Browsers that support light-dark() use the second declaration. Older browsers ignore the unknown function and keep the first value. This pattern provides automatic graceful degradation without feature detection or JavaScript."
       }
     ],
     "quickAnswer": "The light-dark() CSS function returns one of two color values based on the current color scheme, making it easy to support light and dark modes without duplicating CSS rules.",
@@ -3728,7 +4286,12 @@
     "category": "html",
     "summary": "Generate FAQ accordions and collapsible disclosure panels using the native details and summary elements without JavaScript.",
     "description": "Build accessible accordion and disclosure panels using the details and summary HTML elements. Create FAQ sections, collapsible content blocks, and expandable panels with CSS styling. Works without JavaScript.",
-    "keywords": ["details summary accordion generator", "html accordion no javascript", "faq accordion html", "details summary css"],
+    "keywords": [
+      "details summary accordion generator",
+      "html accordion no javascript",
+      "faq accordion html",
+      "details summary css"
+    ],
     "whatIs": "The details and summary elements create native collapsible panels in HTML. The summary is always visible and acts as the toggle. When clicked, the rest of the details content expands. Multiple open details can be exclusive, which creates accordion behavior, with the name attribute. This works without any JavaScript.",
     "howToUse": [
       "Enter the items you want in the accordion as title|content pairs, one per line.",
@@ -3764,6 +4327,14 @@
       {
         "question": "Does the details element work in all browsers?",
         "answer": "Chrome 12+, Edge 79+, Safari 6+, Firefox 49+. It has near-universal support."
+      },
+      {
+        "question": "How do I animate the opening and closing of a details element?",
+        "answer": "Native details open/close cannot be smoothly animated with CSS alone because the element toggles display state instantly. However, you can animate the content height with a CSS transition on the ::details-content pseudo-element in supporting browsers (Chrome 131+), or use a small JavaScript snippet to toggle open and closed attributes with requestAnimationFrame height calculations. The CSS approach: ::details-content { overflow: hidden; transition: height 0.3s; } with block-size interpolation."
+      },
+      {
+        "question": "Can I use the details element for an FAQ section with multiple expandable items?",
+        "answer": "Yes. Using name attributes on details elements creates exclusive accordion behavior: opening one FAQ answer closes any other open one. This is a natural fit for FAQ sections. Each details element wraps one question (in summary) and its answer (in the content after summary). Screen readers recognize the expanded/collapsed state natively without ARIA attributes."
       }
     ],
     "quickAnswer": "Use the native HTML details and summary elements to create an accordion that works without JavaScript. Each details element is independent and can be opened or closed by the user.",
@@ -3784,7 +4355,12 @@
     "category": "css",
     "summary": "Generate CSS color-mix() function calls for hover states, borders, backgrounds, and muted text from a base color.",
     "description": "Enter a base color and get color-mix() CSS for hover, border, subtle background, and muted text colors. Uses the oklab color space for perceptually uniform mixing.",
-    "keywords": ["color-mix generator", "css color mix oklab", "css color-mix hover", "color mix css"],
+    "keywords": [
+      "color-mix generator",
+      "css color mix oklab",
+      "css color-mix hover",
+      "color mix css"
+    ],
     "whatIs": "The CSS color-mix() function mixes two colors in a specified color space. It creates color variations directly in CSS without a preprocessor like Sass. Using oklab produces more perceptually uniform results than srgb. Common use cases include hover states, borders, subtle backgrounds, and muted text -- all derived from a single base color.",
     "howToUse": [
       "Enter a base color as a hex value.",
@@ -3820,6 +4396,14 @@
       {
         "question": "Does color-mix() work in all browsers?",
         "answer": "Chrome 111+, Edge 111+, Safari 16.2+, Firefox 113+. It has broad modern support."
+      },
+      {
+        "question": "Can I mix more than two colors in a single color-mix() call?",
+        "answer": "No. A single color-mix() call takes exactly two colors. To mix three or more colors, nest color-mix() calls: color-mix(in oklab, red, color-mix(in oklab, blue, green)). The innermost mix is resolved first, then the outer mix combines the result. While this works, deeply nested mixes become hard to read quickly."
+      },
+      {
+        "question": "How does color-mix() handle colors with different opacity levels?",
+        "answer": "The alpha channel is mixed linearly along with the color channels. If one color has 50% opacity and the other has 100%, a 50% mix produces 75% opacity. The interpolation color space does not affect alpha mixing — alpha is always mixed in a linear space regardless of the chosen color interpolation method. Use percentage values to control the weight of each color in the mix."
       }
     ],
     "quickAnswer": "Use color-mix() to blend two colors in a specified color space, such as oklab or srgb. It is useful for creating tint, shade, and hover variants from a single base color without a preprocessor.",
@@ -3840,7 +4424,12 @@
     "category": "css",
     "summary": "Generate CSS relative color syntax to create alpha, lighter, darker, and channel-adjusted variants from any base color.",
     "description": "Use the CSS relative color syntax (from keyword) to derive new colors from a base. Create alpha transparency, lighter and darker shades, muted tones, and individual channel adjustments without a preprocessor.",
-    "keywords": ["relative color syntax generator", "css relative colors", "css from color", "css color channel adjustment"],
+    "keywords": [
+      "relative color syntax generator",
+      "css relative colors",
+      "css from color",
+      "css color channel adjustment"
+    ],
     "whatIs": "CSS relative color syntax lets you start from an existing color and modify its channels individually. Using rgb(from color r g b / alpha) or hsl(from color h s l / alpha) syntax, you can adjust lightness, saturation, alpha, or individual channels. This is more powerful than color-mix() for precise channel manipulation.",
     "howToUse": [
       "Enter a base color in hex, RGB, or HSL format.",
@@ -3880,6 +4469,10 @@
       {
         "question": "What color spaces can I use with from?",
         "answer": "You can use rgb, hsl, hwb, oklch, oklab, lab, lch, and srgb-linear. Each space exposes different channels for adjustment. oklch is often preferred for perceptually uniform lightness adjustments."
+      },
+      {
+        "question": "What is a practical use case for relative color syntax that I cannot do with color-mix()?",
+        "answer": "Relative color syntax can extract and manipulate individual color channels — for example, taking a brand color and creating a lighter variant by increasing its lightness channel while keeping the same hue and saturation: oklch(from var(--brand) calc(l + 0.1) c h). This channel-level control is impossible with color-mix(), which only blends two full colors together. Use relative syntax to generate systematic color scales from a single base color."
       }
     ],
     "quickAnswer": "CSS relative color syntax lets you create a new color by adjusting individual channels of an existing color. It is more powerful than color-mix() for precise channel-level manipulation without a preprocessor.",
@@ -3899,7 +4492,12 @@
     "category": "css",
     "summary": "Generate a print stylesheet that hides navigation, shows link URLs, avoids page breaks in important blocks, and sets print margins.",
     "description": "Build a print-ready CSS block that hides non-content elements, expands link URLs for reference, avoids awkward page breaks, and sets sensible print margins and page size. Designed for documentation, recipes, checklists, and long articles.",
-    "keywords": ["print css generator", "print stylesheet", "css print page break", "@media print css"],
+    "keywords": [
+      "print css generator",
+      "print stylesheet",
+      "css print page break",
+      "@media print css"
+    ],
     "whatIs": "A print stylesheet is CSS inside @media print that styles the page when someone prints or saves as PDF. It should hide navigation, sidebars, and footers, show full URLs after links, prevent page breaks inside important blocks like tables and code, and set sensible margins. This is especially useful for documentation, recipes, invoices, and articles.",
     "howToUse": [
       "Select the elements you want to hide when printing.",
@@ -3937,18 +4535,19 @@
         "answer": "You can use a separate print.css or embed @media print in your main stylesheet. Both approaches work."
       },
       {
-        "question": "How do I test print styles before printing?",
-        "answer": "Use the browser print preview (Ctrl+P or Cmd+P) to see how the page will print. In Chrome DevTools, open the Rendering tab and select Print from the Emulate CSS media type dropdown to test styles without triggering the actual print dialog."
+        "question": "Which elements should I hide in print styles?",
+        "answer": "Hide navigation bars, sidebar menus, footer widgets, comment sections, share buttons, newsletter signup forms, and any interactive elements that serve no purpose on paper. Use .nav { display: none; } or create a .no-print utility class. Keep the main content, headings, images, and any data tables that are part of the article body. The goal is a clean, readable document without page chrome."
       },
       {
-        "question": "Can I use a separate print.css file?",
-        "answer": "Yes. Link a separate print stylesheet with <link rel=\"stylesheet\" href=\"print.css\" media=\"print\">. The browser only loads this file when printing, keeping the main stylesheet smaller. Embed @media print rules in your main stylesheet for smaller print blocks."
+        "question": "How do I handle page breaks in print CSS?",
+        "answer": "Use page-break-before, page-break-after, and page-break-inside with values of auto, always, or avoid. The modern equivalents are break-before, break-after, and break-inside in the CSS Fragmentation spec. For example, use break-inside: avoid on code blocks, images, and tables to prevent them from being split across two pages. Use break-before: always on major section headings to start each section on a new page."
       }
     ],
     "quickAnswer": "Generate a @media print block that hides navigation, shows link URLs, controls page breaks, and sets sensible print margins. Essential for making articles, recipes, documentation, and invoices print cleanly.",
     "limitations": [
       "Page-break rules such as page-break-inside: avoid are hints to the browser print engine, not guarantees. The engine may still break content if the block does not fit on one page.",
-      "Browser print engines render CSS differently. Chrome, Firefox, and Safari each produce slightly different printed output, especially with background colors, page margins, and multi-column layouts."
+      "Browser print engines render CSS differently. Chrome, Firefox, and Safari each produce slightly different printed output, especially with background colors, page margins, and multi-column layouts.",
+      "Print style rules only apply when the page is printed or viewed in print preview. Changes made in the browser DevTools with screen media enabled will not show print style effects. Always test print styles in print preview or by selecting the print media type in the DevTools Rendering panel."
     ],
     "verificationSteps": [
       "Use print preview in Chrome, Firefox, and Safari to verify the page prints without navigation, with expanded link URLs, and with appropriate page breaks.",
@@ -3961,7 +4560,12 @@
     "category": "html",
     "summary": "Generate external link markup with the correct rel attributes for security, SEO, sponsored content, and user-generated content.",
     "description": "Build external link anchor tags with the right combination of target, rel (noopener, noreferrer, nofollow, sponsored, ugc), and optional aria labels. Covers standard external links, affiliate links, sponsored content, and UGC links.",
-    "keywords": ["rel noopener noreferrer generator", "external link attributes", "nofollow sponsored ugc", "external link rel"],
+    "keywords": [
+      "rel noopener noreferrer generator",
+      "external link attributes",
+      "nofollow sponsored ugc",
+      "external link rel"
+    ],
     "whatIs": "External links should use target='_blank' with rel='noopener noreferrer' for security. For SEO, bloggers use rel='nofollow' for untrusted links, rel='sponsored' for paid or affiliate links, and rel='ugc' for user-generated content links. Using the right rel values helps both security and search engine understanding of link intent.",
     "howToUse": [
       "Choose the link type that matches your use case.",
@@ -4001,6 +4605,10 @@
       {
         "question": "What is the difference between nofollow and sponsored?",
         "answer": "nofollow tells search engines not to pass ranking credit for any reason. sponsored is specifically for paid or affiliate links. Use sponsored when the link is part of a commercial agreement and nofollow for general untrusted links."
+      },
+      {
+        "question": "Does adding noopener affect the back button or browsing history?",
+        "answer": "No. noopener only severs the window.opener relationship between the new page and the original page. It does not affect the browsing history, the back button, session storage, or cookie access. The linked page opens in a new tab or window as normal and operates independently. There is no downside to including noopener on every target=\"_blank\" link."
       }
     ],
     "quickAnswer": "External links should use rel='noopener noreferrer' for security when using target='_blank'. For SEO, use rel='nofollow' for untrusted links, rel='sponsored' for paid or affiliate links, and rel='ugc' for user-generated content.",
@@ -4020,7 +4628,12 @@
     "category": "html",
     "summary": "Generate script tags with the right loading strategy -- normal, defer, async, or type module -- based on use case.",
     "description": "Choose a use case and get the recommended script tag with the correct loading attribute. Covers analytics scripts, app bundles, third-party widgets, ES modules, and inline scripts. Explains when to use each strategy.",
-    "keywords": ["script async defer generator", "module script defer async", "script loading strategy", "script tag attributes"],
+    "keywords": [
+      "script async defer generator",
+      "module script defer async",
+      "script loading strategy",
+      "script tag attributes"
+    ],
     "whatIs": "How a script loads affects page performance and script execution order. A normal script blocks HTML parsing. defer downloads in parallel and executes after HTML parsing. async downloads in parallel and executes as soon as it is ready. type='module' scripts are deferred by default. Choosing the right strategy depends on whether the script is critical, depends on other scripts, or is independent.",
     "howToUse": [
       "Select the script type that matches your use case.",
@@ -4056,6 +4669,14 @@
       {
         "question": "Does type='module' need defer?",
         "answer": "No. Module scripts are deferred by default and do not need an explicit defer attribute."
+      },
+      {
+        "question": "Where should I place the script tag in the HTML document?",
+        "answer": "Modern best practice is to place script tags in the head with defer or type=\"module\". Both download in parallel with HTML parsing and execute after the DOM is ready. Placing scripts at the end of body was a workaround for older browsers that did not support defer. With defer or module, script placement in the head is cleaner and more maintainable without blocking rendering."
+      },
+      {
+        "question": "Does defer work on inline scripts?",
+        "answer": "No. The defer attribute only works on external scripts with a src attribute. Inline scripts are executed immediately during HTML parsing. If you need an inline script to run after the DOM is ready, use the DOMContentLoaded event listener or place the script at the end of body. Alternatively, convert the inline script to an external file and use defer."
       }
     ],
     "quickAnswer": "Choose a script loading strategy based on when the script must execute. Use defer for scripts that need the full DOM but can download in parallel. Use async for independent scripts like analytics. Use type='module' for modern ES module code.",
@@ -4070,13 +4691,43 @@
     ],
     "comparison": {
       "title": "async vs defer vs type=\"module\"",
-      "columns": ["Aspect", "async", "defer", "type=\"module\""],
+      "columns": [
+        "Aspect",
+        "async",
+        "defer",
+        "type=\"module\""
+      ],
       "rows": [
-        ["Execution timing", "Executes as soon as the script finishes downloading, before DOMContentLoaded", "Executes after HTML parsing is complete, just before DOMContentLoaded", "Executes after HTML parsing is complete, same as defer behavior"],
-        ["Script order guarantee", "No. Scripts execute in the order they finish downloading.", "Yes. Scripts execute in the order they appear in the HTML.", "Yes. Scripts execute in the order they appear, same as defer."],
-        ["Blocks HTML parsing", "Does not block HTML parsing. Downloads in parallel.", "Does not block HTML parsing. Downloads in parallel.", "Does not block HTML parsing. Downloads in parallel."],
-        ["Use cases", "Independent scripts such as analytics, A/B testing, or social widgets", "Scripts that need the full DOM such as app bundles that query or modify the page", "Modern ES module code where import/export syntax is used"],
-        ["Default behavior without attribute", "Without any attribute, the script blocks HTML parsing until it downloads and executes", "N/A", "type=\"module\" scripts are deferred by default and do not need an explicit defer attribute"]
+        [
+          "Execution timing",
+          "Executes as soon as the script finishes downloading, before DOMContentLoaded",
+          "Executes after HTML parsing is complete, just before DOMContentLoaded",
+          "Executes after HTML parsing is complete, same as defer behavior"
+        ],
+        [
+          "Script order guarantee",
+          "No. Scripts execute in the order they finish downloading.",
+          "Yes. Scripts execute in the order they appear in the HTML.",
+          "Yes. Scripts execute in the order they appear, same as defer."
+        ],
+        [
+          "Blocks HTML parsing",
+          "Does not block HTML parsing. Downloads in parallel.",
+          "Does not block HTML parsing. Downloads in parallel.",
+          "Does not block HTML parsing. Downloads in parallel."
+        ],
+        [
+          "Use cases",
+          "Independent scripts such as analytics, A/B testing, or social widgets",
+          "Scripts that need the full DOM such as app bundles that query or modify the page",
+          "Modern ES module code where import/export syntax is used"
+        ],
+        [
+          "Default behavior without attribute",
+          "Without any attribute, the script blocks HTML parsing until it downloads and executes",
+          "N/A",
+          "type=\"module\" scripts are deferred by default and do not need an explicit defer attribute"
+        ]
       ],
       "summary": "Async downloads in parallel and runs on completion. Defer downloads in parallel but waits for the HTML to finish parsing. Module scripts are deferred by default and support ES module dependency graphs."
     },
