@@ -63,6 +63,15 @@ function absoluteUrl(locale, pathname = "") {
   return new URL(urlFor(locale, pathname), site.baseUrl).toString();
 }
 
+function buildNavTools(allTools) {
+  const map = {};
+  for (const t of allTools) {
+    if (!map[t.category]) map[t.category] = [];
+    if (map[t.category].length < 10) map[t.category].push(t);
+  }
+  return map;
+}
+
 function pageShell({ locale, title, description, pathname, body, scripts = "", current = "", extraHead = "", canonicalOverride = "", skipAlternates = false, image = "", navTools = null }) {
   const canonical = canonicalOverride || absoluteUrl(locale, pathname);
   const lang = localePack(locale);
@@ -523,7 +532,8 @@ ${collections ? `<section class="section">
     body,
     scripts,
     current: "home",
-    image: `${site.baseUrl}/assets/social/og-home.png`
+    image: `${site.baseUrl}/assets/social/og-home.png`,
+    navTools: buildNavTools(tools)
   });
 }
 
@@ -572,11 +582,12 @@ function toolsIndexPage(locale, tools, categories) {
     body,
     scripts: scripts + `<script src="/assets/tool-directory-filter.js" defer></script>`,
     image: `${site.baseUrl}/assets/social/og-tools.png`,
-    current: "tools"
+    current: "tools",
+    navTools: buildNavTools(tools)
   });
 }
 
-function categoryPage(locale, category, details, tools) {
+function categoryPage(locale, category, details, tools, allTools) {
   const faqSchema = details.faq?.length ? {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -651,11 +662,12 @@ ${details.faq?.length ? `<section class="section faq-band">
     body,
     scripts,
     current: category,
-    image: `${site.baseUrl}/assets/social/og-${category}.png`
+    image: `${site.baseUrl}/assets/social/og-${category}.png`,
+    navTools: buildNavTools(allTools || tools)
   });
 }
 
-function collectionPage(locale, collectionId, details, tools, categories, collections) {
+function collectionPage(locale, collectionId, details, tools, categories, collections, allTools) {
   const faqSchema = details.faq?.length ? {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -727,7 +739,8 @@ ${details.faq?.length ? `<section class="section faq-band">
     body,
     scripts,
     current: "collections",
-    image: `${site.baseUrl}/assets/social/og-${collectionId}.png`
+    image: `${site.baseUrl}/assets/social/og-${collectionId}.png`,
+    navTools: buildNavTools(allTools || tools)
   });
 }
 
@@ -882,13 +895,6 @@ ${crossCategory.length ? `<section class="section">
   </div>
 </section>` : ""}`;
 
-  // Build navTools: group tools by category for mega menu, limit to ~10 per category
-  const navToolMap = {};
-  for (const t of allTools) {
-    if (!navToolMap[t.category]) navToolMap[t.category] = [];
-    if (navToolMap[t.category].length < 10) navToolMap[t.category].push(t);
-  }
-
   return pageShell({
     locale,
     title: `${tool.name} - ${site.siteName}`,
@@ -898,7 +904,7 @@ ${crossCategory.length ? `<section class="section">
     scripts,
     image: `${site.baseUrl}/assets/social/og-${tool.category}.png`,
     current: tool.category,
-    navTools: navToolMap
+    navTools: buildNavTools(allTools)
   });
 }
 
@@ -1158,7 +1164,7 @@ async function buildLocale(locale) {
   for (const [category, details] of Object.entries(categories)) {
     const categoryTools = tools.filter((tool) => tool.category === category);
     if (categoryTools.length) {
-      await writePage(path.join(localeDir, "tools", category, "index.html"), categoryPage(locale, category, details, categoryTools));
+      await writePage(path.join(localeDir, "tools", category, "index.html"), categoryPage(locale, category, details, categoryTools, tools));
       addSitemapUrl(`tools/${category}`);
     }
   }
@@ -1171,7 +1177,7 @@ async function buildLocale(locale) {
   for (const [collectionId, details] of Object.entries(collections)) {
     const collectionTools = tools.filter((tool) => details.tools?.includes(tool.id));
     if (collectionTools.length) {
-      await writePage(path.join(localeDir, "collections", collectionId, "index.html"), collectionPage(locale, collectionId, details, collectionTools, categories, collections));
+      await writePage(path.join(localeDir, "collections", collectionId, "index.html"), collectionPage(locale, collectionId, details, collectionTools, categories, collections, tools));
       addSitemapUrl(`collections/${collectionId}`);
     }
   }
