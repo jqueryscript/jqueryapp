@@ -23,7 +23,7 @@
       "language": "Language",
       "browseTools": "Browse all tools",
       "allTools": "All Tools",
-      "megaAllPrefix": "All Free ",
+      "megaAllPrefix": "All Free {0} Tools",
       "browseCollections": "Tool collections for common workflows",
       "collections": "Collections",
       "githubPagesTools": "GitHub Pages tools",
@@ -175,7 +175,7 @@
       "home": "Startseite",
       "noAccountRequired": "Kein Konto erforderlich",
       "allTools": "Alle Tools",
-      "megaAllPrefix": "Alle kostenlosen "
+      "megaAllPrefix": "Alle kostenlosen {0}-Tools"
     },
     "categories": {
       "seo": {
@@ -727,7 +727,7 @@
       "home": "Accueil",
       "noAccountRequired": "Aucun compte requis",
       "allTools": "Tous les outils",
-      "megaAllPrefix": "Tous les "
+      "megaAllPrefix": "Tous les outils {0} gratuits"
     },
     "categories": {
       "seo": {
@@ -1279,7 +1279,7 @@
       "home": "Inicio",
       "noAccountRequired": "Sin cuenta requerida",
       "allTools": "Todas las herramientas",
-      "megaAllPrefix": "Todas las "
+      "megaAllPrefix": "Todas las herramientas {0} gratuitas"
     },
     "categories": {
       "seo": {
@@ -1831,7 +1831,7 @@
       "home": "ホーム",
       "noAccountRequired": "アカウント不要",
       "allTools": "すべてのツール",
-      "megaAllPrefix": "無料"
+      "megaAllPrefix": "無料{0}ツール"
     },
     "categories": {
       "seo": {
@@ -2383,7 +2383,7 @@
       "home": "Home",
       "noAccountRequired": "Geen account nodig",
       "allTools": "Alle tools",
-      "megaAllPrefix": "Alle gratis "
+      "megaAllPrefix": "Alle gratis {0}-tools"
     },
     "categories": {
       "seo": {
