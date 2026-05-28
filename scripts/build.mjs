@@ -614,7 +614,7 @@ function categoryPage(locale, category, details, tools, allTools) {
   const body = `<section class="page-hero">
   <div class="wrap narrow">
     <p class="eyebrow">${escapeHtml(ui(locale, "tools"))}</p>
-    <h1>${escapeHtml(details.name)}</h1>
+    <h1>Free ${escapeHtml(details.name)}</h1>
     <p class="lede">${escapeHtml(details.description)}</p>
   </div>
 </section>
@@ -799,7 +799,7 @@ function toolPage(locale, tool, allTools, categories) {
   <div class="wrap tool-hero-grid">
     <div>
       <p class="eyebrow">${escapeHtml(categoryName)}</p>
-      <h1>${escapeHtml(tool.name)}</h1>
+      <h1>Free ${escapeHtml(tool.name)}</h1>
       <p class="lede">${escapeHtml(tool.description)}</p>
     </div>
     <aside class="tool-side-note">
