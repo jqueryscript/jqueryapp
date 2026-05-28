@@ -126,92 +126,27 @@ export default {
 
     const colors = ["#ef4444","#f59e0b","#22c55e","#3b82f6","#8b5cf6","#ec4899"];
     const itemCards = Array.from({length: itemCount}, (_,i) =>
-      `<div id="pv-item-${i}" class="${itemClass}" style="background:${colors[i%6]}">${i+1}</div>`
+      `<div style="flex:0 0 ${itemWidth};scroll-snap-align:${snapAlign};background:${colors[i%6]};color:#fff;border-radius:10px;min-height:100px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700">${i+1}</div>`
     ).join("");
 
-    const containerClass = "carousel-pv";
-    const itemClass = "carousel-pv-item";
-    const btnCSS = showButtons ? `
-    .${containerClass}::scroll-button(left),
-    .${containerClass}::scroll-button(right) {
-      position: sticky;
-      width: 36px;
-      height: 36px;
-      min-width: 36px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.95);
-      border: 1px solid #e5e7eb;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-      cursor: pointer;
-      z-index: 2;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      color: #333;
-      transition: background 0.15s;
-    }
-    .${containerClass}::scroll-button(left) { left: 4px; }
-    .${containerClass}::scroll-button(right) { right: 4px; }
-    .${containerClass}::scroll-button(:hover) { background: #fff; }` : "";
+    const containerStyle = [
+      "display:flex",
+      `flex-direction:${isHorizontal ? "row" : "column"}`,
+      `overflow-x:${isHorizontal ? "auto" : "hidden"}`,
+      `overflow-y:${isHorizontal ? "hidden" : "auto"}`,
+      snap !== "none" ? `scroll-snap-type:${inlineSize} ${snap}` : "",
+      "scroll-behavior:smooth",
+      "gap:12px",
+      "padding:16px",
+      `max-height:${isHorizontal ? "200px" : "360px"}`,
+      "max-width:100%",
+      "border:1px solid #e5e7eb",
+      "border-radius:8px",
+      "background:#f9fafb"
+    ].filter(Boolean).join(";");
 
-    const markerCSS = showMarkers ? `
-    .${containerClass} {
-      scroll-marker-group: after;
-    }
-    .${containerClass} > .${itemClass}::scroll-marker {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #d1d5db;
-      transition: background 0.2s, width 0.2s;
-      cursor: pointer;
-    }
-    .${containerClass} > .${itemClass}::scroll-marker:checked {
-      background: var(--color-accent, #2563eb);
-      width: 24px;
-      border-radius: 4px;
-    }` : "";
-
-    const preview = `<style>
-    .${containerClass} {
-      display: flex;
-      flex-direction: ${isHorizontal ? "row" : "column"};
-      overflow-x: ${isHorizontal ? "auto" : "hidden"};
-      overflow-y: ${isHorizontal ? "hidden" : "auto"};
-      scroll-snap-type: ${snap !== "none" ? inlineSize + " " + snap : "none"};
-      scroll-behavior: smooth;
-      gap: 12px;
-      padding: 16px;
-      max-height: ${isHorizontal ? "200px" : "360px"};
-      max-width: 100%;
-      border: 1px solid #e5e7eb;
-      border-radius: 8px;
-      background: #f9fafb;
-    }
-    .${containerClass} > .${itemClass} {
-      flex: 0 0 ${itemWidth};
-      scroll-snap-align: ${snapAlign};
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      font-weight: 700;
-      color: #fff;
-      min-height: 100px;
-    }${btnCSS}${markerCSS}
-    ${showMarkers ? `
-    .carousel-markers {
-      display: flex;
-      justify-content: center;
-      gap: 6px;
-      margin-top: 8px;
-    }` : ""}
-    </style>
-    <div class="${containerClass}">${itemCards}</div>
-    ${showMarkers ? `<div class="carousel-markers">${Array.from({length: itemCount}, (_,i) => `<a href="#pv-item-${i}" style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#d1d5db;cursor:pointer"></a>`).join("")}</div>` : ""}
-    ${showButtons || showMarkers ? `<p style="margin:6px 0 0;font-size:11px;color:#6b7280;text-align:center">Scroll buttons & markers need Chrome 135+</p>` : ""}`;
+    const preview = `<div style="${containerStyle}">${itemCards}</div>
+      ${showButtons || showMarkers ? '<p style="margin:6px 0 0;font-size:11px;color:#6b7280;text-align:center">Note: ::scroll-button() and ::scroll-marker() require Chrome 135+ and cannot be previewed here. The generated CSS output includes the correct pseudo-element rules.</p>' : ''}`;
 
     return { output: lines.join("\n"), preview };
   }

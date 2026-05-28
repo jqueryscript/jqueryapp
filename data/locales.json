@@ -91,7 +91,8 @@
       "notFoundText": "The page may have moved, or the URL may be incorrect. Start from the homepage or browse the available tools.",
       "goHome": "Go home",
       "home": "Home",
-      "noAccountRequired": "No account required"
+      "noAccountRequired": "No account required",
+      "free": "Free"
     }
   },
   "de": {
@@ -189,7 +190,8 @@
       "limitations": "Einschränkungen",
       "verification": "Überprüfung",
       "comparison": "Vergleich",
-      "example": "Beispiel"
+      "example": "Beispiel",
+      "free": "Kostenlose"
     },
     "categories": {
       "seo": {
@@ -855,7 +857,8 @@
       "limitations": "Limites",
       "verification": "Vérification",
       "comparison": "Comparaison",
-      "example": "Exemple"
+      "example": "Exemple",
+      "free": "Gratuit"
     },
     "categories": {
       "seo": {
@@ -1517,7 +1520,8 @@
       "limitations": "Limitaciones",
       "verification": "Verificación",
       "comparison": "Comparación",
-      "example": "Ejemplo"
+      "example": "Ejemplo",
+      "free": "Gratis"
     },
     "categories": {
       "seo": {
@@ -2183,7 +2187,8 @@
       "limitations": "制限事項",
       "verification": "検証",
       "comparison": "比較",
-      "example": "例"
+      "example": "例",
+      "free": "無料"
     },
     "categories": {
       "seo": {
@@ -2849,7 +2854,8 @@
       "limitations": "Beperkingen",
       "verification": "Verificatie",
       "comparison": "Vergelijking",
-      "example": "Voorbeeld"
+      "example": "Voorbeeld",
+      "free": "Gratis"
     },
     "categories": {
       "seo": {
