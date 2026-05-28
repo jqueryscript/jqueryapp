@@ -1,0 +1,137 @@
+import { field, textarea, select, checkbox, htmlEscape } from "../tool-core.js";
+
+export default {
+  form: `
+    <div class="field-grid">
+      ${select({ id: "stMode", label: "Mode", options: [
+        {label:"Generate",value:"generate"},
+        {label:"Validate",value:"validate"}
+      ], value: "generate" })}
+    </div>
+    <div class="field-grid" data-st-section="generate">
+      ${field({ id: "stContact", label: "Contact", help: "URL (https://...) or email (mailto:...). Required by RFC 9116.", value: "https://example.com/security" })}
+      ${field({ id: "stExpires", label: "Expires", type: "date", help: "Must be renewed before this date.", value: "" })}
+    </div>
+    <div class="field-grid" data-st-section="generate">
+      ${field({ id: "stCanonical", label: "Canonical", help: "URL of the canonical security.txt location. Optional.", value: "" })}
+      ${field({ id: "stLang", label: "Preferred-Languages", help: "Comma-separated language tags, e.g. en, de, fr.", value: "en" })}
+    </div>
+    <div class="field-grid" data-st-section="generate">
+      ${textarea({ id: "stExtra", label: "Additional fields (optional)", help: "One field per line. Format: Field-Name: value. Useful for Encryption, Policy, Acknowledgments, Hiring.", value: "" })}
+    </div>
+    <div class="field-grid" data-st-section="validate">
+      ${textarea({ id: "stValidate", label: "Paste security.txt content to validate", help: "Paste your existing security.txt content here." })}
+    </div>`,
+  generate(root) {
+    const mode = root.querySelector("#stMode").value;
+
+    // Show/hide sections
+    root.querySelectorAll("[data-st-section]").forEach(el => {
+      el.style.display = el.dataset.stSection === mode ? "" : "none";
+    });
+
+    if (mode === "generate") {
+      const contact = root.querySelector("#stContact").value.trim();
+      let expires = root.querySelector("#stExpires").value;
+      const canonical = root.querySelector("#stCanonical").value.trim();
+      const lang = root.querySelector("#stLang").value.trim();
+      const extra = root.querySelector("#stExtra").value.trim();
+
+      if (!expires) {
+        const d = new Date();
+        d.setFullYear(d.getFullYear() + 1);
+        expires = d.toISOString().split("T")[0];
+      }
+
+      const lines = [
+        "# === security.txt (RFC 9116) ===",
+        `Contact: ${contact}`,
+        `Expires: ${expires}`,
+      ];
+      if (canonical) lines.push(`Canonical: ${canonical}`);
+      if (lang) lines.push(`Preferred-Languages: ${lang}`);
+      if (extra) {
+        extra.split("\n").forEach(line => {
+          if (line.trim()) lines.push(line.trim());
+        });
+      }
+
+      lines.push(
+        "",
+        "# === Hosting Checklist ===",
+        "# 1. Place this file at: /.well-known/security.txt",
+        "# 2. Serve with Content-Type: text/plain; charset=utf-8",
+        "# 3. Must be served over HTTPS (no redirects from HTTP)",
+        "# 4. GitHub Pages: save as .well-known/security.txt in your published root",
+        "# 5. Netlify/Vercel: ensure .well-known is not redirected by routing rules"
+      );
+
+      return { output: lines.join("\n") };
+    }
+
+    // Validate mode
+    const raw = root.querySelector("#stValidate").value;
+    if (!raw.trim()) {
+      return { output: "Paste a security.txt file to validate against RFC 9116." };
+    }
+
+    const errors = [];
+    const warnings = [];
+    const linesRaw = raw.split("\n");
+    const parsed = {};
+
+    linesRaw.forEach((line, i) => {
+      const ln = i + 1;
+      const trimmed = line.trim();
+      if (!trimmed || trimmed.startsWith("#") || trimmed.startsWith(";")) return;
+      const colonIdx = trimmed.indexOf(":");
+      if (colonIdx === -1) {
+        errors.push(`Line ${ln}: Not a valid field. Expected "Field-Name: value". Got: "${trimmed.substring(0, 60)}"`);
+        return;
+      }
+      const name = trimmed.substring(0, colonIdx).trim();
+      const value = trimmed.substring(colonIdx + 1).trim();
+      if (parsed[name]) {
+        warnings.push(`Line ${ln}: Duplicate field "${name}". Multiple values are allowed but unusual.`);
+      }
+      parsed[name] = (parsed[name] || []).concat(value);
+    });
+
+    if (!parsed["Contact"]) {
+      errors.push('Missing required field: "Contact" (URL or email). RFC 9116 Section 2.5.1.');
+    }
+    if (!parsed["Expires"]) {
+      errors.push('Missing required field: "Expires" (ISO date). RFC 9116 Section 2.5.2.');
+    } else {
+      const expDate = new Date(parsed["Expires"][0]);
+      if (isNaN(expDate.getTime())) {
+        errors.push('Expires field is not a valid date. Use ISO 8601 format: YYYY-MM-DD.');
+      } else if (expDate < new Date()) {
+        errors.push('Expires date is in the past. Renew the file immediately.');
+      } else if (expDate < new Date(Date.now() + 30 * 86400000)) {
+        warnings.push("Expires date is within 30 days. Consider renewing soon.");
+      }
+    }
+
+    if (parsed["Canonical"]) {
+      try { new URL(parsed["Canonical"][0]); } catch {
+        errors.push('Canonical field must be a valid URL (https://...).');
+      }
+    }
+    if (parsed["Preferred-Languages"]) {
+      const tags = parsed["Preferred-Languages"][0].split(",").map(s => s.trim());
+      const invalidTag = tags.find(t => !/^[a-z]{2,3}(-[A-Z]{2,3})?$/.test(t));
+      if (invalidTag) warnings.push(`Possibly invalid language tag: "${invalidTag}". Use BCP 47 tags like en, de, fr-CA.`);
+    }
+
+    const out = [];
+    if (errors.length) out.push(`=== Errors (${errors.length}) ===`, ...errors, "");
+    if (warnings.length) out.push(`=== Warnings (${warnings.length}) ===`, ...warnings, "");
+    if (!errors.length && !warnings.length) {
+      out.push("No issues found. The file looks structurally valid.");
+    }
+    out.push("", `Parsed ${Object.keys(parsed).length} field(s): ${Object.keys(parsed).join(", ") || "(none)"}.`);
+
+    return { output: out.join("\n") };
+  }
+};

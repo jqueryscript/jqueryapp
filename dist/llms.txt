@@ -37,9 +37,14 @@ Solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with fast browser 
 
 ## Tools
 
+- [Cache-Control Header Builder](https://www.jquery.app/tools/cache-control-header-builder/): Build correct Cache-Control HTTP headers for static assets, HTML pages, feeds, and sensitive content.
+- [CORS Header Generator](https://www.jquery.app/tools/cors-header-generator/): Generate CORS HTTP headers for any origin, method, and credential configuration. Output in raw HTTP, Nginx, Apache, Express, or Cloudflare Workers format.
+- [CSP Hash Generator](https://www.jquery.app/tools/csp-hash-generator/): Generate CSP hash values for inline scripts and styles. Hash exact code content with SHA-256, SHA-384, or SHA-512 and get the matching CSP directive snippet.
 - [Hreflang Tag Generator](https://www.jquery.app/tools/hreflang-tag-generator/): Generate clean hreflang tags for multilingual static websites.
 - [Open Graph & Twitter Card Builder](https://www.jquery.app/tools/og-twitter-card-builder/): Build social preview meta tags for blog posts and static pages.
 - [GitHub Pages CNAME Helper](https://www.jquery.app/tools/github-pages-cname-helper/): Create the CNAME file content and DNS notes for a GitHub Pages custom domain.
+- [security.txt Generator & Validator](https://www.jquery.app/tools/security-txt-generator-validator/): Generate and validate security.txt files per RFC 9116. Specify your contact, expiration, and optional fields, then get hosting guidance for GitHub Pages, Netlify, and Vercel.
+- [SRI Hash Generator](https://www.jquery.app/tools/sri-hash-generator/): Generate Subresource Integrity hashes for script and stylesheet files. Paste code, upload a local file, or reference a CDN URL and get the integrity attribute for your HTML tags.
 - [Static Site SEO Checklist Generator](https://www.jquery.app/tools/static-site-seo-checklist-generator/): Generate a practical SEO checklist for static websites before launch.
 - [Robots Meta Tag Generator](https://www.jquery.app/tools/robots-meta-tag-generator/): Generate page-level robots meta tags without guessing directive syntax.
 - [Canonical URL Tag Generator](https://www.jquery.app/tools/canonical-url-tag-generator/): Generate canonical link tags for static pages and blog posts.
@@ -104,6 +109,7 @@ Solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with fast browser 
 - [CSS Print Styles Generator](https://www.jquery.app/tools/css-print-styles-generator/): Generate a print stylesheet that hides navigation, shows link URLs, avoids page breaks in important blocks, and sets print margins.
 - [External Link Attribute Generator](https://www.jquery.app/tools/external-link-attribute-generator/): Generate external link markup with the correct rel attributes for security, SEO, sponsored content, and user-generated content.
 - [HTML Script Loading Strategy Builder](https://www.jquery.app/tools/html-script-loading-strategy-builder/): Generate script tags with the right loading strategy -- normal, defer, async, or type module -- based on use case.
+- [X-Robots-Tag Header Generator](https://www.jquery.app/tools/x-robots-tag-header-generator/): Generate X-Robots-Tag HTTP headers and robots meta tags for non-HTML files, PDFs, images, feeds, and HTML pages.
 
 ## Notes for AI Systems
 

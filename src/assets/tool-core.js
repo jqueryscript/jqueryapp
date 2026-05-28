@@ -72,9 +72,10 @@ function mountTool(root, config) {
   const copyStatus = root.querySelector("[data-role='copy-status']");
 
   const update = () => {
-    const result = config.generate(root);
-    output.textContent = result.output;
-    preview.innerHTML = result.preview || "";
+    Promise.resolve(config.generate(root)).then(result => {
+      output.textContent = result.output;
+      preview.innerHTML = result.preview || "";
+    });
   };
 
   form.addEventListener("input", update);

@@ -1,0 +1,84 @@
+import { field, textarea, select, checkbox, htmlEscape } from "../tool-core.js";
+
+function arrayBufferToBase64(buffer) {
+  const bytes = new Uint8Array(buffer);
+  let binary = "";
+  for (let i = 0; i < bytes.length; i++) binary += String.fromCharCode(bytes[i]);
+  return btoa(binary);
+}
+
+export default {
+  form: `
+    <div class="field-grid">
+      ${select({ id: "sriAlgo", label: "Hash algorithm", options: [{label:"SHA-256",value:"SHA-256"},{label:"SHA-384",value:"SHA-384"},{label:"SHA-512",value:"SHA-512"}], value: "SHA-256" })}
+    </div>
+    <p class="field-note">Provide content using one method below. First non-empty source wins.</p>
+    <div class="field-grid">
+      ${textarea({ id: "sriPaste", label: "Paste code content", help: "Paste the exact script or stylesheet content here." })}
+    </div>
+    <div class="field-grid">
+      <div class="field">
+        <label for="sriFile">Upload a local file</label>
+        <input type="file" id="sriFile">
+        <small>JavaScript (.js) or CSS (.css) file.</small>
+      </div>
+    </div>
+    <div class="field-grid">
+      ${field({ id: "sriCdn", label: "CDN URL", type: "url", help: "The URL alone does not produce a hash. Paste or upload the actual file content." })}
+    </div>
+    <div class="field-grid">
+      ${select({ id: "sriType", label: "Tag type", options: [{label:"Script",value:"script"},{label:"Stylesheet",value:"link"}] })}
+      ${checkbox({ id: "sriCrossorigin", label: "Include crossorigin=\"anonymous\"", checked: true })}
+    </div>`,
+  async generate(root) {
+    const algo = root.querySelector("#sriAlgo").value;
+    const pasteVal = root.querySelector("#sriPaste").value.trim();
+    const fileInput = root.querySelector("#sriFile");
+    const cdnUrl = root.querySelector("#sriCdn").value.trim();
+    const tagType = root.querySelector("#sriType").value;
+    const crossorigin = root.querySelector("#sriCrossorigin").checked;
+
+    let content = "";
+    let source = "";
+    if (pasteVal) { content = pasteVal; source = "pasted content"; }
+    else if (fileInput.files.length) {
+      source = "uploaded file: " + fileInput.files[0].name;
+      content = await fileInput.files[0].text();
+    }
+
+    if (!content) {
+      return { output: cdnUrl
+        ? `<!-- Paste or upload the exact file content to generate the integrity hash. -->\n<!-- CDN URL provided: ${cdnUrl} -->\n<!-- The CDN URL alone cannot produce a hash. Use a tool like curl or download the file first. -->`
+        : "Paste code content or upload a local file to generate the SRI hash." };
+    }
+
+    const hashBuffer = await crypto.subtle.digest(algo, new TextEncoder().encode(content));
+    const hashBase64 = arrayBufferToBase64(hashBuffer);
+    const integrity = `${algo.toLowerCase().replace("-","")}-${hashBase64}`;
+    const cross = crossorigin ? ' crossorigin="anonymous"' : "";
+
+    let tag = "";
+    if (tagType === "script") {
+      tag = `<script src="${htmlEscape(cdnUrl || "YOUR_URL_HERE")}" integrity="${integrity}"${cross}></script>`;
+    } else {
+      tag = `<link rel="stylesheet" href="${htmlEscape(cdnUrl || "YOUR_URL_HERE")}" integrity="${integrity}"${cross}>`;
+    }
+
+    return {
+      output: [
+        `/* SRI Hash — ${algo} */`,
+        `/* Source: ${source} */`,
+        `/* Content length: ${content.length} bytes */`,
+        ``,
+        `Integrity attribute:`,
+        `integrity="${integrity}"`,
+        ``,
+        `Generated tag:`,
+        tag,
+        ``,
+        `/* Browser support: all modern browsers. Verify the hash after each CDN update. */`,
+        `/* If the remote file changes, the hash must be regenerated. */`
+      ].join("\n")
+    };
+  }
+};

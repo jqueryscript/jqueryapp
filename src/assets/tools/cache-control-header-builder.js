@@ -1,0 +1,68 @@
+import { select, checkbox, htmlEscape } from "../tool-core.js";
+
+const presets = {
+  "static-html": { cc: "public, max-age=0, must-revalidate", note: "HTML changes frequently. Validate on every request." },
+  "fingerprinted-css-js": { cc: "public, max-age=31536000, immutable", note: "Versioned filenames allow aggressive caching." },
+  "images": { cc: "public, max-age=86400", note: "Images change less often. Bump max-age if you version image filenames." },
+  "feed-sitemap": { cc: "public, max-age=3600", note: "RSS feeds and sitemaps should be fresh but not re-fetched on every request." },
+  "private": { cc: "private, max-age=0, must-revalidate", note: "Private pages should never be stored by shared caches (CDNs, proxies)." },
+  "no-store": { cc: "no-store", note: "No caching at all. Use for authentication pages, checkout flows, and sensitive data." }
+};
+
+const platformNotes = {
+  "generic": "",
+  "cloudflare": "Cloudflare: Set via Page Rules, Cache Rules, or Transform Rules. The origin Cache-Control header is respected by default.",
+  "netlify": "Netlify: Add custom headers in netlify.toml or _headers file. GitHub Pages does not support custom Cache-Control headers.",
+  "vercel": "Vercel: Configure in vercel.json under the headers key. Immutable assets in public/ get strong caching by default."
+};
+
+export default {
+  form: `
+    <div class="field-grid">
+      ${select({ id: "ccType", label: "Resource type", options: [
+        {label:"Static HTML page",value:"static-html"},
+        {label:"Fingerprinted CSS / JS",value:"fingerprinted-css-js"},
+        {label:"Images",value:"images"},
+        {label:"Feed / Sitemap",value:"feed-sitemap"},
+        {label:"Private page",value:"private"},
+        {label:"No-store (sensitive)",value:"no-store"}
+      ], value: "static-html" })}
+    </div>
+    <div class="field-grid">
+      ${select({ id: "ccPlatform", label: "Hosting platform", options: [
+        {label:"Generic (any server)",value:"generic"},
+        {label:"Cloudflare",value:"cloudflare"},
+        {label:"Netlify",value:"netlify"},
+        {label:"Vercel",value:"vercel"}
+      ], value: "generic" })}
+      ${checkbox({ id: "ccEtag", label: "Show ETag / Last-Modified notes", checked: true })}
+    </div>`,
+  generate(root) {
+    const type = root.querySelector("#ccType").value;
+    const platform = root.querySelector("#ccPlatform").value;
+    const showEtag = root.querySelector("#ccEtag").checked;
+
+    const preset = presets[type];
+    const lines = [
+      `Cache-Control: ${preset.cc}`,
+      ``,
+      `/* ${preset.note} */`,
+    ];
+
+    if (platformNotes[platform]) {
+      lines.push(``, `/* ${platformNotes[platform]} */`);
+    }
+
+    if (showEtag) {
+      lines.push(
+        ``,
+        `/* ETag: HTTP entity tag. Servers compute it from content. If the content changes, the ETag changes. */`,
+        `/* Last-Modified: Timestamp of last content change. Less precise than ETag. Use both. */`,
+        `/* GitHub Pages sets ETag and Last-Modified automatically. */`,
+        `/* CDNs often strip or replace ETag — test your specific setup. */`
+      );
+    }
+
+    return { output: lines.join("\n") };
+  }
+};

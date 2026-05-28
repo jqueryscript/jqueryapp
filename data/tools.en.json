@@ -1,5 +1,202 @@
 [
   {
+    "id": "cache-control-header-builder",
+    "name": "Cache-Control Header Builder",
+    "category": "github-pages",
+    "summary": "Build correct Cache-Control HTTP headers for static assets, HTML pages, feeds, and sensitive content.",
+    "description": "Choose a resource type and get the right Cache-Control header value with platform-specific deployment notes for Cloudflare, Netlify, and Vercel. Covers static HTML, fingerprinted CSS/JS, images, feeds, private pages, and no-store sensitive pages.",
+    "keywords": [
+      "cache-control generator",
+      "http caching header",
+      "static site cache",
+      "cdn cache rules"
+    ],
+    "whatIs": "The Cache-Control HTTP header tells browsers and CDNs how long to keep a resource before fetching a fresh copy. Setting it correctly improves page speed for repeat visitors and reduces unnecessary requests. Missing or overly aggressive cache headers are a common reason users see stale content after a deploy.",
+    "howToUse": [
+      "Select the resource type that matches your content: static HTML, fingerprinted CSS/JS, images, feeds, private pages, or no-store.",
+      "Choose your hosting platform for specific deployment tips if needed.",
+      "Copy the Cache-Control header value and add it to your server config, CDN rules, or hosting platform headers file."
+    ],
+    "useCases": [
+      "Set aggressive caching for fingerprinted CSS and JS files with content-hash filenames.",
+      "Prevent caching of authentication pages, checkout flows, and sensitive user data.",
+      "Configure feed and sitemap freshness so crawlers get up-to-date content without excessive requests."
+    ],
+    "examples": [
+      {
+        "title": "Fingerprinted assets on Netlify",
+        "text": "A static site uses hashed filenames like main.a3f8b2.js. Set the Cache-Control header to public, max-age=31536000, immutable in the Netlify _headers file so returning visitors load instantly from cache."
+      },
+      {
+        "title": "Sensitive checkout page",
+        "text": "An e-commerce site serves a checkout page that must never be cached by CDNs or browsers. Set Cache-Control: no-store to ensure every request fetches a fresh copy from the origin."
+      }
+    ],
+    "mistakes": [
+      "Setting a long max-age on HTML pages that change frequently — users see stale content after a deploy.",
+      "Using no-store on every page instead of targeted no-cache or max-age=0, which harms performance.",
+      "Forgetting that GitHub Pages ignores custom Cache-Control headers — only ETag and Last-Modified are set automatically."
+    ],
+    "faq": [
+      {
+        "question": "What is the difference between no-cache and no-store?",
+        "answer": "no-cache means the browser must revalidate with the server before using a cached copy — the response can still be cached, but must be confirmed fresh. no-store means nothing may be cached at all, not even in memory. Use no-cache with must-revalidate for most update-critical pages; use no-store only for sensitive data like payment pages."
+      },
+      {
+        "question": "How do I set Cache-Control on GitHub Pages?",
+        "answer": "GitHub Pages sets Cache-Control: max-age=600 (10 minutes) for HTML and max-age=31536000 (1 year) for versioned assets automatically. You cannot override these values. If you need custom cache headers, use Cloudflare in front of GitHub Pages with Page Rules, or switch to Netlify or Vercel which support custom _headers files."
+      },
+      {
+        "question": "What does immutable mean in Cache-Control?",
+        "answer": "The immutable extension tells the browser to skip revalidation even when the user hits the refresh button. Use it only on versioned resources with content-hash filenames (like app.a3f8b2.js). If the content changes, the filename changes, so the cached version is never stale by definition. Never use immutable on non-versioned URLs."
+      },
+      {
+        "question": "How long should I cache images on a static site?",
+        "answer": "For images without versioned filenames, a max-age of 86400 (24 hours) is a safe default — images change rarely but you want updates to propagate within a day. For fingerprinted images (logo.v2.png), use max-age=31536000 with immutable. For images that change daily (like a daily chart), use max-age=3600 or max-age=0 with must-revalidate."
+      }
+    ],
+    "quickAnswer": "Use the Cache-Control HTTP header to tell browsers and CDNs how long to keep a resource before revalidating. For static sites: use public, max-age=31536000, immutable on fingerprinted CSS/JS, public, max-age=0, must-revalidate on HTML, and no-store on sensitive pages.",
+    "limitations": [
+      "GitHub Pages does not support custom Cache-Control headers — only ETag and Last-Modified are provided automatically. Use Cloudflare or another CDN in front for custom caching rules.",
+      "The immutable directive is not an official RFC standard but is widely supported by modern browsers and CDNs. Very old HTTP/1.1 proxies may ignore it.",
+      "Browsers may still cache content when offline or in back-forward cache even when Cache-Control says no-store. Cache-Control is a hint, not a guarantee."
+    ],
+    "verificationSteps": [
+      "Check the Cache-Control header in the browser DevTools Network tab — look for the response header on the specific resource.",
+      "Use curl -I https://yoursite.com/path to verify headers from the command line. Confirm the CDN is passing through the origin header correctly."
+    ],
+    "updatedAt": "2026-05-28"
+  },
+  {
+    "id": "cors-header-generator",
+    "name": "CORS Header Generator",
+    "category": "github-pages",
+    "summary": "Generate CORS HTTP headers for any origin, method, and credential configuration. Output in raw HTTP, Nginx, Apache, Express, or Cloudflare Workers format.",
+    "description": "Build correct Access-Control-Allow-Origin, Allow-Methods, Allow-Headers, Allow-Credentials, and Max-Age headers. This tool warns about dangerous combinations like wildcard origins with credentials and outputs ready-to-paste snippets for five deployment platforms.",
+    "keywords": [
+      "cors header generator",
+      "cross origin resource sharing",
+      "access control allow origin",
+      "cors configuration"
+    ],
+    "whatIs": "CORS (Cross-Origin Resource Sharing) is a browser security mechanism that controls which web origins can access your resources. When a browser app tries to fetch data from a different domain, the browser checks CORS headers on the response. Without correct CORS headers, cross-origin requests fail with a CORS error in the console.",
+    "howToUse": [
+      "Enter the allowed origins — use * for public APIs or specific domains for restricted access.",
+      "Select the HTTP methods your endpoint supports and any custom headers clients may send.",
+      "Toggle credentials support with care — browsers reject requests that combine * origins with credentials.",
+      "Choose your deployment format and copy the generated header configuration."
+    ],
+    "useCases": [
+      "Configure a public API that any frontend can call from any domain.",
+      "Set up a private API endpoint that only your own frontend domain can access, with cookie-based auth.",
+      "Generate CORS headers for a Cloudflare Worker or Express.js backend with correct preflight caching."
+    ],
+    "examples": [
+      {
+        "title": "Public read-only API",
+        "text": "A public JSON API serves data to any frontend. Set origin to *, allow GET only, and do not enable credentials. This is the simplest and safest CORS configuration for public data."
+      },
+      {
+        "title": "Private admin API with auth cookies",
+        "text": "An admin dashboard at admin.example.com calls an API at api.example.com with session cookies. Set origin to admin.example.com, allow GET/POST/PUT/DELETE, enable credentials, and never use * for the origin."
+      }
+    ],
+    "mistakes": [
+      "Using wildcard origin (*) together with Access-Control-Allow-Credentials: true — browsers reject this combination.",
+      "Forgetting to add Vary: Origin when serving different CORS headers based on the request origin.",
+      "Setting Access-Control-Max-Age above 86400 — browsers cap it at 24 hours regardless."
+    ],
+    "faq": [
+      {
+        "question": "Why do I get a CORS error even with the correct headers?",
+        "answer": "CORS errors can also be caused by network issues, self-signed certificates during development, or the browser blocking the request before it reaches your server. Check the browser console for the specific CORS error message and verify the preflight OPTIONS request returns a 2xx status. Some server frameworks return 404 or 500 for OPTIONS by default."
+      },
+      {
+        "question": "Can I use * for Access-Control-Allow-Origin with credentials?",
+        "answer": "No. The CORS specification explicitly forbids combining the wildcard origin with credentials. Browsers reject the response. If you need to support credentials, list each origin explicitly or dynamically echo back the request origin after validating it against an allowlist."
+      },
+      {
+        "question": "What is a CORS preflight request?",
+        "answer": "A preflight is an automatic OPTIONS request the browser sends before the actual request when the request is not simple. Requests are preflighted when they use methods other than GET/HEAD/POST, include custom headers like Authorization, or use Content-Type other than application/x-www-form-urlencoded, multipart/form-data, or text/plain. The preflight checks whether the server allows the intended request."
+      }
+    ],
+    "quickAnswer": "CORS headers control which websites can access your server resources from browser JavaScript. Use Access-Control-Allow-Origin to specify allowed origins, Access-Control-Allow-Methods for HTTP verbs, and Access-Control-Allow-Credentials for cookie-based auth. Never combine * wildcard origin with credentials.",
+    "limitations": [
+      "CORS only protects browser-based requests. Server-to-server requests, curl, and direct API calls are not subject to CORS — CORS is a browser enforcement mechanism, not a server security layer.",
+      "Some older browsers (IE 10 and below) have incomplete CORS support and may not handle preflight caching correctly. For modern web apps, browser support is universal.",
+      "CORS headers do not protect your API from DDoS, abuse, or unauthorized non-browser access. Use authentication, rate limiting, and a WAF alongside CORS."
+    ],
+    "verificationSteps": [
+      "Open the browser DevTools Network tab, make a cross-origin request, and check the response headers for Access-Control-Allow-Origin and related headers.",
+      "Test with curl -H 'Origin: https://example.com' -I https://your-api.com/endpoint to simulate a cross-origin request and verify the Access-Control headers."
+    ],
+    "updatedAt": "2026-05-28"
+  },
+  {
+    "id": "csp-hash-generator",
+    "name": "CSP Hash Generator",
+    "category": "html",
+    "summary": "Generate CSP hash values for inline scripts and styles. Hash exact code content with SHA-256, SHA-384, or SHA-512 and get the matching CSP directive snippet.",
+    "description": "Content Security Policy allows specific inline scripts and styles by their cryptographic hash. This tool hashes your exact inline code and outputs the CSP directive — every space, newline, and indent matters, so the hash matches only the exact content you provide.",
+    "keywords": [
+      "csp hash generator",
+      "content security policy hash",
+      "inline script hash",
+      "sha256 csp"
+    ],
+    "whatIs": "A CSP hash is a base64-encoded SHA-256, SHA-384, or SHA-512 digest of an inline script or style block's exact content. When you add the hash to your CSP header as script-src 'sha256-...' or style-src 'sha256-...', the browser allows that specific inline code to run while blocking all other inline scripts or styles. This is the most secure alternative to 'unsafe-inline'.",
+    "howToUse": [
+      "Copy the exact inline script or style content from your HTML — every space, newline, and indent must match.",
+      "Paste it into the text area and select the hash algorithm.",
+      "Copy the hash value and add it to your CSP header or meta tag as part of script-src or style-src."
+    ],
+    "useCases": [
+      "Allow a specific inline script for a critical-path loader or analytics snippet without enabling all inline scripts.",
+      "Allow a small inline style block for above-the-fold critical CSS while a stylesheet loads.",
+      "Upgrade an existing CSP that uses unsafe-inline to hash-based allowlisting for stronger security."
+    ],
+    "examples": [
+      {
+        "title": "Critical-path inline style",
+        "text": "A page needs a small inline style for the hero section above the fold. Hash the exact style block, add style-src 'sha256-...' to the CSP, and remove unsafe-inline. The browser runs only this specific style block."
+      },
+      {
+        "title": "Inline analytics boot script",
+        "text": "A privacy-focused site inline-loads a small analytics boot script. Hash the script, add script-src 'sha256-...', and block all other inline scripts including any that might be injected by compromised third-party resources."
+      }
+    ],
+    "mistakes": [
+      "Changing even one whitespace character after generating the hash — the hash will no longer match and the script or style is blocked.",
+      "Using the same hash for minified and unminified versions of the same code — they produce different hashes.",
+      "Assuming a hash from a development environment matches the production build — code minification or templating changes the content."
+    ],
+    "faq": [
+      {
+        "question": "Why does my hash stop working after I edit the inline code?",
+        "answer": "The hash is a cryptographic digest of the exact byte sequence of the inline code. Any change — adding a space, changing indentation, adding a comment, or modifying a single character — produces a completely different hash. You must regenerate the hash every time you modify the inline code. This is by design: it ensures only the exact code you approved can run."
+      },
+      {
+        "question": "Should I use a hash or a nonce for CSP?",
+        "answer": "Hashes are best for static inline code that rarely changes, like critical CSS or a small boot script. Nonces are better for dynamically generated inline code because a nonce changes on every page load, while a hash would need to be recomputed for every unique output. For static sites, hashes are simpler because they do not require server-side nonce generation."
+      },
+      {
+        "question": "What is unsafe-hashes and should I enable it?",
+        "answer": "unsafe-hashes allows hashes to be applied to inline event handlers (onclick, onerror, etc.) and javascript: URLs. This is dangerous because event handlers often contain user-influenced values. Only enable unsafe-hashes if you fully control every event handler attribute and understand that a hash match on an event handler can enable script injection if user input reaches the attribute value."
+      }
+    ],
+    "quickAnswer": "Use a CSP hash to allow a specific inline script or style without enabling all inline code with unsafe-inline. The hash is a cryptographic digest of the exact code content — SHA-256 is the standard. Add the hash to your CSP as script-src 'sha256-...' or style-src 'sha256-...'.",
+    "limitations": [
+      "The hash is only valid for the exact content hashed. Any whitespace, formatting, or content change produces a completely different hash and breaks the CSP allowlist.",
+      "Some build tools and HTML minifiers may modify inline whitespace in production, invalidating hashes generated from development code. Verify against production output.",
+      "CSP hashes do not work with inline event handlers (onclick, onerror) without enabling unsafe-hashes, which weakens security significantly."
+    ],
+    "verificationSteps": [
+      "Check the browser console for CSP violation reports after adding the hash — a blocked script or style shows a violation message with the expected hash.",
+      "Use the browser DevTools Application panel or Security tab to inspect the active CSP policy and confirm your hash is recognized."
+    ],
+    "updatedAt": "2026-05-28"
+  },
+  {
     "id": "hreflang-tag-generator",
     "name": "Hreflang Tag Generator",
     "category": "seo",
@@ -192,6 +389,139 @@
       "After deploying, visit https://yourdomain.com and confirm the site loads. Check GitHub Pages settings for the green DNS check mark.",
       "Verify the CNAME file is present by visiting https://yourdomain.com/CNAME in a browser. It should display only the domain name."
     ]
+  },
+  {
+    "id": "security-txt-generator-validator",
+    "name": "security.txt Generator & Validator",
+    "category": "github-pages",
+    "summary": "Generate and validate security.txt files per RFC 9116. Specify your contact, expiration, and optional fields, then get hosting guidance for GitHub Pages, Netlify, and Vercel.",
+    "description": "security.txt is a proposed IETF standard that helps security researchers report vulnerabilities to the right contact. Place this file at /.well-known/security.txt on your domain so researchers and automated scanners can find your vulnerability disclosure policy and contact information.",
+    "keywords": [
+      "security.txt generator",
+      "rfc 9116",
+      "security contact",
+      "vulnerability disclosure",
+      "well-known security"
+    ],
+    "whatIs": "security.txt is a simple text file published at /.well-known/security.txt that tells security researchers how to contact you about vulnerabilities. It is defined by RFC 9116 and supported by Google, GitHub, and major vulnerability disclosure platforms. The file contains a Contact field (URL or email), an Expires date, and optional fields for Canonical, Encryption, Policy, Acknowledgments, and Hiring.",
+    "howToUse": [
+      "In Generate mode: fill in your contact URL or email, set an expiration date, and add any optional fields.",
+      "In Validate mode: paste an existing security.txt file to check it against the RFC 9116 specification.",
+      "Deploy the file to /.well-known/security.txt on your domain and serve it over HTTPS."
+    ],
+    "useCases": [
+      "Create a vulnerability disclosure contact for an open-source project site.",
+      "Validate an existing security.txt before deploying it to a production domain.",
+      "Ensure the Expires date is not in the past and the Contact field uses a valid URL or email format."
+    ],
+    "examples": [
+      {
+        "title": "Security contact page for a SaaS site",
+        "text": "A SaaS company creates a security.txt with a dedicated security@ email and a link to their vulnerability disclosure policy page. The file is placed in the /.well-known/ directory and served over HTTPS."
+      },
+      {
+        "title": "Open-source static site",
+        "text": "An open-source tool site hosted on GitHub Pages adds a security.txt with a link to their GitHub Security Advisories page. The file includes Preferred-Languages and an Encryption key for PGP-encrypted reports."
+      }
+    ],
+    "mistakes": [
+      "Placing security.txt at the site root instead of /.well-known/security.txt — the /.well-known/ path is required by RFC 9116.",
+      "Letting the Expires date pass without renewal — automated scanners ignore expired security.txt files.",
+      "Serving the file over HTTP instead of HTTPS — the file must be accessible over HTTPS without redirects."
+    ],
+    "faq": [
+      {
+        "question": "Where exactly should I place the security.txt file?",
+        "answer": "Place it at /.well-known/security.txt — the full URL should be https://yourdomain.com/.well-known/security.txt. For GitHub Pages, create a .well-known directory in your published site root and place security.txt inside it. The file must be served directly, not redirected."
+      },
+      {
+        "question": "How often should I renew the Expires date?",
+        "answer": "RFC 9116 recommends setting the Expires date no more than 12 months from the current date. Set a calendar reminder to renew it before it expires. Automated scanners and bug bounty platforms ignore expired security.txt files, which defeats the purpose of having one."
+      },
+      {
+        "question": "Can I have more than one Contact field?",
+        "answer": "Yes. RFC 9116 allows multiple Contact fields. This is useful when you have separate security and abuse contacts, or when you want to list both a web form URL and a backup email address. List contacts in order of preference."
+      }
+    ],
+    "quickAnswer": "security.txt is a file at /.well-known/security.txt that tells security researchers how to report vulnerabilities to you. At minimum, include a Contact field (URL or email) and an Expires date. Renew the file before it expires to keep your vulnerability disclosure channel active.",
+    "limitations": [
+      "security.txt is a proposed standard (RFC 9116), not a W3C Recommendation. Some organizations are not yet aware of it, and automated scanner adoption varies by region and industry.",
+      "The file must be served over HTTPS without redirects. Some static hosting platforms (including GitHub Pages) may redirect /.well-known/ paths or serve them with unexpected content types.",
+      "security.txt alone does not create a vulnerability disclosure program or bug bounty. It only tells researchers where to report — you still need an internal process to handle incoming reports."
+    ],
+    "verificationSteps": [
+      "Visit https://yourdomain.com/.well-known/security.txt in a browser and confirm it loads directly over HTTPS without redirects.",
+      "Use curl -I https://yourdomain.com/.well-known/security.txt to verify the Content-Type is text/plain and the response status is 200."
+    ],
+    "updatedAt": "2026-05-28"
+  },
+  {
+    "id": "sri-hash-generator",
+    "name": "SRI Hash Generator",
+    "category": "html",
+    "summary": "Generate Subresource Integrity hashes for script and stylesheet files. Paste code, upload a local file, or reference a CDN URL and get the integrity attribute for your HTML tags.",
+    "description": "Subresource Integrity (SRI) lets browsers verify that a third-party script or stylesheet has not been tampered with. This tool generates SHA-256, SHA-384, or SHA-512 hashes of your file content and outputs the ready-to-use integrity attribute with the matching script or link tag.",
+    "keywords": [
+      "sri hash generator",
+      "subresource integrity",
+      "script integrity",
+      "cdn security hash"
+    ],
+    "whatIs": "Subresource Integrity (SRI) is a browser security feature that verifies the content of external scripts and stylesheets. You add an integrity attribute to your script or link tag containing a cryptographic hash of the file. Before executing the file, the browser computes its hash and compares it to the integrity value. If the hashes do not match — because the file was modified, compromised, or corrupted — the browser blocks the resource.",
+    "howToUse": [
+      "Provide the file content by pasting the code directly, uploading the file, or both (pasted content takes priority).",
+      "Select the hash algorithm — SHA-256 is the standard; SHA-384 and SHA-512 are also valid.",
+      "Copy the generated integrity attribute and the complete script or link tag into your HTML."
+    ],
+    "useCases": [
+      "Add integrity checks to CDN-hosted scripts like jQuery, Bootstrap, or any third-party library.",
+      "Verify that a downloaded library file matches the expected hash before deploying to production.",
+      "Generate integrity attributes for self-hosted assets when using a CDN and subdomain for caching."
+    ],
+    "examples": [
+      {
+        "title": "Secure a CDN script tag",
+        "text": "A site loads a utility library from a CDN. Generate the SRI hash from the exact file content, add the integrity attribute to the script tag, and include crossorigin='anonymous'. If the CDN file is ever tampered with, the browser refuses to execute it."
+      },
+      {
+        "title": "Verify a downloaded library",
+        "text": "A developer downloads a minified CSS framework and wants to confirm it has not been modified. Upload the file to generate its SHA-384 hash, then compare it with the hash published on the framework's official site."
+      }
+    ],
+    "mistakes": [
+      "Generating a hash from a development version of a file and using it on a different production version — the hashes will not match.",
+      "Forgetting the crossorigin='anonymous' attribute on the script or link tag, which prevents the browser from computing the hash for cross-origin resources.",
+      "Never updating the integrity hash after a CDN library upgrade — old hashes block the new file and break the page."
+    ],
+    "faq": [
+      {
+        "question": "Do I need crossorigin='anonymous' for SRI to work?",
+        "answer": "Yes, if the resource is served from a different origin than your page. Without crossorigin='anonymous', the browser cannot compute the hash of a cross-origin resource and the integrity check is skipped. For same-origin resources, crossorigin is not required but is harmless to include."
+      },
+      {
+        "question": "What happens if the SRI hash does not match the file?",
+        "answer": "The browser refuses to execute the script or apply the stylesheet entirely. The resource is blocked and an error appears in the browser console. This protects your users from compromised CDN files, but it also means a legitimate file update without a corresponding hash update breaks your page."
+      },
+      {
+        "question": "Which hash algorithm should I use for SRI?",
+        "answer": "SHA-256 is the standard and most widely used. SHA-384 and SHA-512 are also valid and provide stronger collision resistance, but the larger hash values add more bytes to your HTML. For web use, SHA-256 is sufficient — the security comes from the integrity check itself, not the hash length."
+      },
+      {
+        "question": "Can I use SRI with dynamically loaded scripts?",
+        "answer": "SRI only works with static script and link tags in the HTML. For dynamically loaded scripts (via import() or appendChild), you can set the integrity property on the script element before appending it. Module scripts loaded with import() do not support SRI directly — use import maps with integrity instead."
+      }
+    ],
+    "quickAnswer": "Use Subresource Integrity (SRI) to protect your site from compromised CDN files. Generate a cryptographic hash of the file content, add the integrity attribute to your script or link tag, and include crossorigin='anonymous'. The browser blocks the resource if its actual hash does not match.",
+    "limitations": [
+      "SRI only verifies the file content at load time. It does not protect against vulnerabilities within the loaded library itself (like XSS in an outdated jQuery version). Always keep libraries updated.",
+      "The hash must be regenerated every time the remote file changes. If you forget to update the integrity attribute after a library update, the resource is blocked and the page may break.",
+      "SRI does not work with resources that require credentials (cookies, HTTP auth) from a different origin. For credentialed cross-origin requests, use crossorigin='use-credentials' instead of 'anonymous'."
+    ],
+    "verificationSteps": [
+      "Check the browser DevTools Network tab — a resource with a matching integrity hash loads normally; a mismatched resource is blocked in red with an SRI error.",
+      "Verify the generated hash by computing it independently: openssl dgst -sha256 -binary file.js | openssl base64 -A should match the generated integrity value."
+    ],
+    "updatedAt": "2026-05-28"
   },
   {
     "id": "static-site-seo-checklist-generator",
@@ -4732,5 +5062,69 @@
       "summary": "Async downloads in parallel and runs on completion. Defer downloads in parallel but waits for the HTML to finish parsing. Module scripts are deferred by default and support ES module dependency graphs."
     },
     "updatedAt": "2026-05-25"
+  },
+  {
+    "id": "x-robots-tag-header-generator",
+    "name": "X-Robots-Tag Header Generator",
+    "category": "seo",
+    "summary": "Generate X-Robots-Tag HTTP headers and robots meta tags for non-HTML files, PDFs, images, feeds, and HTML pages.",
+    "description": "The X-Robots-Tag HTTP header controls how search engines index non-HTML resources like PDFs, images, and JSON feeds. Unlike the HTML meta tag, this header works on any file type. Build directives including noindex, nofollow, noarchive, nosnippet, noimageindex, and notranslate, with optional user-agent targeting.",
+    "keywords": [
+      "x-robots-tag generator",
+      "noindex header",
+      "robots http header",
+      "indexing control pdf"
+    ],
+    "whatIs": "X-Robots-Tag is an HTTP response header that tells search engines how to handle a resource in their index. It is the HTTP equivalent of the robots meta tag but works on any file type — PDFs, images, videos, feeds, JSON responses, and HTML pages alike. The header accepts the same directives as the meta tag: noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate, and others.",
+    "howToUse": [
+      "Select the directives you want to apply — common combinations are noindex, nofollow for pages to be excluded, and noarchive for content that should not be cached by search engines.",
+      "Optionally specify a user-agent to target specific crawlers, or leave it empty for all bots.",
+      "Copy the HTTP header and/or the HTML meta tag into your server configuration or page markup."
+    ],
+    "useCases": [
+      "Noindex PDFs and other downloadable files that should not appear in search results.",
+      "Prevent search engines from caching sensitive content with noarchive.",
+      "Add noimageindex to a gallery page to prevent individual image indexing while keeping the page indexed."
+    ],
+    "examples": [
+      {
+        "title": "Prevent PDF indexing",
+        "text": "A site offers PDF whitepapers behind a form. Add X-Robots-Tag: noindex, nofollow to the PDF responses so search engines do not index the gated content and do not follow links within the PDFs."
+      },
+      {
+        "title": "Protect image assets",
+        "text": "A stock photo site adds X-Robots-Tag: noimageindex to all image responses. The HTML pages remain indexed, but the individual images do not appear in Google Image Search, protecting the unwatermarked files."
+      }
+    ],
+    "mistakes": [
+      "Setting a robots meta tag on a page but also sending a conflicting X-Robots-Tag header — search engines may honor the more restrictive directive.",
+      "Using noindex on a page that is blocked by robots.txt — search engines cannot see the noindex directive if they cannot crawl the page.",
+      "Forgetting that X-Robots-Tag applies to the entire HTTP response — all embedded resources in that response inherit the header behavior."
+    ],
+    "faq": [
+      {
+        "question": "What is the difference between robots.txt Disallow and X-Robots-Tag noindex?",
+        "answer": "robots.txt Disallow prevents crawling — the search engine cannot access the resource at all. X-Robots-Tag noindex allows crawling but tells the search engine not to include the resource in its index. To remove a page from search results, use noindex and do NOT block it with robots.txt, so the crawler can read the noindex directive."
+      },
+      {
+        "question": "Does X-Robots-Tag work on non-HTML files?",
+        "answer": "Yes, and this is its main advantage over the meta tag. X-Robots-Tag works on PDFs, images, videos, Word documents, RSS feeds, JSON responses, and any other HTTP response. The HTML meta tag only works inside HTML pages."
+      },
+      {
+        "question": "Can I use X-Robots-Tag for specific user-agents only?",
+        "answer": "Yes. Most web servers support conditional headers based on user-agent. For example, in Nginx: if the user-agent matches Googlebot, add an X-Robots-Tag header. However, not all bots respect user-agent-specific directives, and the safest approach is to apply directives broadly."
+      }
+    ],
+    "quickAnswer": "X-Robots-Tag is an HTTP header that controls search engine indexing for any file type — PDFs, images, feeds, and HTML. Use it when you need indexing control over non-HTML resources or when you cannot add a meta tag to the page. It accepts the same directives as the robots meta tag.",
+    "limitations": [
+      "Some bots and crawlers ignore X-Robots-Tag entirely. It is a hint, not a binding directive, and there is no enforcement mechanism beyond voluntary compliance by search engines.",
+      "If a page is blocked by robots.txt, crawlers cannot see the X-Robots-Tag header at all. Use robots.txt and X-Robots-Tag as complementary layers, not alternatives.",
+      "X-Robots-Tag is not an official IETF standard — it is a de-facto convention supported by Google, Bing, and most major search engines. Smaller or niche crawlers may not recognize it."
+    ],
+    "verificationSteps": [
+      "Use Google Search Console URL Inspection tool to confirm the status of indexed pages after applying noindex via X-Robots-Tag.",
+      "Run curl -I https://yoursite.com/path to verify the X-Robots-Tag header is present and contains the correct directives."
+    ],
+    "updatedAt": "2026-05-28"
   }
 ]
