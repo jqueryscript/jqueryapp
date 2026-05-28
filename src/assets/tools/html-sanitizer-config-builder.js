@@ -1,0 +1,103 @@
+import { textarea, select, checkbox, htmlEscape } from "../tool-core.js";
+
+const presets = {
+  comments: { label:"User comments", tags:"b,i,a,code,em,strong,br", attrs:"a:href,a:title,a:rel" },
+  blog: { label:"Blog post / article", tags:"p,h2,h3,h4,ul,ol,li,a,blockquote,pre,code,em,strong,br,img,figure,figcaption,table,thead,tbody,tr,th,td", attrs:"a:href,a:title,a:rel,img:src,img:alt,img:width,img:height,blockquote:cite" },
+  richtext: { label:"Rich text / CMS", tags:"p,h1,h2,h3,h4,h5,h6,ul,ol,li,a,blockquote,pre,code,em,strong,del,ins,br,img,figure,figcaption,hr,table,thead,tbody,tr,th,td,details,summary", attrs:"a:href,a:title,a:rel,a:target,img:src,img:alt,img:width,img:height,img:loading,blockquote:cite,td:colspan,th:colspan,th:scope" },
+  custom: { label:"Custom", tags:"", attrs:"" }
+};
+
+export default {
+  form: `
+    <div class="field-grid">
+      ${select({ id: "scPreset", label: "Content type preset", options: Object.entries(presets).map(([k,v])=>({label:v.label,value:k})), value: "blog" })}
+    </div>
+    <div class="field-grid">
+      ${textarea({ id: "scTags", label: "Allowed tags (comma-separated)", help: "e.g. p, a, em, strong, ul, ol, li, blockquote", value: presets.blog.tags })}
+      ${textarea({ id: "scAttrs", label: "Allowed attributes (comma-separated)", help: "e.g. a:href, a:title, img:src, img:alt. Use tag:attr format.", value: presets.blog.attrs })}
+    </div>
+    <div class="field-grid">
+      ${select({ id: "scFormat", label: "Output format", options: [
+        {label:"Sanitizer API (native browser)",value:"sanitizer"},
+        {label:"DOMPurify",value:"dompurify"},
+        {label:"Both",value:"both"}
+      ], value: "both" })}
+      ${checkbox({ id: "scComments", label: "Include usage comments", checked: true })}
+    </div>`,
+  generate(root) {
+    const preset = root.querySelector("#scPreset").value;
+    const tagsRaw = root.querySelector("#scTags").value.trim();
+    const attrsRaw = root.querySelector("#scAttrs").value.trim();
+    const format = root.querySelector("#scFormat").value;
+    const showComments = root.querySelector("#scComments").checked;
+
+    // Apply preset
+    if (preset !== "custom") {
+      root.querySelector("#scTags").value = presets[preset].tags;
+      root.querySelector("#scAttrs").value = presets[preset].attrs;
+    }
+
+    const tags = tagsRaw ? tagsRaw.split(",").map(s => s.trim()).filter(Boolean) : [];
+    const attrs = attrsRaw ? attrsRaw.split(",").map(s => s.trim()).filter(Boolean) : [];
+    const lines = [];
+
+    if (!tags.length) {
+      lines.push("No allowed tags specified. Enter at least one tag to build a sanitizer config.");
+      if (format === "sanitizer" || format === "both") {
+        lines.push("", "// Sanitizer API: empty allow list = allow all elements (unsafe!)");
+      }
+      return { output: lines.join("\n") };
+    }
+
+    if (showComments) {
+      lines.push(`/* HTML Sanitizer Config — ${presets[preset]?.label || "Custom"} */`, "");
+    }
+
+    if (format === "sanitizer" || format === "both") {
+      if (showComments) lines.push("// === Native Sanitizer API ===");
+      lines.push("const sanitizer = new Sanitizer({");
+      lines.push(`  allowElements: [${tags.map(t => `"${t}"`).join(", ")}],`);
+      if (attrs.length) {
+        lines.push("  allowAttributes: {");
+        const byTag = {};
+        attrs.forEach(a => {
+          const parts = a.split(":");
+          const tagName = parts[0] || "*";
+          const attrName = parts[1] || a;
+          if (!byTag[tagName]) byTag[tagName] = [];
+          byTag[tagName].push(attrName);
+        });
+        Object.entries(byTag).forEach(([tag, attrList]) => {
+          lines.push(`    "${tag}": [${attrList.map(a => `"${a}"`).join(", ")}],`);
+        });
+        lines.push("  },");
+      }
+      lines.push("});");
+      lines.push("// Usage: element.setHTML(untrustedHTML, { sanitizer });");
+      lines.push("");
+      if (showComments) lines.push("// Browser support: Chrome 105+, Edge 105+, Firefox 118+. Not supported in Safari as of 2025.", "");
+    }
+
+    if (format === "dompurify" || format === "both") {
+      if (showComments) lines.push("// === DOMPurify ===");
+      lines.push("const clean = DOMPurify.sanitize(dirty, {");
+      lines.push(`  ALLOWED_TAGS: [${tags.map(t => `"${t}"`).join(", ")}],`);
+      if (attrs.length) {
+        lines.push(`  ALLOWED_ATTR: [${attrs.map(a => {
+          const parts = a.split(":");
+          return `"${parts[1] || parts[0]}"`;
+        }).join(", ")}],`);
+      }
+      lines.push("});");
+      lines.push("");
+      if (showComments) lines.push("// npm install dompurify  |  CDN: https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js", "");
+    }
+
+    if (showComments && !tags.includes("script") && !tags.includes("style")) {
+      lines.push("/* Note: <script> and <style> tags are NOT in the allowed list. */");
+      lines.push("/* This prevents XSS via injected executable code. */");
+    }
+
+    return { output: lines.join("\n") };
+  }
+};

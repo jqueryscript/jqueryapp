@@ -38,17 +38,26 @@ Solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with fast browser 
 ## Tools
 
 - [AI Crawler robots.txt Builder](https://www.jquery.app/tools/ai-crawler-robots-txt-builder/): Build a robots.txt policy for AI crawlers. Choose from open, selective, or strict presets and block specific AI training bots while allowing search engines.
+- [ARIA Live Region Generator](https://www.jquery.app/tools/aria-live-region-generator/): Generate accessible ARIA live region HTML snippets with role, aria-live, aria-atomic, and aria-relevant attributes. Includes optional JavaScript update function.
 - [Assetlinks & AASA Generator](https://www.jquery.app/tools/assetlinks-aasa-generator/): Generate Android assetlinks.json and Apple App Site Association (AASA) files for Universal Links and Android App Links.
 - [Cache-Control Header Builder](https://www.jquery.app/tools/cache-control-header-builder/): Build correct Cache-Control HTTP headers for static assets, HTML pages, feeds, and sensitive content.
+- [Container Query Units Calculator](https://www.jquery.app/tools/container-query-units-calculator/): Calculate clamp() values using container query units (cqi, cqw, cqb, cqmin, cqmax) for component-level responsive sizing.
+- [COOP/COEP/CORP Header Builder](https://www.jquery.app/tools/coop-coep-corp-header-builder/): Build Cross-Origin isolation headers for SharedArrayBuffer, WebAssembly threads, and cross-origin security. Choose from presets with debugging checklists.
 - [CORS Header Generator](https://www.jquery.app/tools/cors-header-generator/): Generate CORS HTTP headers for any origin, method, and credential configuration. Output in raw HTTP, Nginx, Apache, Express, or Cloudflare Workers format.
 - [CSP Hash Generator](https://www.jquery.app/tools/csp-hash-generator/): Generate CSP hash values for inline scripts and styles. Hash exact code content with SHA-256, SHA-384, or SHA-512 and get the matching CSP directive snippet.
+- [CSS Subgrid Layout Generator](https://www.jquery.app/tools/css-subgrid-layout-generator/): Generate parent grid and child subgrid CSS. Create layouts where nested grid items align with the parent grid tracks.
+- [Declarative Shadow DOM Snippet Generator](https://www.jquery.app/tools/declarative-shadow-dom-snippet-generator/): Generate HTML snippets for Declarative Shadow DOM with scoped CSS, slots, open/closed mode, and server-rendering fallback content.
+- [Focus Ring CSS Generator](https://www.jquery.app/tools/focus-ring-css-generator/): Generate accessible :focus-visible outline or box-shadow focus ring CSS with contrast checking against background colors.
 - [Hreflang Sitemap Builder](https://www.jquery.app/tools/hreflang-sitemap-builder/): Build XML sitemap entries with hreflang alternates for multilingual pages. Validate reciprocal links between language versions.
 - [Hreflang Tag Generator](https://www.jquery.app/tools/hreflang-tag-generator/): Generate clean hreflang tags for multilingual static websites.
+- [HTML Sanitizer Config Builder](https://www.jquery.app/tools/html-sanitizer-config-builder/): Generate Sanitizer API and DOMPurify allowlist configurations. Choose content-type presets or customize allowed tags and attributes for safe HTML rendering.
+- [HTTP Header Parser & Explainer](https://www.jquery.app/tools/http-header-parser-explainer/): Paste raw HTTP response headers and get a grouped, plain-English explanation of each header. Includes security advisories for missing security headers.
 - [llms.txt Validator](https://www.jquery.app/tools/llms-txt-validator/): Validate llms.txt files against the specification. Check H1 headings, blockquote summaries, section structure, and Markdown link formatting.
 - [Open Graph & Twitter Card Builder](https://www.jquery.app/tools/og-twitter-card-builder/): Build social preview meta tags for blog posts and static pages.
 - [GitHub Pages CNAME Helper](https://www.jquery.app/tools/github-pages-cname-helper/): Create the CNAME file content and DNS notes for a GitHub Pages custom domain.
 - [OpenSearch Description Generator](https://www.jquery.app/tools/opensearch-description-generator/): Generate an OpenSearch description XML file and HTML link tag so browsers can add your site's search as a search engine.
 - [PWA Maskable Icon Safe Zone Generator](https://www.jquery.app/tools/pwa-maskable-icon-safe-zone-generator/): Upload an app icon and preview the PWA maskable safe zone with overlay. Export manifest-ready icon entries with correct purpose and size references.
+- [Redirect Map Converter](https://www.jquery.app/tools/redirect-map-converter/): Convert a CSV redirect map to Netlify _redirects, netlify.toml, Vercel vercel.json, Apache .htaccess, or Nginx config. Validate duplicates and redirect chains.
 - [security.txt Generator & Validator](https://www.jquery.app/tools/security-txt-generator-validator/): Generate and validate security.txt files per RFC 9116. Specify your contact, expiration, and optional fields, then get hosting guidance for GitHub Pages, Netlify, and Vercel.
 - [SRI Hash Generator](https://www.jquery.app/tools/sri-hash-generator/): Generate Subresource Integrity hashes for script and stylesheet files. Paste code, upload a local file, or reference a CDN URL and get the integrity attribute for your HTML tags.
 - [Static Site SEO Checklist Generator](https://www.jquery.app/tools/static-site-seo-checklist-generator/): Generate a practical SEO checklist for static websites before launch.
@@ -68,6 +77,7 @@ Solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with fast browser 
 - [CSS Box Shadow Builder](https://www.jquery.app/tools/css-box-shadow-builder/): Build box-shadow CSS visually by adjusting offset, blur, spread, and color.
 - [CSS Flexbox Generator](https://www.jquery.app/tools/css-flexbox-generator/): Generate flexbox container CSS and sample HTML by selecting flex direction, wrap, alignment, and justification.
 - [CSS Border Radius Builder](https://www.jquery.app/tools/css-border-radius-builder/): Set rounded corners individually for each corner and generate the border-radius CSS declaration.
+- [Touch Target Size Checker](https://www.jquery.app/tools/touch-target-size-checker/): Check interactive element dimensions against WCAG 2.2 Target Size (2.5.8) requirements. Get AA/AAA results with CSS fix recommendations.
 - [URL Slug Generator](https://www.jquery.app/tools/url-slug-generator/): Turn any title or heading into a clean, lowercase, hyphenated URL slug.
 - [HTML Heading Hierarchy Checker](https://www.jquery.app/tools/html-heading-hierarchy-checker/): Paste HTML and see the heading structure as a tree. Find skipped levels, missing h1 tags, and hierarchy problems.
 - [Reading Time Estimator](https://www.jquery.app/tools/reading-time-estimator/): Paste text and get an estimated reading time based on word count and adjustable reading speed.

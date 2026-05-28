@@ -1,0 +1,154 @@
+import { textarea, htmlEscape } from "../tool-core.js";
+
+const headerGroups = {
+  "Cache & Freshness": { headers: ["cache-control", "etag", "last-modified", "expires", "pragma", "age", "vary"], desc: "Control how browsers and CDNs cache this resource." },
+  "Security": { headers: ["content-security-policy", "x-content-type-options", "x-frame-options", "strict-transport-security", "x-xss-protection", "permissions-policy", "referrer-policy"], desc: "Defense against XSS, clickjacking, MIME sniffing, and downgrade attacks." },
+  "CORS & Cross-Origin": { headers: ["access-control-allow-origin", "access-control-allow-methods", "access-control-allow-headers", "access-control-allow-credentials", "access-control-max-age", "access-control-expose-headers", "cross-origin-opener-policy", "cross-origin-embedder-policy", "cross-origin-resource-policy"], desc: "Control cross-origin access and isolation." },
+  "Robots & Indexing": { headers: ["x-robots-tag"], desc: "Control how search engines index this resource." },
+  "Content": { headers: ["content-type", "content-encoding", "content-length", "content-language", "content-disposition"], desc: "Describe the resource body and how to handle it." },
+  "Redirection": { headers: ["location", "refresh"], desc: "Redirect the client to another URL." },
+  "Connection & Transport": { headers: ["connection", "keep-alive", "transfer-encoding", "alt-svc"], desc: "Network-level transport settings." }
+};
+
+const explainers = {
+  "cache-control": (v) => {
+    const notes = [`Controls caching behavior.`];
+    if (v.includes("no-store")) notes.push("No caching at all — sensitive content.");
+    if (v.includes("no-cache")) notes.push("Must revalidate before use.");
+    if (v.includes("must-revalidate")) notes.push("Must revalidate after expiration.");
+    if (v.includes("public")) notes.push("Cacheable by shared caches (CDNs).");
+    if (v.includes("private")) notes.push("Cacheable by browser only, not CDNs.");
+    if (v.match(/max-age=(\d+)/)) notes.push("Max age: " + v.match(/max-age=(\d+)/)[1] + " seconds.");
+    if (v.includes("immutable")) notes.push("Browser skips revalidation on reload.");
+    return notes;
+  },
+  "strict-transport-security": (v) => {
+    const notes = ["Forces HTTPS for all future visits."];
+    if (v.match(/max-age=(\d+)/)) notes.push("HSTS duration: " + v.match(/max-age=(\d+)/)[1] + " seconds.");
+    if (v.includes("includeSubDomains")) notes.push("Applies to all subdomains.");
+    if (v.includes("preload")) notes.push("Eligible for browser HSTS preload list.");
+    return notes;
+  },
+  "content-security-policy": (v) => {
+    const notes = ["Defines allowed sources for scripts, styles, images, etc."];
+    if (v.includes("unsafe-inline")) notes.push("WARNING: allows inline scripts/styles — weakens XSS protection.");
+    if (v.includes("unsafe-eval")) notes.push("WARNING: allows eval() — weakens XSS protection.");
+    if (v.includes("strict-dynamic")) notes.push("Allows scripts loaded by trusted scripts.");
+    return notes;
+  },
+  "x-content-type-options": (v) => {
+    return ["Prevents MIME type sniffing." + (v.includes("nosniff") ? " Correctly set to nosniff." : " Should be set to nosniff.")];
+  },
+  "x-frame-options": (v) => {
+    return ["Controls whether page can be embedded in iframes." + (v.includes("DENY") ? " Denies all framing." : v.includes("SAMEORIGIN") ? " Allows same-origin framing only." : "")];
+  },
+  "referrer-policy": (v) => {
+    const map = { "no-referrer": "No referrer info sent.", "strict-origin": "Full referrer same-origin, origin only cross-origin.", "strict-origin-when-cross-origin": "Recommended default: origin-only for cross-origin, full for same-origin." };
+    return [map[v.trim()] || "Controls referrer information sent with requests."];
+  },
+  "location": (v) => {
+    return ["Redirect target. " + (v.startsWith("http") ? "Absolute redirect to: " + v : "Relative redirect to: " + v)];
+  },
+};
+
+export default {
+  form: `
+    <div class="field-grid">
+      ${textarea({ id: "hpHeaders", label: "Paste raw HTTP response headers", help: "Paste the full response headers from DevTools Network tab, curl -I, or a server log.", value: "HTTP/2 200\ncache-control: public, max-age=3600\ncontent-type: text/html; charset=utf-8\nstrict-transport-security: max-age=31536000\nx-content-type-options: nosniff\nreferrer-policy: strict-origin-when-cross-origin" })}
+    </div>`,
+  generate(root) {
+    const raw = root.querySelector("#hpHeaders").value.trim();
+
+    if (!raw) {
+      return { output: "Paste raw HTTP response headers to parse and explain each one." };
+    }
+
+    const lines = raw.split("\n");
+    const parsed = [];
+    let hasStatus = false;
+
+    lines.forEach(ln => {
+      const trimmed = ln.trim();
+      if (!trimmed) return;
+      // Skip HTTP/x status line
+      if (trimmed.match(/^HTTP\//)) { hasStatus = true; parsed.push({ name: "Status", value: trimmed, raw: trimmed }); return; }
+      const colonIdx = trimmed.indexOf(":");
+      if (colonIdx === -1) { parsed.push({ name: "(unknown)", value: trimmed, raw: trimmed }); return; }
+      const name = trimmed.substring(0, colonIdx).trim();
+      const value = trimmed.substring(colonIdx + 1).trim();
+      parsed.push({ name: name.toLowerCase(), value, raw: trimmed, displayName: name });
+    });
+
+    if (!parsed.length) {
+      return { output: "No headers found. Paste response headers formatted as Name: Value pairs." };
+    }
+
+    const out = [];
+    out.push(`=== HTTP Header Analysis (${parsed.length} headers) ===`);
+    out.push("");
+
+    // Group headers
+    const grouped = {};
+    const orphaned = [];
+    parsed.forEach(h => {
+      if (h.name === "status") { grouped["Status Line"] = [h]; return; }
+      let found = false;
+      for (const [group, cfg] of Object.entries(headerGroups)) {
+        if (cfg.headers.includes(h.name)) {
+          if (!grouped[group]) grouped[group] = [];
+          grouped[group].push(h);
+          found = true;
+          break;
+        }
+      }
+      if (!found) orphaned.push(h);
+    });
+
+    // Print grouped
+    let warnCount = 0;
+    for (const [group, cfg] of Object.entries(headerGroups)) {
+      if (!grouped[group]) continue;
+      out.push(`--- ${group} ---`);
+      out.push(`${cfg.desc}`);
+      out.push("");
+      grouped[group].forEach(h => {
+        out.push(`  ${h.displayName || h.name}: ${h.value}`);
+        const explain = explainers[h.name];
+        if (explain) {
+          explain(h.value).forEach(n => out.push(`    → ${n}`));
+        }
+        out.push("");
+      });
+    }
+
+    // Security warnings
+    const headerNames = parsed.map(h => h.name);
+    const securityWarnings = [];
+    if (!headerNames.includes("x-content-type-options")) securityWarnings.push("Missing X-Content-Type-Options: nosniff — enables MIME sniffing attacks.");
+    if (!headerNames.includes("referrer-policy")) securityWarnings.push("Missing Referrer-Policy — referrer information may leak to cross-origin destinations.");
+    if (!headerNames.includes("strict-transport-security")) securityWarnings.push("Missing Strict-Transport-Security — no HSTS enforcement for HTTPS.");
+    if (!headerNames.includes("x-frame-options") && !headerNames.includes("content-security-policy")) securityWarnings.push("Missing X-Frame-Options or CSP frame-ancestors — page is vulnerable to clickjacking.");
+
+    if (securityWarnings.length) {
+      out.push(`--- Security Advisories (${securityWarnings.length}) ---`);
+      securityWarnings.forEach(w => out.push(`  WARN: ${w}`));
+      out.push("");
+    }
+
+    if (orphaned.length) {
+      out.push(`--- Other Headers (${orphaned.length}) ---`);
+      orphaned.forEach(h => out.push(`  ${h.displayName || h.name}: ${h.value}`));
+      out.push("");
+    }
+
+    out.push(
+      "--- Next Steps ---",
+      "1. Address any security advisories above.",
+      "2. Verify that Cache-Control matches your content freshness requirements.",
+      "3. Check that CORS headers match your intended cross-origin access policy.",
+      "4. Remove any headers that are no longer needed."
+    );
+
+    return { output: out.join("\n") };
+  }
+};

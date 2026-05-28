@@ -65,6 +65,68 @@
     "updatedAt": "2026-05-28"
   },
   {
+    "id": "aria-live-region-generator",
+    "name": "ARIA Live Region Generator",
+    "category": "html",
+    "summary": "Generate accessible ARIA live region HTML snippets with role, aria-live, aria-atomic, and aria-relevant attributes. Includes optional JavaScript update function.",
+    "description": "Create ARIA live regions for screen reader announcements. Choose region type (status, alert, log, timer, marquee), configure atomic updates and relevance filtering, and get a ready-to-use HTML snippet with optional JavaScript for dynamic content updates.",
+    "keywords": [
+      "aria live region generator",
+      "screen reader announcements",
+      "aria-live polite assertive",
+      "accessible dynamic content",
+      "wcag live region"
+    ],
+    "whatIs": "An ARIA live region is an HTML element that screen readers monitor for content changes and automatically announce to the user. This enables dynamic content updates — like form validation errors, status messages, or chat messages — to be read aloud without moving keyboard focus. The aria-live attribute controls how urgently changes are announced (polite or assertive).",
+    "howToUse": [
+      "Choose the region type based on how critical the updates are — status for advisory, alert for urgent, log for sequential updates.",
+      "Configure aria-atomic (read entire region or only changes) and aria-relevant (what types of DOM changes trigger announcements).",
+      "Copy the HTML snippet with or without the JavaScript update helper.",
+      "Place the live region in the DOM on page load so screen readers can register it."
+    ],
+    "useCases": [
+      "Add a status region for form validation feedback that screen readers announce without moving focus.",
+      "Create an alert region for critical error messages that interrupt the user immediately.",
+      "Build a chat message log where new messages are announced in order as they appear."
+    ],
+    "examples": [
+      {
+        "title": "Form validation status",
+        "text": "A form needs to announce validation errors to screen reader users. Create a polite status region and update its textContent with error messages after form submission. Screen readers read the errors without moving focus from the form."
+      },
+      {
+        "title": "Async search result counter",
+        "text": "A search page updates results as the user types. An aria-live polite region announces \"12 results found\" after each keystroke without interrupting the user's typing."
+      }
+    ],
+    "mistakes": [
+      "Using aria-live assertive for non-critical updates — assertive interrupts the user's current screen reader speech and can be disorienting.",
+      "Forgetting to add the live region to the DOM before sending updates — the region must exist on page load for screen readers to detect it.",
+      "Updating the live region too frequently — rapid updates can overwhelm screen reader users. Debounce or throttle frequent updates."
+    ],
+    "faq": [
+      {
+        "question": "What is the difference between role=status and role=alert?",
+        "answer": "role=status maps to aria-live=polite by default — screen readers wait until current speech finishes before announcing. role=alert maps to aria-live=assertive — screen readers interrupt current speech immediately. Use status for advisory updates like save confirmation. Use alert for critical messages like session timeout warnings."
+      },
+      {
+        "question": "Should I use aria-atomic true or false?",
+        "answer": "aria-atomic=true causes screen readers to read the entire region content when anything changes. aria-atomic=false causes them to read only the changed portion. Use true for short messages where context matters (like error summaries). Use false for long logs where only new items need announcing."
+      }
+    ],
+    "quickAnswer": "Create an ARIA live region to announce dynamic content updates to screen reader users. Use role=status (polite) for advisory updates, role=alert (assertive) for critical alerts. The region must exist in the DOM on page load and content should be updated via textContent, not innerHTML.",
+    "limitations": [
+      "ARIA live regions only work with screen readers that support them. Users browsing visually without a screen reader do not see any visual indication of live region updates unless you add one.",
+      "aria-live=assertive interrupts screen readers immediately, which can be disruptive for users who rely on audio pacing. Use sparingly and only for truly critical messages.",
+      "Frequent or rapid textContent updates can cause screen readers to queue announcements and fall behind. Debounce updates that happen more than once per second."
+    ],
+    "verificationSteps": [
+      "Test with a screen reader (VoiceOver on Mac, NVDA on Windows) to confirm announcements fire at the right time and with the right content.",
+      "Check that the live region is present in the DOM on page load and has the correct role and aria-live attributes."
+    ],
+    "updatedAt": "2026-05-28"
+  },
+  {
     "id": "assetlinks-aasa-generator",
     "name": "Assetlinks & AASA Generator",
     "category": "github-pages",
@@ -199,6 +261,134 @@
     "updatedAt": "2026-05-28"
   },
   {
+    "id": "container-query-units-calculator",
+    "name": "Container Query Units Calculator",
+    "category": "css",
+    "summary": "Calculate clamp() values using container query units (cqi, cqw, cqb, cqmin, cqmax) for component-level responsive sizing.",
+    "description": "Build CSS clamp() expressions that use container query units instead of viewport units. Define min and max sizes, the container width range, and the container query unit, and get a ready-to-use clamp() expression that scales with the parent container rather than the viewport.",
+    "keywords": [
+      "container query units",
+      "cqi calculator",
+      "cqw clamp",
+      "container relative units",
+      "css container sizing"
+    ],
+    "whatIs": "Container query units work like viewport units but are relative to a query container rather than the viewport. cqi is 1% of the container inline size, cqw is 1% of the container width, cqb is 1% of the container block size, cqmin and cqmax are the min/max of cqi and cqb. They enable component-level responsive sizing where a component adapts to its container, not the browser window.",
+    "howToUse": [
+      "Enter the minimum and maximum target sizes for your CSS property in pixels.",
+      "Set the container width range — the min container width where the property reaches its minimum, and the max width where it reaches its maximum.",
+      "Choose a container query unit and the CSS property name.",
+      "Copy the clamp() expression and ensure the parent element has container-type: inline-size."
+    ],
+    "useCases": [
+      "Make a card title font-size scale with the card width instead of the viewport width.",
+      "Create a component padding that adapts to the available container space.",
+      "Build dashboard widgets where every element scales proportionally to the widget container."
+    ],
+    "examples": [
+      {
+        "title": "Card title scaling with container",
+        "text": "A card component should have a title font-size of 16px at 320px container width and 32px at 800px. Use cqi to scale the title with the card container so the same component works in a narrow sidebar and a wide main column."
+      },
+      {
+        "title": "Responsive component padding",
+        "text": "A callout box should have 16px padding at 300px container width and 40px padding at 1000px. Use the calculator with cqi and copy the clamp() expression for the padding property."
+      }
+    ],
+    "mistakes": [
+      "Using container query units without setting container-type on a parent — the browser uses the initial containing block (viewport), which defeats the purpose.",
+      "Expecting container query units to work like viewport units — they are relative to the nearest query container ancestor, which may be a very different size than the viewport.",
+      "Using container query units in a deeply nested component where the nearest container is not the intended sizing reference."
+    ],
+    "faq": [
+      {
+        "question": "What is the difference between cqi and cqw?",
+        "answer": "cqi is 1% of the container inline size — in horizontal writing modes this equals the container width. cqw is always 1% of the container width regardless of writing mode. For most Latin-script sites, they are identical. For vertical writing modes or RTL pages, cqi adapts to the writing direction."
+      },
+      {
+        "question": "Do container query units work without @container queries?",
+        "answer": "Yes. Container query units work as soon as a parent element has container-type set. You do not need an @container query rule to use the units. Simply set container-type: inline-size on a parent and use cqi/cqw/cqb anywhere in the descendant styles."
+      },
+      {
+        "question": "What happens if no container ancestor exists?",
+        "answer": "The browser falls back to the initial containing block — the viewport. This means a clamp() using cqi behaves like vw (viewport width) when no container context is found. This fallback can produce unexpected large values at wide viewports, so always ensure a container ancestor."
+      }
+    ],
+    "quickAnswer": "Use container query units (cqi, cqw, cqb, cqmin, cqmax) with clamp() for component-level responsive sizing. They work like viewport units but scale with the parent container width. Set container-type: inline-size on the parent and use the clamp() expression in child styles.",
+    "limitations": [
+      "Container query units require container-type to be set on an ancestor. Without an established container context, they fall back to viewport-relative behavior, which can produce values far larger than intended.",
+      "Browser support for container query units matches container query support: Chrome 105+, Firefox 110+, Safari 16+, Edge 105+. Older browsers do not recognize these units at all.",
+      "When multiple container ancestors exist, the nearest ancestor with container-type set is used. This can produce unexpected behavior if a deeply nested component accidentally references a closer container."
+    ],
+    "verificationSteps": [
+      "Test the component at different container widths by resizing the parent element (not the viewport) and verifying the property scales correctly.",
+      "Check browser DevTools Computed panel to confirm the clamp() expression resolves to the expected pixel value at known container widths."
+    ],
+    "updatedAt": "2026-05-28"
+  },
+  {
+    "id": "coop-coep-corp-header-builder",
+    "name": "COOP/COEP/CORP Header Builder",
+    "category": "github-pages",
+    "summary": "Build Cross-Origin isolation headers for SharedArrayBuffer, WebAssembly threads, and cross-origin security. Choose from presets with debugging checklists.",
+    "description": "Configure Cross-Origin-Opener-Policy (COOP), Cross-Origin-Embedder-Policy (COEP), and Cross-Origin-Resource-Policy (CORP) for cross-origin isolation. Presets for full isolation (SharedArrayBuffer/WASM), moderate isolation with third-party embed support, and relaxed opener-only isolation.",
+    "keywords": [
+      "coop coep corp builder",
+      "cross origin isolation",
+      "sharedarraybuffer headers",
+      "cross origin opener policy",
+      "cross origin embedder policy"
+    ],
+    "whatIs": "Cross-Origin isolation is a set of HTTP headers that control how a page interacts with cross-origin windows and resources. COOP controls whether this page can be accessed by other origins via window.opener. COEP controls whether cross-origin resources (images, fonts, scripts) can be loaded. CORP controls whether this resource can be loaded by other origins. Together they enable powerful features like SharedArrayBuffer and high-resolution timers.",
+    "howToUse": [
+      "Select an isolation goal preset or choose custom to configure each header individually.",
+      "Review the header values — stricter isolation enables more features but may break third-party embeds.",
+      "Copy the headers and add them to your server or CDN configuration.",
+      "Use the debugging checklist to identify broken resources after deployment."
+    ],
+    "useCases": [
+      "Enable SharedArrayBuffer and advanced WebAssembly features for a compute-intensive web app.",
+      "Isolate a page's opener relationship to prevent cross-origin attacks while still loading CDN images and third-party fonts.",
+      "Configure minimal isolation that prevents opener access but does not restrict embedded resource loading."
+    ],
+    "examples": [
+      {
+        "title": "Compute-intensive web app",
+        "text": "A web app needs SharedArrayBuffer for real-time audio processing. Use the full isolation preset: COOP same-origin, COEP require-corp, CORP same-origin. All third-party resources must send CORP headers or be loaded with crossorigin."
+      },
+      {
+        "title": "Static site with third-party embeds",
+        "text": "A blog uses Google Fonts, a CDN for images, and embedded YouTube videos. Use the moderate preset with COEP credentialless so third-party resources load without CORP headers while maintaining opener isolation."
+      }
+    ],
+    "mistakes": [
+      "Setting COEP require-corp without ensuring all third-party resources send CORP headers — images, fonts, and scripts from CDNs will break silently.",
+      "Using COOP same-origin when the page needs to communicate with popups or use OAuth redirect flows — popups cannot access window.opener.",
+      "Forgetting that COEP credentialless is newer and not supported in all browsers — check browser compatibility before deploying."
+    ],
+    "faq": [
+      {
+        "question": "What is the difference between COEP require-corp and credentialless?",
+        "answer": "require-corp requires EVERY cross-origin resource to send a Cross-Origin-Resource-Policy header or be loaded with the crossorigin attribute. credentialless is a newer alternative that automatically strips credentials from cross-origin requests, allowing third-party resources to load without CORP headers. credentialless is more compatible with existing CDN and third-party content."
+      },
+      {
+        "question": "Do I need cross-origin isolation for my site?",
+        "answer": "Only if you need SharedArrayBuffer, high-resolution performance.now() (microsecond precision), or specific WebAssembly features. Most content websites, blogs, and e-commerce sites do NOT need cross-origin isolation. Start with the relaxed preset and increase isolation only if your web app requires the features it enables."
+      }
+    ],
+    "quickAnswer": "Build Cross-Origin isolation headers for SharedArrayBuffer and opener security. COOP controls window.opener access. COEP controls cross-origin resource loading. CORP controls whether other origins can load your resources. Use the moderate preset for most sites that need isolation with third-party embed support.",
+    "limitations": [
+      "Cross-origin isolation is a powerful restriction that can silently break third-party embeds, CDN resources, analytics, and fonts. Test thoroughly on every page type before enforcing.",
+      "COEP credentialless is supported in Chrome 113+, Edge 113+, and Firefox 128+. Older browsers and Safari may not support it, causing cross-origin resources to fail.",
+      "Some hosting platforms (including GitHub Pages) do not support setting custom COOP/COEP/CORP headers. Use a CDN or reverse proxy (Cloudflare, Netlify) in front to add them."
+    ],
+    "verificationSteps": [
+      "Open DevTools Console and check for CORP/COEP blocking errors after deploying the headers.",
+      "Use crossOriginIsolated in the console: self.crossOriginIsolated should return true if full isolation is working correctly."
+    ],
+    "updatedAt": "2026-05-28"
+  },
+  {
     "id": "cors-header-generator",
     "name": "CORS Header Generator",
     "category": "github-pages",
@@ -324,6 +514,197 @@
     "verificationSteps": [
       "Check the browser console for CSP violation reports after adding the hash — a blocked script or style shows a violation message with the expected hash.",
       "Use the browser DevTools Application panel or Security tab to inspect the active CSP policy and confirm your hash is recognized."
+    ],
+    "updatedAt": "2026-05-28"
+  },
+  {
+    "id": "css-subgrid-layout-generator",
+    "name": "CSS Subgrid Layout Generator",
+    "category": "css",
+    "summary": "Generate parent grid and child subgrid CSS. Create layouts where nested grid items align with the parent grid tracks.",
+    "description": "Subgrid allows a child grid to inherit the track sizing of its parent grid. This tool generates both the parent grid container CSS and the subgrid child CSS, with options for column subgrid, row subgrid, span values, and named-line inheritance notes.",
+    "keywords": [
+      "css subgrid generator",
+      "subgrid layout",
+      "nested grid alignment",
+      "css grid subgrid",
+      "grid track inheritance"
+    ],
+    "whatIs": "Subgrid is a CSS Grid feature where a nested grid container can inherit the grid tracks of its parent. Instead of defining its own grid-template-columns or grid-template-rows, the child uses subgrid to align items with the parent grid lines. This is useful for card grids where each card needs internal alignment.",
+    "howToUse": [
+      "Define the parent grid columns and optionally rows. The subgrid child inherits these tracks.",
+      "Set the column and row span for the subgrid child — how many parent grid cells it occupies.",
+      "Choose whether the child uses subgrid for columns, rows, or both.",
+      "Copy the parent and child CSS and apply matching selectors in your HTML."
+    ],
+    "useCases": [
+      "Create a card grid where each card has a header, body, and footer that align across columns.",
+      "Build a form layout where label-input pairs align across sections using subgrid.",
+      "Design a dashboard where widgets of different sizes share alignment with the main grid."
+    ],
+    "examples": [
+      {
+        "title": "Card grid with aligned content",
+        "text": "A product grid has three columns. Each card spans one column and uses subgrid for rows so the title, description, and price align horizontally across cards regardless of content length."
+      },
+      {
+        "title": "Multi-section form layout",
+        "text": "A form has two sections that share column alignment. Each section is a subgrid child that inherits label-input column tracks, ensuring consistent alignment without repeating grid definitions."
+      }
+    ],
+    "mistakes": [
+      "Using subgrid without a parent grid — subgrid must descend from a grid container with explicit tracks.",
+      "Setting both grid-template-columns: subgrid and explicit column values — subgrid replaces, not supplements, the parent tracks.",
+      "Forgetting that subgrid inherits gaps from the parent — if the parent has gap: 16px, the subgrid child also uses 16px gaps by default."
+    ],
+    "faq": [
+      {
+        "question": "What is the difference between subgrid and nested grids?",
+        "answer": "A nested grid creates independent tracks inside a child element — it does not share alignment with the parent grid. Subgrid inherits the parent grid tracks, so items in the subgrid align with items in the parent grid as if they were all in one flat grid. This enables cross-element track alignment."
+      },
+      {
+        "question": "Does subgrid inherit named grid lines from the parent?",
+        "answer": "Yes. Named grid lines defined in the parent grid-template-columns or grid-template-rows are available in the subgrid. This makes it easy to place subgrid items on named lines that span the entire layout."
+      },
+      {
+        "question": "Which browsers support subgrid?",
+        "answer": "Chrome 117+, Edge 117+, Firefox 71+, and Safari 16+. Firefox was the first to ship subgrid. It is safe to use as a progressive enhancement — browsers that do not support subgrid fall back to the regular grid behavior defined on the child element."
+      }
+    ],
+    "quickAnswer": "Use CSS subgrid to align nested grid items with their parent grid tracks. The child uses grid-template-columns: subgrid and/or grid-template-rows: subgrid to inherit track sizing, gaps, and named lines from the parent grid.",
+    "limitations": [
+      "Subgrid requires the parent to be a grid container with explicit tracks. If the parent uses auto-generated tracks (implicit grid), the subgrid has no tracks to inherit.",
+      "Browser support for subgrid is newer than basic CSS Grid. Firefox shipped it first (v71), Chrome and Edge added it in v117, and Safari added it in v16. Older browsers ignore subgrid entirely.",
+      "The subgrid child cannot override the parent gap. Gap values are inherited from the nearest grid ancestor and cannot be changed on the subgrid element itself."
+    ],
+    "verificationSteps": [
+      "Check the layout in browser DevTools Grid inspector — subgrid tracks should visually align with parent grid tracks.",
+      "Test in Firefox and Chrome to confirm cross-browser subgrid behavior, as there are subtle differences in implicit track handling."
+    ],
+    "updatedAt": "2026-05-28"
+  },
+  {
+    "id": "declarative-shadow-dom-snippet-generator",
+    "name": "Declarative Shadow DOM Snippet Generator",
+    "category": "html",
+    "summary": "Generate HTML snippets for Declarative Shadow DOM with scoped CSS, slots, open/closed mode, and server-rendering fallback content.",
+    "description": "Create Declarative Shadow DOM markup without JavaScript. Choose the host element name, shadow mode, scoped CSS, and slot-based content. Includes fallback content for browsers that do not support declarative shadow DOM and SSR deployment notes.",
+    "keywords": [
+      "declarative shadow dom",
+      "shadow dom ssr",
+      "template shadowrootmode",
+      "web components without js",
+      "scoped css html"
+    ],
+    "whatIs": "Declarative Shadow DOM is a browser feature that creates Shadow DOM from HTML markup without JavaScript. A template element with the shadowrootmode attribute inside a host element tells the browser to create a shadow root and populate it with the template content. This enables server-side rendering of web components with scoped CSS, working before JavaScript loads.",
+    "howToUse": [
+      "Enter a custom element host tag with a hyphen (required for valid custom element names).",
+      "Choose open or closed shadow root mode — open allows JavaScript access via shadowRoot.",
+      "Add the inner HTML content with slot elements for content projection.",
+      "Optionally add scoped CSS that only applies inside this shadow root.",
+      "Copy the snippet and include it in your SSR output or static HTML."
+    ],
+    "useCases": [
+      "Render a web component with scoped CSS on the server so it appears immediately without JavaScript.",
+      "Create a self-contained HTML widget with isolated styles for embedding in any page.",
+      "Build a static site component with shadow DOM encapsulation without a build step."
+    ],
+    "examples": [
+      {
+        "title": "Server-rendered user card",
+        "text": "A user card component shows an avatar, name, and role. Use Declarative Shadow DOM to render the card with scoped CSS on the server. The card appears styled immediately, and JavaScript hydrates it for interactivity."
+      },
+      {
+        "title": "Scoped CSS widget",
+        "text": "An embeddable widget uses Declarative Shadow DOM to encapsulate its styles. The host page CSS cannot affect the widget, and the widget CSS cannot leak out. No iframe needed."
+      }
+    ],
+    "mistakes": [
+      "Using a host tag without a hyphen — custom element names must contain a hyphen to be valid.",
+      "Setting shadowrootmode closed and expecting to access the shadow root from outside JavaScript — closed mode blocks all external JavaScript access.",
+      "Forgetting fallback content for browsers that do not support Declarative Shadow DOM — users see nothing instead of content."
+    ],
+    "faq": [
+      {
+        "question": "Which browsers support Declarative Shadow DOM?",
+        "answer": "Chrome 90+, Edge 90+, and Safari 17+ support Declarative Shadow DOM. Firefox support is in development (as of 2026). For unsupported browsers, include fallback content inside the host element and use CSS @supports to show/hide it."
+      },
+      {
+        "question": "Can I use declarative shadow DOM with slots?",
+        "answer": "Yes. Slots work the same way in declarative shadow DOM as in imperative shadow DOM. Named slots (slot name=heading) project specific content into the shadow root. The default slot projects any unassigned content. Use slots to make declarative shadow DOM components composable."
+      }
+    ],
+    "quickAnswer": "Declarative Shadow DOM creates encapsulated DOM and scoped CSS from HTML markup without JavaScript. Use <template shadowrootmode=\"open\"> inside a custom element host tag. Supported in Chrome, Edge, and Safari. Include fallback content for Firefox.",
+    "limitations": [
+      "Firefox does not yet support Declarative Shadow DOM (as of 2026). Always include fallback content displayed via CSS when DSD is not supported.",
+      "Declarative Shadow DOM only creates the shadow root and content during initial page parse. Dynamically added DSD markup is not processed — use imperative attachShadow() for client-side creation.",
+      "Some JavaScript frameworks and libraries do not yet integrate with Declarative Shadow DOM for SSR hydration. Check framework support before adopting DSD in a framework-based app."
+    ],
+    "verificationSteps": [
+      "Open DevTools Elements panel and verify a #shadow-root is present inside the host element.",
+      "Test the page with JavaScript disabled to confirm the shadow DOM renders correctly without scripts."
+    ],
+    "updatedAt": "2026-05-28"
+  },
+  {
+    "id": "focus-ring-css-generator",
+    "name": "Focus Ring CSS Generator",
+    "category": "css",
+    "summary": "Generate accessible :focus-visible outline or box-shadow focus ring CSS with contrast checking against background colors.",
+    "description": "Build a focus indicator that meets WCAG 2.4.7 accessibility requirements. Choose outline width, offset, style, and color, or use a box-shadow fallback. The tool checks contrast between the focus ring color and your background color — WCAG requires at least 3:1 contrast for focus indicators.",
+    "keywords": [
+      "focus ring generator",
+      "focus visible css",
+      "accessible focus indicator",
+      "outline css generator",
+      "keyboard focus style"
+    ],
+    "whatIs": "A focus ring is the visual indicator that shows which element is currently focused by the keyboard. WCAG 2.4.7 requires a visible focus indicator for all interactive elements. CSS :focus-visible targets keyboard focus specifically without showing a ring on mouse clicks. A good focus ring has sufficient contrast (3:1 minimum) against the background.",
+    "howToUse": [
+      "Set the focus ring width, offset, color, and style, or choose box-shadow as a fallback.",
+      "Specify the CSS selector — :focus-visible for keyboard-only focus, or :focus for all focus.",
+      "If using a background color field, the tool checks the contrast ratio and warns if it falls below WCAG thresholds.",
+      "Copy the CSS rule and apply globally or to specific components."
+    ],
+    "useCases": [
+      "Create a global keyboard focus style that meets WCAG 2.4.7 visible focus requirements.",
+      "Design a brand-aligned focus ring that matches the site color palette while maintaining accessibility.",
+      "Replace the default browser outline with a custom box-shadow focus indicator that works on rounded elements."
+    ],
+    "examples": [
+      {
+        "title": "Global keyboard focus style",
+        "text": "Set a 3px solid blue outline with 2px offset on :focus-visible for all interactive elements. The ring shows only when users navigate by keyboard and has 5.6:1 contrast against white backgrounds."
+      },
+      {
+        "title": "Dark theme focus ring",
+        "text": "For a dark-themed application, use a 3px solid white outline on :focus-visible. The tool confirms the white ring has sufficient contrast against the dark background."
+      }
+    ],
+    "mistakes": [
+      "Setting outline: none without providing a replacement — this removes the focus indicator entirely and violates WCAG 2.4.7.",
+      "Choosing a focus color that blends with the background — the ring must have at least 3:1 contrast to be perceivable.",
+      "Using :focus instead of :focus-visible — :focus shows the ring on mouse clicks too, which can look visually noisy. :focus-visible targets keyboard navigation only."
+    ],
+    "faq": [
+      {
+        "question": "Should I use outline or box-shadow for focus rings?",
+        "answer": "Outline is the native focus mechanism and works on all elements. Box-shadow is useful when you need rounded focus rings (outline follows the element box, not border-radius in all browsers) or when you need a more prominent visual style. Never remove the outline without replacing it with an equally visible indicator."
+      },
+      {
+        "question": "What is the minimum contrast ratio for a focus indicator?",
+        "answer": "WCAG 2.4.7 requires a visible focus indicator. While the spec does not mandate a specific ratio, WCAG 2.2 Non-text Contrast (1.4.11) requires UI components to have at least 3:1 contrast. Applying this to focus indicators: the ring should have at least 3:1 contrast against the adjacent background."
+      }
+    ],
+    "quickAnswer": "Generate an accessible keyboard focus ring CSS rule. Use :focus-visible to show the ring only for keyboard navigation. Ensure at least 3:1 contrast between the focus color and the background. Add a box-shadow fallback when you need rounded focus rings.",
+    "limitations": [
+      "Outline does not follow border-radius in all browsers. Chrome and Safari draw outlines with square corners on rounded elements. Use box-shadow as a fallback for rounded focus indicators.",
+      "The focus ring contrast check uses a simplified relative luminance calculation. Actual perceived contrast depends on the surrounding UI — test visually with real content.",
+      "Some operating system high-contrast modes override author focus styles. Always test with Windows High Contrast Mode and macOS Increase Contrast settings enabled."
+    ],
+    "verificationSteps": [
+      "Tab through the page with the keyboard and confirm each interactive element shows a clearly visible focus indicator.",
+      "Use a contrast checker tool or browser extension to verify the focus ring color has at least 3:1 contrast against the adjacent background."
     ],
     "updatedAt": "2026-05-28"
   },
@@ -460,6 +841,129 @@
       "Check that every page in the language group links to every other version, including itself, using identical absolute URLs."
     ],
     "updatedAt": "2026-05-25"
+  },
+  {
+    "id": "html-sanitizer-config-builder",
+    "name": "HTML Sanitizer Config Builder",
+    "category": "html",
+    "summary": "Generate Sanitizer API and DOMPurify allowlist configurations. Choose content-type presets or customize allowed tags and attributes for safe HTML rendering.",
+    "description": "Build HTML sanitizer configurations for rendering user-submitted content safely. Choose from presets for comments, blog posts, or rich text, customize allowed tags and attributes, and output ready-to-use configs for the native Sanitizer API and DOMPurify.",
+    "keywords": [
+      "html sanitizer config",
+      "sanitizer api",
+      "dompurify config",
+      "xss prevention",
+      "allowlist html tags"
+    ],
+    "whatIs": "An HTML sanitizer removes potentially dangerous HTML tags, attributes, and content from user-submitted strings before rendering them on a page. This prevents XSS (Cross-Site Scripting) attacks where attackers inject malicious scripts through comment fields, rich text editors, or any user-input area. The browser Sanitizer API provides native sanitization; DOMPurify is the most widely used JavaScript library for the same purpose.",
+    "howToUse": [
+      "Choose a content type preset based on what kind of HTML you expect users to submit.",
+      "Review and customize the allowed tags and attributes for your specific use case.",
+      "Select the output format — Sanitizer API, DOMPurify, or both.",
+      "Copy the configuration and use it wherever you render user-submitted HTML."
+    ],
+    "useCases": [
+      "Configure an HTML sanitizer for a blog comment section that allows basic formatting (bold, italic, links) but blocks scripts and complex markup.",
+      "Build a sanitizer config for a rich text CMS where editors can use headings, lists, tables, and images but not embed scripts or iframes.",
+      "Set up a DOMPurify configuration for a static site that renders user-contributed Markdown converted to HTML."
+    ],
+    "examples": [
+      {
+        "title": "Blog comment sanitization",
+        "text": "A blog allows comments with basic formatting. Use the comments preset which allows b, i, a, code, em, strong, and br tags. Scripts, images, and complex markup are stripped. This prevents XSS while keeping comments readable."
+      },
+      {
+        "title": "CMS rich text editing",
+        "text": "A headless CMS allows rich text with headings, lists, blockquotes, images, and tables. Use the blog or richtext preset to allow structural HTML while blocking script, iframe, object, and embed tags."
+      }
+    ],
+    "mistakes": [
+      "Allowing script or style tags in the allowlist — these can execute arbitrary code and defeat the purpose of sanitization.",
+      "Allowing event handler attributes like onclick or onerror — attackers can inject JavaScript through event handlers even when script tags are blocked.",
+      "Assuming sanitization makes HTML safe for all contexts — sanitized HTML can still break layouts, overflow containers, or contain phishing links."
+    ],
+    "faq": [
+      {
+        "question": "Should I use the native Sanitizer API or DOMPurify?",
+        "answer": "The Sanitizer API is built into the browser and requires no external library, but it is newer and not supported in Safari (as of 2025). DOMPurify is a well-tested, widely used library that works in all browsers. For production sites, use DOMPurify for broad compatibility or use Sanitizer API as a progressive enhancement with a DOMPurify fallback."
+      },
+      {
+        "question": "What tags and attributes should I always block?",
+        "answer": "Always block script, style, iframe, object, embed, applet, form, input, and button tags. Always block event handler attributes (onclick, onerror, onload, onmouseover, etc.), javascript: URLs in href/src attributes, and data: URLs that could contain HTML or JavaScript."
+      }
+    ],
+    "quickAnswer": "Build an HTML sanitizer allowlist to prevent XSS when rendering user-submitted HTML. Use content-type presets (comments, blog, richtext) or customize allowed tags and attributes. Output configs for the native Sanitizer API, DOMPurify, or both. Always block script tags, event handlers, and javascript: URLs.",
+    "limitations": [
+      "No sanitizer is perfect. New attack vectors are discovered regularly. Keep DOMPurify or your sanitization strategy up to date and subscribe to security advisories.",
+      "The native Sanitizer API is not supported in Safari as of 2025. For cross-browser support, use DOMPurify or implement a fallback strategy.",
+      "Sanitization protects against XSS but not against phishing, content spoofing, or layout breaking. Additional validation and content moderation may be needed for user-submitted content."
+    ],
+    "verificationSteps": [
+      "Test the sanitizer config with known XSS payloads (like <img src=x onerror=alert(1)>) to confirm they are stripped.",
+      "Use browser DevTools to inspect the rendered HTML and confirm no unexpected tags or attributes survive sanitization."
+    ],
+    "updatedAt": "2026-05-28"
+  },
+  {
+    "id": "http-header-parser-explainer",
+    "name": "HTTP Header Parser & Explainer",
+    "category": "github-pages",
+    "summary": "Paste raw HTTP response headers and get a grouped, plain-English explanation of each header. Includes security advisories for missing security headers.",
+    "description": "Parse raw HTTP response headers from DevTools, curl, or server logs and get a structured analysis. Headers are grouped by function (cache, security, CORS, content, redirection) with plain-English explanations of what each header does. Flags missing security headers and contradictory configurations.",
+    "keywords": [
+      "http header parser",
+      "header explainer",
+      "http response analyzer",
+      "security header check",
+      "http header debugger"
+    ],
+    "whatIs": "HTTP response headers are metadata sent by the server alongside the page content. They control caching, security, content handling, CORS access, and redirection. Understanding what each header does is essential for debugging page behavior, optimizing performance, and securing a site. This tool parses raw headers and explains each one in plain English.",
+    "howToUse": [
+      "Copy response headers from browser DevTools (Network tab > Response Headers), curl -I output, or server logs.",
+      "Paste them into the text area. The tool parses each header, groups them by function, and explains what each one does.",
+      "Review the security advisories for any missing security headers and follow the next-steps recommendations."
+    ],
+    "useCases": [
+      "Debug why a page is not caching correctly by reviewing the Cache-Control, ETag, and Expires headers.",
+      "Audit a site's security headers to check for missing HSTS, Content-Type-Options, or Frame-Options.",
+      "Understand a third-party API response's CORS headers to debug cross-origin fetch failures."
+    ],
+    "examples": [
+      {
+        "title": "Debugging cache issues",
+        "text": "A developer notices pages are not caching. Paste the response headers into the parser. It shows Cache-Control: no-cache which explains the behavior — the browser must revalidate on every request."
+      },
+      {
+        "title": "Security header audit",
+        "text": "A site owner pastes their response headers to check security. The parser flags missing Strict-Transport-Security, X-Content-Type-Options, and X-Frame-Options headers with remediation advice."
+      }
+    ],
+    "mistakes": [
+      "Pasting request headers instead of response headers — request headers (sent by the browser) have different meanings than response headers (sent by the server).",
+      "Overlooking security advisories — missing security headers leave the site vulnerable to well-known attacks that are easy to prevent.",
+      "Assuming headers from a CDN or proxy are the same as origin headers — CDNs often add, remove, or modify headers."
+    ],
+    "faq": [
+      {
+        "question": "Where do I find HTTP response headers?",
+        "answer": "In Chrome/Edge DevTools: Network tab > select a request > Headers section > Response Headers. In curl: curl -I https://example.com. In Firefox: Network tab > select request > Headers > Response Headers. In server logs: check your web server's access or debug log configuration."
+      },
+      {
+        "question": "Why are some security headers missing from my site?",
+        "answer": "Many web servers and static hosts (including GitHub Pages) do not add security headers by default. You must configure them explicitly through server config, CDN rules, or a _headers file. Some headers like HSTS are not available on GitHub Pages at all and require a CDN in front."
+      }
+    ],
+    "quickAnswer": "Paste HTTP response headers to get plain-English explanations of each one. Headers are grouped by function (cache, security, CORS, content, redirection). The parser flags missing security headers like HSTS, X-Content-Type-Options, and X-Frame-Options.",
+    "limitations": [
+      "This parser explains individual headers but cannot verify cross-header consistency or detect all conflicting configurations. Some header interactions require understanding of the full site architecture.",
+      "Header names are not case-sensitive per the HTTP spec, but the parser normalizes to lowercase for matching. Unusual header casing or formatting may cause mismatches.",
+      "Some proprietary or non-standard headers (X- prefixed headers from specific vendors) may not be recognized. The parser groups unrecognized headers under Other."
+    ],
+    "verificationSteps": [
+      "Paste the headers from a production URL (not localhost) to get accurate security advisories.",
+      "Re-check headers after making server or CDN configuration changes to confirm they are deployed correctly."
+    ],
+    "updatedAt": "2026-05-28"
   },
   {
     "id": "llms-txt-validator",
@@ -781,6 +1285,68 @@
     "verificationSteps": [
       "Use Lighthouse PWA audit to verify your manifest, icons, and maskable icon configuration are correct.",
       "Test on a physical Android device by installing the PWA and checking the home screen icon appearance with different device themes."
+    ],
+    "updatedAt": "2026-05-28"
+  },
+  {
+    "id": "redirect-map-converter",
+    "name": "Redirect Map Converter",
+    "category": "github-pages",
+    "summary": "Convert a CSV redirect map to Netlify _redirects, netlify.toml, Vercel vercel.json, Apache .htaccess, or Nginx config. Validate duplicates and redirect chains.",
+    "description": "Take a CSV list of old URL, new URL, and HTTP status codes and convert it to the redirect configuration format for your platform. Supports Netlify _redirects and netlify.toml, Vercel vercel.json, Apache .htaccess, and Nginx rewrite rules. Includes duplicate detection and redirect chain warnings.",
+    "keywords": [
+      "redirect map converter",
+      "csv to redirects",
+      "netlify redirects",
+      "htaccess redirect",
+      "nginx rewrite converter"
+    ],
+    "whatIs": "A redirect map is a list of URL redirects — old URL, new URL, HTTP status code — that tells your web server or hosting platform to send visitors from the old URL to the new one. Different platforms use different formats, from simple space-delimited files (Netlify _redirects) to JSON arrays (Vercel) to Apache/Nginx server config syntax. This tool converts a single CSV map to all major platform formats.",
+    "howToUse": [
+      "Enter your redirect mappings in CSV format: old_url,new_url,status (status defaults to 301 if omitted).",
+      "Select the target platform format.",
+      "Enable validation to detect duplicate source URLs and potential redirect chains.",
+      "Copy the generated redirect configuration for your chosen platform."
+    ],
+    "useCases": [
+      "Migrate a WordPress site to a static site and convert the old URL structure to new static URLs.",
+      "Convert an Apache .htaccess redirect file to Netlify _redirects format for a platform migration.",
+      "Check a redirect map for loops and duplicate entries before deploying to production."
+    ],
+    "examples": [
+      {
+        "title": "Site migration redirect map",
+        "text": "A site moves from WordPress to a static site generator. Export the old URLs and new paths as CSV, convert to Netlify _redirects format, and deploy. The tool flags any duplicate old URLs and potential redirect chains."
+      },
+      {
+        "title": "Platform migration",
+        "text": "A site migrates from Apache hosting to Vercel. Paste the Apache redirect rules into the converter and output Vercel vercel.json format. All 301 and 302 status codes are preserved."
+      }
+    ],
+    "mistakes": [
+      "Creating redirect chains (A → B → C) instead of direct redirects (A → C, B → C) — each hop adds latency and may lose SEO value.",
+      "Using relative URLs without a leading slash — all redirect paths should be absolute paths starting with /.",
+      "Forgetting to include the status code — defaults to 301, but some platforms default to 302 which has different SEO implications."
+    ],
+    "faq": [
+      {
+        "question": "Should I use 301 or 302 for my redirects?",
+        "answer": "301 (permanent) tells search engines to transfer ranking signals to the new URL and update their index. Use 301 for permanent moves. 302 (temporary) tells search engines the move is temporary and they should keep the old URL in their index. Use 302 for temporary maintenance or A/B tests. 307 and 308 are the HTTP/1.1 equivalents of 302 and 301 respectively."
+      },
+      {
+        "question": "What is the maximum number of redirects I should have?",
+        "answer": "There is no hard limit, but large redirect files (thousands of entries) can slow down request processing on some platforms. Netlify recommends keeping _redirects under 10,000 entries. For very large redirect maps, consider pattern-based redirects (using wildcards or regex) instead of individual entries."
+      }
+    ],
+    "quickAnswer": "Convert a CSV redirect map (old_url,new_url,status) to your platform's redirect format. Supports Netlify _redirects and netlify.toml, Vercel vercel.json, Apache .htaccess, and Nginx rewrite rules. Validate duplicates and redirect chains before deploying.",
+    "limitations": [
+      "Different platforms handle redirect edge cases differently — trailing slashes, query string forwarding, and wildcard matching vary. Test redirects on the actual platform after conversion.",
+      "Very large redirect maps (10,000+ entries) may need to be split or converted to pattern-based rules for performance. This tool generates one entry per redirect.",
+      "Apache and Nginx formats assume basic server configuration. Complex setups with virtual hosts, location blocks, or conditional rewrites may need manual adjustment."
+    ],
+    "verificationSteps": [
+      "Test a sample of redirects at each HTTP status code level to confirm the generated config works correctly on your platform.",
+      "Use curl -I https://yoursite.com/old-url to verify the redirect returns the expected status code and Location header."
     ],
     "updatedAt": "2026-05-28"
   },
@@ -2093,6 +2659,68 @@
       "Test the generated border-radius on the target element at different sizes and screen widths to confirm corner proportions remain consistent.",
       "Inspect the element in DevTools to verify the computed border-radius values match the declaration."
     ]
+  },
+  {
+    "id": "touch-target-size-checker",
+    "name": "Touch Target Size Checker",
+    "category": "css",
+    "summary": "Check interactive element dimensions against WCAG 2.2 Target Size (2.5.8) requirements. Get AA/AAA results with CSS fix recommendations.",
+    "description": "Verify that buttons, links, inputs, and other interactive elements meet WCAG 2.2 target size requirements: 24x24px for AA, 44x44px for AAA. Handles the four exception types — inline, user-agent, essential, and spacing — with clear pass/fail results and CSS fix suggestions.",
+    "keywords": [
+      "touch target size checker",
+      "wcag target size",
+      "mobile tap target",
+      "accessible touch area",
+      "wcag 2.5.8 checker"
+    ],
+    "whatIs": "WCAG 2.2 Success Criterion 2.5.8 Target Size requires that interactive elements have a target area of at least 24x24 CSS pixels (AA). The AAA level requires 44x44px. These sizes ensure that people with motor impairments or using touch devices can reliably tap or click interactive elements without accidentally activating adjacent elements.",
+    "howToUse": [
+      "Enter the width and height of your interactive element in CSS pixels.",
+      "Enter the spacing to the nearest adjacent interactive element if known.",
+      "Select the element type — different exceptions apply to inline links, native controls, and essential elements.",
+      "Review the pass/fail result and CSS fix recommendations."
+    ],
+    "useCases": [
+      "Check that mobile navigation buttons meet the 24px AA target size requirement.",
+      "Verify that small icon-only buttons have sufficient spacing to adjacent elements to qualify for the spacing exception.",
+      "Audit a page for touch accessibility before a WCAG compliance review."
+    ],
+    "examples": [
+      {
+        "title": "Mobile nav icon buttons",
+        "text": "A mobile nav has 20x20px icon buttons. The tool reports AA failure. Adding 4px padding to reach 24x24px passes AA, or adding 24px spacing between buttons qualifies for the spacing exception."
+      },
+      {
+        "title": "Inline text links",
+        "text": "An article has inline text links that are only 18px tall. The tool applies the inline exception and passes AA because links within text blocks are exempt from minimum target size."
+      }
+    ],
+    "mistakes": [
+      "Assuming spacing alone fixes target size — the spacing exception requires the element to be at least 20px and have 24px spacing to adjacent targets.",
+      "Applying the inline exception to non-inline elements like standalone buttons or navigation links — the inline exception only applies to links within text blocks.",
+      "Checking desktop dimensions instead of CSS pixels — CSS pixels may differ from device pixels on high-DPI screens. Always use computed CSS values from DevTools."
+    ],
+    "faq": [
+      {
+        "question": "What counts as spacing to an adjacent target?",
+        "answer": "Spacing is measured from the edge of one target to the edge of the next nearest interactive element. This includes buttons, links, inputs, and any other clickable element. White space, margins, padding, or non-interactive content between targets counts as spacing. The spacing exception requires at least 24px of clearance."
+      },
+      {
+        "question": "Does this check apply to desktop as well as mobile?",
+        "answer": "WCAG 2.5.8 applies to all devices with pointer inputs, including desktop mouse pointers. While the criterion was motivated by mobile touch accessibility, the requirement is device-agnostic. Desktop users with motor impairments or using alternative pointing devices also benefit from larger targets."
+      }
+    ],
+    "quickAnswer": "WCAG 2.2 requires interactive elements to have a target size of at least 24x24px (AA) or 44x44px (AAA). Four exceptions apply: inline links, native controls, essential elements, and elements with 24px+ spacing to adjacent targets. Use CSS min-width/min-height and gap/padding to fix undersized targets.",
+    "limitations": [
+      "This tool checks static dimensions only. It does not account for dynamic layouts, responsive breakpoints, or zoom levels that may change the effective target size at different screen sizes.",
+      "The spacing exception requires manual verification of actual spacing between adjacent targets. This tool checks the spacing value you enter but cannot measure actual DOM layout distances.",
+      "WCAG 2.5.8 is a Level AA requirement in WCAG 2.2. Some enforcement bodies may apply it more strictly than others, and interpretation of exceptions varies."
+    ],
+    "verificationSteps": [
+      "Use browser DevTools to inspect the computed width and height of the element in CSS pixels.",
+      "Verify spacing between adjacent interactive elements using DevTools distance measurement or by inspecting the gap, margin, and padding properties."
+    ],
+    "updatedAt": "2026-05-28"
   },
   {
     "id": "url-slug-generator",

@@ -1,0 +1,67 @@
+import { field, checkbox, htmlEscape } from "../tool-core.js";
+
+export default {
+  form: `
+    <div class="field-grid">
+      ${field({ id: "sgCols", label: "Parent grid-template-columns", help: "e.g. repeat(3, 1fr) or 200px 1fr 1fr", value: "repeat(3, 1fr)" })}
+      ${field({ id: "sgRows", label: "Parent grid-template-rows", help: "e.g. auto 1fr auto. Leave empty for implicit rows.", value: "" })}
+    </div>
+    <div class="field-grid">
+      ${field({ id: "sgColSpan", label: "Child column span", type: "number", help: "Number of columns the subgrid child spans.", value: "3" })}
+      ${field({ id: "sgRowSpan", label: "Child row span", type: "number", help: "Number of rows the subgrid child spans.", value: "1" })}
+    </div>
+    <div class="field-grid">
+      ${checkbox({ id: "sgSubCols", label: "Use subgrid for columns", checked: true })}
+      ${checkbox({ id: "sgSubRows", label: "Use subgrid for rows", checked: false })}
+    </div>
+    <div class="field-grid">
+      ${field({ id: "sgSelector", label: "Child selector", help: "CSS selector for the subgrid child.", value: ".card" })}
+    </div>`,
+  generate(root) {
+    const cols = root.querySelector("#sgCols").value.trim();
+    const rows = root.querySelector("#sgRows").value.trim();
+    const colSpan = parseInt(root.querySelector("#sgColSpan").value) || 3;
+    const rowSpan = parseInt(root.querySelector("#sgRowSpan").value) || 1;
+    const subCols = root.querySelector("#sgSubCols").checked;
+    const subRows = root.querySelector("#sgSubRows").checked;
+    const selector = root.querySelector("#sgSelector").value.trim() || ".subgrid-item";
+
+    const parentLines = [".parent-grid {", "  display: grid;"];
+    if (cols) parentLines.push(`  grid-template-columns: ${cols};`);
+    if (rows) parentLines.push(`  grid-template-rows: ${rows};`);
+    parentLines.push("}");
+
+    const childLines = [`${selector} {`];
+    childLines.push(`  grid-column: span ${colSpan};`);
+    if (rowSpan > 1) childLines.push(`  grid-row: span ${rowSpan};`);
+    childLines.push("  display: grid;");
+    if (subCols) childLines.push("  grid-template-columns: subgrid;");
+    if (subRows) childLines.push("  grid-template-rows: subgrid;");
+    childLines.push("}");
+
+    const notes = [];
+    if (subCols && !cols) {
+      notes.push("/* Warning: subgrid columns inherit from the parent grid-template-columns, but no parent columns are defined. */");
+    }
+    if (!subCols && !subRows) {
+      notes.push("/* Note: Neither subgrid axis is selected. The child uses its own grid tracks, not the parent's. */");
+    }
+    notes.push(
+      "/* Browser support: Chrome 117+, Edge 117+, Firefox 71+, Safari 16+. */",
+      "/* When using subgrid, the child inherits the parent's track sizing and gaps. */",
+      "/* Named grid lines from the parent are also inherited by the subgrid. */"
+    );
+
+    return {
+      output: [
+        "/* Parent Grid */",
+        ...parentLines,
+        "",
+        "/* Subgrid Child */",
+        ...childLines,
+        "",
+        ...notes
+      ].join("\n")
+    };
+  }
+};
