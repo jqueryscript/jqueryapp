@@ -37,12 +37,16 @@ Solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with fast browser 
 
 ## Tools
 
+- [AI Crawler robots.txt Builder](https://www.jquery.app/tools/ai-crawler-robots-txt-builder/): Build a robots.txt policy for AI crawlers. Choose from open, selective, or strict presets and block specific AI training bots while allowing search engines.
 - [Cache-Control Header Builder](https://www.jquery.app/tools/cache-control-header-builder/): Build correct Cache-Control HTTP headers for static assets, HTML pages, feeds, and sensitive content.
 - [CORS Header Generator](https://www.jquery.app/tools/cors-header-generator/): Generate CORS HTTP headers for any origin, method, and credential configuration. Output in raw HTTP, Nginx, Apache, Express, or Cloudflare Workers format.
 - [CSP Hash Generator](https://www.jquery.app/tools/csp-hash-generator/): Generate CSP hash values for inline scripts and styles. Hash exact code content with SHA-256, SHA-384, or SHA-512 and get the matching CSP directive snippet.
+- [Hreflang Sitemap Builder](https://www.jquery.app/tools/hreflang-sitemap-builder/): Build XML sitemap entries with hreflang alternates for multilingual pages. Validate reciprocal links between language versions.
 - [Hreflang Tag Generator](https://www.jquery.app/tools/hreflang-tag-generator/): Generate clean hreflang tags for multilingual static websites.
+- [llms.txt Validator](https://www.jquery.app/tools/llms-txt-validator/): Validate llms.txt files against the specification. Check H1 headings, blockquote summaries, section structure, and Markdown link formatting.
 - [Open Graph & Twitter Card Builder](https://www.jquery.app/tools/og-twitter-card-builder/): Build social preview meta tags for blog posts and static pages.
 - [GitHub Pages CNAME Helper](https://www.jquery.app/tools/github-pages-cname-helper/): Create the CNAME file content and DNS notes for a GitHub Pages custom domain.
+- [OpenSearch Description Generator](https://www.jquery.app/tools/opensearch-description-generator/): Generate an OpenSearch description XML file and HTML link tag so browsers can add your site's search as a search engine.
 - [security.txt Generator & Validator](https://www.jquery.app/tools/security-txt-generator-validator/): Generate and validate security.txt files per RFC 9116. Specify your contact, expiration, and optional fields, then get hosting guidance for GitHub Pages, Netlify, and Vercel.
 - [SRI Hash Generator](https://www.jquery.app/tools/sri-hash-generator/): Generate Subresource Integrity hashes for script and stylesheet files. Paste code, upload a local file, or reference a CDN URL and get the integrity attribute for your HTML tags.
 - [Static Site SEO Checklist Generator](https://www.jquery.app/tools/static-site-seo-checklist-generator/): Generate a practical SEO checklist for static websites before launch.

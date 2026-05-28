@@ -1,5 +1,70 @@
 [
   {
+    "id": "ai-crawler-robots-txt-builder",
+    "name": "AI Crawler robots.txt Builder",
+    "category": "seo",
+    "summary": "Build a robots.txt policy for AI crawlers. Choose from open, selective, or strict presets and block specific AI training bots while allowing search engines.",
+    "description": "Control which AI crawlers can access your site. Choose a policy preset — open (allow all), selective (block training bots, allow search), or strict (block all AI crawlers) — then customize individual crawler blocks. Includes GPTBot, ClaudeBot, Google-Extended, PerplexityBot, CCBot, and more.",
+    "keywords": [
+      "ai robots.txt",
+      "block ai crawlers",
+      "gptbot robots.txt",
+      "ai bot blocking",
+      "crawler policy"
+    ],
+    "whatIs": "A robots.txt file tells crawlers which parts of your site they may access. With the rise of AI training crawlers from OpenAI, Anthropic, Google, Perplexity, and Common Crawl, publishers now use robots.txt to signal whether their content may be used for AI training. This tool builds AI-specific robots.txt blocks with clear categories for training bots versus search/referral bots.",
+    "howToUse": [
+      "Choose a policy preset: Open (block nothing), Selective (block training bots, allow search engines), or Strict (block all AI crawlers).",
+      "Customize individual crawler blocks by checking or unchecking specific bots.",
+      "Copy the generated robots.txt blocks and add them to your site's robots.txt file, above any general wildcard rules."
+    ],
+    "useCases": [
+      "Block AI training crawlers from OpenAI, Anthropic, and others while keeping Google and Bing search indexing active.",
+      "Create a strict policy that blocks all known AI crawlers from accessing any content.",
+      "Add explanatory comments to robots.txt so other developers understand the policy decisions."
+    ],
+    "examples": [
+      {
+        "title": "Blog with selective blocking",
+        "text": "A blog wants to appear in Google and Bing search results but does not want its content used for AI training. Use the Selective preset to allow all bots by default but specifically block GPTBot, ClaudeBot, Google-Extended, and PerplexityBot."
+      },
+      {
+        "title": "Documentation site open to all",
+        "text": "An open-source documentation site wants maximum discoverability including AI search. Use the Open preset which adds no AI crawler blocks — all bots including training crawlers have full access."
+      }
+    ],
+    "mistakes": [
+      "Placing AI crawler blocks after a wildcard User-agent: * Allow: / rule — the wildcard rule overrides the specific blocks. Always put specific crawler rules above general rules.",
+      "Assuming robots.txt blocks prevent all AI data collection — not all crawlers respect robots.txt, and some content may be collected through other means.",
+      "Blocking Google-Extended but expecting normal Google search indexing to work — Google-Extended is a separate crawler for AI training, not the same as Googlebot."
+    ],
+    "faq": [
+      {
+        "question": "Does blocking GPTBot in robots.txt prevent OpenAI from using my content?",
+        "answer": "OpenAI states that GPTBot respects robots.txt directives. Blocking GPTBot should prevent OpenAI from crawling your site for training data going forward. However, this does not remove content that was already included in training data before the block was added, and there is no independent enforcement mechanism beyond OpenAI's stated policy."
+      },
+      {
+        "question": "What is the difference between Googlebot and Google-Extended?",
+        "answer": "Googlebot is the main search indexing crawler — blocking it removes your site from Google Search entirely. Google-Extended is a separate crawler used for AI and machine learning model training. You can safely block Google-Extended without affecting your Google Search rankings or indexing."
+      },
+      {
+        "question": "Should I block Common Crawl (CCBot)?",
+        "answer": "Common Crawl provides free, open web crawl data used by many AI training datasets, academic research, and web archives. Blocking CCBot prevents your content from appearing in future Common Crawl datasets, which may reduce your content's presence in some open-source AI training corpora. If you want your content in AI training data, allow CCBot. If you do not, block it."
+      }
+    ],
+    "quickAnswer": "Build robots.txt rules to control which AI crawlers access your site. Use a selective policy to block training bots (GPTBot, ClaudeBot, Google-Extended) while allowing search engines (Googlebot, Bingbot). Place specific crawler blocks above general wildcard rules in robots.txt.",
+    "limitations": [
+      "robots.txt is a voluntary standard — not all crawlers respect it. Some AI data collection happens through means other than web crawling, and robots.txt has no enforcement mechanism.",
+      "Some CDNs and WAFs (including Cloudflare Bot Management) can override robots.txt with their own bot-blocking rules. Check your CDN configuration after deploying robots.txt changes.",
+      "New AI crawlers appear regularly. This tool includes crawlers known as of early 2026. Check for new crawler names periodically and update your robots.txt accordingly."
+    ],
+    "verificationSteps": [
+      "Check your live robots.txt at https://yoursite.com/robots.txt and verify the AI crawler blocks appear above any wildcard User-agent rules.",
+      "Use Google Search Console robots.txt Tester to confirm the file is valid and Google can read it correctly."
+    ],
+    "updatedAt": "2026-05-28"
+  },
+  {
     "id": "cache-control-header-builder",
     "name": "Cache-Control Header Builder",
     "category": "github-pages",
@@ -197,6 +262,72 @@
     "updatedAt": "2026-05-28"
   },
   {
+    "id": "hreflang-sitemap-builder",
+    "name": "Hreflang Sitemap Builder",
+    "category": "seo",
+    "summary": "Build XML sitemap entries with hreflang alternates for multilingual pages. Validate reciprocal links between language versions.",
+    "description": "Create XML sitemap entries with xhtml:link hreflang annotations for multilingual websites. Enter language code and URL pairs, optionally add an x-default URL, and get ready-to-use sitemap XML with automatic reciprocity validation.",
+    "keywords": [
+      "hreflang sitemap",
+      "multilingual sitemap xml",
+      "xhtml link alternate",
+      "hreflang xml generator",
+      "international seo sitemap"
+    ],
+    "whatIs": "An hreflang sitemap extends a standard XML sitemap with xhtml:link elements that tell search engines which language or regional version of a page to show to users. While hreflang can be implemented via HTML link tags or HTTP headers, the sitemap approach centralizes all hreflang data in one file, making it easier to audit and maintain across a large multilingual site.",
+    "howToUse": [
+      "Enter one language code and URL pair per line using the format: language-code|absolute-url.",
+      "Optionally add an x-default URL for a language selector or global landing page.",
+      "Enable reciprocity validation to check that every page in a language group links to every other version.",
+      "Copy the generated XML and include it in your sitemap or submit it as a separate sitemap-hreflang.xml."
+    ],
+    "useCases": [
+      "Create a dedicated hreflang sitemap for a multilingual blog with translated posts across 5+ languages.",
+      "Validate that all language versions in a hreflang group correctly reference each other before a site launch.",
+      "Add hreflang annotations to an existing sitemap without editing individual page markup."
+    ],
+    "examples": [
+      {
+        "title": "Three-language documentation site",
+        "text": "A docs site has English, German, and French versions of each page. Enter all three locale/URL pairs for each page group. The tool generates XML entries where each URL lists all three alternate versions plus an x-default fallback."
+      },
+      {
+        "title": "E-commerce site with regional variants",
+        "text": "An online store has US English, UK English, and Canadian French versions. Enter the pairs and verify reciprocity — if the UK English page does not list the Canadian French alternate, the tool flags the missing link."
+      }
+    ],
+    "mistakes": [
+      "Using relative URLs instead of absolute URLs — hreflang requires fully qualified URLs including the protocol (https://).",
+      "Forgetting to include the current page URL in its own set of alternates — each URL must list itself in the alternate links.",
+      "Creating hreflang groups that do not form complete reciprocal sets — if page A links to page B, page B must link back to page A with the matching language code."
+    ],
+    "faq": [
+      {
+        "question": "Do I need both hreflang HTML tags and an hreflang sitemap?",
+        "answer": "No, one implementation method is sufficient. The sitemap approach is recommended for larger sites because it centralizes hreflang data in one file, making it easier to audit and maintain. HTML link tags in each page's head are simpler for small sites. Using both is redundant but harmless."
+      },
+      {
+        "question": "What happens if reciprocity validation fails?",
+        "answer": "If pages in a hreflang group do not form complete reciprocal sets, search engines may ignore the hreflang annotations entirely or only partially honor them. This can cause the wrong language version to appear in search results. Every page must link to every other page in the group, and every link must be reciprocated."
+      },
+      {
+        "question": "How many URLs can a single hreflang sitemap contain?",
+        "answer": "The same limits as a standard XML sitemap apply: 50,000 URLs and 50 MiB uncompressed. For very large multilingual sites, split hreflang sitemaps into multiple files and use a sitemap index. Note that hreflang annotations add significant size to each URL entry."
+      }
+    ],
+    "quickAnswer": "Build XML sitemap entries with hreflang xhtml:link annotations for multilingual pages. Each URL entry lists all language alternates. Ensure reciprocity: every page must link to every other version in the language group, and the x-default URL provides a fallback for unmatched languages.",
+    "limitations": [
+      "Hreflang is a hint, not a directive. Search engines may still show a different language version if they determine it is more relevant to the user's query.",
+      "Each URL in a sitemap entry must be individually crawlable and indexable. If a page is blocked by robots.txt or has a noindex tag, the hreflang annotation may be ignored.",
+      "Sitemap-based hreflang requires that every URL listed be valid and return a 200 status code. A single broken URL in the group can cause search engines to ignore the entire hreflang set."
+    ],
+    "verificationSteps": [
+      "Submit the hreflang sitemap to Google Search Console and check the International Targeting report for errors.",
+      "Use the hreflang tag testing tool in Google Search Console or a third-party hreflang validator to confirm all alternate links resolve correctly."
+    ],
+    "updatedAt": "2026-05-28"
+  },
+  {
     "id": "hreflang-tag-generator",
     "name": "Hreflang Tag Generator",
     "category": "seo",
@@ -263,6 +394,71 @@
       "Check that every page in the language group links to every other version, including itself, using identical absolute URLs."
     ],
     "updatedAt": "2026-05-25"
+  },
+  {
+    "id": "llms-txt-validator",
+    "name": "llms.txt Validator",
+    "category": "seo",
+    "summary": "Validate llms.txt files against the specification. Check H1 headings, blockquote summaries, section structure, and Markdown link formatting.",
+    "description": "Check your llms.txt file for structural issues before publishing. Validates the H1 title, optional blockquote summary, ## section headings, Markdown link formatting, relative vs absolute URLs, and file size. Reports errors and warnings with exact line numbers.",
+    "keywords": [
+      "llms.txt validator",
+      "llms txt checker",
+      "ai discovery file",
+      "llms.txt format",
+      "ai seo validation"
+    ],
+    "whatIs": "llms.txt is a proposed standard file that helps large language models and AI tools discover and understand a website's key pages. It lives at /llms.txt and uses a simple Markdown-based format: an H1 title, an optional blockquote summary, sections with ## headings, and Markdown links to important pages. A validator checks that the file follows these structural rules.",
+    "howToUse": [
+      "Paste your llms.txt file content into the text area.",
+      "The validator checks for a required H1 title, section headings, valid Markdown links, and relative URL issues.",
+      "Review the errors and warnings, fix the issues, and republish your llms.txt file."
+    ],
+    "useCases": [
+      "Validate an llms.txt file before publishing it at the site root.",
+      "Check that all links in an llms.txt use absolute URLs so AI tools can resolve them correctly.",
+      "Verify section structure and link count to ensure the file provides useful navigation for AI crawlers."
+    ],
+    "examples": [
+      {
+        "title": "Validate a newly created llms.txt",
+        "text": "After generating an llms.txt with the site's llms.txt generator, paste it into the validator. The validator checks for a proper H1 title, warns about relative URLs, and confirms the section structure is correct before publishing."
+      },
+      {
+        "title": "Audit an existing llms.txt",
+        "text": "A site's llms.txt has grown over several months and accumulated broken links. Paste the file into the validator and fix each broken or relative link it identifies before the next update."
+      }
+    ],
+    "mistakes": [
+      "Using relative URLs like /tools/ instead of absolute URLs — AI tools reading the file may not know the base domain to resolve them against.",
+      "Forgetting the H1 heading at the top of the file — the H1 is required and tells the AI what the site or page collection is about.",
+      "Listing every single page instead of curating the most important entry points — an llms.txt should be a concise guide, not a complete sitemap."
+    ],
+    "faq": [
+      {
+        "question": "What is the difference between llms.txt and sitemap.xml?",
+        "answer": "sitemap.xml is a machine-readable XML file designed for search engine crawlers to discover all indexable URLs. llms.txt is a human-readable and AI-readable Markdown file that highlights a site's most important pages, documentation, and policies. They serve different audiences: sitemap.xml is for search indexing; llms.txt is for AI understanding and discovery."
+      },
+      {
+        "question": "Does every page need to be in llms.txt?",
+        "answer": "No. llms.txt should list the most important entry points: homepage, documentation or tool indexes, category pages, sitemap, key policy pages, and high-value resources. Listing every individual page dilutes the signal and makes the file harder for AI tools to parse effectively."
+      },
+      {
+        "question": "What happens if my llms.txt has broken links?",
+        "answer": "AI tools that read llms.txt may follow the broken links and receive errors, which can reduce their confidence in the file as a reliable source. Broken links also waste crawl budget if AI crawlers attempt to fetch them. Validate regularly and fix broken links as part of your content maintenance routine."
+      }
+    ],
+    "quickAnswer": "Validate your llms.txt file to ensure it follows the specification: a required H1 title, optional blockquote summary, ## section headings, and absolute Markdown links. A well-formed llms.txt helps AI tools discover and understand your site's key pages efficiently.",
+    "limitations": [
+      "This validator checks structure and link format only. It does not verify that linked pages actually exist or return good content — use a link checker for that.",
+      "The llms.txt format has no official standards body (IETF, W3C) endorsement. The specification is community-driven and may evolve over time.",
+      "File size and link count warnings are advisory. There is no formal upper limit for llms.txt files, but shorter, curated files are more effective for AI consumption."
+    ],
+    "verificationSteps": [
+      "After fixing all errors and warnings, visit https://yoursite.com/llms.txt in a browser to confirm the file is served correctly.",
+      "Check that all absolute URLs in the file resolve correctly by clicking through a sample of links in the published file."
+    ],
+    "updatedAt": "2026-05-28"
   },
   {
     "id": "og-twitter-card-builder",
@@ -389,6 +585,72 @@
       "After deploying, visit https://yourdomain.com and confirm the site loads. Check GitHub Pages settings for the green DNS check mark.",
       "Verify the CNAME file is present by visiting https://yourdomain.com/CNAME in a browser. It should display only the domain name."
     ]
+  },
+  {
+    "id": "opensearch-description-generator",
+    "name": "OpenSearch Description Generator",
+    "category": "seo",
+    "summary": "Generate an OpenSearch description XML file and HTML link tag so browsers can add your site's search as a search engine.",
+    "description": "Create an OpenSearch description document that lets visitors add your site search to their browser's search bar. Define the short name, search URL template with {searchTerms} placeholder, favicon, and optional suggestions URL. Includes the HTML link tag for auto-discovery.",
+    "keywords": [
+      "opensearch description generator",
+      "search engine xml",
+      "browser search plugin",
+      "opensearch xml",
+      "add search engine"
+    ],
+    "whatIs": "An OpenSearch description is an XML document that tells browsers how to search a website. When a browser detects the OpenSearch link tag, it offers to add the site's search as a search engine option. Users can then search the site directly from the browser address bar or search box without visiting the site first. Firefox, Edge, and some Chromium-based browsers support this feature.",
+    "howToUse": [
+      "Enter a short name (max 16 characters) for the search engine and a brief description.",
+      "Provide the search URL template with {searchTerms} as the placeholder for the user's query.",
+      "Add a favicon URL and optionally a suggestions URL for search autocomplete.",
+      "Copy the XML to opensearch.xml and add the link tag to every page's head section."
+    ],
+    "useCases": [
+      "Add site search to Firefox and Chromium-based browsers so users can search directly from the address bar.",
+      "Create an OpenSearch plugin for a documentation site or knowledge base with a dedicated search page.",
+      "Add search integration for a static site that uses a third-party search service like Algolia or a custom search endpoint."
+    ],
+    "examples": [
+      {
+        "title": "Documentation site search",
+        "text": "A documentation site has a search page at /search?q=. Generate the OpenSearch XML with the search URL template https://docs.example.com/search?q={searchTerms}. Visitors using Firefox see the site in their search engine list and can search docs directly."
+      },
+      {
+        "title": "Static site with third-party search",
+        "text": "A static site uses a third-party search service. The search URL might be https://search.example.com/search?query={searchTerms}&site=mysite. Generate the OpenSearch description to integrate this search into visitors' browsers."
+      }
+    ],
+    "mistakes": [
+      "Forgetting to include {searchTerms} in the search URL template — without it, the browser cannot pass the user's query to the search page.",
+      "Using a relative URL for the favicon or not serving it over HTTPS — the favicon must be an absolute HTTPS URL.",
+      "Serving the XML file with the wrong Content-Type — it should be application/opensearchdescription+xml for browsers to recognize it."
+    ],
+    "faq": [
+      {
+        "question": "Which browsers support OpenSearch?",
+        "answer": "Firefox has the strongest support and actively encourages sites to add OpenSearch descriptions. Chromium-based browsers (Chrome, Edge, Brave) support OpenSearch but the user experience varies. Safari does not support OpenSearch. The link tag is harmless in unsupported browsers and provides a progressive enhancement for Firefox users."
+      },
+      {
+        "question": "Can I use POST instead of GET for the search method?",
+        "answer": "Yes, but GET is strongly recommended. GET-based search URLs are bookmarkable, shareable, and work with browser address bar autocomplete. POST-based search requires the browser to submit a form, which limits usability. Most site search implementations use GET with query parameters."
+      },
+      {
+        "question": "Do I need a suggestions URL?",
+        "answer": "No, the suggestions URL is optional. It enables search autocomplete suggestions as the user types in the browser search bar, similar to how Google suggests queries. To support suggestions, your server must return JSON in the OpenSearch Suggestions format. Most static sites skip this feature."
+      }
+    ],
+    "quickAnswer": "Generate an OpenSearch description XML file so browsers can add your site search as a search engine. Include a short name, search URL with {searchTerms} placeholder, and favicon URL. Add the link tag to your page head so browsers auto-discover the search plugin.",
+    "limitations": [
+      "Safari does not support OpenSearch. The feature works primarily in Firefox and Chromium-based browsers. Consider it a progressive enhancement rather than a core search feature.",
+      "The OpenSearch 1.1 specification (2005) is old and has not been updated. The format is stable but lacks some modern search features like structured data integration.",
+      "The XML file must be served with the correct Content-Type header (application/opensearchdescription+xml). Some static hosts may not serve custom content types for XML files."
+    ],
+    "verificationSteps": [
+      "Visit your site in Firefox and check the address bar for a green plus icon or search engine addition prompt after adding the link tag.",
+      "Verify the XML file at https://yoursite.com/opensearch.xml returns Content-Type: application/opensearchdescription+xml using the browser DevTools Network tab."
+    ],
+    "updatedAt": "2026-05-28"
   },
   {
     "id": "security-txt-generator-validator",
