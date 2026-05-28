@@ -899,7 +899,7 @@ ${crossCategory.length ? `<section class="section">
 
   return pageShell({
     locale,
-    title: `${tool.name} - ${site.siteName}`,
+    title: `Free ${tool.name} - ${site.siteName}`,
     description: locale === site.defaultLocale ? freeBrowserDescription(tool.summary) : tool.summary,
     pathname: `tools/${tool.id}`,
     body,
