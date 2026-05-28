@@ -1,0 +1,133 @@
+import { field, textarea, select, checkbox, htmlEscape } from "../tool-core.js";
+
+export default {
+  form: `
+    <div class="field-grid">
+      ${select({ id: "vtType", label: "Transition type", options: [
+        {label:"Same-document (SPA)",value:"spa"},
+        {label:"Cross-document (MPA)",value:"mpa"},
+        {label:"Both",value:"both"}
+      ], value: "both" })}
+      ${field({ id: "vtDuration", label: "Animation duration (ms)", type: "number", value: "300" })}
+    </div>
+    <div class="field-grid">
+      ${select({ id: "vtEasing", label: "Easing", options: [
+        {label:"ease (default)",value:"ease"},
+        {label:"ease-in-out",value:"ease-in-out"},
+        {label:"cubic-bezier(.4,0,.2,1)",value:"cubic-bezier(.4,0,.2,1)"},
+        {label:"cubic-bezier(.4,0,1,1)",value:"cubic-bezier(.4,0,1,1)"}
+      ], value: "ease" })}
+      ${field({ id: "vtName", label: "view-transition-name", help: "CSS name for elements to animate between states. Use unique names.", value: "hero-image" })}
+    </div>
+    <div class="field-grid">
+      ${field({ id: "vtSelector", label: "Element CSS selector", help: "The element(s) that get view-transition-name.", value: ".hero img" })}
+      ${checkbox({ id: "vtReducedMotion", label: "Include prefers-reduced-motion fallback", checked: true })}
+    </div>
+    <div class="field-grid">
+      ${checkbox({ id: "vtNewOld", label: "Show ::view-transition-new/::view-transition-old examples", checked: true })}
+    </div>`,
+  generate(root) {
+    const type = root.querySelector("#vtType").value;
+    const duration = parseInt(root.querySelector("#vtDuration").value) || 300;
+    const easing = root.querySelector("#vtEasing").value;
+    const vtName = root.querySelector("#vtName").value.trim() || "hero-image";
+    const selector = root.querySelector("#vtSelector").value.trim() || ".hero img";
+    const reducedMotion = root.querySelector("#vtReducedMotion").checked;
+    const showNewOld = root.querySelector("#vtNewOld").checked;
+
+    const lines = [];
+    lines.push("/* === View Transitions API (Baseline 2025) === */");
+    lines.push("");
+
+    // Element CSS
+    lines.push("/* --- Assign view-transition-name to elements --- */");
+    lines.push(`${selector} {`);
+    lines.push(`  view-transition-name: ${vtName};`);
+    lines.push("}");
+    lines.push("/* Each transitioning element needs a unique view-transition-name. */");
+    lines.push("/* view-transition-name: none disables transition for that element. */");
+    lines.push("");
+
+    // Same-document
+    if (type === "spa" || type === "both") {
+      lines.push("/* === Same-Document (SPA) Transition === */");
+      lines.push("");
+      lines.push("// JavaScript:");
+      lines.push("function navigateTo(url) {");
+      lines.push("  document.startViewTransition(() => {");
+      lines.push("    // Update the DOM here — swap content, change attributes");
+      lines.push("    updatePageContent(url);");
+      lines.push("  });");
+      lines.push("}");
+      lines.push("");
+
+      if (showNewOld) {
+        lines.push("/* --- Customize the transition animation --- */");
+        lines.push(`::view-transition-old(${vtName}) {`);
+        lines.push(`  animation-duration: ${duration}ms;`);
+        lines.push(`  animation-timing-function: ${easing};`);
+        lines.push("}");
+        lines.push(`::view-transition-new(${vtName}) {`);
+        lines.push(`  animation-duration: ${duration}ms;`);
+        lines.push(`  animation-timing-function: ${easing};`);
+        lines.push("}");
+        lines.push("");
+        lines.push("/* --- Customize the default crossfade --- */");
+        lines.push("::view-transition-old(root) {");
+        lines.push(`  animation: ${duration}ms ${easing} both fade-out;`);
+        lines.push("}");
+        lines.push("::view-transition-new(root) {");
+        lines.push(`  animation: ${duration}ms ${easing} both fade-in;`);
+        lines.push("}");
+        lines.push("");
+        lines.push("@keyframes fade-out {");
+        lines.push("  to { opacity: 0; }");
+        lines.push("}");
+        lines.push("@keyframes fade-in {");
+        lines.push("  from { opacity: 0; }");
+        lines.push("  to { opacity: 1; }");
+        lines.push("}");
+      }
+      lines.push("");
+    }
+
+    // Cross-document (MPA)
+    if (type === "mpa" || type === "both") {
+      lines.push("/* === Cross-Document (MPA) Transition === */");
+      lines.push("");
+      lines.push("<!-- Add to <head> of BOTH pages: -->");
+      lines.push("<meta name=\"view-transition\" content=\"same-origin\">");
+      lines.push("");
+      lines.push("/* With the meta tag, navigation between same-origin pages triggers a default crossfade. */");
+      lines.push("/* No JavaScript required. Works for back/forward navigation too. */");
+      lines.push("");
+    }
+
+    // Reduced motion
+    if (reducedMotion) {
+      lines.push("/* === Accessibility: Respect Motion Preferences === */");
+      lines.push("@media (prefers-reduced-motion: reduce) {");
+      lines.push("  ::view-transition-old(*),");
+      lines.push("  ::view-transition-new(*) {");
+      lines.push("    animation: none;");
+      lines.push("  }");
+      lines.push(`  ${selector} {`);
+      lines.push("    view-transition-name: none;");
+      lines.push("  }");
+      lines.push("}");
+      lines.push("");
+    }
+
+    lines.push(
+      "/* === Notes === */",
+      "/* 1. view-transition-name must be UNIQUE per page — two elements with the same name cause an error. */",
+      "/* 2. The browser captures a screenshot of old/new states and animates between them. */",
+      "/* 3. Transitions work for position, size, opacity, and clip-path changes. */",
+      "/* 4. document.startViewTransition() returns a promise that resolves when the transition completes. */",
+      "/* 5. Use document.activeViewTransition to check if a transition is currently running. */",
+      "/* 6. Browser support: Chrome 111+, Edge 111+, Safari 18.2+. Firefox support in development. */"
+    );
+
+    return { output: lines.join("\n") };
+  }
+};

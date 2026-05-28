@@ -518,6 +518,136 @@
     "updatedAt": "2026-05-28"
   },
   {
+    "id": "css-carousel-generator",
+    "name": "CSS Carousel Generator",
+    "category": "css",
+    "summary": "Generate native CSS carousel markup with scroll-snap, scroll buttons, scroll markers, and accessible list structure. No JavaScript required.",
+    "description": "Build a native CSS carousel using modern CSS features: scroll-snap-type for smooth snapping, ::scroll-button() for navigation arrows, ::scroll-marker() for indicator dots, and scroll-state queries for active item styling. Generates accessible markup with ARIA roles and progressive enhancement notes.",
+    "keywords": [
+      "css carousel",
+      "scroll snap carousel",
+      "native css slider",
+      "scroll buttons css",
+      "carousel without javascript"
+    ],
+    "whatIs": "A CSS carousel is a horizontally or vertically scrollable container where items snap into position as the user scrolls. Modern CSS (Chrome 135+) adds built-in scroll buttons and markers that work without JavaScript, plus scroll-state queries for styling the currently snapped item differently from others. This is a native alternative to JavaScript carousel libraries.",
+    "howToUse": [
+      "Choose the layout direction (horizontal or vertical) and item width.",
+      "Set snap behavior and alignment — mandatory snaps to every item, proximity snaps when near.",
+      "Optionally include scroll buttons and marker dots for navigation.",
+      "Choose accessible list markup (ul/li) and the number of items for demo output.",
+      "Copy the CSS and HTML into your page. Add real content to each carousel item."
+    ],
+    "useCases": [
+      "Build a product image carousel without adding a JavaScript library.",
+      "Create a card rail for blog posts or app store-style listings.",
+      "Make an accessible image gallery with keyboard-navigable scroll and snap points."
+    ],
+    "examples": [
+      {
+        "title": "Product image gallery",
+        "text": "An e-commerce product page needs a horizontal image carousel. Use the tool with mandatory snap, start alignment, and scroll markers. Visitors swipe or scroll through product images with indicator dots showing position."
+      },
+      {
+        "title": "Blog post card rail",
+        "text": "A blog homepage shows recent posts in a horizontally scrollable card rail. Use proximity snap with scroll buttons so visitors can click arrows or swipe to browse recent articles."
+      }
+    ],
+    "mistakes": [
+      "Using mandatory snap on very long carousels — users cannot scroll past multiple items quickly, which feels sluggish.",
+      "Forgetting to make the scroll container keyboard-focusable — keyboard users need tabindex=\"0\" to scroll with arrow keys.",
+      "Using fixed pixel widths without considering mobile — 300px items on a 320px screen leave barely any peek of the next item."
+    ],
+    "faq": [
+      {
+        "question": "Which browsers support CSS scroll buttons and markers?",
+        "answer": "Scroll buttons (::scroll-button()) and markers (::scroll-marker()) require Chrome 135+. Scroll-snap itself is supported in all modern browsers (Chrome 69+, Firefox 99+, Safari 11+). The carousel degrades gracefully: browsers without button/marker support show a standard scrollable container with snap behavior."
+      },
+      {
+        "question": "Do I need JavaScript for a CSS carousel?",
+        "answer": "For basic scroll and snap behavior, no JavaScript is needed. Scroll buttons and markers work declaratively in Chrome 135+. For features like auto-advance, infinite loop, or dynamic item counts, a small amount of JavaScript is still required. This tool generates the no-JS baseline."
+      },
+      {
+        "question": "How do I style the active carousel item differently?",
+        "answer": "Use the scroll-state() container query: @container scroll-state(snapped: true) { .item { opacity: 1; } }. This requires container-type: scroll-state on the scroll container. For browsers without scroll-state support, use a JavaScript scroll event fallback or IntersectionObserver."
+      }
+    ],
+    "quickAnswer": "Build a native CSS carousel with scroll-snap, buttons, and markers — no JavaScript needed. Use scroll-snap-type for snap behavior, ::scroll-button() for arrows, ::scroll-marker() for dots, and scroll-state(snapped: true) queries for active item styling. Chrome 135+ for full features; degrades gracefully elsewhere.",
+    "limitations": [
+      "Scroll buttons (::scroll-button()) and markers (::scroll-marker()) require Chrome 135+. Firefox and Safari do not yet support them. The carousel falls back to a standard scrollable container.",
+      "CSS carousels cannot auto-advance, loop infinitely, or handle dynamic item counts without JavaScript. For advanced carousel features, use a small JS enhancement on top of the CSS foundation.",
+      "Scroll-state queries (container-type: scroll-state) are part of the same Chrome 135+ release. Cross-browser support for styling active items requires a JavaScript fallback."
+    ],
+    "verificationSteps": [
+      "Test the carousel with keyboard navigation: focus the container and use arrow keys to scroll through items.",
+      "Check that snap points work correctly on touch devices — each swipe should snap to the nearest item."
+    ],
+    "updatedAt": "2026-05-28"
+  },
+  {
+    "id": "css-scroll-state-query-generator",
+    "name": "CSS Scroll-State Query Generator",
+    "category": "css",
+    "summary": "Generate CSS scroll-state() container queries for styling snapped, stuck, or scrollable elements. Includes JavaScript fallback for cross-browser support.",
+    "description": "Use scroll-state() container queries to style elements based on scroll position without JavaScript. Target snapped carousel items, stuck sticky headers, or scrollable containers. Generate the container setup, state query CSS, demo HTML, and an optional JS fallback for unsupported browsers.",
+    "keywords": [
+      "scroll-state query",
+      "css scroll state",
+      "snapped state css",
+      "stuck state css",
+      "scrollable state",
+      "container scroll-state"
+    ],
+    "whatIs": "A scroll-state container query is a CSS feature that lets you style elements based on the scroll state of a container. Instead of using JavaScript to detect scroll position and toggle classes, you write a @container scroll-state(...) query that automatically applies styles when elements are snapped, stuck, or when a container is scrollable. This enables scroll-driven UI like active carousel indicators and sticky header shadows without JavaScript.",
+    "howToUse": [
+      "Select the scroll state to target: snapped (active snap item), stuck (sticky element), or scrollable (container with overflow).",
+      "Set the target CSS selector and the scroll container selector.",
+      "Choose the style change to apply when the state is active (opacity, scale, border, background).",
+      "Copy the CSS, demo HTML, and optional JavaScript fallback snippet."
+    ],
+    "useCases": [
+      "Highlight the currently snapped carousel item with full opacity while dimming others.",
+      "Add a shadow to a sticky header only when it is stuck to the top of the viewport.",
+      "Style a scrollable panel differently when it has overflow vs when all content fits."
+    ],
+    "examples": [
+      {
+        "title": "Active carousel indicator",
+        "text": "A carousel shows product cards. Use scroll-state(snapped: true) to apply full opacity and a border highlight to the currently snapped card while other cards are dimmed. No JavaScript scroll listener needed."
+      },
+      {
+        "title": "Sticky header shadow",
+        "text": "A page has a sticky header. Use scroll-state(stuck: true) on the header to add a box-shadow when it becomes stuck, indicating the user has scrolled past the top of the page."
+      }
+    ],
+    "mistakes": [
+      "Using scroll-state() without setting container-type: scroll-state on the scroll container — the query has no effect.",
+      "Expecting scroll-state() to work in all browsers — it is a Chrome 135+ feature. Always provide a JS fallback.",
+      "Using scroll-state queries on elements that never reach the target state — verify the element can actually be snapped or stuck in the layout."
+    ],
+    "faq": [
+      {
+        "question": "What states does scroll-state() support?",
+        "answer": "Currently supported: snapped (element is the active scroll-snap target), stuck (sticky element is stuck to a boundary), scrollable (container has scrollable overflow), and overflowing (content overflows the container). These states are queried inside @container scroll-state(...) rules."
+      },
+      {
+        "question": "How is scroll-state() different from JavaScript scroll events?",
+        "answer": "Scroll-state queries run on the compositor thread, not the main JavaScript thread. They are more performant and do not cause jank. JavaScript scroll events fire on the main thread and can cause layout thrashing if not debounced. For simple visual state changes, scroll-state queries are the better choice."
+      }
+    ],
+    "quickAnswer": "Use CSS scroll-state() queries inside @container rules to style elements based on scroll position without JavaScript. Target snapped, stuck, scrollable, or overflowing states. Requires container-type: scroll-state and Chrome 135+. Include a JS fallback for cross-browser support.",
+    "limitations": [
+      "Scroll-state queries require Chrome 135+ and are not yet supported in Firefox or Safari. Always provide a JavaScript fallback for production use.",
+      "The container must have container-type: scroll-state set for scroll-state queries to work. This is a separate container-type from size or inline-size queries.",
+      "Only a limited set of scroll states is available: snapped, stuck, scrollable, and overflowing. Complex scroll-driven animations still require JavaScript or scroll-driven animations (@scroll-timeline)."
+    ],
+    "verificationSteps": [
+      "Scroll the container and verify the styled elements update correctly — snapped items should show the active style, non-snapped items the default.",
+      "Test with the JavaScript fallback disabled to confirm the CSS-only approach works in Chrome 135+."
+    ],
+    "updatedAt": "2026-05-28"
+  },
+  {
     "id": "css-subgrid-layout-generator",
     "name": "CSS Subgrid Layout Generator",
     "category": "css",
@@ -580,6 +710,68 @@
     "verificationSteps": [
       "Check the layout in browser DevTools Grid inspector — subgrid tracks should visually align with parent grid tracks.",
       "Test in Firefox and Chrome to confirm cross-browser subgrid behavior, as there are subtle differences in implicit track handling."
+    ],
+    "updatedAt": "2026-05-28"
+  },
+  {
+    "id": "customizable-select-generator",
+    "name": "Customizable Select Generator",
+    "category": "html",
+    "summary": "Generate CSS for customizable select elements using appearance: base-select, picker icons, checkmarks, and open/closed state styling.",
+    "description": "Style native select elements with the new customizable select CSS features. Generate CSS for base-select appearance, ::picker-icon for dropdown arrows, option::checkmark for selection indicators, ::picker(select) for dropdown popover styling, and open/closed state selectors. Progressive enhancement keeps native select semantics.",
+    "keywords": [
+      "customizable select",
+      "base-select css",
+      "styled select dropdown",
+      "picker icon css",
+      "custom select without js"
+    ],
+    "whatIs": "The customizable select element is a new CSS feature that lets you style native HTML select elements without replacing them with JavaScript-powered div structures. Using appearance: base-select, you can style the picker icon, option checkmarks, and the dropdown popover while keeping all the built-in accessibility and form behavior of a real select element. No JavaScript dropdown library needed.",
+    "howToUse": [
+      "Enter the select options as value|label pairs, one per line.",
+      "Choose picker icon style (chevron, custom SVG, or none) and checkmark style (check, dot, or none).",
+      "Optionally include closed-state styling and browser fallback notes.",
+      "Copy the generated HTML and CSS. The select works as a native form element in all browsers."
+    ],
+    "useCases": [
+      "Style a country selector dropdown to match a brand design system without a custom select library.",
+      "Create a styled language switcher that keeps native form semantics and keyboard accessibility.",
+      "Build a theme selector with custom checkmark icons that works in forms and screen readers."
+    ],
+    "examples": [
+      {
+        "title": "Branded country selector",
+        "text": "A checkout form needs a country dropdown that matches the site's design. Use customizable select with a custom chevron icon, branded colors, and a checkmark for the selected option. The select still works as a native form element."
+      },
+      {
+        "title": "Theme switcher dropdown",
+        "text": "A documentation site has a light/dark theme switcher. Style the select with appearance: base-select, a custom SVG sun/moon icon as the picker indicator, and themed background colors for the popover."
+      }
+    ],
+    "mistakes": [
+      "Expecting customizable select to work in all browsers — it requires Chrome 135+ with experimental features. Older browsers show a standard native select.",
+      "Using appearance: none instead of appearance: base-select — the former removes all native styling including accessibility roles.",
+      "Forgetting that base-select is not yet in the CSS Baseline — always test and provide a readable native select as fallback."
+    ],
+    "faq": [
+      {
+        "question": "What is the difference between appearance: none and appearance: base-select?",
+        "answer": "appearance: none strips ALL native select styling, including the dropdown arrow, and can break accessibility. appearance: base-select keeps the native semantics and keyboard behavior while allowing you to style the visual parts (icon, checkmark, popover). base-select is the safe way to customize selects."
+      },
+      {
+        "question": "Which browsers support customizable select?",
+        "answer": "Chrome 135+ with \"Experimental Web Platform Features\" enabled. This is a very new feature and not yet in CSS Baseline. For production, use @supports (appearance: base-select) to apply custom styles only in supporting browsers and show the native select as fallback elsewhere."
+      }
+    ],
+    "quickAnswer": "Style native select elements with appearance: base-select (Chrome 135+). Use ::picker-icon for dropdown arrows, option::checkmark for selection indicators, and ::picker(select) for popover styling. Native form semantics and keyboard accessibility are preserved. Fallback is a standard readable select.",
+    "limitations": [
+      "Customizable select is a very new feature (Chrome 135+) and not yet in CSS Baseline. Firefox and Safari do not yet support it. Always test with @supports and provide a readable native fallback.",
+      "Not all aspects of the select are customizable. The option list layout, scroll behavior, and mobile picker UI are still controlled by the browser. This is by design — it keeps the select usable on all devices.",
+      "The ::picker-icon and option::checkmark pseudo-elements are part of the customizable select model and cannot be used on other elements. They only work inside a select with appearance: base-select."
+    ],
+    "verificationSteps": [
+      "Test the select in Chrome 135+ to confirm the custom styling renders correctly with the picker icon and checkmarks.",
+      "Test in Firefox and Safari to verify the select falls back to a readable native appearance."
     ],
     "updatedAt": "2026-05-28"
   },
@@ -841,6 +1033,68 @@
       "Check that every page in the language group links to every other version, including itself, using identical absolute URLs."
     ],
     "updatedAt": "2026-05-25"
+  },
+  {
+    "id": "html-invoker-command-generator",
+    "name": "HTML Invoker Command Generator",
+    "category": "html",
+    "summary": "Generate declarative command buttons for dialogs, popovers, and disclosure elements using the Invoker Commands API. No JavaScript needed.",
+    "description": "Use the Invoker Commands API to create buttons that control dialogs, popovers, details elements, and custom targets without JavaScript event listeners. Generate commandfor and command attributes for built-in commands like show-modal, toggle-popover, and open/close. Includes target element templates and optional JS fallback for older browsers.",
+    "keywords": [
+      "invoker commands",
+      "commandfor button",
+      "declarative dialog",
+      "popover toggle button",
+      "html command attribute"
+    ],
+    "whatIs": "The Invoker Commands API is a declarative HTML feature that lets buttons control other elements without JavaScript. Using the commandfor attribute (pointing to a target element's id) and the command attribute (specifying the action), a button can open/close dialogs, toggle popovers, expand/collapse details, or fire custom command events. This replaces onclick handlers with declarative, accessible HTML.",
+    "howToUse": [
+      "Enter the target element ID and select the target type (dialog, popover, details, or custom).",
+      "Choose the command — different target types support different commands (show-modal, toggle-popover, open, etc.).",
+      "Set the button text. Optionally include the target element template and JS fallback.",
+      "Copy the generated HTML. No JavaScript is required for built-in commands in supporting browsers."
+    ],
+    "useCases": [
+      "Create a modal dialog trigger with a button that opens the dialog declaratively, and a close button inside the dialog that also works declaratively.",
+      "Build a popover menu with a toggle button — no click handlers, no state management.",
+      "Create a details/disclosure widget controlled by an external button instead of the summary element."
+    ],
+    "examples": [
+      {
+        "title": "Declarative modal dialog",
+        "text": "A settings dialog needs open and close buttons. Use commandfor=\"settings-dialog\" command=\"show-modal\" on the open button and command=\"close\" on the close button inside the dialog. No JavaScript required for the open/close behavior."
+      },
+      {
+        "title": "Popover menu toggle",
+        "text": "A user menu popover toggles open and closed with one button. Use commandfor=\"user-menu\" command=\"toggle-popover\". The browser manages the popover state — no JavaScript tracking needed."
+      }
+    ],
+    "mistakes": [
+      "Using commandfor without a matching target element id — the button silently does nothing. Always verify the target id matches.",
+      "Using a command that is not supported by the target type — show-modal only works on dialog elements, toggle-popover only on popover elements.",
+      "Forgetting that invoker commands are Baseline 2025 — older browsers need a JavaScript click handler fallback."
+    ],
+    "faq": [
+      {
+        "question": "Do invoker commands work without any JavaScript at all?",
+        "answer": "Yes, for built-in commands on dialog, popover, and details elements. The browser handles the showModal(), close(), showPopover(), hidePopover(), and toggle commands natively. For custom commands, you add a 'command' event listener on the target element — one listener handles all command invocations."
+      },
+      {
+        "question": "What is the difference between command and onclick?",
+        "answer": "command is declarative — it tells the browser what action to perform on the target. onclick is imperative — you write JavaScript to perform the action. command works without JavaScript for built-in actions. It also communicates intent to assistive technology: a button with command=\"show-modal\" announces its purpose more clearly than a generic click handler."
+      }
+    ],
+    "quickAnswer": "Use the Invoker Commands API for declarative buttons that control dialogs, popovers, and details without JavaScript. Set commandfor to the target element ID and command to the action (show-modal, toggle-popover, open, close). Built-in commands work natively; custom commands fire a 'command' event on the target.",
+    "limitations": [
+      "Invoker Commands only work for specific target types: dialog (show-modal, close), popover (show-popover, hide-popover, toggle-popover), and details (open, close, toggle). Other elements need custom command event handlers.",
+      "Browser support is Baseline 2025: Chrome 117+, Edge 117+, Safari 18+. Firefox support is in development. Older browsers need a JavaScript click handler fallback.",
+      "Custom commands (using a custom command value) fire a 'command' event but do not perform any built-in behavior. You must add a JavaScript event listener on the target to handle custom commands."
+    ],
+    "verificationSteps": [
+      "Click the command button and verify the target element opens, closes, or toggles correctly.",
+      "Test with JavaScript disabled to confirm built-in commands work without any scripts."
+    ],
+    "updatedAt": "2026-05-28"
   },
   {
     "id": "html-sanitizer-config-builder",
@@ -2989,6 +3243,64 @@
     "verificationSteps": [
       "Test the key pair by subscribing a browser to push notifications and sending a test push message from your server.",
       "Verify the public key is correctly embedded in your frontend JavaScript by checking the applicationServerKey parameter in the pushManager.subscribe() call."
+    ],
+    "updatedAt": "2026-05-28"
+  },
+  {
+    "id": "view-transition-builder",
+    "name": "View Transition Builder",
+    "category": "css",
+    "summary": "Generate View Transitions API CSS and JavaScript for smooth page and element transitions. Same-document (SPA) and cross-document (MPA) support with reduced-motion fallback.",
+    "description": "Create smooth animated transitions between page states using the View Transitions API. Generate same-document (SPA) JavaScript snippets with document.startViewTransition() and cross-document (MPA) meta tags. Customize animation duration, easing, and view-transition-name for specific elements. Includes prefers-reduced-motion accessibility fallback.",
+    "keywords": [
+      "view transitions api",
+      "page transition css",
+      "startViewTransition",
+      "mpa transition",
+      "smooth page navigation"
+    ],
+    "whatIs": "The View Transitions API creates smooth animated transitions when navigating between pages or updating page content. The browser captures screenshots of the old and new states, then crossfades between them. You can assign view-transition-name to specific elements to animate them independently during the transition. For same-document transitions (SPAs), use document.startViewTransition(). For cross-document (MPAs), add a meta tag.",
+    "howToUse": [
+      "Choose the transition type: same-document (for SPA content updates) or cross-document (for MPA page navigation).",
+      "Set animation duration, easing, and the view-transition-name for elements that should animate independently.",
+      "Optionally customize the ::view-transition-new and ::view-transition-old pseudo-elements.",
+      "Copy the CSS and JavaScript/meta tag. Enable prefers-reduced-motion fallback for accessibility."
+    ],
+    "useCases": [
+      "Animate a hero image between a list page and a detail page using the same view-transition-name on both pages.",
+      "Add a smooth crossfade when navigating between pages in a static site by adding the view-transition meta tag.",
+      "Animate a gallery filter: call startViewTransition() before updating the image grid for a smooth layout change."
+    ],
+    "examples": [
+      {
+        "title": "Hero image morph between pages",
+        "text": "A blog has a hero image on the list page and a larger version on the article page. Give both images the same view-transition-name: hero-image. The browser animates the image from its list position to the article position during navigation."
+      },
+      {
+        "title": "SPA content swap",
+        "text": "A dashboard filters a data table. Wrap the filter update in document.startViewTransition(() => updateTable()). The old table rows fade out while new rows fade in — no manual animation code needed."
+      }
+    ],
+    "mistakes": [
+      "Giving two elements the same view-transition-name on the same page — names must be unique per page. The browser throws an error and skips the transition.",
+      "Forgetting the meta tag in the page head for MPA transitions — cross-document transitions do not work without it.",
+      "Not handling prefers-reduced-motion — users with motion sensitivity should get instant transitions instead of animations."
+    ],
+    "faq": [
+      {
+        "question": "Can I animate specific elements instead of the whole page?",
+        "answer": "Yes. Assign view-transition-name to individual elements (like .hero img or .card). Each named element gets its own ::view-transition-old() and ::view-transition-new() pseudo-elements that you can animate independently. Elements without a view-transition-name participate in the root crossfade."
+      }
+    ],
+    "quickAnswer": "Use the View Transitions API for smooth page and element animations. For SPAs: document.startViewTransition(() => updateDOM()). For MPAs: add <meta name=\"view-transition\" content=\"same-origin\"> to the head. Assign view-transition-name to elements for independent animation. Always respect prefers-reduced-motion.",
+    "limitations": [
+      "Cross-document (MPA) transitions only work between same-origin pages. Cross-origin navigation does not trigger a view transition, even with the meta tag.",
+      "The browser captures static screenshots of the old and new states. Live content like videos, animations, or continuously updating elements may appear frozen during the transition.",
+      "View Transitions are Baseline 2025: Chrome 111+, Edge 111+, Safari 18.2+. Firefox support is in development. Unsupported browsers navigate without animation — the feature degrades gracefully."
+    ],
+    "verificationSteps": [
+      "Test the transition by navigating between pages or triggering the content update and observing the animation.",
+      "Verify that prefers-reduced-motion: reduce disables the transition and shows an instant content swap."
     ],
     "updatedAt": "2026-05-28"
   },

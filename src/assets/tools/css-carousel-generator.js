@@ -1,0 +1,129 @@
+import { field, select, checkbox, htmlEscape } from "../tool-core.js";
+
+export default {
+  form: `
+    <div class="field-grid">
+      ${select({ id: "ccLayout", label: "Layout direction", options: [{label:"Horizontal",value:"horizontal"},{label:"Vertical",value:"vertical"}], value: "horizontal" })}
+      ${field({ id: "ccItemWidth", label: "Item width", type: "text", help: "CSS value: 300px, 80%, auto. auto uses item content size.", value: "300px" })}
+    </div>
+    <div class="field-grid">
+      ${select({ id: "ccSnap", label: "Snap behavior", options: [{label:"Mandatory (snaps every item)",value:"mandatory"},{label:"Proximity (snaps near item)",value:"proximity"},{label:"None",value:"none"}], value: "mandatory" })}
+      ${select({ id: "ccSnapAlign", label: "Snap alignment", options: [{label:"Start",value:"start"},{label:"Center",value:"center"},{label:"End",value:"end"}], value: "start" })}
+    </div>
+    <div class="field-grid">
+      ${checkbox({ id: "ccButtons", label: "Include scroll buttons", checked: true })}
+      ${checkbox({ id: "ccMarkers", label: "Include scroll markers", checked: true })}
+    </div>
+    <div class="field-grid">
+      ${checkbox({ id: "ccAria", label: "Use accessible list markup (ul/li)", checked: true })}
+      ${field({ id: "ccItems", label: "Number of items (for demo markup)", type: "number", value: "6" })}
+    </div>`,
+  generate(root) {
+    const layout = root.querySelector("#ccLayout").value;
+    const itemWidth = root.querySelector("#ccItemWidth").value.trim() || "300px";
+    const snap = root.querySelector("#ccSnap").value;
+    const snapAlign = root.querySelector("#ccSnapAlign").value;
+    const showButtons = root.querySelector("#ccButtons").checked;
+    const showMarkers = root.querySelector("#ccMarkers").checked;
+    const useAria = root.querySelector("#ccAria").checked;
+    const itemCount = parseInt(root.querySelector("#ccItems").value) || 6;
+
+    const isHorizontal = layout === "horizontal";
+    const sizeProp = isHorizontal ? "width" : "height";
+    const inlineSize = isHorizontal ? "inline" : "block";
+
+    const lines = [];
+    lines.push("/* === CSS Native Carousel === */");
+    lines.push("/* Requires: Chrome 135+ (scroll buttons, markers, scroll-state queries) */");
+    lines.push("");
+
+    // Container CSS
+    lines.push("/* --- Container --- */");
+    lines.push(".carousel {");
+    lines.push(`  display: flex;`);
+    lines.push(`  flex-direction: ${isHorizontal ? "row" : "column"};`);
+    lines.push(`  overflow-x: ${isHorizontal ? "auto" : "hidden"};`);
+    lines.push(`  overflow-y: ${isHorizontal ? "hidden" : "auto"};`);
+    if (snap !== "none") {
+      lines.push(`  scroll-snap-type: ${inlineSize} ${snap};`);
+    }
+    lines.push(`  scroll-behavior: smooth;`);
+    lines.push("  gap: 16px;");
+    lines.push("  padding: 16px;");
+    lines.push(`  ${isHorizontal ? "max-width" : "max-height"}: 100%;`);
+    lines.push("}");
+    lines.push("");
+
+    // Item CSS
+    lines.push("/* --- Items --- */");
+    const tag = useAria ? "li" : "div";
+    lines.push(`.carousel > ${tag} {`);
+    lines.push(`  flex: 0 0 ${itemWidth};`);
+    if (snap !== "none") lines.push(`  scroll-snap-align: ${snapAlign};`);
+    lines.push("}");
+    lines.push("");
+
+    // Scroll buttons
+    if (showButtons) {
+      lines.push("/* --- Scroll Buttons (Chrome 135+) --- */");
+      lines.push("/* Scroll buttons appear when there is overflow in that direction */");
+      lines.push(".carousel::scroll-button(left),");
+      lines.push(".carousel::scroll-button(right) {");
+      lines.push("  --_size: 40px;");
+      lines.push("  width: var(--_size);");
+      lines.push("  height: var(--_size);");
+      lines.push("  background: var(--color-surface);");
+      lines.push("  border-radius: 50%;");
+      lines.push("  box-shadow: 0 2px 8px rgba(0,0,0,0.15);");
+      lines.push("  position: absolute;");
+      lines.push("  top: 50%;");
+      lines.push("  transform: translateY(-50%);");
+      lines.push("}");
+      lines.push("/* For vertical layout, use ::scroll-button(up) and ::scroll-button(down) */");
+      lines.push("");
+    }
+
+    // Scroll markers
+    if (showMarkers) {
+      lines.push("/* --- Scroll Markers (Chrome 135+) --- */");
+      lines.push("/* Active marker highlights the currently snapped item */");
+      lines.push(".carousel > " + tag + "::scroll-marker {");
+      lines.push("  width: 10px;");
+      lines.push("  height: 10px;");
+      lines.push("  border-radius: 50%;");
+      lines.push("  background: var(--color-border);");
+      lines.push("  transition: background 0.2s;");
+      lines.push("}");
+      lines.push(".carousel > " + tag + "::scroll-marker:checked {");
+      lines.push("  background: var(--color-accent);");
+      lines.push("}");
+      lines.push("");
+    }
+
+    // Demo HTML
+    lines.push("/* === Demo HTML === */");
+    if (useAria) {
+      lines.push(`<ul class="carousel" role="list" aria-label="Content carousel">`);
+    } else {
+      lines.push(`<div class="carousel" role="region" aria-label="Content carousel">`);
+    }
+    for (let i = 1; i <= itemCount; i++) {
+      lines.push(`  <${tag} class="carousel-item">`);
+      lines.push(`    <!-- Item ${i} content -->`);
+      lines.push(`  </${tag}>`);
+    }
+    lines.push(useAria ? "</ul>" : "</div>");
+    lines.push("");
+
+    lines.push(
+      "/* === Notes === */",
+      "/* 1. Scroll buttons and markers require Chrome 135+. Other browsers show scrollable list. */",
+      "/* 2. For keyboard accessibility, ensure scrollable region is focusable (tabindex='0'). */",
+      "/* 3. Wrap snap styles in @supports (scroll-snap-type: inline mandatory) for progressive enhancement. */",
+      "/* 4. Use prefers-reduced-motion to disable smooth scrolling when requested. */",
+      "/* 5. Scroll-state queries can style items differently when snapped: .item { &:state(snapped) {...} } */"
+    );
+
+    return { output: lines.join("\n") };
+  }
+};
