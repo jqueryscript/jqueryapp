@@ -51,16 +51,20 @@ function mountTool(root, config) {
   const copiedLabel = root.dataset.copiedLabel || "Copied";
   root.innerHTML = `
     <div class="tool-layout">
-      <form class="tool-panel" data-role="form">
-        ${config.form}
-      </form>
+      <div class="tool-workspace-top">
+        <form class="tool-panel" data-role="form">
+          ${config.form}
+        </form>
+        <div class="tool-preview-panel" data-role="preview-panel" hidden>
+          <div data-role="preview"></div>
+        </div>
+      </div>
       <div class="result-box">
         <div class="result-header">
           <h2>${htmlEscape(outputLabel)}</h2>
           <button class="copy-button" type="button" data-role="copy" aria-label="Copy output to clipboard">${htmlEscape(copyLabel)}</button>
         </div>
         <pre class="output" data-role="output" tabindex="0" aria-live="polite" aria-label="Tool output"></pre>
-        <div data-role="preview"></div>
         <div class="copy-status" data-role="copy-status" role="status" aria-live="assertive"></div>
       </div>
     </div>`;
@@ -68,6 +72,7 @@ function mountTool(root, config) {
   const form = root.querySelector("[data-role='form']");
   const output = root.querySelector("[data-role='output']");
   const preview = root.querySelector("[data-role='preview']");
+  const previewPanel = root.querySelector("[data-role='preview-panel']");
   const copy = root.querySelector("[data-role='copy']");
   const copyStatus = root.querySelector("[data-role='copy-status']");
 
@@ -75,6 +80,7 @@ function mountTool(root, config) {
     Promise.resolve(config.generate(root)).then(result => {
       output.textContent = result.output;
       preview.innerHTML = result.preview || "";
+      previewPanel.hidden = !result.preview;
     });
   };
 

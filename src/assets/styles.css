@@ -1119,14 +1119,41 @@ button {
 
 .tool-layout {
   display: grid;
-  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
   gap: 22px;
+}
+
+.tool-workspace-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
 }
 
 .tool-panel {
   display: grid;
   align-content: start;
   gap: 16px;
+}
+
+.tool-preview-panel {
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  background: var(--canvas);
+  min-height: 180px;
+  max-height: 420px;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tool-preview-panel[hidden] {
+  display: none;
+}
+
+.tool-preview-panel > [data-role="preview"] {
+  width: 100%;
+  padding: 12px;
 }
 
 .field-grid {
@@ -1494,7 +1521,7 @@ button {
   .tool-hero-grid,
   .split-section,
   .dark-grid,
-  .tool-layout,
+  .tool-workspace-top,
   .content-layout,
   .footer-grid {
     grid-template-columns: 1fr;
