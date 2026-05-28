@@ -76,11 +76,14 @@ function mountTool(root, config) {
   const copy = root.querySelector("[data-role='copy']");
   const copyStatus = root.querySelector("[data-role='copy-status']");
 
+  const topRow = root.querySelector(".tool-workspace-top");
+
   const update = () => {
     Promise.resolve(config.generate(root)).then(result => {
       output.textContent = result.output;
       preview.innerHTML = result.preview || "";
       previewPanel.hidden = !result.preview;
+      topRow.style.gridTemplateColumns = result.preview ? "" : "1fr";
     });
   };
 
