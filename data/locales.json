@@ -175,7 +175,21 @@
       "home": "Startseite",
       "noAccountRequired": "Kein Konto erforderlich",
       "allTools": "Alle Tools",
-      "megaAllPrefix": "Alle kostenlosen {0}-Tools"
+      "megaAllPrefix": "Alle kostenlosen {0}-Tools",
+      "quickReference": "Kurzreferenz",
+      "category": "Kategorie",
+      "note": "Hinweis",
+      "html": "HTML",
+      "skipToContent": "Zum Inhalt springen",
+      "mainNav": "Hauptnavigation",
+      "menu": "Menü",
+      "navMenu": "Navigationsmenü",
+      "more": "Mehr",
+      "quickAnswer": "Kurze Antwort",
+      "limitations": "Einschränkungen",
+      "verification": "Überprüfung",
+      "comparison": "Vergleich",
+      "example": "Beispiel"
     },
     "categories": {
       "seo": {
@@ -827,7 +841,21 @@
       "home": "Accueil",
       "noAccountRequired": "Aucun compte requis",
       "allTools": "Tous les outils",
-      "megaAllPrefix": "Tous les outils {0} gratuits"
+      "megaAllPrefix": "Tous les outils {0} gratuits",
+      "quickReference": "Référence rapide",
+      "category": "Catégorie",
+      "note": "Remarque",
+      "html": "HTML",
+      "skipToContent": "Aller au contenu",
+      "mainNav": "Navigation principale",
+      "menu": "Menu",
+      "navMenu": "Menu de navigation",
+      "more": "Plus",
+      "quickAnswer": "Réponse rapide",
+      "limitations": "Limites",
+      "verification": "Vérification",
+      "comparison": "Comparaison",
+      "example": "Exemple"
     },
     "categories": {
       "seo": {
@@ -1475,7 +1503,21 @@
       "home": "Inicio",
       "noAccountRequired": "Sin cuenta requerida",
       "allTools": "Todas las herramientas",
-      "megaAllPrefix": "Todas las herramientas {0} gratuitas"
+      "megaAllPrefix": "Todas las herramientas {0} gratuitas",
+      "quickReference": "Referencia rápida",
+      "category": "Categoría",
+      "note": "Nota",
+      "html": "HTML",
+      "skipToContent": "Saltar al contenido",
+      "mainNav": "Navegación principal",
+      "menu": "Menú",
+      "navMenu": "Menú de navegación",
+      "more": "Más",
+      "quickAnswer": "Respuesta rápida",
+      "limitations": "Limitaciones",
+      "verification": "Verificación",
+      "comparison": "Comparación",
+      "example": "Ejemplo"
     },
     "categories": {
       "seo": {
@@ -2127,7 +2169,21 @@
       "home": "ホーム",
       "noAccountRequired": "アカウント不要",
       "allTools": "すべてのツール",
-      "megaAllPrefix": "無料{0}ツール"
+      "megaAllPrefix": "無料{0}ツール",
+      "quickReference": "クイックリファレンス",
+      "category": "カテゴリ",
+      "note": "注意",
+      "html": "HTML",
+      "skipToContent": "コンテンツにスキップ",
+      "mainNav": "メインナビゲーション",
+      "menu": "メニュー",
+      "navMenu": "ナビゲーションメニュー",
+      "more": "もっと見る",
+      "quickAnswer": "クイックアンサー",
+      "limitations": "制限事項",
+      "verification": "検証",
+      "comparison": "比較",
+      "example": "例"
     },
     "categories": {
       "seo": {
@@ -2779,7 +2835,21 @@
       "home": "Home",
       "noAccountRequired": "Geen account nodig",
       "allTools": "Alle tools",
-      "megaAllPrefix": "Alle gratis {0}-tools"
+      "megaAllPrefix": "Alle gratis {0}-tools",
+      "quickReference": "Snelle referentie",
+      "category": "Categorie",
+      "note": "Opmerking",
+      "html": "HTML",
+      "skipToContent": "Naar inhoud springen",
+      "mainNav": "Hoofdnavigatie",
+      "menu": "Menu",
+      "navMenu": "Navigatiemenu",
+      "more": "Meer",
+      "quickAnswer": "Snel antwoord",
+      "limitations": "Beperkingen",
+      "verification": "Verificatie",
+      "comparison": "Vergelijking",
+      "example": "Voorbeeld"
     },
     "categories": {
       "seo": {

@@ -171,26 +171,26 @@ ${alternateLinks}
   ${extraHead}
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip-link" href="#main">${escapeHtml(uiText(locale, "skipToContent", "Skip to content"))}</a>
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="brand" href="${urlFor(locale)}" aria-label="${attr(site.siteName)} home">
         <span class="brand-mark" aria-hidden="true"></span>
         <span>${escapeHtml(site.siteName)}</span>
       </a>
-      <nav class="main-nav" aria-label="Main navigation">
+      <nav class="main-nav" aria-label="${attr(uiText(locale, "mainNav", "Main navigation"))}">
         ${mainNavHtml}
       </nav>
       <div class="nav-actions">
         ${languageMenu}
-        <button class="hamburger" aria-label="Menu" aria-expanded="false" id="menu-toggle">
+        <button class="hamburger" aria-label="${attr(uiText(locale, "menu", "Menu"))}" aria-expanded="false" id="menu-toggle">
           <span></span><span></span><span></span>
         </button>
       </div>
     </div>
   </header>
   <div class="offcanvas-overlay" id="offcanvas-overlay"></div>
-  <div class="offcanvas" id="offcanvas" role="dialog" aria-label="Navigation menu">
+  <div class="offcanvas" id="offcanvas" role="dialog" aria-label="${attr(uiText(locale, "navMenu", "Navigation menu"))}">
     <div class="offcanvas-inner">
       <nav class="offcanvas-nav">
         <a href="${urlFor(locale, "tools")}" class="offcanvas-all">${escapeHtml(ui(locale, "browseTools"))}</a>
@@ -337,7 +337,7 @@ function faqMarkup(items = []) {
 </details>`).join("");
 }
 
-function comparisonMarkup(comparison) {
+function comparisonMarkup(locale, comparison) {
   if (!comparison) return "";
   const headerCells = comparison.columns.map((col) => `<th>${escapeHtml(col)}</th>`).join("");
   const bodyRows = comparison.rows.map((row) => {
@@ -347,7 +347,7 @@ function comparisonMarkup(comparison) {
   return `<section class="section comparison-band">
   <div class="wrap content-layout">
     <div class="section-heading">
-      <p class="eyebrow">Comparison</p>
+      <p class="eyebrow">${escapeHtml(ui(locale, "comparison"))}</p>
       <h2>${escapeHtml(comparison.title)}</h2>
     </div>
     <div>
@@ -361,9 +361,10 @@ function comparisonMarkup(comparison) {
 </section>`;
 }
 
-function examplesMarkup(items = []) {
+function examplesMarkup(locale, items = []) {
+  const exampleLabel = ui(locale, "example");
   return items.map((item) => `<article class="example-item">
-  <p class="eyebrow">Example</p>
+  <p class="eyebrow">${escapeHtml(exampleLabel)}</p>
   <h3>${escapeHtml(item.title)}</h3>
   <p>${escapeHtml(item.text)}</p>
 </article>`).join("");
@@ -419,28 +420,26 @@ function localizeCategories(sourceCategories, locale) {
 function localizeTools(sourceTools, locale) {
   if (locale === site.defaultLocale) return sourceTools;
   const pack = localePack(locale);
-  const toolTemplates = pack.toolTemplates || {};
   const overrides = pack.tools || {};
   return sourceTools.map((tool) => {
     const override = overrides[tool.id] || {};
     const name = override.name || tool.name;
     const summary = override.summary || tool.summary;
-    const values = { name, summary };
     return {
       ...tool,
       ...override,
       name,
       summary,
       description: override.description || summary,
-      whatIs: override.whatIs || fillTemplate(toolTemplates.whatIs, values),
-      howToUse: override.howToUse || (toolTemplates.howToUse || []).map((item) => fillTemplate(item, values)),
-      useCases: override.useCases || (toolTemplates.useCases || []).map((item) => fillTemplate(item, values)),
-      examples: override.examples || [],
-      mistakes: override.mistakes || (toolTemplates.mistakes || []).map((item) => fillTemplate(item, values)),
-      faq: override.faq || (toolTemplates.faq || []).map((item) => ({
-        question: fillTemplate(item.question, values),
-        answer: fillTemplate(item.answer, values)
-      }))
+      whatIs: override.whatIs || tool.whatIs,
+      howToUse: override.howToUse || tool.howToUse,
+      useCases: override.useCases || tool.useCases,
+      examples: override.examples || tool.examples,
+      mistakes: override.mistakes || tool.mistakes,
+      faq: override.faq || tool.faq,
+      quickAnswer: override.quickAnswer || tool.quickAnswer,
+      limitations: override.limitations || tool.limitations,
+      verificationSteps: override.verificationSteps || tool.verificationSteps
     };
   });
 }
@@ -831,13 +830,13 @@ function toolPage(locale, tool, allTools, categories) {
     <aside class="content-rail">
       <span class="rail-link">${escapeHtml(categoryName)}</span>
       ${related.length ? related.slice(0, 4).map((r) => `<a href="${urlFor(locale, `tools/${r.id}`)}">${escapeHtml(r.name)}</a>`).join("") : ""}
-      <a href="${urlFor(locale, `tools/${tool.category}`)}">More ${escapeHtml(categoryName)}</a>
+      <a href="${urlFor(locale, `tools/${tool.category}`)}">${escapeHtml(uiText(locale, "more", "More"))} ${escapeHtml(categoryName)}</a>
     </aside>
     <article class="tool-article">
       <h2>${escapeHtml(template(locale, "whatIs", { name: tool.name }))}</h2>
       <p>${escapeHtml(tool.whatIs || tool.description)}</p>
-      ${tool.quickAnswer ? `<div class="quick-answer"><h3>Quick answer</h3><p>${escapeHtml(tool.quickAnswer)}</p></div>` : ""}
-      ${tool.limitations?.length ? `<h3>Limitations</h3><ul>${listItems(tool.limitations)}</ul>` : ""}
+      ${tool.quickAnswer ? `<div class="quick-answer"><h3>${escapeHtml(ui(locale, "quickAnswer"))}</h3><p>${escapeHtml(tool.quickAnswer)}</p></div>` : ""}
+      ${tool.limitations?.length ? `<h3>${escapeHtml(ui(locale, "limitations"))}</h3><ul>${listItems(tool.limitations)}</ul>` : ""}
       <h2>${escapeHtml(ui(locale, "howToUse"))}</h2>
       <ol>${listItems(tool.howToUse || [])}</ol>
       <h2>${escapeHtml(ui(locale, "whatUseFor"))}</h2>
@@ -851,7 +850,7 @@ ${tool.examples?.length ? `<section class="section soft-band">
     <h2>${escapeHtml(ui(locale, "examples"))}</h2>
   </div>
   <div class="wrap example-grid">
-    ${examplesMarkup(tool.examples)}
+    ${examplesMarkup(locale, tool.examples)}
   </div>
 </section>` : ""}
 <section class="section">
@@ -863,11 +862,11 @@ ${tool.examples?.length ? `<section class="section soft-band">
     <article class="tool-article">
       <h2>${escapeHtml(ui(locale, "commonMistakes"))}</h2>
       <ul>${listItems(tool.mistakes)}</ul>
-      ${tool.verificationSteps?.length ? `<h2>Verification</h2><ol>${listItems(tool.verificationSteps)}</ol>` : ""}
+      ${tool.verificationSteps?.length ? `<h2>${escapeHtml(ui(locale, "verification"))}</h2><ol>${listItems(tool.verificationSteps)}</ol>` : ""}
     </article>
   </div>
 </section>
-${comparisonMarkup(tool.comparison)}
+${comparisonMarkup(locale, tool.comparison)}
 ${tool.faq?.length ? `<section class="section faq-band">
   <div class="wrap content-layout">
     <div class="section-heading">
