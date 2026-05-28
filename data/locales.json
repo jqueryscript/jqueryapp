@@ -643,6 +643,106 @@
       "html-script-loading-strategy-builder": {
         "name": "HTML-Script-Ladestrategie-Builder",
         "summary": "Generiere Script-Tags mit der richtigen Ladestrategie — normal, defer, async oder type module."
+      },
+      "ai-crawler-robots-txt-builder": {
+        "name": "AI-Crawler robots.txt Builder",
+        "summary": "Erstelle robots.txt-Regeln für KI-Crawler mit offenen, selektiven oder strikten Vorlagen."
+      },
+      "aria-live-region-generator": {
+        "name": "ARIA Live Region Generator",
+        "summary": "Erstelle barrierefreie ARIA-Live-Regionen für Screenreader-Ankündigungen."
+      },
+      "assetlinks-aasa-generator": {
+        "name": "Assetlinks & AASA Generator",
+        "summary": "Erstelle Android assetlinks.json und Apple App Site Association für Deep Links."
+      },
+      "cache-control-header-builder": {
+        "name": "Cache-Control Header Builder",
+        "summary": "Erstelle korrekte Cache-Control-HTTP-Header für statische Assets, HTML-Seiten und sensible Inhalte."
+      },
+      "container-query-units-calculator": {
+        "name": "Container Query Units Rechner",
+        "summary": "Berechne clamp()-Werte mit Container-Query-Einheiten für komponentenbezogene responsive Größen."
+      },
+      "coop-coep-corp-header-builder": {
+        "name": "COOP/COEP/CORP Header Builder",
+        "summary": "Konfiguriere Cross-Origin-Isolation-Header für SharedArrayBuffer, WASM und Sicherheit."
+      },
+      "cors-header-generator": {
+        "name": "CORS Header Generator",
+        "summary": "Erstelle CORS-HTTP-Header für jede Origin-, Methoden- und Credential-Konfiguration."
+      },
+      "csp-hash-generator": {
+        "name": "CSP Hash Generator",
+        "summary": "Erstelle CSP-Hash-Werte für Inline-Skripte und -Styles. Hashe exakten Code mit SHA-256, SHA-384 oder SHA-512."
+      },
+      "css-logical-properties-converter": {
+        "name": "CSS Logical Properties Converter",
+        "summary": "Konvertiere physische CSS-Eigenschaften in logische für RTL- und mehrsprachige Layouts."
+      },
+      "css-subgrid-layout-generator": {
+        "name": "CSS Subgrid Layout Generator",
+        "summary": "Erstelle Parent-Grid- und Child-Subgrid-CSS für Layouts mit gemeinsamer Rasterausrichtung."
+      },
+      "declarative-shadow-dom-snippet-generator": {
+        "name": "Declarative Shadow DOM Generator",
+        "summary": "Erstelle HTML-Snippets für Declarative Shadow DOM mit Scoped CSS, Slots und Server-Rendering."
+      },
+      "focus-ring-css-generator": {
+        "name": "Focus-Ring CSS Generator",
+        "summary": "Erstelle barrierefreie :focus-visible Outline- oder Box-Shadow-CSS-Regeln mit Kontrastprüfung."
+      },
+      "hreflang-sitemap-builder": {
+        "name": "Hreflang Sitemap Builder",
+        "summary": "Erstelle XML-Sitemap-Einträge mit hreflang-Alternates für mehrsprachige Seiten."
+      },
+      "html-sanitizer-config-builder": {
+        "name": "HTML Sanitizer Config Builder",
+        "summary": "Erstelle Sanitizer-API- und DOMPurify-Allowlist-Konfigurationen für sicheres HTML-Rendering."
+      },
+      "http-header-parser-explainer": {
+        "name": "HTTP Header Parser & Erklärer",
+        "summary": "Füge rohe HTTP-Response-Header ein und erhalte eine gruppierte, verständliche Erklärung jedes Headers."
+      },
+      "llms-txt-validator": {
+        "name": "llms.txt Validator",
+        "summary": "Validiere llms.txt-Dateien gemäß der Spezifikation auf H1, Blockquote, Abschnitte und Markdown-Links."
+      },
+      "opensearch-description-generator": {
+        "name": "OpenSearch Description Generator",
+        "summary": "Erstelle eine OpenSearch-Beschreibungs-XML und einen HTML-Link-Tag für die Browser-Suchleiste."
+      },
+      "pwa-maskable-icon-safe-zone-generator": {
+        "name": "PWA Maskable Icon Safe Zone Generator",
+        "summary": "Lade ein App-Icon hoch und zeige die PWA-Maskable-Safe-Zone mit Overlay-Vorschau an."
+      },
+      "redirect-map-converter": {
+        "name": "Redirect Map Converter",
+        "summary": "Konvertiere eine CSV-Weiterleitungstabelle in Netlify, Vercel, Apache oder Nginx Redirect-Formate."
+      },
+      "security-txt-generator-validator": {
+        "name": "security.txt Generator & Validator",
+        "summary": "Erstelle und validiere security.txt-Dateien nach RFC 9116 mit Hosting-Anleitung."
+      },
+      "sri-hash-generator": {
+        "name": "SRI Hash Generator",
+        "summary": "Erstelle Subresource-Integrity-Hashes für Skript- und Stylesheet-Dateien mit SHA-256, SHA-384 oder SHA-512."
+      },
+      "touch-target-size-checker": {
+        "name": "Touch Target Size Checker",
+        "summary": "Prüfe interaktive Elemente auf WCAG 2.2 Mindestgröße (2.5.8) mit AA/AAA-Ergebnissen und CSS-Empfehlungen."
+      },
+      "vapid-key-generator": {
+        "name": "VAPID Key Generator",
+        "summary": "Erstelle ein VAPID-Schlüsselpaar für Web-Push-Benachrichtigungen mit der Web Crypto API."
+      },
+      "web-app-manifest-validator": {
+        "name": "Web App Manifest Validator",
+        "summary": "Validiere ein Web-App-Manifest-JSON gegen die W3C-Spezifikation mit Installierbarkeits-Checkliste."
+      },
+      "x-robots-tag-header-generator": {
+        "name": "X-Robots-Tag Header Generator",
+        "summary": "Erstelle X-Robots-Tag-HTTP-Header und Robots-Meta-Tags für Nicht-HTML-Dateien wie PDFs und Bilder."
       }
     }
   },
@@ -1133,8 +1233,8 @@
         "summary": "Générez du CSS avec unites de viewport dynamiques (dvh, svh, lvh) avec fallbacks."
       },
       "css-logical-properties-converter": {
-        "name": "Convertisseur de proprietes logiques CSS",
-        "summary": "Convertissez les proprietes CSS physiques en proprietes logiques pour un meilleur support RTL."
+        "name": "Convertisseur de propriétés logiques CSS",
+        "summary": "Convertissez les propriétés CSS physiques en propriétés logiques pour les mises en page RTL et multilingues."
       },
       "fetch-priority-attribute-generator": {
         "name": "Generateur d'attribut fetchpriority",
@@ -1195,6 +1295,102 @@
       "html-script-loading-strategy-builder": {
         "name": "Constructeur de strategie de chargement de script",
         "summary": "Générez des balises script avec la bonne strategie — normal, defer, async ou type module."
+      },
+      "ai-crawler-robots-txt-builder": {
+        "name": "Générateur robots.txt pour crawlers IA",
+        "summary": "Créez des règles robots.txt pour les crawlers IA avec des modèles ouverts, sélectifs ou stricts."
+      },
+      "aria-live-region-generator": {
+        "name": "Générateur de régions ARIA live",
+        "summary": "Créez des régions ARIA live accessibles pour les annonces des lecteurs d'écran."
+      },
+      "assetlinks-aasa-generator": {
+        "name": "Générateur Assetlinks & AASA",
+        "summary": "Générez assetlinks.json Android et Apple App Site Association pour les liens profonds."
+      },
+      "cache-control-header-builder": {
+        "name": "Générateur d'en-tête Cache-Control",
+        "summary": "Créez des en-têtes HTTP Cache-Control corrects pour les assets statiques, pages HTML et contenus sensibles."
+      },
+      "container-query-units-calculator": {
+        "name": "Calculateur d'unités de conteneur",
+        "summary": "Calculez des valeurs clamp() avec les unités de requête de conteneur pour un dimensionnement responsive par composant."
+      },
+      "coop-coep-corp-header-builder": {
+        "name": "Générateur d'en-têtes COOP/COEP/CORP",
+        "summary": "Configurez les en-têtes d'isolation cross-origin pour SharedArrayBuffer, WASM et la sécurité."
+      },
+      "cors-header-generator": {
+        "name": "Générateur d'en-têtes CORS",
+        "summary": "Générez des en-têtes HTTP CORS pour toute configuration d'origine, méthode et credentials."
+      },
+      "csp-hash-generator": {
+        "name": "Générateur de hash CSP",
+        "summary": "Générez des valeurs de hash CSP pour les scripts et styles inline. Hachez le code exact avec SHA-256, SHA-384 ou SHA-512."
+      },
+      "css-subgrid-layout-generator": {
+        "name": "Générateur de layout Subgrid CSS",
+        "summary": "Créez du CSS pour grille parent et sous-grille enfant avec alignement partagé des pistes."
+      },
+      "declarative-shadow-dom-snippet-generator": {
+        "name": "Générateur de Shadow DOM déclaratif",
+        "summary": "Créez des snippets HTML pour le Shadow DOM déclaratif avec CSS scopé, slots et rendu serveur."
+      },
+      "focus-ring-css-generator": {
+        "name": "Générateur de focus ring CSS",
+        "summary": "Créez des règles CSS :focus-visible accessibles avec outline ou box-shadow et vérification du contraste."
+      },
+      "hreflang-sitemap-builder": {
+        "name": "Générateur de sitemap hreflang",
+        "summary": "Créez des entrées de sitemap XML avec des alternatives hreflang pour les pages multilingues."
+      },
+      "html-sanitizer-config-builder": {
+        "name": "Générateur de config Sanitizer HTML",
+        "summary": "Créez des configurations d'allowlist pour Sanitizer API et DOMPurify pour un rendu HTML sécurisé."
+      },
+      "http-header-parser-explainer": {
+        "name": "Analyseur d'en-têtes HTTP",
+        "summary": "Collez des en-têtes HTTP bruts et obtenez une explication groupée en langage clair de chaque en-tête."
+      },
+      "llms-txt-validator": {
+        "name": "Validateur llms.txt",
+        "summary": "Validez les fichiers llms.txt selon la spécification : H1, bloc de citation, sections et liens Markdown."
+      },
+      "opensearch-description-generator": {
+        "name": "Générateur OpenSearch Description",
+        "summary": "Générez un fichier XML OpenSearch Description et un tag link HTML pour la barre de recherche du navigateur."
+      },
+      "pwa-maskable-icon-safe-zone-generator": {
+        "name": "Générateur de zone sûre d'icône PWA",
+        "summary": "Téléchargez une icône et prévisualisez la zone de sécurité maskable PWA avec superposition."
+      },
+      "redirect-map-converter": {
+        "name": "Convertisseur de carte de redirection",
+        "summary": "Convertissez une table CSV de redirections en formats Netlify, Vercel, Apache ou Nginx."
+      },
+      "security-txt-generator-validator": {
+        "name": "Générateur & validateur security.txt",
+        "summary": "Générez et validez des fichiers security.txt selon la RFC 9116 avec guide d'hébergement."
+      },
+      "sri-hash-generator": {
+        "name": "Générateur de hash SRI",
+        "summary": "Générez des hashs Subresource Integrity pour les fichiers script et stylesheet avec SHA-256, SHA-384 ou SHA-512."
+      },
+      "touch-target-size-checker": {
+        "name": "Vérificateur de taille de cible tactile",
+        "summary": "Vérifiez les éléments interactifs selon WCAG 2.2 taille minimale (2.5.8) avec résultats AA/AAA et recommandations CSS."
+      },
+      "vapid-key-generator": {
+        "name": "Générateur de clés VAPID",
+        "summary": "Générez une paire de clés VAPID pour les notifications Web Push avec l'API Web Crypto."
+      },
+      "web-app-manifest-validator": {
+        "name": "Validateur de manifeste web",
+        "summary": "Validez un manifeste web JSON selon la spécification W3C avec liste de contrôle d'installabilité."
+      },
+      "x-robots-tag-header-generator": {
+        "name": "Générateur d'en-tête X-Robots-Tag",
+        "summary": "Générez des en-têtes HTTP X-Robots-Tag et des balises meta robots pour les fichiers non-HTML comme les PDF et images."
       }
     }
   },
@@ -1747,6 +1943,106 @@
       "html-script-loading-strategy-builder": {
         "name": "Constructor de estrategia de carga de script",
         "summary": "Genera etiquetas script con la estrategia correcta — normal, defer, async o type module."
+      },
+      "ai-crawler-robots-txt-builder": {
+        "name": "Generador robots.txt para crawlers IA",
+        "summary": "Crea reglas robots.txt para crawlers de IA con plantillas abiertas, selectivas o estrictas."
+      },
+      "aria-live-region-generator": {
+        "name": "Generador de regiones ARIA live",
+        "summary": "Crea regiones ARIA live accesibles para anuncios de lectores de pantalla."
+      },
+      "assetlinks-aasa-generator": {
+        "name": "Generador Assetlinks & AASA",
+        "summary": "Genera assetlinks.json de Android y Apple App Site Association para enlaces profundos."
+      },
+      "cache-control-header-builder": {
+        "name": "Generador de cabecera Cache-Control",
+        "summary": "Crea cabeceras HTTP Cache-Control correctas para assets estáticos, páginas HTML y contenido sensible."
+      },
+      "container-query-units-calculator": {
+        "name": "Calculadora de unidades container query",
+        "summary": "Calcula valores clamp() con unidades de consulta de contenedor para tamaños responsive por componente."
+      },
+      "coop-coep-corp-header-builder": {
+        "name": "Generador de cabeceras COOP/COEP/CORP",
+        "summary": "Configura cabeceras de aislamiento cross-origin para SharedArrayBuffer, WASM y seguridad."
+      },
+      "cors-header-generator": {
+        "name": "Generador de cabeceras CORS",
+        "summary": "Genera cabeceras HTTP CORS para cualquier configuración de origen, métodos y credenciales."
+      },
+      "csp-hash-generator": {
+        "name": "Generador de hash CSP",
+        "summary": "Genera valores hash CSP para scripts y estilos inline. Hashea el código exacto con SHA-256, SHA-384 o SHA-512."
+      },
+      "css-logical-properties-converter": {
+        "name": "Conversor de propiedades lógicas CSS",
+        "summary": "Convierte propiedades CSS físicas en lógicas para diseños RTL y multilingües."
+      },
+      "css-subgrid-layout-generator": {
+        "name": "Generador de layout Subgrid CSS",
+        "summary": "Crea CSS de grid padre y subgrid hijo con alineación compartida de pistas."
+      },
+      "declarative-shadow-dom-snippet-generator": {
+        "name": "Generador de Shadow DOM declarativo",
+        "summary": "Crea snippets HTML para Shadow DOM declarativo con CSS aislado, slots y renderizado del servidor."
+      },
+      "focus-ring-css-generator": {
+        "name": "Generador de anillo de foco CSS",
+        "summary": "Crea reglas CSS :focus-visible accesibles con outline o box-shadow y verificación de contraste."
+      },
+      "hreflang-sitemap-builder": {
+        "name": "Generador de sitemap hreflang",
+        "summary": "Crea entradas de sitemap XML con alternativas hreflang para páginas multilingües."
+      },
+      "html-sanitizer-config-builder": {
+        "name": "Generador de config Sanitizer HTML",
+        "summary": "Crea configuraciones de lista permitida para Sanitizer API y DOMPurify para renderizado HTML seguro."
+      },
+      "http-header-parser-explainer": {
+        "name": "Analizador de cabeceras HTTP",
+        "summary": "Pega cabeceras HTTP sin procesar y obtén una explicación agrupada en lenguaje claro de cada una."
+      },
+      "llms-txt-validator": {
+        "name": "Validador llms.txt",
+        "summary": "Valida archivos llms.txt según la especificación: H1, blockquote, secciones y enlaces Markdown."
+      },
+      "opensearch-description-generator": {
+        "name": "Generador OpenSearch Description",
+        "summary": "Genera un XML OpenSearch Description y un tag link HTML para la barra de búsqueda del navegador."
+      },
+      "pwa-maskable-icon-safe-zone-generator": {
+        "name": "Generador de zona segura de icono PWA",
+        "summary": "Sube un icono y previsualiza la zona segura maskable PWA con superposición."
+      },
+      "redirect-map-converter": {
+        "name": "Conversor de mapa de redirecciones",
+        "summary": "Convierte una tabla CSV de redirecciones a formatos Netlify, Vercel, Apache o Nginx."
+      },
+      "security-txt-generator-validator": {
+        "name": "Generador & validador security.txt",
+        "summary": "Genera y valida archivos security.txt según RFC 9116 con guía de alojamiento."
+      },
+      "sri-hash-generator": {
+        "name": "Generador de hash SRI",
+        "summary": "Genera hashes Subresource Integrity para archivos script y stylesheet con SHA-256, SHA-384 o SHA-512."
+      },
+      "touch-target-size-checker": {
+        "name": "Comprobador de tamaño táctil",
+        "summary": "Verifica elementos interactivos según WCAG 2.2 tamaño mínimo (2.5.8) con resultados AA/AAA y recomendaciones CSS."
+      },
+      "vapid-key-generator": {
+        "name": "Generador de claves VAPID",
+        "summary": "Genera un par de claves VAPID para notificaciones Web Push usando la API Web Crypto."
+      },
+      "web-app-manifest-validator": {
+        "name": "Validador de manifiesto web",
+        "summary": "Valida un manifiesto web JSON contra la especificación W3C con lista de verificación de instalabilidad."
+      },
+      "x-robots-tag-header-generator": {
+        "name": "Generador de cabecera X-Robots-Tag",
+        "summary": "Genera cabeceras HTTP X-Robots-Tag y etiquetas meta robots para archivos no HTML como PDFs e imágenes."
       }
     }
   },
@@ -2299,6 +2595,106 @@
       "html-script-loading-strategy-builder": {
         "name": "HTMLスクリプト読み込み戦略ビルダー",
         "summary": "normal、defer、async、type moduleの適切な読み込み戦略でscriptタグを生成します。"
+      },
+      "ai-crawler-robots-txt-builder": {
+        "name": "AIクローラー robots.txt ビルダー",
+        "summary": "AIクローラー向けのrobots.txtルールをオープン、選択型、厳格のプリセットから作成します。"
+      },
+      "aria-live-region-generator": {
+        "name": "ARIAライブリージョンジェネレーター",
+        "summary": "スクリーンリーダー向けのアクセシブルなARIAライブリージョンを作成します。"
+      },
+      "assetlinks-aasa-generator": {
+        "name": "Assetlinks & AASA ジェネレーター",
+        "summary": "ディープリンク用のAndroid assetlinks.jsonとApple App Site Associationを生成します。"
+      },
+      "cache-control-header-builder": {
+        "name": "Cache-Control ヘッダービルダー",
+        "summary": "静的アセット、HTMLページ、機密コンテンツ向けのCache-Control HTTPヘッダーを作成します。"
+      },
+      "container-query-units-calculator": {
+        "name": "コンテナクエリ単位計算機",
+        "summary": "コンテナクエリ単位を使ったclamp()値を計算し、コンポーネント単位のレスポンシブサイズを実現します。"
+      },
+      "coop-coep-corp-header-builder": {
+        "name": "COOP/COEP/CORP ヘッダービルダー",
+        "summary": "SharedArrayBuffer、WASM、セキュリティ向けのクロスオリジン分離ヘッダーを設定します。"
+      },
+      "cors-header-generator": {
+        "name": "CORS ヘッダージェネレーター",
+        "summary": "任意のオリジン、メソッド、認証情報の設定に対応するCORS HTTPヘッダーを生成します。"
+      },
+      "csp-hash-generator": {
+        "name": "CSP ハッシュジェネレーター",
+        "summary": "インラインスクリプト・スタイル用のCSPハッシュ値を生成します。SHA-256、SHA-384、SHA-512に対応。"
+      },
+      "css-logical-properties-converter": {
+        "name": "CSS論理プロパティコンバーター",
+        "summary": "物理CSSプロパティを論理プロパティに変換し、RTLおよび多言語レイアウトに対応します。"
+      },
+      "css-subgrid-layout-generator": {
+        "name": "CSSサブグリッドレイアウトジェネレーター",
+        "summary": "親グリッドと子サブグリッドのCSSを生成し、トラックの共有アライメントを実現します。"
+      },
+      "declarative-shadow-dom-snippet-generator": {
+        "name": "宣言的Shadow DOMスニペットジェネレーター",
+        "summary": "Scoped CSS、スロット、サーバーレンダリング対応の宣言的Shadow DOM HTMLスニペットを生成します。"
+      },
+      "focus-ring-css-generator": {
+        "name": "フォーカスリングCSSジェネレーター",
+        "summary": "アクセシブルな:focus-visibleのoutlineまたはbox-shadow CSSルールをコントラストチェック付きで生成します。"
+      },
+      "hreflang-sitemap-builder": {
+        "name": "Hreflang サイトマップビルダー",
+        "summary": "多言語ページ向けのhreflang代替リンク付きXMLサイトマップエントリを作成します。"
+      },
+      "html-sanitizer-config-builder": {
+        "name": "HTMLサニタイザー設定ビルダー",
+        "summary": "安全なHTMLレンダリングのためのSanitizer APIおよびDOMPurifyの許可リスト設定を生成します。"
+      },
+      "http-header-parser-explainer": {
+        "name": "HTTPヘッダーパーサー＆解説",
+        "summary": "生のHTTPレスポンスヘッダーを貼り付けると、各ヘッダーをグループ別にわかりやすく解説します。"
+      },
+      "llms-txt-validator": {
+        "name": "llms.txt バリデーター",
+        "summary": "llms.txtファイルを仕様に照らして検証します。H1、ブロック引用、セクション、Markdownリンクをチェック。"
+      },
+      "opensearch-description-generator": {
+        "name": "OpenSearch 記述ジェネレーター",
+        "summary": "ブラウザの検索バー用のOpenSearch記述XMLとHTMLリンクタグを生成します。"
+      },
+      "pwa-maskable-icon-safe-zone-generator": {
+        "name": "PWAマスカブルアイコンセーフゾーンジェネレーター",
+        "summary": "アプリアイコンをアップロードし、PWAマスカブルセーフゾーンをオーバーレイでプレビューします。"
+      },
+      "redirect-map-converter": {
+        "name": "リダイレクトマップコンバーター",
+        "summary": "CSVリダイレクトマップをNetlify、Vercel、Apache、Nginxのリダイレクト形式に変換します。"
+      },
+      "security-txt-generator-validator": {
+        "name": "security.txt ジェネレーター＆バリデーター",
+        "summary": "RFC 9116に準拠したsecurity.txtファイルの生成と検証、ホスティングガイド付き。"
+      },
+      "sri-hash-generator": {
+        "name": "SRI ハッシュジェネレーター",
+        "summary": "SHA-256、SHA-384、SHA-512でスクリプト・スタイルシートファイルのSubresource Integrityハッシュを生成します。"
+      },
+      "touch-target-size-checker": {
+        "name": "タッチターゲットサイズチェッカー",
+        "summary": "WCAG 2.2最小サイズ（2.5.8）に基づいてインタラクティブ要素をチェックし、AA/AAA結果とCSS推奨を表示します。"
+      },
+      "vapid-key-generator": {
+        "name": "VAPID キージェネレーター",
+        "summary": "Web Crypto APIを使用してWebプッシュ通知用のVAPIDキーペアを生成します。"
+      },
+      "web-app-manifest-validator": {
+        "name": "Webアプリマニフェストバリデーター",
+        "summary": "W3C仕様に基づいてWebアプリマニフェストJSONを検証し、インストール可能性チェックリストを表示します。"
+      },
+      "x-robots-tag-header-generator": {
+        "name": "X-Robots-Tag ヘッダージェネレーター",
+        "summary": "PDFや画像などの非HTMLファイル向けのX-Robots-Tag HTTPヘッダーとロボットメタタグを生成します。"
       }
     }
   },
@@ -2851,6 +3247,106 @@
       "html-script-loading-strategy-builder": {
         "name": "HTML Script Laadstrategie Bouwer",
         "summary": "Genereer script tags met de juiste laadstrategie — normal, defer, async of type module."
+      },
+      "ai-crawler-robots-txt-builder": {
+        "name": "AI-crawler robots.txt Builder",
+        "summary": "Bouw robots.txt-regels voor AI-crawlers met open, selectieve of strikte presets."
+      },
+      "aria-live-region-generator": {
+        "name": "ARIA Live Region Generator",
+        "summary": "Genereer toegankelijke ARIA-live-regio's voor schermlezeraankondigingen."
+      },
+      "assetlinks-aasa-generator": {
+        "name": "Assetlinks & AASA Generator",
+        "summary": "Genereer Android assetlinks.json en Apple App Site Association voor deep links."
+      },
+      "cache-control-header-builder": {
+        "name": "Cache-Control Header Builder",
+        "summary": "Bouw correcte Cache-Control HTTP-headers voor statische assets, HTML-pagina's en gevoelige inhoud."
+      },
+      "container-query-units-calculator": {
+        "name": "Container Query Units Calculator",
+        "summary": "Bereken clamp()-waarden met container query units voor componentgebaseerde responsive sizing."
+      },
+      "coop-coep-corp-header-builder": {
+        "name": "COOP/COEP/CORP Header Builder",
+        "summary": "Configureer cross-origin isolatie-headers voor SharedArrayBuffer, WASM en beveiliging."
+      },
+      "cors-header-generator": {
+        "name": "CORS Header Generator",
+        "summary": "Genereer CORS HTTP-headers voor elke origin-, methode- en credential-configuratie."
+      },
+      "csp-hash-generator": {
+        "name": "CSP Hash Generator",
+        "summary": "Genereer CSP-hashwaarden voor inline scripts en styles. Hash exacte code met SHA-256, SHA-384 of SHA-512."
+      },
+      "css-logical-properties-converter": {
+        "name": "CSS Logical Properties Converter",
+        "summary": "Converteer fysieke CSS-eigenschappen naar logische voor RTL- en meertalige layouts."
+      },
+      "css-subgrid-layout-generator": {
+        "name": "CSS Subgrid Layout Generator",
+        "summary": "Genereer parent-grid- en child-subgrid-CSS voor layouts met gedeelde trackuitlijning."
+      },
+      "declarative-shadow-dom-snippet-generator": {
+        "name": "Declarative Shadow DOM Generator",
+        "summary": "Genereer HTML-snippets voor Declarative Shadow DOM met scoped CSS, slots en server-rendering."
+      },
+      "focus-ring-css-generator": {
+        "name": "Focus Ring CSS Generator",
+        "summary": "Genereer toegankelijke :focus-visible outline- of box-shadow-CSS-regels met contrastcontrole."
+      },
+      "hreflang-sitemap-builder": {
+        "name": "Hreflang Sitemap Builder",
+        "summary": "Bouw XML-sitemap-items met hreflang-alternates voor meertalige pagina's."
+      },
+      "html-sanitizer-config-builder": {
+        "name": "HTML Sanitizer Config Builder",
+        "summary": "Bouw Sanitizer API- en DOMPurify-allowlist-configuraties voor veilige HTML-rendering."
+      },
+      "http-header-parser-explainer": {
+        "name": "HTTP Header Parser & Uitlegger",
+        "summary": "Plak ruwe HTTP-response-headers en krijg een gegroepeerde uitleg in begrijpelijke taal van elke header."
+      },
+      "llms-txt-validator": {
+        "name": "llms.txt Validator",
+        "summary": "Valideer llms.txt-bestanden tegen de specificatie op H1, blockquote, secties en Markdown-links."
+      },
+      "opensearch-description-generator": {
+        "name": "OpenSearch Description Generator",
+        "summary": "Genereer een OpenSearch Description XML en HTML-linktag voor de browser-zoekbalk."
+      },
+      "pwa-maskable-icon-safe-zone-generator": {
+        "name": "PWA Maskable Icon Safe Zone Generator",
+        "summary": "Upload een app-icoon en bekijk de PWA-maskable-safe-zone met overlay-preview."
+      },
+      "redirect-map-converter": {
+        "name": "Redirect Map Converter",
+        "summary": "Converteer een CSV-redirecttabel naar Netlify-, Vercel-, Apache- of Nginx-redirectformaten."
+      },
+      "security-txt-generator-validator": {
+        "name": "security.txt Generator & Validator",
+        "summary": "Genereer en valideer security.txt-bestanden volgens RFC 9116 met hostinggids."
+      },
+      "sri-hash-generator": {
+        "name": "SRI Hash Generator",
+        "summary": "Genereer Subresource Integrity-hashes voor script- en stylesheetbestanden met SHA-256, SHA-384 of SHA-512."
+      },
+      "touch-target-size-checker": {
+        "name": "Touch Target Size Checker",
+        "summary": "Controleer interactieve elementen op WCAG 2.2 minimale grootte (2.5.8) met AA/AAA-resultaten en CSS-aanbevelingen."
+      },
+      "vapid-key-generator": {
+        "name": "VAPID Key Generator",
+        "summary": "Genereer een VAPID-sleutelpaar voor Web Push-meldingen met de Web Crypto API."
+      },
+      "web-app-manifest-validator": {
+        "name": "Web App Manifest Validator",
+        "summary": "Valideer een web-app-manifest JSON tegen de W3C-specificatie met installeerbaarheidschecklist."
+      },
+      "x-robots-tag-header-generator": {
+        "name": "X-Robots-Tag Header Generator",
+        "summary": "Genereer X-Robots-Tag HTTP-headers en robots-meta-tags voor niet-HTML-bestanden zoals PDF's en afbeeldingen."
       }
     }
   }
