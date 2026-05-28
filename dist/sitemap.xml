@@ -81,6 +81,10 @@
     <lastmod>2026-05-28</lastmod>
   </url>
   <url>
+    <loc>https://www.jquery.app/de/tools/assetlinks-aasa-generator/</loc>
+    <lastmod>2026-05-28</lastmod>
+  </url>
+  <url>
     <loc>https://www.jquery.app/de/tools/assets/</loc>
     <lastmod>2026-05-28</lastmod>
   </url>
@@ -317,6 +321,10 @@
     <lastmod>2026-05-28</lastmod>
   </url>
   <url>
+    <loc>https://www.jquery.app/de/tools/pwa-maskable-icon-safe-zone-generator/</loc>
+    <lastmod>2026-05-28</lastmod>
+  </url>
+  <url>
     <loc>https://www.jquery.app/de/tools/reading-time-estimator/</loc>
     <lastmod>2026-05-28</lastmod>
   </url>
@@ -385,11 +393,19 @@
     <lastmod>2026-05-28</lastmod>
   </url>
   <url>
+    <loc>https://www.jquery.app/de/tools/vapid-key-generator/</loc>
+    <lastmod>2026-05-28</lastmod>
+  </url>
+  <url>
     <loc>https://www.jquery.app/de/tools/viewport-meta-tag-generator/</loc>
     <lastmod>2026-05-28</lastmod>
   </url>
   <url>
     <loc>https://www.jquery.app/de/tools/web-app-manifest-generator/</loc>
+    <lastmod>2026-05-28</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/de/tools/web-app-manifest-validator/</loc>
     <lastmod>2026-05-28</lastmod>
   </url>
   <url>
@@ -446,6 +462,10 @@
   </url>
   <url>
     <loc>https://www.jquery.app/es/tools/aspect-ratio-placeholder-calculator/</loc>
+    <lastmod>2026-05-28</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/es/tools/assetlinks-aasa-generator/</loc>
     <lastmod>2026-05-28</lastmod>
   </url>
   <url>
@@ -685,6 +705,10 @@
     <lastmod>2026-05-28</lastmod>
   </url>
   <url>
+    <loc>https://www.jquery.app/es/tools/pwa-maskable-icon-safe-zone-generator/</loc>
+    <lastmod>2026-05-28</lastmod>
+  </url>
+  <url>
     <loc>https://www.jquery.app/es/tools/reading-time-estimator/</loc>
     <lastmod>2026-05-28</lastmod>
   </url>
@@ -753,11 +777,19 @@
     <lastmod>2026-05-28</lastmod>
   </url>
   <url>
+    <loc>https://www.jquery.app/es/tools/vapid-key-generator/</loc>
+    <lastmod>2026-05-28</lastmod>
+  </url>
+  <url>
     <loc>https://www.jquery.app/es/tools/viewport-meta-tag-generator/</loc>
     <lastmod>2026-05-28</lastmod>
   </url>
   <url>
     <loc>https://www.jquery.app/es/tools/web-app-manifest-generator/</loc>
+    <lastmod>2026-05-28</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/es/tools/web-app-manifest-validator/</loc>
     <lastmod>2026-05-28</lastmod>
   </url>
   <url>
@@ -814,6 +846,10 @@
   </url>
   <url>
     <loc>https://www.jquery.app/fr/tools/aspect-ratio-placeholder-calculator/</loc>
+    <lastmod>2026-05-28</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/fr/tools/assetlinks-aasa-generator/</loc>
     <lastmod>2026-05-28</lastmod>
   </url>
   <url>
@@ -1053,6 +1089,10 @@
     <lastmod>2026-05-28</lastmod>
   </url>
   <url>
+    <loc>https://www.jquery.app/fr/tools/pwa-maskable-icon-safe-zone-generator/</loc>
+    <lastmod>2026-05-28</lastmod>
+  </url>
+  <url>
     <loc>https://www.jquery.app/fr/tools/reading-time-estimator/</loc>
     <lastmod>2026-05-28</lastmod>
   </url>
@@ -1121,11 +1161,19 @@
     <lastmod>2026-05-28</lastmod>
   </url>
   <url>
+    <loc>https://www.jquery.app/fr/tools/vapid-key-generator/</loc>
+    <lastmod>2026-05-28</lastmod>
+  </url>
+  <url>
     <loc>https://www.jquery.app/fr/tools/viewport-meta-tag-generator/</loc>
     <lastmod>2026-05-28</lastmod>
   </url>
   <url>
     <loc>https://www.jquery.app/fr/tools/web-app-manifest-generator/</loc>
+    <lastmod>2026-05-28</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/fr/tools/web-app-manifest-validator/</loc>
     <lastmod>2026-05-28</lastmod>
   </url>
   <url>
@@ -1182,6 +1230,10 @@
   </url>
   <url>
     <loc>https://www.jquery.app/ja/tools/aspect-ratio-placeholder-calculator/</loc>
+    <lastmod>2026-05-28</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/ja/tools/assetlinks-aasa-generator/</loc>
     <lastmod>2026-05-28</lastmod>
   </url>
   <url>
@@ -1421,6 +1473,10 @@
     <lastmod>2026-05-28</lastmod>
   </url>
   <url>
+    <loc>https://www.jquery.app/ja/tools/pwa-maskable-icon-safe-zone-generator/</loc>
+    <lastmod>2026-05-28</lastmod>
+  </url>
+  <url>
     <loc>https://www.jquery.app/ja/tools/reading-time-estimator/</loc>
     <lastmod>2026-05-28</lastmod>
   </url>
@@ -1489,11 +1545,19 @@
     <lastmod>2026-05-28</lastmod>
   </url>
   <url>
+    <loc>https://www.jquery.app/ja/tools/vapid-key-generator/</loc>
+    <lastmod>2026-05-28</lastmod>
+  </url>
+  <url>
     <loc>https://www.jquery.app/ja/tools/viewport-meta-tag-generator/</loc>
     <lastmod>2026-05-28</lastmod>
   </url>
   <url>
     <loc>https://www.jquery.app/ja/tools/web-app-manifest-generator/</loc>
+    <lastmod>2026-05-28</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/ja/tools/web-app-manifest-validator/</loc>
     <lastmod>2026-05-28</lastmod>
   </url>
   <url>
@@ -1550,6 +1614,10 @@
   </url>
   <url>
     <loc>https://www.jquery.app/nl/tools/aspect-ratio-placeholder-calculator/</loc>
+    <lastmod>2026-05-28</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/nl/tools/assetlinks-aasa-generator/</loc>
     <lastmod>2026-05-28</lastmod>
   </url>
   <url>
@@ -1789,6 +1857,10 @@
     <lastmod>2026-05-28</lastmod>
   </url>
   <url>
+    <loc>https://www.jquery.app/nl/tools/pwa-maskable-icon-safe-zone-generator/</loc>
+    <lastmod>2026-05-28</lastmod>
+  </url>
+  <url>
     <loc>https://www.jquery.app/nl/tools/reading-time-estimator/</loc>
     <lastmod>2026-05-28</lastmod>
   </url>
@@ -1857,11 +1929,19 @@
     <lastmod>2026-05-28</lastmod>
   </url>
   <url>
+    <loc>https://www.jquery.app/nl/tools/vapid-key-generator/</loc>
+    <lastmod>2026-05-28</lastmod>
+  </url>
+  <url>
     <loc>https://www.jquery.app/nl/tools/viewport-meta-tag-generator/</loc>
     <lastmod>2026-05-28</lastmod>
   </url>
   <url>
     <loc>https://www.jquery.app/nl/tools/web-app-manifest-generator/</loc>
+    <lastmod>2026-05-28</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/nl/tools/web-app-manifest-validator/</loc>
     <lastmod>2026-05-28</lastmod>
   </url>
   <url>
@@ -1890,6 +1970,10 @@
   </url>
   <url>
     <loc>https://www.jquery.app/tools/aspect-ratio-placeholder-calculator/</loc>
+    <lastmod>2026-05-28</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/tools/assetlinks-aasa-generator/</loc>
     <lastmod>2026-05-28</lastmod>
   </url>
   <url>
@@ -2129,6 +2213,10 @@
     <lastmod>2026-05-28</lastmod>
   </url>
   <url>
+    <loc>https://www.jquery.app/tools/pwa-maskable-icon-safe-zone-generator/</loc>
+    <lastmod>2026-05-28</lastmod>
+  </url>
+  <url>
     <loc>https://www.jquery.app/tools/reading-time-estimator/</loc>
     <lastmod>2026-05-28</lastmod>
   </url>
@@ -2197,11 +2285,19 @@
     <lastmod>2026-05-28</lastmod>
   </url>
   <url>
+    <loc>https://www.jquery.app/tools/vapid-key-generator/</loc>
+    <lastmod>2026-05-28</lastmod>
+  </url>
+  <url>
     <loc>https://www.jquery.app/tools/viewport-meta-tag-generator/</loc>
     <lastmod>2026-05-28</lastmod>
   </url>
   <url>
     <loc>https://www.jquery.app/tools/web-app-manifest-generator/</loc>
+    <lastmod>2026-05-28</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/tools/web-app-manifest-validator/</loc>
     <lastmod>2026-05-28</lastmod>
   </url>
   <url>

@@ -1,0 +1,155 @@
+import { textarea, htmlEscape } from "../tool-core.js";
+
+const requiredFields = ["name"];
+const recommendedFields = ["short_name", "icons", "start_url", "display", "theme_color", "background_color"];
+const validDisplays = ["standalone", "fullscreen", "minimal-ui", "browser"];
+
+export default {
+  form: `
+    <div class="field-grid">
+      ${textarea({ id: "wamJson", label: "Paste manifest JSON", help: "Paste the full web app manifest JSON to validate against the W3C specification.", value: '{\n  "name": "My App",\n  "short_name": "App",\n  "start_url": "/",\n  "display": "standalone",\n  "icons": [\n    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }\n  ]\n}' })}
+    </div>`,
+  generate(root) {
+    const raw = root.querySelector("#wamJson").value.trim();
+
+    if (!raw) {
+      return { output: "Paste a web app manifest JSON to validate against the W3C specification." };
+    }
+
+    const errors = [];
+    const warnings = [];
+    const info = [];
+    let manifest;
+
+    try {
+      manifest = JSON.parse(raw);
+    } catch (e) {
+      return { output: `Invalid JSON: ${e.message}\n\nFix the JSON syntax before validating manifest fields.` };
+    }
+
+    if (typeof manifest !== "object" || manifest === null || Array.isArray(manifest)) {
+      return { output: "The manifest must be a JSON object, not an array or primitive value." };
+    }
+
+    // Required fields
+    requiredFields.forEach(f => {
+      if (!manifest[f] || (typeof manifest[f] === "string" && !manifest[f].trim())) {
+        errors.push(`Missing required field: "${f}". The manifest must have a name.`);
+      }
+    });
+
+    // Recommended fields
+    recommendedFields.forEach(f => {
+      if (!manifest[f]) {
+        warnings.push(`Missing recommended field: "${f}". This may affect installability.`);
+      }
+    });
+
+    // Name checks
+    if (manifest.name && manifest.name.length > 60) {
+      warnings.push(`"name" is ${manifest.name.length} characters. Keep it under 60 — longer names may be truncated on home screens.`);
+    }
+    if (manifest.short_name && manifest.short_name.length > 12) {
+      warnings.push(`"short_name" is ${manifest.short_name.length} characters. Recommended maximum is 12 — longer names are truncated on most platforms.`);
+    }
+
+    // Display
+    if (manifest.display && !validDisplays.includes(manifest.display)) {
+      errors.push(`Invalid "display" value: "${manifest.display}". Must be one of: ${validDisplays.join(", ")}.`);
+    }
+
+    // Icons
+    if (manifest.icons && Array.isArray(manifest.icons)) {
+      if (manifest.icons.length === 0) {
+        errors.push('The "icons" array is empty. At least one icon (192x192) is required for installability.');
+      } else {
+        const has192 = manifest.icons.some(icon => {
+          const sizes = (icon.sizes || "").toString();
+          return sizes.includes("192x192") || (icon.width === 192 && icon.height === 192);
+        });
+        const has512 = manifest.icons.some(icon => {
+          const sizes = (icon.sizes || "").toString();
+          return sizes.includes("512x512") || (icon.width === 512 && icon.height === 512);
+        });
+        if (!has192) warnings.push('No 192x192 icon found. A 192x192 PNG icon is the minimum required for Android installability.');
+        if (!has512) warnings.push('No 512x512 icon found. A 512x512 PNG is required for the Android PWA install badge.');
+
+        manifest.icons.forEach((icon, i) => {
+          if (!icon.src) errors.push(`Icon[${i}]: missing "src" — every icon must have a source URL.`);
+          if (icon.src && icon.src.startsWith("http")) {
+            warnings.push(`Icon[${i}]: "${icon.src}" is an absolute URL. Use root-relative paths like "/icons/icon.png" unless serving from a CDN.`);
+          }
+          if (icon.purpose && typeof icon.purpose === "string") {
+            const purposes = icon.purpose.split(/\s+/);
+            const invalid = purposes.filter(p => !["any", "maskable", "monochrome"].includes(p));
+            if (invalid.length) warnings.push(`Icon[${i}]: unknown purpose value(s): ${invalid.join(", ")}. Valid values: any, maskable, monochrome.`);
+          }
+        });
+      }
+    }
+
+    // Start URL
+    if (manifest.start_url) {
+      try {
+        const u = new URL(manifest.start_url, "https://example.com");
+        if (u.origin !== "https://example.com" && u.origin !== "null") {
+          warnings.push('"start_url" is an absolute URL pointing to a different origin. The start URL should be on the same origin as the manifest.');
+        }
+      } catch {
+        if (!manifest.start_url.startsWith("/")) {
+          warnings.push(`"start_url" "${manifest.start_url}" should start with "/" to be root-relative.`);
+        }
+      }
+    }
+
+    // Scope
+    if (manifest.scope) {
+      if (!manifest.scope.startsWith("/")) {
+        warnings.push('"scope" should start with "/" to define a path prefix.');
+      }
+      if (manifest.start_url && !manifest.start_url.startsWith(manifest.scope)) {
+        warnings.push(`"start_url" (${manifest.start_url}) is outside the "scope" (${manifest.scope}). The start URL must be within the scope.`);
+      }
+    }
+
+    // Theme / background colors
+    const colorRegex = /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/;
+    if (manifest.theme_color && !colorRegex.test(manifest.theme_color) && manifest.theme_color !== "transparent") {
+      warnings.push(`"theme_color" "${manifest.theme_color}" is not a hex color. Use #RRGGBB format.`);
+    }
+    if (manifest.background_color && !colorRegex.test(manifest.background_color) && manifest.background_color !== "transparent") {
+      warnings.push(`"background_color" "${manifest.background_color}" is not a hex color. Use #RRGGBB format.`);
+    }
+
+    const out = [];
+    out.push("=== Web App Manifest Validation ===");
+    out.push(`Fields found: ${Object.keys(manifest).length}`);
+    out.push("");
+
+    if (errors.length) {
+      out.push(`--- Errors (${errors.length}) ---`);
+      errors.forEach(e => out.push(`  ERROR: ${e}`));
+      out.push("");
+    }
+    if (warnings.length) {
+      out.push(`--- Warnings (${warnings.length}) ---`);
+      warnings.forEach(w => out.push(`  WARN: ${w}`));
+      out.push("");
+    }
+    if (!errors.length && !warnings.length) {
+      out.push("No issues found. The manifest looks valid.", "");
+    }
+
+    out.push(
+      "--- Installability Checklist ---",
+      "1. Manifest is linked: <link rel=\"manifest\" href=\"/site.webmanifest\">",
+      "2. File served with Content-Type: application/manifest+json",
+      "3. At least one 192x192 and one 512x512 PNG icon",
+      "4. name and short_name are set",
+      "5. start_url loads without errors over HTTPS",
+      "6. Service worker registered (required for offline install prompt)"
+    );
+
+    return { output: out.join("\n") };
+  }
+};

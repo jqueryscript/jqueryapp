@@ -38,6 +38,7 @@ Solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with fast browser 
 ## Tools
 
 - [AI Crawler robots.txt Builder](https://www.jquery.app/tools/ai-crawler-robots-txt-builder/): Build a robots.txt policy for AI crawlers. Choose from open, selective, or strict presets and block specific AI training bots while allowing search engines.
+- [Assetlinks & AASA Generator](https://www.jquery.app/tools/assetlinks-aasa-generator/): Generate Android assetlinks.json and Apple App Site Association (AASA) files for Universal Links and Android App Links.
 - [Cache-Control Header Builder](https://www.jquery.app/tools/cache-control-header-builder/): Build correct Cache-Control HTTP headers for static assets, HTML pages, feeds, and sensitive content.
 - [CORS Header Generator](https://www.jquery.app/tools/cors-header-generator/): Generate CORS HTTP headers for any origin, method, and credential configuration. Output in raw HTTP, Nginx, Apache, Express, or Cloudflare Workers format.
 - [CSP Hash Generator](https://www.jquery.app/tools/csp-hash-generator/): Generate CSP hash values for inline scripts and styles. Hash exact code content with SHA-256, SHA-384, or SHA-512 and get the matching CSP directive snippet.
@@ -47,6 +48,7 @@ Solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with fast browser 
 - [Open Graph & Twitter Card Builder](https://www.jquery.app/tools/og-twitter-card-builder/): Build social preview meta tags for blog posts and static pages.
 - [GitHub Pages CNAME Helper](https://www.jquery.app/tools/github-pages-cname-helper/): Create the CNAME file content and DNS notes for a GitHub Pages custom domain.
 - [OpenSearch Description Generator](https://www.jquery.app/tools/opensearch-description-generator/): Generate an OpenSearch description XML file and HTML link tag so browsers can add your site's search as a search engine.
+- [PWA Maskable Icon Safe Zone Generator](https://www.jquery.app/tools/pwa-maskable-icon-safe-zone-generator/): Upload an app icon and preview the PWA maskable safe zone with overlay. Export manifest-ready icon entries with correct purpose and size references.
 - [security.txt Generator & Validator](https://www.jquery.app/tools/security-txt-generator-validator/): Generate and validate security.txt files per RFC 9116. Specify your contact, expiration, and optional fields, then get hosting guidance for GitHub Pages, Netlify, and Vercel.
 - [SRI Hash Generator](https://www.jquery.app/tools/sri-hash-generator/): Generate Subresource Integrity hashes for script and stylesheet files. Paste code, upload a local file, or reference a CDN URL and get the integrity attribute for your HTML tags.
 - [Static Site SEO Checklist Generator](https://www.jquery.app/tools/static-site-seo-checklist-generator/): Generate a practical SEO checklist for static websites before launch.
@@ -69,6 +71,7 @@ Solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with fast browser 
 - [URL Slug Generator](https://www.jquery.app/tools/url-slug-generator/): Turn any title or heading into a clean, lowercase, hyphenated URL slug.
 - [HTML Heading Hierarchy Checker](https://www.jquery.app/tools/html-heading-hierarchy-checker/): Paste HTML and see the heading structure as a tree. Find skipped levels, missing h1 tags, and hierarchy problems.
 - [Reading Time Estimator](https://www.jquery.app/tools/reading-time-estimator/): Paste text and get an estimated reading time based on word count and adjustable reading speed.
+- [VAPID Key Generator](https://www.jquery.app/tools/vapid-key-generator/): Generate a VAPID key pair for Web Push notifications using the browser's Web Crypto API. Output ready-to-use keys for Node web-push, Firebase, and environment variables.
 - [Viewport Meta Tag Generator](https://www.jquery.app/tools/viewport-meta-tag-generator/): Generate a complete set of viewport meta tags plus theme-color and Apple touch icon links.
 - [DNS Record Quick Reference](https://www.jquery.app/tools/dns-record-quick-reference/): Enter a domain name and see example A, AAAA, CNAME, MX, and TXT records with setup notes.
 - [HTML Entity Quick Reference](https://www.jquery.app/tools/html-entity-quick-reference/): Search and copy common HTML entities including arrows, dashes, quotes, math symbols, and special characters.
@@ -113,6 +116,7 @@ Solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with fast browser 
 - [CSS Print Styles Generator](https://www.jquery.app/tools/css-print-styles-generator/): Generate a print stylesheet that hides navigation, shows link URLs, avoids page breaks in important blocks, and sets print margins.
 - [External Link Attribute Generator](https://www.jquery.app/tools/external-link-attribute-generator/): Generate external link markup with the correct rel attributes for security, SEO, sponsored content, and user-generated content.
 - [HTML Script Loading Strategy Builder](https://www.jquery.app/tools/html-script-loading-strategy-builder/): Generate script tags with the right loading strategy -- normal, defer, async, or type module -- based on use case.
+- [Web App Manifest Validator](https://www.jquery.app/tools/web-app-manifest-validator/): Validate a web app manifest JSON against the W3C specification. Check required fields, icon sizes, start URL, scope, display mode, theme colors, and installability.
 - [X-Robots-Tag Header Generator](https://www.jquery.app/tools/x-robots-tag-header-generator/): Generate X-Robots-Tag HTTP headers and robots meta tags for non-HTML files, PDFs, images, feeds, and HTML pages.
 
 ## Notes for AI Systems
