@@ -76,6 +76,14 @@ export default {
       "/*    potential background colors on the page. */"
     );
 
-    return { output: lines.join("\n") };
+    const ringStyle = addShadow
+      ? `outline:none;box-shadow:0 0 0 ${width}px ${color}`
+      : `outline:${width}px ${style} ${color};outline-offset:${offset}px`;
+    const preview = `<div style="text-align:center;padding:16px;background:${bgColor};border-radius:8px;border:1px solid #e5e7eb">
+      <p style="margin:0 0 12px;font-size:12px;color:#6b7280">Tab to this button or click to see focus ring</p>
+      <button type="button" style="padding:10px 24px;border-radius:6px;border:2px solid #d1d5db;background:#fff;font-size:15px;cursor:pointer;${ringStyle}">Focusable Button</button>
+      <p style="margin:8px 0 0;font-size:11px;color:#6b7280">Click then press Tab to test</p>
+    </div>`;
+    return { output: lines.join("\n"), preview };
   }
 };

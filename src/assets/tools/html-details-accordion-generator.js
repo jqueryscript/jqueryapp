@@ -74,6 +74,14 @@ export default {
         modeNote = "Multiple mode: each item opens independently.";
       }
       const output = `<div class="accordion">\n${detailsHtml.replace(/\n/g, "\n  ")}\n</div>${css}\n\n<!-- Notes:\n     - ${modeNote}\n     - No JavaScript required. The <details> element works natively.\n     - For multi-open mode, add open="open" to all items to expand all.\n     - For exclusive mode, clicking an item closes any other open item with the same name. -->`;
-      return { output };
+      const previewItems = items.map((line) => {
+        const [title, ...contentParts] = line.split("|");
+        const content = contentParts.join("|").trim();
+        if (!title || !content) return "";
+        const nameAttr = isExclusive && name ? ` name="${attrEscape(name)}"` : "";
+        return `<details${nameAttr}><summary style="cursor:pointer;padding:10px 14px;font-weight:600;background:#f9fafb;border:1px solid #e5e7eb;border-radius:6px;margin-bottom:4px;user-select:none">${htmlEscape(title.trim())}</summary><div style="padding:12px 14px;border:1px solid #e5e7eb;border-top:none;border-radius:0 0 6px 6px;margin-top:-4px;margin-bottom:8px"><p style="margin:0">${htmlEscape(content)}</p></div></details>`;
+      }).filter(Boolean).join("\n");
+      const preview = `<div style="max-width:100%">${previewItems}</div>`;
+      return { output, preview };
     }
   };

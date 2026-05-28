@@ -124,6 +124,13 @@ export default {
       "/* 5. Scroll-state queries can style items differently when snapped: .item { &:state(snapped) {...} } */"
     );
 
-    return { output: lines.join("\n") };
+    const colors = ["#ef4444","#f59e0b","#22c55e","#3b82f6","#8b5cf6","#ec4899"];
+    const itemCards = Array.from({length: itemCount}, (_,i) =>
+      `<div style="flex:0 0 ${itemWidth};scroll-snap-align:${snapAlign};background:${colors[i%6]};color:#fff;border-radius:12px;min-height:120px;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700">${i+1}</div>`
+    ).join("");
+
+    const preview = `<div style="display:flex;flex-direction:${isHorizontal?'row':'column'};overflow-x:${isHorizontal?'auto':'hidden'};overflow-y:${isHorizontal?'hidden':'auto'};scroll-snap-type:${snap!=='none'?inlineSize+' '+snap:'none'};scroll-behavior:smooth;gap:12px;padding:12px;max-height:${isHorizontal?'180px':'300px'};max-width:100%;border:1px solid #e5e7eb;border-radius:8px;background:#f9fafb" role="region" aria-label="Carousel preview">${itemCards}</div>`;
+
+    return { output: lines.join("\n"), preview };
   }
 };

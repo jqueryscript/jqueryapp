@@ -28,6 +28,14 @@ export default {
       const slope = (maxSize - minSize) / (maxViewport - minViewport);
       const preferred = `${(minSize - slope * minViewport).toFixed(4)}px + ${(slope * 100).toFixed(4)}vw`;
       const clamp = `clamp(${minSize}px, ${preferred}, ${maxSize}px)`;
-      return { output: `${property}: ${clamp};\n\n/* ${minSize}px at ${minViewport}px viewport, ${maxSize}px at ${maxViewport}px viewport */` };
+      const preview = `<div style="border:1px solid #e5e7eb;border-radius:8px;padding:12px;background:#f9fafb;text-align:center">
+        <p style="margin:0 0 8px;font-size:11px;color:#94a3b8">Resize browser to see effect</p>
+        <p style="margin:0;${property}:${clamp}">Responsive ${property} — ${minSize}px ↔ ${maxSize}px</p>
+        <p style="margin:4px 0 0;font-size:11px;color:#94a3b8">Current viewport: <span id="clampVw" style="font-weight:600"></span>px</p>
+      </div>
+      <script>
+      (function(){var p=document.getElementById('clampVw');if(p){var u=function(){p.textContent=window.innerWidth};u();window.addEventListener('resize',u);}})();
+      </script>`;
+      return { output: `${property}: ${clamp};\n\n/* ${minSize}px at ${minViewport}px viewport, ${maxSize}px at ${maxViewport}px viewport */`, preview };
     }
   };

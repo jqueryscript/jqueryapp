@@ -150,6 +150,18 @@ export default {
       );
     }
 
-    return { output: lines.join("\n") };
+    const optionItems = options.map(o => `<option value="${htmlEscape(o.value)}">${htmlEscape(o.label)}</option>`).join("\n");
+    const preview = `<div style="max-width:320px;margin:0 auto">
+      <p style="font-size:12px;color:#6b7280;margin:0 0 4px">Preview (Chrome 135+)</p>
+      <select class="custom-select-preview" style="appearance:base-select;font:inherit;padding:8px 36px 8px 12px;border:1px solid #d1d5db;border-radius:8px;background:#fff;color:#333;cursor:pointer;width:100%">
+        ${optionItems}
+      </select>
+      <style>
+        .custom-select-preview::picker(select){border:1px solid #d1d5db;border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,0.12);padding:4px 0;background:#fff}
+        .custom-select-preview option{padding:8px 12px;cursor:pointer}
+        .custom-select-preview option:hover{background:#f0f4ff}
+      </style>
+    </div>`;
+    return { output: lines.join("\n"), preview };
   }
 };

@@ -114,6 +114,20 @@ export default {
       "/* 5. The command attribute on the target <button> element is the default action. */"
     );
 
-    return { output: lines.join("\n") };
+    let targetPreview = "";
+    if (targetType === "dialog") {
+      targetPreview = `<dialog id="${targetId}-pv" style="padding:1rem;border-radius:8px;border:1px solid #e5e7eb"><p>Dialog content</p><form method="dialog"><button style="padding:6px 16px;border:1px solid #d1d5db;border-radius:4px;cursor:pointer">Close</button></form></dialog>`;
+    } else if (targetType === "popover") {
+      targetPreview = `<div id="${targetId}-pv" popover style="padding:1rem;border:1px solid #e5e7eb;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1)"><p>Popover content</p></div>`;
+    } else if (targetType === "details") {
+      targetPreview = `<details id="${targetId}-pv"><summary>Details summary</summary><p>Disclosed content.</p></details>`;
+    } else {
+      targetPreview = `<div id="${targetId}-pv" style="padding:1rem;border:1px dashed #d1d5db;border-radius:8px;text-align:center;color:#6b7280">Custom target element</div>`;
+    }
+    const preview = `<div style="text-align:center;padding:16px">
+      <button commandfor="${targetId}-pv" command="${command}" style="padding:10px 20px;border:2px solid var(--accent,#2563eb);border-radius:8px;background:var(--accent,#2563eb);color:#fff;font-size:15px;cursor:pointer;font-weight:600">${htmlEscape(buttonText)}</button>
+      ${targetPreview}
+    </div>`;
+    return { output: lines.join("\n"), preview };
   }
 };

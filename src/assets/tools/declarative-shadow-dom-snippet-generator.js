@@ -67,6 +67,16 @@ export default {
       "/* @supports not (selector(template[shadowrootmode])) { .dsd-fallback { display: block !important; } } */"
     );
 
-    return { output: lines.join("\n") };
+    const cssBlock = css ? `<style>${css.split("\n").map(l=>"      "+l).join("\n")}</style>\n    ` : "";
+    const preview = `<div style="padding:16px;background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px">
+      <p style="font-size:12px;color:#6b7280;margin:0 0 8px">Rendered preview (Chrome 90+, Edge 90+, Safari 17+)</p>
+      <${host}>
+        <template shadowrootmode="${mode}">
+          ${cssBlock}${content.split("\n").map(l=>"    "+l).join("\n")}
+        </template>
+        ${includeFallback ? `<div>${htmlEscape(fallbackText)}</div>` : ""}
+      </${host}>
+    </div>`;
+    return { output: lines.join("\n"), preview };
   }
 };

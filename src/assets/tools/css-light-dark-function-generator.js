@@ -43,6 +43,20 @@ export default {
       lines.push("");
       lines.push(`/* Browser support: Chrome 123+, Edge 123+, Safari 17.5+, Firefox 120+ */`);
       lines.push(`/* Fallback: set the light value directly first, override with light-dark(). */`);
-      return { output: lines.join("\n") };
+
+      const preview = `<div style="display:flex;gap:12px;flex-wrap:wrap">
+        <div style="flex:1;min-width:160px;background:${lightBg};color:${lightText};border:1px solid ${lightAccent};border-radius:8px;padding:16px;text-align:center">
+          <div style="font-size:13px;font-weight:600;margin-bottom:8px">☀️ Light</div>
+          <div style="font-size:14px">Text on background</div>
+          <div style="margin-top:8px;padding:6px 12px;background:${lightAccent};border-radius:4px;font-size:12px">Accent area</div>
+        </div>
+        <div style="flex:1;min-width:160px;background:${darkBg};color:${darkText};border:1px solid ${darkAccent};border-radius:8px;padding:16px;text-align:center">
+          <div style="font-size:13px;font-weight:600;margin-bottom:8px">🌙 Dark</div>
+          <div style="font-size:14px">Text on background</div>
+          <div style="margin-top:8px;padding:6px 12px;background:${darkAccent};border-radius:4px;font-size:12px">Accent area</div>
+        </div>
+      </div>`;
+
+      return { output: lines.join("\n"), preview };
     }
   };

@@ -22,6 +22,15 @@ export default {
       const modal = root.querySelector("#dialogModal").checked;
       const autoClose = root.querySelector("#dialogAutoClose").checked;
       const openFn = modal ? "showModal()" : "show()";
+      const preview = `<div style="text-align:center;padding:16px">
+        <button id="${id}-pv" style="padding:10px 20px;border:2px solid var(--accent,#2563eb);border-radius:8px;background:var(--accent,#2563eb);color:#fff;font-size:15px;cursor:pointer;font-weight:600">${htmlEscape(buttonText)}</button>
+        <dialog id="${id}-pv-dlg" style="padding:1.5rem;border:1px solid #e5e7eb;border-radius:8px;max-width:500px;width:90%">
+          <h2 style="margin:0 0 12px">${htmlEscape(title)}</h2>
+          ${content}
+          <form method="dialog"><button style="margin-top:12px;padding:8px 20px;border:1px solid #d1d5db;border-radius:6px;background:#f3f4f6;cursor:pointer">${htmlEscape(closeText)}</button></form>
+        </dialog>
+        <script>(function(){var b=document.getElementById('${id}-pv');var d=document.getElementById('${id}-pv-dlg');if(b&&d){b.addEventListener('click',function(){d.${openFn};});}})();</script>
+      </div>`;
       const autoCloseAttr = autoClose ? ` onclick="if(event.target===this)this.close()"` : "";
       const output = `<button id="${id}-open">${htmlEscape(buttonText)}</button>
 

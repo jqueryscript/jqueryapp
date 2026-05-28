@@ -29,6 +29,10 @@ export default {
       const posCSS = position !== "auto"
         ? `\n  [popover] { position-area: ${position}; }`
         : "";
+      const preview = `<div style="position:relative;text-align:center;padding:16px">
+        <button popovertarget="${attrEscape(id)}" style="padding:10px 20px;border:2px solid var(--accent,#2563eb);border-radius:8px;background:var(--accent,#2563eb);color:#fff;font-size:15px;cursor:pointer;font-weight:600">${htmlEscape(button)}</button>
+        <div id="${attrEscape(id)}" popover${manual} style="padding:1rem;border:1px solid #e5e7eb;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.15);max-width:320px;${position!=='auto'?'position-area:'+position+';':''}">${content}</div>
+      </div>`;
       return { output: `<button popovertarget="${attrEscape(id)}">${htmlEscape(button)}</button>
 
 <div id="${attrEscape(id)}" popover${manual}>

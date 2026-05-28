@@ -56,6 +56,10 @@ ${itemSelector} {
   <div class="${itemName}">Item 3</div>
 </div>
 */`;
-      return { output };
+      const colors = ["#ef4444","#f59e0b","#22c55e","#3b82f6","#8b5cf6"];
+      const previewItems = colors.map((c,i) => `<div style="flex:0 0 200px;scroll-snap-align:${align};${stop==='always'?'scroll-snap-stop:always;':''}background:${c};color:#fff;border-radius:12px;min-height:100px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700">${i+1}</div>`).join("");
+      const ov = direction === "x" ? "overflow-x:auto;overflow-y:hidden" : "overflow-y:auto;overflow-x:hidden";
+      const preview = `<div style="display:flex;flex-direction:${direction==='x'?'row':'column'};${ov};scroll-snap-type:${direction} ${type};scroll-padding:${padding}px;gap:12px;padding:12px;max-width:100%;${direction==='y'?'max-height:240px;':''}border:1px solid #e5e7eb;border-radius:8px;background:#f9fafb">${previewItems}</div>`;
+      return { output, preview };
     }
   };
