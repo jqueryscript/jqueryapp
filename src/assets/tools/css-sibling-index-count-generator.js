@@ -1,0 +1,144 @@
+import { field, select, checkbox, htmlEscape } from "../tool-core.js";
+
+export default {
+  form: `
+    <div class="field-grid">
+      ${select({ id: "siFunction", label: "Function", options: [
+        {label:"sibling-index() — position-based",value:"index"},
+        {label:"sibling-count() — total-based",value:"count"},
+        {label:"Both combined",value:"both"}
+      ], value: "both" })}
+      ${select({ id: "siEffect", label: "Effect type", options: [
+        {label:"Stagger animation delay",value:"stagger"},
+        {label:"Hue rotation (rainbow)",value:"hue"},
+        {label:"Width gradient",value:"width"},
+        {label:"Opacity fade",value:"opacity"},
+        {label:"Z-index layering",value:"zindex"},
+        {label:"Translate offset",value:"translate"}
+      ], value: "stagger" })}
+    </div>
+    <div class="field-grid">
+      ${field({ id: "siCount", label: "Number of items (demo)", type: "number", value: "6" })}
+      ${field({ id: "siSelector", label: "Parent selector", value: ".card-list" })}
+    </div>
+    <div class="field-grid">
+      ${field({ id: "siBase", label: "Base value", value: "0.1s", help: "CSS value: 0.1s, 0deg, 60%, 0.2" })}
+      ${field({ id: "siStep", label: "Step / increment", value: "0.05s", help: "Multiplied by sibling-index()" })}
+    </div>
+    <div class="field-grid">
+      ${field({ id: "siProperty", label: "CSS property", value: "animation-delay" })}
+      ${checkbox({ id: "siNthChild", label: "Include nth-child fallback", checked: true })}
+    </div>`,
+  generate(root) {
+    const func = root.querySelector("#siFunction").value;
+    const effect = root.querySelector("#siEffect").value;
+    const itemCount = parseInt(root.querySelector("#siCount").value) || 6;
+    const selector = root.querySelector("#siSelector").value.trim() || ".card-list";
+    const base = root.querySelector("#siBase").value.trim() || "0.1s";
+    const step = root.querySelector("#siStep").value.trim() || "0.05s";
+    const property = root.querySelector("#siProperty").value.trim() || "animation-delay";
+    const nthFallback = root.querySelector("#siNthChild").checked;
+
+    const lines = [];
+    lines.push("/* sibling-index() / sibling-count() — Chrome 138+ */");
+    lines.push("/* Style elements based on their DOM position among siblings without nth-child hacks. */");
+    lines.push("");
+
+    const useIndex = func === "index" || func === "both";
+    const useCount = func === "count" || func === "both";
+
+    const indexExpr = useIndex ? `calc(${base} + sibling-index() * ${step})` : "";
+    const countExpr = useCount ? `calc(sibling-index() * 360 / sibling-count())` : "";
+
+    let cssValue = "";
+    if (effect === "stagger") {
+      cssValue = useIndex ? indexExpr : `calc(${base} * sibling-index() / sibling-count())`;
+    } else if (effect === "hue") {
+      cssValue = useCount ? countExpr : `calc(sibling-index() * 360 / ${itemCount})`;
+      lines.push("/* Use with hsl() for rainbow color cycling */");
+    } else if (effect === "width") {
+      cssValue = useCount ? `calc(100% / sibling-count())` : `calc(${base} - sibling-index() * ${step})`;
+    } else if (effect === "opacity") {
+      cssValue = useCount ? `calc(1 - sibling-index() * 0.1 / sibling-count())` : `calc(1 - sibling-index() * ${parseFloat(step) || 0.1})`;
+    } else if (effect === "zindex") {
+      cssValue = useCount ? `calc(sibling-count() - sibling-index() + 1)` : `calc(${itemCount} - sibling-index() + 1)`;
+    } else if (effect === "translate") {
+      cssValue = useIndex ? `calc(sibling-index() * ${step})` : `calc(sibling-index() * 100% / sibling-count())`;
+    }
+
+    lines.push(`/* Primary declaration */`);
+    lines.push(`${selector} > * {`);
+    lines.push(`  ${property}: ${cssValue};`);
+    lines.push(`}`);
+    lines.push("");
+
+    // Context-dependent example
+    if (effect === "hue") {
+      lines.push(`${selector} > * {`);
+      lines.push(`  background: hsl(${cssValue}, 70%, 60%);`);
+      lines.push(`}`);
+    }
+    if (effect === "translate") {
+      lines.push(`${selector} > * {`);
+      lines.push(`  translate: 0 ${cssValue};`);
+      lines.push(`}`);
+    }
+
+    if (nthFallback) {
+      lines.push("");
+      lines.push("/* nth-child fallback for browsers without sibling-index()/sibling-count() */");
+      for (let i = 1; i <= Math.min(itemCount, 8); i++) {
+        const fallbackVal = effect === "hue"
+          ? `calc(${(i - 1) * 360 / itemCount}deg)`
+          : `calc(${base} + ${i - 1} * ${step})`;
+        lines.push(`${selector} > *:nth-child(${i}) { ${property}: ${fallbackVal}; }`);
+      }
+      if (itemCount > 8) {
+        lines.push(`/* ... continue for items 9 through ${itemCount} */`);
+      }
+    }
+
+    lines.push("");
+    lines.push("/* Browser support: Chrome 138+, Edge 138+. Firefox and Safari in development. */");
+    lines.push("/* sibling-index() returns 1-based position. sibling-count() returns total sibling count. */");
+    lines.push("/* These work in any CSS property that accepts <number> or <integer> via calc(). */");
+
+    // Preview: colored blocks showing the effect
+    const colors = ["#ef4444","#f59e0b","#22c55e","#3b82f6","#8b5cf6","#ec4899","#14b8a6","#f97316"];
+    const items = Array.from({ length: Math.min(itemCount, 12) }, (_, i) => {
+      let style = "";
+      if (effect === "hue") {
+        const hue = (i * 360 / Math.min(itemCount, 12));
+        style = `background:hsl(${hue},70%,60%);color:#fff`;
+      } else if (effect === "stagger") {
+        style = `background:${colors[i % colors.length]};color:#fff;animation:pulse 0.3s ease both`;
+      } else if (effect === "width") {
+        const pct = 100 - i * (60 / Math.min(itemCount, 12));
+        style = `background:${colors[i % colors.length]};color:#fff;width:${Math.max(pct, 20)}%`;
+      } else if (effect === "opacity") {
+        const op = 1 - i * (0.7 / Math.min(itemCount, 12));
+        style = `background:#3b82f6;color:#fff;opacity:${Math.max(op, 0.15).toFixed(2)}`;
+      } else if (effect === "zindex") {
+        style = `background:${colors[i % colors.length]};color:#fff;margin-left:${i * 4}px`;
+      } else if (effect === "translate") {
+        style = `background:${colors[i % colors.length]};color:#fff;transform:translateY(${i * 8}px)`;
+      }
+      return `<div style="padding:10px 14px;border-radius:6px;font-size:12px;font-weight:600;${style}">Item ${i + 1}</div>`;
+    }).join("");
+
+    const preview = `<div>
+      <div style="font-size:12px;font-weight:600;margin-bottom:8px;color:#374151">
+        ${useIndex ? 'sibling-index()' : ''}${useIndex && useCount ? ' + ' : ''}${useCount ? 'sibling-count()' : ''} → ${property}: ${cssValue}
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px" class="sibling-demo">
+        ${items}
+      </div>
+      <style>
+        @keyframes pulse { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+      </style>
+      <p style="margin:8px 0 0;font-size:11px;color:#6b7280">Each item would calculate its ${property} value from its DOM position. No nth-child rules needed.</p>
+    </div>`;
+
+    return { output: lines.join("\n"), preview };
+  }
+};

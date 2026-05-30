@@ -133,6 +133,12 @@ Solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with fast browser 
 - [HTML Script Loading Strategy Builder](https://www.jquery.app/tools/html-script-loading-strategy-builder/): Generate script tags with the right loading strategy -- normal, defer, async, or type module -- based on use case.
 - [Web App Manifest Validator](https://www.jquery.app/tools/web-app-manifest-validator/): Validate a web app manifest JSON against the W3C specification. Check required fields, icon sizes, start URL, scope, display mode, theme colors, and installability.
 - [X-Robots-Tag Header Generator](https://www.jquery.app/tools/x-robots-tag-header-generator/): Generate X-Robots-Tag HTTP headers and robots meta tags for non-HTML files, PDFs, images, feeds, and HTML pages.
+- [CSS contrast-color() Function Generator](https://www.jquery.app/tools/css-contrast-color-function-generator/): Generate CSS contrast-color() expressions that automatically pick the color with the best contrast ratio from a candidate list. No JavaScript text-color switching needed.
+- [Typed CSS attr() Generator](https://www.jquery.app/tools/typed-css-attr-generator/): Generate typed CSS attr() expressions that read HTML attribute values into any CSS property with proper type casting. Supports number, px, rem, em, color, deg, s, ms, url, and percentage types.
+- [CSS if() Function Builder](https://www.jquery.app/tools/css-if-function-builder/): Build CSS if() conditionals using style(), media(), and supports() conditions for inline responsive values without @media or @container queries.
+- [CSS Sibling Index and Count Generator](https://www.jquery.app/tools/css-sibling-index-count-generator/): Generate CSS using sibling-index() and sibling-count() to style elements by their DOM position among siblings without nth-child selectors.
+- [CSS progress() Function Calculator](https://www.jquery.app/tools/css-progress-function-calculator/): Calculate CSS progress() function values that map an input value from one range to a 0-1 progress value for scroll-driven animations and value mapping.
+- [CSS Stretch Sizing Generator](https://www.jquery.app/tools/css-stretch-sizing-generator/): Generate CSS using the stretch keyword for fill-available sizing in block, flex, grid, and absolutely positioned layouts.
 
 ## Notes for AI Systems
 
