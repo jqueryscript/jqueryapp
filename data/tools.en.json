@@ -324,7 +324,10 @@
                                   "Test the component at different container widths by resizing the parent element (not the viewport) and verifying the property scales correctly.",
                                   "Check browser DevTools Computed panel to confirm the clamp() expression resolves to the expected pixel value at known container widths."
                               ],
-        "updatedAt":  "2026-05-28"
+        "updatedAt":  "2026-05-28",
+        "tags":  [
+                     "responsive"
+                 ]
     },
     {
         "id":  "coop-coep-corp-header-builder",
@@ -582,7 +585,11 @@
                                   "Test the carousel with keyboard navigation: focus the container and use arrow keys to scroll through items.",
                                   "Check that snap points work correctly on touch devices — each swipe should snap to the nearest item."
                               ],
-        "updatedAt":  "2026-05-28"
+        "updatedAt":  "2026-05-28",
+        "tags":  [
+                     "animations",
+                     "layout"
+                 ]
     },
     {
         "id":  "css-scroll-state-query-generator",
@@ -645,7 +652,10 @@
                                   "Scroll the container and verify the styled elements update correctly — snapped items should show the active style, non-snapped items the default.",
                                   "Test with the JavaScript fallback disabled to confirm the CSS-only approach works in Chrome 135+."
                               ],
-        "updatedAt":  "2026-05-28"
+        "updatedAt":  "2026-05-28",
+        "tags":  [
+                     "animations"
+                 ]
     },
     {
         "id":  "css-subgrid-layout-generator",
@@ -711,7 +721,10 @@
                                   "Check the layout in browser DevTools Grid inspector — subgrid tracks should visually align with parent grid tracks.",
                                   "Test in Firefox and Chrome to confirm cross-browser subgrid behavior, as there are subtle differences in implicit track handling."
                               ],
-        "updatedAt":  "2026-05-28"
+        "updatedAt":  "2026-05-28",
+        "tags":  [
+                     "layout"
+                 ]
     },
     {
         "id":  "customizable-select-generator",
@@ -898,7 +911,10 @@
                                   "Tab through the page with the keyboard and confirm each interactive element shows a clearly visible focus indicator.",
                                   "Use a contrast checker tool or browser extension to verify the focus ring color has at least 3:1 contrast against the adjacent background."
                               ],
-        "updatedAt":  "2026-05-28"
+        "updatedAt":  "2026-05-28",
+        "tags":  [
+                     "accessibility"
+                 ]
     },
     {
         "id":  "hreflang-sitemap-builder",
@@ -2162,7 +2178,10 @@
         "verificationSteps":  [
                                   "Inspect the element using browser DevTools and verify the clamp() value resolves to expected pixel values at minimum, mid-range, and maximum viewport widths.",
                                   "Resize the browser window slowly from mobile width to desktop width and confirm the property value transitions smoothly without jumps."
-                              ]
+                              ],
+        "tags":  [
+                     "responsive"
+                 ]
     },
     {
         "id":  "css-safe-area-insets-generator",
@@ -2225,7 +2244,10 @@
         "verificationSteps":  [
                                   "Open the published page on a notched mobile device or in Chrome DevTools with a device like iPhone X or Pixel 6. Confirm fixed elements do not overlap with the notch or home indicator.",
                                   "Set the viewport-fit=cover meta tag in the head and verify the page extends edge to edge while safe-area padding keeps content clear of obstructions."
-                              ]
+                              ],
+        "tags":  [
+                     "responsive"
+                 ]
     },
     {
         "id":  "llms-txt-generator",
@@ -2712,7 +2734,11 @@
         "verificationSteps":  [
                                   "Test the final color pair in a browser by zooming to confirm text is readable at small sizes.",
                                   "Compare the tool result against the WCAG contrast checker in Chrome DevTools Accessibility panel for a second opinion."
-                              ]
+                              ],
+        "tags":  [
+                     "colors",
+                     "accessibility"
+                 ]
     },
     {
         "id":  "css-box-shadow-builder",
@@ -2776,7 +2802,10 @@
         "verificationSteps":  [
                                   "Paste the generated CSS into your actual page and inspect the shadow on the real element with its background and adjacent content.",
                                   "Test the shadow at different element sizes to confirm blur and spread scale as expected."
-                              ]
+                              ],
+        "tags":  [
+                     "effects"
+                 ]
     },
     {
         "id":  "css-flexbox-generator",
@@ -2844,7 +2873,10 @@
         "verificationSteps":  [
                                   "Add the generated container CSS to a page with test child elements and resize the viewport to verify wrap and alignment behavior.",
                                   "Toggle between different flex-direction values to confirm children reflow along the correct axis."
-                              ]
+                              ],
+        "tags":  [
+                     "layout"
+                 ]
     },
     {
         "id":  "css-border-radius-builder",
@@ -2912,7 +2944,10 @@
         "verificationSteps":  [
                                   "Test the generated border-radius on the target element at different sizes and screen widths to confirm corner proportions remain consistent.",
                                   "Inspect the element in DevTools to verify the computed border-radius values match the declaration."
-                              ]
+                              ],
+        "tags":  [
+                     "effects"
+                 ]
     },
     {
         "id":  "touch-target-size-checker",
@@ -2974,7 +3009,10 @@
                                   "Use browser DevTools to inspect the computed width and height of the element in CSS pixels.",
                                   "Verify spacing between adjacent interactive elements using DevTools distance measurement or by inspecting the gap, margin, and padding properties."
                               ],
-        "updatedAt":  "2026-05-28"
+        "updatedAt":  "2026-05-28",
+        "tags":  [
+                     "accessibility"
+                 ]
     },
     {
         "id":  "url-slug-generator",
@@ -3302,7 +3340,10 @@
                                   "Test the transition by navigating between pages or triggering the content update and observing the animation.",
                                   "Verify that prefers-reduced-motion: reduce disables the transition and shows an instant content swap."
                               ],
-        "updatedAt":  "2026-05-28"
+        "updatedAt":  "2026-05-28",
+        "tags":  [
+                     "animations"
+                 ]
     },
     {
         "id":  "viewport-meta-tag-generator",
@@ -3578,7 +3619,10 @@
         "verificationSteps":  [
                                   "Test that a style in a later layer correctly overrides an equivalent style in an earlier layer regardless of specificity differences.",
                                   "Check that unlayered styles do not unexpectedly beat layered styles by ensuring all page styles are assigned to a named layer."
-                              ]
+                              ],
+        "tags":  [
+                     "layout"
+                 ]
     },
     {
         "id":  "css-content-visibility-generator",
@@ -3646,7 +3690,10 @@
         "verificationSteps":  [
                                   "Scroll the page and confirm off-screen sections render in smoothly without scrollbar jumps or visual gaps.",
                                   "Test anchor links or URL hash navigation to sections that use content-visibility to ensure they scroll to the correct position."
-                              ]
+                              ],
+        "tags":  [
+                     "performance"
+                 ]
     },
     {
         "id":  "css-overscroll-behavior-generator",
@@ -3714,7 +3761,10 @@
         "verificationSteps":  [
                                   "Test the behavior on a real mobile device by scrolling past the boundary of the target element and confirming the expected pull-to-refresh or scroll chain behavior.",
                                   "Use Chrome DevTools device mode with touch emulation enabled to approximate mobile overscroll behavior on desktop."
-                              ]
+                              ],
+        "tags":  [
+                     "performance"
+                 ]
     },
     {
         "id":  "html-popover-generator",
@@ -4635,7 +4685,10 @@
         "verificationSteps":  [
                                   "Test the scroll-snap container on a touch device to confirm snapping feels smooth and predictable at different scroll speeds.",
                                   "Verify that all child content is accessible by scrolling and that the snap alignment does not cut off important content at the container edges."
-                              ]
+                              ],
+        "tags":  [
+                     "animations"
+                 ]
     },
     {
         "id":  "container-query-snippet-generator",
@@ -4704,7 +4757,11 @@
                                   "Resize the container element in DevTools and verify that child elements respond to container size changes, not viewport changes.",
                                   "Check fallback styles in unsupported browsers by setting base styles outside the @container block."
                               ],
-        "updatedAt":  "2026-05-25"
+        "updatedAt":  "2026-05-25",
+        "tags":  [
+                     "layout",
+                     "responsive"
+                 ]
     },
     {
         "id":  "aspect-ratio-placeholder-calculator",
@@ -4773,7 +4830,10 @@
         "verificationSteps":  [
                                   "Load the page at different viewport widths and verify the placeholder maintains the correct aspect ratio without layout shift when the image loads.",
                                   "Test on an older browser by temporarily disabling the aspect-ratio property in DevTools and confirming the padding-bottom fallback preserves the ratio."
-                              ]
+                              ],
+        "tags":  [
+                     "responsive"
+                 ]
     },
     {
         "id":  "no-js-redirect-page-generator",
@@ -5246,7 +5306,10 @@
         "verificationSteps":  [
                                   "Load the page on a mobile device or emulator and scroll to confirm the element height adjusts correctly as the browser address bar retracts.",
                                   "Test with the browser UI both expanded and retracted to verify svh and lvh values produce the expected visible area."
-                              ]
+                              ],
+        "tags":  [
+                     "responsive"
+                 ]
     },
     {
         "id":  "css-logical-properties-converter",
@@ -5311,7 +5374,10 @@
         "verificationSteps":  [
                                   "Apply the converted properties to a page and switch the direction attribute from ltr to rtl on the html element to verify the layout flips correctly.",
                                   "Test the page in both LTR and RTL modes to confirm spacing, borders, and alignment behave as expected in each direction."
-                              ]
+                              ],
+        "tags":  [
+                     "layout"
+                 ]
     },
     {
         "id":  "fetch-priority-attribute-generator",
@@ -5801,7 +5867,10 @@
                                   "Test the positioned element in Chrome and verify it tracks the anchor element correctly on scroll and resize.",
                                   "Provide a JavaScript-based fallback for unsupported browsers, such as using getBoundingClientRect() to position the element."
                               ],
-        "updatedAt":  "2026-05-25"
+        "updatedAt":  "2026-05-25",
+        "tags":  [
+                     "layout"
+                 ]
     },
     {
         "id":  "scroll-driven-animation-generator",
@@ -5870,7 +5939,10 @@
                                   "Test the animation in Chrome and verify the element animates smoothly as the page scrolls.",
                                   "Check the animation in Firefox and Safari to confirm it degrades gracefully without breaking page layout or functionality."
                               ],
-        "updatedAt":  "2026-05-25"
+        "updatedAt":  "2026-05-25",
+        "tags":  [
+                     "animations"
+                 ]
     },
     {
         "id":  "discrete-transition-generator",
@@ -5939,7 +6011,10 @@
                                   "Test the entry and exit transitions in Chrome or Safari and verify the animation plays in both directions.",
                                   "Check the browser console for any CSS transition warnings related to discrete properties."
                               ],
-        "updatedAt":  "2026-05-25"
+        "updatedAt":  "2026-05-25",
+        "tags":  [
+                     "animations"
+                 ]
     },
     {
         "id":  "css-light-dark-function-generator",
@@ -6008,7 +6083,10 @@
                                   "Toggle the page between light and dark mode using DevTools Rendering or the OS setting and verify colors switch correctly.",
                                   "Test in a browser that does not support light-dark() to confirm the fallback color is applied."
                               ],
-        "updatedAt":  "2026-05-25"
+        "updatedAt":  "2026-05-25",
+        "tags":  [
+                     "colors"
+                 ]
     },
     {
         "id":  "html-details-accordion-generator",
@@ -6146,7 +6224,10 @@
                                   "Inspect the element in DevTools Styles panel and verify the computed color value matches the expected mix of the two inputs.",
                                   "Test the fallback color declaration in a browser that does not support color-mix(), such as an older Chrome or Firefox version."
                               ],
-        "updatedAt":  "2026-05-25"
+        "updatedAt":  "2026-05-25",
+        "tags":  [
+                     "colors"
+                 ]
     },
     {
         "id":  "css-relative-color-syntax-generator",
@@ -6214,7 +6295,10 @@
         "verificationSteps":  [
                                   "Test the generated CSS in Chrome DevTools Styles panel to confirm the color resolves to the expected computed value.",
                                   "Verify a static fallback color is declared before the relative color syntax for browsers that do not support the feature."
-                              ]
+                              ],
+        "tags":  [
+                     "colors"
+                 ]
     },
     {
         "id":  "css-print-styles-generator",
@@ -6282,7 +6366,10 @@
         "verificationSteps":  [
                                   "Use print preview in Chrome, Firefox, and Safari to verify the page prints without navigation, with expanded link URLs, and with appropriate page breaks.",
                                   "Save the page as PDF from each browser and compare the output for consistency in margins, font sizes, and page break placement."
-                              ]
+                              ],
+        "tags":  [
+                     "performance"
+                 ]
     },
     {
         "id":  "external-link-attribute-generator",
@@ -6660,7 +6747,10 @@
                                   "Test the contrast-color() expression with multiple background colors by changing the background value in DevTools Styles panel and observing the color value resolve to the expected candidate.",
                                   "Inspect the computed color value in Chrome DevTools to confirm contrast-color() resolves correctly, then test with the browser DevTools color contrast checker to verify the WCAG ratio meets your accessibility target."
                               ],
-        "updatedAt":  "2026-05-30"
+        "updatedAt":  "2026-05-30",
+        "tags":  [
+                     "colors"
+                 ]
     },
     {
         "id":  "typed-css-attr-generator",
@@ -6730,7 +6820,10 @@
                                   "Open Chrome DevTools, inspect an element with the typed attr() declaration, and verify the computed style shows the expected resolved value derived from the HTML attribute, not the fallback.",
                                   "Change the data-* attribute value using the DevTools Element panel and confirm the rendered style updates in real time without a page reload or JavaScript intervention."
                               ],
-        "updatedAt":  "2026-05-30"
+        "updatedAt":  "2026-05-30",
+        "tags":  [
+                     "effects"
+                 ]
     },
     {
         "id":  "css-if-function-builder",
@@ -6800,7 +6893,10 @@
                                   "Open Chrome DevTools and inspect the element with the if() declaration. Verify the computed value changes when the condition variable or media feature changes.",
                                   "Test the page in a non-supporting browser (Firefox or Safari) to confirm the else value or fallback declaration applies correctly without breaking the layout."
                               ],
-        "updatedAt":  "2026-05-30"
+        "updatedAt":  "2026-05-30",
+        "tags":  [
+                     "layout"
+                 ]
     },
     {
         "id":  "css-sibling-index-count-generator",
@@ -6866,7 +6962,10 @@
                                   "Inspect a styled sibling element in Chrome DevTools and verify the computed value of the property using sibling-index() or sibling-count() matches the expected position and count.",
                                   "Add or remove sibling elements dynamically and confirm the styles update to reflect the new positions and total count without any code changes."
                               ],
-        "updatedAt":  "2026-05-30"
+        "updatedAt":  "2026-05-30",
+        "tags":  [
+                     "effects"
+                 ]
     },
     {
         "id":  "css-progress-function-calculator",
@@ -6932,7 +7031,10 @@
                                   "Inspect the element in DevTools and confirm the computed value of the target property matches the expected value at known input positions (e.g., scroll exactly 200px and check opacity is 0.5 for a 0-to-400 range).",
                                   "Test the edge cases: verify the property value at the minimum and maximum input range boundaries, and test with an input value beyond the range to confirm clamp() behavior if wrapping is enabled."
                               ],
-        "updatedAt":  "2026-05-30"
+        "updatedAt":  "2026-05-30",
+        "tags":  [
+                     "animations"
+                 ]
     },
     {
         "id":  "css-stretch-sizing-generator",
@@ -6998,6 +7100,10 @@
                                   "Inspect the element in DevTools and verify the computed width or height matches the expected fill-available size — the element should not overflow its container even with padding and border applied.",
                                   "Resize the viewport or container and confirm the element stretches to fill the available space at all sizes. Compare side by side with a width: 100% reference to see the difference at narrow viewports."
                               ],
-        "updatedAt":  "2026-05-30"
+        "updatedAt":  "2026-05-30",
+        "tags":  [
+                     "layout",
+                     "responsive"
+                 ]
     }
 ]

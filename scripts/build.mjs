@@ -296,7 +296,8 @@ function hero({ eyebrow, title, description, actions = "" }) {
 
 function toolCard(tool, locale) {
   const keywords = (tool.keywords || []).join(" ");
-  return `<article class="tool-card" data-tool-name="${attr(tool.name)}" data-category="${attr(tool.category)}" data-category-label="${attr(titleCase(tool.category))}" data-keywords="${attr(keywords)}">
+  const tags = (tool.tags || []).join(" ");
+  return `<article class="tool-card" data-tool-name="${attr(tool.name)}" data-category="${attr(tool.category)}" data-category-label="${attr(titleCase(tool.category))}" data-keywords="${attr(keywords)}"${tags ? ` data-tags="${attr(tags)}"` : ""}>
   <div>
     <p class="card-kicker">${escapeHtml(titleCase(tool.category))}</p>
     <h2><a href="${urlFor(locale, `tools/${tool.id}`)}">${escapeHtml(tool.name)}</a></h2>
@@ -609,7 +610,8 @@ function categoryPage(locale, category, details, tools, allTools) {
       { name: details.name, pathname: `tools/${category}` }
     ])),
     jsonLd(itemListSchema(locale, details.name, tools)),
-    faqSchema ? jsonLd(faqSchema) : ""
+    faqSchema ? jsonLd(faqSchema) : "",
+    `<script src="/assets/category-filter.js" defer></script>`
   ].filter(Boolean).join("");
   const body = `<section class="page-hero">
   <div class="wrap narrow">
@@ -1129,6 +1131,7 @@ async function copyAssets() {
   await copyFile(path.join(assetsDir, "styles.css"), path.join(target, "styles.css"));
   await copyFile(path.join(assetsDir, "tool-core.js"), path.join(target, "tool-core.js"));
   await copyFile(path.join(assetsDir, "tool-directory-filter.js"), path.join(target, "tool-directory-filter.js"));
+  await copyFile(path.join(assetsDir, "category-filter.js"), path.join(target, "category-filter.js"));
   // Copy per-tool modules
   const toolsSrcDir = path.join(assetsDir, "tools");
   const toolsDstDir = path.join(target, "tools");
