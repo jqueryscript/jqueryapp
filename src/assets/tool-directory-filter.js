@@ -1,8 +1,8 @@
 // Lightweight client-side filter for /tools/ directory
 // Progressive enhancement: all tools visible without JS
 (function () {
-  const grid = document.querySelector(".tool-grid");
-  const cards = grid ? [...grid.querySelectorAll(".tool-card")] : [];
+  const allGrids = document.querySelectorAll(".tool-grid");
+  const cards = [...allGrids].flatMap(g => [...g.querySelectorAll(".tool-card")]);
   if (!cards.length) return;
 
   // Build search + filter UI
@@ -13,7 +13,8 @@
     <div class="filter-chips" id="filter-chips"></div>
   `;
 
-  const parent = grid.parentNode;
+  const firstGrid = allGrids[0];
+  const parent = firstGrid.parentNode;
   // On main tools page, grid is inside .tool-group. Insert filter at top of .wrap before all groups.
   // On category pages, grid is direct child of .wrap. Insert after .section-heading.
   const toolGroup = parent.closest(".tool-group");
@@ -25,14 +26,14 @@
     if (heading) {
       heading.after(container);
     } else {
-      parent.insertBefore(container, grid);
+      parent.insertBefore(container, firstGrid);
     }
   }
 
   const searchInput = container.querySelector("#tool-search");
   const chipsContainer = container.querySelector("#filter-chips");
 
-  // Collect unique categories
+  // Collect unique categories from ALL cards
   const categories = [...new Set(cards.map(c => c.dataset.category).filter(Boolean))].sort();
   const categoryNames = {};
   categories.forEach(cat => {
@@ -61,7 +62,7 @@
   }
   renderChips();
 
-  // Filter logic
+  // Filter logic — also show/hide tool-group headings on main page
   function filterCards() {
     const query = searchInput.value.toLowerCase().trim();
     let visible = 0;
@@ -74,6 +75,12 @@
       const show = catMatch && searchMatch;
       card.style.display = show ? "" : "none";
       if (show) visible++;
+    });
+
+    // On main tools page, hide empty tool-group sections
+    document.querySelectorAll(".tool-group").forEach(group => {
+      const visibleCards = [...group.querySelectorAll(".tool-card")].filter(c => c.style.display !== "none");
+      group.style.display = visibleCards.length ? "" : "none";
     });
 
     // Update result count

@@ -873,7 +873,6 @@ button {
 
 .filter-search {
   width: 100%;
-  max-width: 420px;
   padding: 10px 14px;
   border: 1px solid var(--border, #d1d5db);
   border-radius: 8px;
@@ -881,6 +880,7 @@ button {
   font-size: 15px;
   background: #fff;
   margin-bottom: 10px;
+  box-sizing: border-box;
 }
 
 .filter-search:focus {

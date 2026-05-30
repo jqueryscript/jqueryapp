@@ -16,13 +16,14 @@
     <div class="filter-chips" id="cat-chips"></div>
   `;
 
-  const parent = grid.parentNode;
-  const heading = parent.querySelector(".section-heading");
-  if (heading) {
-    heading.after(container);
-  } else {
-    parent.insertBefore(container, grid);
-  }
+  // Wrap in a .wrap div so the filter aligns with other page content
+  const filterWrap = document.createElement("div");
+  filterWrap.className = "wrap";
+  filterWrap.appendChild(container);
+
+  // Insert as a sibling of the grid's .wrap parent (before the grid)
+  const gridWrap = grid.parentNode; // .wrap.tool-grid
+  gridWrap.parentNode.insertBefore(filterWrap, gridWrap);
 
   const searchInput = container.querySelector("#cat-search");
   const chipsContainer = container.querySelector("#cat-chips");
