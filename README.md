@@ -2,7 +2,7 @@
 
 **Solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with fast browser tools. No uploads, accounts, or AI token costs.**
 
-> You might not need AI for every web task. jquery.app provides 96 small browser tools
+> You might not need AI for every web task. jquery.app provides 102 small browser tools
 > that solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with deterministic
 > output — no uploads, accounts, or AI token costs.
 
@@ -69,7 +69,7 @@
 - [Declarative Shadow DOM Generator](https://www.jquery.app/tools/declarative-shadow-dom-snippet-generator/) — Generate HTML snippets for Declarative Shadow DOM with scoped CSS and slots.
 - [ARIA Live Region Generator](https://www.jquery.app/tools/aria-live-region-generator/) — Generate accessible ARIA live regions for screen reader announcements.
 
-### CSS Tools (28)
+### CSS Tools (34)
 
 - [CSS Clamp Calculator](https://www.jquery.app/tools/css-clamp-calculator/) — Calculate responsive CSS clamp values for font sizes and spacing.
 - [CSS Safe Area Insets Generator](https://www.jquery.app/tools/css-safe-area-insets-generator/) — Generate CSS for safe-area insets on phones with notches and rounded corners.
@@ -99,6 +99,12 @@
 - [CSS Print Styles Generator](https://www.jquery.app/tools/css-print-styles-generator/) — Generate a print stylesheet that hides nav and formats links.
 - [Focus Ring CSS Generator](https://www.jquery.app/tools/focus-ring-css-generator/) — Generate accessible :focus-visible focus ring CSS with contrast check.
 - [Touch Target Size Checker](https://www.jquery.app/tools/touch-target-size-checker/) — Check interactive elements against WCAG 2.2 target size requirements.
+- [CSS contrast-color() Function Generator](https://www.jquery.app/tools/css-contrast-color-function-generator/) — Generate contrast-color() CSS that auto-selects the most readable text color.
+- [Typed CSS attr() Generator](https://www.jquery.app/tools/typed-css-attr-generator/) — Generate typed attr() expressions with type casting for data-attribute-driven CSS.
+- [CSS if() Function Builder](https://www.jquery.app/tools/css-if-function-builder/) — Build CSS if() conditionals using style(), media(), and supports() for inline responsive values.
+- [CSS Sibling Index & Count Generator](https://www.jquery.app/tools/css-sibling-index-count-generator/) — Generate CSS with sibling-index()/sibling-count() for position-aware styling.
+- [CSS progress() Function Calculator](https://www.jquery.app/tools/css-progress-function-calculator/) — Calculate progress() values for scroll-driven animations and value mapping.
+- [CSS Stretch Sizing Generator](https://www.jquery.app/tools/css-stretch-sizing-generator/) — Generate CSS with the stretch keyword for fill-available sizing.
 
 ### GitHub Pages Tools (12)
 
@@ -127,7 +133,7 @@
 
 ## Privacy & Data
 
-All 96 tools run entirely in your browser. No inputs are uploaded, no accounts are required,
+All 102 tools run entirely in your browser. No inputs are uploaded, no accounts are required,
 and no server-side processing happens. Each tool gives you output you can inspect,
 copy, and use right away.
 
