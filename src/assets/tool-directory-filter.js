@@ -9,19 +9,24 @@
   const container = document.createElement("div");
   container.className = "tool-filters";
   container.innerHTML = `
-    <div class="filter-row">
-      <input type="search" id="tool-search" class="filter-search" placeholder="Search 67 tools..." autocomplete="off">
-      <div class="filter-chips" id="filter-chips"></div>
-    </div>
+    <input type="search" id="tool-search" class="filter-search" placeholder="Search tools..." autocomplete="off">
+    <div class="filter-chips" id="filter-chips"></div>
   `;
 
   const parent = grid.parentNode;
-  // Find the section heading to insert after
-  const heading = parent.querySelector(".section-heading");
-  if (heading) {
-    heading.after(container);
+  // On main tools page, grid is inside .tool-group. Insert filter at top of .wrap before all groups.
+  // On category pages, grid is direct child of .wrap. Insert after .section-heading.
+  const toolGroup = parent.closest(".tool-group");
+  if (toolGroup) {
+    const wrap = toolGroup.parentNode;
+    wrap.insertBefore(container, wrap.firstChild);
   } else {
-    parent.insertBefore(container, grid);
+    const heading = parent.querySelector(".section-heading");
+    if (heading) {
+      heading.after(container);
+    } else {
+      parent.insertBefore(container, grid);
+    }
   }
 
   const searchInput = container.querySelector("#tool-search");

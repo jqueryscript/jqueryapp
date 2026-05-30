@@ -871,22 +871,16 @@ button {
   margin-bottom: 20px;
 }
 
-.filter-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-items: center;
-}
-
 .filter-search {
-  flex: 1 1 240px;
-  min-width: 0;
+  width: 100%;
+  max-width: 420px;
   padding: 10px 14px;
   border: 1px solid var(--border, #d1d5db);
   border-radius: 8px;
   font: inherit;
   font-size: 15px;
   background: #fff;
+  margin-bottom: 10px;
 }
 
 .filter-search:focus {

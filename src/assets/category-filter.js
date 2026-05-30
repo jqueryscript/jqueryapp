@@ -12,10 +12,8 @@
   container.className = "tool-filters";
   const toolCount = taggedCards.length;
   container.innerHTML = `
-    <div class="filter-row">
-      <input type="search" id="cat-search" class="filter-search" placeholder="Search ${toolCount} tools..." autocomplete="off">
-      <div class="filter-chips" id="cat-chips"></div>
-    </div>
+    <input type="search" id="cat-search" class="filter-search" placeholder="Search ${toolCount} tools..." autocomplete="off">
+    <div class="filter-chips" id="cat-chips"></div>
   `;
 
   const parent = grid.parentNode;
