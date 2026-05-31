@@ -1,0 +1,111 @@
+import { field, textarea, select, checkbox, htmlEscape } from "../tool-core.js";
+
+export default {
+  form: `
+    <div class="field-grid">
+      ${select({ id: "naMode", label: "Navigation mode", options: [
+        {label:"SPA (single-page app)",value:"spa"},
+        {label:"MPA with interception",value:"mpa"}
+      ], value: "spa" })}
+      ${select({ id: "naTransition", label: "Transition handling", options: [
+        {label:"Intercept all navigations",value:"all"},
+        {label:"Same-origin only",value:"same-origin"},
+        {label:"Custom URL pattern",value:"custom"}
+      ], value: "same-origin" })}
+    </div>
+    <div class="field-grid">
+      ${field({ id: "naRoutes", label: "Route paths (one per line)", value: "/\n/products\n/products/:id\n/about", full: true, attrs: 'style="height:80px"' })}
+      ${textarea({ id: "naHandler", label: "Navigate handler body", value: "// Update the DOM based on the new URL\n// Access navigation.destination.url for the target URL", full: true })}
+    </div>
+    <div class="field-grid">
+      ${checkbox({ id: "naScroll", label: "Restore scroll position", checked: true })}
+      ${checkbox({ id: "naInfo", label: "Use navigateEvent info for transition", checked: false })}
+    </div>
+    <div class="field-grid">
+      ${field({ id: "naFallback", label: "Selector for link interception", value: "a[href^='/']" })}
+    </div>`,
+  generate(root) {
+    const mode = root.querySelector("#naMode").value;
+    const transition = root.querySelector("#naTransition").value;
+    const routes = root.querySelector("#naRoutes").value.trim();
+    const handler = root.querySelector("#naHandler").value.trim();
+    const scroll = root.querySelector("#naScroll").checked;
+    const useInfo = root.querySelector("#naInfo").checked;
+    const fallback = root.querySelector("#naFallback").value.trim() || "a[href^='/']";
+
+    const routeLines = routes ? routes.split("\n").filter(Boolean).map(r => `  '${r.trim()}'`) : ["  '/'"]
+
+    const lines = [];
+    lines.push("// Navigation API Router — Baseline 2026");
+    lines.push("// Replaces History API for client-side routing in SPAs and MPAs.");
+    lines.push(`// Browser support: Chrome 102+, Edge 102+, Safari 16.4+, Firefox 131+`);
+    lines.push("");
+    lines.push("// Route definitions");
+    lines.push("const routes = [");
+    lines.push(routeLines.join(",\n"));
+    lines.push("];");
+    lines.push("");
+    lines.push("// Navigation handler");
+    lines.push("navigation.addEventListener('navigate', (event) => {");
+
+    if (transition === "same-origin") {
+      lines.push("  // Only intercept same-origin navigations");
+      lines.push("  if (!event.sameOrigin) return;");
+    } else if (transition === "custom") {
+      lines.push("  // Match against defined routes");
+      lines.push("  const url = new URL(event.destination.url);");
+      lines.push("  const match = routes.some(route => url.pathname.startsWith(route));");
+      lines.push("  if (!match) return;");
+    }
+
+    lines.push("");
+    if (useInfo) {
+      lines.push("  // Use transition info for smooth page transitions");
+      lines.push("  const info = event.info || {};");
+      lines.push("  const transitionType = event.navigationType; // 'push', 'replace', 'reload', 'traverse'");
+    }
+
+    if (handler) {
+      lines.push(`  event.intercept({`);
+      lines.push(`    handler: async () => {`);
+      lines.push(`      ${handler.replace(/\n/g, "\n      ")}`);
+      lines.push(`    }`);
+      lines.push(`  });`);
+    } else {
+      lines.push("  event.intercept({");
+      lines.push("    handler: async () => {");
+      lines.push("      // Fetch new content and update DOM");
+      lines.push("      const response = await fetch(event.destination.url);");
+      lines.push("      const html = await response.text();");
+      lines.push("      const doc = new DOMParser().parseFromString(html, 'text/html');");
+      lines.push("      document.querySelector('#content').replaceWith(");
+      lines.push("        doc.querySelector('#content'));");
+      if (scroll) lines.push("      // Scroll position is automatically restored for traverse navigations");
+      lines.push("    }");
+      lines.push("  });");
+    }
+
+    lines.push("});");
+    lines.push("");
+
+    if (mode === "spa") {
+      lines.push("// Progressive enhancement: intercept link clicks");
+      lines.push(`document.addEventListener('click', (event) => {`);
+      lines.push(`  const link = event.target.closest('${fallback}');`);
+      lines.push("  if (!link) return;");
+      lines.push("  event.preventDefault();");
+      lines.push("  navigation.navigate(link.href);");
+      lines.push("});");
+    }
+
+    lines.push("");
+    lines.push("// Notes:");
+    lines.push("// 1. navigation.navigate(url, { state, info }) — push a new entry");
+    lines.push("// 2. navigation.reload({ state, info }) — reload the current entry");
+    lines.push("// 3. navigation.traverseTo(key, { info }) — traverse to a specific entry");
+    lines.push("// 4. navigation.back() / navigation.forward() — navigate history");
+    lines.push("// 5. For cross-document view transitions, add a <meta name='view-transition'> tag");
+
+    return { output: lines.join("\n"), preview: "" };
+  }
+};

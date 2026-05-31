@@ -2,7 +2,7 @@
 
 **Solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with fast browser tools. No uploads, accounts, or AI token costs.**
 
-> You might not need AI for every web task. jquery.app provides 102 small browser tools
+> You might not need AI for every web task. jquery.app provides 107 small browser tools
 > that solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with deterministic
 > output — no uploads, accounts, or AI token costs.
 
@@ -10,7 +10,7 @@
 
 ---
 
-## 96 Browser Tools
+## 107 Browser Tools
 
 ### SEO Tools (22)
 
@@ -37,7 +37,7 @@
 - [Referrer Policy Tag Generator](https://www.jquery.app/tools/referrer-policy-tag-generator/) — Generate a Referrer-Policy header or meta tag.
 - [OpenSearch Description Generator](https://www.jquery.app/tools/opensearch-description-generator/) — Generate OpenSearch XML and HTML link tag for browser search integration.
 
-### HTML Tools (29)
+### HTML Tools (33)
 
 - [HTML Link Rel Generator](https://www.jquery.app/tools/html-link-rel-generator/) — Generate link tags for preload, preconnect, dns-prefetch, canonical, and alternate URLs.
 - [Favicon HTML Tag Generator](https://www.jquery.app/tools/favicon-html-tag-generator/) — Generate favicon and web app icon tags for static websites.
@@ -68,6 +68,10 @@
 - [HTML Sanitizer Config Builder](https://www.jquery.app/tools/html-sanitizer-config-builder/) — Generate Sanitizer API and DOMPurify allowlist configurations.
 - [Declarative Shadow DOM Generator](https://www.jquery.app/tools/declarative-shadow-dom-snippet-generator/) — Generate HTML snippets for Declarative Shadow DOM with scoped CSS and slots.
 - [ARIA Live Region Generator](https://www.jquery.app/tools/aria-live-region-generator/) — Generate accessible ARIA live regions for screen reader announcements.
+- [Navigation API Router Snippet Generator](https://www.jquery.app/tools/navigation-api-router-snippet-generator/) — Generate JavaScript routing snippets with the Navigation API for SPAs.
+- [Service Worker Module Template Generator](https://www.jquery.app/tools/service-worker-module-template-generator/) — Generate ES module service worker templates with cache strategies and offline fallback.
+- [Trusted Types Policy Generator](https://www.jquery.app/tools/trusted-types-policy-generator/) — Generate Trusted Types policies and CSP headers to prevent DOM-based XSS.
+- [URLPattern Tester](https://www.jquery.app/tools/urlpattern-tester/) — Test URL patterns with named groups, wildcards, and regex matching using the URLPattern API.
 
 ### CSS Tools (34)
 
@@ -106,7 +110,7 @@
 - [CSS progress() Function Calculator](https://www.jquery.app/tools/css-progress-function-calculator/) — Calculate progress() values for scroll-driven animations and value mapping.
 - [CSS Stretch Sizing Generator](https://www.jquery.app/tools/css-stretch-sizing-generator/) — Generate CSS with the stretch keyword for fill-available sizing.
 
-### GitHub Pages Tools (12)
+### GitHub Pages Tools (13)
 
 - [GitHub Pages CNAME Helper](https://www.jquery.app/tools/github-pages-cname-helper/) — Create CNAME file content and DNS notes for a custom domain.
 - [GitHub Pages SPA 404 Helper](https://www.jquery.app/tools/github-pages-spa-404-helper/) — Generate a 404.html fallback for single-page apps on GitHub Pages.
@@ -120,6 +124,7 @@
 - [VAPID Key Generator](https://www.jquery.app/tools/vapid-key-generator/) — Generate VAPID key pair for Web Push notifications.
 - [Redirect Map Converter](https://www.jquery.app/tools/redirect-map-converter/) — Convert CSV redirect maps to Netlify, Vercel, Apache, or Nginx format.
 - [HTTP Header Parser & Explainer](https://www.jquery.app/tools/http-header-parser-explainer/) — Paste raw HTTP headers and get grouped plain-English explanations.
+- [Reporting API Header Generator](https://www.jquery.app/tools/reporting-api-header-generator/) — Generate Report-To and Reporting-Endpoints headers for browser reports and CSP violations.
 
 ### Image & Asset Tools (5)
 
@@ -133,7 +138,7 @@
 
 ## Privacy & Data
 
-All 102 tools run entirely in your browser. No inputs are uploaded, no accounts are required,
+All 107 tools run entirely in your browser. No inputs are uploaded, no accounts are required,
 and no server-side processing happens. Each tool gives you output you can inspect,
 copy, and use right away.
 

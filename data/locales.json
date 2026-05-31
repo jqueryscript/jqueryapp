@@ -783,7 +783,27 @@
                              "css-contrast-color-function-generator":  {
                                                                            "name":  "CSS contrast-color()-Funktionsgenerator",
                                                                            "summary":  "Generieren Sie contrast-color()-CSS-Funktionen, die automatisch die am besten lesbare Textfarbe aus einer Liste auswählen."
-                                                                       }
+                                                                       },
+                             "service-worker-module-template-generator":  {
+                                                                              "name":  "Service Worker Modul-Template Generator",
+                                                                              "summary":  "Generieren Sie ES-Modul-Service-Worker-Templates mit Cache-Strategien, Precache-Liste und Offline-Unterstutzung."
+                                                                          },
+                             "reporting-api-header-generator":  {
+                                                                    "name":  "Reporting API Header Generator",
+                                                                    "summary":  "Generieren Sie Report-To- und Reporting-Endpoints-HTTP-Header fur Browser-Berichte, CSP-Verstoße und Network Error Logging."
+                                                                },
+                             "trusted-types-policy-generator":  {
+                                                                    "name":  "Trusted Types Policy Generator",
+                                                                    "summary":  "Generieren Sie Trusted Types-Richtlinien und CSP-Header, um DOM-basierte XSS durch typisierte Werte fur gefahrliche DOM-Senken zu verhindern."
+                                                                },
+                             "urlpattern-tester":  {
+                                                       "name":  "URLPattern Tester",
+                                                       "summary":  "Testen Sie URL-Muster mit der URLPattern-API — benannte Gruppen, Wildcards und Regex-Abgleich ohne manuelles Parsen."
+                                                   },
+                             "navigation-api-router-snippet-generator":  {
+                                                                             "name":  "Navigation API Router Snippet Generator",
+                                                                             "summary":  "Generieren Sie JavaScript-Routing-Snippets mit der Navigation API fur SPAs ohne History-API."
+                                                                         }
                          }
            },
     "fr":  {
@@ -1470,7 +1490,27 @@
                              "css-contrast-color-function-generator":  {
                                                                            "name":  "Generateur de fonction CSS contrast-color()",
                                                                            "summary":  "Generez des expressions contrast-color() CSS qui selectionnent automatiquement la couleur de texte la plus lisible dans une liste."
-                                                                       }
+                                                                       },
+                             "service-worker-module-template-generator":  {
+                                                                              "name":  "Generateur de template Service Worker module ES",
+                                                                              "summary":  "Generez des templates de service workers en module ES avec strategies de cache, liste de precache et support hors ligne."
+                                                                          },
+                             "reporting-api-header-generator":  {
+                                                                    "name":  "Generateur d\u0027en-tetes Reporting API",
+                                                                    "summary":  "Generez les en-tetes HTTP Report-To et Reporting-Endpoints pour les rapports du navigateur, les violations CSP et le Network Error Logging."
+                                                                },
+                             "trusted-types-policy-generator":  {
+                                                                    "name":  "Generateur de politique Trusted Types",
+                                                                    "summary":  "Generez des politiques Trusted Types et des en-tetes CSP pour prevenir les XSS basees sur le DOM avec des valeurs typees pour les points d\u0027entree DOM dangereux."
+                                                                },
+                             "urlpattern-tester":  {
+                                                       "name":  "Testeur URLPattern",
+                                                       "summary":  "Testez des motifs d\u0027URL avec l\u0027API URLPattern — groupes nommes, wildcards et correspondance regex sans analyse manuelle."
+                                                   },
+                             "navigation-api-router-snippet-generator":  {
+                                                                             "name":  "Generateur de snippets Navigation API Router",
+                                                                             "summary":  "Generez des snippets de routage JavaScript avec l\u0027API Navigation pour les SPAs, sans History API."
+                                                                         }
                          }
            },
     "es":  {
@@ -2161,7 +2201,27 @@
                              "css-contrast-color-function-generator":  {
                                                                            "name":  "Generador de funcion CSS contrast-color()",
                                                                            "summary":  "Genere expresiones contrast-color() CSS que seleccionan automaticamente el color de texto mas legible de una lista."
-                                                                       }
+                                                                       },
+                             "service-worker-module-template-generator":  {
+                                                                              "name":  "Generador de plantillas Service Worker modulo ES",
+                                                                              "summary":  "Genere plantillas de service workers en modulo ES con estrategias de cache, lista de precache y soporte offline."
+                                                                          },
+                             "reporting-api-header-generator":  {
+                                                                    "name":  "Generador de cabeceras Reporting API",
+                                                                    "summary":  "Genere cabeceras HTTP Report-To y Reporting-Endpoints para informes del navegador, violaciones CSP y Network Error Logging."
+                                                                },
+                             "trusted-types-policy-generator":  {
+                                                                    "name":  "Generador de politicas Trusted Types",
+                                                                    "summary":  "Genere politicas Trusted Types y cabeceras CSP para prevenir XSS basado en DOM con valores tipados para sumideros DOM peligrosos."
+                                                                },
+                             "urlpattern-tester":  {
+                                                       "name":  "Probador de URLPattern",
+                                                       "summary":  "Pruebe patrones de URL con la API URLPattern — grupos nombrados, comodines y coincidencia regex sin analisis manual."
+                                                   },
+                             "navigation-api-router-snippet-generator":  {
+                                                                             "name":  "Generador de snippets Navigation API Router",
+                                                                             "summary":  "Genere snippets de enrutamiento JavaScript con la API Navigation para SPAs, sin History API."
+                                                                         }
                          }
            },
     "ja":  {
@@ -2852,7 +2912,27 @@
                              "css-contrast-color-function-generator":  {
                                                                            "name":  "CSS contrast-color()関数ジェネレーター",
                                                                            "summary":  "候補リストから最も読みやすいテキスト色を自動選択するcontrast-color() CSS関数を生成します。"
-                                                                       }
+                                                                       },
+                             "service-worker-module-template-generator":  {
+                                                                              "name":  "Service Workerモジュールテンプレートジェネレーター",
+                                                                              "summary":  "キャッシュ戦略、プリキャッシュリスト、オフラインサポート付きのESモジュールService Workerテンプレートを生成します。"
+                                                                          },
+                             "reporting-api-header-generator":  {
+                                                                    "name":  "Reporting APIヘッダージェネレーター",
+                                                                    "summary":  "ブラウザレポート、CSP違反、Network Error Logging用のReport-ToおよびReporting-Endpoints HTTPヘッダーを生成します。"
+                                                                },
+                             "trusted-types-policy-generator":  {
+                                                                    "name":  "Trusted Typesポリシージェネレーター",
+                                                                    "summary":  "危険なDOMシンクに対して型付き値でDOMベースXSSを防ぐTrusted TypesポリシーとCSPヘッダーを生成します。"
+                                                                },
+                             "urlpattern-tester":  {
+                                                       "name":  "URLPatternテスター",
+                                                       "summary":  "手動解析不要の名前付きグループ、ワイルドカード、正規表現マッチングによるURLパターンテストをURLPattern APIで行います。"
+                                                   },
+                             "navigation-api-router-snippet-generator":  {
+                                                                             "name":  "Navigation APIルータースニペットジェネレーター",
+                                                                             "summary":  "SPA向けのNavigation APIルーティングスニペットを生成します。History API不要。"
+                                                                         }
                          }
            },
     "nl":  {
@@ -3543,7 +3623,27 @@
                              "css-contrast-color-function-generator":  {
                                                                            "name":  "CSS contrast-color() Functiegenerator",
                                                                            "summary":  "Genereer contrast-color() CSS-functies die automatisch de meest leesbare tekstkleur uit een lijst selecteren."
-                                                                       }
+                                                                       },
+                             "service-worker-module-template-generator":  {
+                                                                              "name":  "Service Worker Module Template Generator",
+                                                                              "summary":  "Genereer ES-module service worker templates met cache-strategieen, precache-lijst en offline ondersteuning."
+                                                                          },
+                             "reporting-api-header-generator":  {
+                                                                    "name":  "Reporting API Header Generator",
+                                                                    "summary":  "Genereer Report-To en Reporting-Endpoints HTTP-headers voor browserrapporten, CSP-schendingen en Network Error Logging."
+                                                                },
+                             "trusted-types-policy-generator":  {
+                                                                    "name":  "Trusted Types Policy Generator",
+                                                                    "summary":  "Genereer Trusted Types-beleid en CSP-headers om DOM-gebaseerde XSS te voorkomen met getypeerde waarden voor gevaarlijke DOM-sinks."
+                                                                },
+                             "urlpattern-tester":  {
+                                                       "name":  "URLPattern Tester",
+                                                       "summary":  "Test URL-patronen met de URLPattern API — benoemde groepen, wildcards en regex-matching zonder handmatig parsen."
+                                                   },
+                             "navigation-api-router-snippet-generator":  {
+                                                                             "name":  "Navigation API Router Snippet Generator",
+                                                                             "summary":  "Genereer JavaScript routering snippets met de Navigation API voor SPA\u0027s zonder History API."
+                                                                         }
                          }
            }
 }
