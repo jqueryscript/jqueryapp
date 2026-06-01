@@ -803,7 +803,23 @@
                              "navigation-api-router-snippet-generator":  {
                                                                              "name":  "Navigation API Router Snippet Generator",
                                                                              "summary":  "Generieren Sie JavaScript-Routing-Snippets mit der Navigation API fur SPAs ohne History-API."
-                                                                         }
+                                                                         },
+                             "contenteditable-plaintext-only-generator":  {
+                                                                              "name":  "contenteditable=plaintext-only Generator",
+                                                                              "summary":  "Generieren Sie barrierefreies HTML-Markup mit contenteditable=plaintext-only fur reine Texteingabe ohne Rich-Text-Formatierung."
+                                                                          },
+                             "css-text-indent-hanging-builder":  {
+                                                                     "name":  "CSS text-indent hanging/each-line Builder",
+                                                                     "summary":  "Generieren Sie CSS text-indent mit hanging- und each-line-Schlusselwortern fur hangende Einzuge und Zeilenumbruch-Einruckungen."
+                                                                 },
+                             "css-font-relative-units-calculator":  {
+                                                                        "name":  "CSS Root-Relative Font Units Rechner",
+                                                                        "summary":  "Berechnen Sie Pixel-Aquivalente fur rcap-, rch-, rex- und ric-Einheiten basierend auf der Root-Schriftgroße. Vergleichen Sie mit rem."
+                                                                    },
+                             "directory-upload-input-generator":  {
+                                                                      "name":  "Directory Upload Input Generator",
+                                                                      "summary":  "Generieren Sie HTML-Datei-Inputs mit webkitdirectory fur Ordner-Upload, Drag-and-Drop-Zone und Dateiliste mit webkitRelativePath."
+                                                                  }
                          }
            },
     "fr":  {
@@ -1510,7 +1526,23 @@
                              "navigation-api-router-snippet-generator":  {
                                                                              "name":  "Generateur de snippets Navigation API Router",
                                                                              "summary":  "Generez des snippets de routage JavaScript avec l\u0027API Navigation pour les SPAs, sans History API."
-                                                                         }
+                                                                         },
+                             "contenteditable-plaintext-only-generator":  {
+                                                                              "name":  "Generateur contenteditable=plaintext-only",
+                                                                              "summary":  "Generez du HTML accessible avec contenteditable=plaintext-only pour une saisie de texte brut sans formatage riche."
+                                                                          },
+                             "css-text-indent-hanging-builder":  {
+                                                                     "name":  "Constructeur CSS text-indent hanging/each-line",
+                                                                     "summary":  "Generez des declarations text-indent CSS avec les mots-cles hanging et each-line pour l\u0027indentation suspendue et les retraits de saut de ligne."
+                                                                 },
+                             "css-font-relative-units-calculator":  {
+                                                                        "name":  "Calculateur d\u0027unites CSS root-relative",
+                                                                        "summary":  "Calculez les equivalents en pixels pour les unites rcap, rch, rex et ric basees sur la taille de police racine. Comparez avec rem."
+                                                                    },
+                             "directory-upload-input-generator":  {
+                                                                      "name":  "Generateur d\u0027input upload de dossier",
+                                                                      "summary":  "Generez des inputs HTML avec webkitdirectory pour le telechargement de dossiers, zone de glisser-deposer et liste de fichiers avec webkitRelativePath."
+                                                                  }
                          }
            },
     "es":  {
@@ -2221,7 +2253,23 @@
                              "navigation-api-router-snippet-generator":  {
                                                                              "name":  "Generador de snippets Navigation API Router",
                                                                              "summary":  "Genere snippets de enrutamiento JavaScript con la API Navigation para SPAs, sin History API."
-                                                                         }
+                                                                         },
+                             "contenteditable-plaintext-only-generator":  {
+                                                                              "name":  "Generador contenteditable=plaintext-only",
+                                                                              "summary":  "Genere HTML accesible con contenteditable=plaintext-only para entrada de texto plano sin formato enriquecido."
+                                                                          },
+                             "css-text-indent-hanging-builder":  {
+                                                                     "name":  "Constructor CSS text-indent hanging/each-line",
+                                                                     "summary":  "Genere declaraciones text-indent CSS con palabras clave hanging y each-line para sangria francesa y sangria tras saltos de linea."
+                                                                 },
+                             "css-font-relative-units-calculator":  {
+                                                                        "name":  "Calculadora de unidades CSS root-relative",
+                                                                        "summary":  "Calcule equivalentes en pixeles para unidades rcap, rch, rex y ric basadas en el tamano de fuente raiz. Compare con rem."
+                                                                    },
+                             "directory-upload-input-generator":  {
+                                                                      "name":  "Generador de input de carga de directorio",
+                                                                      "summary":  "Genere inputs HTML con webkitdirectory para carga de carpetas, zona de arrastrar y soltar y lista de archivos con webkitRelativePath."
+                                                                  }
                          }
            },
     "ja":  {
@@ -2932,7 +2980,23 @@
                              "navigation-api-router-snippet-generator":  {
                                                                              "name":  "Navigation APIルータースニペットジェネレーター",
                                                                              "summary":  "SPA向けのNavigation APIルーティングスニペットを生成します。History API不要。"
-                                                                         }
+                                                                         },
+                             "contenteditable-plaintext-only-generator":  {
+                                                                              "name":  "contenteditable=plaintext-onlyジェネレーター",
+                                                                              "summary":  "リッチテキストフォーマットなしのプレーンテキスト入力のためのcontenteditable=plaintext-onlyアクセシブルHTMLマークアップを生成します。"
+                                                                          },
+                             "css-text-indent-hanging-builder":  {
+                                                                     "name":  "CSS text-indent hanging/each-lineビルダー",
+                                                                     "summary":  "ぶら下げインデントと改行後インデントのためのhangingおよびeach-lineキーワード付きCSS text-indentを生成します。"
+                                                                 },
+                             "css-font-relative-units-calculator":  {
+                                                                        "name":  "CSSルート相対フォント単位カリキュレーター",
+                                                                        "summary":  "ルートフォントサイズに基づくrcap、rch、rex、ric単位のピクセル換算値を計算します。remとの比較付き。"
+                                                                    },
+                             "directory-upload-input-generator":  {
+                                                                      "name":  "ディレクトリアップロード入力ジェネレーター",
+                                                                      "summary":  "フォルダアップロード用のwebkitdirectory付きHTMLファイル入力、ドラッグ＆ドロップゾーン、webkitRelativePath付きファイルリストを生成します。"
+                                                                  }
                          }
            },
     "nl":  {
@@ -3643,7 +3707,23 @@
                              "navigation-api-router-snippet-generator":  {
                                                                              "name":  "Navigation API Router Snippet Generator",
                                                                              "summary":  "Genereer JavaScript routering snippets met de Navigation API voor SPA\u0027s zonder History API."
-                                                                         }
+                                                                         },
+                             "contenteditable-plaintext-only-generator":  {
+                                                                              "name":  "contenteditable=plaintext-only Generator",
+                                                                              "summary":  "Genereer toegankelijke HTML-markup met contenteditable=plaintext-only voor platte tekstinvoer zonder rijke opmaak."
+                                                                          },
+                             "css-text-indent-hanging-builder":  {
+                                                                     "name":  "CSS text-indent hanging/each-line Builder",
+                                                                     "summary":  "Genereer CSS text-indent met hanging- en each-line-sleutelwoorden voor hangende inspringing en regeleinde-inspringing."
+                                                                 },
+                             "css-font-relative-units-calculator":  {
+                                                                        "name":  "CSS Root-Relative Font Units Calculator",
+                                                                        "summary":  "Bereken pixel-equivalenten voor rcap-, rch-, rex- en ric-eenheden op basis van root-lettergrootte. Vergelijk met rem."
+                                                                    },
+                             "directory-upload-input-generator":  {
+                                                                      "name":  "Directory Upload Input Generator",
+                                                                      "summary":  "Genereer HTML-bestandsinvoer met webkitdirectory voor map-upload, drag-and-drop-zone en bestandslijst met webkitRelativePath."
+                                                                  }
                          }
            }
 }

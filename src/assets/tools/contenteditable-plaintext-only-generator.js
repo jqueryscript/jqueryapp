@@ -1,0 +1,89 @@
+import { field, textarea, select, checkbox, htmlEscape } from "../tool-core.js";
+
+export default {
+  form: `
+    <div class="field-grid">
+      ${field({ id: "ceTag", label: "HTML element", value: "div", help: "div, span, p, pre, or any block/inline element" })}
+      ${field({ id: "cePlaceholder", label: "Placeholder text", value: "Type or paste plain text here..." })}
+    </div>
+    <div class="field-grid">
+      ${field({ id: "ceClass", label: "CSS class (optional)", value: "plaintext-editor" })}
+      ${checkbox({ id: "ceSpellcheck", label: "Enable spellcheck", checked: true })}
+    </div>
+    <div class="field-grid">
+      ${checkbox({ id: "ceAria", label: "Add ARIA label for accessibility", checked: true })}
+      ${field({ id: "ceAriaLabel", label: "ARIA label", value: "Plain text editor" })}
+    </div>
+    <div class="field-grid">
+      ${checkbox({ id: "ceCompare", label: "Show comparison with regular contenteditable", checked: true })}
+    </div>`,
+  generate(root) {
+    const tag = root.querySelector("#ceTag").value.trim() || "div";
+    const placeholder = root.querySelector("#cePlaceholder").value.trim() || "Type or paste plain text here...";
+    const cls = root.querySelector("#ceClass").value.trim() || "plaintext-editor";
+    const spellcheck = root.querySelector("#ceSpellcheck").checked;
+    const useAria = root.querySelector("#ceAria").checked;
+    const ariaLabel = root.querySelector("#ceAriaLabel").value.trim() || "Plain text editor";
+    const showCompare = root.querySelector("#ceCompare").checked;
+
+    const attrs = [
+      `contenteditable="plaintext-only"`,
+      `data-placeholder="${placeholder}"`,
+      cls ? `class="${cls}"` : "",
+      spellcheck ? `spellcheck="true"` : `spellcheck="false"`,
+      useAria ? `aria-label="${ariaLabel}"` : "",
+      `role="textbox"`,
+    ].filter(Boolean).join(" ");
+
+    const lines = [];
+    lines.push("<!-- contenteditable=\"plaintext-only\" — Baseline 2025 -->");
+    lines.push("<!-- Browser support: Chrome 120+, Edge 120+, Safari 17.4+, Firefox 136+ -->");
+    lines.push("<!-- Accepts only plain text input — no rich formatting, no paste formatting. -->");
+    lines.push("");
+    lines.push(`<!-- HTML -->`);
+    lines.push(`<${tag} ${attrs}></${tag}>`);
+    lines.push("");
+    lines.push("<!-- CSS for placeholder -->");
+    lines.push(`.${cls || "plaintext-editor"} {`);
+    lines.push("  border: 1px solid #d1d5db;");
+    lines.push("  border-radius: 8px;");
+    lines.push("  padding: 12px 16px;");
+    lines.push("  min-height: 120px;");
+    lines.push("  font: inherit;");
+    lines.push("  outline: none;");
+    lines.push("}");
+    lines.push(`.${cls || "plaintext-editor"}:focus {`);
+    lines.push("  border-color: #3b82f6;");
+    lines.push("  box-shadow: 0 0 0 3px rgba(59,130,246,0.15);");
+    lines.push("}");
+    lines.push(`.${cls || "plaintext-editor"}:empty::before {`);
+    lines.push(`  content: attr(data-placeholder);`);
+    lines.push("  color: #9ca3af;");
+    lines.push("}");
+    lines.push("");
+    lines.push("<!-- Notes: -->");
+    lines.push("<!-- 1. plaintext-only prevents all rich text formatting (bold, italic, links, etc.). -->");
+    lines.push("<!-- 2. Pasting formatted text automatically strips all formatting (paste as plain text). -->");
+    lines.push("<!-- 3. Use with input event to read the value: element.textContent -->");
+    lines.push("<!-- 4. Much simpler than JavaScript-based sanitization for plain-text-only fields. -->");
+    lines.push("<!-- 5. For cross-browser fallback, use a <textarea> or JavaScript sanitizer. -->");
+
+    // Preview: two side-by-side editors
+    const baseStyle = "border:1px solid #d1d5db;border-radius:8px;padding:12px 16px;min-height:80px;font:inherit;font-size:14px;outline:none;line-height:1.5";
+    const preview = showCompare ? `<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div>
+        <div style="font-size:11px;font-weight:600;color:#15803d;margin-bottom:4px">&#10003; contenteditable="plaintext-only"</div>
+        <div contenteditable="plaintext-only" style="${baseStyle};border-color:#22c55e">${placeholder}</div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:600;color:#dc2626;margin-bottom:4px">&#10007; contenteditable="true" (regular)</div>
+        <div contenteditable="true" style="${baseStyle};border-color:#ef4444"><b>Try pasting formatted text</b> — rich formatting is <i>preserved</i>.</div>
+      </div>
+    </div>
+    <div style="margin-top:8px;font-size:11px;color:#6b7280">Try pasting rich text (from Word, web pages) into both editors. The plaintext-only editor strips all formatting automatically.</div>` : `<div>
+      <div contenteditable="plaintext-only" style="${baseStyle}">${placeholder}</div>
+    </div>`;
+
+    return { output: lines.join("\n"), preview };
+  }
+};

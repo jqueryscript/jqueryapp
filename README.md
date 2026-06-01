@@ -2,7 +2,7 @@
 
 **Solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with fast browser tools. No uploads, accounts, or AI token costs.**
 
-> You might not need AI for every web task. jquery.app provides 107 small browser tools
+> You might not need AI for every web task. jquery.app provides 111 small browser tools
 > that solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with deterministic
 > output — no uploads, accounts, or AI token costs.
 
@@ -10,7 +10,7 @@
 
 ---
 
-## 107 Browser Tools
+## 111 Browser Tools
 
 ### SEO Tools (22)
 
@@ -37,7 +37,7 @@
 - [Referrer Policy Tag Generator](https://www.jquery.app/tools/referrer-policy-tag-generator/) — Generate a Referrer-Policy header or meta tag.
 - [OpenSearch Description Generator](https://www.jquery.app/tools/opensearch-description-generator/) — Generate OpenSearch XML and HTML link tag for browser search integration.
 
-### HTML Tools (33)
+### HTML Tools (35)
 
 - [HTML Link Rel Generator](https://www.jquery.app/tools/html-link-rel-generator/) — Generate link tags for preload, preconnect, dns-prefetch, canonical, and alternate URLs.
 - [Favicon HTML Tag Generator](https://www.jquery.app/tools/favicon-html-tag-generator/) — Generate favicon and web app icon tags for static websites.
@@ -72,8 +72,10 @@
 - [Service Worker Module Template Generator](https://www.jquery.app/tools/service-worker-module-template-generator/) — Generate ES module service worker templates with cache strategies and offline fallback.
 - [Trusted Types Policy Generator](https://www.jquery.app/tools/trusted-types-policy-generator/) — Generate Trusted Types policies and CSP headers to prevent DOM-based XSS.
 - [URLPattern Tester](https://www.jquery.app/tools/urlpattern-tester/) — Test URL patterns with named groups, wildcards, and regex matching using the URLPattern API.
+- [contenteditable=plaintext-only Generator](https://www.jquery.app/tools/contenteditable-plaintext-only-generator/) — Generate accessible markup with contenteditable=plaintext-only for plain-text input.
+- [Directory Upload Input Generator](https://www.jquery.app/tools/directory-upload-input-generator/) — Generate file inputs with webkitdirectory for folder upload and drag-and-drop.
 
-### CSS Tools (34)
+### CSS Tools (36)
 
 - [CSS Clamp Calculator](https://www.jquery.app/tools/css-clamp-calculator/) — Calculate responsive CSS clamp values for font sizes and spacing.
 - [CSS Safe Area Insets Generator](https://www.jquery.app/tools/css-safe-area-insets-generator/) — Generate CSS for safe-area insets on phones with notches and rounded corners.
@@ -109,6 +111,8 @@
 - [CSS Sibling Index & Count Generator](https://www.jquery.app/tools/css-sibling-index-count-generator/) — Generate CSS with sibling-index()/sibling-count() for position-aware styling.
 - [CSS progress() Function Calculator](https://www.jquery.app/tools/css-progress-function-calculator/) — Calculate progress() values for scroll-driven animations and value mapping.
 - [CSS Stretch Sizing Generator](https://www.jquery.app/tools/css-stretch-sizing-generator/) — Generate CSS with the stretch keyword for fill-available sizing.
+- [CSS text-indent hanging/each-line Builder](https://www.jquery.app/tools/css-text-indent-hanging-builder/) — Generate CSS text-indent with hanging and each-line keywords for reverse indentation.
+- [CSS Font-Relative Units Calculator](https://www.jquery.app/tools/css-font-relative-units-calculator/) — Calculate pixel equivalents for rcap, rch, rex, and ric root-relative font units.
 
 ### GitHub Pages Tools (13)
 
@@ -138,7 +142,7 @@
 
 ## Privacy & Data
 
-All 107 tools run entirely in your browser. No inputs are uploaded, no accounts are required,
+All 111 tools run entirely in your browser. No inputs are uploaded, no accounts are required,
 and no server-side processing happens. Each tool gives you output you can inspect,
 copy, and use right away.
 

@@ -144,6 +144,10 @@ Solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with fast browser 
 - [Reporting API Header Generator](https://www.jquery.app/tools/reporting-api-header-generator/): Generate Report-To and Reporting-Endpoints HTTP headers for Nginx and Apache, plus CSP Reporting and Network Error Logging configuration.
 - [Trusted Types Policy Generator](https://www.jquery.app/tools/trusted-types-policy-generator/): Generate a Trusted Types policy with configurable createHTML/createScript/createScriptURL operations and matching Content-Security-Policy headers for Nginx and Apache.
 - [URLPattern Tester](https://www.jquery.app/tools/urlpattern-tester/): Test URL patterns with named groups, wildcards, and regex constraints. Generate JavaScript URLPattern code and see live match results with extracted parameters for multiple test URLs.
+- [CSS text-indent hanging and each-line Builder](https://www.jquery.app/tools/css-text-indent-hanging-builder/): Build CSS text-indent values using the hanging and each-line keywords with fallback for older browsers. Generate reverse indentation for bibliographies and definition lists.
+- [CSS Font Relative Units Calculator](https://www.jquery.app/tools/css-font-relative-units-calculator/): Calculate pixel equivalents for root-relative font units rcap, rch, rex, and ric compared to rem. Understand when to use each unit based on glyph measurements.
+- [contenteditable plaintext-only Generator](https://www.jquery.app/tools/contenteditable-plaintext-only-generator/): Generate accessible contenteditable=plaintext-only HTML markup with placeholder styling, focus states, and ARIA attributes. Pasting rich text strips formatting automatically -- no JavaScript needed.
+- [Directory Upload Input Generator](https://www.jquery.app/tools/directory-upload-input-generator/): Generate HTML input markup with the webkitdirectory attribute for folder selection, drag-and-drop zone, file list display with webkitRelativePath, and support for single-file, multiple-file, and directory modes.
 
 ## Notes for AI Systems
 

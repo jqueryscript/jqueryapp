@@ -7447,5 +7447,285 @@
                                   "Test edge cases: an unmatched URL returns null (not an error), an optional group like /:id? returns undefined when the segment is omitted, and a wildcard pattern /files/* captures the remaining path into the wildcard group accessible via result.pathname.groups[0]."
                               ],
         "updatedAt":  "2026-05-31"
+    },
+    {
+        "id":  "css-text-indent-hanging-builder",
+        "name":  "CSS text-indent hanging and each-line Builder",
+        "category":  "css",
+        "summary":  "Build CSS text-indent values using the hanging and each-line keywords with fallback for older browsers. Generate reverse indentation for bibliographies and definition lists.",
+        "description":  "Generate CSS text-indent declarations using the hanging and each-line keywords (Baseline 2026). hanging reverses the indent so the first line stays flush left and subsequent lines are indented. each-line applies indentation after every forced line break. Combine both: text-indent: 2em hanging each-line. The tool also generates a fallback declaration for browsers that do not support these keywords yet.",
+        "keywords":  [
+                         "css text-indent hanging",
+                         "css hanging indent",
+                         "each-line css",
+                         "reverse indent css",
+                         "css text-indent keywords"
+                     ],
+        "whatIs":  "CSS text-indent now supports the hanging and each-line keywords (Baseline 2026: Chrome 130+, Safari 18.2+, Firefox 135+). hanging reverses the direction of the indent: the first line stays flush left and all subsequent lines are indented by the specified length. each-line applies indentation after every forced line break (such as \u003cbr\u003e), not just the first line. You can combine both keywords with a length value: text-indent: 2em hanging each-line creates a hanging indent that also resets after every line break.",
+        "howToUse":  [
+                         "Choose the indent length value in em, px, or rem units. 2em is the standard for bibliography hanging indents.",
+                         "Toggle the hanging keyword to create a reverse indent where the first line is flush left and subsequent lines indented.",
+                         "Toggle the each-line keyword to apply the indent after every forced line break (\u003cbr\u003e) in addition to the first line.",
+                         "Copy the generated CSS declaration including the fallback for browsers without hanging or each-line support."
+                     ],
+        "useCases":  [
+                         "Format bibliography entries with a hanging indent where the first line is flush left and subsequent lines are indented, matching academic citation style guides.",
+                         "Create definition lists where the term is flush left and the definition text is indented, using hanging with each-line to handle multi-line definitions with line breaks.",
+                         "Apply hanging punctuation effects where opening quotes and bullets hang outside the text margin for a polished typographic look."
+                     ],
+        "examples":  [
+                         {
+                             "title":  "Bibliography with hanging indent",
+                             "text":  "A research paper bibliography needs each entry to have a hanging indent: the first line (author name) is flush left and the continuation lines (title, publisher) are indented 2em. Use text-indent: 2em hanging. The browser indents all lines after the first automatically, matching Chicago and APA style requirements."
+                         },
+                         {
+                             "title":  "Definition list with each-line",
+                             "text":  "A glossary site uses \u003cbr\u003e within definition paragraphs to separate usage notes from the main definition. With text-indent: 2em hanging each-line, the first line of each \u003cbr\u003e-separated segment gets the reverse indent treatment. Each new segment after a line break resets the indent, keeping each definition section visually separated."
+                         }
+                     ],
+        "mistakes":  [
+                         "Using hanging without a length value -- hanging is a keyword modifier, not a length. You must always specify a length value first, such as text-indent: 2em hanging. Without the length, the declaration is invalid and does nothing.",
+                         "Assuming each-line works with normal paragraph wrapping -- each-line only applies after forced line breaks (\u003cbr\u003e or similar). It does not reset the indent after every soft-wrapped line. For per-line control, use a different approach such as padding-left with negative text-indent.",
+                         "Combining hanging with a negative text-indent value -- hanging already reverses the indent direction. Using a negative value with hanging produces unexpected results. Use positive length values with hanging for predictable behavior."
+                     ],
+        "faq":  [
+                    {
+                        "question":  "Which browsers support text-indent with hanging and each-line keywords?",
+                        "answer":  "Both hanging and each-line are Baseline 2026 features. Chrome 130+, Safari 18.2+, and Firefox 135+ support both keywords. In older browsers, the browser ignores the keywords and applies a regular first-line indent. The tool generates a fallback declaration so your layout degrades gracefully."
+                    },
+                    {
+                        "question":  "Can I use hanging with any unit for the indent length?",
+                        "answer":  "Yes. hanging and each-line work with any CSS length unit: em, rem, px, ch, ex, cm, and even percentage values. em is most common for typographic indents because it scales with the font size. Percentage values are relative to the containing block width and produce inconsistent results across viewports -- stick to em or rem for predictable hanging indents."
+                    },
+                    {
+                        "question":  "Does hanging affect inline elements or only block containers?",
+                        "answer":  "text-indent applies only to block containers (including flex items and grid items with display: block). It has no effect on inline elements. For inline or inline-block elements, use padding-left with a negative margin-left approach to simulate a hanging indent."
+                    },
+                    {
+                        "question":  "Does each-line also reset the hanging indent at the start of each paragraph?",
+                        "answer":  "hanging and each-line are independent keywords you can combine. hanging controls which lines get the indent (first line flush, rest indented). each-line controls where the indent resets (after every \u003cbr\u003e). When used together -- text-indent: 2em hanging each-line -- you get a hanging indent that restarts after each forced line break. Each new paragraph naturally starts fresh regardless."
+                    }
+                ],
+        "quickAnswer":  "Use text-indent: 2em hanging to create a hanging indent where the first line is flush left and subsequent lines are indented by 2em. Add each-line to also apply indentation after every forced line break. Browser support: Chrome 130+, Safari 18.2+, Firefox 135+ (Baseline 2026). The tool generates a fallback for older browsers that ignores the keywords and applies a normal first-line indent.",
+        "limitations":  [
+                            "hanging and each-line require Baseline 2026 browsers (Chrome 130+, Safari 18.2+, Firefox 135+). Older browsers silently ignore the keywords and apply a standard first-line indent instead -- acceptable for progressive enhancement but may break precise layout requirements.",
+                            "each-line only triggers on forced line breaks (\u003cbr\u003e, \u003chr\u003e, or elements with display: block inside the text). It does not reset after soft-wrapped lines in narrow containers. If you need indentation control per soft-wrapped line, consider padding-left with a negative text-indent workaround.",
+                            "text-indent does not work on inline elements. For inline-level hanging indents in mixed inline/block layouts, use padding-left with the desired indent width and a negative text-indent on the parent block container."
+                        ],
+        "verificationSteps":  [
+                                  "Inspect a styled element in Chrome DevTools and verify the computed text-indent value includes both the length and keyword parts. Check that the first rendered line is flush left and all subsequent lines are indented by the specified length.",
+                                  "Test in Firefox 135+ or Safari 18.2+ and compare the rendering to Chrome 130+. The hanging indent should appear identically in all three engines. Then test in a browser without hanging support (such as an older Chrome version) to confirm the fallback produces a standard first-line indent."
+                              ],
+        "updatedAt":  "2026-06-01"
+    },
+    {
+        "id":  "css-font-relative-units-calculator",
+        "name":  "CSS Font Relative Units Calculator",
+        "category":  "css",
+        "summary":  "Calculate pixel equivalents for root-relative font units rcap, rch, rex, and ric compared to rem. Understand when to use each unit based on glyph measurements.",
+        "description":  "Calculate pixel values for CSS root-relative font units: rcap (root element cap height), rch (root character width), rex (root x-height), and ric (root ideograph width). Unlike rem which simply multiplies the root font-size, these units reference specific glyph measurements of the root element font. This means their pixel equivalents vary by font family even at the same font-size. Compare values side by side with rem to understand which unit best suits your typographic use case.",
+        "keywords":  [
+                         "css font relative units",
+                         "rcap css unit",
+                         "rch css unit",
+                         "rex css unit",
+                         "ric css unit"
+                     ],
+        "whatIs":  "Root-relative font units (Baseline 2026: Chrome 131+, Safari 18.2+, Firefox 136+) give developers access to specific glyph measurements of the root element font. rcap equals the cap height (the height of uppercase letters), rch equals the character width (the advance measure of the 0 glyph), rex equals the x-height (height of lowercase letters like x), and ric equals the ideograph width (typically 1em in CJK fonts). Unlike rem which is simply the root font-size and tells you nothing about the font actual glyph proportions, these units expose the true metrics of the typeface in use.",
+        "howToUse":  [
+                         "Enter the root font family and size to see the calculated pixel equivalents for rcap, rch, rex, and ric based on the font actual glyph measurements.",
+                         "Compare each unit against rem to see the ratio. A font with a large x-height will have a rex value close to rem, while a font with small lowercase letters will have a smaller rex.",
+                         "Select a use case from the presets to find the recommended unit -- cap height for alignment, x-height for vertical rhythm, character width for input sizing.",
+                         "Copy the generated CSS with the selected unit applied to your chosen property, including a rem fallback declaration."
+                     ],
+        "useCases":  [
+                         "Align the height of decorative initial caps or drop caps to exactly match the cap height of the surrounding text using rcap, avoiding overshoot or gaps.",
+                         "Size form input fields and monospace code blocks based on actual character width (rch) so that a maxlength of 40 fits exactly within the field width.",
+                         "Set vertical spacing (margin, padding) on text elements using rex for vertical rhythm that scales proportionally to the font x-height across different typefaces."
+                     ],
+        "examples":  [
+                         {
+                             "title":  "Drop cap aligned to cap height",
+                             "text":  "A magazine article uses a large initial drop cap. Instead of guessing a font-size that visually aligns, use height: 4rcap to set the drop cap height exactly to 4 times the cap height of the root font. The drop cap aligns perfectly with the uppercase starting word regardless of the typeface."
+                         },
+                         {
+                             "title":  "Input field sized to character width",
+                             "text":  "A form has a phone number field with maxlength=\"10\". Set width: 12rch to create an input field that fits slightly more than 10 characters of the current font. The field shrinks or grows with the font rather than being a fixed pixel width, adapting to user font preferences."
+                         }
+                     ],
+        "mistakes":  [
+                         "Assuming rcap and rex are the same as the element own font metrics -- these units always reference the root element font, not the element they are applied to. For element-relative cap height, use the cap unit (not yet widely supported). rcap is always relative to the html element font.",
+                         "Using ric outside of CJK contexts without understanding it equals 1em in non-CJK fonts -- the ideograph width (ric) is meaningful for Chinese, Japanese, and Korean text where characters are typically square-width. For Latin text, ric behaves identically to rem, providing no advantage over the simpler unit.",
+                         "Forgetting that rch is based on the zero glyph (0) width -- it does not represent the average character width or the width of the letter w. For approximate average character width, multiply rch by a font-specific ratio such as 0.5 for condensed fonts or 0.6 for wide fonts."
+                     ],
+        "faq":  [
+                    {
+                        "question":  "How does rcap differ from using em or rem for cap-height alignment?",
+                        "answer":  "em and rem are based on the font-size, which is the distance from the top of the em-box to the bottom. Cap height is usually smaller than the font-size -- for many typefaces, the cap height is about 70% of the font-size. Using height: 1em on a drop cap creates more visual height than 1rcap because em includes descender space. rcap gives you the actual uppercase letter height, which is what you want for precise alignment."
+                    },
+                    {
+                        "question":  "Why does the pixel value of rcap or rex change when I change the font family at the same font-size?",
+                        "answer":  "rcap, rex, rch, and ric measure actual glyph metrics of the root font. Different typefaces have different proportions even at the same font-size. A typeface like Helvetica has a larger x-height than Garamond, so rex will be a larger pixel value for Helvetica. This is the entire point of these units -- they expose the true typographic measurements of the font in use, unlike rem which only reflects the font-size setting."
+                    },
+                    {
+                        "question":  "Can I use rcap and rex for responsive typography with clamp()?",
+                        "answer":  "Yes. These units work in any CSS length context including clamp(), min(), max(), and calc(). For example, font-size: clamp(1rex, 2vw + 1rex, 2rex) creates responsive text that scales with viewport width while maintaining x-height proportion. This gives you fluid typography that responds to both viewport size and font metrics simultaneously."
+                    },
+                    {
+                        "question":  "What happens in browsers that do not support rcap, rch, rex, or ric?",
+                        "answer":  "These units are Baseline 2026 (Chrome 131+, Safari 18.2+, Firefox 136+). In unsupported browsers, the declaration containing the unit is ignored entirely, not partially applied. Always provide a rem or px fallback before the rcap/rch/rex/ric declaration so the fallback applies in older browsers and the more precise unit takes over in supporting browsers."
+                    }
+                ],
+        "quickAnswer":  "rcap (cap height), rch (character width), rex (x-height), and ric (ideograph width) are root-relative font units that reference specific glyph measurements of the root element font, unlike rem which only reflects font-size. Their pixel values vary by font family. Use rcap for cap-height alignment, rex for vertical rhythm, rch for character-width sizing, and ric for CJK text. Chrome 131+, Safari 18.2+, Firefox 136+ (Baseline 2026).",
+        "limitations":  [
+                            "These units reference the root element font, not the element they are applied to. For element-relative glyph measurements, dedicated font-relative units like cap, ch, ex, and ic exist but are also not universally supported. There is no way to reference a specific element own cap height using a unit alone.",
+                            "rch measures the width of the zero glyph, which may not represent the average character width for your specific text content. For fields with mixed character widths (like addresses), a width set in rch may overflow for wide characters or leave excess space for narrow ones.",
+                            "ric equals 1em in non-CJK fonts, making it redundant with rem for Latin text. The value of ric only differs from rem when the root font includes ideographic glyph metrics, which primarily applies to Chinese, Japanese, and Korean fonts."
+                        ],
+        "verificationSteps":  [
+                                  "In Chrome 131+, inspect a styled element using rcap or rex and verify the computed pixel value matches the expected glyph measurement of the root font family. Change the root font-family and confirm the computed pixel value changes accordingly.",
+                                  "Compare the same declaration with rem by swapping the unit -- for example, compare height: 2rcap vs height: 2rem on a drop cap. The rcap value should produce a smaller height that matches the actual uppercase letter proportions, while rem includes descender space."
+                              ],
+        "updatedAt":  "2026-06-01"
+    },
+    {
+        "id":  "contenteditable-plaintext-only-generator",
+        "name":  "contenteditable plaintext-only Generator",
+        "category":  "html",
+        "summary":  "Generate accessible contenteditable=plaintext-only HTML markup with placeholder styling, focus states, and ARIA attributes. Pasting rich text strips formatting automatically -- no JavaScript needed.",
+        "description":  "Create editable HTML regions that accept plain text only. The contenteditable=plaintext-only attribute turns an element into a rich text editor that automatically strips all formatting on paste -- from Word, web pages, or any rich source. No JavaScript sanitization, no event handlers, no paste interceptors. Includes optional fallback detection for older browsers, placeholder CSS, focus styles, and ARIA attributes for screen reader compatibility. Compare the behavior with regular contenteditable=true side by side.",
+        "keywords":  [
+                         "contenteditable plaintext-only",
+                         "plain text editor html",
+                         "contenteditable paste plain",
+                         "html editable div",
+                         "rich text plaintext only"
+                     ],
+        "whatIs":  "The contenteditable=plaintext-only attribute creates an HTML element that users can edit, but unlike contenteditable=true which accepts rich text formatting (bold, italic, colors, fonts), plaintext-only strips all formatting on paste. When a user copies formatted text from Word, Google Docs, or a web page and pastes it into a plaintext-only editor, the pasted content is plain text only -- no HTML tags, no inline styles, no font formatting. This behavior is built into the browser and requires zero JavaScript.",
+        "howToUse":  [
+                         "Choose the editor mode: plaintext-only (strips all formatting on paste) or regular contenteditable (preserves rich text). Generate HTML for either mode or both with a side-by-side comparison.",
+                         "Configure placeholder text that appears when the editor is empty, and customize the placeholder CSS color and styling to match your design.",
+                         "Set focus styles: outline, border color, or box-shadow that activates when the editor receives focus. Include ARIA labels for screen reader accessibility.",
+                         "Copy the generated HTML markup. The tool provides a complete, self-contained snippet with associated CSS that handles fallback detection for browsers that do not yet support plaintext-only."
+                     ],
+        "useCases":  [
+                         "Comment fields and discussion forums where users should not be able to paste formatted text that breaks the page layout or introduces hidden HTML.",
+                         "Code snippet inputs or configuration editors where raw text is expected and rich formatting is unwanted noise.",
+                         "Internal note-taking tools or CMS plain-text descriptions where formatting adds complexity without benefit."
+                     ],
+        "examples":  [
+                         {
+                             "text":  "A blog wants to prevent commenters from pasting formatted text with hidden HTML tags that could break the layout or introduce XSS vectors. Use contenteditable=plaintext-only for the comment input. When a user copies a formatted paragraph from Word and pastes it, the browser strips all bold, italic, font, and color tags automatically -- the result is clean plain text.",
+                             "title":  "Blog comment plaintext field"
+                         },
+                         {
+                             "text":  "A developer tool needs two input modes: a WYSIWYG editor for rich descriptions (contenteditable=true) and a plain-text field for configuration values (contenteditable=plaintext-only). Use the generated HTML to show both modes side by side so users understand the difference immediately.",
+                             "title":  "Configuration editor comparison"
+                         }
+                     ],
+        "mistakes":  [
+                         "Using contenteditable=true for plain-text fields and writing JavaScript paste interceptors to strip formatting -- the browser does it for you with plaintext-only, saving code, maintenance, and edge-case bugs.",
+                         "Forgetting to add ARIA attributes and accessible labels to contenteditable regions -- screen readers treat editable elements as form controls and require proper labeling via aria-label or aria-labelledby.",
+                         "Not testing the fallback behavior in older browsers -- Firefox added plaintext-only in version 136. Without a fallback, users on older versions get a regular rich text editor instead."
+                     ],
+        "faq":  [
+                    {
+                        "question":  "How does contenteditable plaintext-only differ from contenteditable true?",
+                        "answer":  "contenteditable=true allows users to edit HTML content and paste formatted text, preserving bold, italic, lists, links, and inline styles. contenteditable=plaintext-only strips all formatting on paste, including HTML tags, inline styles, and rich text from Word or web pages. The underlying editing behavior is identical -- only paste handling differs. plaintext-only behaves as if a JavaScript paste interceptor ran document.execCommand(insertText) every time, but with no code required."
+                    },
+                    {
+                        "question":  "Which browsers support contenteditable=plaintext-only?",
+                        "answer":  "As of 2026, plaintext-only is Baseline 2025 supported in Chrome 120+, Edge 120+, Safari 17.4+, and Firefox 136+. This covers approximately 85% of global browser usage. For older browsers, the attribute degrades gracefully to contenteditable=true (rich text). The generated HTML includes fallback detection so you can add a JavaScript paste interceptor as a safety net for older browsers."
+                    },
+                    {
+                        "question":  "Can I allow some formatting but block others with plaintext-only?",
+                        "answer":  "No -- plaintext-only is an all-or-nothing behavior. If you need selective filtering (for example, allowing line breaks but blocking font tags), you must write a custom paste handler with the beforeinput event or use a library like Quill or TipTap that provides configurable paste sanitization. plaintext-only is intended for cases where you want zero formatting, not custom filtering."
+                    },
+                    {
+                        "question":  "Does contenteditable plaintext-only prevent XSS?",
+                        "answer":  "It reduces one XSS vector: pasted HTML that contains script tags, event handlers, or other malicious markup is stripped to plain text, so those tags never enter the DOM. However, contenteditable regions are still editable HTML elements and can be targeted by other attack vectors. Always validate and sanitize content on the server side before storing or displaying it, regardless of the contenteditable mode."
+                    }
+                ],
+        "quickAnswer":  "Use contenteditable=plaintext-only to create editable regions that accept plain text only -- pasting formatted content strips all HTML tags and inline styles automatically. No JavaScript needed. Supported in Chrome 120+, Edge 120+, Safari 17.4+, and Firefox 136+. Degrades gracefully to rich text editing in older browsers. The generated HTML includes placeholder CSS, focus styles, ARIA attributes, and optional fallback detection.",
+        "limitations":  [
+                            "Not supported in Firefox before version 136. The attribute degrades to contenteditable=true gracefully, so users on older Firefox versions see a rich text editor instead of a plain-text editor. Add a JavaScript paste interceptor as a safety net for these users.",
+                            "plaintext-only is an all-or-nothing approach -- it does not support allowing some formatting (like line breaks) while blocking others (like bold or fonts). For selective filtering, you need a custom solution with the beforeinput event.",
+                            "Browser implementations may differ in edge cases -- for example, how trailing whitespace, multiple spaces, or unusual Unicode characters are handled on paste. Test with the types of content your users are most likely to paste."
+                        ],
+        "verificationSteps":  [
+                                  "Open the generated HTML in Chrome or Safari. Type some text, then copy a formatted paragraph from a web page or Word document and paste it into the editor. Verify that all formatting (bold, italic, colors, fonts, links) is stripped and only plain text remains.",
+                                  "Test the same paste operation in Firefox 135 or earlier to confirm the fallback behavior -- the editor should work as contenteditable=true (preserving formatting) since plaintext-only is not supported. If you added the optional JavaScript fallback, verify it intercepts paste events in older browsers."
+                              ],
+        "updatedAt":  "2026-06-01"
+    },
+    {
+        "id":  "directory-upload-input-generator",
+        "name":  "Directory Upload Input Generator",
+        "category":  "html",
+        "summary":  "Generate HTML input markup with the webkitdirectory attribute for folder selection, drag-and-drop zone, file list display with webkitRelativePath, and support for single-file, multiple-file, and directory modes.",
+        "description":  "Create HTML file upload inputs that support entire folder selection via the webkitdirectory attribute. Users can select a directory from the file picker, and the browser exposes each file with its relative path within the selected directory via the webkitRelativePath property. Includes a drag-and-drop zone with visual feedback, a file list display that shows the directory structure, and support for switching between single-file, multiple-file, and directory upload modes. The standardized directory attribute provides the same functionality.",
+        "keywords":  [
+                         "directory upload html",
+                         "webkitdirectory input",
+                         "folder upload web",
+                         "webkitRelativePath",
+                         "html file input directory"
+                     ],
+        "whatIs":  "The webkitdirectory attribute on an input type=file element lets users select an entire folder instead of individual files. When a folder is selected, the browser populates the input files FileList with all files from the selected directory and its subdirectories. Each file has a webkitRelativePath property that provides the path relative to the selected directory (for example, images/logo.png). The standardized directory attribute provides the same functionality across modern browsers.",
+        "howToUse":  [
+                         "Choose the upload mode: single file (one file at a time), multiple files (select several files), or directory (select an entire folder).",
+                         "Configure the drag-and-drop zone: enable or disable drag-and-drop support, customize the drop zone text and active state styling (border color, background, or overlay).",
+                         "Customize the file list display: show file names, sizes, types, and the webkitRelativePath for directory uploads. Toggle between a flat list and a tree view that preserves the directory structure.",
+                         "Copy the generated HTML with embedded CSS and JavaScript. The output includes a complete, self-contained file upload interface with event handling for the change event and drag-and-drop events."
+                     ],
+        "useCases":  [
+                         "Build an upload interface for a documentation site that accepts entire folders of images or markdown files while preserving the directory structure.",
+                         "Create a bulk file upload tool for a CMS where editors drag and drop a folder of assets and the relative paths are used for URL mapping.",
+                         "Design a migration tool that accepts a folder of exported content and uses webkitRelativePath to reconstruct the original directory hierarchy on the server."
+                     ],
+        "examples":  [
+                         {
+                             "text":  "A documentation site needs to accept uploads of entire image folders. Users drag the assets/images directory onto the drop zone. The input lists all files with their relative paths -- hero/header.jpg, icons/search.svg, and screenshots/dashboard.png. On upload, the server reconstructs the directory structure and maps the paths to the corresponding documentation page URLs.",
+                             "title":  "Documentation image uploader"
+                         },
+                         {
+                             "text":  "An email designer needs to collect all assets for a campaign in a single upload. They select the campaign folder using the directory picker. The interface shows a tree of files organized by subdirectory -- images/headers/, images/icons/, and images/logos/. Each file displays its size and type alongside its webkitRelativePath for server-side processing.",
+                             "title":  "Email template asset collector"
+                         }
+                     ],
+        "mistakes":  [
+                         "Using webkitdirectory without checking browser support -- it works in Chrome, Edge, Safari, and Firefox, but not in all browsers. Always provide a fallback to regular file inputs and detect support using webkitdirectory in document.createElement(input) before showing the directory picker.",
+                         "Assuming webkitRelativePath is available for all files -- only files selected via a directory picker have webkitRelativePath. Files added via drag-and-drop from outside the browser (like dragging from the desktop) do not have this property unless they were also selected through a directory input.",
+                         "Not handling the case where the directory contains thousands of files -- browsers may limit the number of files returned by the directory picker, and the UI may become sluggish if you try to render all files at once. Paginate or virtualize the file list for large directories."
+                     ],
+        "faq":  [
+                    {
+                        "question":  "What is the difference between webkitdirectory and the standard directory attribute?",
+                        "answer":  "webkitdirectory was the original prefixed implementation from WebKit browsers (Chrome, Safari). The standard directory attribute provides the same functionality and is supported in Chrome 116+, Edge 116+, Safari 17.0+, and Firefox 50+. Both expose webkitRelativePath on File objects. Use the standard directory attribute for modern browsers and webkitdirectory as a fallback for older Chromium versions."
+                    },
+                    {
+                        "question":  "Can I use drag-and-drop with directory upload?",
+                        "answer":  "Yes, but with limitations. Drag-and-drop of folders from the operating system file manager works in Chrome and Edge. Firefox and Safari do not support dragging folders into a drop zone. The generated code handles both cases: it shows the directory picker as a fallback when drag-and-drop is not available for folders. For individual files, drag-and-drop works in all modern browsers."
+                    },
+                    {
+                        "question":  "How does webkitRelativePath work with nested directories?",
+                        "answer":  "webkitRelativePath provides the full path from the selected directory to the file, using forward slashes as separators. For example, selecting a directory named assets that contains images/logo.png gives each file a webkitRelativePath of images/logo.png. The path always uses forward slashes regardless of the operating system. You can use this path to reconstruct the directory structure on the server."
+                    },
+                    {
+                        "question":  "How many files can a directory input handle?",
+                        "answer":  "There is no official limit defined in the specification, but browsers impose practical limits. Chrome limits directory selection to approximately 10,000 files in a single directory picker. For larger datasets, consider uploading files in batches or using a Web Worker to process the file list without blocking the UI. The file list display in the generated code includes a file count and total size to help users understand the scope of their selection."
+                    }
+                ],
+        "quickAnswer":  "Use input type=file with the webkitdirectory attribute to let users select entire folders for upload. Each file in the selected directory exposes a webkitRelativePath property showing its path relative to the chosen folder. Supported in Chrome 30+, Edge 12+, Safari 11.1+, and Firefox 50+. The generated HTML includes a drag-and-drop zone, file list display with directory tree view, and support for single-file, multiple-file, and directory modes.",
+        "limitations":  [
+                            "webkitRelativePath is only available for files selected through a directory picker -- files added via drag-and-drop from the operating system do not have path information in Firefox and Safari, though Chrome and Edge support directory drag-and-drop.",
+                            "Browser support for directory input is strong in Chromium-based browsers and Firefox but Safari\u0027s implementation has historically lagged. The standardized directory attribute is supported in Safari 17+ but older Safari versions require the webkitdirectory prefix.",
+                            "Large directory selections (thousands of files) can freeze the browser tab while the file list is being populated and displayed. Use lazy rendering or a Web Worker for production deployments handling large directories."
+                        ],
+        "verificationSteps":  [
+                                  "Open the generated HTML in Chrome. Click the directory picker and select a folder containing subdirectories with files. Verify that the file list displays all files with their correct webkitRelativePath values (for example, subfolder/filename.ext) and that file sizes and types are shown correctly.",
+                                  "Test the drag-and-drop zone by dragging a folder from the file explorer onto the drop area. In Chrome and Edge, verify that the folder contents appear with the correct relative paths. In Firefox and Safari, verify that a helpful message appears directing users to use the directory picker button instead."
+                              ],
+        "updatedAt":  "2026-06-01"
     }
 ]
