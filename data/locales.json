@@ -819,7 +819,39 @@
                              "directory-upload-input-generator":  {
                                                                       "name":  "Directory Upload Input Generator",
                                                                       "summary":  "Generieren Sie HTML-Datei-Inputs mit webkitdirectory fur Ordner-Upload, Drag-and-Drop-Zone und Dateiliste mit webkitRelativePath."
-                                                                  }
+                                                                  },
+                             "scrollend-event-snippet-generator":  {
+                                                                       "name":  "scrollend Event Snippet Generator",
+                                                                       "summary":  "Generieren Sie scrollend-Event-Handler, die nach vollstandigem Scrollen mit Momentum/Inertia auslosen, mit Debounce-Vergleich."
+                                                                   },
+                             "custom-highlight-api-generator":  {
+                                                                    "name":  "Custom Highlights API Generator",
+                                                                    "summary":  "Generieren Sie CSS ::highlight() und JavaScript Highlight-Objekte zur Stilisierung von Textbereichen ohne DOM-Anderungen."
+                                                                },
+                             "intl-durationformat-generator":  {
+                                                                   "name":  "Intl.DurationFormat Generator",
+                                                                   "summary":  "Generieren Sie Intl.DurationFormat-Code fur lokalisierte Zeitdauerformatierung mit long/short/narrow/digital Stilen."
+                                                               },
+                             "regexp-escape-helper":  {
+                                                          "name":  "RegExp.escape() Helfer",
+                                                          "summary":  "Generieren Sie RegExp.escape()-Aufrufe zum Escapen von Sonderzeichen in Strings fur sichere dynamische Regex-Muster."
+                                                      },
+                             "css-shape-function-generator":  {
+                                                                  "name":  "CSS shape() Funktions-Generator",
+                                                                  "summary":  "Generieren Sie CSS shape()-Funktionen fur nicht-rechteckige clip-path- und shape-outside-Formen mit Polygone, Kreisen und Pfaden."
+                                                              },
+                             "css-scope-rule-builder":  {
+                                                            "name":  "CSS @scope Regel-Builder",
+                                                            "summary":  "Generieren Sie CSS @scope-Regeln zur Stilisierung von DOM-Teilbaumen ohne BEM oder CSS Modules."
+                                                        },
+                             "uint8array-base64-hex-converter":  {
+                                                                     "name":  "Uint8Array Base64/Hex Konverter",
+                                                                     "summary":  "Generieren Sie Code-Snippets mit Uint8Array.toBase64(), .toHex(), .fromBase64() und .fromHex() fur native binare Kodierung."
+                                                                 },
+                             "performance-observer-snippet-generator":  {
+                                                                            "name":  "PerformanceObserver Snippet Generator",
+                                                                            "summary":  "Generieren Sie PerformanceObserver-Code fur Core Web Vitals (LCP, INP, CLS) mit good/needs-improvement/poor-Schwellenwerten."
+                                                                        }
                          }
            },
     "fr":  {
@@ -1542,7 +1574,39 @@
                              "directory-upload-input-generator":  {
                                                                       "name":  "Generateur d\u0027input upload de dossier",
                                                                       "summary":  "Generez des inputs HTML avec webkitdirectory pour le telechargement de dossiers, zone de glisser-deposer et liste de fichiers avec webkitRelativePath."
-                                                                  }
+                                                                  },
+                             "scrollend-event-snippet-generator":  {
+                                                                       "name":  "Generateur de snippet scrollend",
+                                                                       "summary":  "Generez des gestionnaires d\u0027evenement scrollend qui se declenchent apres le defilement complet avec inertie, avec comparaison debounce."
+                                                                   },
+                             "custom-highlight-api-generator":  {
+                                                                    "name":  "Generateur API Custom Highlights",
+                                                                    "summary":  "Generez des pseudo-elements CSS ::highlight() et des objets Highlight JavaScript pour styliser des plages de texte sans modifier le DOM."
+                                                                },
+                             "intl-durationformat-generator":  {
+                                                                   "name":  "Generateur Intl.DurationFormat",
+                                                                   "summary":  "Generez du code Intl.DurationFormat pour le formatage localise de durees avec les styles long/short/narrow/digital."
+                                                               },
+                             "regexp-escape-helper":  {
+                                                          "name":  "Assistant RegExp.escape()",
+                                                          "summary":  "Generez des appels RegExp.escape() pour echapper les caracteres speciaux dans les chaines pour des motifs regex dynamiques securises."
+                                                      },
+                             "css-shape-function-generator":  {
+                                                                  "name":  "Generateur de fonction CSS shape()",
+                                                                  "summary":  "Generez des fonctions CSS shape() pour des formes non rectangulaires avec clip-path et shape-outside."
+                                                              },
+                             "css-scope-rule-builder":  {
+                                                            "name":  "Constructeur de regle CSS @scope",
+                                                            "summary":  "Generez des regles CSS @scope pour styliser des sous-arbres DOM sans BEM ni CSS Modules."
+                                                        },
+                             "uint8array-base64-hex-converter":  {
+                                                                     "name":  "Convertisseur Uint8Array Base64/Hex",
+                                                                     "summary":  "Generez des snippets avec Uint8Array.toBase64(), .toHex(), .fromBase64() et .fromHex() pour l\u0027encodage binaire natif."
+                                                                 },
+                             "performance-observer-snippet-generator":  {
+                                                                            "name":  "Generateur de snippet PerformanceObserver",
+                                                                            "summary":  "Generez du code PerformanceObserver pour les Core Web Vitals (LCP, INP, CLS) avec seuils good/needs-improvement/poor."
+                                                                        }
                          }
            },
     "es":  {
@@ -2269,7 +2333,39 @@
                              "directory-upload-input-generator":  {
                                                                       "name":  "Generador de input de carga de directorio",
                                                                       "summary":  "Genere inputs HTML con webkitdirectory para carga de carpetas, zona de arrastrar y soltar y lista de archivos con webkitRelativePath."
-                                                                  }
+                                                                  },
+                             "scrollend-event-snippet-generator":  {
+                                                                       "name":  "Generador de snippet scrollend",
+                                                                       "summary":  "Genere manejadores de evento scrollend que se disparan tras el desplazamiento completo con inercia, con comparacion debounce."
+                                                                   },
+                             "custom-highlight-api-generator":  {
+                                                                    "name":  "Generador de API Custom Highlights",
+                                                                    "summary":  "Genere pseudoelementos CSS ::highlight() y objetos Highlight JavaScript para estilizar rangos de texto sin modificar el DOM."
+                                                                },
+                             "intl-durationformat-generator":  {
+                                                                   "name":  "Generador Intl.DurationFormat",
+                                                                   "summary":  "Genere codigo Intl.DurationFormat para formato de duracion localizado con estilos long/short/narrow/digital."
+                                                               },
+                             "regexp-escape-helper":  {
+                                                          "name":  "Ayudante RegExp.escape()",
+                                                          "summary":  "Genere llamadas RegExp.escape() para escapar caracteres especiales en cadenas para patrones regex dinamicos seguros."
+                                                      },
+                             "css-shape-function-generator":  {
+                                                                  "name":  "Generador de funcion CSS shape()",
+                                                                  "summary":  "Genere funciones CSS shape() para formas no rectangulares con clip-path y shape-outside."
+                                                              },
+                             "css-scope-rule-builder":  {
+                                                            "name":  "Constructor de reglas CSS @scope",
+                                                            "summary":  "Genere reglas CSS @scope para estilizar subarboles DOM sin BEM ni CSS Modules."
+                                                        },
+                             "uint8array-base64-hex-converter":  {
+                                                                     "name":  "Conversor Uint8Array Base64/Hex",
+                                                                     "summary":  "Genere snippets con Uint8Array.toBase64(), .toHex(), .fromBase64() y .fromHex() para codificacion binaria nativa."
+                                                                 },
+                             "performance-observer-snippet-generator":  {
+                                                                            "name":  "Generador de snippet PerformanceObserver",
+                                                                            "summary":  "Genere codigo PerformanceObserver para Core Web Vitals (LCP, INP, CLS) con umbrales good/needs-improvement/poor."
+                                                                        }
                          }
            },
     "ja":  {
@@ -2996,7 +3092,39 @@
                              "directory-upload-input-generator":  {
                                                                       "name":  "ディレクトリアップロード入力ジェネレーター",
                                                                       "summary":  "フォルダアップロード用のwebkitdirectory付きHTMLファイル入力、ドラッグ＆ドロップゾーン、webkitRelativePath付きファイルリストを生成します。"
-                                                                  }
+                                                                  },
+                             "scrollend-event-snippet-generator":  {
+                                                                       "name":  "scrollendイベントスニペットジェネレーター",
+                                                                       "summary":  "慣性/モメンタムを含むスクロール完了後に発火するscrollendイベントハンドラーをデバウンス比較付きで生成します。"
+                                                                   },
+                             "custom-highlight-api-generator":  {
+                                                                    "name":  "Custom Highlights APIジェネレーター",
+                                                                    "summary":  "DOMを変更せずにテキスト範囲をスタイリングするCSS ::highlight()とJavaScript Highlightオブジェクトを生成します。"
+                                                                },
+                             "intl-durationformat-generator":  {
+                                                                   "name":  "Intl.DurationFormatジェネレーター",
+                                                                   "summary":  "long/short/narrow/digitalスタイルのロケール対応時間長フォーマット用Intl.DurationFormatコードを生成します。"
+                                                               },
+                             "regexp-escape-helper":  {
+                                                          "name":  "RegExp.escape()ヘルパー",
+                                                          "summary":  "安全な動的正規表現パターンのために文字列内の特殊文字をエスケープするRegExp.escape()呼び出しを生成します。"
+                                                      },
+                             "css-shape-function-generator":  {
+                                                                  "name":  "CSS shape()関数ジェネレーター",
+                                                                  "summary":  "clip-pathおよびshape-outside用の非矩形形状を作成するCSS shape()関数を生成します。"
+                                                              },
+                             "css-scope-rule-builder":  {
+                                                            "name":  "CSS @scopeルールビルダー",
+                                                            "summary":  "BEMやCSS ModulesなしでDOMサブツリーをスタイリングするCSS @scopeルールを生成します。"
+                                                        },
+                             "uint8array-base64-hex-converter":  {
+                                                                     "name":  "Uint8Array Base64/Hexコンバーター",
+                                                                     "summary":  "ネイティブバイナリエンコーディングのためのUint8Array.toBase64()、.toHex()、.fromBase64()、.fromHex()コードスニペットを生成します。"
+                                                                 },
+                             "performance-observer-snippet-generator":  {
+                                                                            "name":  "PerformanceObserverスニペットジェネレーター",
+                                                                            "summary":  "good/needs-improvement/poor閾値付きでCore Web Vitals（LCP、INP、CLS）のPerformanceObserverコードを生成します。"
+                                                                        }
                          }
            },
     "nl":  {
@@ -3723,7 +3851,39 @@
                              "directory-upload-input-generator":  {
                                                                       "name":  "Directory Upload Input Generator",
                                                                       "summary":  "Genereer HTML-bestandsinvoer met webkitdirectory voor map-upload, drag-and-drop-zone en bestandslijst met webkitRelativePath."
-                                                                  }
+                                                                  },
+                             "scrollend-event-snippet-generator":  {
+                                                                       "name":  "scrollend Event Snippet Generator",
+                                                                       "summary":  "Genereer scrollend event handlers die vuren na volledig scrollen met momentum/inertie, met debounce vergelijking."
+                                                                   },
+                             "custom-highlight-api-generator":  {
+                                                                    "name":  "Custom Highlights API Generator",
+                                                                    "summary":  "Genereer CSS ::highlight() en JavaScript Highlight objecten voor het stylen van tekstbereiken zonder DOM-wijzigingen."
+                                                                },
+                             "intl-durationformat-generator":  {
+                                                                   "name":  "Intl.DurationFormat Generator",
+                                                                   "summary":  "Genereer Intl.DurationFormat code voor gelokaliseerde tijdsduur formattering met long/short/narrow/digital stijlen."
+                                                               },
+                             "regexp-escape-helper":  {
+                                                          "name":  "RegExp.escape() Helper",
+                                                          "summary":  "Genereer RegExp.escape() aanroepen om speciale tekens in strings te escapen voor veilige dynamische regex-patronen."
+                                                      },
+                             "css-shape-function-generator":  {
+                                                                  "name":  "CSS shape() Functiegenerator",
+                                                                  "summary":  "Genereer CSS shape()-functies voor niet-rechthoekige vormen met clip-path en shape-outside."
+                                                              },
+                             "css-scope-rule-builder":  {
+                                                            "name":  "CSS @scope Regelbouwer",
+                                                            "summary":  "Genereer CSS @scope-regels voor het stylen van DOM-subtrees zonder BEM of CSS Modules."
+                                                        },
+                             "uint8array-base64-hex-converter":  {
+                                                                     "name":  "Uint8Array Base64/Hex Converter",
+                                                                     "summary":  "Genereer code snippets met Uint8Array.toBase64(), .toHex(), .fromBase64() en .fromHex() voor native binaire codering."
+                                                                 },
+                             "performance-observer-snippet-generator":  {
+                                                                            "name":  "PerformanceObserver Snippet Generator",
+                                                                            "summary":  "Genereer PerformanceObserver code voor Core Web Vitals (LCP, INP, CLS) met good/needs-improvement/poor drempels."
+                                                                        }
                          }
            }
 }

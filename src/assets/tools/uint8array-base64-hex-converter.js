@@ -1,0 +1,95 @@
+import { field, textarea, select, checkbox, htmlEscape } from "../tool-core.js";
+
+export default {
+  form: `
+    <div class="field-grid">
+      ${select({ id: "ubhDirection", label: "Conversion direction", options: [
+        {label:"Base64 → Uint8Array (decode)",value:"b64decode"},
+        {label:"Uint8Array → Base64 (encode)",value:"b64encode"},
+        {label:"Hex → Uint8Array (decode)",value:"hexdecode"},
+        {label:"Uint8Array → Hex (encode)",value:"hexencode"}
+      ], value: "b64encode" })}
+    </div>
+    <div class="field-grid">
+      ${textarea({ id: "ubhInput", label: "Input", value: "Hello, World!", full: true })}
+    </div>
+    <div class="field-grid">
+      ${checkbox({ id: "ubhCompact", label: "Show compact one-liner", checked: true })}
+      ${checkbox({ id: "ubhFull", label: "Show full function with error handling", checked: false })}
+    </div>`,
+  generate(root) {
+    const direction = root.querySelector("#ubhDirection").value;
+    const input = root.querySelector("#ubhInput").value.trim();
+    const compact = root.querySelector("#ubhCompact").checked;
+    const full = root.querySelector("#ubhFull").checked;
+
+    const lines = [];
+    lines.push("// Uint8Array Base64/Hex Conversions — Baseline 2025");
+    lines.push("// Browser: Chrome 136+, Edge 136+, Safari 18.5+, Firefox 137+");
+    lines.push("// Methods: Uint8Array.fromBase64(), .toBase64(), .fromHex(), .toHex()");
+    lines.push("");
+
+    if (compact) {
+      if (direction === "b64encode") {
+        lines.push("// Base64 encode");
+        lines.push("const bytes = new TextEncoder().encode('" + input + "');");
+        lines.push("const base64 = bytes.toBase64();");
+        lines.push(`// Result: "${btoa(String.fromCharCode(...new TextEncoder().encode(input)))}"`);
+        lines.push("");
+        lines.push("// Alternative: fromBase64 decode");
+        lines.push(`const decoded = Uint8Array.fromBase64(base64);`);
+        lines.push(`const text = new TextDecoder().decode(decoded);`);
+      } else if (direction === "b64decode") {
+        lines.push("// Base64 decode");
+        lines.push("const bytes = Uint8Array.fromBase64('" + input + "');");
+        lines.push("const text = new TextDecoder().decode(bytes);");
+        lines.push(`// Result: "${input}"`);
+      } else if (direction === "hexencode") {
+        lines.push("// Hex encode");
+        lines.push("const bytes = new TextEncoder().encode('" + input + "');");
+        lines.push("const hex = bytes.toHex();");
+        const hexResult = [...new TextEncoder().encode(input)].map(b => b.toString(16).padStart(2, "0")).join("");
+        lines.push(`// Result: "${hexResult}"`);
+      } else {
+        lines.push("// Hex decode");
+        lines.push("const bytes = Uint8Array.fromHex('" + input + "');");
+        lines.push("const text = new TextDecoder().decode(bytes);");
+      }
+    }
+
+    if (full) {
+      lines.push("");
+      lines.push("// Full function with error handling");
+      lines.push("function safeBase64Encode(input) {");
+      lines.push("  try {");
+      lines.push("    const bytes = new TextEncoder().encode(input);");
+      lines.push("    return bytes.toBase64();");
+      lines.push("  } catch (e) {");
+      lines.push("    console.error('Base64 encode failed:', e);");
+      lines.push("    return null;");
+      lines.push("  }");
+      lines.push("}");
+    }
+
+    lines.push("");
+    lines.push("// Notes:");
+    lines.push("// 1. Uint8Array.toBase64() replaces the manual btoa + charCodeAt pattern.");
+    lines.push("// 2. Uint8Array.toHex() replaces manual Array.from().map().join() chains.");
+    lines.push("// 3. These methods are available on Uint8Array.prototype in Baseline 2025 browsers.");
+    lines.push("// 4. For older browsers, polyfill with manual conversion or use buffer libraries.");
+
+    const preview = `<div style="border:1px solid #e5e7eb;border-radius:10px;padding:14px;background:#f9fafb">
+      <div style="font-size:12px;color:#6b7280;margin-bottom:8px">Direction: ${direction}</div>
+      <div style="font-family:monospace;font-size:13px;word-break:break-all;background:#fff;border:1px solid #e5e7eb;border-radius:6px;padding:10px">
+        ${[
+          "b64encode" && `const b64 = bytes.toBase64();`,
+          "b64decode" && `const bytes = Uint8Array.fromBase64(str);`,
+          "hexencode" && `const hex = bytes.toHex();`,
+          "hexdecode" && `const bytes = Uint8Array.fromHex(hexStr);`
+        ].filter(Boolean).map(s => `<div style="color:#15803d">${s}</div>`).join("")}
+      </div>
+    </div>`;
+
+    return { output: lines.join("\n"), preview };
+  }
+};

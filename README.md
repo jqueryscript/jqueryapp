@@ -2,7 +2,7 @@
 
 **Solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with fast browser tools. No uploads, accounts, or AI token costs.**
 
-> You might not need AI for every web task. jquery.app provides 111 small browser tools
+> You might not need AI for every web task. jquery.app provides 119 small browser tools
 > that solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with deterministic
 > output — no uploads, accounts, or AI token costs.
 
@@ -10,7 +10,7 @@
 
 ---
 
-## 111 Browser Tools
+## 119 Browser Tools
 
 ### SEO Tools (22)
 
@@ -37,7 +37,7 @@
 - [Referrer Policy Tag Generator](https://www.jquery.app/tools/referrer-policy-tag-generator/) — Generate a Referrer-Policy header or meta tag.
 - [OpenSearch Description Generator](https://www.jquery.app/tools/opensearch-description-generator/) — Generate OpenSearch XML and HTML link tag for browser search integration.
 
-### HTML Tools (35)
+### HTML Tools (41)
 
 - [HTML Link Rel Generator](https://www.jquery.app/tools/html-link-rel-generator/) — Generate link tags for preload, preconnect, dns-prefetch, canonical, and alternate URLs.
 - [Favicon HTML Tag Generator](https://www.jquery.app/tools/favicon-html-tag-generator/) — Generate favicon and web app icon tags for static websites.
@@ -74,8 +74,14 @@
 - [URLPattern Tester](https://www.jquery.app/tools/urlpattern-tester/) — Test URL patterns with named groups, wildcards, and regex matching using the URLPattern API.
 - [contenteditable=plaintext-only Generator](https://www.jquery.app/tools/contenteditable-plaintext-only-generator/) — Generate accessible markup with contenteditable=plaintext-only for plain-text input.
 - [Directory Upload Input Generator](https://www.jquery.app/tools/directory-upload-input-generator/) — Generate file inputs with webkitdirectory for folder upload and drag-and-drop.
+- [Custom Highlights API Generator](https://www.jquery.app/tools/custom-highlight-api-generator/) — Generate CSS ::highlight() and JS snippets to style text ranges without DOM changes.
+- [Uint8Array Base64/Hex Converter](https://www.jquery.app/tools/uint8array-base64-hex-converter/) — Generate snippets with Uint8Array.toBase64(), .toHex(), .fromBase64(), .fromHex().
+- [RegExp.escape() Helper](https://www.jquery.app/tools/regexp-escape-helper/) — Escape special regex characters in strings for safe dynamic pattern matching.
+- [Intl.DurationFormat Generator](https://www.jquery.app/tools/intl-durationformat-generator/) — Generate locale-aware duration formatting with long/short/narrow/digital styles.
+- [scrollend Event Snippet Generator](https://www.jquery.app/tools/scrollend-event-snippet-generator/) — Generate scrollend event handlers that fire after momentum/inertia scrolling.
+- [PerformanceObserver Snippet Generator](https://www.jquery.app/tools/performance-observer-snippet-generator/) — Generate PerformanceObserver code for Core Web Vitals with rating thresholds.
 
-### CSS Tools (36)
+### CSS Tools (38)
 
 - [CSS Clamp Calculator](https://www.jquery.app/tools/css-clamp-calculator/) — Calculate responsive CSS clamp values for font sizes and spacing.
 - [CSS Safe Area Insets Generator](https://www.jquery.app/tools/css-safe-area-insets-generator/) — Generate CSS for safe-area insets on phones with notches and rounded corners.
@@ -113,6 +119,8 @@
 - [CSS Stretch Sizing Generator](https://www.jquery.app/tools/css-stretch-sizing-generator/) — Generate CSS with the stretch keyword for fill-available sizing.
 - [CSS text-indent hanging/each-line Builder](https://www.jquery.app/tools/css-text-indent-hanging-builder/) — Generate CSS text-indent with hanging and each-line keywords for reverse indentation.
 - [CSS Font-Relative Units Calculator](https://www.jquery.app/tools/css-font-relative-units-calculator/) — Calculate pixel equivalents for rcap, rch, rex, and ric root-relative font units.
+- [CSS shape() Function Generator](https://www.jquery.app/tools/css-shape-function-generator/) — Generate CSS shape() functions for non-rectangular clip-path and shape-outside.
+- [CSS @scope Rule Builder](https://www.jquery.app/tools/css-scope-rule-builder/) — Generate CSS @scope rules for scoping styles to DOM subtrees.
 
 ### GitHub Pages Tools (13)
 
@@ -142,7 +150,7 @@
 
 ## Privacy & Data
 
-All 111 tools run entirely in your browser. No inputs are uploaded, no accounts are required,
+All 119 tools run entirely in your browser. No inputs are uploaded, no accounts are required,
 and no server-side processing happens. Each tool gives you output you can inspect,
 copy, and use right away.
 

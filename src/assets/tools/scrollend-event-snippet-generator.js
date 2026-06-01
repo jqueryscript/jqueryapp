@@ -1,0 +1,98 @@
+import { field, select, checkbox, htmlEscape } from "../tool-core.js";
+
+export default {
+  form: `
+    <div class="field-grid">
+      ${select({ id: "seTarget", label: "Scroll target", options: [
+        {label:"Document (page scroll)",value:"document"},
+        {label:"Custom element selector",value:"custom"},
+        {label:"window.scroll",value:"window"}
+      ], value: "document" })}
+      ${field({ id: "seSelector", label: "Custom element selector", value: ".scroll-container" })}
+    </div>
+    <div class="field-grid">
+      ${select({ id: "seAction", label: "On scrollend action", options: [
+        {label:"Log event",value:"log"},
+        {label:"Lazy load / fetch data",value:"fetch"},
+        {label:"Snap to nearest item",value:"snap"},
+        {label:"Update UI (progress bar, nav)",value:"ui"},
+        {label:"Custom handler",value:"custom"}
+      ], value: "log" })}
+      ${checkbox({ id: "seDebounce", label: "Include debounce comparison (old way)", checked: true })}
+    </div>`,
+  generate(root) {
+    const target = root.querySelector("#seTarget").value;
+    const selector = root.querySelector("#seSelector").value.trim() || ".scroll-container";
+    const action = root.querySelector("#seAction").value;
+    const debounce = root.querySelector("#seDebounce").checked;
+
+    const targetExpr = target === "document" ? "document" :
+      target === "window" ? "window" :
+      `document.querySelector('${selector}')`;
+
+    const targetName = target === "document" ? "document" :
+      target === "window" ? "window" : selector;
+
+    const lines = [];
+    lines.push("// scrollend Event — Baseline 2025");
+    lines.push("// Browser: Chrome 114+, Edge 114+, Safari 16.4+, Firefox 109+");
+    lines.push("// Fires when a scroll operation has fully completed (including inertia/momentum).");
+    lines.push("");
+
+    lines.push(`const target = ${targetExpr};`);
+    lines.push("");
+    lines.push(`target.addEventListener('scrollend', (event) => {`);
+
+    const actionCode = {
+      log: ["  console.log('Scroll ended at:', target.scrollTop || window.scrollY);"],
+      fetch: ["  // Fetch more content when user finishes scrolling",
+              "  const nearBottom = target.scrollTop + target.clientHeight >= target.scrollHeight - 100;",
+              "  if (nearBottom) loadMoreContent();"],
+      snap: ["  // Snap to the nearest item after scroll momentum ends",
+              "  const items = target.querySelectorAll('.snap-item');",
+              "  const center = target.scrollLeft + target.clientWidth / 2;",
+              "  // Find nearest item and scroll to snap it"],
+      ui: ["  // Update scroll-dependent UI elements",
+              "  updateScrollProgress();",
+              "  updateActiveNavLink();"],
+      custom: ["  // Custom scrollend logic here",
+              "  // e.g., analytics tracking, lazy loading, state updates"]
+    };
+
+    if (actionCode[action]) lines.push(...actionCode[action]);
+    lines.push("});");
+    lines.push("");
+
+    if (debounce) {
+      lines.push("// Old way: debounced scroll listener (prone to timing issues)");
+      lines.push("let scrollTimer;");
+      lines.push("target.addEventListener('scroll', () => {");
+      lines.push("  clearTimeout(scrollTimer);");
+      lines.push("  scrollTimer = setTimeout(() => {");
+      lines.push("    // handle scroll end (but misses momentum/inertia scrolling)");
+      lines.push("  }, 150); // arbitrary timeout — too short or too long");
+      lines.push("});");
+    }
+
+    lines.push("");
+    lines.push("// Notes:");
+    lines.push("// 1. scrollend fires AFTER momentum/inertia scrolling completes — debounce cannot do this.");
+    lines.push("// 2. No more guessing timeout values — the browser knows exactly when scrolling stops.");
+    lines.push("// 3. Works on document, window, and any scrollable element.");
+    lines.push("// 4. Great for: lazy loading, snap-to-item, scroll analytics, revealing animations.");
+
+    const preview = `<div style="border:1px solid #e5e7eb;border-radius:10px;padding:14px;background:#f9fafb">
+      <div style="font-size:13px;font-weight:600;color:#374151;margin-bottom:8px">
+        ${targetName}.addEventListener('scrollend', ...)
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <span style="background:#dcfce7;color:#166534;padding:3px 10px;border-radius:12px;font-size:11px">No debounce needed</span>
+        <span style="background:#dcfce7;color:#166534;padding:3px 10px;border-radius:12px;font-size:11px">Captures momentum</span>
+        <span style="background:#dbeafe;color:#1e40af;padding:3px 10px;border-radius:12px;font-size:11px">Action: ${action}</span>
+      </div>
+      ${debounce ? '<div style="margin-top:10px;font-size:11px;color:#6b7280">Includes old debounce pattern for comparison</div>' : ""}
+    </div>`;
+
+    return { output: lines.join("\n"), preview };
+  }
+};

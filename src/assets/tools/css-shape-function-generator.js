@@ -1,0 +1,77 @@
+import { field, textarea, select, checkbox, htmlEscape } from "../tool-core.js";
+
+export default {
+  form: `
+    <div class="field-grid">
+      ${select({ id: "cssfType", label: "Shape type", options: [
+        {label:"Polygon (custom points)",value:"polygon"},
+        {label:"Circle",value:"circle"},
+        {label:"Ellipse",value:"ellipse"},
+        {label:"Path (SVG-like)",value:"path"},
+        {label:"Rect (rounded corners)",value:"rect"},
+        {label:"Command-based (shape commands)",value:"command"}
+      ], value: "polygon" })}
+      ${select({ id: "cssfProperty", label: "Target property", options: [
+        {label:"clip-path",value:"clip-path"},
+        {label:"shape-outside",value:"shape-outside"}
+      ], value: "clip-path" })}
+    </div>
+    <div class="field-grid">
+      ${field({ id: "cssfPoints", label: "Points / coordinates", value: "50% 0%, 100% 50%, 50% 100%, 0% 50%", help: "comma-separated x y pairs" })}
+      ${field({ id: "cssfRadius", label: "Radius (circle/ellipse)", value: "50%", help: "for circle: single value; for ellipse: rx ry" })}
+    </div>
+    <div class="field-grid">
+      ${field({ id: "cssfSelector", label: "Selector", value: ".shaped-element" })}
+      ${checkbox({ id: "cssfClip", label: "Include clip-path fallback (polygon())", checked: true })}
+    </div>`,
+  generate(root) {
+    const type = root.querySelector("#cssfType").value;
+    const property = root.querySelector("#cssfProperty").value;
+    const points = root.querySelector("#cssfPoints").value.trim();
+    const radius = root.querySelector("#cssfRadius").value.trim() || "50%";
+    const selector = root.querySelector("#cssfSelector").value.trim() || ".shaped-element";
+    const clipFallback = root.querySelector("#cssfClip").checked;
+
+    const coords = points.split(",").map(p => p.trim()).join(", ");
+    const shapeExpr = type === "circle" ? `circle(${radius})` :
+      type === "ellipse" ? `ellipse(${radius})` :
+      type === "rect" ? `rect(${coords})` :
+      type === "path" ? `path("${points}")` :
+      type === "command" ? points :
+      `polygon(${coords})`;
+
+    const lines = [];
+    lines.push("/* CSS shape() function — Baseline 2026 */");
+    lines.push("/* Browser: Chrome 139+, Edge 139+, Safari 19+, Firefox 138+ */");
+    lines.push("");
+    lines.push(`${selector} {`);
+    if (clipFallback && property === "clip-path") {
+      lines.push(`  clip-path: ${shapeExpr}; /* fallback for browsers without shape() */`);
+      lines.push(`  clip-path: shape(${shapeExpr.includes("polygon") ? "from " + shapeExpr : shapeExpr});`);
+    } else {
+      lines.push(`  ${property}: shape(from ${shapeExpr});`);
+    }
+    lines.push("}");
+    lines.push("");
+    lines.push("/* shape() enables percentage-based coordinates relative to the element's box, */");
+    lines.push("/* margin-box, border-box, padding-box, or content-box reference boxes, */");
+    lines.push("/* and animated shape transitions. */");
+
+    const previewDim = "width:180px;height:180px;";
+    const bg = `background:linear-gradient(135deg,#3b82f6,#8b5cf6);${previewDim}`;
+    const clip = `clip-path:${shapeExpr};${previewDim}${bg}`;
+
+    const preview = `<div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+      <div style="text-align:center">
+        <div style="font-size:11px;color:#6b7280;margin-bottom:6px">Original</div>
+        <div style="${bg}border-radius:8px"></div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-size:11px;color:#6b7280;margin-bottom:6px">shape(${shapeExpr.substring(0, 30)}${shapeExpr.length > 30 ? "..." : ""})</div>
+        <div style="${clip}border-radius:8px"></div>
+      </div>
+    </div>`;
+
+    return { output: lines.join("\n"), preview };
+  }
+};
