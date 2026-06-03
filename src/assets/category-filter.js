@@ -12,8 +12,10 @@
   container.className = "tool-filters";
   const toolCount = taggedCards.length;
   container.innerHTML = `
-    <input type="search" id="cat-search" class="filter-search" placeholder="Search ${toolCount} tools..." autocomplete="off">
-    <div class="filter-chips" id="cat-chips"></div>
+    <label for="cat-search" class="sr-only">Search tools</label>
+    <input type="search" id="cat-search" class="filter-search" placeholder="Search ${toolCount} tools..." autocomplete="off" aria-label="Search tools">
+    <div class="filter-chips" id="cat-chips" role="group" aria-label="Filter by tag"></div>
+    <div id="cat-no-results" class="filter-no-results" style="display:none" aria-live="polite"></div>
   `;
 
   // Wrap in a .wrap div so the filter aligns with other page content
@@ -39,7 +41,7 @@
   let activeTag = "";
   function renderChips() {
     chipsContainer.innerHTML = allTags.map(tag =>
-      `<button class="chip${activeTag === tag ? " active" : ""}" data-tag="${tag}">${titleCase(tag)}</button>`
+      `<button type="button" class="chip${activeTag === tag ? " active" : ""}" data-tag="${tag}">${titleCase(tag)}</button>`
     ).join("");
   }
   renderChips();
@@ -71,6 +73,25 @@
       ? `Showing all ${cards.length} tools`
       : `Showing ${visible} of ${cards.length} tools`;
     countEl.setAttribute("aria-live", "polite");
+
+    const noResults = document.getElementById("cat-no-results");
+    if (noResults) {
+      if (visible === 0) {
+        noResults.style.display = "";
+        noResults.innerHTML = `<p>No tools match this search.</p><button type="button" id="cat-reset" class="button secondary">Clear filters</button>`;
+        setTimeout(() => {
+          const reset = document.getElementById("cat-reset");
+          if (reset) reset.addEventListener("click", () => {
+            searchInput.value = "";
+            activeTag = "";
+            renderChips();
+            filterCards();
+          });
+        }, 0);
+      } else {
+        noResults.style.display = "none";
+      }
+    }
   }
 
   // Events

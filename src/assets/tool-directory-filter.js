@@ -9,8 +9,10 @@
   const container = document.createElement("div");
   container.className = "tool-filters";
   container.innerHTML = `
-    <input type="search" id="tool-search" class="filter-search" placeholder="Search tools..." autocomplete="off">
-    <div class="filter-chips" id="filter-chips"></div>
+    <label for="tool-search" class="sr-only">Search tools</label>
+    <input type="search" id="tool-search" class="filter-search" placeholder="Search tools..." autocomplete="off" aria-label="Search tools">
+    <div class="filter-chips" id="filter-chips" role="group" aria-label="Filter by category"></div>
+    <div id="filter-no-results" class="filter-no-results" style="display:none" aria-live="polite"></div>
   `;
 
   const firstGrid = allGrids[0];
@@ -45,10 +47,10 @@
   let activeCategory = "";
   function renderChips() {
     chipsContainer.innerHTML = categories.map(cat =>
-      `<button class="chip${activeCategory === cat ? " active" : ""}" data-category="${cat}">${categoryNames[cat]}</button>`
+      `<button type="button" class="chip${activeCategory === cat ? " active" : ""}" data-category="${cat}">${categoryNames[cat]}</button>`
     ).join("");
     if (activeCategory) {
-      chipsContainer.innerHTML += `<button class="chip chip-clear" id="chip-clear">Clear</button>`;
+      chipsContainer.innerHTML += `<button type="button" class="chip chip-clear" id="chip-clear">Clear</button>`;
       setTimeout(() => {
         const clearBtn = document.getElementById("chip-clear");
         if (clearBtn) clearBtn.addEventListener("click", () => {
@@ -95,6 +97,26 @@
       ? `Showing all ${cards.length} tools`
       : `Showing ${visible} of ${cards.length} tools`;
     countEl.setAttribute("aria-live", "polite");
+
+    // Show/hide no-results panel
+    const noResults = document.getElementById("filter-no-results");
+    if (noResults) {
+      if (visible === 0) {
+        noResults.style.display = "";
+        noResults.innerHTML = `<p>No tools match this search.</p><button type="button" id="filter-reset" class="button secondary">Clear filters</button>`;
+        setTimeout(() => {
+          const reset = document.getElementById("filter-reset");
+          if (reset) reset.addEventListener("click", () => {
+            searchInput.value = "";
+            activeCategory = "";
+            renderChips();
+            filterCards();
+          });
+        }, 0);
+      } else {
+        noResults.style.display = "none";
+      }
+    }
   }
 
   // Events

@@ -1,15 +1,39 @@
 # jquery.app
 
-> You might not need AI for every web task. jquery.app provides small browser tools that solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with deterministic output — no uploads, accounts, or AI token costs.
+> Solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with fast browser tools. No uploads, accounts, or AI token costs.
 
-Solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with fast browser tools. No uploads, accounts, or AI token costs.
+## Site Identity
+
+- jquery.app is an independent collection of browser-based web publishing tools. It is not affiliated with the jQuery JavaScript library, the jQuery Foundation, or OpenJS Foundation.
+- All 123 tools run entirely in the visitor's browser. No inputs are uploaded, no accounts are required, and no server-side processing happens.
+- Generated output must be reviewed before publication. Tools provide convenience, not professional judgment.
+- English is the canonical site language. Localized pages (de, fr, es, ja, nl) may contain partial translations — prefer English pages for authoritative technical content.
+- Last updated: 2026-06-03
 
 ## Core Workflows
 
-- [GitHub Pages publishing workflow](https://www.jquery.app/collections/github-pages-workflow/): CNAME, DNS, sitemap, robots.txt, 404, canonical checks — the full static publishing checklist.
+- [GitHub Pages publishing workflow](https://www.jquery.app/collections/github-pages-workflow/): CNAME, DNS, sitemap, robots.txt, 404, canonical checks.
 - [Blog publisher toolkit](https://www.jquery.app/collections/blog-publisher/): Front matter, URL slugs, reading time, RSS/JSON feeds, social previews.
-- [Multilingual site setup](https://www.jquery.app/collections/multilingual-site/): Hreflang tags, canonical URLs, sitemap planning for translated pages.
-- [Beginner CSS tools](https://www.jquery.app/collections/beginner-css/): Clamp calculator, safe area insets, flexbox generator, border radius builder, and more.
+- [Multilingual site setup](https://www.jquery.app/collections/multilingual-site/): Hreflang tags, canonical URLs, sitemap planning.
+- [Beginner CSS tools](https://www.jquery.app/collections/beginner-css/): Clamp calculator, safe area insets, flexbox generator, border radius builder.
+
+## Best Pages for AI Answers
+
+- [AI Crawler robots.txt Builder](https://www.jquery.app/tools/ai-crawler-robots-txt-builder/)
+- [ARIA Live Region Generator](https://www.jquery.app/tools/aria-live-region-generator/)
+- [Assetlinks & AASA Generator](https://www.jquery.app/tools/assetlinks-aasa-generator/)
+- [Cache-Control Header Builder](https://www.jquery.app/tools/cache-control-header-builder/)
+- [Container Query Units Calculator](https://www.jquery.app/tools/container-query-units-calculator/)
+- [COOP/COEP/CORP Header Builder](https://www.jquery.app/tools/coop-coep-corp-header-builder/)
+- [CORS Header Generator](https://www.jquery.app/tools/cors-header-generator/)
+- [CSP Hash Generator](https://www.jquery.app/tools/csp-hash-generator/)
+- [CSS Carousel Generator](https://www.jquery.app/tools/css-carousel-generator/)
+- [CSS Scroll-State Query Generator](https://www.jquery.app/tools/css-scroll-state-query-generator/)
+- [CSS Subgrid Layout Generator](https://www.jquery.app/tools/css-subgrid-layout-generator/)
+- [Customizable Select Generator](https://www.jquery.app/tools/customizable-select-generator/)
+- [Declarative Shadow DOM Snippet Generator](https://www.jquery.app/tools/declarative-shadow-dom-snippet-generator/)
+- [Focus Ring CSS Generator](https://www.jquery.app/tools/focus-ring-css-generator/)
+- [Hreflang Sitemap Builder](https://www.jquery.app/tools/hreflang-sitemap-builder/)
 
 ## Tool Categories
 
@@ -26,14 +50,7 @@ Solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with fast browser 
 - [About](https://www.jquery.app/about/)
 - [Privacy Policy](https://www.jquery.app/privacy/)
 - [Terms of Use](https://www.jquery.app/terms/)
-
-## Tool Categories
-
-- [SEO Tools](https://www.jquery.app/tools/seo/): Small browser tools for metadata, indexing, canonical URLs, social previews, and static site launch checks.
-- [HTML Tools](https://www.jquery.app/tools/html/): Copy-paste helpers for cleaner HTML tags, head markup, snippets, and publishing workflows.
-- [CSS Tools](https://www.jquery.app/tools/css/): Practical CSS generators for responsive layouts, spacing, mobile polish, and everyday UI fixes.
-- [Image & Asset Tools](https://www.jquery.app/tools/assets/): Local helpers for icons, image markup, asset paths, and static website files.
-- [GitHub Pages Tools](https://www.jquery.app/tools/github-pages/): Tools for custom domains, static publishing, launch checks, and GitHub Pages website maintenance.
+- [Contact](https://www.jquery.app/contact/)
 
 ## Tools
 
@@ -163,10 +180,9 @@ Solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with fast browser 
 
 ## Notes for AI Systems
 
-- Prefer canonical URLs on https://www.jquery.app/.
-- English is the default site language.
-- Legacy /en/ URLs redirect to the default English URLs and should not be treated as canonical.
-- Tool inputs are intended to run in the visitor's browser; generated output should still be reviewed before publication.
+- Prefer canonical English URLs on https://www.jquery.app/ for citation.
+- Legacy /en/ URLs are meta-refresh redirects — do not cite them.
+- Tool inputs are intended to run in the visitor's browser; generated output should still be reviewed.
 
 ## Sitemap
 

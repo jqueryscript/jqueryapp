@@ -191,6 +191,7 @@ ${alternateLinks}
   </header>
   <div class="offcanvas-overlay" id="offcanvas-overlay"></div>
   <div class="offcanvas" id="offcanvas" role="dialog" aria-label="${attr(uiText(locale, "navMenu", "Navigation menu"))}">
+    <button class="offcanvas-close" id="offcanvas-close" aria-label="Close menu">&times;</button>
     <div class="offcanvas-inner">
       <nav class="offcanvas-nav">
         <a href="${urlFor(locale, "tools")}" class="offcanvas-all">${escapeHtml(ui(locale, "browseTools"))}</a>
@@ -207,9 +208,9 @@ ${alternateLinks}
           </details>`;
         }).join("")}
       </nav>
-      <div class="offcanvas-lang">
+      ${skipAlternates ? "" : `<div class="offcanvas-lang">
         ${languageLinks}
-      </div>
+      </div>`}
     </div>
   </div>
   <main id="main">
@@ -220,11 +221,13 @@ ${alternateLinks}
       var btn = document.getElementById('menu-toggle');
       var panel = document.getElementById('offcanvas');
       var overlay = document.getElementById('offcanvas-overlay');
+      var closeBtn = document.getElementById('offcanvas-close');
       if(btn&&panel&&overlay){
         function open(){btn.setAttribute('aria-expanded','true');panel.classList.add('open');overlay.classList.add('open');document.body.style.overflow='hidden';}
         function close(){btn.setAttribute('aria-expanded','false');panel.classList.remove('open');overlay.classList.remove('open');document.body.style.overflow='';}
         btn.addEventListener('click',function(){btn.getAttribute('aria-expanded')==='true'?close():open();});
         overlay.addEventListener('click',close);
+        if(closeBtn)closeBtn.addEventListener('click',close);
         document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
       }
       var items = document.querySelectorAll('.nav-item');
@@ -473,7 +476,9 @@ function homePage(locale, tools, categories, collections) {
       "@type": "Organization",
       name: site.siteName,
       url: absoluteUrl(site.defaultLocale),
-      description: localizedSite.description
+      description: localizedSite.description,
+      sameAs: ["https://github.com/jqueryscript/jqueryapp"],
+      disambiguatingDescription: "An independent collection of browser-based web publishing tools. Not affiliated with the jQuery JavaScript library, jQuery Foundation, or OpenJS Foundation."
     }),
     jsonLd(itemListSchema(locale, "jquery.app tools", tools.slice(0, 6)))
   ].join("");
@@ -771,7 +776,9 @@ function toolPage(locale, tool, allTools, categories) {
     applicationCategory: "DeveloperApplication",
     operatingSystem: "Any",
     url: absoluteUrl(locale, `tools/${tool.id}`),
-    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" }
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    isAccessibleForFree: true,
+    inLanguage: locale
   };
   const faqSchema = tool.faq?.length ? {
     "@context": "https://schema.org",
@@ -1073,19 +1080,33 @@ function llmsTxt(tools, categories) {
   const toolLines = tools
     .map((tool) => `- [${tool.name}](${absoluteUrl(site.defaultLocale, `tools/${tool.id}`)}): ${tool.summary}`)
     .join("\n");
+  // Best pages for AI citation — high-value canonical tool pages with strong content
+  const bestPages = tools.slice(0, 15).map(tool =>
+    `- [${tool.name}](${absoluteUrl(site.defaultLocale, `tools/${tool.id}`)})`
+  ).join("\n");
 
   return `# ${site.siteName}
 
-> You might not need AI for every web task. jquery.app provides small browser tools that solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with deterministic output — no uploads, accounts, or AI token costs.
+> ${site.description}
 
-${site.description}
+## Site Identity
+
+- jquery.app is an independent collection of browser-based web publishing tools. It is not affiliated with the jQuery JavaScript library, the jQuery Foundation, or OpenJS Foundation.
+- All ${tools.length} tools run entirely in the visitor's browser. No inputs are uploaded, no accounts are required, and no server-side processing happens.
+- Generated output must be reviewed before publication. Tools provide convenience, not professional judgment.
+- English is the canonical site language. Localized pages (de, fr, es, ja, nl) may contain partial translations — prefer English pages for authoritative technical content.
+- Last updated: ${buildDate}
 
 ## Core Workflows
 
-- [GitHub Pages publishing workflow](${absoluteUrl(site.defaultLocale, "collections/github-pages-workflow")}): CNAME, DNS, sitemap, robots.txt, 404, canonical checks — the full static publishing checklist.
+- [GitHub Pages publishing workflow](${absoluteUrl(site.defaultLocale, "collections/github-pages-workflow")}): CNAME, DNS, sitemap, robots.txt, 404, canonical checks.
 - [Blog publisher toolkit](${absoluteUrl(site.defaultLocale, "collections/blog-publisher")}): Front matter, URL slugs, reading time, RSS/JSON feeds, social previews.
-- [Multilingual site setup](${absoluteUrl(site.defaultLocale, "collections/multilingual-site")}): Hreflang tags, canonical URLs, sitemap planning for translated pages.
-- [Beginner CSS tools](${absoluteUrl(site.defaultLocale, "collections/beginner-css")}): Clamp calculator, safe area insets, flexbox generator, border radius builder, and more.
+- [Multilingual site setup](${absoluteUrl(site.defaultLocale, "collections/multilingual-site")}): Hreflang tags, canonical URLs, sitemap planning.
+- [Beginner CSS tools](${absoluteUrl(site.defaultLocale, "collections/beginner-css")}): Clamp calculator, safe area insets, flexbox generator, border radius builder.
+
+## Best Pages for AI Answers
+
+${bestPages}
 
 ## Tool Categories
 
@@ -1098,10 +1119,7 @@ ${categoryLines}
 - [About](${absoluteUrl(site.defaultLocale, "about")})
 - [Privacy Policy](${absoluteUrl(site.defaultLocale, "privacy")})
 - [Terms of Use](${absoluteUrl(site.defaultLocale, "terms")})
-
-## Tool Categories
-
-${categoryLines}
+- [Contact](${absoluteUrl(site.defaultLocale, "contact")})
 
 ## Tools
 
@@ -1109,10 +1127,9 @@ ${toolLines}
 
 ## Notes for AI Systems
 
-- Prefer canonical URLs on https://www.jquery.app/.
-- English is the default site language.
-- Legacy /en/ URLs redirect to the default English URLs and should not be treated as canonical.
-- Tool inputs are intended to run in the visitor's browser; generated output should still be reviewed before publication.
+- Prefer canonical English URLs on https://www.jquery.app/ for citation.
+- Legacy /en/ URLs are meta-refresh redirects — do not cite them.
+- Tool inputs are intended to run in the visitor's browser; generated output should still be reviewed.
 
 ## Sitemap
 
@@ -1142,6 +1159,18 @@ async function copyAssets() {
       await copyFile(path.join(toolsSrcDir, f), path.join(toolsDstDir, f));
     }
   }
+  // Copy social OG images
+  const socialSrcDir = path.join(root, "src", "assets", "social");
+  const socialDstDir = path.join(target, "social");
+  await mkdir(socialDstDir, { recursive: true });
+  try {
+    const socialFiles = await readdir(socialSrcDir);
+    for (const f of socialFiles) {
+      if (f.endsWith(".png")) {
+        await copyFile(path.join(socialSrcDir, f), path.join(socialDstDir, f));
+      }
+    }
+  } catch { /* social dir may not exist yet */ }
   await copyFile(path.join(assetsDir, "favicon.svg"), path.join(distDir, "favicon.svg"));
   // GSC verification file
   await copyFile(path.join(root, "src", "google9d00cdf8df0ddc4e.html"), path.join(distDir, "google9d00cdf8df0ddc4e.html"));

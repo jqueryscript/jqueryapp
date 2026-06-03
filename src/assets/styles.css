@@ -21,9 +21,16 @@
   --on-dark: #faf9f5;
   --on-dark-soft: #a09d96;
   --error: #c64545;
+  --near-black: #141413;
+  --border: #e6dfd8;
   --display: Georgia, "Times New Roman", serif;
   --sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary-active, #a9583e);
+  outline-offset: 2px;
 }
 
 * {
@@ -365,7 +372,8 @@ button {
   z-index: 50;
   width: 320px;
   max-width: 85vw;
-  height: 100vh;
+  height: 100dvh;
+  min-height: 100vh;
   background: var(--canvas);
   transform: translateX(100%);
   transition: transform 0.28s ease;
@@ -377,9 +385,33 @@ button {
   transform: translateX(0);
 }
 
+.offcanvas-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 51;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: var(--surface-strong);
+  border-radius: 50%;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--ink);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.offcanvas-close:hover {
+  background: var(--surface-dark);
+  color: var(--on-dark);
+}
+
 .offcanvas-inner {
   padding: 24px;
-  padding-top: 80px;
+  padding-top: 24px;
 }
 
 .offcanvas-nav a,
@@ -861,7 +893,7 @@ button {
 }
 
 .collection-card .card-link {
-  color: var(--primary);
+  color: var(--primary-active);
   font-weight: 500;
   font-size: 14px;
   text-decoration: none;
@@ -926,6 +958,31 @@ button {
   margin-top: 10px;
   font-size: 13px;
   color: #666;
+}
+
+.filter-no-results {
+  margin-top: 14px;
+  padding: 16px;
+  background: var(--surface-soft, #f5f0e8);
+  border-radius: 8px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--muted, #6c6a64);
+}
+
+.filter-no-results .button {
+  margin-top: 10px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
 }
 
 .quick-answer {
