@@ -851,7 +851,23 @@
                              "performance-observer-snippet-generator":  {
                                                                             "name":  "PerformanceObserver Snippet Generator",
                                                                             "summary":  "Generieren Sie PerformanceObserver-Code fur Core Web Vitals (LCP, INP, CLS) mit good/needs-improvement/poor-Schwellenwerten."
-                                                                        }
+                                                                        },
+                             "zstandard-compression-header-helper":  {
+                                                                         "name":  "Zstandard Compression Header Helfer",
+                                                                         "summary":  "Generieren Sie Server-Konfiguration fur Zstandard-Kompression mit gzip/brotli-Fallback fur Nginx, Apache, Cloudflare und Netlify."
+                                                                     },
+                             "interest-invoker-popover-generator":  {
+                                                                        "name":  "Interest Invoker Popover Generator",
+                                                                        "summary":  "Generieren Sie deklaratives HTML-Markup mit interestfor fur Hover- und Fokus-ausgeloste Popovers ohne JavaScript."
+                                                                    },
+                             "aria-notify-snippet-generator":  {
+                                                                   "name":  "ARIA Notify Snippet Generator",
+                                                                   "summary":  "Generieren Sie ariaNotify()-Aufrufe fur programmatische Screenreader-Ankundigungen mit aria-live-Fallback."
+                                                               },
+                             "webtransport-url-template-helper":  {
+                                                                      "name":  "WebTransport URL Template Helfer",
+                                                                      "summary":  "Generieren Sie WebTransport-Verbindungssnippets uber HTTP/3 (QUIC) mit bidirektionalen Streams und Datagrammen."
+                                                                  }
                          }
            },
     "fr":  {
@@ -1606,7 +1622,23 @@
                              "performance-observer-snippet-generator":  {
                                                                             "name":  "Generateur de snippet PerformanceObserver",
                                                                             "summary":  "Generez du code PerformanceObserver pour les Core Web Vitals (LCP, INP, CLS) avec seuils good/needs-improvement/poor."
-                                                                        }
+                                                                        },
+                             "zstandard-compression-header-helper":  {
+                                                                         "name":  "Assistant d\u0027en-tete de compression Zstandard",
+                                                                         "summary":  "Generez la configuration serveur pour la compression Zstandard avec fallback gzip/brotli pour Nginx, Apache, Cloudflare et Netlify."
+                                                                     },
+                             "interest-invoker-popover-generator":  {
+                                                                        "name":  "Generateur de popover interest invoker",
+                                                                        "summary":  "Generez du HTML declaratif avec interestfor pour des popovers declenchees au survol et au focus sans JavaScript."
+                                                                    },
+                             "aria-notify-snippet-generator":  {
+                                                                   "name":  "Generateur de snippet ARIA Notify",
+                                                                   "summary":  "Generez des appels ariaNotify() pour des annonces programmatiques de lecteur d\u0027ecran avec fallback aria-live."
+                                                               },
+                             "webtransport-url-template-helper":  {
+                                                                      "name":  "Assistant WebTransport URL Template",
+                                                                      "summary":  "Generez des snippets de connexion WebTransport via HTTP/3 (QUIC) avec flux bidirectionnels et datagrammes."
+                                                                  }
                          }
            },
     "es":  {
@@ -2365,7 +2397,23 @@
                              "performance-observer-snippet-generator":  {
                                                                             "name":  "Generador de snippet PerformanceObserver",
                                                                             "summary":  "Genere codigo PerformanceObserver para Core Web Vitals (LCP, INP, CLS) con umbrales good/needs-improvement/poor."
-                                                                        }
+                                                                        },
+                             "zstandard-compression-header-helper":  {
+                                                                         "name":  "Ayudante de cabecera de compresion Zstandard",
+                                                                         "summary":  "Genere configuracion de servidor para compresion Zstandard con fallback gzip/brotli para Nginx, Apache, Cloudflare y Netlify."
+                                                                     },
+                             "interest-invoker-popover-generator":  {
+                                                                        "name":  "Generador de popover interest invoker",
+                                                                        "summary":  "Genere HTML declarativo con interestfor para popovers activados por hover y focus sin JavaScript."
+                                                                    },
+                             "aria-notify-snippet-generator":  {
+                                                                   "name":  "Generador de snippet ARIA Notify",
+                                                                   "summary":  "Genere llamadas ariaNotify() para anuncios programaticos de lectores de pantalla con fallback aria-live."
+                                                               },
+                             "webtransport-url-template-helper":  {
+                                                                      "name":  "Ayudante WebTransport URL Template",
+                                                                      "summary":  "Genere snippets de conexion WebTransport via HTTP/3 (QUIC) con streams bidireccionales y datagramas."
+                                                                  }
                          }
            },
     "ja":  {
@@ -3124,7 +3172,23 @@
                              "performance-observer-snippet-generator":  {
                                                                             "name":  "PerformanceObserverスニペットジェネレーター",
                                                                             "summary":  "good/needs-improvement/poor閾値付きでCore Web Vitals（LCP、INP、CLS）のPerformanceObserverコードを生成します。"
-                                                                        }
+                                                                        },
+                             "zstandard-compression-header-helper":  {
+                                                                         "name":  "Zstandard圧縮ヘッダーヘルパー",
+                                                                         "summary":  "Nginx、Apache、Cloudflare、Netlify向けのgzip/brotliフォールバック付きZstandard圧縮サーバー設定を生成します。"
+                                                                     },
+                             "interest-invoker-popover-generator":  {
+                                                                        "name":  "Interest Invoker Popoverジェネレーター",
+                                                                        "summary":  "JavaScriptなしでホバーとフォーカスでポップオーバーを開くinterestfor宣言的HTMLマークアップを生成します。"
+                                                                    },
+                             "aria-notify-snippet-generator":  {
+                                                                   "name":  "ARIA Notifyスニペットジェネレーター",
+                                                                   "summary":  "aria-liveフォールバック付きのプログラムによるスクリーンリーダー通知のためのariaNotify()呼び出しを生成します。"
+                                                               },
+                             "webtransport-url-template-helper":  {
+                                                                      "name":  "WebTransport URLテンプレートヘルパー",
+                                                                      "summary":  "双方向ストリームとデータグラムを備えたHTTP/3（QUIC）経由のWebTransport接続スニペットを生成します。"
+                                                                  }
                          }
            },
     "nl":  {
@@ -3883,7 +3947,23 @@
                              "performance-observer-snippet-generator":  {
                                                                             "name":  "PerformanceObserver Snippet Generator",
                                                                             "summary":  "Genereer PerformanceObserver code voor Core Web Vitals (LCP, INP, CLS) met good/needs-improvement/poor drempels."
-                                                                        }
+                                                                        },
+                             "zstandard-compression-header-helper":  {
+                                                                         "name":  "Zstandard Compressie Header Helper",
+                                                                         "summary":  "Genereer serverconfiguratie voor Zstandard compressie met gzip/brotli fallback voor Nginx, Apache, Cloudflare en Netlify."
+                                                                     },
+                             "interest-invoker-popover-generator":  {
+                                                                        "name":  "Interest Invoker Popover Generator",
+                                                                        "summary":  "Genereer declaratieve HTML-markup met interestfor voor hover- en focus-getriggerde popovers zonder JavaScript."
+                                                                    },
+                             "aria-notify-snippet-generator":  {
+                                                                   "name":  "ARIA Notify Snippet Generator",
+                                                                   "summary":  "Genereer ariaNotify() aanroepen voor programmatische schermlezeraankondigingen met aria-live fallback."
+                                                               },
+                             "webtransport-url-template-helper":  {
+                                                                      "name":  "WebTransport URL Template Helper",
+                                                                      "summary":  "Genereer WebTransport verbindingssnippets via HTTP/3 (QUIC) met bidirectionele streams en datagrams."
+                                                                  }
                          }
            }
 }

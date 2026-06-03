@@ -156,6 +156,10 @@ Solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with fast browser 
 - [CSS shape() Function Generator](https://www.jquery.app/tools/css-shape-function-generator/): Generate CSS shape() function values for clip-path and shape-outside with polygon, circle, ellipse, path, and rect types. Supports percentage coordinates, reference boxes, and animated transitions.
 - [CSS @scope Rule Builder](https://www.jquery.app/tools/css-scope-rule-builder/): Generate CSS @scope at-rules that scope styles to a DOM subtree. Configure upper boundary (scope root) and optional lower boundary (scope limit) with lower specificity than unscoped styles.
 - [Custom Highlight API Generator](https://www.jquery.app/tools/custom-highlight-api-generator/): Generate JavaScript and CSS snippets for the Custom Highlights API to style arbitrary text ranges without modifying the DOM. Uses CSS.highlights registry and ::highlight() pseudo-element for find-in-page, syntax highlighting, and search results.
+- [WebTransport URL Template Helper](https://www.jquery.app/tools/webtransport-url-template-helper/): Generate a JavaScript WebTransport connection snippet with URL template, bidirectional streams, and datagram support for low-latency client-server communication over HTTP/3 (QUIC).
+- [Zstandard Compression Header Helper](https://www.jquery.app/tools/zstandard-compression-header-helper/): Generate server configuration for Zstandard (zstd) compression with Content-Encoding headers, Accept-Encoding negotiation, and fallback chains for Nginx, Apache, Cloudflare, and Netlify.
+- [Interest Invoker Popover Generator](https://www.jquery.app/tools/interest-invoker-popover-generator/): Generate declarative HTML popover markup using the interestfor invoker command for hover and focus-triggered tooltips without JavaScript.
+- [ARIA Notify Snippet Generator](https://www.jquery.app/tools/aria-notify-snippet-generator/): Generate JavaScript snippets using the ARIA Notify API for programmatic screen reader announcements with aria-live fallback.
 
 ## Notes for AI Systems
 

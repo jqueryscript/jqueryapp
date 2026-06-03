@@ -2,7 +2,7 @@
 
 **Solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with fast browser tools. No uploads, accounts, or AI token costs.**
 
-> You might not need AI for every web task. jquery.app provides 119 small browser tools
+> You might not need AI for every web task. jquery.app provides 123 small browser tools
 > that solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with deterministic
 > output — no uploads, accounts, or AI token costs.
 
@@ -10,7 +10,7 @@
 
 ---
 
-## 119 Browser Tools
+## 123 Browser Tools
 
 ### SEO Tools (22)
 
@@ -37,7 +37,7 @@
 - [Referrer Policy Tag Generator](https://www.jquery.app/tools/referrer-policy-tag-generator/) — Generate a Referrer-Policy header or meta tag.
 - [OpenSearch Description Generator](https://www.jquery.app/tools/opensearch-description-generator/) — Generate OpenSearch XML and HTML link tag for browser search integration.
 
-### HTML Tools (41)
+### HTML Tools (44)
 
 - [HTML Link Rel Generator](https://www.jquery.app/tools/html-link-rel-generator/) — Generate link tags for preload, preconnect, dns-prefetch, canonical, and alternate URLs.
 - [Favicon HTML Tag Generator](https://www.jquery.app/tools/favicon-html-tag-generator/) — Generate favicon and web app icon tags for static websites.
@@ -80,6 +80,9 @@
 - [Intl.DurationFormat Generator](https://www.jquery.app/tools/intl-durationformat-generator/) — Generate locale-aware duration formatting with long/short/narrow/digital styles.
 - [scrollend Event Snippet Generator](https://www.jquery.app/tools/scrollend-event-snippet-generator/) — Generate scrollend event handlers that fire after momentum/inertia scrolling.
 - [PerformanceObserver Snippet Generator](https://www.jquery.app/tools/performance-observer-snippet-generator/) — Generate PerformanceObserver code for Core Web Vitals with rating thresholds.
+- [Interest Invoker Popover Generator](https://www.jquery.app/tools/interest-invoker-popover-generator/) — Generate declarative HTML popovers with interestfor for hover/focus-triggered tooltips.
+- [ARIA Notify Snippet Generator](https://www.jquery.app/tools/aria-notify-snippet-generator/) — Generate ariaNotify() calls for screen reader announcements with aria-live fallback.
+- [WebTransport URL Template Helper](https://www.jquery.app/tools/webtransport-url-template-helper/) — Generate WebTransport connection snippets over HTTP/3 (QUIC).
 
 ### CSS Tools (38)
 
@@ -122,7 +125,7 @@
 - [CSS shape() Function Generator](https://www.jquery.app/tools/css-shape-function-generator/) — Generate CSS shape() functions for non-rectangular clip-path and shape-outside.
 - [CSS @scope Rule Builder](https://www.jquery.app/tools/css-scope-rule-builder/) — Generate CSS @scope rules for scoping styles to DOM subtrees.
 
-### GitHub Pages Tools (13)
+### GitHub Pages Tools (14)
 
 - [GitHub Pages CNAME Helper](https://www.jquery.app/tools/github-pages-cname-helper/) — Create CNAME file content and DNS notes for a custom domain.
 - [GitHub Pages SPA 404 Helper](https://www.jquery.app/tools/github-pages-spa-404-helper/) — Generate a 404.html fallback for single-page apps on GitHub Pages.
@@ -137,6 +140,7 @@
 - [Redirect Map Converter](https://www.jquery.app/tools/redirect-map-converter/) — Convert CSV redirect maps to Netlify, Vercel, Apache, or Nginx format.
 - [HTTP Header Parser & Explainer](https://www.jquery.app/tools/http-header-parser-explainer/) — Paste raw HTTP headers and get grouped plain-English explanations.
 - [Reporting API Header Generator](https://www.jquery.app/tools/reporting-api-header-generator/) — Generate Report-To and Reporting-Endpoints headers for browser reports and CSP violations.
+- [Zstandard Compression Header Helper](https://www.jquery.app/tools/zstandard-compression-header-helper/) — Generate server config for Zstandard (zstd) compression with gzip/brotli fallback.
 
 ### Image & Asset Tools (5)
 
@@ -150,7 +154,7 @@
 
 ## Privacy & Data
 
-All 119 tools run entirely in your browser. No inputs are uploaded, no accounts are required,
+All 123 tools run entirely in your browser. No inputs are uploaded, no accounts are required,
 and no server-side processing happens. Each tool gives you output you can inspect,
 copy, and use right away.
 
