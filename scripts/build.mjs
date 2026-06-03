@@ -72,7 +72,7 @@ function buildNavTools(allTools) {
   return map;
 }
 
-function pageShell({ locale, title, description, pathname, body, scripts = "", current = "", extraHead = "", canonicalOverride = "", skipAlternates = false, image = "", navTools = null, noindex = false }) {
+function pageShell({ locale, title, description, pathname, body, scripts = "", current = "", extraHead = "", canonicalOverride = "", skipAlternates = false, image = "", navTools = null }) {
   const canonical = canonicalOverride || absoluteUrl(locale, pathname);
   const lang = localePack(locale);
   const defaultCanonical = absoluteUrl(site.defaultLocale, pathname);
@@ -156,7 +156,6 @@ function pageShell({ locale, title, description, pathname, body, scripts = "", c
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="${attr(image)}">` : `<meta name="twitter:card" content="summary">`}
-  ${noindex ? `<meta name="robots" content="noindex, follow">` : ""}
 ${alternateLinks}
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta name="theme-color" content="#181715">
@@ -593,7 +592,6 @@ function toolsIndexPage(locale, tools, categories) {
     image: `${site.baseUrl}/assets/social/og-tools.png`,
     current: "tools",
     navTools: buildNavTools(tools),
-    noindex: locale !== site.defaultLocale
   });
 }
 
@@ -675,7 +673,6 @@ ${details.faq?.length ? `<section class="section faq-band">
     current: category,
     image: `${site.baseUrl}/assets/social/og-${category}.png`,
     navTools: buildNavTools(allTools || tools),
-    noindex: locale !== site.defaultLocale
   });
 }
 
@@ -753,7 +750,6 @@ ${details.faq?.length ? `<section class="section faq-band">
     current: "collections",
     image: `${site.baseUrl}/assets/social/og-${collectionId}.png`,
     navTools: buildNavTools(allTools || tools),
-    noindex: locale !== site.defaultLocale
   });
 }
 
@@ -920,7 +916,6 @@ ${crossCategory.length ? `<section class="section">
     image: `${site.baseUrl}/assets/social/og-${tool.category}.png`,
     current: tool.category,
     navTools: buildNavTools(allTools),
-    noindex: locale !== site.defaultLocale
   });
 }
 
