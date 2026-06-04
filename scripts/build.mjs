@@ -78,7 +78,9 @@ const navPriority = {
     "hreflang-tag-generator",               // Multilingual SEO
     "viewport-meta-tag-generator",          // Mobile optimization
     "canonical-url-tag-generator",          // Duplicate content
-    "markdown-front-matter-generator"       // SSG / blog workflow
+    "markdown-front-matter-generator",       // SSG / blog workflow
+    "hreflang-sitemap-builder",              // Multilingual sitemap
+    "opensearch-description-generator"       // Browser search integration
   ],
   html: [
     "json-formatter-validator",             // #1 dev utility — high traffic
@@ -90,7 +92,9 @@ const navPriority = {
     "yaml-json-converter",                  // DevOps, config files
     "json-schema-generator-validator",      // API development
     "html-link-rel-generator",              // Preload/dns-prefetch — universal
-    "toc-anchor-generator"                  // Table of contents — bloggers
+    "toc-anchor-generator",                  // Table of contents — bloggers
+    "html-heading-hierarchy-checker",        // Accessibility / SEO structure
+    "html-popover-generator"                 // Native popover — modern HTML
   ],
   css: [
     "css-flexbox-generator",                // Most popular CSS layout tool
@@ -102,7 +106,9 @@ const navPriority = {
     "css-light-dark-function-generator",    // Dark mode — trending
     "css-scroll-snap-generator",            // Scroll UX
     "scroll-driven-animation-generator",    // Modern CSS animations
-    "view-transition-builder"               // Page transitions
+    "view-transition-builder",               // Page transitions
+    "css-color-mix-generator",               // Modern color manipulation
+    "aspect-ratio-placeholder-calculator"     // CLS prevention
   ],
   assets: [
     "pwa-maskable-icon-safe-zone-generator", // Visual tool — engagement
@@ -119,7 +125,9 @@ const navPriority = {
     "security-txt-generator-validator",      // Security compliance
     "github-pages-spa-404-helper",           // SPA routing
     "coop-coep-corp-header-builder",         // Cross-origin isolation
-    "assetlinks-aasa-generator"              // Deep linking
+    "assetlinks-aasa-generator",             // Deep linking
+    "vapid-key-generator",                   // Web push notifications
+    "reporting-api-header-generator"          // Browser reports / CSP
   ]
 };
 
@@ -128,7 +136,7 @@ function buildNavTools(allTools) {
   for (const [category, priorityIds] of Object.entries(navPriority)) {
     const categoryTools = allTools.filter(t => t.category === category);
     const toolMap = Object.fromEntries(categoryTools.map(t => [t.id, t]));
-    map[category] = priorityIds.map(id => toolMap[id]).filter(Boolean).slice(0, 10);
+    map[category] = priorityIds.map(id => toolMap[id]).filter(Boolean).slice(0, 12);
   }
   return map;
 }
