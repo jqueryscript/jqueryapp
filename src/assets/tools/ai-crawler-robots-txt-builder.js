@@ -77,10 +77,11 @@ export default {
     blocked.forEach(id => {
       const crawler = crawlers.find(c => c.id === id);
       if (crawler) {
+        const uaName = crawler.name.split(" (")[0]; // Strip parenthetical like "(OpenAI)"
         if (showComments) {
           lines.push(`# ${crawler.name} — ${crawler.category === "training" ? "AI training / data collection" : "Referral / preview"} crawler`);
         }
-        lines.push(`User-agent: ${crawler.name.split(" ")[0] === crawler.name ? crawler.name.charAt(0).toUpperCase() + crawler.name.slice(1) : crawler.name}`);
+        lines.push(`User-agent: ${uaName}`);
         lines.push("Disallow: /");
         lines.push("");
       }

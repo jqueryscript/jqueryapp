@@ -4255,14 +4255,14 @@
                                                                                         "title":  "Blog mit selektiver Blockierung"
                                                                                     },
                                                                                     {
-                                                                                        "text":  "Eine Open-Source-Dokumentationsseite möchte maximale Auffindbarkeit einschliesslich KI-Suche. Verwenden Sie die offene Voreinstellung, die keine KI-Crawler-Blöcke hinzufügt 鈥?alle Bots einschliesslich Trainingscrawlern haben vollständigen Zugriff.",
+                                                                                        "text":  "Eine Open-Source-Dokumentationsseite möchte maximale Auffindbarkeit einschliesslich KI-Suche. Verwenden Sie die offene Voreinstellung, die keine KI-Crawler-Blöcke hinzufügt —alle Bots einschliesslich Trainingscrawlern haben vollständigen Zugriff.",
                                                                                         "title":  "Dokumentationsseite, offen für alle"
                                                                                     }
                                                                                 ],
                                                                    "mistakes":  [
-                                                                                    "KI-Crawler-Blöcke nach einer Wildcard-Regel User-agent: * Allow: / platzieren 鈥?die Wildcard-Regel überschreibt die spezifischen Blöcke. Setzen Sie spezifische Crawler-Regeln immer oberhalb von generischen Regeln.",
-                                                                                    "Annehmen, dass robots.txt-Blöcke jegliche KI-Datensammlung verhindern 鈥?nicht alle Crawler respektieren robots.txt, und einige Inhalte können auf anderen Wegen gesammelt werden.",
-                                                                                    "Google-Extended blockieren, aber erwarten, dass die normale Google-Suchindexierung weiterhin funktioniert 鈥?Google-Extended ist ein separater Crawler für KI-Training, nicht identisch mit Googlebot."
+                                                                                    "KI-Crawler-Blöcke nach einer Wildcard-Regel User-agent: * Allow: / platzieren —die Wildcard-Regel überschreibt die spezifischen Blöcke. Setzen Sie spezifische Crawler-Regeln immer oberhalb von generischen Regeln.",
+                                                                                    "Annehmen, dass robots.txt-Blöcke jegliche KI-Datensammlung verhindern —nicht alle Crawler respektieren robots.txt, und einige Inhalte können auf anderen Wegen gesammelt werden.",
+                                                                                    "Google-Extended blockieren, aber erwarten, dass die normale Google-Suchindexierung weiterhin funktioniert —Google-Extended ist ein separater Crawler für KI-Training, nicht identisch mit Googlebot."
                                                                                 ],
                                                                    "faq":  [
                                                                                {
@@ -4271,7 +4271,7 @@
                                                                                },
                                                                                {
                                                                                    "question":  "Was ist der Unterschied zwischen Googlebot und Google-Extended?",
-                                                                                   "answer":  "Googlebot ist der Haupt-Crawler für die Suchindexierung 鈥?ihn zu blockieren entfernt Ihre Website vollständig aus der Google-Suche. Google-Extended ist ein separater Crawler, der für KI- und Machine-Learning-Modelltraining verwendet wird. Sie können Google-Extended sicher blockieren, ohne Ihre Google-Suchrankings oder Indexierung zu beeinträchtigen."
+                                                                                   "answer":  "Googlebot ist der Haupt-Crawler für die Suchindexierung —ihn zu blockieren entfernt Ihre Website vollständig aus der Google-Suche. Google-Extended ist ein separater Crawler, der für KI- und Machine-Learning-Modelltraining verwendet wird. Sie können Google-Extended sicher blockieren, ohne Ihre Google-Suchrankings oder Indexierung zu beeinträchtigen."
                                                                                },
                                                                                {
                                                                                    "question":  "Sollte ich Common Crawl (CCBot) blockieren?",
@@ -4279,7 +4279,7 @@
                                                                                }
                                                                            ],
                                                                    "limitations":  [
-                                                                                       "robots.txt ist ein freiwilliger Standard 鈥?nicht alle Crawler respektieren ihn. Einige KI-Datensammlungen erfolgen auf anderen Wegen als Webcrawling, und robots.txt hat keinen Durchsetzungsmechanismus.",
+                                                                                       "robots.txt ist ein freiwilliger Standard —nicht alle Crawler respektieren ihn. Einige KI-Datensammlungen erfolgen auf anderen Wegen als Webcrawling, und robots.txt hat keinen Durchsetzungsmechanismus.",
                                                                                        "Einige CDNs und WAFs (einschliesslich Cloudflare Bot Management) können robots.txt mit eigenen Bot-Blockierungsregeln überschreiben. Überprüfen Sie Ihre CDN-Konfiguration nach der Bereitstellung von robots.txt-Änderungen.",
                                                                                        "Neue KI-Crawler erscheinen regelmässig. Dieses Tool enthält Crawler, die Stand Anfänge 2026 bekannt sind. Überprüfen Sie regelmässig auf neue Crawler-Namen und aktualisieren Sie Ihre robots.txt entsprechend."
                                                                                    ],
@@ -4291,10 +4291,10 @@
                              "aria-live-region-generator":  {
                                                                 "name":  "ARIA Live Region Generator",
                                                                 "summary":  "Erstelle barrierefreie ARIA-Live-Regionen für Screenreader-Ankündigungen.",
-                                                                "whatIs":  "Eine ARIA-Live-Region ist ein HTML-Element, das Screenreader auf Inhaltsänderungen überwachen und automatisch für den Benutzer ankwendigen. Dies ermöglicht dynamische Inhaltsaktualisierungen 鈥?wie Formularvalidierungsfehler, Statusmeldungen oder Chat-Nachrichten 鈥?die vorgelesen werden, ohne den Tastaturfokus zu verschieben. Das aria-live-Attribut steuert, wie dringend Änderungen angekündigt werden (polite oder assertive).",
+                                                                "whatIs":  "Eine ARIA-Live-Region ist ein HTML-Element, das Screenreader auf Inhaltsänderungen überwachen und automatisch für den Benutzer ankwendigen. Dies ermöglicht dynamische Inhaltsaktualisierungen —wie Formularvalidierungsfehler, Statusmeldungen oder Chat-Nachrichten —die vorgelesen werden, ohne den Tastaturfokus zu verschieben. Das aria-live-Attribut steuert, wie dringend Änderungen angekündigt werden (polite oder assertive).",
                                                                 "quickAnswer":  "Erstellen Sie eine ARIA-Live-Region, um dynamische Inhaltsaktualisierungen für Screenreader-Nutzer anzukündigen. Verwenden Sie role=status (polite) für beratende Updates und role=alert (assertive) für kritische Warnungen. Die Region muss beim Seitenladen im DOM vorhanden sein, und Inhalte sollten über textContent statt innerHTML aktualisiert werden.",
                                                                 "howToUse":  [
-                                                                                 "Wählen Sie den Regionstyp basierend auf der Kritikalität der Updates 鈥?status für beratend, alert für dringend, log für sequenzielle Updates.",
+                                                                                 "Wählen Sie den Regionstyp basierend auf der Kritikalität der Updates —status für beratend, alert für dringend, log für sequenzielle Updates.",
                                                                                  "Konfigurieren Sie aria-atomic (gesamte Region oder nur Änderungen lesen) und aria-relevant (welche DOM-Änderungstypen Ankündigungen auslösen).",
                                                                                  "Kopieren Sie das HTML-Snippet mit oder ohne den JavaScript-Update-Helfer.",
                                                                                  "Platzieren Sie die Live-Region beim Seitenladen im DOM, damit Screenreader sie registrieren können."
@@ -4315,14 +4315,14 @@
                                                                                  }
                                                                              ],
                                                                 "mistakes":  [
-                                                                                 "aria-live assertive für nicht-kritische Updates verwenden 鈥?assertive unterbricht die aktuelle Screenreader-Sprache und kann desorientierend wirken.",
-                                                                                 "Vergessen, die Live-Region vor dem Senden von Updates zum DOM hinzuzufügen 鈥?die Region muss beim Seitenladen existieren, damit Screenreader sie erkennen.",
-                                                                                 "Die Live-Region zu häufig aktualisieren 鈥?schnelle Updates können Screenreader-Nutzer überfordern. Entprellen oder dämpfen Sie häufige Updates."
+                                                                                 "aria-live assertive für nicht-kritische Updates verwenden —assertive unterbricht die aktuelle Screenreader-Sprache und kann desorientierend wirken.",
+                                                                                 "Vergessen, die Live-Region vor dem Senden von Updates zum DOM hinzuzufügen —die Region muss beim Seitenladen existieren, damit Screenreader sie erkennen.",
+                                                                                 "Die Live-Region zu häufig aktualisieren —schnelle Updates können Screenreader-Nutzer überfordern. Entprellen oder dämpfen Sie häufige Updates."
                                                                              ],
                                                                 "faq":  [
                                                                             {
                                                                                 "question":  "Was ist der Unterschied zwischen role=status und role=alert?",
-                                                                                "answer":  "role=status verwendet standardmässig aria-live=polite 鈥?Screenreader warten, bis die aktuelle Sprache beendet ist, bevor sie ankwendigen. role=alert verwendet aria-live=assertive 鈥?Screenreader unterbrechen die aktuelle Sprache sofort. Verwenden Sie status für beratende Updates wie Speicherbestätigungen. Verwenden Sie alert für kritische Meldungen wie Sitzungszeitüberschreitungswarnungen."
+                                                                                "answer":  "role=status verwendet standardmässig aria-live=polite —Screenreader warten, bis die aktuelle Sprache beendet ist, bevor sie ankwendigen. role=alert verwendet aria-live=assertive —Screenreader unterbrechen die aktuelle Sprache sofort. Verwenden Sie status für beratende Updates wie Speicherbestätigungen. Verwenden Sie alert für kritische Meldungen wie Sitzungszeitüberschreitungswarnungen."
                                                                             },
                                                                             {
                                                                                 "question":  "Sollte ich aria-atomic true oder false verwenden?",
@@ -4347,7 +4347,7 @@
                                                                "howToUse":  [
                                                                                 "Geben Sie für Android den Paketnamen Ihrer App und den SHA-256-Fingerabdruck Ihres Signaturzertifikats ein.",
                                                                                 "Geben Sie für iOS Ihre Apple Developer Team ID, die Bundle-ID der App und Pfadregeln ein, welche URLs in der App geöffnet werden sollen.",
-                                                                                "Wählen Sie das Ausgabeziel 鈥?Android, iOS oder beide.",
+                                                                                "Wählen Sie das Ausgabeziel —Android, iOS oder beide.",
                                                                                 "Stellen Sie die generierte(n) JSON-Datei(en) im /.well-known/-Verzeichnis Ihrer Domain bereit."
                                                                             ],
                                                                "useCases":  [
@@ -4366,9 +4366,9 @@
                                                                                 }
                                                                             ],
                                                                "mistakes":  [
-                                                                                "Vergessen, die Dateien über HTTPS ohne Weiterleitungen bereitzustellen 鈥?sowohl Android als auch iOS benötigen direkten HTTPS-Zugriff auf den /.well-known/-Pfad.",
-                                                                                "Einen anderen Signaturschlüssel für die App verwenden als den in assetlinks.json 鈥?der SHA-256 muss mit dem exakten Zertifikat übereinstimmen, das zum Signieren der veröfentlichten APK oder AAB verwendet wurde.",
-                                                                                "Die iOS-AASA-Datei erfordert eine Neuinstallation der App, um Änderungen zu übernehmen 鈥?die Datei wird nur einmal während der App-Installation abgerufen."
+                                                                                "Vergessen, die Dateien über HTTPS ohne Weiterleitungen bereitzustellen —sowohl Android als auch iOS benötigen direkten HTTPS-Zugriff auf den /.well-known/-Pfad.",
+                                                                                "Einen anderen Signaturschlüssel für die App verwenden als den in assetlinks.json —der SHA-256 muss mit dem exakten Zertifikat übereinstimmen, das zum Signieren der veröfentlichten APK oder AAB verwendet wurde.",
+                                                                                "Die iOS-AASA-Datei erfordert eine Neuinstallation der App, um Änderungen zu übernehmen —die Datei wird nur einmal während der App-Installation abgerufen."
                                                                             ],
                                                                "faq":  [
                                                                            {
@@ -4381,7 +4381,7 @@
                                                                            },
                                                                            {
                                                                                "question":  "Kann ich unterschiedliche Pfadregeln für Android und iOS haben?",
-                                                                               "answer":  "Ja. Die Android assetlinks.json und die iOS AASA-Datei sind vollständig unabhängig. Sie können Android alle Pfade verarbeiten lassen, während iOS nur bestimmte Pfade behandelt. Führen Sie das Tool zweimal aus 鈥?einmal für jedes Ziel 鈥?um separate Dateien mit unterschiedlichen Regeln zu generieren."
+                                                                               "answer":  "Ja. Die Android assetlinks.json und die iOS AASA-Datei sind vollständig unabhängig. Sie können Android alle Pfade verarbeiten lassen, während iOS nur bestimmte Pfade behandelt. Führen Sie das Tool zweimal aus —einmal für jedes Ziel —um separate Dateien mit unterschiedlichen Regeln zu generieren."
                                                                            }
                                                                        ],
                                                                "limitations":  [
@@ -4420,14 +4420,14 @@
                                                                                    }
                                                                                ],
                                                                   "mistakes":  [
-                                                                                   "Ein langes max-age auf HTML-Seiten setzen, die sich häufig ändern 鈥?Benutzer sehen nach einem Deployment veraltete Inhalte.",
+                                                                                   "Ein langes max-age auf HTML-Seiten setzen, die sich häufig ändern —Benutzer sehen nach einem Deployment veraltete Inhalte.",
                                                                                    "no-store auf jeder Seite verwenden anstatt gezielt no-cache oder max-age=0, was die Leistung beeinträchtigt.",
-                                                                                   "Vergessen, dass GitHub Pages benutzerdefinierte Cache-Control-Header ignoriert 鈥?nur ETag und Last-Modified werden automatisch gesetzt."
+                                                                                   "Vergessen, dass GitHub Pages benutzerdefinierte Cache-Control-Header ignoriert —nur ETag und Last-Modified werden automatisch gesetzt."
                                                                                ],
                                                                   "faq":  [
                                                                               {
                                                                                   "question":  "Was ist der Unterschied zwischen no-cache und no-store?",
-                                                                                  "answer":  "no-cache bedeutet, dass der Browser vor der Verwendung einer zwischengespeicherten Kopie mit dem Server erneut validieren muss 鈥?die Antwort kann weiterhin zwischengespeichert werden, muss aber als aktuell bestätigt werden. no-store bedeutet, dass gar nichts zwischengespeichert werden darf, nicht einmal im Arbeitsspeicher. Verwenden Sie no-cache mit must-revalidate für die meisten updatekritischen Seiten; verwenden Sie no-store nur für sensible Daten wie Zahlungsseiten."
+                                                                                  "answer":  "no-cache bedeutet, dass der Browser vor der Verwendung einer zwischengespeicherten Kopie mit dem Server erneut validieren muss —die Antwort kann weiterhin zwischengespeichert werden, muss aber als aktuell bestätigt werden. no-store bedeutet, dass gar nichts zwischengespeichert werden darf, nicht einmal im Arbeitsspeicher. Verwenden Sie no-cache mit must-revalidate für die meisten updatekritischen Seiten; verwenden Sie no-store nur für sensible Daten wie Zahlungsseiten."
                                                                               },
                                                                               {
                                                                                   "question":  "Wie setze ich Cache-Control auf GitHub Pages?",
@@ -4439,16 +4439,16 @@
                                                                               },
                                                                               {
                                                                                   "question":  "Wie lange sollte ich Bilder auf einer statischen Seite zwischenspeichern?",
-                                                                                  "answer":  "Für Bilder ohne versionierte Dateinamen ist ein max-age von 86400 (24 Stunden) ein sicherer Standardwert 鈥?Bilder ändern sich selten, aber Sie möchten, dass Aktualisierungen innerhalb eines Tages verbreitet werden. Für versionierte Bilder (logo.v2.png) verwenden Sie max-age=31536000 mit immutable. Für Bilder, die sich täglich ändern (wie ein tägliches Diagramm), verwenden Sie max-age=3600 oder max-age=0 mit must-revalidate."
+                                                                                  "answer":  "Für Bilder ohne versionierte Dateinamen ist ein max-age von 86400 (24 Stunden) ein sicherer Standardwert —Bilder ändern sich selten, aber Sie möchten, dass Aktualisierungen innerhalb eines Tages verbreitet werden. Für versionierte Bilder (logo.v2.png) verwenden Sie max-age=31536000 mit immutable. Für Bilder, die sich täglich ändern (wie ein tägliches Diagramm), verwenden Sie max-age=3600 oder max-age=0 mit must-revalidate."
                                                                               }
                                                                           ],
                                                                   "limitations":  [
-                                                                                      "GitHub Pages unterstützt keine benutzerdefinierten Cache-Control-Header 鈥?nur ETag und Last-Modified werden automatisch bereitgestellt. Verwenden Sie Cloudflare oder ein anderes CDN davor für benutzerdefinierte Caching-Regeln.",
+                                                                                      "GitHub Pages unterstützt keine benutzerdefinierten Cache-Control-Header —nur ETag und Last-Modified werden automatisch bereitgestellt. Verwenden Sie Cloudflare oder ein anderes CDN davor für benutzerdefinierte Caching-Regeln.",
                                                                                       "Die immutable-Direktive ist kein offizieller RFC-Standard, wird aber von modernen Browsern und CDNs weitgehend unterstützt. Sehr alte HTTP/1.1-Proxys ignorieren sie möglicherweise.",
                                                                                       "Browser können Inhalte im Offline-Modus oder im Back-Forward-Cache weiterhin zwischenspeichern, selbst wenn Cache-Control no-store angibt. Cache-Control ist ein Hinweis, keine Garantie."
                                                                                   ],
                                                                   "verificationSteps":  [
-                                                                                            "Überprüfen Sie den Cache-Control-Header im Browser-DevTools-Netzwerk-Tab 鈥?suchen Sie nach dem Antwort-Header für die spezifische Ressource.",
+                                                                                            "Überprüfen Sie den Cache-Control-Header im Browser-DevTools-Netzwerk-Tab —suchen Sie nach dem Antwort-Header für die spezifische Ressource.",
                                                                                             "Verwenden Sie curl -I https://ihreseite.com/pfad, um Header von der Befehlszeile aus zu überprüfen. Bestätigen Sie, dass das CDN den ursprünglichen Header korrekt durchreicht."
                                                                                         ]
                                                               },
@@ -4459,7 +4459,7 @@
                                                                       "quickAnswer":  "Verwenden Sie Container-Query-Einheiten (cqi, cqw, cqb, cqmin, cqmax) mit clamp() für komponentenbezogene responsive Grössenanpassung. Sie funktionieren wie Viewport-Einheiten, skalieren aber mit der Breite des übergeordneten Containers. Setzen Sie container-type: inline-size auf das übergeordnete Element und verwenden Sie den clamp()-Ausdruck in den Kind-Styles.",
                                                                       "howToUse":  [
                                                                                        "Geben Sie die minimale und maximale Zielgröße für Ihre CSS-Eigenschaft in Pixeln ein.",
-                                                                                       "Legen Sie den Containerbreitenbereich fest 鈥?die minimale Containerbreite, bei der die Eigenschaft ihr Minimum erreicht, und die maximale Breite, bei der sie ihr Maximum erreicht.",
+                                                                                       "Legen Sie den Containerbreitenbereich fest —die minimale Containerbreite, bei der die Eigenschaft ihr Minimum erreicht, und die maximale Breite, bei der sie ihr Maximum erreicht.",
                                                                                        "Wählen Sie eine Container-Query-Einheit und den CSS-Eigenschaftsnamen.",
                                                                                        "Kopieren Sie den clamp()-Ausdruck und stellen Sie sicher, dass das übergeordnete Element container-type: inline-size hat."
                                                                                    ],
@@ -4479,14 +4479,14 @@
                                                                                        }
                                                                                    ],
                                                                       "mistakes":  [
-                                                                                       "Container-Query-Einheiten verwenden, ohne container-type auf einem übergeordneten Element zu setzen 鈥?der Browser verwendet den ursprünglichen enthaltenden Block (Viewport), was den Zweck zunichte macht.",
-                                                                                       "Erwarten, dass Container-Query-Einheiten wie Viewport-Einheiten funktionieren 鈥?sie sind relativ zum nächsten Query-Container-Vorfahren, der eine ganz andere Grösse als der Viewport haben kann.",
+                                                                                       "Container-Query-Einheiten verwenden, ohne container-type auf einem übergeordneten Element zu setzen —der Browser verwendet den ursprünglichen enthaltenden Block (Viewport), was den Zweck zunichte macht.",
+                                                                                       "Erwarten, dass Container-Query-Einheiten wie Viewport-Einheiten funktionieren —sie sind relativ zum nächsten Query-Container-Vorfahren, der eine ganz andere Grösse als der Viewport haben kann.",
                                                                                        "Container-Query-Einheiten in einer tief verschachtelten Komponente verwenden, bei der der nächste Container nicht der beabsichtigte Grössenbezug ist."
                                                                                    ],
                                                                       "faq":  [
                                                                                   {
                                                                                       "question":  "Was ist der Unterschied zwischen cqi und cqw?",
-                                                                                      "answer":  "cqi ist 1% der Inline-Grösse des Containers 鈥?in horizontalen Schreibmodi entspricht dies der Containerbreite. cqw ist immer 1% der Containerbreite, unabhängig vom Schreibmodus. Für die meisten lateinisch-schriftlichen Seiten sind sie identisch. Für vertikale Schreibmodi oder RTL-Seiten passt sich cqi der Schreibrichtung an."
+                                                                                      "answer":  "cqi ist 1% der Inline-Grösse des Containers —in horizontalen Schreibmodi entspricht dies der Containerbreite. cqw ist immer 1% der Containerbreite, unabhängig vom Schreibmodus. Für die meisten lateinisch-schriftlichen Seiten sind sie identisch. Für vertikale Schreibmodi oder RTL-Seiten passt sich cqi der Schreibrichtung an."
                                                                                   },
                                                                                   {
                                                                                       "question":  "Funktionieren Container-Query-Einheiten ohne @container-Queries?",
@@ -4494,7 +4494,7 @@
                                                                                   },
                                                                                   {
                                                                                       "question":  "Was passiert, wenn kein Container-Vorfahre existiert?",
-                                                                                      "answer":  "Der Browser fällt auf den ursprünglichen enthaltenden Block zurück 鈥?den Viewport. Dies bedeutet, dass sich ein clamp()-Ausdruck mit cqi wie vw (Viewportbreite) verhält, wenn kein Container-Kontext gefunden wird. Dieser Fallback kann bei breiten Viewports unerwartet große Werte produzieren. Stellen Sie daher immer einen Container-Vorfahren sicher."
+                                                                                      "answer":  "Der Browser fällt auf den ursprünglichen enthaltenden Block zurück —den Viewport. Dies bedeutet, dass sich ein clamp()-Ausdruck mit cqi wie vw (Viewportbreite) verhält, wenn kein Container-Kontext gefunden wird. Dieser Fallback kann bei breiten Viewports unerwartet große Werte produzieren. Stellen Sie daher immer einen Container-Vorfahren sicher."
                                                                                   }
                                                                               ],
                                                                       "limitations":  [
@@ -4514,7 +4514,7 @@
                                                                    "quickAnswer":  "Erstellen Sie Cross-Origin-Isolation-Header für SharedArrayBuffer und Opener-Sicherheit. COOP steuert den window.opener-Zugriff. COEP steuert das Laden von Cross-Origin-Ressourcen. CORP steuert, ob andere Urspr眉nge Ihre Ressourcen laden können. Verwenden Sie die moderate Voreinstellung für die meisten Seiten, die Isolation mit Unterst眉tzung für Drittanbieter-Einbettungen benötigen.",
                                                                    "howToUse":  [
                                                                                     "Wählen Sie eine Voreinstellung für das Isolationsziel oder wählen Sie \u0027Benutzerdefiniert\u0027, um jeden Header einzeln zu konfigurieren.",
-                                                                                    "Überprüfen Sie die Header-Werte 鈥?strengere Isolation ermöglicht mehr Funktionen, kann aber Drittanbieter-Einbettungen beeinträchtigen.",
+                                                                                    "Überprüfen Sie die Header-Werte —strengere Isolation ermöglicht mehr Funktionen, kann aber Drittanbieter-Einbettungen beeinträchtigen.",
                                                                                     "Kopieren Sie die Header und fügen Sie sie Ihrer Server- oder CDN-Konfiguration hinzu.",
                                                                                     "Verwenden Sie die Debugging-Checkliste, um nach der Bereitstellung besch盲digte Ressourcen zu identifizieren."
                                                                                 ],
@@ -4534,9 +4534,9 @@
                                                                                     }
                                                                                 ],
                                                                    "mistakes":  [
-                                                                                    "COEP require-corp setzen, ohne sicherzustellen, dass alle Drittanbieter-Ressourcen CORP-Header senden 鈥?Bilder, Schriftarten und Skripte von CDNs werden stillschweigend blockiert.",
-                                                                                    "COOP same-origin verwenden, wenn die Seite mit Popups kommunizieren oder OAuth-Umleitungsfl眉sse verwenden muss 鈥?Popups können nicht auf window.opener zugreifen.",
-                                                                                    "Vergessen, dass COEP credentialless neuer ist und nicht in allen Browsern unterstützt wird 鈥?überprüfen Sie die Browserkompatibilität vor der Bereitstellung."
+                                                                                    "COEP require-corp setzen, ohne sicherzustellen, dass alle Drittanbieter-Ressourcen CORP-Header senden —Bilder, Schriftarten und Skripte von CDNs werden stillschweigend blockiert.",
+                                                                                    "COOP same-origin verwenden, wenn die Seite mit Popups kommunizieren oder OAuth-Umleitungsfl眉sse verwenden muss —Popups können nicht auf window.opener zugreifen.",
+                                                                                    "Vergessen, dass COEP credentialless neuer ist und nicht in allen Browsern unterstützt wird —überprüfen Sie die Browserkompatibilität vor der Bereitstellung."
                                                                                 ],
                                                                    "faq":  [
                                                                                {
@@ -4564,9 +4564,9 @@
                                                            "whatIs":  "CORS (Cross-Origin Resource Sharing) ist ein Browser-Sicherheitsmechanismus, der steuert, welche Web-Urspr眉nge auf Ihre Ressourcen zugreifen können. Wenn eine Browser-App versucht, Daten von einer anderen Domain abzurufen, überprüft der Browser die CORS-Header in der Antwort. Ohne korrekte CORS-Header schlagen Cross-Origin-Anfragen mit einem CORS-Fehler in der Konsole fehl.",
                                                            "quickAnswer":  "CORS-Header steuern, welche Websites von Browser-JavaScript aus auf Ihre Serverressourcen zugreifen können. Verwenden Sie Access-Control-Allow-Origin, um erlaubte Urspr眉nge anzugeben, Access-Control-Allow-Methods für HTTP-Verben und Access-Control-Allow-Credentials für cookie-basierte Authentifizierung. Kombinieren Sie niemals den *-Wildcard-Ursprung mit Anmeldeinformationen.",
                                                            "howToUse":  [
-                                                                            "Geben Sie die erlaubten Urspr眉nge ein 鈥?verwenden Sie * für öffentliche APIs oder spezifische Domains für eingeschränkten Zugriff.",
+                                                                            "Geben Sie die erlaubten Urspr眉nge ein —verwenden Sie * für öffentliche APIs oder spezifische Domains für eingeschränkten Zugriff.",
                                                                             "Wählen Sie die HTTP-Methoden aus, die Ihr Endpunkt unterstützt, sowie alle benutzerdefinierten Header, die Clients senden dürfen.",
-                                                                            "Schalten Sie die Anmeldeinformationsunterstützung mit Vorsicht ein 鈥?Browser lehnen Anfragen ab, die *-Urspr眉nge mit Anmeldeinformationen kombinieren.",
+                                                                            "Schalten Sie die Anmeldeinformationsunterstützung mit Vorsicht ein —Browser lehnen Anfragen ab, die *-Urspr眉nge mit Anmeldeinformationen kombinieren.",
                                                                             "Wählen Sie Ihr Bereitstellungsformat und kopieren Sie die generierte Header-Konfiguration."
                                                                         ],
                                                            "useCases":  [
@@ -4585,9 +4585,9 @@
                                                                             }
                                                                         ],
                                                            "mistakes":  [
-                                                                            "Wildcard-Ursprung (*) zusammen mit Access-Control-Allow-Credentials: true verwenden 鈥?Browser lehnen diese Kombination ab.",
+                                                                            "Wildcard-Ursprung (*) zusammen mit Access-Control-Allow-Credentials: true verwenden —Browser lehnen diese Kombination ab.",
                                                                             "Vergessen, Vary: Origin hinzuzufügen, wenn unterschiedliche CORS-Header basierend auf dem anfragenden Ursprung ausgeliefert werden.",
-                                                                            "Access-Control-Max-Age über 86400 setzen 鈥?Browser begrenzen es auf 24 Stunden, unabhängig vom gesetzten Wert."
+                                                                            "Access-Control-Max-Age über 86400 setzen —Browser begrenzen es auf 24 Stunden, unabhängig vom gesetzten Wert."
                                                                         ],
                                                            "faq":  [
                                                                        {
@@ -4604,7 +4604,7 @@
                                                                        }
                                                                    ],
                                                            "limitations":  [
-                                                                               "CORS schützt nur browserbasierte Anfragen. Server-zu-Server-Anfragen, curl und direkte API-Aufrufe unterliegen nicht CORS 鈥?CORS ist ein Browser-Durchsetzungsmechanismus, keine Serversicherheitsschicht.",
+                                                                               "CORS schützt nur browserbasierte Anfragen. Server-zu-Server-Anfragen, curl und direkte API-Aufrufe unterliegen nicht CORS —CORS ist ein Browser-Durchsetzungsmechanismus, keine Serversicherheitsschicht.",
                                                                                "Einige ältere Browser (IE 10 und früher) haben unvollständige CORS-Unterstützung und verarbeiten Preflight-Caching möglicherweise nicht korrekt. Für moderne Web-Apps ist die Browserunterstützung universell.",
                                                                                "CORS-Header schützen Ihre API nicht vor DDoS, Missbrauch oder unbefugtem Nicht-Browser-Zugriff. Verwenden Sie Authentifizierung, Ratenbegrenzung und eine WAF zusammen mit CORS."
                                                                            ],
@@ -4617,9 +4617,9 @@
                                                         "name":  "CSP Hash Generator",
                                                         "summary":  "Erstelle CSP-Hash-Werte für Inline-Skripte und -Styles. Hashe exakten Code mit SHA-256, SHA-384 oder SHA-512.",
                                                         "whatIs":  "Ein CSP-Hash ist ein base64-kodierter SHA-256-, SHA-384- oder SHA-512-Digest des exakten Inhalts eines Inline-Skripts oder Style-Blocks. Wenn Sie den Hash zu Ihrem CSP-Header als script-src \u0027sha256-...\u0027 oder style-src \u0027sha256-...\u0027 hinzufügen, erlaubt der Browser die Ausführung dieses spezifischen Inline-Codes, während er alle anderen Inline-Skripte oder -Styles blockiert. Dies ist die sicherste Alternative zu \u0027unsafe-inline\u0027.",
-                                                        "quickAnswer":  "Verwenden Sie einen CSP-Hash, um ein bestimmtes Inline-Skript oder -Style zu erlauben, ohne allen Inline-Code mit unsafe-inline zu aktivieren. Der Hash ist ein kryptografischer Digest des exakten Code-Inhalts 鈥?SHA-256 ist der Standard. Fügen Sie den Hash zu Ihrem CSP als script-src \u0027sha256-...\u0027 oder style-src \u0027sha256-...\u0027 hinzu.",
+                                                        "quickAnswer":  "Verwenden Sie einen CSP-Hash, um ein bestimmtes Inline-Skript oder -Style zu erlauben, ohne allen Inline-Code mit unsafe-inline zu aktivieren. Der Hash ist ein kryptografischer Digest des exakten Code-Inhalts —SHA-256 ist der Standard. Fügen Sie den Hash zu Ihrem CSP als script-src \u0027sha256-...\u0027 oder style-src \u0027sha256-...\u0027 hinzu.",
                                                         "howToUse":  [
-                                                                         "Kopieren Sie den exakten Inline-Skript- oder Style-Inhalt aus Ihrem HTML 鈥?jedes Leerzeichen, jeder Zeilenumbruch und jede Einr眉ckung muss übereinstimmen.",
+                                                                         "Kopieren Sie den exakten Inline-Skript- oder Style-Inhalt aus Ihrem HTML —jedes Leerzeichen, jeder Zeilenumbruch und jede Einr眉ckung muss übereinstimmen.",
                                                                          "Fügen Sie ihn in das Textfeld ein und wählen Sie den Hash-Algorithmus.",
                                                                          "Kopieren Sie den Hash-Wert und fügen Sie ihn als Teil von script-src oder style-src zu Ihrem CSP-Header oder Meta-Tag hinzu."
                                                                      ],
@@ -4639,14 +4639,14 @@
                                                                          }
                                                                      ],
                                                         "mistakes":  [
-                                                                         "Auch nur ein einziges Leerzeichen nach der Generierung des Hashes ändern 鈥?der Hash stimmt nicht mehr überein, und das Skript oder der Style wird blockiert.",
-                                                                         "Denselben Hash für minifizierte und nicht minifizierte Versionen desselben Codes verwenden 鈥?sie produzieren unterschiedliche Hashes.",
-                                                                         "Annehmen, dass ein Hash aus einer Entwicklungsumgebung mit dem Produktions-Build übereinstimmt 鈥?Code-Minifizierung oder Templating ändert den Inhalt."
+                                                                         "Auch nur ein einziges Leerzeichen nach der Generierung des Hashes ändern —der Hash stimmt nicht mehr überein, und das Skript oder der Style wird blockiert.",
+                                                                         "Denselben Hash für minifizierte und nicht minifizierte Versionen desselben Codes verwenden —sie produzieren unterschiedliche Hashes.",
+                                                                         "Annehmen, dass ein Hash aus einer Entwicklungsumgebung mit dem Produktions-Build übereinstimmt —Code-Minifizierung oder Templating ändert den Inhalt."
                                                                      ],
                                                         "faq":  [
                                                                     {
                                                                         "question":  "Warum funktioniert mein Hash nicht mehr, nachdem ich den Inline-Code bearbeitet habe?",
-                                                                        "answer":  "Der Hash ist ein kryptografischer Digest der exakten Byte-Sequenz des Inline-Codes. Jede Änderung 鈥?ein Leerzeichen hinzufügen, die Einr眉ckung ändern, einen Kommentar hinzufügen oder ein einzelnes Zeichen ändern 鈥?erzeugt einen vollständig anderen Hash. Sie müssen den Hash jedes Mal neu generieren, wenn Sie den Inline-Code ändern. Dies ist beabsichtigt: Es stellt sicher, dass nur der exakte von Ihnen genehmigte Code ausgeführt werden kann."
+                                                                        "answer":  "Der Hash ist ein kryptografischer Digest der exakten Byte-Sequenz des Inline-Codes. Jede Änderung —ein Leerzeichen hinzufügen, die Einr眉ckung ändern, einen Kommentar hinzufügen oder ein einzelnes Zeichen ändern —erzeugt einen vollständig anderen Hash. Sie müssen den Hash jedes Mal neu generieren, wenn Sie den Inline-Code ändern. Dies ist beabsichtigt: Es stellt sicher, dass nur der exakte von Ihnen genehmigte Code ausgeführt werden kann."
                                                                     },
                                                                     {
                                                                         "question":  "Sollte ich einen Hash oder einen Nonce für CSP verwenden?",
@@ -4663,7 +4663,7 @@
                                                                             "CSP-Hashes funktionieren nicht mit Inline-Event-Handlern (onclick, onerror) ohne Aktivierung von unsafe-hashes, was die Sicherheit erheblich schwächt."
                                                                         ],
                                                         "verificationSteps":  [
-                                                                                  "Überprüfen Sie die Browserkonsole auf CSP-Verstossmeldungen nach dem Hinzufügen des Hashes 鈥?ein blockiertes Skript oder Style zeigt eine Verstossmeldung mit dem erwarteten Hash an.",
+                                                                                  "Überprüfen Sie die Browserkonsole auf CSP-Verstossmeldungen nach dem Hinzufügen des Hashes —ein blockiertes Skript oder Style zeigt eine Verstossmeldung mit dem erwarteten Hash an.",
                                                                                   "Verwenden Sie den DevTools-Anwendungsbereich oder den Sicherheits-Tab des Browsers, um die aktive CSP-Richtlinie zu inspizieren und zu bestätigen, dass Ihr Hash erkannt wird."
                                                                               ]
                                                     },
@@ -4729,7 +4729,7 @@
                                                                   "quickAnswer":  "Verwenden Sie CSS-Subgrid, um verschachtelte Grid-Elemente an den Spuren des übergeordneten Grids auszurichten. Das Kind verwendet grid-template-columns: subgrid und/oder grid-template-rows: subgrid, um Spurgrößen, Abstände und benannte Linien vom übergeordneten Grid zu erben.",
                                                                   "howToUse":  [
                                                                                    "Definieren Sie die Spalten des übergeordneten Grids und optional die Zeilen. Das Subgrid-Kind erbt diese Spuren.",
-                                                                                   "Legen Sie die Spalten- und Zeilenspanne für das Subgrid-Kind fest 鈥?wie viele übergeordnete Grid-Zellen es belegt.",
+                                                                                   "Legen Sie die Spalten- und Zeilenspanne für das Subgrid-Kind fest —wie viele übergeordnete Grid-Zellen es belegt.",
                                                                                    "Wählen Sie, ob das Kind subgrid für Spalten, Zeilen oder beide verwendet.",
                                                                                    "Kopieren Sie das übergeordnete und das Kind-CSS und wenden Sie passende Selektoren in Ihrem HTML an."
                                                                                ],
@@ -4749,14 +4749,14 @@
                                                                                    }
                                                                                ],
                                                                   "mistakes":  [
-                                                                                   "Subgrid ohne ein übergeordnetes Grid verwenden 鈥?subgrid muss von einem Grid-Container mit expliziten Spuren abstammen.",
-                                                                                   "Sowohl grid-template-columns: subgrid als auch explizite Spaltenwerte setzen 鈥?subgrid ersetzt die übergeordneten Spuren, ergänzt sie nicht.",
-                                                                                   "Vergessen, dass subgrid Abstände vom übergeordneten Element erbt 鈥?wenn das übergeordnete Element gap: 16px hat, verwendet das Subgrid-Kind standardmässig ebenfalls 16px Abstände."
+                                                                                   "Subgrid ohne ein übergeordnetes Grid verwenden —subgrid muss von einem Grid-Container mit expliziten Spuren abstammen.",
+                                                                                   "Sowohl grid-template-columns: subgrid als auch explizite Spaltenwerte setzen —subgrid ersetzt die übergeordneten Spuren, ergänzt sie nicht.",
+                                                                                   "Vergessen, dass subgrid Abstände vom übergeordneten Element erbt —wenn das übergeordnete Element gap: 16px hat, verwendet das Subgrid-Kind standardmässig ebenfalls 16px Abstände."
                                                                                ],
                                                                   "faq":  [
                                                                               {
                                                                                   "question":  "Was ist der Unterschied zwischen Subgrid und verschachtelten Grids?",
-                                                                                  "answer":  "Ein verschachteltes Grid erzeugt unabhängige Spuren innerhalb eines Kind-Elements 鈥?es teilt keine Ausrichtung mit dem übergeordneten Grid. Subgrid erbt die Spuren des übergeordneten Grids, sodass Elemente im Subgrid mit Elementen im übergeordneten Grid ausgerichtet werden, als ob sie alle in einem flachen Grid wären. Dies ermöglicht spurenübergreifende Ausrichtung."
+                                                                                  "answer":  "Ein verschachteltes Grid erzeugt unabhängige Spuren innerhalb eines Kind-Elements —es teilt keine Ausrichtung mit dem übergeordneten Grid. Subgrid erbt die Spuren des übergeordneten Grids, sodass Elemente im Subgrid mit Elementen im übergeordneten Grid ausgerichtet werden, als ob sie alle in einem flachen Grid wären. Dies ermöglicht spurenübergreifende Ausrichtung."
                                                                               },
                                                                               {
                                                                                   "question":  "Erbt Subgrid benannte Grid-Linien vom übergeordneten Element?",
@@ -4764,7 +4764,7 @@
                                                                               },
                                                                               {
                                                                                   "question":  "Welche Browser unterstützen Subgrid?",
-                                                                                  "answer":  "Chrome 117+, Edge 117+, Firefox 71+ und Safari 16+. Firefox war der erste Browser, der Subgrid auslieferte. Es kann sicher als progressive Verbesserung verwendet werden 鈥?Browser, die Subgrid nicht unterstützen, fallen auf das regul盲re Grid-Verhalten des Kind-Elements zurück."
+                                                                                  "answer":  "Chrome 117+, Edge 117+, Firefox 71+ und Safari 16+. Firefox war der erste Browser, der Subgrid auslieferte. Es kann sicher als progressive Verbesserung verwendet werden —Browser, die Subgrid nicht unterstützen, fallen auf das regul盲re Grid-Verhalten des Kind-Elements zurück."
                                                                               }
                                                                           ],
                                                                   "limitations":  [
@@ -4773,7 +4773,7 @@
                                                                                       "Das Subgrid-Kind kann den übergeordneten Abstand nicht überschreiben. Abstandswerte werden vom nächsten Grid-Vorfahren geerbt und können auf dem Subgrid-Element selbst nicht geändert werden."
                                                                                   ],
                                                                   "verificationSteps":  [
-                                                                                            "Überprüfen Sie das Layout im Browser-DevTools-Grid-Inspektor 鈥?Subgrid-Spuren sollten visuell mit den übergeordneten Grid-Spuren übereinstimmen.",
+                                                                                            "Überprüfen Sie das Layout im Browser-DevTools-Grid-Inspektor —Subgrid-Spuren sollten visuell mit den übergeordneten Grid-Spuren übereinstimmen.",
                                                                                             "Testen Sie in Firefox und Chrome, um das browserübergreifende Subgrid-Verhalten zu bestätigen, da es subtile Unterschiede in der Behandlung impliziter Spuren gibt."
                                                                                         ]
                                                               },
@@ -4784,7 +4784,7 @@
                                                                               "quickAnswer":  "Declarative Shadow DOM erzeugt gekapseltes DOM und gekapseltes CSS aus HTML-Markup ohne JavaScript. Verwenden Sie \u003ctemplate shadowrootmode=\u0027open\u0027\u003e innerhalb eines benutzerdefinierten Host-Element-Tags. Unterstützt in Chrome, Edge und Safari. Fügen Sie Fallback-Inhalte für Firefox ein.",
                                                                               "howToUse":  [
                                                                                                "Geben Sie einen benutzerdefinierten Host-Element-Tag mit Bindestrich ein (erforderlich für gültige benutzerdefinierte Elementnamen).",
-                                                                                               "Wählen Sie den offenen oder geschlossenen Shadow-Root-Modus 鈥?offen ermöglicht JavaScript-Zugriff über shadowRoot.",
+                                                                                               "Wählen Sie den offenen oder geschlossenen Shadow-Root-Modus —offen ermöglicht JavaScript-Zugriff über shadowRoot.",
                                                                                                "Fügen Sie den inneren HTML-Inhalt mit slot-Elementen für die Inhaltsprojektion hinzu.",
                                                                                                "Fügen Sie optional gekapseltes CSS hinzu, das nur innerhalb dieses Shadow-Roots gilt.",
                                                                                                "Kopieren Sie das Snippet und binden Sie es in Ihre SSR-Ausgabe oder Ihr statisches HTML ein."
@@ -4805,9 +4805,9 @@
                                                                                                }
                                                                                            ],
                                                                               "mistakes":  [
-                                                                                               "Einen Host-Tag ohne Bindestrich verwenden 鈥?benutzerdefinierte Elementnamen müssen einen Bindestrich enthalten, um gültig zu sein.",
-                                                                                               "shadowrootmode closed setzen und erwarten, von aussen per JavaScript auf den Shadow-Root zuzugreifen 鈥?der closed-Modus blockiert jeglichen externen JavaScript-Zugriff.",
-                                                                                               "Fallback-Inhalte für Browser vergessen, die Declarative Shadow DOM nicht unterstützen 鈥?Benutzer sehen nichts anstatt Inhalt."
+                                                                                               "Einen Host-Tag ohne Bindestrich verwenden —benutzerdefinierte Elementnamen müssen einen Bindestrich enthalten, um gültig zu sein.",
+                                                                                               "shadowrootmode closed setzen und erwarten, von aussen per JavaScript auf den Shadow-Root zuzugreifen —der closed-Modus blockiert jeglichen externen JavaScript-Zugriff.",
+                                                                                               "Fallback-Inhalte für Browser vergessen, die Declarative Shadow DOM nicht unterstützen —Benutzer sehen nichts anstatt Inhalt."
                                                                                            ],
                                                                               "faq":  [
                                                                                           {
@@ -4821,7 +4821,7 @@
                                                                                       ],
                                                                               "limitations":  [
                                                                                                   "Firefox unterstützt Declarative Shadow DOM noch nicht (Stand 2026). Fügen Sie immer Fallback-Inhalte ein, die über CSS angezeigt werden, wenn DSD nicht unterstützt wird.",
-                                                                                                  "Declarative Shadow DOM erstellt den Shadow-Root und Inhalt nur während der anfänglichen Seitenanalyse. Dynamisch hinzugefügtes DSD-Markup wird nicht verarbeitet 鈥?verwenden Sie für die clientseitige Erstellung imperatives attachShadow().",
+                                                                                                  "Declarative Shadow DOM erstellt den Shadow-Root und Inhalt nur während der anfänglichen Seitenanalyse. Dynamisch hinzugefügtes DSD-Markup wird nicht verarbeitet —verwenden Sie für die clientseitige Erstellung imperatives attachShadow().",
                                                                                                   "Einige JavaScript-Frameworks und -Bibliotheken integrieren sich noch nicht mit Declarative Shadow DOM für SSR-Hydration. Überprüfen Sie die Framework-Unterstützung, bevor Sie DSD in einer frameworkbasierten App einsetzen."
                                                                                               ],
                                                                               "verificationSteps":  [
@@ -4836,7 +4836,7 @@
                                                               "quickAnswer":  "Generieren Sie eine zug盲ngliche CSS-Regel für den Tastatur-Fokusring. Verwenden Sie :focus-visible, um den Ring nur bei Tastaturnavigation anzuzeigen. Stellen Sie mindestens 3:1 Kontrast zwischen der Fokusfarbe und dem Hintergrund sicher. Fügen Sie einen box-shadow-Fallback hinzu, wenn Sie abgerundete Fokusringe benötigen.",
                                                               "howToUse":  [
                                                                                "Legen Sie die Fokusring-Breite, den Versatz, die Farbe und den Stil fest, oder wählen Sie box-shadow als Fallback.",
-                                                                               "Geben Sie den CSS-Selektor an 鈥?:focus-visible für reine Tastaturfokussierung oder :focus für jeglichen Fokus.",
+                                                                               "Geben Sie den CSS-Selektor an —:focus-visible für reine Tastaturfokussierung oder :focus für jeglichen Fokus.",
                                                                                "Wenn Sie ein Hintergrundfarbfeld verwenden, überprüft das Tool das Kontrastverhältnis und warnt, wenn es unter den WCAG-Schwellenwerten liegt.",
                                                                                "Kopieren Sie die CSS-Regel und wenden Sie sie global oder auf bestimmte Komponenten an."
                                                                            ],
@@ -4856,9 +4856,9 @@
                                                                                }
                                                                            ],
                                                               "mistakes":  [
-                                                                               "outline: none setzen, ohne einen Ersatz bereitzustellen 鈥?dies entfernt den Fokusindikator vollständig und verstösst gegen WCAG 2.4.7.",
-                                                                               "Eine Fokusfarbe wählen, die mit dem Hintergrund verschmilzt 鈥?der Ring muss mindestens 3:1 Kontrast haben, um wahrnehmbar zu sein.",
-                                                                               ":focus anstelle von :focus-visible verwenden 鈥?:focus zeigt den Ring auch bei Mausklicks an, was visuell unruhig wirken kann. :focus-visible zielt nur auf die Tastaturnavigation ab."
+                                                                               "outline: none setzen, ohne einen Ersatz bereitzustellen —dies entfernt den Fokusindikator vollständig und verstösst gegen WCAG 2.4.7.",
+                                                                               "Eine Fokusfarbe wählen, die mit dem Hintergrund verschmilzt —der Ring muss mindestens 3:1 Kontrast haben, um wahrnehmbar zu sein.",
+                                                                               ":focus anstelle von :focus-visible verwenden —:focus zeigt den Ring auch bei Mausklicks an, was visuell unruhig wirken kann. :focus-visible zielt nur auf die Tastaturnavigation ab."
                                                                            ],
                                                               "faq":  [
                                                                           {
@@ -4872,7 +4872,7 @@
                                                                       ],
                                                               "limitations":  [
                                                                                   "Outline folgt border-radius nicht in allen Browsern. Chrome und Safari zeichnen Outlines mit eckigen Ecken auf abgerundeten Elementen. Verwenden Sie box-shadow als Fallback für abgerundete Fokusindikatoren.",
-                                                                                  "Die Fokusring-Kontrastprüfung verwendet eine vereinfachte relative Leuchtdichteberechnung. Der tatsächlich wahrgenommene Kontrast hängt von der umgebenden UI ab 鈥?testen Sie visuell mit echten Inhalten.",
+                                                                                  "Die Fokusring-Kontrastprüfung verwendet eine vereinfachte relative Leuchtdichteberechnung. Der tatsächlich wahrgenommene Kontrast hängt von der umgebenden UI ab —testen Sie visuell mit echten Inhalten.",
                                                                                   "Einige Betriebssystem-Kontrastmodi überschreiben die Autoren-Fokus-Stile. Testen Sie immer mit dem Windows High Contrast Mode und den macOS-Kontrasteinstellungen."
                                                                               ],
                                                               "verificationSteps":  [
@@ -4902,14 +4902,14 @@
                                                                                    "title":  "Dreisprachige Dokumentationsseite"
                                                                                },
                                                                                {
-                                                                                   "text":  "Ein Online-Shop hat US-englische, britisch-englische und kanadisch-französische Versionen. Geben Sie die Paare ein und überprüfen Sie die Gegenseitigkeit 鈥?wenn die britisch-englische Seite nicht die kanadisch-französische Alternative aufführt, meldet das Tool den fehlenden Link.",
+                                                                                   "text":  "Ein Online-Shop hat US-englische, britisch-englische und kanadisch-französische Versionen. Geben Sie die Paare ein und überprüfen Sie die Gegenseitigkeit —wenn die britisch-englische Seite nicht die kanadisch-französische Alternative aufführt, meldet das Tool den fehlenden Link.",
                                                                                    "title":  "E-Commerce-Seite mit regionalen Varianten"
                                                                                }
                                                                            ],
                                                               "mistakes":  [
-                                                                               "Relative URLs anstelle von absoluten URLs verwenden 鈥?Hreflang erfordert vollständig qualifizierte URLs einschliesslich des Protokolls (https://).",
-                                                                               "Vergessen, die aktuelle Seiten-URL in den eigenen Satz von Alternativen aufzunehmen 鈥?jede URL muss sich selbst in den alternativen Links aufführen.",
-                                                                               "Hreflang-Gruppen erstellen, die keine vollständigen gegenseitigen Sets bilden 鈥?wenn Seite A auf Seite B verlinkt, muss Seite B mit dem passenden Sprachcode zurück auf Seite A verlinken."
+                                                                               "Relative URLs anstelle von absoluten URLs verwenden —Hreflang erfordert vollständig qualifizierte URLs einschliesslich des Protokolls (https://).",
+                                                                               "Vergessen, die aktuelle Seiten-URL in den eigenen Satz von Alternativen aufzunehmen —jede URL muss sich selbst in den alternativen Links aufführen.",
+                                                                               "Hreflang-Gruppen erstellen, die keine vollständigen gegenseitigen Sets bilden —wenn Seite A auf Seite B verlinkt, muss Seite B mit dem passenden Sprachcode zurück auf Seite A verlinken."
                                                                            ],
                                                               "faq":  [
                                                                           {
@@ -4943,7 +4943,7 @@
                                                                    "howToUse":  [
                                                                                     "Wählen Sie eine Inhaltsvoreinstellung basierend auf der Art von HTML, die Benutzer voraussichtlich einsenden werden.",
                                                                                     "Überprüfen und passen Sie die erlaubten Tags und Attribute für Ihren spezifischen Anwendungsfall an.",
-                                                                                    "Wählen Sie das Ausgabeformat 鈥?Sanitizer API, DOMPurify oder beide.",
+                                                                                    "Wählen Sie das Ausgabeformat —Sanitizer API, DOMPurify oder beide.",
                                                                                     "Kopieren Sie die Konfiguration und verwenden Sie sie überall dort, wo Sie benutzereingegebenes HTML rendern."
                                                                                 ],
                                                                    "useCases":  [
@@ -4962,9 +4962,9 @@
                                                                                     }
                                                                                 ],
                                                                    "mistakes":  [
-                                                                                    "script- oder style-Tags in der Zulassungsliste erlauben 鈥?diese können beliebigen Code ausführen und den Zweck der Bereinigung zunichte machen.",
-                                                                                    "Event-Handler-Attribute wie onclick oder onerror erlauben 鈥?Angreifer können JavaScript über Event-Handler einschleusen, selbst wenn Script-Tags blockiert sind.",
-                                                                                    "Annehmen, dass Bereinigung HTML für alle Kontexte sicher macht 鈥?bereinigtes HTML kann immer noch Layouts zerstören, Container überlaufen lassen oder Phishing-Links enthalten."
+                                                                                    "script- oder style-Tags in der Zulassungsliste erlauben —diese können beliebigen Code ausführen und den Zweck der Bereinigung zunichte machen.",
+                                                                                    "Event-Handler-Attribute wie onclick oder onerror erlauben —Angreifer können JavaScript über Event-Handler einschleusen, selbst wenn Script-Tags blockiert sind.",
+                                                                                    "Annehmen, dass Bereinigung HTML für alle Kontexte sicher macht —bereinigtes HTML kann immer noch Layouts zerstören, Container überlaufen lassen oder Phishing-Links enthalten."
                                                                                 ],
                                                                    "faq":  [
                                                                                {
@@ -5003,7 +5003,7 @@
                                                                                ],
                                                                   "examples":  [
                                                                                    {
-                                                                                       "text":  "Ein Entwickler stellt fest, dass Seiten nicht zwischenspeichern. Fügt die Antwort-Header in den Parser ein. Dieser zeigt Cache-Control: no-cache, was das Verhalten erklärt 鈥?der Browser muss bei jeder Anfrage erneut validieren.",
+                                                                                       "text":  "Ein Entwickler stellt fest, dass Seiten nicht zwischenspeichern. Fügt die Antwort-Header in den Parser ein. Dieser zeigt Cache-Control: no-cache, was das Verhalten erklärt —der Browser muss bei jeder Anfrage erneut validieren.",
                                                                                        "title":  "Cache-Probleme debuggen"
                                                                                    },
                                                                                    {
@@ -5012,9 +5012,9 @@
                                                                                    }
                                                                                ],
                                                                   "mistakes":  [
-                                                                                   "Anfrage-Header anstelle von Antwort-Headern einfügen 鈥?Anfrage-Header (vom Browser gesendet) haben andere Bedeutungen als Antwort-Header (vom Server gesendet).",
-                                                                                   "Sicherheitshinweise übersehen 鈥?fehlende Sicherheitsheader machen die Seite anfällig für bekannte Angriffe, die leicht zu verhindern sind.",
-                                                                                   "Annehmen, dass Header von einem CDN oder Proxy mit den ursprünglichen Headern identisch sind 鈥?CDNs fügen häufig Header hinzu, entfernen sie oder ändern sie."
+                                                                                   "Anfrage-Header anstelle von Antwort-Headern einfügen —Anfrage-Header (vom Browser gesendet) haben andere Bedeutungen als Antwort-Header (vom Server gesendet).",
+                                                                                   "Sicherheitshinweise übersehen —fehlende Sicherheitsheader machen die Seite anfällig für bekannte Angriffe, die leicht zu verhindern sind.",
+                                                                                   "Annehmen, dass Header von einem CDN oder Proxy mit den ursprünglichen Headern identisch sind —CDNs fügen häufig Header hinzu, entfernen sie oder ändern sie."
                                                                                ],
                                                                   "faq":  [
                                                                               {
@@ -5062,9 +5062,9 @@
                                                                          }
                                                                      ],
                                                         "mistakes":  [
-                                                                         "Relative URLs wie /tools/ anstelle von absoluten URLs verwenden 鈥?KI-Tools, die die Datei lesen, kennen möglicherweise die Basisdomain nicht, um sie aufzulösen.",
-                                                                         "Die H1-Überschrift am Anfang der Datei vergessen 鈥?der H1 ist erforderlich und teilt der KI mit, worum es bei der Website oder Seitensammlung geht.",
-                                                                         "Jede einzelne Seite auflisten, anstatt die wichtigsten Einstiegspunkte zu kuratieren 鈥?eine llms.txt sollte ein präziser Leitfaden sein, keine vollständige Sitemap."
+                                                                         "Relative URLs wie /tools/ anstelle von absoluten URLs verwenden —KI-Tools, die die Datei lesen, kennen möglicherweise die Basisdomain nicht, um sie aufzulösen.",
+                                                                         "Die H1-Überschrift am Anfang der Datei vergessen —der H1 ist erforderlich und teilt der KI mit, worum es bei der Website oder Seitensammlung geht.",
+                                                                         "Jede einzelne Seite auflisten, anstatt die wichtigsten Einstiegspunkte zu kuratieren —eine llms.txt sollte ein präziser Leitfaden sein, keine vollständige Sitemap."
                                                                      ],
                                                         "faq":  [
                                                                     {
@@ -5081,7 +5081,7 @@
                                                                     }
                                                                 ],
                                                         "limitations":  [
-                                                                            "Dieser Validator prüft nur die Struktur und das Link-Format. Er überprüft nicht, ob die verlinkten Seiten tatsächlich existieren oder gute Inhalte zurückgeben 鈥?verwenden Sie dafür einen Link-Checker.",
+                                                                            "Dieser Validator prüft nur die Struktur und das Link-Format. Er überprüft nicht, ob die verlinkten Seiten tatsächlich existieren oder gute Inhalte zurückgeben —verwenden Sie dafür einen Link-Checker.",
                                                                             "Das llms.txt-Format hat keine offizielle Anerkennung durch einen Standardsbody (IETF, W3C). Die Spezifikation ist community-getrieben und kann sich im Laufe der Zeit weiterentwickeln.",
                                                                             "Warnungen zur Dateigröße und Link-Anzahl sind beratend. Es gibt keine formale Obergrenze für llms.txt-Dateien, aber kürzere, kuratierte Dateien sind für die KI-Nutzung effektiver."
                                                                         ],
@@ -5117,9 +5117,9 @@
                                                                                        }
                                                                                    ],
                                                                       "mistakes":  [
-                                                                                       "Vergessen, {searchTerms} in die Such-URL-Vorlage aufzunehmen 鈥?ohne sie kann der Browser die Suchanfrage des Benutzers nicht an die Suchseite übergeben.",
-                                                                                       "Eine relative URL für das Favicon verwenden oder es nicht über HTTPS ausliefern 鈥?das Favicon muss eine absolute HTTPS-URL sein.",
-                                                                                       "Die XML-Datei mit dem falschen Content-Type ausliefern 鈥?sie sollte application/opensearchdescription+xml sein, damit Browser sie erkennen."
+                                                                                       "Vergessen, {searchTerms} in die Such-URL-Vorlage aufzunehmen —ohne sie kann der Browser die Suchanfrage des Benutzers nicht an die Suchseite übergeben.",
+                                                                                       "Eine relative URL für das Favicon verwenden oder es nicht über HTTPS ausliefern —das Favicon muss eine absolute HTTPS-URL sein.",
+                                                                                       "Die XML-Datei mit dem falschen Content-Type ausliefern —sie sollte application/opensearchdescription+xml sein, damit Browser sie erkennen."
                                                                                    ],
                                                                       "faq":  [
                                                                                   {
@@ -5152,7 +5152,7 @@
                                                                            "quickAnswer":  "Laden Sie Ihr quadratisches PWA-Icon hoch, um die maskierbare sichere Zone mit Überlagerung in der Vorschau anzuzeigen. Halten Sie wichtige Inhalte innerhalb der sicheren Zone (die inneren 80% des Icons). Exportieren Sie Manifest-Icon-Einträge mit sowohl any- als auch maskable-purposes in den Grössen 192x192 und 512x512.",
                                                                            "howToUse":  [
                                                                                             "Laden Sie ein quadratisches PNG-Icon (512x512 oder größer empfohlen) für Ihre PWA hoch.",
-                                                                                            "Passen Sie den Prozentsatz des sicheren Zonenabstands an 鈥?15% (PWA-Standard) bedeutet eine 85% sichtbare sichere Zone.",
+                                                                                            "Passen Sie den Prozentsatz des sicheren Zonenabstands an —15% (PWA-Standard) bedeutet eine 85% sichtbare sichere Zone.",
                                                                                             "Zeigen Sie die Überlagerung auf dem Icon in der Vorschau an, um zu bestätigen, dass wichtige Inhalte innerhalb der gestrichelten sicheren Zone bleiben.",
                                                                                             "Kopieren Sie die Manifest-Icon-Einträge mit purpose: maskable und exportieren Sie Ihre Icons in 192x192 und 512x512."
                                                                                         ],
@@ -5172,9 +5172,9 @@
                                                                                             }
                                                                                         ],
                                                                            "mistakes":  [
-                                                                                            "purpose: maskable auf einem Icon ohne Safe-Zone-Abstand verwenden 鈥?das Icon kann auf Android in eine nicht erkennbare Form beschnitten werden.",
-                                                                                            "Nur eine Icon-Grösse angeben 鈥?PWA erfordert mindestens 192x192 und 512x512 für die Installierbarkeit auf allen Plattformen.",
-                                                                                            "Ein nicht quadratisches Icon hochladen 鈥?maskierbare Icons sollten für eine konsistente Darstellung auf allen Plattformformen quadratisch sein."
+                                                                                            "purpose: maskable auf einem Icon ohne Safe-Zone-Abstand verwenden —das Icon kann auf Android in eine nicht erkennbare Form beschnitten werden.",
+                                                                                            "Nur eine Icon-Grösse angeben —PWA erfordert mindestens 192x192 und 512x512 für die Installierbarkeit auf allen Plattformen.",
+                                                                                            "Ein nicht quadratisches Icon hochladen —maskierbare Icons sollten für eine konsistente Darstellung auf allen Plattformformen quadratisch sein."
                                                                                         ],
                                                                            "faq":  [
                                                                                        {
@@ -5192,7 +5192,7 @@
                                                                                    ],
                                                                            "limitations":  [
                                                                                                "Die Vorschau zeigt eine kreisrunde sichere Zone, aber die tatsächlichen Plattformformen variieren (Squircle, abgerundete Quadrate, Kreise). Die kreisrunde Zone ist eine angemessene Worst-Case-Näherung für alle Formen.",
-                                                                                               "Dieses Tool bietet nur eine visuelle Vorschau. Es exportiert keine tatsächlichen PNG-Dateien 鈥?verwenden Sie einen Bildeditor oder ein Icon-Generierungstool, um die endgültigen Icon-Dateien in den erforderlichen Grössen zu erstellen.",
+                                                                                               "Dieses Tool bietet nur eine visuelle Vorschau. Es exportiert keine tatsächlichen PNG-Dateien —verwenden Sie einen Bildeditor oder ein Icon-Generierungstool, um die endgültigen Icon-Dateien in den erforderlichen Grössen zu erstellen.",
                                                                                                "Einige Plattformen wenden über die maskierbare Beschneidung hinaus zusätzliche Transformationen an, wie Schlagschatten oder plattformspezifische Icon-Behandlungen, die hier nicht in der Vorschau angezeigt werden können."
                                                                                            ],
                                                                            "verificationSteps":  [
@@ -5203,7 +5203,7 @@
                              "redirect-map-converter":  {
                                                             "name":  "Redirect Map Converter",
                                                             "summary":  "Konvertiere eine CSV-Weiterleitungstabelle in Netlify, Vercel, Apache oder Nginx Redirect-Formate.",
-                                                            "whatIs":  "Eine Redirect-Map ist eine Liste von URL-Weiterleitungen 鈥?alte URL, neue URL, HTTP-Statuscode 鈥?die Ihrem Webserver oder Ihrer Hosting-Plattform mitteilt, Besucher von der alten URL zur neuen zu leiten. Verschiedene Plattformen verwenden unterschiedliche Formate, von einfachen leerzeichengetrennten Dateien (Netlify _redirects) über JSON-Arrays (Vercel) bis hin zu Apache/Nginx-Serverkonfigurationssyntax. Dieses Tool konvertiert eine einzelne CSV-Map in alle wichtigen Plattformformate.",
+                                                            "whatIs":  "Eine Redirect-Map ist eine Liste von URL-Weiterleitungen —alte URL, neue URL, HTTP-Statuscode —die Ihrem Webserver oder Ihrer Hosting-Plattform mitteilt, Besucher von der alten URL zur neuen zu leiten. Verschiedene Plattformen verwenden unterschiedliche Formate, von einfachen leerzeichengetrennten Dateien (Netlify _redirects) über JSON-Arrays (Vercel) bis hin zu Apache/Nginx-Serverkonfigurationssyntax. Dieses Tool konvertiert eine einzelne CSV-Map in alle wichtigen Plattformformate.",
                                                             "quickAnswer":  "Konvertieren Sie eine CSV-Redirect-Map (old_url,new_url,status) in das Redirect-Format Ihrer Plattform. Unterstützt Netlify _redirects und netlify.toml, Vercel vercel.json, Apache .htaccess und Nginx-Rewrite-Regeln. Validieren Sie Duplikate und Redirect-Ketten vor der Bereitstellung.",
                                                             "howToUse":  [
                                                                              "Geben Sie Ihre Redirect-Zuordnungen im CSV-Format ein: old_url,new_url,status (status standardmässig 301, wenn nicht angegeben).",
@@ -5227,9 +5227,9 @@
                                                                              }
                                                                          ],
                                                             "mistakes":  [
-                                                                             "Redirect-Ketten erstellen (A -\u003e B -\u003e C) anstelle von direkten Weiterleitungen (A -\u003e C, B -\u003e C) 鈥?jeder Zwischenschritt erhöht die Latenz und kann SEO-Wert verlieren.",
-                                                                             "Relative URLs ohne f眉hrenden Schrägstrich verwenden 鈥?alle Redirect-Pfade sollten absolute Pfade sein, die mit / beginnen.",
-                                                                             "Vergessen, den Statuscode anzugeben 鈥?standardmässig 301, aber einige Plattformen verwenden standardmässig 302, was andere SEO-Auswirkungen hat."
+                                                                             "Redirect-Ketten erstellen (A -\u003e B -\u003e C) anstelle von direkten Weiterleitungen (A -\u003e C, B -\u003e C) —jeder Zwischenschritt erhöht die Latenz und kann SEO-Wert verlieren.",
+                                                                             "Relative URLs ohne f眉hrenden Schrägstrich verwenden —alle Redirect-Pfade sollten absolute Pfade sein, die mit / beginnen.",
+                                                                             "Vergessen, den Statuscode anzugeben —standardmässig 301, aber einige Plattformen verwenden standardmässig 302, was andere SEO-Auswirkungen hat."
                                                                          ],
                                                             "faq":  [
                                                                         {
@@ -5242,7 +5242,7 @@
                                                                         }
                                                                     ],
                                                             "limitations":  [
-                                                                                "Verschiedene Plattformen behandeln Redirect-Grenzfälle unterschiedlich 鈥?nachgestellte Schrägstriche, Query-String-Weiterleitung und Wildcard-Matching variieren. Testen Sie Weiterleitungen auf der tatsächlichen Plattform nach der Konvertierung.",
+                                                                                "Verschiedene Plattformen behandeln Redirect-Grenzfälle unterschiedlich —nachgestellte Schrägstriche, Query-String-Weiterleitung und Wildcard-Matching variieren. Testen Sie Weiterleitungen auf der tatsächlichen Plattform nach der Konvertierung.",
                                                                                 "Sehr große Redirect-Maps (10.000+ Einträge) müssen möglicherweise aufgeteilt oder in musterbasierte Regeln für die Leistung konvertiert werden. Dieses Tool generiert einen Eintrag pro Weiterleitung.",
                                                                                 "Apache- und Nginx-Formate setzen grundlegende Serverkonfiguration voraus. Komplexe Setups mit virtuellen Hosts, location-Blöcken oder bedingten Rewrites können manuelle Anpassungen erfordern."
                                                                             ],
@@ -5928,9 +5928,9 @@
                                                                                        }
                                                                                    ],
                                                                       "mistakes":  [
-                                                                                       "scroll-state() verwenden, ohne container-type: scroll-state auf dem Scroll-Container zu setzen 鈥?die Query hat keine Wirkung.",
-                                                                                       "Erwarten, dass scroll-state() in allen Browsern funktioniert 鈥?es ist eine Chrome 135+-Funktion. Stellen Sie immer einen JS-Fallback bereit.",
-                                                                                       "Scroll-State-Queries auf Elementen verwenden, die den Zielzustand nie erreichen 鈥?überprüfen Sie, ob das Element im Layout tatsächlich eingerastet oder fixiert werden kann."
+                                                                                       "scroll-state() verwenden, ohne container-type: scroll-state auf dem Scroll-Container zu setzen —die Query hat keine Wirkung.",
+                                                                                       "Erwarten, dass scroll-state() in allen Browsern funktioniert —es ist eine Chrome 135+-Funktion. Stellen Sie immer einen JS-Fallback bereit.",
+                                                                                       "Scroll-State-Queries auf Elementen verwenden, die den Zielzustand nie erreichen —überprüfen Sie, ob das Element im Layout tatsächlich eingerastet oder fixiert werden kann."
                                                                                    ],
                                                                       "faq":  [
                                                                                   {
@@ -5948,7 +5948,7 @@
                                                                                           "Nur eine begrenzte Anzahl von Scroll-Zuständen ist verfügbar: snapped, stuck, scrollable und overflowing. Komplexe scrollgesteuerte Animationen erfordern weiterhin JavaScript oder scrollgesteuerte Animationen (@scroll-timeline)."
                                                                                       ],
                                                                       "verificationSteps":  [
-                                                                                                "Scrollen Sie den Container und überprüfen Sie, ob die gestalteten Elemente korrekt aktualisiert werden 鈥?eingerastete Elemente sollten den aktiven Stil zeigen, nicht eingerastete den Standardstil.",
+                                                                                                "Scrollen Sie den Container und überprüfen Sie, ob die gestalteten Elemente korrekt aktualisiert werden —eingerastete Elemente sollten den aktiven Stil zeigen, nicht eingerastete den Standardstil.",
                                                                                                 "Testen Sie mit deaktiviertem JavaScript-Fallback, um zu bestätigen, dass der reine CSS-Ansatz in Chrome 135+ funktioniert."
                                                                                             ]
                                                                   },
@@ -5957,13 +5957,13 @@
                                                                     "quickAnswer":  "Verwenden Sie die Invoker Commands API für deklarative Buttons, die Dialoge, Popover und Details ohne JavaScript steuern. Setzen Sie commandfor auf die Ziel-Element-ID und command auf die Aktion (show-modal, toggle-popover, open, close). Integrierte Befehle funktionieren nativ; benutzerdefinierte Befehle lösen ein \u0027command\u0027-Event auf dem Ziel aus.",
                                                                     "howToUse":  [
                                                                                      "Geben Sie die Ziel-Element-ID ein und wählen Sie den Zieltyp (dialog, popover, details oder benutzerdefiniert).",
-                                                                                     "Wählen Sie den Befehl 鈥?verschiedene Zieltypen unterstützen unterschiedliche Befehle (show-modal, toggle-popover, open usw.).",
+                                                                                     "Wählen Sie den Befehl —verschiedene Zieltypen unterstützen unterschiedliche Befehle (show-modal, toggle-popover, open usw.).",
                                                                                      "Legen Sie den Button-Text fest. Fügen Sie optional die Ziel-Elementvorlage und einen JS-Fallback ein.",
                                                                                      "Kopieren Sie das generierte HTML. In unterstützenden Browsern ist kein JavaScript für integrierte Befehle erforderlich."
                                                                                  ],
                                                                     "useCases":  [
                                                                                      "Einen modalen Dialog-Trigger mit einem Button erstellen, der den Dialog deklarativ öffnet, und einem Schliessen-Button innerhalb des Dialogs, der ebenfalls deklarativ funktioniert.",
-                                                                                     "Ein Popover-Menü mit einem Umschalt-Button erstellen 鈥?keine Click-Handler, kein Zustandsmanagement.",
+                                                                                     "Ein Popover-Menü mit einem Umschalt-Button erstellen —keine Click-Handler, kein Zustandsmanagement.",
                                                                                      "Ein Details/Disclosure-Widget erstellen, das von einem externen Button anstelle des summary-Elements gesteuert wird."
                                                                                  ],
                                                                     "examples":  [
@@ -5972,23 +5972,23 @@
                                                                                          "title":  "Deklarativer modaler Dialog"
                                                                                      },
                                                                                      {
-                                                                                         "text":  "Ein Benutzermenü-Popover wird mit einem Button geöffnet und geschlossen. Verwenden Sie commandfor=\u0027user-menu\u0027 command=\u0027toggle-popover\u0027. Der Browser verwaltet den Popover-Zustand 鈥?keine JavaScript-Nachverfolgung erforderlich.",
+                                                                                         "text":  "Ein Benutzermenü-Popover wird mit einem Button geöffnet und geschlossen. Verwenden Sie commandfor=\u0027user-menu\u0027 command=\u0027toggle-popover\u0027. Der Browser verwaltet den Popover-Zustand —keine JavaScript-Nachverfolgung erforderlich.",
                                                                                          "title":  "Popover-Menü-Umschalter"
                                                                                      }
                                                                                  ],
                                                                     "mistakes":  [
-                                                                                     "commandfor ohne eine passende Ziel-Element-ID verwenden 鈥?der Button tut stillschweigend nichts. Überprüfen Sie immer, ob die Ziel-ID übereinstimmt.",
-                                                                                     "Einen Befehl verwenden, der vom Zieltyp nicht unterstützt wird 鈥?show-modal funktioniert nur auf dialog-Elementen, toggle-popover nur auf popover-Elementen.",
-                                                                                     "Vergessen, dass Invoker Commands Baseline 2025 sind 鈥?ältere Browser benötigen einen JavaScript-Click-Handler-Fallback."
+                                                                                     "commandfor ohne eine passende Ziel-Element-ID verwenden —der Button tut stillschweigend nichts. Überprüfen Sie immer, ob die Ziel-ID übereinstimmt.",
+                                                                                     "Einen Befehl verwenden, der vom Zieltyp nicht unterstützt wird —show-modal funktioniert nur auf dialog-Elementen, toggle-popover nur auf popover-Elementen.",
+                                                                                     "Vergessen, dass Invoker Commands Baseline 2025 sind —ältere Browser benötigen einen JavaScript-Click-Handler-Fallback."
                                                                                  ],
                                                                     "faq":  [
                                                                                 {
                                                                                     "question":  "Funktionieren Invoker Commands ganz ohne JavaScript?",
-                                                                                    "answer":  "Ja, für integrierte Befehle auf dialog-, popover- und details-Elementen. Der Browser verarbeitet die Befehle showModal(), close(), showPopover(), hidePopover() und toggle nativ. Für benutzerdefinierte Befehle fügen Sie einen \u0027command\u0027-Event-Listener auf dem Zielelement hinzu 鈥?ein Listener behandelt alle Befehlsaufrufe."
+                                                                                    "answer":  "Ja, für integrierte Befehle auf dialog-, popover- und details-Elementen. Der Browser verarbeitet die Befehle showModal(), close(), showPopover(), hidePopover() und toggle nativ. Für benutzerdefinierte Befehle fügen Sie einen \u0027command\u0027-Event-Listener auf dem Zielelement hinzu —ein Listener behandelt alle Befehlsaufrufe."
                                                                                 },
                                                                                 {
                                                                                     "question":  "Was ist der Unterschied zwischen command und onclick?",
-                                                                                    "answer":  "command ist deklarativ 鈥?es teilt dem Browser mit, welche Aktion auf dem Ziel ausgeführt werden soll. onclick ist imperativ 鈥?Sie schreiben JavaScript, um die Aktion auszuführen. command funktioniert ohne JavaScript für integrierte Aktionen. Es kommuniziert auch die Absicht an assistive Technologie: Ein Button mit command=\u0027show-modal\u0027 kündigt seinen Zweck klarer an als ein generischer Click-Handler."
+                                                                                    "answer":  "command ist deklarativ —es teilt dem Browser mit, welche Aktion auf dem Ziel ausgeführt werden soll. onclick ist imperativ —Sie schreiben JavaScript, um die Aktion auszuführen. command funktioniert ohne JavaScript für integrierte Aktionen. Es kommuniziert auch die Absicht an assistive Technologie: Ein Button mit command=\u0027show-modal\u0027 kündigt seinen Zweck klarer an als ein generischer Click-Handler."
                                                                                 }
                                                                             ],
                                                                     "limitations":  [
@@ -6026,9 +6026,9 @@
                                                                                     }
                                                                                 ],
                                                                    "mistakes":  [
-                                                                                    "Erwarten, dass das anpassbare Select in allen Browsern funktioniert 鈥?es erfordert Chrome 135+ mit experimentellen Funktionen. Ältere Browser zeigen ein standardmässiges natives Select.",
-                                                                                    "appearance: none anstelle von appearance: base-select verwenden 鈥?ersteres entfernt alle nativen Styles einschliesslich der Barrierefreiheitsrollen.",
-                                                                                    "Vergessen, dass base-select noch nicht im CSS Baseline ist 鈥?immer testen und ein lesbares natives Select als Fallback bereitstellen."
+                                                                                    "Erwarten, dass das anpassbare Select in allen Browsern funktioniert —es erfordert Chrome 135+ mit experimentellen Funktionen. Ältere Browser zeigen ein standardmässiges natives Select.",
+                                                                                    "appearance: none anstelle von appearance: base-select verwenden —ersteres entfernt alle nativen Styles einschliesslich der Barrierefreiheitsrollen.",
+                                                                                    "Vergessen, dass base-select noch nicht im CSS Baseline ist —immer testen und ein lesbares natives Select als Fallback bereitstellen."
                                                                                 ],
                                                                    "faq":  [
                                                                                {
@@ -6042,7 +6042,7 @@
                                                                            ],
                                                                    "limitations":  [
                                                                                        "Das anpassbare Select ist eine sehr neue Funktion (Chrome 135+) und noch nicht im CSS Baseline. Firefox und Safari unterstützen es noch nicht. Testen Sie immer mit @supports und stellen Sie einen lesbaren nativen Fallback bereit.",
-                                                                                       "Nicht alle Aspekte des Selects sind anpassbar. Das Optionslisten-Layout, das Scrollverhalten und die mobile Picker-Oberfläche werden weiterhin vom Browser gesteuert. Dies ist beabsichtigt 鈥?es hält das Select auf allen Geräten nutzbar.",
+                                                                                       "Nicht alle Aspekte des Selects sind anpassbar. Das Optionslisten-Layout, das Scrollverhalten und die mobile Picker-Oberfläche werden weiterhin vom Browser gesteuert. Dies ist beabsichtigt —es hält das Select auf allen Geräten nutzbar.",
                                                                                        "Die Pseudo-Elemente ::picker-icon und option::checkmark sind Teil des anpassbaren Select-Modells und können nicht auf anderen Elementen verwendet werden. Sie funktionieren nur innerhalb eines Selects mit appearance: base-select."
                                                                                    ],
                                                                    "verificationSteps":  [
@@ -6052,10 +6052,10 @@
                                                                },
                              "css-carousel-generator":  {
                                                             "whatIs":  "Ein CSS-Carousel ist ein horizontal oder vertikal scrollbarer Container, bei dem Elemente beim Scrollen in Position einrasten. Modernes CSS (Chrome 135+) fügt integrierte Scroll-Buttons und Marker hinzu, die ohne JavaScript funktionieren, sowie Scroll-State-Queries zur Gestaltung des aktuell eingerasteten Elements. Dies ist eine native Alternative zu JavaScript-Carousel-Bibliotheken.",
-                                                            "quickAnswer":  "Erstellen Sie ein natives CSS-Carousel mit scroll-snap, Buttons und Markern 鈥?kein JavaScript erforderlich. Verwenden Sie scroll-snap-type für das Einrastverhalten, ::scroll-button() für Pfeile, ::scroll-marker() für Punkte und scroll-state(snapped: true)-Queries für die Gestaltung des aktiven Elements. Chrome 135+ für volle Funktionen; funktioniert andernorts abwärtskompatibel.",
+                                                            "quickAnswer":  "Erstellen Sie ein natives CSS-Carousel mit scroll-snap, Buttons und Markern —kein JavaScript erforderlich. Verwenden Sie scroll-snap-type für das Einrastverhalten, ::scroll-button() für Pfeile, ::scroll-marker() für Punkte und scroll-state(snapped: true)-Queries für die Gestaltung des aktiven Elements. Chrome 135+ für volle Funktionen; funktioniert andernorts abwärtskompatibel.",
                                                             "howToUse":  [
                                                                              "Wählen Sie die Layoutrichtung (horizontal oder vertikal) und die Elementbreite.",
-                                                                             "Legen Sie das Einrastverhalten und die Ausrichtung fest 鈥?mandatory rastet bei jedem Element ein, proximity rastet ein, wenn in der Nähe.",
+                                                                             "Legen Sie das Einrastverhalten und die Ausrichtung fest —mandatory rastet bei jedem Element ein, proximity rastet ein, wenn in der Nähe.",
                                                                              "Fügen Sie optional Scroll-Buttons und Marker-Punkte zur Navigation hinzu.",
                                                                              "Wählen Sie zug盲ngliches Listen-Markup (ul/li) und die Anzahl der Elemente für die Demo-Ausgabe.",
                                                                              "Kopieren Sie CSS und HTML in Ihre Seite. Fügen Sie echte Inhalte in jedes Carousel-Element ein."
@@ -6076,9 +6076,9 @@
                                                                              }
                                                                          ],
                                                             "mistakes":  [
-                                                                             "Mandatory snap bei sehr langen Carousels verwenden 鈥?Benutzer können nicht schnell über mehrere Elemente scrollen, was sich tr盲ge anfühlt.",
-                                                                             "Vergessen, den Scroll-Container tastaturfokussierbar zu machen 鈥?Tastaturnutzer benötigen tabindex=\u00270\u0027, um mit Pfeiltasten zu scrollen.",
-                                                                             "Feste Pixelbreiten ohne Berücksichtigung mobiler Geräte verwenden 鈥?300px-Elemente auf einem 320px-Bildschirm lassen kaum einen Einblick in das nächste Element."
+                                                                             "Mandatory snap bei sehr langen Carousels verwenden —Benutzer können nicht schnell über mehrere Elemente scrollen, was sich tr盲ge anfühlt.",
+                                                                             "Vergessen, den Scroll-Container tastaturfokussierbar zu machen —Tastaturnutzer benötigen tabindex=\u00270\u0027, um mit Pfeiltasten zu scrollen.",
+                                                                             "Feste Pixelbreiten ohne Berücksichtigung mobiler Geräte verwenden —300px-Elemente auf einem 320px-Bildschirm lassen kaum einen Einblick in das nächste Element."
                                                                          ],
                                                             "faq":  [
                                                                         {
@@ -6101,7 +6101,7 @@
                                                                             ],
                                                             "verificationSteps":  [
                                                                                       "Testen Sie das Carousel mit Tastaturnavigation: Fokussieren Sie den Container und verwenden Sie die Pfeiltasten, um durch die Elemente zu scrollen.",
-                                                                                      "Überprüfen Sie, ob die Einrastpunkte auf Touch-Geräten korrekt funktionieren 鈥?jede Wischbewegung sollte zum nächsten Element einrasten."
+                                                                                      "Überprüfen Sie, ob die Einrastpunkte auf Touch-Geräten korrekt funktionieren —jede Wischbewegung sollte zum nächsten Element einrasten."
                                                                                   ]
                                                         },
                              "view-transition-builder":  {
@@ -34762,16 +34762,16 @@
                              "css-stretch-sizing-generator":  {
                                                                   "name":  "CSS Stretch Sizing Generator",
                                                                   "summary":  "Genereer CSS met het stretch-sleutelwoord voor fill-available-sizing in block-, flex-, grid- en absoluut gepositioneerde layouts.",
-                                                                  "whatIs":  "Het CSS stretch-keyword (Chrome 138+) is de standaardwaarde voor fill-available-sizing en vervangt de vendor-prefixed -webkit-fill-available en -moz-available keywords. Wanneer u width: stretch instelt, wordt het element zo groot dat het de beschikbare ruimte vult met margin-box-sizing 鈥?het element past in het bevattende blok. Dit verschilt van width: 100% dat content-box-sizing gebruikt en vaak overloopt wanneer padding, border of margin aanwezig zijn. stretch werkt in block-, flex-, grid- en absoluut gepositioneerde lay-outcontexten.",
+                                                                  "whatIs":  "Het CSS stretch-keyword (Chrome 138+) is de standaardwaarde voor fill-available-sizing en vervangt de vendor-prefixed -webkit-fill-available en -moz-available keywords. Wanneer u width: stretch instelt, wordt het element zo groot dat het de beschikbare ruimte vult met margin-box-sizing —het element past in het bevattende blok. Dit verschilt van width: 100% dat content-box-sizing gebruikt en vaak overloopt wanneer padding, border of margin aanwezig zijn. stretch werkt in block-, flex-, grid- en absoluut gepositioneerde lay-outcontexten.",
                                                                   "quickAnswer":  "Gebruik width: stretch of height: stretch voor gestandaardiseerde fill-available-sizing. In tegenstelling tot width: 100% gebruikt stretch margin-box-sizing, waardoor padding en border geen overflow veroorzaken. Vervangt -webkit-fill-available en -moz-available met een enkel gestandaardiseerd keyword. Chrome 138+, Firefox 130+, Safari 18.2+.",
                                                                   "howToUse":  [
-                                                                                   "Selecteer uw lay-outcontext 鈥?het gedrag van stretch verschilt licht tussen block-, flex-, grid- en absoluut gepositioneerde elementen.",
+                                                                                   "Selecteer uw lay-outcontext —het gedrag van stretch verschilt licht tussen block-, flex-, grid- en absoluut gepositioneerde elementen.",
                                                                                    "Kies de as die u wilt strekken (width, height of beide via inset: 0 voor abspos).",
                                                                                    "Bekijk de lay-outspecifieke uitleg over hoe stretch interageert met margins, padding en het bevattende blok in uw gekozen context.",
                                                                                    "Kopieer de gegenereerde CSS en vervang bestaande width: 100%-patronen of vendor-prefixed fill-available-declaraties."
                                                                                ],
                                                                   "useCases":  [
-                                                                                   "Vervang width: 100% op een input- of select-element dat overloopt door padding en border 鈥?stretch gebruikt margin-box-sizing, waardoor de totale box in de container past.",
+                                                                                   "Vervang width: 100% op een input- of select-element dat overloopt door padding en border —stretch gebruikt margin-box-sizing, waardoor de totale box in de container past.",
                                                                                    "Standaardiseer cross-browser fill-available-sizing door -webkit-fill-available en -moz-available te vervangen door het standaard stretch-keyword.",
                                                                                    "Laat een absoluut gepositioneerd element uitrekken tot de randen van zijn gepositioneerde voorouder zonder expliciete top/right/bottom/left-waarden."
                                                                                ],
@@ -34782,18 +34782,18 @@
                                                                                    },
                                                                                    {
                                                                                        "title":  "Migreren van vendor-prefixed fill-available",
-                                                                                       "text":  "Een verouderde stylesheet gebruikt width: -webkit-fill-available met een -moz-available fallback. Vervang beide door width: stretch 鈥?het standaard keyword werkt hetzelfde en wordt ondersteund in Chrome 138+, Firefox 130+ en Safari 18.2+. De fallback-declaraties kunnen blijven voor oudere browserversies."
+                                                                                       "text":  "Een verouderde stylesheet gebruikt width: -webkit-fill-available met een -moz-available fallback. Vervang beide door width: stretch —het standaard keyword werkt hetzelfde en wordt ondersteund in Chrome 138+, Firefox 130+ en Safari 18.2+. De fallback-declaraties kunnen blijven voor oudere browserversies."
                                                                                    }
                                                                                ],
                                                                   "mistakes":  [
-                                                                                   "Verwachten dat stretch zich identiek gedraagt aan width: 100% in block-lay-out 鈥?100% gebruikt content-box-sizing en negeert padding/border op het element zelf, terwijl stretch margin-box-sizing gebruikt. In de meeste gevallen is stretch het gewenste gedrag voor inputs en formulierelementen.",
-                                                                                   "Stretch gebruiken op een flex-item wanneer de flex-container align-items: stretch heeft 鈥?het stretch-keyword op het item overschrijft de stretch-uitlijning van de container, wat onverwachte formaatbepaling kan opleveren.",
-                                                                                   "Aannemen dat stretch werkt in inline-lay-outcontexten 鈥?stretch is alleen van toepassing op elementen met een block-, flex-, grid- of absoluut gepositioneerd display-type. Inline-elementen negeren stretch en vallen terug op intrinsieke breedte."
+                                                                                   "Verwachten dat stretch zich identiek gedraagt aan width: 100% in block-lay-out —100% gebruikt content-box-sizing en negeert padding/border op het element zelf, terwijl stretch margin-box-sizing gebruikt. In de meeste gevallen is stretch het gewenste gedrag voor inputs en formulierelementen.",
+                                                                                   "Stretch gebruiken op een flex-item wanneer de flex-container align-items: stretch heeft —het stretch-keyword op het item overschrijft de stretch-uitlijning van de container, wat onverwachte formaatbepaling kan opleveren.",
+                                                                                   "Aannemen dat stretch werkt in inline-lay-outcontexten —stretch is alleen van toepassing op elementen met een block-, flex-, grid- of absoluut gepositioneerd display-type. Inline-elementen negeren stretch en vallen terug op intrinsieke breedte."
                                                                                ],
                                                                   "faq":  [
                                                                               {
                                                                                   "question":  "Hoe verschilt stretch van width: 100% qua padding en border?",
-                                                                                  "answer":  "width: 100% is relatief aan de content-box-breedte van het bevattende blok, waarna padding en border worden toegevoegd 鈥?het element loopt over. stretch bepaalt de margin-box-grootte om de beschikbare ruimte te vullen, dus padding en border worden afgetrokken van het totaal, waardoor het element in de container blijft. Dit maakt stretch het gedrag dat de meeste ontwikkelaars van width: 100% verwachten, vooral voor formulierelementen."
+                                                                                  "answer":  "width: 100% is relatief aan de content-box-breedte van het bevattende blok, waarna padding en border worden toegevoegd —het element loopt over. stretch bepaalt de margin-box-grootte om de beschikbare ruimte te vullen, dus padding en border worden afgetrokken van het totaal, waardoor het element in de container blijft. Dit maakt stretch het gedrag dat de meeste ontwikkelaars van width: 100% verwachten, vooral voor formulierelementen."
                                                                               },
                                                                               {
                                                                                   "question":  "Werkt stretch in andere writing modes dan horizontal-tb?",
@@ -34807,10 +34807,10 @@
                                                                   "limitations":  [
                                                                                       "Stretch wordt nog niet in alle browsers ondersteund. Chrome 138+, Firefox 130+ en Safari 18.2+ ondersteunen het. Houd vendor-prefixed fallbacks (-webkit-fill-available, -moz-available) en een width: 100%-fallback voor oudere browsers.",
                                                                                       "Stretch werkt alleen op elementen met block-, flex-, grid- of absoluut gepositioneerd display. Inline-elementen, tabelcellen en vervangen elementen (img, video, iframe zonder expliciete formaatbepaling) ondersteunen stretch-sizing niet.",
-                                                                                      "In flex- en grid-contexten kan stretch onverwacht interageren met uitlijningseigenschappen. Een flex-item met align-self: stretch en width: stretch kan conflicterende formaatinstructies geven 鈥?het stretch-keyword op de formaateigenschap heeft voorrang op uitlijningsstretch."
+                                                                                      "In flex- en grid-contexten kan stretch onverwacht interageren met uitlijningseigenschappen. Een flex-item met align-self: stretch en width: stretch kan conflicterende formaatinstructies geven —het stretch-keyword op de formaateigenschap heeft voorrang op uitlijningsstretch."
                                                                                   ],
                                                                   "verificationSteps":  [
-                                                                                            "Inspecteer het element in DevTools en controleer of de berekende breedte of hoogte overeenkomt met de verwachte fill-available-grootte 鈥?het element mag niet overlopen, zelfs niet met padding en border.",
+                                                                                            "Inspecteer het element in DevTools en controleer of de berekende breedte of hoogte overeenkomt met de verwachte fill-available-grootte —het element mag niet overlopen, zelfs niet met padding en border.",
                                                                                             "Pas de viewport of container aan en controleer of het element op alle formaten uitrekt om de beschikbare ruimte te vullen. Vergelijk zij aan zij met een width: 100%-referentie om het verschil te zien bij smalle viewports."
                                                                                         ]
                                                               },
@@ -34879,8 +34879,8 @@
                                                                       "whatIs":  "De CSS progress()-functie is een wiskundige mappingfunctie (Chrome 138+) die een invoerwaarde uit een numeriek bereik omzet in een voortgangswaarde tussen 0 en 1. Bijvoorbeeld: progress(scroll-position from 0 to 500) retourneert 0 wanneer de scrollpositie 0 is, 1 bij 500 en 0,5 bij 250. Deze voortgangswaarde kan elk numeriek CSS-attribuut aansturen, waardoor complexe calc()-ketens voor scroll-gerelateerde effecten, viewport-relatieve formaatbepaling en interpolatie van eigen attributen overbodig worden.",
                                                                       "quickAnswer":  "Gebruik CSS progress(input from min to max) om een numerieke waarde om te zetten naar een 0-1 voortgangsbereik. Stuur opacity, scale, transform, color-mix percentages of elk getal-accepterend CSS-attribuut aan op basis van scrollpositie, viewport-afmetingen of eigen attributen. Chrome 138+. Wikkel in clamp(0, ..., 1) om de uitvoer te begrenzen.",
                                                                       "howToUse":  [
-                                                                                       "Voer de invoerbron en het bereik in 鈥?kies uit scroll-position, viewport width/height, viewport inline/block size of een eigen CSS-attribuut met de minimum- en maximumwaarden.",
-                                                                                       "Stel het doel-CSS-attribuut in dat u wilt aansturen en de waarde bij voortgang 0 en voortgang 1 鈥?bijvoorbeeld opacity van 0 naar 1, of scale van 0,5 naar 1,5.",
+                                                                                       "Voer de invoerbron en het bereik in —kies uit scroll-position, viewport width/height, viewport inline/block size of een eigen CSS-attribuut met de minimum- en maximumwaarden.",
+                                                                                       "Stel het doel-CSS-attribuut in dat u wilt aansturen en de waarde bij voortgang 0 en voortgang 1 —bijvoorbeeld opacity van 0 naar 1, of scale van 0,5 naar 1,5.",
                                                                                        "Schakel optioneel clamp()-omhulling in om het resultaat binnen het uitvoerbereik te houden, zelfs wanneer de invoer het gedefinieerde bereik overschrijdt.",
                                                                                        "Kopieer de gegenereerde CSS en voeg deze toe aan uw stylesheet. De uitvoer bevat zowel de progress()-regel als de volledige attribuutdeclaratie."
                                                                                    ],
@@ -34900,14 +34900,14 @@
                                                                                        }
                                                                                    ],
                                                                       "mistakes":  [
-                                                                                       "Progress() gebruiken zonder te beseffen dat het een ruwe 0-1-waarde retourneert 鈥?de meeste attributen hebben een extra calc() of schaling nodig om de voortgang om te zetten naar het gewenste uitvoerbereik, maar de tool verzorgt deze mapping voor u.",
-                                                                                       "Vergeten dat scroll-position standaard relatief is aan de documentscrollpositie 鈥?gebruik voor het scrollbare element progress(self-scroll-position from 0 to N) in plaats daarvan.",
-                                                                                       "Aannemen dat progress() in alle CSS-attributen werkt 鈥?het werkt in elk attribuut dat een getal of percentage accepteert, maar niet direct in kleurfuncties zoals rgb() (gebruik in plaats daarvan color-mix())."
+                                                                                       "Progress() gebruiken zonder te beseffen dat het een ruwe 0-1-waarde retourneert —de meeste attributen hebben een extra calc() of schaling nodig om de voortgang om te zetten naar het gewenste uitvoerbereik, maar de tool verzorgt deze mapping voor u.",
+                                                                                       "Vergeten dat scroll-position standaard relatief is aan de documentscrollpositie —gebruik voor het scrollbare element progress(self-scroll-position from 0 to N) in plaats daarvan.",
+                                                                                       "Aannemen dat progress() in alle CSS-attributen werkt —het werkt in elk attribuut dat een getal of percentage accepteert, maar niet direct in kleurfuncties zoals rgb() (gebruik in plaats daarvan color-mix())."
                                                                                    ],
                                                                       "faq":  [
                                                                                   {
                                                                                       "question":  "Hoe verschilt progress() van scroll-driven animation timelines met view-timeline?",
-                                                                                      "answer":  "progress() is een zuivere wiskundige functie die het ene numerieke bereik naar 0-1 mapt 鈥?het heeft geen koppeling met animatietimelines, keyframes of animation-range. Gebruik progress() voor declaratieve waardemapping in elk CSS-attribuut zonder een scroll-timeline aan te maken. Gebruik view-timeline en animation-range wanneer u volledige keyframe-gebaseerde scroll-driven animaties met meerdere stappen, easing en richtingscontrole nodig hebt."
+                                                                                      "answer":  "progress() is een zuivere wiskundige functie die het ene numerieke bereik naar 0-1 mapt —het heeft geen koppeling met animatietimelines, keyframes of animation-range. Gebruik progress() voor declaratieve waardemapping in elk CSS-attribuut zonder een scroll-timeline aan te maken. Gebruik view-timeline en animation-range wanneer u volledige keyframe-gebaseerde scroll-driven animaties met meerdere stappen, easing en richtingscontrole nodig hebt."
                                                                                   },
                                                                                   {
                                                                                       "question":  "Wat gebeurt er wanneer de invoerwaarde buiten het gedefinieerde bereik valt?",
@@ -35077,9 +35077,9 @@
                                                                                                }
                                                                                            ],
                                                                               "mistakes":  [
-                                                                                               "importScripts() gebruiken in een ES-module service worker 鈥?ES-modules ondersteunen statische import/export en hebben importScripts() niet nodig. Het mengen van beide benaderingen veroorzaakt runtimefouten. Gebruik in plaats daarvan standaard import-statements.",
-                                                                                               "Het activate-event niet afhandelen voor cache-opschoning 鈥?oude caches van eerdere service workerversies hopen zich op als ze niet worden opgeschoond. Voeg altijd een activate-handler toe die verouderde cache-opslag verwijdert door cachenamen te vergelijken met een versielijst.",
-                                                                                               "Vergeten de service worker correct te scopen 鈥?de scope van een service worker wordt bepaald door het URL-pad. Een service worker op /sw.js bestuurt / en lager, maar een service worker op /blog/sw.js bestuurt alleen /blog/ en lager. Gebruik de scope-optie in register() expliciet om verwarring te voorkomen."
+                                                                                               "importScripts() gebruiken in een ES-module service worker —ES-modules ondersteunen statische import/export en hebben importScripts() niet nodig. Het mengen van beide benaderingen veroorzaakt runtimefouten. Gebruik in plaats daarvan standaard import-statements.",
+                                                                                               "Het activate-event niet afhandelen voor cache-opschoning —oude caches van eerdere service workerversies hopen zich op als ze niet worden opgeschoond. Voeg altijd een activate-handler toe die verouderde cache-opslag verwijdert door cachenamen te vergelijken met een versielijst.",
+                                                                                               "Vergeten de service worker correct te scopen —de scope van een service worker wordt bepaald door het URL-pad. Een service worker op /sw.js bestuurt / en lager, maar een service worker op /blog/sw.js bestuurt alleen /blog/ en lager. Gebruik de scope-optie in register() expliciet om verwarring te voorkomen."
                                                                                            ],
                                                                               "faq":  [
                                                                                           {
@@ -35100,7 +35100,7 @@
                                                                                           }
                                                                                       ],
                                                                               "limitations":  [
-                                                                                                  "ES-module service workers ondersteunen geen dynamische import() 鈥?alle module-afhankelijkheden moeten statisch op het hoogste niveau worden gedeclareerd. Dynamische codetoevoeging vereist in plaats daarvan het klassieke importScripts-patroon.",
+                                                                                                  "ES-module service workers ondersteunen geen dynamische import() —alle module-afhankelijkheden moeten statisch op het hoogste niveau worden gedeclareerd. Dynamische codetoevoeging vereist in plaats daarvan het klassieke importScripts-patroon.",
                                                                                                   "Cross-origin-modulescripts worden niet ondersteund in service workers. Ge茂mporteerde modules moeten same-origin zijn. Als u scripts van een CDN moet laden, gebruik dan het klassieke service worker-patroon of bundel de code lokaal.",
                                                                                                   "De levenscyclus van de service worker (install -\u003e waiting -\u003e activate -\u003e update) kan versieconflicten veroorzaken tijdens ontwikkeling. Browser DevTools-opties \u0027Update on Reload\u0027 en \u0027Bypass for Network\u0027 helpen, maar productieversiebeheer vereist zorgvuldige cachenaamgeving en opschoningslogica."
                                                                                               ],
@@ -35112,7 +35112,7 @@
                              "reporting-api-header-generator":  {
                                                                     "name":  "Reporting API Header Generator",
                                                                     "summary":  "Genereer Report-To en Reporting-Endpoints HTTP-headers voor browserrapporten, CSP-schendingen en Network Error Logging.",
-                                                                    "whatIs":  "De Reporting API is een browser-API die rapporten verzamelt over verschillende problemen 鈥?CSP-schendingen, Network Error Logging-gebeurtenissen, verouderingswaarschuwingen, browserinterventies en crashrapporten 鈥?en deze naar een configureerbaar eindpunt stuurt. Het gebruikt HTTP-headers (Report-To of Reporting-Endpoints) om de browser te vertellen waarheen rapporten moeten worden gestuurd. De Reporting-Endpoints-header is de nieuwere standaard en vervangt de verouderde Report-To-header. Browsers batchrapporten en verzenden ze periodiek om de netwerkoverhead te minimaliseren.",
+                                                                    "whatIs":  "De Reporting API is een browser-API die rapporten verzamelt over verschillende problemen —CSP-schendingen, Network Error Logging-gebeurtenissen, verouderingswaarschuwingen, browserinterventies en crashrapporten —en deze naar een configureerbaar eindpunt stuurt. Het gebruikt HTTP-headers (Report-To of Reporting-Endpoints) om de browser te vertellen waarheen rapporten moeten worden gestuurd. De Reporting-Endpoints-header is de nieuwere standaard en vervangt de verouderde Report-To-header. Browsers batchrapporten en verzenden ze periodiek om de netwerkoverhead te minimaliseren.",
                                                                     "quickAnswer":  "Genereer Report-To en Reporting-Endpoints HTTP-headers voor Nginx en Apache. Kies tussen verouderde Report-To en nieuwere Reporting-Endpoints-syntax. Configureer optioneel CSP report-uri/report-to-richtlijnen en Network Error Logging (NEL)-headers. De Reporting API (Chrome 69+, Safari 16.4+, Edge 79+) verzamelt CSP-schendingen, NEL-gebeurtenissen, verouderingswaarschuwingen, browserinterventies en crashrapporten op een centraal eindpunt.",
                                                                     "howToUse":  [
                                                                                      "Kies de headerversie: verouderde Report-To voor bredere compatibiliteit of de nieuwere Reporting-Endpoints-standaardheader. Reporting-Endpoints is eenvoudiger maar heeft nieuwere browserondersteuning.",
@@ -35136,9 +35136,9 @@
                                                                                      }
                                                                                  ],
                                                                     "mistakes":  [
-                                                                                     "Gelijktijdig gebruik van zowel Report-To als Reporting-Endpoints-headers 鈥?browsers kunnen dubbele rapporten verzenden als beide headers aanwezig zijn. Migreer van Report-To naar Reporting-Endpoints door de oude header te verwijderen zodra Reporting-Endpoints is geconfigureerd en getest.",
-                                                                                     "Een CSP report-uri instellen zonder een bijbehorend rapportage-eindpunt 鈥?report-uri stuurt rapporten naar een willekeurige URL via GET-verzoeken met queryparameters, wat de URL-lengtebeperkingen kan overschrijden voor grote schendingsrapporten. Koppel report-uri of report-to altijd aan een correct geconfigureerd ontvangend eindpunt dat POST-verzoeken kan verwerken.",
-                                                                                     "Vergeten CORS te configureren op het rapportage-eindpunt 鈥?rapporten worden verzonden vanaf de oorsprong waar de headers worden bediend, maar als uw rapportage-eindpunt op een andere oorsprong staat, moet het cross-origin POST-verzoeken accepteren. Dit is vooral belangrijk voor sites die op GitHub Pages worden gehost met een externe rapportagecollector."
+                                                                                     "Gelijktijdig gebruik van zowel Report-To als Reporting-Endpoints-headers —browsers kunnen dubbele rapporten verzenden als beide headers aanwezig zijn. Migreer van Report-To naar Reporting-Endpoints door de oude header te verwijderen zodra Reporting-Endpoints is geconfigureerd en getest.",
+                                                                                     "Een CSP report-uri instellen zonder een bijbehorend rapportage-eindpunt —report-uri stuurt rapporten naar een willekeurige URL via GET-verzoeken met queryparameters, wat de URL-lengtebeperkingen kan overschrijden voor grote schendingsrapporten. Koppel report-uri of report-to altijd aan een correct geconfigureerd ontvangend eindpunt dat POST-verzoeken kan verwerken.",
+                                                                                     "Vergeten CORS te configureren op het rapportage-eindpunt —rapporten worden verzonden vanaf de oorsprong waar de headers worden bediend, maar als uw rapportage-eindpunt op een andere oorsprong staat, moet het cross-origin POST-verzoeken accepteren. Dit is vooral belangrijk voor sites die op GitHub Pages worden gehost met een externe rapportagecollector."
                                                                                  ],
                                                                     "faq":  [
                                                                                 {
@@ -35147,7 +35147,7 @@
                                                                                 },
                                                                                 {
                                                                                     "question":  "Hoe werkt Network Error Logging (NEL) met de Reporting API?",
-                                                                                    "answer":  "NEL wordt geconfigureerd via een NEL HTTP-header die een rapportage-eindpuntgroep, een max_age voor het beleid en optionele monsterfrequenties specificeert. Wanneer de browser een netwerkverzoek probeert en een fout tegenkomt (DNS-fout, TLS-fout, timeout, etc.), genereert het een NEL-rapport en stuurt dit naar het geconfigureerde rapportage-eindpunt. De browser genereert alleen rapporten voor de oorsprong die de NEL-header bediende. NEL vereist geen server-side instrumentatie 鈥?de rapporten komen rechtstreeks van de netwerkstack van de browser."
+                                                                                    "answer":  "NEL wordt geconfigureerd via een NEL HTTP-header die een rapportage-eindpuntgroep, een max_age voor het beleid en optionele monsterfrequenties specificeert. Wanneer de browser een netwerkverzoek probeert en een fout tegenkomt (DNS-fout, TLS-fout, timeout, etc.), genereert het een NEL-rapport en stuurt dit naar het geconfigureerde rapportage-eindpunt. De browser genereert alleen rapporten voor de oorsprong die de NEL-header bediende. NEL vereist geen server-side instrumentatie —de rapporten komen rechtstreeks van de netwerkstack van de browser."
                                                                                 },
                                                                                 {
                                                                                     "question":  "Welke typen rapporten kan de Reporting API verzamelen?",
@@ -35156,7 +35156,7 @@
                                                                             ],
                                                                     "limitations":  [
                                                                                         "Ondersteuning voor Reporting-Endpoints-header varieert per browser. Chrome ondersteunt het vanaf versie 69+, Safari vanaf 16.4+ en Edge vanaf 79+. Firefox-ondersteuning voor Reporting-Endpoints is beperkt. De verouderde Report-To-header is nog steeds nodig voor bredere browsercompatibiliteit.",
-                                                                                        "Rapporten zijn niet gegarandeerd te worden afgeleverd. Browsers batchrapporten en verzenden ze op hun eigen schema. Als de gebruiker het tabblad sluit voordat de batch is verzonden, kunnen rapporten verloren gaan. Vertrouw niet op de Reporting API voor kritieke monitoring 鈥?gebruik het als aanvullende gegevensbron naast server-side logging.",
+                                                                                        "Rapporten zijn niet gegarandeerd te worden afgeleverd. Browsers batchrapporten en verzenden ze op hun eigen schema. Als de gebruiker het tabblad sluit voordat de batch is verzonden, kunnen rapporten verloren gaan. Vertrouw niet op de Reporting API voor kritieke monitoring —gebruik het als aanvullende gegevensbron naast server-side logging.",
                                                                                         "Het rapportage-eindpunt moet via HTTPS toegankelijk zijn. Browsers weigeren rapporten naar HTTP-eindpunten te sturen voor sites die via HTTPS worden bediend. GitHub Pages-sites die een aangepaste rapportagecollector gebruiken, moeten ervoor zorgen dat de collector een geldig TLS-certificaat heeft."
                                                                                     ],
                                                                     "verificationSteps":  [
@@ -35170,9 +35170,9 @@
                                                                     "whatIs":  "Trusted Types is een browserbeveiligings-API die DOM-gebaseerde XSS voorkomt door getypeerde waarden te vereisen in plaats van strings voor gevaarlijke DOM-sinks zoals innerHTML, eval() en script.src. Ontwikkelaars gebruiken trustedTypes.createPolicy() om opschoningsregels te defini毛ren die onvertrouwde strings transformeren of afwijzen voordat ze injectiesinks bereiken. In combinatie met een Content-Security-Policy-richtlijn sluit Trusted Types een belangrijke klasse van XSS-kwetsbaarheden af door af te dwingen dat alleen expliciet goedgekeurde bewerkingen waarden kunnen toewijzen aan risicovolle DOM-attributen.",
                                                                     "quickAnswer":  "Trusted Types voorkomt DOM-gebaseerde XSS door strings te blokkeren van gevaarlijke DOM-sinks zoals innerHTML en eval(). Gebruik trustedTypes.createPolicy() met createHTML/createScript/createScriptURL-bewerkingen en handhaaf vervolgens met Content-Security-Policy: require-trusted-types-for \u0027script\u0027. Test altijd eerst in report-only-modus met Content-Security-Policy-Report-Only om bestaande functionaliteit niet te breken.",
                                                                     "howToUse":  [
-                                                                                     "Configureer de toegestane bewerkingen 鈥?createHTML, createScript, createScriptURL 鈥?en bepaal hoe elke bewerking invoer verwerkt: strikte afwijzing (alle onvertrouwde invoer blokkeren), opschoning (door een opschoningsfunctie laten lopen) of doorvoer voor vertrouwde bronnen.",
-                                                                                     "Kies de CSP-modus 鈥?enforce (require-trusted-types-for \u0027script\u0027 in Content-Security-Policy) blokkeert schendingen, of report-only (zelfde richtlijn in Content-Security-Policy-Report-Only) logt schendingen zonder te blokkeren. Begin altijd met report-only-modus tijdens migratie.",
-                                                                                     "Selecteer uw serverplatform 鈥?Nginx of Apache 鈥?om de bijbehorende CSP-headerconfiguratie te genereren die integreert met uw bestaande serverblokken of virtuele hosts.",
+                                                                                     "Configureer de toegestane bewerkingen —createHTML, createScript, createScriptURL —en bepaal hoe elke bewerking invoer verwerkt: strikte afwijzing (alle onvertrouwde invoer blokkeren), opschoning (door een opschoningsfunctie laten lopen) of doorvoer voor vertrouwde bronnen.",
+                                                                                     "Kies de CSP-modus —enforce (require-trusted-types-for \u0027script\u0027 in Content-Security-Policy) blokkeert schendingen, of report-only (zelfde richtlijn in Content-Security-Policy-Report-Only) logt schendingen zonder te blokkeren. Begin altijd met report-only-modus tijdens migratie.",
+                                                                                     "Selecteer uw serverplatform —Nginx of Apache —om de bijbehorende CSP-headerconfiguratie te genereren die integreert met uw bestaande serverblokken of virtuele hosts.",
                                                                                      "Implementeer het policy JavaScript-bestand en de serverconfiguratie en test vervolgens uw applicatie in report-only-modus. Bekijk console-schendingsrapporten en pas beleid aan tot er geen schendingen meer verschijnen, schakel dan over naar enforce-modus."
                                                                                  ],
                                                                     "useCases":  [
@@ -35191,18 +35191,18 @@
                                                                                      }
                                                                                  ],
                                                                     "mistakes":  [
-                                                                                     "Trusted Types in enforce-modus implementeren zonder eerst in report-only-modus te testen 鈥?een strikt beleid kan elke functie breken die innerHTML, outerHTML of insertAdjacentHTML gebruikt. Valideer altijd eerst met report-only voordat u afdwingt.",
-                                                                                     "DefaultPolicy gebruiken als een alles-doorlatende 鈥?trustedTypes.createPolicy(\u0027default\u0027, { createHTML: (s) =\u003e s }) omzeilt alle XSS-bescherming door elke string ongewijzigd door te laten. Een standaardbeleid moet nog steeds opschonen, niet doorvoeren.",
-                                                                                     "Vergeten dat eval() een Trusted Types-sink is 鈥?als uw applicatie JSON.parse() gebruikt op eval-compatibele strings of afhankelijk is van dynamische code-uitvoering, moeten die aanroepen via een createScript-beleid gaan of worden gecontroleerd via een aparte CSP script-src-richtlijn."
+                                                                                     "Trusted Types in enforce-modus implementeren zonder eerst in report-only-modus te testen —een strikt beleid kan elke functie breken die innerHTML, outerHTML of insertAdjacentHTML gebruikt. Valideer altijd eerst met report-only voordat u afdwingt.",
+                                                                                     "DefaultPolicy gebruiken als een alles-doorlatende —trustedTypes.createPolicy(\u0027default\u0027, { createHTML: (s) =\u003e s }) omzeilt alle XSS-bescherming door elke string ongewijzigd door te laten. Een standaardbeleid moet nog steeds opschonen, niet doorvoeren.",
+                                                                                     "Vergeten dat eval() een Trusted Types-sink is —als uw applicatie JSON.parse() gebruikt op eval-compatibele strings of afhankelijk is van dynamische code-uitvoering, moeten die aanroepen via een createScript-beleid gaan of worden gecontroleerd via een aparte CSP script-src-richtlijn."
                                                                                  ],
                                                                     "faq":  [
                                                                                 {
                                                                                     "question":  "Beschermt Trusted Types tegen bestaande XSS-kwetsbaarheden?",
-                                                                                    "answer":  "Ja, als de kwetsbaarheid vereist dat een string naar een DOM-sink zoals innerHTML, outerHTML of insertAdjacentHTML wordt gestuurd. Trusted Types dwingt af dat alle toewijzingen aan deze sinks via een beleid gaan 鈥?als er geen beleid bestaat of het beleid de invoer afwijst, wordt de toewijzing geblokkeerd. Trusted Types beschermt echter niet tegen XSS via URL-attributen (href, src), event handlers (onclick, onerror) of server-side injectie. Het richt zich specifiek op DOM-injectiesinks."
+                                                                                    "answer":  "Ja, als de kwetsbaarheid vereist dat een string naar een DOM-sink zoals innerHTML, outerHTML of insertAdjacentHTML wordt gestuurd. Trusted Types dwingt af dat alle toewijzingen aan deze sinks via een beleid gaan —als er geen beleid bestaat of het beleid de invoer afwijst, wordt de toewijzing geblokkeerd. Trusted Types beschermt echter niet tegen XSS via URL-attributen (href, src), event handlers (onclick, onerror) of server-side injectie. Het richt zich specifiek op DOM-injectiesinks."
                                                                                 },
                                                                                 {
                                                                                     "question":  "Kan ik Trusted Types gebruiken met React, Vue of Angular?",
-                                                                                    "answer":  "Ja, maar de integratie varieert per framework. React ondersteunt Trusted Types via zijn verwachte getypeerde objectcontract 鈥?dangerouslySetInnerHTML accepteert TrustedHTML-objecten. Vue vereist een aangepaste policy-wrapper voor v-html-bindingen. Angular biedt DomSanitizer-integratie die kan worden geconfigureerd om met Trusted Types te werken. Raadpleeg de documentatie van elk framework voor specifieke details over Trusted Types-ondersteuning."
+                                                                                    "answer":  "Ja, maar de integratie varieert per framework. React ondersteunt Trusted Types via zijn verwachte getypeerde objectcontract —dangerouslySetInnerHTML accepteert TrustedHTML-objecten. Vue vereist een aangepaste policy-wrapper voor v-html-bindingen. Angular biedt DomSanitizer-integratie die kan worden geconfigureerd om met Trusted Types te werken. Raadpleeg de documentatie van elk framework voor specifieke details over Trusted Types-ondersteuning."
                                                                                 },
                                                                                 {
                                                                                     "question":  "Wat gebeurt er met third-party scripts onder Trusted Types?",
@@ -35215,7 +35215,7 @@
                                                                             ],
                                                                     "limitations":  [
                                                                                         "Trusted Types vereist browserondersteuning in Chrome 83+, Edge 83+ en Safari 17+. Firefox ondersteunt Trusted Types niet vanaf 2026. Applicaties moeten Firefox zonder Trusted Types-bescherming netjes afhandelen door fallback-gedrag te bieden voor niet-ondersteunde browsers.",
-                                                                                        "Trusted Types dekt niet alle XSS-vectoren 鈥?het beschermt DOM-injectiesinks (innerHTML, outerHTML, insertAdjacentHTML, eval, document.write) maar voorkomt geen XSS via URL-attributen (href, src), event handler-attributen of CSS-gebaseerde injectievectoren.",
+                                                                                        "Trusted Types dekt niet alle XSS-vectoren —het beschermt DOM-injectiesinks (innerHTML, outerHTML, insertAdjacentHTML, eval, document.write) maar voorkomt geen XSS via URL-attributen (href, src), event handler-attributen of CSS-gebaseerde injectievectoren.",
                                                                                         "Migratie van grote applicaties naar Trusted Types vereist aanzienlijke herfactoring. Elk gebruik van innerHTML, insertAdjacentHTML, outerHTML en document.write moet in een beleid worden verpakt, wat honderden bronwijzigingen kan betekenen in een verouderde codebase met uitgebreide dynamische DOM-manipulatie."
                                                                                     ],
                                                                     "verificationSteps":  [
@@ -35226,23 +35226,23 @@
                              "urlpattern-tester":  {
                                                        "name":  "URLPattern Tester",
                                                        "summary":  "Test URL-patronen met de URLPattern API — benoemde groepen, wildcards en regex-matching zonder handmatig parsen.",
-                                                       "whatIs":  "URLPattern is een standaard browser-API die declaratieve URL-matching biedt met benoemde groepen, wildcards en regex-beperkingen. In plaats van foutgevoelige regex-patronen of handmatige padparsing voor URL-routing te schrijven, gebruiken ontwikkelaars new URLPattern(\u0027/books/:id\u0027) om URL\u0027s te matchen en parameters te extraheren op een leesbare, onderhoudbare manier. De API ondersteunt alle URL-componenten 鈥?protocol, hostname, port, pathname, search en hash 鈥?en handelt URL-codering automatisch af.",
-                                                       "quickAnswer":  "URLPattern biedt declaratieve URL-matching met benoemde groepen, wildcards en regex-beperkingen 鈥?geen regex of handmatige padparsing nodig. Gebruik /books/:id-syntax om URL\u0027s te matchen en parameters te extraheren. Native beschikbaar in Chrome 95+, Edge 95+, Safari 15.4+ en Firefox 115+. Ook ondersteund in Deno, Cloudflare Workers en Node.js 21+.",
+                                                       "whatIs":  "URLPattern is een standaard browser-API die declaratieve URL-matching biedt met benoemde groepen, wildcards en regex-beperkingen. In plaats van foutgevoelige regex-patronen of handmatige padparsing voor URL-routing te schrijven, gebruiken ontwikkelaars new URLPattern(\u0027/books/:id\u0027) om URL\u0027s te matchen en parameters te extraheren op een leesbare, onderhoudbare manier. De API ondersteunt alle URL-componenten —protocol, hostname, port, pathname, search en hash —en handelt URL-codering automatisch af.",
+                                                       "quickAnswer":  "URLPattern biedt declaratieve URL-matching met benoemde groepen, wildcards en regex-beperkingen —geen regex of handmatige padparsing nodig. Gebruik /books/:id-syntax om URL\u0027s te matchen en parameters te extraheren. Native beschikbaar in Chrome 95+, Edge 95+, Safari 15.4+ en Firefox 115+. Ook ondersteund in Deno, Cloudflare Workers en Node.js 21+.",
                                                        "howToUse":  [
                                                                         "Voer een URLPattern-patroontekenreeks in met :param voor benoemde groepen (bijv. /blog/:slug), * voor wildcard-matching (bijv. /api/*) en /:param? voor optionele segmenten. U kunt ook regex-beperkingen toevoegen zoals /users/:id(\\d+).",
                                                                         "Voeg een of meer test-URL\u0027s toe om tegen het patroon te matchen. Elke test-URL wordt onafhankelijk ge毛valueerd, zodat u meerdere paden, queryreeksen en randgevallen in 茅茅n sessie kunt controleren.",
-                                                                        "Bekijk de live matchresultaten 鈥?elke test-URL toont of deze matchte, de ge毛xtraheerde benoemde groepswaarden en eventuele groepen die null of undefined retourneerden voor niet-overeenkomende optionele segmenten.",
+                                                                        "Bekijk de live matchresultaten —elke test-URL toont of deze matchte, de ge毛xtraheerde benoemde groepswaarden en eventuele groepen die null of undefined retourneerden voor niet-overeenkomende optionele segmenten.",
                                                                         "Kopieer de gegenereerde JavaScript-code die de URLPattern API gebruikt met uw specifieke patroon en test-URL\u0027s. De code bevat matchcontroles en parameter-extractielogica die klaar is om in uw project te gebruiken."
                                                                     ],
                                                        "useCases":  [
                                                                         "Implementeer client-side routing in een single-page applicatie met URLPattern in plaats van fragiele regex-parsing. Benoemde groepen maken routeparameters zelfdocumenterend en automatisch URL-gedecodeerd.",
-                                                                        "Valideer inkomende URL-structuren in een service worker fetch-handler 鈥?match verzoek-URL\u0027s tegen bekende routepatronen en extraheer parameters voor selectieve caching en responslogica.",
-                                                                        "Test URL-herstructurering tijdens een sitemigratie 鈥?controleer of oude URL-patronen overeenkomen met de verwachte parameters en nieuwe omleidingsregels de juiste padsegmenten vastleggen voordat u naar productie implementeert."
+                                                                        "Valideer inkomende URL-structuren in een service worker fetch-handler —match verzoek-URL\u0027s tegen bekende routepatronen en extraheer parameters voor selectieve caching en responslogica.",
+                                                                        "Test URL-herstructurering tijdens een sitemigratie —controleer of oude URL-patronen overeenkomen met de verwachte parameters en nieuwe omleidingsregels de juiste padsegmenten vastleggen voordat u naar productie implementeert."
                                                                     ],
                                                        "examples":  [
                                                                         {
                                                                             "title":  "SPA-route-matching met URLPattern",
-                                                                            "text":  "Een vanilla JavaScript SPA definieert routes zoals /blog/:slug en /products/:category/:id. Gebruik URLPattern om inkomende history.pushState-URL\u0027s te matchen. Het patroon /blog/:slug matcht /blog/hello-world en extraheert {slug: \u0027hello-world\u0027} als benoemde groep. Niet langer splitsen op schuine strepen of fragiele regex schrijven 鈥?URLPattern handelt optionele groepen, wildcards en regex-beperkingen declaratief af."
+                                                                            "text":  "Een vanilla JavaScript SPA definieert routes zoals /blog/:slug en /products/:category/:id. Gebruik URLPattern om inkomende history.pushState-URL\u0027s te matchen. Het patroon /blog/:slug matcht /blog/hello-world en extraheert {slug: \u0027hello-world\u0027} als benoemde groep. Niet langer splitsen op schuine strepen of fragiele regex schrijven —URLPattern handelt optionele groepen, wildcards en regex-beperkingen declaratief af."
                                                                         },
                                                                         {
                                                                             "title":  "Service worker cache-routing",
@@ -35251,8 +35251,8 @@
                                                                     ],
                                                        "mistakes":  [
                                                                         "Vergeten dat URLPattern standaard tegen de volledige URL inclusief origin matcht bij gebruik van een string-constructor. Gebruik new URLPattern({ pathname: \u0027/books/:id\u0027 }) om matching te beperken tot alleen de pathname, of neem de verwachte origin op in de patroontekenreeks voor volledige URL-matching.",
-                                                                        "Aannemen dat URLPattern.exec()-groepswaarden altijd strings zijn 鈥?niet-overeenkomende optionele groepen retourneren undefined en wildcard-groepen retourneren een lege string voor matches van nul lengte. Controleer altijd op undefined voordat u ge毛xtraheerde groepswaarden gebruikt in applicatielogica.",
-                                                                        "URLPattern gebruiken waar eenvoudige stringmethoden volstaan 鈥?voor basisvoorvoegsel- of achtervoegselcontroles op bekende statische paden voegt URLPattern onnodige complexiteit en prestatiekosten toe. Gebruik .startsWith(), .includes() of exacte stringvergelijking voor niet-gestructureerde URL-controles."
+                                                                        "Aannemen dat URLPattern.exec()-groepswaarden altijd strings zijn —niet-overeenkomende optionele groepen retourneren undefined en wildcard-groepen retourneren een lege string voor matches van nul lengte. Controleer altijd op undefined voordat u ge毛xtraheerde groepswaarden gebruikt in applicatielogica.",
+                                                                        "URLPattern gebruiken waar eenvoudige stringmethoden volstaan —voor basisvoorvoegsel- of achtervoegselcontroles op bekende statische paden voegt URLPattern onnodige complexiteit en prestatiekosten toe. Gebruik .startsWith(), .includes() of exacte stringvergelijking voor niet-gestructureerde URL-controles."
                                                                     ],
                                                        "faq":  [
                                                                    {
@@ -35275,7 +35275,7 @@
                                                        "limitations":  [
                                                                            "URLPattern-browserondersteuning is sterk in Chromium en Safari (15.4+) maar Firefox-ondersteuning kwam pas in versie 115 en de API is nog experimenteel in sommige server-side runtimes. Voeg het urlpattern-polyfill npm-pakket toe voor productie-apps die gericht zijn op oudere browsers of verouderde Node.js-versies.",
                                                                            "URLPattern-matching is langzamer dan eenvoudige stringbewerkingen. Voor frequente URL-matching in krappe lussen die duizenden URL\u0027s per seconde verwerken, is een gecompileerde regex of trie-gebaseerde router performanter. URLPattern geeft prioriteit aan leesbaarheid boven ruwe doorvoer.",
-                                                                           "URLPattern ondersteunt geen reverse matching 鈥?u kunt geen URL genereren op basis van een patroon en parameters. Het test alleen of een URL matcht en extraheert benoemde groepswaarden. Voor bidirectionele URL-afhandeling bieden bibliotheken zoals path-to-regexp zowel matching als URL-generatie."
+                                                                           "URLPattern ondersteunt geen reverse matching —u kunt geen URL genereren op basis van een patroon en parameters. Het test alleen of een URL matcht en extraheert benoemde groepswaarden. Voor bidirectionele URL-afhandeling bieden bibliotheken zoals path-to-regexp zowel matching als URL-generatie."
                                                                        ],
                                                        "verificationSteps":  [
                                                                                  "Open de browserconsole en voer new URLPattern({ pathname: \u0027/test/:id\u0027 }).exec(\u0027https://example.com/test/123\u0027) uit. Controleer of het resultaatobject pathname.groups.id bevat met waarde \u0027123\u0027 en dat het resultaat niet null is.",
@@ -35309,14 +35309,14 @@
                                                                                               }
                                                                                           ],
                                                                              "mistakes":  [
-                                                                                              "Event.preventDefault() niet aanroepen v贸贸r event.intercept() 鈥?het navigate-event moet synchroon worden onderschept om te voorkomen dat de browser zijn eigen navigatie start. Roep altijd zowel preventDefault() als intercept() aan in de handler.",
-                                                                                              "De event.signal abort-controller negeren 鈥?de Navigation API biedt een AbortSignal op elk navigate-event. Langlopende fetch-operaties moeten luisteren naar event.signal om verouderde verzoeken te annuleren wanneer een nieuwe navigatie start, om racecondities te voorkomen.",
-                                                                                              "Vergeten traversal-type-navigaties af te handelen 鈥?terug/vooruit-navigaties vuren een navigate-event met navigationType \u0027traverse\u0027. Routes moeten onderscheid maken tussen push/replace en traverse om de scrollpositie correct te herstellen en het opnieuw ophalen van gecachte content te voorkomen."
+                                                                                              "Event.preventDefault() niet aanroepen v贸贸r event.intercept() —het navigate-event moet synchroon worden onderschept om te voorkomen dat de browser zijn eigen navigatie start. Roep altijd zowel preventDefault() als intercept() aan in de handler.",
+                                                                                              "De event.signal abort-controller negeren —de Navigation API biedt een AbortSignal op elk navigate-event. Langlopende fetch-operaties moeten luisteren naar event.signal om verouderde verzoeken te annuleren wanneer een nieuwe navigatie start, om racecondities te voorkomen.",
+                                                                                              "Vergeten traversal-type-navigaties af te handelen —terug/vooruit-navigaties vuren een navigate-event met navigationType \u0027traverse\u0027. Routes moeten onderscheid maken tussen push/replace en traverse om de scrollpositie correct te herstellen en het opnieuw ophalen van gecachte content te voorkomen."
                                                                                           ],
                                                                              "faq":  [
                                                                                          {
                                                                                              "question":  "Hoe verschilt de Navigation API van de History API voor SPA-routing?",
-                                                                                             "answer":  "De History API vuurt alleen een popstate-event bij terug/vooruit-navigatie. Linkklikken, programmatische pushState/replaceState en reloads worden niet vastgelegd 鈥?u moet al deze paden handmatig onderscheppen. De Navigation API vuurt een enkel navigate-event voor elk navigatietype (push, replace, reload, traverse), plus biedt een AbortSignal voor annulering, een FocusChanged-event voor toegankelijkheid en ingebouwde view transition- en scrollherstelondersteuning."
+                                                                                             "answer":  "De History API vuurt alleen een popstate-event bij terug/vooruit-navigatie. Linkklikken, programmatische pushState/replaceState en reloads worden niet vastgelegd —u moet al deze paden handmatig onderscheppen. De Navigation API vuurt een enkel navigate-event voor elk navigatietype (push, replace, reload, traverse), plus biedt een AbortSignal voor annulering, een FocusChanged-event voor toegankelijkheid en ingebouwde view transition- en scrollherstelondersteuning."
                                                                                          },
                                                                                          {
                                                                                              "question":  "Kan de Navigation API worden gepolyfilled voor oudere browsers?",
@@ -35419,9 +35419,9 @@
                                                                                       }
                                                                                   ],
                                                                      "mistakes":  [
-                                                                                      "Hanging gebruiken zonder een lengtewaarde 鈥?hanging is een keyword-modifier, geen lengte. U moet altijd eerst een lengtewaarde specificeren, zoals text-indent: 2em hanging. Zonder de lengte is de declaratie ongeldig en doet deze niets.",
-                                                                                      "Aannemen dat each-line werkt met normale alineaomloop 鈥?each-line geldt alleen na gedwongen regeleinden (\u003cbr\u003e of vergelijkbaar). Het reset de inspringing niet na elke soft-wrapped regel. Gebruik voor per-regel-controle een andere benadering zoals padding-left met negatieve text-indent.",
-                                                                                      "Hanging combineren met een negatieve text-indent-waarde 鈥?hanging keert de inspringingsrichting al om. Het gebruik van een negatieve waarde met hanging geeft onverwachte resultaten. Gebruik positieve lengtewaarden met hanging voor voorspelbaar gedrag."
+                                                                                      "Hanging gebruiken zonder een lengtewaarde —hanging is een keyword-modifier, geen lengte. U moet altijd eerst een lengtewaarde specificeren, zoals text-indent: 2em hanging. Zonder de lengte is de declaratie ongeldig en doet deze niets.",
+                                                                                      "Aannemen dat each-line werkt met normale alineaomloop —each-line geldt alleen na gedwongen regeleinden (\u003cbr\u003e of vergelijkbaar). Het reset de inspringing niet na elke soft-wrapped regel. Gebruik voor per-regel-controle een andere benadering zoals padding-left met negatieve text-indent.",
+                                                                                      "Hanging combineren met een negatieve text-indent-waarde —hanging keert de inspringingsrichting al om. Het gebruik van een negatieve waarde met hanging geeft onverwachte resultaten. Gebruik positieve lengtewaarden met hanging voor voorspelbaar gedrag."
                                                                                   ],
                                                                      "faq":  [
                                                                                  {
@@ -35430,7 +35430,7 @@
                                                                                  },
                                                                                  {
                                                                                      "question":  "Kan ik hanging gebruiken met elke eenheid voor de inspringingslengte?",
-                                                                                     "answer":  "Ja. hanging en each-line werken met elke CSS-lengte-eenheid: em, rem, px, ch, ex, cm en zelfs percentages. em is het meest gebruikelijk voor typografische inspringingen omdat het meeschaalt met de lettergrootte. Percentagewaarden zijn relatief aan de breedte van het bevattende blok en geven inconsistente resultaten over viewports 鈥?blijf bij em of rem voor voorspelbare hangende inspringingen."
+                                                                                     "answer":  "Ja. hanging en each-line werken met elke CSS-lengte-eenheid: em, rem, px, ch, ex, cm en zelfs percentages. em is het meest gebruikelijk voor typografische inspringingen omdat het meeschaalt met de lettergrootte. Percentagewaarden zijn relatief aan de breedte van het bevattende blok en geven inconsistente resultaten over viewports —blijf bij em of rem voor voorspelbare hangende inspringingen."
                                                                                  },
                                                                                  {
                                                                                      "question":  "Be茂nvloedt hanging inline-elementen of alleen blokcontainers?",
@@ -35438,11 +35438,11 @@
                                                                                  },
                                                                                  {
                                                                                      "question":  "Reset each-line ook de hangende inspringing aan het begin van elke alinea?",
-                                                                                     "answer":  "hanging en each-line zijn onafhankelijke keywords die u kunt combineren. hanging bepaalt welke regels de inspringing krijgen (eerste regel uitgelijnd, rest ingesprongen). each-line bepaalt waar de inspringing wordt gereset (na elke \u003cbr\u003e). Samen gebruikt 鈥?text-indent: 2em hanging each-line 鈥?krijgt u een hangende inspringing die opnieuw start na elk gedwongen regeleinde. Elke nieuwe alinea begint hoe dan ook fris."
+                                                                                     "answer":  "hanging en each-line zijn onafhankelijke keywords die u kunt combineren. hanging bepaalt welke regels de inspringing krijgen (eerste regel uitgelijnd, rest ingesprongen). each-line bepaalt waar de inspringing wordt gereset (na elke \u003cbr\u003e). Samen gebruikt —text-indent: 2em hanging each-line —krijgt u een hangende inspringing die opnieuw start na elk gedwongen regeleinde. Elke nieuwe alinea begint hoe dan ook fris."
                                                                                  }
                                                                              ],
                                                                      "limitations":  [
-                                                                                         "hanging en each-line vereisen Baseline 2026-browsers (Chrome 130+, Safari 18.2+, Firefox 135+). Oudere browsers negeren de keywords stilzwijgend en passen een standaard eerste-regel-inspringing toe 鈥?acceptabel voor progressieve verbetering, maar kan precieze lay-outvereisten breken.",
+                                                                                         "hanging en each-line vereisen Baseline 2026-browsers (Chrome 130+, Safari 18.2+, Firefox 135+). Oudere browsers negeren de keywords stilzwijgend en passen een standaard eerste-regel-inspringing toe —acceptabel voor progressieve verbetering, maar kan precieze lay-outvereisten breken.",
                                                                                          "each-line wordt alleen geactiveerd bij gedwongen regeleinden (\u003cbr\u003e, \u003chr\u003e of elementen met display: block in de tekst). Het wordt niet gereset na soft-wrapped regels in smalle containers. Als u inspringingscontrole per soft-wrapped regel nodig hebt, overweeg dan padding-left met een negatieve text-indent-workaround.",
                                                                                          "text-indent werkt niet op inline-elementen. Voor inline-level hangende inspringingen in gemengde inline/block-lay-outs, gebruik padding-left met de gewenste inspringingsbreedte en een negatieve text-indent op de bovenliggende blokcontainer."
                                                                                      ],

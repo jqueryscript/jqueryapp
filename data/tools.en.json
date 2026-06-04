@@ -4,7 +4,7 @@
         "name": "AI Crawler robots.txt Builder",
         "category": "seo",
         "summary": "Build a robots.txt policy for AI crawlers. Choose from open, selective, or strict presets and block specific AI training bots while allowing search engines.",
-        "description": "Control which AI crawlers can access your site. Choose a policy preset 鈥?open (allow all), selective (block training bots, allow search), or strict (block all AI crawlers) 鈥?then customize individual crawler blocks. Includes GPTBot, ClaudeBot, Google-Extended, PerplexityBot, CCBot, and more.",
+        "description": "Control which AI crawlers can access your site. Choose a policy preset —open (allow all), selective (block training bots, allow search), or strict (block all AI crawlers) —then customize individual crawler blocks. Includes GPTBot, ClaudeBot, Google-Extended, PerplexityBot, CCBot, and more.",
         "keywords": [
             "ai robots.txt",
             "block ai crawlers",
@@ -30,13 +30,13 @@
             },
             {
                 "title": "Documentation site open to all",
-                "text": "An open-source documentation site wants maximum discoverability including AI search. Use the Open preset which adds no AI crawler blocks 鈥?all bots including training crawlers have full access."
+                "text": "An open-source documentation site wants maximum discoverability including AI search. Use the Open preset which adds no AI crawler blocks —all bots including training crawlers have full access."
             }
         ],
         "mistakes": [
-            "Placing AI crawler blocks after a wildcard User-agent: * Allow: / rule 鈥?the wildcard rule overrides the specific blocks. Always put specific crawler rules above general rules.",
-            "Assuming robots.txt blocks prevent all AI data collection 鈥?not all crawlers respect robots.txt, and some content may be collected through other means.",
-            "Blocking Google-Extended but expecting normal Google search indexing to work 鈥?Google-Extended is a separate crawler for AI training, not the same as Googlebot."
+            "Placing AI crawler blocks after a wildcard User-agent: * Allow: / rule —the wildcard rule overrides the specific blocks. Always put specific crawler rules above general rules.",
+            "Assuming robots.txt blocks prevent all AI data collection —not all crawlers respect robots.txt, and some content may be collected through other means.",
+            "Blocking Google-Extended but expecting normal Google search indexing to work —Google-Extended is a separate crawler for AI training, not the same as Googlebot."
         ],
         "faq": [
             {
@@ -45,7 +45,7 @@
             },
             {
                 "question": "What is the difference between Googlebot and Google-Extended?",
-                "answer": "Googlebot is the main search indexing crawler 鈥?blocking it removes your site from Google Search entirely. Google-Extended is a separate crawler used for AI and machine learning model training. You can safely block Google-Extended without affecting your Google Search rankings or indexing."
+                "answer": "Googlebot is the main search indexing crawler —blocking it removes your site from Google Search entirely. Google-Extended is a separate crawler used for AI and machine learning model training. You can safely block Google-Extended without affecting your Google Search rankings or indexing."
             },
             {
                 "question": "Should I block Common Crawl (CCBot)?",
@@ -54,7 +54,7 @@
         ],
         "quickAnswer": "Build robots.txt rules to control which AI crawlers access your site. Use a selective policy to block training bots (GPTBot, ClaudeBot, Google-Extended) while allowing search engines (Googlebot, Bingbot). Place specific crawler blocks above general wildcard rules in robots.txt.",
         "limitations": [
-            "robots.txt is a voluntary standard 鈥?not all crawlers respect it. Some AI data collection happens through means other than web crawling, and robots.txt has no enforcement mechanism.",
+            "robots.txt is a voluntary standard —not all crawlers respect it. Some AI data collection happens through means other than web crawling, and robots.txt has no enforcement mechanism.",
             "Some CDNs and WAFs (including Cloudflare Bot Management) can override robots.txt with their own bot-blocking rules. Check your CDN configuration after deploying robots.txt changes.",
             "New AI crawlers appear regularly. This tool includes crawlers known as of early 2026. Check for new crawler names periodically and update your robots.txt accordingly."
         ],
@@ -77,9 +77,9 @@
             "accessible dynamic content",
             "wcag live region"
         ],
-        "whatIs": "An ARIA live region is an HTML element that screen readers monitor for content changes and automatically announce to the user. This enables dynamic content updates 鈥?like form validation errors, status messages, or chat messages 鈥?to be read aloud without moving keyboard focus. The aria-live attribute controls how urgently changes are announced (polite or assertive).",
+        "whatIs": "An ARIA live region is an HTML element that screen readers monitor for content changes and automatically announce to the user. This enables dynamic content updates —like form validation errors, status messages, or chat messages —to be read aloud without moving keyboard focus. The aria-live attribute controls how urgently changes are announced (polite or assertive).",
         "howToUse": [
-            "Choose the region type based on how critical the updates are 鈥?status for advisory, alert for urgent, log for sequential updates.",
+            "Choose the region type based on how critical the updates are —status for advisory, alert for urgent, log for sequential updates.",
             "Configure aria-atomic (read entire region or only changes) and aria-relevant (what types of DOM changes trigger announcements).",
             "Copy the HTML snippet with or without the JavaScript update helper.",
             "Place the live region in the DOM on page load so screen readers can register it."
@@ -100,14 +100,14 @@
             }
         ],
         "mistakes": [
-            "Using aria-live assertive for non-critical updates 鈥?assertive interrupts the user's current screen reader speech and can be disorienting.",
-            "Forgetting to add the live region to the DOM before sending updates 鈥?the region must exist on page load for screen readers to detect it.",
-            "Updating the live region too frequently 鈥?rapid updates can overwhelm screen reader users. Debounce or throttle frequent updates."
+            "Using aria-live assertive for non-critical updates —assertive interrupts the user's current screen reader speech and can be disorienting.",
+            "Forgetting to add the live region to the DOM before sending updates —the region must exist on page load for screen readers to detect it.",
+            "Updating the live region too frequently —rapid updates can overwhelm screen reader users. Debounce or throttle frequent updates."
         ],
         "faq": [
             {
                 "question": "What is the difference between role=status and role=alert?",
-                "answer": "role=status maps to aria-live=polite by default 鈥?screen readers wait until current speech finishes before announcing. role=alert maps to aria-live=assertive 鈥?screen readers interrupt current speech immediately. Use status for advisory updates like save confirmation. Use alert for critical messages like session timeout warnings."
+                "answer": "role=status maps to aria-live=polite by default —screen readers wait until current speech finishes before announcing. role=alert maps to aria-live=assertive —screen readers interrupt current speech immediately. Use status for advisory updates like save confirmation. Use alert for critical messages like session timeout warnings."
             },
             {
                 "question": "Should I use aria-atomic true or false?",
@@ -143,7 +143,7 @@
         "howToUse": [
             "For Android: enter your app's package name and the SHA-256 fingerprint of your signing certificate.",
             "For iOS: enter your Apple Developer Team ID, the app's Bundle ID, and path rules for which URLs should open in the app.",
-            "Select the output target 鈥?Android, iOS, or both.",
+            "Select the output target —Android, iOS, or both.",
             "Deploy the generated JSON file(s) to the /.well-known/ directory on your domain."
         ],
         "useCases": [
@@ -162,9 +162,9 @@
             }
         ],
         "mistakes": [
-            "Forgetting to serve the files over HTTPS without redirects 鈥?both Android and iOS require direct HTTPS access to the /.well-known/ path.",
-            "Using a different signing key for the app than the one in assetlinks.json 鈥?the SHA-256 must match the exact certificate used to sign the published APK or AAB.",
-            "iOS AASA file requires an app reinstall to pick up changes 鈥?the file is fetched only once during app installation."
+            "Forgetting to serve the files over HTTPS without redirects —both Android and iOS require direct HTTPS access to the /.well-known/ path.",
+            "Using a different signing key for the app than the one in assetlinks.json —the SHA-256 must match the exact certificate used to sign the published APK or AAB.",
+            "iOS AASA file requires an app reinstall to pick up changes —the file is fetched only once during app installation."
         ],
         "faq": [
             {
@@ -177,7 +177,7 @@
             },
             {
                 "question": "Can I have different path rules for Android and iOS?",
-                "answer": "Yes. The Android assetlinks.json and iOS AASA file are completely independent. You can configure Android to handle all paths while iOS handles only specific paths. Run the tool twice 鈥?once for each target 鈥?to generate separate files with different rules."
+                "answer": "Yes. The Android assetlinks.json and iOS AASA file are completely independent. You can configure Android to handle all paths while iOS handles only specific paths. Run the tool twice —once for each target —to generate separate files with different rules."
             }
         ],
         "quickAnswer": "assetlinks.json (Android) and apple-app-site-association (iOS) enable deep linking from your website to your mobile app. Generate both files, place them at /.well-known/ on your domain, and serve over HTTPS without redirects.",
@@ -226,14 +226,14 @@
             }
         ],
         "mistakes": [
-            "Setting a long max-age on HTML pages that change frequently 鈥?users see stale content after a deploy.",
+            "Setting a long max-age on HTML pages that change frequently —users see stale content after a deploy.",
             "Using no-store on every page instead of targeted no-cache or max-age=0, which harms performance.",
-            "Forgetting that GitHub Pages ignores custom Cache-Control headers 鈥?only ETag and Last-Modified are set automatically."
+            "Forgetting that GitHub Pages ignores custom Cache-Control headers —only ETag and Last-Modified are set automatically."
         ],
         "faq": [
             {
                 "question": "What is the difference between no-cache and no-store?",
-                "answer": "no-cache means the browser must revalidate with the server before using a cached copy 鈥?the response can still be cached, but must be confirmed fresh. no-store means nothing may be cached at all, not even in memory. Use no-cache with must-revalidate for most update-critical pages; use no-store only for sensitive data like payment pages."
+                "answer": "no-cache means the browser must revalidate with the server before using a cached copy —the response can still be cached, but must be confirmed fresh. no-store means nothing may be cached at all, not even in memory. Use no-cache with must-revalidate for most update-critical pages; use no-store only for sensitive data like payment pages."
             },
             {
                 "question": "How do I set Cache-Control on GitHub Pages?",
@@ -245,17 +245,17 @@
             },
             {
                 "question": "How long should I cache images on a static site?",
-                "answer": "For images without versioned filenames, a max-age of 86400 (24 hours) is a safe default 鈥?images change rarely but you want updates to propagate within a day. For fingerprinted images (logo.v2.png), use max-age=31536000 with immutable. For images that change daily (like a daily chart), use max-age=3600 or max-age=0 with must-revalidate."
+                "answer": "For images without versioned filenames, a max-age of 86400 (24 hours) is a safe default —images change rarely but you want updates to propagate within a day. For fingerprinted images (logo.v2.png), use max-age=31536000 with immutable. For images that change daily (like a daily chart), use max-age=3600 or max-age=0 with must-revalidate."
             }
         ],
         "quickAnswer": "Use the Cache-Control HTTP header to tell browsers and CDNs how long to keep a resource before revalidating. For static sites: use public, max-age=31536000, immutable on fingerprinted CSS/JS, public, max-age=0, must-revalidate on HTML, and no-store on sensitive pages.",
         "limitations": [
-            "GitHub Pages does not support custom Cache-Control headers 鈥?only ETag and Last-Modified are provided automatically. Use Cloudflare or another CDN in front for custom caching rules.",
+            "GitHub Pages does not support custom Cache-Control headers —only ETag and Last-Modified are provided automatically. Use Cloudflare or another CDN in front for custom caching rules.",
             "The immutable directive is not an official RFC standard but is widely supported by modern browsers and CDNs. Very old HTTP/1.1 proxies may ignore it.",
             "Browsers may still cache content when offline or in back-forward cache even when Cache-Control says no-store. Cache-Control is a hint, not a guarantee."
         ],
         "verificationSteps": [
-            "Check the Cache-Control header in the browser DevTools Network tab 鈥?look for the response header on the specific resource.",
+            "Check the Cache-Control header in the browser DevTools Network tab —look for the response header on the specific resource.",
             "Use curl -I https://yoursite.com/path to verify headers from the command line. Confirm the CDN is passing through the origin header correctly."
         ],
         "updatedAt": "2026-05-28"
@@ -276,7 +276,7 @@
         "whatIs": "Container query units work like viewport units but are relative to a query container rather than the viewport. cqi is 1% of the container inline size, cqw is 1% of the container width, cqb is 1% of the container block size, cqmin and cqmax are the min/max of cqi and cqb. They enable component-level responsive sizing where a component adapts to its container, not the browser window.",
         "howToUse": [
             "Enter the minimum and maximum target sizes for your CSS property in pixels.",
-            "Set the container width range 鈥?the min container width where the property reaches its minimum, and the max width where it reaches its maximum.",
+            "Set the container width range —the min container width where the property reaches its minimum, and the max width where it reaches its maximum.",
             "Choose a container query unit and the CSS property name.",
             "Copy the clamp() expression and ensure the parent element has container-type: inline-size."
         ],
@@ -296,14 +296,14 @@
             }
         ],
         "mistakes": [
-            "Using container query units without setting container-type on a parent 鈥?the browser uses the initial containing block (viewport), which defeats the purpose.",
-            "Expecting container query units to work like viewport units 鈥?they are relative to the nearest query container ancestor, which may be a very different size than the viewport.",
+            "Using container query units without setting container-type on a parent —the browser uses the initial containing block (viewport), which defeats the purpose.",
+            "Expecting container query units to work like viewport units —they are relative to the nearest query container ancestor, which may be a very different size than the viewport.",
             "Using container query units in a deeply nested component where the nearest container is not the intended sizing reference."
         ],
         "faq": [
             {
                 "question": "What is the difference between cqi and cqw?",
-                "answer": "cqi is 1% of the container inline size 鈥?in horizontal writing modes this equals the container width. cqw is always 1% of the container width regardless of writing mode. For most Latin-script sites, they are identical. For vertical writing modes or RTL pages, cqi adapts to the writing direction."
+                "answer": "cqi is 1% of the container inline size —in horizontal writing modes this equals the container width. cqw is always 1% of the container width regardless of writing mode. For most Latin-script sites, they are identical. For vertical writing modes or RTL pages, cqi adapts to the writing direction."
             },
             {
                 "question": "Do container query units work without @container queries?",
@@ -311,7 +311,7 @@
             },
             {
                 "question": "What happens if no container ancestor exists?",
-                "answer": "The browser falls back to the initial containing block 鈥?the viewport. This means a clamp() using cqi behaves like vw (viewport width) when no container context is found. This fallback can produce unexpected large values at wide viewports, so always ensure a container ancestor."
+                "answer": "The browser falls back to the initial containing block —the viewport. This means a clamp() using cqi behaves like vw (viewport width) when no container context is found. This fallback can produce unexpected large values at wide viewports, so always ensure a container ancestor."
             }
         ],
         "quickAnswer": "Use container query units (cqi, cqw, cqb, cqmin, cqmax) with clamp() for component-level responsive sizing. They work like viewport units but scale with the parent container width. Set container-type: inline-size on the parent and use the clamp() expression in child styles.",
@@ -345,7 +345,7 @@
         "whatIs": "Cross-Origin isolation is a set of HTTP headers that control how a page interacts with cross-origin windows and resources. COOP controls whether this page can be accessed by other origins via window.opener. COEP controls whether cross-origin resources (images, fonts, scripts) can be loaded. CORP controls whether this resource can be loaded by other origins. Together they enable powerful features like SharedArrayBuffer and high-resolution timers.",
         "howToUse": [
             "Select an isolation goal preset or choose custom to configure each header individually.",
-            "Review the header values 鈥?stricter isolation enables more features but may break third-party embeds.",
+            "Review the header values —stricter isolation enables more features but may break third-party embeds.",
             "Copy the headers and add them to your server or CDN configuration.",
             "Use the debugging checklist to identify broken resources after deployment."
         ],
@@ -365,9 +365,9 @@
             }
         ],
         "mistakes": [
-            "Setting COEP require-corp without ensuring all third-party resources send CORP headers 鈥?images, fonts, and scripts from CDNs will break silently.",
-            "Using COOP same-origin when the page needs to communicate with popups or use OAuth redirect flows 鈥?popups cannot access window.opener.",
-            "Forgetting that COEP credentialless is newer and not supported in all browsers 鈥?check browser compatibility before deploying."
+            "Setting COEP require-corp without ensuring all third-party resources send CORP headers —images, fonts, and scripts from CDNs will break silently.",
+            "Using COOP same-origin when the page needs to communicate with popups or use OAuth redirect flows —popups cannot access window.opener.",
+            "Forgetting that COEP credentialless is newer and not supported in all browsers —check browser compatibility before deploying."
         ],
         "faq": [
             {
@@ -405,9 +405,9 @@
         ],
         "whatIs": "CORS (Cross-Origin Resource Sharing) is a browser security mechanism that controls which web origins can access your resources. When a browser app tries to fetch data from a different domain, the browser checks CORS headers on the response. Without correct CORS headers, cross-origin requests fail with a CORS error in the console.",
         "howToUse": [
-            "Enter the allowed origins 鈥?use * for public APIs or specific domains for restricted access.",
+            "Enter the allowed origins —use * for public APIs or specific domains for restricted access.",
             "Select the HTTP methods your endpoint supports and any custom headers clients may send.",
-            "Toggle credentials support with care 鈥?browsers reject requests that combine * origins with credentials.",
+            "Toggle credentials support with care —browsers reject requests that combine * origins with credentials.",
             "Choose your deployment format and copy the generated header configuration."
         ],
         "useCases": [
@@ -426,9 +426,9 @@
             }
         ],
         "mistakes": [
-            "Using wildcard origin (*) together with Access-Control-Allow-Credentials: true 鈥?browsers reject this combination.",
+            "Using wildcard origin (*) together with Access-Control-Allow-Credentials: true —browsers reject this combination.",
             "Forgetting to add Vary: Origin when serving different CORS headers based on the request origin.",
-            "Setting Access-Control-Max-Age above 86400 鈥?browsers cap it at 24 hours regardless."
+            "Setting Access-Control-Max-Age above 86400 —browsers cap it at 24 hours regardless."
         ],
         "faq": [
             {
@@ -446,7 +446,7 @@
         ],
         "quickAnswer": "CORS headers control which websites can access your server resources from browser JavaScript. Use Access-Control-Allow-Origin to specify allowed origins, Access-Control-Allow-Methods for HTTP verbs, and Access-Control-Allow-Credentials for cookie-based auth. Never combine * wildcard origin with credentials.",
         "limitations": [
-            "CORS only protects browser-based requests. Server-to-server requests, curl, and direct API calls are not subject to CORS 鈥?CORS is a browser enforcement mechanism, not a server security layer.",
+            "CORS only protects browser-based requests. Server-to-server requests, curl, and direct API calls are not subject to CORS —CORS is a browser enforcement mechanism, not a server security layer.",
             "Some older browsers (IE 10 and below) have incomplete CORS support and may not handle preflight caching correctly. For modern web apps, browser support is universal.",
             "CORS headers do not protect your API from DDoS, abuse, or unauthorized non-browser access. Use authentication, rate limiting, and a WAF alongside CORS."
         ],
@@ -461,7 +461,7 @@
         "name": "CSP Hash Generator",
         "category": "html",
         "summary": "Generate CSP hash values for inline scripts and styles. Hash exact code content with SHA-256, SHA-384, or SHA-512 and get the matching CSP directive snippet.",
-        "description": "Content Security Policy allows specific inline scripts and styles by their cryptographic hash. This tool hashes your exact inline code and outputs the CSP directive 鈥?every space, newline, and indent matters, so the hash matches only the exact content you provide.",
+        "description": "Content Security Policy allows specific inline scripts and styles by their cryptographic hash. This tool hashes your exact inline code and outputs the CSP directive —every space, newline, and indent matters, so the hash matches only the exact content you provide.",
         "keywords": [
             "csp hash generator",
             "content security policy hash",
@@ -470,7 +470,7 @@
         ],
         "whatIs": "A CSP hash is a base64-encoded SHA-256, SHA-384, or SHA-512 digest of an inline script or style block's exact content. When you add the hash to your CSP header as script-src 'sha256-...' or style-src 'sha256-...', the browser allows that specific inline code to run while blocking all other inline scripts or styles. This is the most secure alternative to 'unsafe-inline'.",
         "howToUse": [
-            "Copy the exact inline script or style content from your HTML 鈥?every space, newline, and indent must match.",
+            "Copy the exact inline script or style content from your HTML —every space, newline, and indent must match.",
             "Paste it into the text area and select the hash algorithm.",
             "Copy the hash value and add it to your CSP header or meta tag as part of script-src or style-src."
         ],
@@ -490,14 +490,14 @@
             }
         ],
         "mistakes": [
-            "Changing even one whitespace character after generating the hash 鈥?the hash will no longer match and the script or style is blocked.",
-            "Using the same hash for minified and unminified versions of the same code 鈥?they produce different hashes.",
-            "Assuming a hash from a development environment matches the production build 鈥?code minification or templating changes the content."
+            "Changing even one whitespace character after generating the hash —the hash will no longer match and the script or style is blocked.",
+            "Using the same hash for minified and unminified versions of the same code —they produce different hashes.",
+            "Assuming a hash from a development environment matches the production build —code minification or templating changes the content."
         ],
         "faq": [
             {
                 "question": "Why does my hash stop working after I edit the inline code?",
-                "answer": "The hash is a cryptographic digest of the exact byte sequence of the inline code. Any change 鈥?adding a space, changing indentation, adding a comment, or modifying a single character 鈥?produces a completely different hash. You must regenerate the hash every time you modify the inline code. This is by design: it ensures only the exact code you approved can run."
+                "answer": "The hash is a cryptographic digest of the exact byte sequence of the inline code. Any change —adding a space, changing indentation, adding a comment, or modifying a single character —produces a completely different hash. You must regenerate the hash every time you modify the inline code. This is by design: it ensures only the exact code you approved can run."
             },
             {
                 "question": "Should I use a hash or a nonce for CSP?",
@@ -508,14 +508,14 @@
                 "answer": "unsafe-hashes allows hashes to be applied to inline event handlers (onclick, onerror, etc.) and javascript: URLs. This is dangerous because event handlers often contain user-influenced values. Only enable unsafe-hashes if you fully control every event handler attribute and understand that a hash match on an event handler can enable script injection if user input reaches the attribute value."
             }
         ],
-        "quickAnswer": "Use a CSP hash to allow a specific inline script or style without enabling all inline code with unsafe-inline. The hash is a cryptographic digest of the exact code content 鈥?SHA-256 is the standard. Add the hash to your CSP as script-src 'sha256-...' or style-src 'sha256-...'.",
+        "quickAnswer": "Use a CSP hash to allow a specific inline script or style without enabling all inline code with unsafe-inline. The hash is a cryptographic digest of the exact code content —SHA-256 is the standard. Add the hash to your CSP as script-src 'sha256-...' or style-src 'sha256-...'.",
         "limitations": [
             "The hash is only valid for the exact content hashed. Any whitespace, formatting, or content change produces a completely different hash and breaks the CSP allowlist.",
             "Some build tools and HTML minifiers may modify inline whitespace in production, invalidating hashes generated from development code. Verify against production output.",
             "CSP hashes do not work with inline event handlers (onclick, onerror) without enabling unsafe-hashes, which weakens security significantly."
         ],
         "verificationSteps": [
-            "Check the browser console for CSP violation reports after adding the hash 鈥?a blocked script or style shows a violation message with the expected hash.",
+            "Check the browser console for CSP violation reports after adding the hash —a blocked script or style shows a violation message with the expected hash.",
             "Use the browser DevTools Application panel or Security tab to inspect the active CSP policy and confirm your hash is recognized."
         ],
         "updatedAt": "2026-05-28"
@@ -536,7 +536,7 @@
         "whatIs": "A CSS carousel is a horizontally or vertically scrollable container where items snap into position as the user scrolls. Modern CSS (Chrome 135+) adds built-in scroll buttons and markers that work without JavaScript, plus scroll-state queries for styling the currently snapped item differently from others. This is a native alternative to JavaScript carousel libraries.",
         "howToUse": [
             "Choose the layout direction (horizontal or vertical) and item width.",
-            "Set snap behavior and alignment 鈥?mandatory snaps to every item, proximity snaps when near.",
+            "Set snap behavior and alignment —mandatory snaps to every item, proximity snaps when near.",
             "Optionally include scroll buttons and marker dots for navigation.",
             "Choose accessible list markup (ul/li) and the number of items for demo output.",
             "Copy the CSS and HTML into your page. Add real content to each carousel item."
@@ -557,9 +557,9 @@
             }
         ],
         "mistakes": [
-            "Using mandatory snap on very long carousels 鈥?users cannot scroll past multiple items quickly, which feels sluggish.",
-            "Forgetting to make the scroll container keyboard-focusable 鈥?keyboard users need tabindex=\"0\" to scroll with arrow keys.",
-            "Using fixed pixel widths without considering mobile 鈥?300px items on a 320px screen leave barely any peek of the next item."
+            "Using mandatory snap on very long carousels —users cannot scroll past multiple items quickly, which feels sluggish.",
+            "Forgetting to make the scroll container keyboard-focusable —keyboard users need tabindex=\"0\" to scroll with arrow keys.",
+            "Using fixed pixel widths without considering mobile —300px items on a 320px screen leave barely any peek of the next item."
         ],
         "faq": [
             {
@@ -575,7 +575,7 @@
                 "answer": "Use the scroll-state() container query: @container scroll-state(snapped: true) { .item { opacity: 1; } }. This requires container-type: scroll-state on the scroll container. For browsers without scroll-state support, use a JavaScript scroll event fallback or IntersectionObserver."
             }
         ],
-        "quickAnswer": "Build a native CSS carousel with scroll-snap, buttons, and markers 鈥?no JavaScript needed. Use scroll-snap-type for snap behavior, ::scroll-button() for arrows, ::scroll-marker() for dots, and scroll-state(snapped: true) queries for active item styling. Chrome 135+ for full features; degrades gracefully elsewhere.",
+        "quickAnswer": "Build a native CSS carousel with scroll-snap, buttons, and markers —no JavaScript needed. Use scroll-snap-type for snap behavior, ::scroll-button() for arrows, ::scroll-marker() for dots, and scroll-state(snapped: true) queries for active item styling. Chrome 135+ for full features; degrades gracefully elsewhere.",
         "limitations": [
             "Scroll buttons (::scroll-button()) and markers (::scroll-marker()) require Chrome 135+. Firefox and Safari do not yet support them. The carousel falls back to a standard scrollable container.",
             "CSS carousels cannot auto-advance, loop infinitely, or handle dynamic item counts without JavaScript. For advanced carousel features, use a small JS enhancement on top of the CSS foundation.",
@@ -583,7 +583,7 @@
         ],
         "verificationSteps": [
             "Test the carousel with keyboard navigation: focus the container and use arrow keys to scroll through items.",
-            "Check that snap points work correctly on touch devices 鈥?each swipe should snap to the nearest item."
+            "Check that snap points work correctly on touch devices —each swipe should snap to the nearest item."
         ],
         "updatedAt": "2026-05-28",
         "tags": [
@@ -628,9 +628,9 @@
             }
         ],
         "mistakes": [
-            "Using scroll-state() without setting container-type: scroll-state on the scroll container 鈥?the query has no effect.",
-            "Expecting scroll-state() to work in all browsers 鈥?it is a Chrome 135+ feature. Always provide a JS fallback.",
-            "Using scroll-state queries on elements that never reach the target state 鈥?verify the element can actually be snapped or stuck in the layout."
+            "Using scroll-state() without setting container-type: scroll-state on the scroll container —the query has no effect.",
+            "Expecting scroll-state() to work in all browsers —it is a Chrome 135+ feature. Always provide a JS fallback.",
+            "Using scroll-state queries on elements that never reach the target state —verify the element can actually be snapped or stuck in the layout."
         ],
         "faq": [
             {
@@ -649,7 +649,7 @@
             "Only a limited set of scroll states is available: snapped, stuck, scrollable, and overflowing. Complex scroll-driven animations still require JavaScript or scroll-driven animations (@scroll-timeline)."
         ],
         "verificationSteps": [
-            "Scroll the container and verify the styled elements update correctly 鈥?snapped items should show the active style, non-snapped items the default.",
+            "Scroll the container and verify the styled elements update correctly —snapped items should show the active style, non-snapped items the default.",
             "Test with the JavaScript fallback disabled to confirm the CSS-only approach works in Chrome 135+."
         ],
         "updatedAt": "2026-05-28",
@@ -673,7 +673,7 @@
         "whatIs": "Subgrid is a CSS Grid feature where a nested grid container can inherit the grid tracks of its parent. Instead of defining its own grid-template-columns or grid-template-rows, the child uses subgrid to align items with the parent grid lines. This is useful for card grids where each card needs internal alignment.",
         "howToUse": [
             "Define the parent grid columns and optionally rows. The subgrid child inherits these tracks.",
-            "Set the column and row span for the subgrid child 鈥?how many parent grid cells it occupies.",
+            "Set the column and row span for the subgrid child —how many parent grid cells it occupies.",
             "Choose whether the child uses subgrid for columns, rows, or both.",
             "Copy the parent and child CSS and apply matching selectors in your HTML."
         ],
@@ -693,14 +693,14 @@
             }
         ],
         "mistakes": [
-            "Using subgrid without a parent grid 鈥?subgrid must descend from a grid container with explicit tracks.",
-            "Setting both grid-template-columns: subgrid and explicit column values 鈥?subgrid replaces, not supplements, the parent tracks.",
-            "Forgetting that subgrid inherits gaps from the parent 鈥?if the parent has gap: 16px, the subgrid child also uses 16px gaps by default."
+            "Using subgrid without a parent grid —subgrid must descend from a grid container with explicit tracks.",
+            "Setting both grid-template-columns: subgrid and explicit column values —subgrid replaces, not supplements, the parent tracks.",
+            "Forgetting that subgrid inherits gaps from the parent —if the parent has gap: 16px, the subgrid child also uses 16px gaps by default."
         ],
         "faq": [
             {
                 "question": "What is the difference between subgrid and nested grids?",
-                "answer": "A nested grid creates independent tracks inside a child element 鈥?it does not share alignment with the parent grid. Subgrid inherits the parent grid tracks, so items in the subgrid align with items in the parent grid as if they were all in one flat grid. This enables cross-element track alignment."
+                "answer": "A nested grid creates independent tracks inside a child element —it does not share alignment with the parent grid. Subgrid inherits the parent grid tracks, so items in the subgrid align with items in the parent grid as if they were all in one flat grid. This enables cross-element track alignment."
             },
             {
                 "question": "Does subgrid inherit named grid lines from the parent?",
@@ -708,7 +708,7 @@
             },
             {
                 "question": "Which browsers support subgrid?",
-                "answer": "Chrome 117+, Edge 117+, Firefox 71+, and Safari 16+. Firefox was the first to ship subgrid. It is safe to use as a progressive enhancement 鈥?browsers that do not support subgrid fall back to the regular grid behavior defined on the child element."
+                "answer": "Chrome 117+, Edge 117+, Firefox 71+, and Safari 16+. Firefox was the first to ship subgrid. It is safe to use as a progressive enhancement —browsers that do not support subgrid fall back to the regular grid behavior defined on the child element."
             }
         ],
         "quickAnswer": "Use CSS subgrid to align nested grid items with their parent grid tracks. The child uses grid-template-columns: subgrid and/or grid-template-rows: subgrid to inherit track sizing, gaps, and named lines from the parent grid.",
@@ -718,7 +718,7 @@
             "The subgrid child cannot override the parent gap. Gap values are inherited from the nearest grid ancestor and cannot be changed on the subgrid element itself."
         ],
         "verificationSteps": [
-            "Check the layout in browser DevTools Grid inspector 鈥?subgrid tracks should visually align with parent grid tracks.",
+            "Check the layout in browser DevTools Grid inspector —subgrid tracks should visually align with parent grid tracks.",
             "Test in Firefox and Chrome to confirm cross-browser subgrid behavior, as there are subtle differences in implicit track handling."
         ],
         "updatedAt": "2026-05-28",
@@ -762,9 +762,9 @@
             }
         ],
         "mistakes": [
-            "Expecting customizable select to work in all browsers 鈥?it requires Chrome 135+ with experimental features. Older browsers show a standard native select.",
-            "Using appearance: none instead of appearance: base-select 鈥?the former removes all native styling including accessibility roles.",
-            "Forgetting that base-select is not yet in the CSS Baseline 鈥?always test and provide a readable native select as fallback."
+            "Expecting customizable select to work in all browsers —it requires Chrome 135+ with experimental features. Older browsers show a standard native select.",
+            "Using appearance: none instead of appearance: base-select —the former removes all native styling including accessibility roles.",
+            "Forgetting that base-select is not yet in the CSS Baseline —always test and provide a readable native select as fallback."
         ],
         "faq": [
             {
@@ -779,7 +779,7 @@
         "quickAnswer": "Style native select elements with appearance: base-select (Chrome 135+). Use ::picker-icon for dropdown arrows, option::checkmark for selection indicators, and ::picker(select) for popover styling. Native form semantics and keyboard accessibility are preserved. Fallback is a standard readable select.",
         "limitations": [
             "Customizable select is a very new feature (Chrome 135+) and not yet in CSS Baseline. Firefox and Safari do not yet support it. Always test with @supports and provide a readable native fallback.",
-            "Not all aspects of the select are customizable. The option list layout, scroll behavior, and mobile picker UI are still controlled by the browser. This is by design 鈥?it keeps the select usable on all devices.",
+            "Not all aspects of the select are customizable. The option list layout, scroll behavior, and mobile picker UI are still controlled by the browser. This is by design —it keeps the select usable on all devices.",
             "The ::picker-icon and option::checkmark pseudo-elements are part of the customizable select model and cannot be used on other elements. They only work inside a select with appearance: base-select."
         ],
         "verificationSteps": [
@@ -804,7 +804,7 @@
         "whatIs": "Declarative Shadow DOM is a browser feature that creates Shadow DOM from HTML markup without JavaScript. A template element with the shadowrootmode attribute inside a host element tells the browser to create a shadow root and populate it with the template content. This enables server-side rendering of web components with scoped CSS, working before JavaScript loads.",
         "howToUse": [
             "Enter a custom element host tag with a hyphen (required for valid custom element names).",
-            "Choose open or closed shadow root mode 鈥?open allows JavaScript access via shadowRoot.",
+            "Choose open or closed shadow root mode —open allows JavaScript access via shadowRoot.",
             "Add the inner HTML content with slot elements for content projection.",
             "Optionally add scoped CSS that only applies inside this shadow root.",
             "Copy the snippet and include it in your SSR output or static HTML."
@@ -825,9 +825,9 @@
             }
         ],
         "mistakes": [
-            "Using a host tag without a hyphen 鈥?custom element names must contain a hyphen to be valid.",
-            "Setting shadowrootmode closed and expecting to access the shadow root from outside JavaScript 鈥?closed mode blocks all external JavaScript access.",
-            "Forgetting fallback content for browsers that do not support Declarative Shadow DOM 鈥?users see nothing instead of content."
+            "Using a host tag without a hyphen —custom element names must contain a hyphen to be valid.",
+            "Setting shadowrootmode closed and expecting to access the shadow root from outside JavaScript —closed mode blocks all external JavaScript access.",
+            "Forgetting fallback content for browsers that do not support Declarative Shadow DOM —users see nothing instead of content."
         ],
         "faq": [
             {
@@ -842,7 +842,7 @@
         "quickAnswer": "Declarative Shadow DOM creates encapsulated DOM and scoped CSS from HTML markup without JavaScript. Use <template shadowrootmode=\"open\"> inside a custom element host tag. Supported in Chrome, Edge, and Safari. Include fallback content for Firefox.",
         "limitations": [
             "Firefox does not yet support Declarative Shadow DOM (as of 2026). Always include fallback content displayed via CSS when DSD is not supported.",
-            "Declarative Shadow DOM only creates the shadow root and content during initial page parse. Dynamically added DSD markup is not processed 鈥?use imperative attachShadow() for client-side creation.",
+            "Declarative Shadow DOM only creates the shadow root and content during initial page parse. Dynamically added DSD markup is not processed —use imperative attachShadow() for client-side creation.",
             "Some JavaScript frameworks and libraries do not yet integrate with Declarative Shadow DOM for SSR hydration. Check framework support before adopting DSD in a framework-based app."
         ],
         "verificationSteps": [
@@ -856,7 +856,7 @@
         "name": "Focus Ring CSS Generator",
         "category": "css",
         "summary": "Generate accessible :focus-visible outline or box-shadow focus ring CSS with contrast checking against background colors.",
-        "description": "Build a focus indicator that meets WCAG 2.4.7 accessibility requirements. Choose outline width, offset, style, and color, or use a box-shadow fallback. The tool checks contrast between the focus ring color and your background color 鈥?WCAG requires at least 3:1 contrast for focus indicators.",
+        "description": "Build a focus indicator that meets WCAG 2.4.7 accessibility requirements. Choose outline width, offset, style, and color, or use a box-shadow fallback. The tool checks contrast between the focus ring color and your background color —WCAG requires at least 3:1 contrast for focus indicators.",
         "keywords": [
             "focus ring generator",
             "focus visible css",
@@ -867,7 +867,7 @@
         "whatIs": "A focus ring is the visual indicator that shows which element is currently focused by the keyboard. WCAG 2.4.7 requires a visible focus indicator for all interactive elements. CSS :focus-visible targets keyboard focus specifically without showing a ring on mouse clicks. A good focus ring has sufficient contrast (3:1 minimum) against the background.",
         "howToUse": [
             "Set the focus ring width, offset, color, and style, or choose box-shadow as a fallback.",
-            "Specify the CSS selector 鈥?:focus-visible for keyboard-only focus, or :focus for all focus.",
+            "Specify the CSS selector —:focus-visible for keyboard-only focus, or :focus for all focus.",
             "If using a background color field, the tool checks the contrast ratio and warns if it falls below WCAG thresholds.",
             "Copy the CSS rule and apply globally or to specific components."
         ],
@@ -887,9 +887,9 @@
             }
         ],
         "mistakes": [
-            "Setting outline: none without providing a replacement 鈥?this removes the focus indicator entirely and violates WCAG 2.4.7.",
-            "Choosing a focus color that blends with the background 鈥?the ring must have at least 3:1 contrast to be perceivable.",
-            "Using :focus instead of :focus-visible 鈥?:focus shows the ring on mouse clicks too, which can look visually noisy. :focus-visible targets keyboard navigation only."
+            "Setting outline: none without providing a replacement —this removes the focus indicator entirely and violates WCAG 2.4.7.",
+            "Choosing a focus color that blends with the background —the ring must have at least 3:1 contrast to be perceivable.",
+            "Using :focus instead of :focus-visible —:focus shows the ring on mouse clicks too, which can look visually noisy. :focus-visible targets keyboard navigation only."
         ],
         "faq": [
             {
@@ -904,7 +904,7 @@
         "quickAnswer": "Generate an accessible keyboard focus ring CSS rule. Use :focus-visible to show the ring only for keyboard navigation. Ensure at least 3:1 contrast between the focus color and the background. Add a box-shadow fallback when you need rounded focus rings.",
         "limitations": [
             "Outline does not follow border-radius in all browsers. Chrome and Safari draw outlines with square corners on rounded elements. Use box-shadow as a fallback for rounded focus indicators.",
-            "The focus ring contrast check uses a simplified relative luminance calculation. Actual perceived contrast depends on the surrounding UI 鈥?test visually with real content.",
+            "The focus ring contrast check uses a simplified relative luminance calculation. Actual perceived contrast depends on the surrounding UI —test visually with real content.",
             "Some operating system high-contrast modes override author focus styles. Always test with Windows High Contrast Mode and macOS Increase Contrast settings enabled."
         ],
         "verificationSteps": [
@@ -948,13 +948,13 @@
             },
             {
                 "title": "E-commerce site with regional variants",
-                "text": "An online store has US English, UK English, and Canadian French versions. Enter the pairs and verify reciprocity 鈥?if the UK English page does not list the Canadian French alternate, the tool flags the missing link."
+                "text": "An online store has US English, UK English, and Canadian French versions. Enter the pairs and verify reciprocity —if the UK English page does not list the Canadian French alternate, the tool flags the missing link."
             }
         ],
         "mistakes": [
-            "Using relative URLs instead of absolute URLs 鈥?hreflang requires fully qualified URLs including the protocol (https://).",
-            "Forgetting to include the current page URL in its own set of alternates 鈥?each URL must list itself in the alternate links.",
-            "Creating hreflang groups that do not form complete reciprocal sets 鈥?if page A links to page B, page B must link back to page A with the matching language code."
+            "Using relative URLs instead of absolute URLs —hreflang requires fully qualified URLs including the protocol (https://).",
+            "Forgetting to include the current page URL in its own set of alternates —each URL must list itself in the alternate links.",
+            "Creating hreflang groups that do not form complete reciprocal sets —if page A links to page B, page B must link back to page A with the matching language code."
         ],
         "faq": [
             {
@@ -1066,13 +1066,13 @@
         "whatIs": "The Invoker Commands API is a declarative HTML feature that lets buttons control other elements without JavaScript. Using the commandfor attribute (pointing to a target element's id) and the command attribute (specifying the action), a button can open/close dialogs, toggle popovers, expand/collapse details, or fire custom command events. This replaces onclick handlers with declarative, accessible HTML.",
         "howToUse": [
             "Enter the target element ID and select the target type (dialog, popover, details, or custom).",
-            "Choose the command 鈥?different target types support different commands (show-modal, toggle-popover, open, etc.).",
+            "Choose the command —different target types support different commands (show-modal, toggle-popover, open, etc.).",
             "Set the button text. Optionally include the target element template and JS fallback.",
             "Copy the generated HTML. No JavaScript is required for built-in commands in supporting browsers."
         ],
         "useCases": [
             "Create a modal dialog trigger with a button that opens the dialog declaratively, and a close button inside the dialog that also works declaratively.",
-            "Build a popover menu with a toggle button 鈥?no click handlers, no state management.",
+            "Build a popover menu with a toggle button —no click handlers, no state management.",
             "Create a details/disclosure widget controlled by an external button instead of the summary element."
         ],
         "examples": [
@@ -1082,22 +1082,22 @@
             },
             {
                 "title": "Popover menu toggle",
-                "text": "A user menu popover toggles open and closed with one button. Use commandfor=\"user-menu\" command=\"toggle-popover\". The browser manages the popover state 鈥?no JavaScript tracking needed."
+                "text": "A user menu popover toggles open and closed with one button. Use commandfor=\"user-menu\" command=\"toggle-popover\". The browser manages the popover state —no JavaScript tracking needed."
             }
         ],
         "mistakes": [
-            "Using commandfor without a matching target element id 鈥?the button silently does nothing. Always verify the target id matches.",
-            "Using a command that is not supported by the target type 鈥?show-modal only works on dialog elements, toggle-popover only on popover elements.",
-            "Forgetting that invoker commands are Baseline 2025 鈥?older browsers need a JavaScript click handler fallback."
+            "Using commandfor without a matching target element id —the button silently does nothing. Always verify the target id matches.",
+            "Using a command that is not supported by the target type —show-modal only works on dialog elements, toggle-popover only on popover elements.",
+            "Forgetting that invoker commands are Baseline 2025 —older browsers need a JavaScript click handler fallback."
         ],
         "faq": [
             {
                 "question": "Do invoker commands work without any JavaScript at all?",
-                "answer": "Yes, for built-in commands on dialog, popover, and details elements. The browser handles the showModal(), close(), showPopover(), hidePopover(), and toggle commands natively. For custom commands, you add a 'command' event listener on the target element 鈥?one listener handles all command invocations."
+                "answer": "Yes, for built-in commands on dialog, popover, and details elements. The browser handles the showModal(), close(), showPopover(), hidePopover(), and toggle commands natively. For custom commands, you add a 'command' event listener on the target element —one listener handles all command invocations."
             },
             {
                 "question": "What is the difference between command and onclick?",
-                "answer": "command is declarative 鈥?it tells the browser what action to perform on the target. onclick is imperative 鈥?you write JavaScript to perform the action. command works without JavaScript for built-in actions. It also communicates intent to assistive technology: a button with command=\"show-modal\" announces its purpose more clearly than a generic click handler."
+                "answer": "command is declarative —it tells the browser what action to perform on the target. onclick is imperative —you write JavaScript to perform the action. command works without JavaScript for built-in actions. It also communicates intent to assistive technology: a button with command=\"show-modal\" announces its purpose more clearly than a generic click handler."
             }
         ],
         "quickAnswer": "Use the Invoker Commands API for declarative buttons that control dialogs, popovers, and details without JavaScript. Set commandfor to the target element ID and command to the action (show-modal, toggle-popover, open, close). Built-in commands work natively; custom commands fire a 'command' event on the target.",
@@ -1129,7 +1129,7 @@
         "howToUse": [
             "Choose a content type preset based on what kind of HTML you expect users to submit.",
             "Review and customize the allowed tags and attributes for your specific use case.",
-            "Select the output format 鈥?Sanitizer API, DOMPurify, or both.",
+            "Select the output format —Sanitizer API, DOMPurify, or both.",
             "Copy the configuration and use it wherever you render user-submitted HTML."
         ],
         "useCases": [
@@ -1148,9 +1148,9 @@
             }
         ],
         "mistakes": [
-            "Allowing script or style tags in the allowlist 鈥?these can execute arbitrary code and defeat the purpose of sanitization.",
-            "Allowing event handler attributes like onclick or onerror 鈥?attackers can inject JavaScript through event handlers even when script tags are blocked.",
-            "Assuming sanitization makes HTML safe for all contexts 鈥?sanitized HTML can still break layouts, overflow containers, or contain phishing links."
+            "Allowing script or style tags in the allowlist —these can execute arbitrary code and defeat the purpose of sanitization.",
+            "Allowing event handler attributes like onclick or onerror —attackers can inject JavaScript through event handlers even when script tags are blocked.",
+            "Assuming sanitization makes HTML safe for all contexts —sanitized HTML can still break layouts, overflow containers, or contain phishing links."
         ],
         "faq": [
             {
@@ -1201,7 +1201,7 @@
         "examples": [
             {
                 "title": "Debugging cache issues",
-                "text": "A developer notices pages are not caching. Paste the response headers into the parser. It shows Cache-Control: no-cache which explains the behavior 鈥?the browser must revalidate on every request."
+                "text": "A developer notices pages are not caching. Paste the response headers into the parser. It shows Cache-Control: no-cache which explains the behavior —the browser must revalidate on every request."
             },
             {
                 "title": "Security header audit",
@@ -1209,9 +1209,9 @@
             }
         ],
         "mistakes": [
-            "Pasting request headers instead of response headers 鈥?request headers (sent by the browser) have different meanings than response headers (sent by the server).",
-            "Overlooking security advisories 鈥?missing security headers leave the site vulnerable to well-known attacks that are easy to prevent.",
-            "Assuming headers from a CDN or proxy are the same as origin headers 鈥?CDNs often add, remove, or modify headers."
+            "Pasting request headers instead of response headers —request headers (sent by the browser) have different meanings than response headers (sent by the server).",
+            "Overlooking security advisories —missing security headers leave the site vulnerable to well-known attacks that are easy to prevent.",
+            "Assuming headers from a CDN or proxy are the same as origin headers —CDNs often add, remove, or modify headers."
         ],
         "faq": [
             {
@@ -1270,9 +1270,9 @@
             }
         ],
         "mistakes": [
-            "Using relative URLs like /tools/ instead of absolute URLs 鈥?AI tools reading the file may not know the base domain to resolve them against.",
-            "Forgetting the H1 heading at the top of the file 鈥?the H1 is required and tells the AI what the site or page collection is about.",
-            "Listing every single page instead of curating the most important entry points 鈥?an llms.txt should be a concise guide, not a complete sitemap."
+            "Using relative URLs like /tools/ instead of absolute URLs —AI tools reading the file may not know the base domain to resolve them against.",
+            "Forgetting the H1 heading at the top of the file —the H1 is required and tells the AI what the site or page collection is about.",
+            "Listing every single page instead of curating the most important entry points —an llms.txt should be a concise guide, not a complete sitemap."
         ],
         "faq": [
             {
@@ -1290,7 +1290,7 @@
         ],
         "quickAnswer": "Validate your llms.txt file to ensure it follows the specification: a required H1 title, optional blockquote summary, ## section headings, and absolute Markdown links. A well-formed llms.txt helps AI tools discover and understand your site's key pages efficiently.",
         "limitations": [
-            "This validator checks structure and link format only. It does not verify that linked pages actually exist or return good content 鈥?use a link checker for that.",
+            "This validator checks structure and link format only. It does not verify that linked pages actually exist or return good content —use a link checker for that.",
             "The llms.txt format has no official standards body (IETF, W3C) endorsement. The specification is community-driven and may evolve over time.",
             "File size and link count warnings are advisory. There is no formal upper limit for llms.txt files, but shorter, curated files are more effective for AI consumption."
         ],
@@ -1462,9 +1462,9 @@
             }
         ],
         "mistakes": [
-            "Forgetting to include {searchTerms} in the search URL template 鈥?without it, the browser cannot pass the user's query to the search page.",
-            "Using a relative URL for the favicon or not serving it over HTTPS 鈥?the favicon must be an absolute HTTPS URL.",
-            "Serving the XML file with the wrong Content-Type 鈥?it should be application/opensearchdescription+xml for browsers to recognize it."
+            "Forgetting to include {searchTerms} in the search URL template —without it, the browser cannot pass the user's query to the search page.",
+            "Using a relative URL for the favicon or not serving it over HTTPS —the favicon must be an absolute HTTPS URL.",
+            "Serving the XML file with the wrong Content-Type —it should be application/opensearchdescription+xml for browsers to recognize it."
         ],
         "faq": [
             {
@@ -1508,7 +1508,7 @@
         "whatIs": "A maskable icon is a PWA icon that can adapt to different platform shapes. Android may display it as a circle, squircle, or rounded square depending on the device. The safe zone is the inner portion of the icon that is guaranteed to be visible regardless of the shape. PWA guidelines recommend that important icon content fills at least 80% of the canvas, with padding so content stays inside the safe zone.",
         "howToUse": [
             "Upload a square PNG icon (512x512 or larger recommended) for your PWA.",
-            "Adjust the safe-zone padding percentage 鈥?15% (PWA standard) means an 85% visible safe zone.",
+            "Adjust the safe-zone padding percentage —15% (PWA standard) means an 85% visible safe zone.",
             "Preview the overlay on the icon to confirm important content is inside the dashed safe-zone circle.",
             "Copy the manifest icon entries with purpose: maskable and export your icons at 192x192 and 512x512."
         ],
@@ -1528,9 +1528,9 @@
             }
         ],
         "mistakes": [
-            "Using purpose: maskable on an icon that has no safe-zone padding 鈥?the icon may get cropped into an unrecognizable shape on Android.",
-            "Only providing one icon size 鈥?PWA requires at minimum 192x192 and 512x512 for installability across platforms.",
-            "Uploading a non-square icon 鈥?maskable icons should be square for consistent rendering across platform shapes."
+            "Using purpose: maskable on an icon that has no safe-zone padding —the icon may get cropped into an unrecognizable shape on Android.",
+            "Only providing one icon size —PWA requires at minimum 192x192 and 512x512 for installability across platforms.",
+            "Uploading a non-square icon —maskable icons should be square for consistent rendering across platform shapes."
         ],
         "faq": [
             {
@@ -1549,7 +1549,7 @@
         "quickAnswer": "Upload your square PWA icon to preview the maskable safe zone overlay. Keep important content inside the safe zone (the inner 80% of the icon). Export manifest icon entries with both any and maskable purposes at 192x192 and 512x512 sizes.",
         "limitations": [
             "The preview shows a circular safe zone, but actual platform shapes vary (squircles, rounded squares, circles). The circular zone is a reasonable worst-case approximation for all shapes.",
-            "This tool provides a visual preview only. It does not export actual PNG files 鈥?use an image editor or icon generation tool to create the final icon files at the required sizes.",
+            "This tool provides a visual preview only. It does not export actual PNG files —use an image editor or icon generation tool to create the final icon files at the required sizes.",
             "Some platforms apply additional transformations beyond maskable cropping, such as drop shadows or platform-specific icon treatments that cannot be previewed here."
         ],
         "verificationSteps": [
@@ -1571,7 +1571,7 @@
             "htaccess redirect",
             "nginx rewrite converter"
         ],
-        "whatIs": "A redirect map is a list of URL redirects 鈥?old URL, new URL, HTTP status code 鈥?that tells your web server or hosting platform to send visitors from the old URL to the new one. Different platforms use different formats, from simple space-delimited files (Netlify _redirects) to JSON arrays (Vercel) to Apache/Nginx server config syntax. This tool converts a single CSV map to all major platform formats.",
+        "whatIs": "A redirect map is a list of URL redirects —old URL, new URL, HTTP status code —that tells your web server or hosting platform to send visitors from the old URL to the new one. Different platforms use different formats, from simple space-delimited files (Netlify _redirects) to JSON arrays (Vercel) to Apache/Nginx server config syntax. This tool converts a single CSV map to all major platform formats.",
         "howToUse": [
             "Enter your redirect mappings in CSV format: old_url,new_url,status (status defaults to 301 if omitted).",
             "Select the target platform format.",
@@ -1594,9 +1594,9 @@
             }
         ],
         "mistakes": [
-            "Creating redirect chains (A 鈫?B 鈫?C) instead of direct redirects (A 鈫?C, B 鈫?C) 鈥?each hop adds latency and may lose SEO value.",
-            "Using relative URLs without a leading slash 鈥?all redirect paths should be absolute paths starting with /.",
-            "Forgetting to include the status code 鈥?defaults to 301, but some platforms default to 302 which has different SEO implications."
+            "Creating redirect chains (A 鈫?B 鈫?C) instead of direct redirects (A 鈫?C, B 鈫?C) —each hop adds latency and may lose SEO value.",
+            "Using relative URLs without a leading slash —all redirect paths should be absolute paths starting with /.",
+            "Forgetting to include the status code —defaults to 301, but some platforms default to 302 which has different SEO implications."
         ],
         "faq": [
             {
@@ -1610,7 +1610,7 @@
         ],
         "quickAnswer": "Convert a CSV redirect map (old_url,new_url,status) to your platform's redirect format. Supports Netlify _redirects and netlify.toml, Vercel vercel.json, Apache .htaccess, and Nginx rewrite rules. Validate duplicates and redirect chains before deploying.",
         "limitations": [
-            "Different platforms handle redirect edge cases differently 鈥?trailing slashes, query string forwarding, and wildcard matching vary. Test redirects on the actual platform after conversion.",
+            "Different platforms handle redirect edge cases differently —trailing slashes, query string forwarding, and wildcard matching vary. Test redirects on the actual platform after conversion.",
             "Very large redirect maps (10,000+ entries) may need to be split or converted to pattern-based rules for performance. This tool generates one entry per redirect.",
             "Apache and Nginx formats assume basic server configuration. Complex setups with virtual hosts, location blocks, or conditional rewrites may need manual adjustment."
         ],
@@ -1655,14 +1655,14 @@
             }
         ],
         "mistakes": [
-            "Placing security.txt at the site root instead of /.well-known/security.txt 鈥?the /.well-known/ path is required by RFC 9116.",
-            "Letting the Expires date pass without renewal 鈥?automated scanners ignore expired security.txt files.",
-            "Serving the file over HTTP instead of HTTPS 鈥?the file must be accessible over HTTPS without redirects."
+            "Placing security.txt at the site root instead of /.well-known/security.txt —the /.well-known/ path is required by RFC 9116.",
+            "Letting the Expires date pass without renewal —automated scanners ignore expired security.txt files.",
+            "Serving the file over HTTP instead of HTTPS —the file must be accessible over HTTPS without redirects."
         ],
         "faq": [
             {
                 "question": "Where exactly should I place the security.txt file?",
-                "answer": "Place it at /.well-known/security.txt 鈥?the full URL should be https://yourdomain.com/.well-known/security.txt. For GitHub Pages, create a .well-known directory in your published site root and place security.txt inside it. The file must be served directly, not redirected."
+                "answer": "Place it at /.well-known/security.txt —the full URL should be https://yourdomain.com/.well-known/security.txt. For GitHub Pages, create a .well-known directory in your published site root and place security.txt inside it. The file must be served directly, not redirected."
             },
             {
                 "question": "How often should I renew the Expires date?",
@@ -1677,7 +1677,7 @@
         "limitations": [
             "security.txt is a proposed standard (RFC 9116), not a W3C Recommendation. Some organizations are not yet aware of it, and automated scanner adoption varies by region and industry.",
             "The file must be served over HTTPS without redirects. Some static hosting platforms (including GitHub Pages) may redirect /.well-known/ paths or serve them with unexpected content types.",
-            "security.txt alone does not create a vulnerability disclosure program or bug bounty. It only tells researchers where to report 鈥?you still need an internal process to handle incoming reports."
+            "security.txt alone does not create a vulnerability disclosure program or bug bounty. It only tells researchers where to report —you still need an internal process to handle incoming reports."
         ],
         "verificationSteps": [
             "Visit https://yourdomain.com/.well-known/security.txt in a browser and confirm it loads directly over HTTPS without redirects.",
@@ -1697,10 +1697,10 @@
             "script integrity",
             "cdn security hash"
         ],
-        "whatIs": "Subresource Integrity (SRI) is a browser security feature that verifies the content of external scripts and stylesheets. You add an integrity attribute to your script or link tag containing a cryptographic hash of the file. Before executing the file, the browser computes its hash and compares it to the integrity value. If the hashes do not match 鈥?because the file was modified, compromised, or corrupted 鈥?the browser blocks the resource.",
+        "whatIs": "Subresource Integrity (SRI) is a browser security feature that verifies the content of external scripts and stylesheets. You add an integrity attribute to your script or link tag containing a cryptographic hash of the file. Before executing the file, the browser computes its hash and compares it to the integrity value. If the hashes do not match —because the file was modified, compromised, or corrupted —the browser blocks the resource.",
         "howToUse": [
             "Provide the file content by pasting the code directly, uploading the file, or both (pasted content takes priority).",
-            "Select the hash algorithm 鈥?SHA-256 is the standard; SHA-384 and SHA-512 are also valid.",
+            "Select the hash algorithm —SHA-256 is the standard; SHA-384 and SHA-512 are also valid.",
             "Copy the generated integrity attribute and the complete script or link tag into your HTML."
         ],
         "useCases": [
@@ -1719,9 +1719,9 @@
             }
         ],
         "mistakes": [
-            "Generating a hash from a development version of a file and using it on a different production version 鈥?the hashes will not match.",
+            "Generating a hash from a development version of a file and using it on a different production version —the hashes will not match.",
             "Forgetting the crossorigin='anonymous' attribute on the script or link tag, which prevents the browser from computing the hash for cross-origin resources.",
-            "Never updating the integrity hash after a CDN library upgrade 鈥?old hashes block the new file and break the page."
+            "Never updating the integrity hash after a CDN library upgrade —old hashes block the new file and break the page."
         ],
         "faq": [
             {
@@ -1734,11 +1734,11 @@
             },
             {
                 "question": "Which hash algorithm should I use for SRI?",
-                "answer": "SHA-256 is the standard and most widely used. SHA-384 and SHA-512 are also valid and provide stronger collision resistance, but the larger hash values add more bytes to your HTML. For web use, SHA-256 is sufficient 鈥?the security comes from the integrity check itself, not the hash length."
+                "answer": "SHA-256 is the standard and most widely used. SHA-384 and SHA-512 are also valid and provide stronger collision resistance, but the larger hash values add more bytes to your HTML. For web use, SHA-256 is sufficient —the security comes from the integrity check itself, not the hash length."
             },
             {
                 "question": "Can I use SRI with dynamically loaded scripts?",
-                "answer": "SRI only works with static script and link tags in the HTML. For dynamically loaded scripts (via import() or appendChild), you can set the integrity property on the script element before appending it. Module scripts loaded with import() do not support SRI directly 鈥?use import maps with integrity instead."
+                "answer": "SRI only works with static script and link tags in the HTML. For dynamically loaded scripts (via import() or appendChild), you can set the integrity property on the script element before appending it. Module scripts loaded with import() do not support SRI directly —use import maps with integrity instead."
             }
         ],
         "quickAnswer": "Use Subresource Integrity (SRI) to protect your site from compromised CDN files. Generate a cryptographic hash of the file content, add the integrity attribute to your script or link tag, and include crossorigin='anonymous'. The browser blocks the resource if its actual hash does not match.",
@@ -1748,7 +1748,7 @@
             "SRI does not work with resources that require credentials (cookies, HTTP auth) from a different origin. For credentialed cross-origin requests, use crossorigin='use-credentials' instead of 'anonymous'."
         ],
         "verificationSteps": [
-            "Check the browser DevTools Network tab 鈥?a resource with a matching integrity hash loads normally; a mismatched resource is blocked in red with an SRI error.",
+            "Check the browser DevTools Network tab —a resource with a matching integrity hash loads normally; a mismatched resource is blocked in red with an SRI error.",
             "Verify the generated hash by computing it independently: openssl dgst -sha256 -binary file.js | openssl base64 -A should match the generated integrity value."
         ],
         "updatedAt": "2026-05-28"
@@ -2954,7 +2954,7 @@
         "name": "Touch Target Size Checker",
         "category": "css",
         "summary": "Check interactive element dimensions against WCAG 2.2 Target Size (2.5.8) requirements. Get AA/AAA results with CSS fix recommendations.",
-        "description": "Verify that buttons, links, inputs, and other interactive elements meet WCAG 2.2 target size requirements: 24x24px for AA, 44x44px for AAA. Handles the four exception types 鈥?inline, user-agent, essential, and spacing 鈥?with clear pass/fail results and CSS fix suggestions.",
+        "description": "Verify that buttons, links, inputs, and other interactive elements meet WCAG 2.2 target size requirements: 24x24px for AA, 44x44px for AAA. Handles the four exception types —inline, user-agent, essential, and spacing —with clear pass/fail results and CSS fix suggestions.",
         "keywords": [
             "touch target size checker",
             "wcag target size",
@@ -2966,7 +2966,7 @@
         "howToUse": [
             "Enter the width and height of your interactive element in CSS pixels.",
             "Enter the spacing to the nearest adjacent interactive element if known.",
-            "Select the element type 鈥?different exceptions apply to inline links, native controls, and essential elements.",
+            "Select the element type —different exceptions apply to inline links, native controls, and essential elements.",
             "Review the pass/fail result and CSS fix recommendations."
         ],
         "useCases": [
@@ -2985,9 +2985,9 @@
             }
         ],
         "mistakes": [
-            "Assuming spacing alone fixes target size 鈥?the spacing exception requires the element to be at least 20px and have 24px spacing to adjacent targets.",
-            "Applying the inline exception to non-inline elements like standalone buttons or navigation links 鈥?the inline exception only applies to links within text blocks.",
-            "Checking desktop dimensions instead of CSS pixels 鈥?CSS pixels may differ from device pixels on high-DPI screens. Always use computed CSS values from DevTools."
+            "Assuming spacing alone fixes target size —the spacing exception requires the element to be at least 20px and have 24px spacing to adjacent targets.",
+            "Applying the inline exception to non-inline elements like standalone buttons or navigation links —the inline exception only applies to links within text blocks.",
+            "Checking desktop dimensions instead of CSS pixels —CSS pixels may differ from device pixels on high-DPI screens. Always use computed CSS values from DevTools."
         ],
         "faq": [
             {
@@ -3069,7 +3069,7 @@
             },
             {
                 "question": "Should I use dashes (-) or underscores (_) in a URL slug?",
-                "answer": "Use dashes. Google treats dashes as word separators, so best-widget-reviews is read as three separate words: best, widget, reviews. Underscores are treated as joiners 鈥?best_widget_reviews is read as a single term. This affects how search engines match your URL to user queries. Dashes are also easier for users to type and read in the address bar."
+                "answer": "Use dashes. Google treats dashes as word separators, so best-widget-reviews is read as three separate words: best, widget, reviews. Underscores are treated as joiners —best_widget_reviews is read as a single term. This affects how search engines match your URL to user queries. Dashes are also easier for users to type and read in the address bar."
             },
             {
                 "question": "How do I handle non-English characters, emoji, or symbols in slugs?",
@@ -3236,7 +3236,7 @@
             "Click the Generate Key Pair button to create a new P-256 key pair using your browser's Web Crypto API.",
             "Copy the public key into your frontend JavaScript where you call pushManager.subscribe().",
             "Copy the private key into your server environment variables and use it with the web-push library or Firebase.",
-            "Never expose the private key 鈥?it stays on your server and is used to sign push messages."
+            "Never expose the private key —it stays on your server and is used to sign push messages."
         ],
         "useCases": [
             "Generate a VAPID key pair for adding web push notifications to a web app.",
@@ -3254,9 +3254,9 @@
             }
         ],
         "mistakes": [
-            "Committing the private key to a public git repository 鈥?the private key must be kept secret and managed through environment variables or a secrets manager.",
-            "Using the same VAPID key pair for multiple unrelated applications 鈥?generate a separate key pair for each application for better security isolation.",
-            "Losing the private key 鈥?there is no way to recover a VAPID private key. You must generate a new pair and update both the server and all subscribed clients."
+            "Committing the private key to a public git repository —the private key must be kept secret and managed through environment variables or a secrets manager.",
+            "Using the same VAPID key pair for multiple unrelated applications —generate a separate key pair for each application for better security isolation.",
+            "Losing the private key —there is no way to recover a VAPID private key. You must generate a new pair and update both the server and all subscribed clients."
         ],
         "faq": [
             {
@@ -3265,7 +3265,7 @@
             },
             {
                 "question": "What happens if my VAPID private key is exposed?",
-                "answer": "Anyone with the private key can send push messages that appear to come from your server. Generate a new key pair immediately, update your server with the new keys, and resubscribe all your push users with the new public key. Push subscriptions are tied to the public key 鈥?old subscriptions cannot receive messages signed with a new key."
+                "answer": "Anyone with the private key can send push messages that appear to come from your server. Generate a new key pair immediately, update your server with the new keys, and resubscribe all your push users with the new public key. Push subscriptions are tied to the public key —old subscriptions cannot receive messages signed with a new key."
             },
             {
                 "question": "Do I need a VAPID key pair for Firebase Cloud Messaging?",
@@ -3276,7 +3276,7 @@
         "limitations": [
             "Keys generated in the browser are only as secure as the browser environment. For production use, consider generating keys server-side with OpenSSL and storing the private key in a secure secrets manager.",
             "The Web Crypto API requires a secure context (HTTPS or localhost). If the browser does not support Web Crypto, the tool cannot generate keys.",
-            "VAPID keys use the P-256 (prime256v1) curve. Some older push libraries expect different formats 鈥?always verify the format expected by your specific push service or library."
+            "VAPID keys use the P-256 (prime256v1) curve. Some older push libraries expect different formats —always verify the format expected by your specific push service or library."
         ],
         "verificationSteps": [
             "Test the key pair by subscribing a browser to push notifications and sending a test push message from your server.",
@@ -3316,13 +3316,13 @@
             },
             {
                 "title": "SPA content swap",
-                "text": "A dashboard filters a data table. Wrap the filter update in document.startViewTransition(() => updateTable()). The old table rows fade out while new rows fade in 鈥?no manual animation code needed."
+                "text": "A dashboard filters a data table. Wrap the filter update in document.startViewTransition(() => updateTable()). The old table rows fade out while new rows fade in —no manual animation code needed."
             }
         ],
         "mistakes": [
-            "Giving two elements the same view-transition-name on the same page 鈥?names must be unique per page. The browser throws an error and skips the transition.",
-            "Forgetting the meta tag in the page head for MPA transitions 鈥?cross-document transitions do not work without it.",
-            "Not handling prefers-reduced-motion 鈥?users with motion sensitivity should get instant transitions instead of animations."
+            "Giving two elements the same view-transition-name on the same page —names must be unique per page. The browser throws an error and skips the transition.",
+            "Forgetting the meta tag in the page head for MPA transitions —cross-document transitions do not work without it.",
+            "Not handling prefers-reduced-motion —users with motion sensitivity should get instant transitions instead of animations."
         ],
         "faq": [
             {
@@ -3334,7 +3334,7 @@
         "limitations": [
             "Cross-document (MPA) transitions only work between same-origin pages. Cross-origin navigation does not trigger a view transition, even with the meta tag.",
             "The browser captures static screenshots of the old and new states. Live content like videos, animations, or continuously updating elements may appear frozen during the transition.",
-            "View Transitions are Baseline 2025: Chrome 111+, Edge 111+, Safari 18.2+. Firefox support is in development. Unsupported browsers navigate without animation 鈥?the feature degrades gracefully."
+            "View Transitions are Baseline 2025: Chrome 111+, Edge 111+, Safari 18.2+. Firefox support is in development. Unsupported browsers navigate without animation —the feature degrades gracefully."
         ],
         "verificationSteps": [
             "Test the transition by navigating between pages or triggering the content update and observing the animation.",
@@ -3540,7 +3540,7 @@
             },
             {
                 "question": "When should I use HTML entities vs typing Unicode characters directly?",
-                "answer": "Use HTML entities for characters that have special meaning in HTML (less than, greater than, ampersand, quotes) because typing them directly can break the HTML structure. For other special characters like 漏, \", or 鈥? you can type the Unicode character directly in a UTF-8 document. Entities are useful when the character is hard to type on a keyboard, hard to distinguish in code, or when the source file encoding might not reliably preserve it."
+                "answer": "Use HTML entities for characters that have special meaning in HTML (less than, greater than, ampersand, quotes) because typing them directly can break the HTML structure. For other special characters like 漏, \", or — you can type the Unicode character directly in a UTF-8 document. Entities are useful when the character is hard to type on a keyboard, hard to distinguish in code, or when the source file encoding might not reliably preserve it."
             }
         ],
         "limitations": [
@@ -4541,7 +4541,7 @@
             },
             {
                 "question": "Do I need to update the RSS feed manually each time I publish?",
-                "answer": "On a static site without a build pipeline, yes 鈥?you must add each new post to the feed.xml file by hand. Most static site generators (Hugo, Eleventy, Jekyll, Astro) can generate the RSS feed automatically at build time from your content files. If you are editing HTML directly with no generator, budget time to update the feed with each post or create a simple script that reads a posts directory and generates the feed."
+                "answer": "On a static site without a build pipeline, yes —you must add each new post to the feed.xml file by hand. Most static site generators (Hugo, Eleventy, Jekyll, Astro) can generate the RSS feed automatically at build time from your content files. If you are editing HTML directly with no generator, budget time to update the feed with each post or create a simple script that reads a posts directory and generates the feed."
             }
         ],
         "quickAnswer": "RSS is an XML format that lets readers subscribe to your site updates through feed readers and aggregators. A feed.xml file at your site root makes new content discoverable without manual checking.",
@@ -4740,7 +4740,7 @@
             },
             {
                 "question": "How do container queries differ from media queries?",
-                "answer": "Media queries respond to the viewport size and global browser conditions. Container queries respond to the size of a parent container element. This means a component styled with container queries adapts to its container regardless of where it is placed 鈥?in a wide main column, a narrow sidebar, or a card grid 鈥?without needing separate media query breakpoints for each layout context."
+                "answer": "Media queries respond to the viewport size and global browser conditions. Container queries respond to the size of a parent container element. This means a component styled with container queries adapts to its container regardless of where it is placed —in a wide main column, a narrow sidebar, or a card grid —without needing separate media query breakpoints for each layout context."
             },
             {
                 "question": "What happens if I use @container without setting container-type on the parent?",
@@ -5158,7 +5158,7 @@
             },
             {
                 "question": "What is the difference between the article and section elements?",
-                "answer": "Article represents a self-contained piece of content that makes sense on its own when taken out of the page 鈥?a blog post, a news story, a product card, a forum post. Section is a thematic grouping of content that requires context from the rest of the page and typically has a heading. Use article for independent, distributable content and section for dividing a page into thematic areas."
+                "answer": "Article represents a self-contained piece of content that makes sense on its own when taken out of the page —a blog post, a news story, a product card, a forum post. Section is a thematic grouping of content that requires context from the rest of the page and typically has a heading. Use article for independent, distributable content and section for dividing a page into thematic areas."
             }
         ],
         "limitations": [
@@ -5713,7 +5713,7 @@
             },
             {
                 "question": "What is the LCP image and why should I not lazy-load it?",
-                "answer": "LCP (Largest Contentful Paint) is a Core Web Vital metric that measures when the largest visible content element renders. The LCP image is typically the hero image or main visual at the top of the page. Adding loading=\"lazy\" to the LCP image delays its loading until the browser calculates that it is near the viewport 鈥?but it is already in the viewport on load, so the calculation itself adds unnecessary delay and hurts the LCP score."
+                "answer": "LCP (Largest Contentful Paint) is a Core Web Vital metric that measures when the largest visible content element renders. The LCP image is typically the hero image or main visual at the top of the page. Adding loading=\"lazy\" to the LCP image delays its loading until the browser calculates that it is near the viewport —but it is already in the viewport on load, so the calculation itself adds unnecessary delay and hurts the LCP score."
             },
             {
                 "question": "What happens if I use loading=\"lazy\" on an image inside a scrolling container or carousel?",
@@ -5922,7 +5922,7 @@
             },
             {
                 "question": "Can I use scroll-driven animations with regular CSS keyframes?",
-                "answer": "Yes. Define standard @keyframes as you normally would, then attach them to a scroll timeline with animation-timeline: scroll() or animation-timeline: view(). The keyframe percentages map to scroll progress: 0% is the start of the scroll range and 100% is the end. No JavaScript is required 鈥?the browser drives the animation from the scroll position natively."
+                "answer": "Yes. Define standard @keyframes as you normally would, then attach them to a scroll timeline with animation-timeline: scroll() or animation-timeline: view(). The keyframe percentages map to scroll progress: 0% is the start of the scroll range and 100% is the end. No JavaScript is required —the browser drives the animation from the scroll position natively."
             },
             {
                 "question": "What performance impact do scroll-driven animations have?",
@@ -5994,7 +5994,7 @@
             },
             {
                 "question": "What CSS properties are normally discrete and cannot be transitioned?",
-                "answer": "Display, overlay, content-visibility, and the mix-blend-mode to initial transition are examples of discrete properties. They have no intermediate states 鈥?an element is either visible or not, block or none. The transition-behavior: allow-discrete rule tells the browser to wait until the end of the transition-duration before switching states, rather than switching instantly at the start."
+                "answer": "Display, overlay, content-visibility, and the mix-blend-mode to initial transition are examples of discrete properties. They have no intermediate states —an element is either visible or not, block or none. The transition-behavior: allow-discrete rule tells the browser to wait until the end of the transition-duration before switching states, rather than switching instantly at the start."
             },
             {
                 "question": "Can I transition between display: none and display: block?",
@@ -6066,7 +6066,7 @@
             },
             {
                 "question": "How does light-dark() detect the user color scheme?",
-                "answer": "The browser reads the prefers-color-scheme media query from the operating system or browser setting. When the user has selected a light theme, light-dark(A, B) returns A. When they have selected a dark theme, it returns B. The detection is automatic and requires no JavaScript. The function must be used within a color property 鈥?it cannot be used for non-color values."
+                "answer": "The browser reads the prefers-color-scheme media query from the operating system or browser setting. When the user has selected a light theme, light-dark(A, B) returns A. When they have selected a dark theme, it returns B. The detection is automatic and requires no JavaScript. The function must be used within a color property —it cannot be used for non-color values."
             },
             {
                 "question": "What is the correct fallback pattern for browsers that do not support light-dark()?",
@@ -6211,7 +6211,7 @@
             },
             {
                 "question": "How does color-mix() handle colors with different opacity levels?",
-                "answer": "The alpha channel is mixed linearly along with the color channels. If one color has 50% opacity and the other has 100%, a 50% mix produces 75% opacity. The interpolation color space does not affect alpha mixing 鈥?alpha is always mixed in a linear space regardless of the chosen color interpolation method. Use percentage values to control the weight of each color in the mix."
+                "answer": "The alpha channel is mixed linearly along with the color channels. If one color has 50% opacity and the other has 100%, a 50% mix produces 75% opacity. The interpolation color space does not affect alpha mixing —alpha is always mixed in a linear space regardless of the chosen color interpolation method. Use percentage values to control the weight of each color in the mix."
             }
         ],
         "quickAnswer": "Use color-mix() to blend two colors in a specified color space, such as oklab or srgb. It is useful for creating tint, shade, and hover variants from a single base color without a preprocessor.",
@@ -6283,7 +6283,7 @@
             },
             {
                 "question": "What is a practical use case for relative color syntax that I cannot do with color-mix()?",
-                "answer": "Relative color syntax can extract and manipulate individual color channels 鈥?for example, taking a brand color and creating a lighter variant by increasing its lightness channel while keeping the same hue and saturation: oklch(from var(--brand) calc(l + 0.1) c h). This channel-level control is impossible with color-mix(), which only blends two full colors together. Use relative syntax to generate systematic color scales from a single base color."
+                "answer": "Relative color syntax can extract and manipulate individual color channels —for example, taking a brand color and creating a lighter variant by increasing its lightness channel while keeping the same hue and saturation: oklch(from var(--brand) calc(l + 0.1) c h). This channel-level control is impossible with color-mix(), which only blends two full colors together. Use relative syntax to generate systematic color scales from a single base color."
             }
         ],
         "quickAnswer": "CSS relative color syntax lets you create a new color by adjusting individual channels of an existing color. It is more powerful than color-mix() for precise channel-level manipulation without a preprocessor.",
@@ -6571,7 +6571,7 @@
         ],
         "useCases": [
             "Validate a manifest before deploying a PWA to ensure installability requirements are met.",
-            "Debug why a PWA install prompt is not appearing 鈥?check the manifest fields that Chrome and Edge require.",
+            "Debug why a PWA install prompt is not appearing —check the manifest fields that Chrome and Edge require.",
             "Audit an existing manifest after adding new icons, changing the start URL, or updating theme colors."
         ],
         "examples": [
@@ -6581,13 +6581,13 @@
             },
             {
                 "title": "Debugging PWA install prompt",
-                "text": "A PWA is not showing the install prompt on Chrome. Paste the manifest into the validator. It reports that the icons array is empty 鈥?without at least a 192x192 icon, Chrome does not offer the install prompt."
+                "text": "A PWA is not showing the install prompt on Chrome. Paste the manifest into the validator. It reports that the icons array is empty —without at least a 192x192 icon, Chrome does not offer the install prompt."
             }
         ],
         "mistakes": [
-            "Forgetting to link the manifest in the HTML head 鈥?the browser cannot discover the manifest without the link tag.",
-            "Using an empty or missing icons array 鈥?at minimum, a 192x192 and 512x512 PNG icon are required for the install prompt.",
-            "Setting the display mode to browser but expecting an installable app 鈥?standalone, fullscreen, or minimal-ui are the installable display modes."
+            "Forgetting to link the manifest in the HTML head —the browser cannot discover the manifest without the link tag.",
+            "Using an empty or missing icons array —at minimum, a 192x192 and 512x512 PNG icon are required for the install prompt.",
+            "Setting the display mode to browser but expecting an installable app —standalone, fullscreen, or minimal-ui are the installable display modes."
         ],
         "faq": [
             {
@@ -6596,7 +6596,7 @@
             },
             {
                 "question": "Is short_name required if name is already short?",
-                "answer": "If name is 30 characters or fewer, some platforms use it as the short name. However, explicitly setting short_name ensures consistent behavior across platforms. The recommended maximum for short_name is 12 characters 鈥?longer names are truncated on Android and iOS home screens."
+                "answer": "If name is 30 characters or fewer, some platforms use it as the short name. However, explicitly setting short_name ensures consistent behavior across platforms. The recommended maximum for short_name is 12 characters —longer names are truncated on Android and iOS home screens."
             },
             {
                 "question": "What MIME type should the manifest be served with?",
@@ -6606,11 +6606,11 @@
         "quickAnswer": "Validate your web app manifest JSON for PWA installability. Required: name, icons (192x192 and 512x512), start_url, display mode (standalone/fullscreen/minimal-ui). The manifest must be linked in the HTML head and served with Content-Type: application/manifest+json.",
         "limitations": [
             "This validator checks the manifest JSON content only. It does not verify that icon files exist, that the start_url returns 200, or that the service worker is registered and functional.",
-            "The W3C Web App Manifest specification is evolving. New fields like protocol_handlers, shortcuts, and related_applications are not yet validated 鈥?check the latest spec for recently added fields.",
+            "The W3C Web App Manifest specification is evolving. New fields like protocol_handlers, shortcuts, and related_applications are not yet validated —check the latest spec for recently added fields.",
             "Different browsers have different installability requirements. Chrome, Edge, Safari, and Firefox each interpret manifest fields slightly differently. Test on real devices across platforms."
         ],
         "verificationSteps": [
-            "Run a Lighthouse PWA audit 鈥?it checks the manifest along with other installability requirements.",
+            "Run a Lighthouse PWA audit —it checks the manifest along with other installability requirements.",
             "Open Chrome DevTools > Application > Manifest and verify all fields are parsed correctly and no errors are shown."
         ],
         "updatedAt": "2026-05-28"
@@ -6627,9 +6627,9 @@
             "robots http header",
             "indexing control pdf"
         ],
-        "whatIs": "X-Robots-Tag is an HTTP response header that tells search engines how to handle a resource in their index. It is the HTTP equivalent of the robots meta tag but works on any file type 鈥?PDFs, images, videos, feeds, JSON responses, and HTML pages alike. The header accepts the same directives as the meta tag: noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate, and others.",
+        "whatIs": "X-Robots-Tag is an HTTP response header that tells search engines how to handle a resource in their index. It is the HTTP equivalent of the robots meta tag but works on any file type —PDFs, images, videos, feeds, JSON responses, and HTML pages alike. The header accepts the same directives as the meta tag: noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate, and others.",
         "howToUse": [
-            "Select the directives you want to apply 鈥?common combinations are noindex, nofollow for pages to be excluded, and noarchive for content that should not be cached by search engines.",
+            "Select the directives you want to apply —common combinations are noindex, nofollow for pages to be excluded, and noarchive for content that should not be cached by search engines.",
             "Optionally specify a user-agent to target specific crawlers, or leave it empty for all bots.",
             "Copy the HTTP header and/or the HTML meta tag into your server configuration or page markup."
         ],
@@ -6649,14 +6649,14 @@
             }
         ],
         "mistakes": [
-            "Setting a robots meta tag on a page but also sending a conflicting X-Robots-Tag header 鈥?search engines may honor the more restrictive directive.",
-            "Using noindex on a page that is blocked by robots.txt 鈥?search engines cannot see the noindex directive if they cannot crawl the page.",
-            "Forgetting that X-Robots-Tag applies to the entire HTTP response 鈥?all embedded resources in that response inherit the header behavior."
+            "Setting a robots meta tag on a page but also sending a conflicting X-Robots-Tag header —search engines may honor the more restrictive directive.",
+            "Using noindex on a page that is blocked by robots.txt —search engines cannot see the noindex directive if they cannot crawl the page.",
+            "Forgetting that X-Robots-Tag applies to the entire HTTP response —all embedded resources in that response inherit the header behavior."
         ],
         "faq": [
             {
                 "question": "What is the difference between robots.txt Disallow and X-Robots-Tag noindex?",
-                "answer": "robots.txt Disallow prevents crawling 鈥?the search engine cannot access the resource at all. X-Robots-Tag noindex allows crawling but tells the search engine not to include the resource in its index. To remove a page from search results, use noindex and do NOT block it with robots.txt, so the crawler can read the noindex directive."
+                "answer": "robots.txt Disallow prevents crawling —the search engine cannot access the resource at all. X-Robots-Tag noindex allows crawling but tells the search engine not to include the resource in its index. To remove a page from search results, use noindex and do NOT block it with robots.txt, so the crawler can read the noindex directive."
             },
             {
                 "question": "Does X-Robots-Tag work on non-HTML files?",
@@ -6667,11 +6667,11 @@
                 "answer": "Yes. Most web servers support conditional headers based on user-agent. For example, in Nginx: if the user-agent matches Googlebot, add an X-Robots-Tag header. However, not all bots respect user-agent-specific directives, and the safest approach is to apply directives broadly."
             }
         ],
-        "quickAnswer": "X-Robots-Tag is an HTTP header that controls search engine indexing for any file type 鈥?PDFs, images, feeds, and HTML. Use it when you need indexing control over non-HTML resources or when you cannot add a meta tag to the page. It accepts the same directives as the robots meta tag.",
+        "quickAnswer": "X-Robots-Tag is an HTTP header that controls search engine indexing for any file type —PDFs, images, feeds, and HTML. Use it when you need indexing control over non-HTML resources or when you cannot add a meta tag to the page. It accepts the same directives as the robots meta tag.",
         "limitations": [
             "Some bots and crawlers ignore X-Robots-Tag entirely. It is a hint, not a binding directive, and there is no enforcement mechanism beyond voluntary compliance by search engines.",
             "If a page is blocked by robots.txt, crawlers cannot see the X-Robots-Tag header at all. Use robots.txt and X-Robots-Tag as complementary layers, not alternatives.",
-            "X-Robots-Tag is not an official IETF standard 鈥?it is a de-facto convention supported by Google, Bing, and most major search engines. Smaller or niche crawlers may not recognize it."
+            "X-Robots-Tag is not an official IETF standard —it is a de-facto convention supported by Google, Bing, and most major search engines. Smaller or niche crawlers may not recognize it."
         ],
         "verificationSteps": [
             "Use Google Search Console URL Inspection tool to confirm the status of indexed pages after applying noindex via X-Robots-Tag.",
@@ -6695,7 +6695,7 @@
         "whatIs": "The CSS contrast-color() function (Baseline 2026) selects the color with the highest contrast ratio from a list of candidates against a specified background. With contrast-color(background vs color1, color2, ...), you provide the background color and a list of candidate colors. The function evaluates the WCAG contrast ratio of each candidate against the background and returns the candidate with the best ratio. The optional to max keyword tells the function to always return the maximum-contrast candidate. This is a native CSS alternative to JavaScript-based text color switching for readable overlays, buttons, and badges.",
         "howToUse": [
             "Enter the background color against which contrast will be measured. This can be a hex, rgb, hsl, or named color value.",
-            "Add candidate colors 鈥?the function evaluates each one against the background and picks the best match. You can reorder candidates for the to max mode priority fallback.",
+            "Add candidate colors —the function evaluates each one against the background and picks the best match. You can reorder candidates for the to max mode priority fallback.",
             "Choose the contrast mode: to max always picks the highest-contrast candidate, or omit it to use ordered priority (first candidate above the minimum ratio wins).",
             "Copy the generated contrast-color() expression into your stylesheet and replace the candidate colors with your design token references."
         ],
@@ -6715,14 +6715,14 @@
             }
         ],
         "mistakes": [
-            "Using to max mode when a specific color priority is intended 鈥?to max always returns the highest-contrast candidate, ignoring the candidate order. If you prefer a brand color over maximum contrast, omit to max and let the browser pick the first sufficiently contrasting color in order.",
-            "Assuming contrast-color() recalculates when the background changes 鈥?like any CSS function, it evaluates once per render of the element. If the background changes dynamically (via animation or JavaScript), contrast-color() re-evaluates naturally as part of the style recalculation cycle.",
-            "Using too many candidate colors 鈥?each extra candidate increases contrast computation. Two or three well-chosen candidates (light, dark, accent) cover most design systems. Testing all 16.7 million hex colors as candidates is not useful."
+            "Using to max mode when a specific color priority is intended —to max always returns the highest-contrast candidate, ignoring the candidate order. If you prefer a brand color over maximum contrast, omit to max and let the browser pick the first sufficiently contrasting color in order.",
+            "Assuming contrast-color() recalculates when the background changes —like any CSS function, it evaluates once per render of the element. If the background changes dynamically (via animation or JavaScript), contrast-color() re-evaluates naturally as part of the style recalculation cycle.",
+            "Using too many candidate colors —each extra candidate increases contrast computation. Two or three well-chosen candidates (light, dark, accent) cover most design systems. Testing all 16.7 million hex colors as candidates is not useful."
         ],
         "faq": [
             {
                 "question": "How does contrast-color() compute contrast ratio?",
-                "answer": "The function uses the WCAG 2.2 relative luminance algorithm to compute the contrast ratio between each candidate color and the background color. Relative luminance accounts for human perception of different color channels 鈥?green contributes more to perceived brightness than blue, for example. The ratio ranges from 1:1 (identical luminance) to 21:1 (black on white). The function then returns the candidate with the highest ratio (in to max mode) or the first candidate that meets or exceeds the implied threshold (in priority list mode)."
+                "answer": "The function uses the WCAG 2.2 relative luminance algorithm to compute the contrast ratio between each candidate color and the background color. Relative luminance accounts for human perception of different color channels —green contributes more to perceived brightness than blue, for example. The ratio ranges from 1:1 (identical luminance) to 21:1 (black on white). The function then returns the candidate with the highest ratio (in to max mode) or the first candidate that meets or exceeds the implied threshold (in priority list mode)."
             },
             {
                 "question": "Which browsers support contrast-color() as of 2026?",
@@ -6730,7 +6730,7 @@
             },
             {
                 "question": "Can I use CSS custom properties inside contrast-color()?",
-                "answer": "Yes. All color arguments to contrast-color() accept CSS custom properties, including var() references for the background color and each candidate. This is the most practical way to use the function in a design system 鈥?pass design tokens as candidates so the function selects between semantic colors. For example: contrast-color(var(--surface) vs var(--text-primary), var(--text-inverse))."
+                "answer": "Yes. All color arguments to contrast-color() accept CSS custom properties, including var() references for the background color and each candidate. This is the most practical way to use the function in a design system —pass design tokens as candidates so the function selects between semantic colors. For example: contrast-color(var(--surface) vs var(--text-primary), var(--text-inverse))."
             },
             {
                 "question": "What happens if none of the candidates achieve WCAG AA contrast?",
@@ -6767,8 +6767,8 @@
         ],
         "whatIs": "The typed CSS attr() function (Chrome 133+) reads an HTML attribute value and uses it in any CSS property, with explicit type casting. Unlike the traditional attr() which only works on the content property of ::before and ::after pseudo-elements and always returns a string, the typed version accepts a type parameter: attr(data-value type(<type>), <fallback>). Supported types include string, number, px, rem, em, percentage, color, deg, s, ms, url, and more. This enables direct data-attribute-driven styling without JavaScript interpolation.",
         "howToUse": [
-            "Choose an HTML attribute to read 鈥?typically a data-* attribute such as data-size, data-color, or data-speed on the target element.",
-            "Select the CSS property that will receive the attribute value 鈥?any CSS property that accepts the chosen type.",
+            "Choose an HTML attribute to read —typically a data-* attribute such as data-size, data-color, or data-speed on the target element.",
+            "Select the CSS property that will receive the attribute value —any CSS property that accepts the chosen type.",
             "Pick the type for the attr() function that matches your CSS property and expected value format.",
             "Set a fallback value for when the attribute is missing, empty, or the value cannot be parsed into the specified type."
         ],
@@ -6788,14 +6788,14 @@
             }
         ],
         "mistakes": [
-            "Using typed attr() without a fallback 鈥?if the attribute is missing or the value cannot be coerced into the specified type, the declaration becomes invalid and the property falls back to its initial value. Always provide a sensible fallback as the second argument.",
-            "Expecting typed attr() to work in browsers that do not support it 鈥?Chrome 133+ is required. Older browsers ignore the entire declaration when they encounter the typed attr() syntax. Use a hardcoded fallback value before the attr() declaration as a progressive enhancement strategy.",
-            "Mixing units and values incorrectly for the type 鈥?attr(data-width type(px)) expects the attribute value to be a bare number (\"300\"), not a unit-included string (\"300px\"). The type specifies the unit. A value of \"300px\" on an attribute typed as px causes the type conversion to fail and triggers the fallback."
+            "Using typed attr() without a fallback —if the attribute is missing or the value cannot be coerced into the specified type, the declaration becomes invalid and the property falls back to its initial value. Always provide a sensible fallback as the second argument.",
+            "Expecting typed attr() to work in browsers that do not support it —Chrome 133+ is required. Older browsers ignore the entire declaration when they encounter the typed attr() syntax. Use a hardcoded fallback value before the attr() declaration as a progressive enhancement strategy.",
+            "Mixing units and values incorrectly for the type —attr(data-width type(px)) expects the attribute value to be a bare number (\"300\"), not a unit-included string (\"300px\"). The type specifies the unit. A value of \"300px\" on an attribute typed as px causes the type conversion to fail and triggers the fallback."
         ],
         "faq": [
             {
                 "question": "What is the difference between typed attr() and the old attr()?",
-                "answer": "The old attr() only works in the content property on ::before and ::after pseudo-elements. It always returns a string value. The typed attr() works in any CSS property that accepts the target type, uses proper type casting with the type() parameter, and supports a fallback value. The typed version also checks type compatibility at parse time 鈥?an attr(data-width type(color)) used on the width property is a parse error and invalidates the declaration."
+                "answer": "The old attr() only works in the content property on ::before and ::after pseudo-elements. It always returns a string value. The typed attr() works in any CSS property that accepts the target type, uses proper type casting with the type() parameter, and supports a fallback value. The typed version also checks type compatibility at parse time —an attr(data-width type(color)) used on the width property is a parse error and invalidates the declaration."
             },
             {
                 "question": "Which browsers support typed attr() as of 2026?",
@@ -6807,13 +6807,13 @@
             },
             {
                 "question": "Does typed attr() re-evaluate when the attribute changes?",
-                "answer": "Yes. Typed attr() is a live CSS function 鈥?when the attribute value changes in the DOM (via setAttribute or a framework), the browser re-evaluates the CSS declaration and updates the rendered style. This means you can change data-* attribute values dynamically and the CSS automatically responds without any additional JavaScript beyond the attribute update itself."
+                "answer": "Yes. Typed attr() is a live CSS function —when the attribute value changes in the DOM (via setAttribute or a framework), the browser re-evaluates the CSS declaration and updates the rendered style. This means you can change data-* attribute values dynamically and the CSS automatically responds without any additional JavaScript beyond the attribute update itself."
             }
         ],
         "quickAnswer": "Use typed CSS attr(data-* type(<type>), <fallback>) to read HTML attribute values into any CSS property with type casting. Chrome 133+ only. Supports number, px, rem, em, percentage, color, deg, s, ms, url types. Always provide a fallback value and layer a hardcoded fallback declaration first for cross-browser compatibility.",
         "limitations": [
             "Typed attr() requires Chrome 133+ or Edge 133+. Safari and Firefox do not yet support it as of May 2026. The function is effectively Chromium-only, so all non-Chromium browsers will fall back to the initial value or the preceding hardcoded declaration.",
-            "The attribute value must match the expected type format exactly. A type(px) attribute expecting \"300\" breaks on \"300px\", \"300 px\", or non-numeric strings. There is no built-in sanitization or lenient parsing 鈥?the type system enforces strict value formatting.",
+            "The attribute value must match the expected type format exactly. A type(px) attribute expecting \"300\" breaks on \"300px\", \"300 px\", or non-numeric strings. There is no built-in sanitization or lenient parsing —the type system enforces strict value formatting.",
             "Type conversion failures and parse errors behave differently: a type mismatch triggers the fallback value, but a completely invalid type argument (such as type(foobar)) is a CSS parse error that invalidates the entire declaration. Use only the documented type keywords to avoid invalidating styles."
         ],
         "verificationSteps": [
@@ -6861,9 +6861,9 @@
             }
         ],
         "mistakes": [
-            "Using if(media()) for complex multi-condition layouts 鈥?if() is designed for single conditional values, not as a replacement for all media queries. Complex layouts still benefit from @media at-rules for readability.",
-            "Forgetting that the else branch is optional 鈥?omitting it when the condition is false results in the property falling back to its initial value or a previous declaration.",
-            "Applying if(style()) to a custom property that is not set on the element or its ancestors 鈥?style() only evaluates registered or explicitly set custom properties, not inherited ones that fall back to their initial value."
+            "Using if(media()) for complex multi-condition layouts —if() is designed for single conditional values, not as a replacement for all media queries. Complex layouts still benefit from @media at-rules for readability.",
+            "Forgetting that the else branch is optional —omitting it when the condition is false results in the property falling back to its initial value or a previous declaration.",
+            "Applying if(style()) to a custom property that is not set on the element or its ancestors —style() only evaluates registered or explicitly set custom properties, not inherited ones that fall back to their initial value."
         ],
         "faq": [
             {
@@ -6886,7 +6886,7 @@
         "quickAnswer": "The CSS if() function lets you write conditional values inline inside a property declaration. Use if(style()) to branch on a CSS custom property, if(media()) to branch on a media feature like viewport width, or if(supports()) to branch on browser feature support. Chrome 137+ supports if(style()); Chrome 142+ adds if(media()) and if(supports()).",
         "limitations": [
             "The if() function is only available in Chrome 137+ (style()) and Chrome 142+ (media(), supports()). Firefox and Safari do not yet support CSS if() in any stable release as of May 2026.",
-            "if() evaluates a single condition for a single value 鈥?it cannot replace @media or @container at-rules for complex rule blocks with multiple declaration changes.",
+            "if() evaluates a single condition for a single value —it cannot replace @media or @container at-rules for complex rule blocks with multiple declaration changes.",
             "if(style()) only works on explicitly set or registered custom properties. Custom properties inherited from an ancestor with no explicit value on the target element are treated as not matching."
         ],
         "verificationSteps": [
@@ -6903,7 +6903,7 @@
         "name": "CSS Sibling Index and Count Generator",
         "category": "css",
         "summary": "Generate CSS using sibling-index() and sibling-count() to style elements by their DOM position among siblings without nth-child selectors.",
-        "description": "Use sibling-index() and sibling-count() (Chrome 138+) to create position-aware styles that adapt to the number of siblings in a container. sibling-index() returns the 1-based position of the element among its siblings. sibling-count() returns the total number of siblings. Use these in calc() to create stagger delays, color cycling, width gradients, opacity fades, z-index layering, and position offsets 鈥?all without nth-child selectors or JavaScript.",
+        "description": "Use sibling-index() and sibling-count() (Chrome 138+) to create position-aware styles that adapt to the number of siblings in a container. sibling-index() returns the 1-based position of the element among its siblings. sibling-count() returns the total number of siblings. Use these in calc() to create stagger delays, color cycling, width gradients, opacity fades, z-index layering, and position offsets —all without nth-child selectors or JavaScript.",
         "keywords": [
             "css sibling index",
             "sibling count css",
@@ -6934,9 +6934,9 @@
             }
         ],
         "mistakes": [
-            "Using sibling-index() in a property that does not accept numeric values 鈥?sibling-index() returns an integer and must be used in a context that supports number or integer values, such as calc() inside width, animation-delay, opacity, or z-index.",
-            "Assuming sibling-count() accounts for filtered or hidden elements 鈥?sibling-count() counts all sibling elements in the DOM regardless of display state. Hidden elements (display: none) are still counted. Use visibility: hidden instead if you need to exclude an element from the count visually without removing it from the sibling count.",
-            "Applying sibling-index() to a grid where items reorder at different breakpoints 鈥?sibling-index() reflects the DOM order, not the visual order. With CSS grid or flexbox reordering (order property), the index still follows the source order, which may not match the displayed layout."
+            "Using sibling-index() in a property that does not accept numeric values —sibling-index() returns an integer and must be used in a context that supports number or integer values, such as calc() inside width, animation-delay, opacity, or z-index.",
+            "Assuming sibling-count() accounts for filtered or hidden elements —sibling-count() counts all sibling elements in the DOM regardless of display state. Hidden elements (display: none) are still counted. Use visibility: hidden instead if you need to exclude an element from the count visually without removing it from the sibling count.",
+            "Applying sibling-index() to a grid where items reorder at different breakpoints —sibling-index() reflects the DOM order, not the visual order. With CSS grid or flexbox reordering (order property), the index still follows the source order, which may not match the displayed layout."
         ],
         "faq": [
             {
@@ -6952,7 +6952,7 @@
                 "answer": "Yes. Combine sibling-count() and sibling-index() in calc() to create inverse or reverse effects, such as decreasing opacity from first to last child: opacity: calc(1 - (sibling-index() - 1) / sibling-count()). The first child gets opacity 1, the last child approaches 0. As siblings are added or removed, the gradient recalculates automatically."
             }
         ],
-        "quickAnswer": "sibling-index() returns the 1-based position of an element among its siblings, and sibling-count() returns the total number of siblings. Use them in calc() to create stagger delays, color cycles, width gradients, and position offsets that adapt automatically as the DOM changes 鈥?no nth-child selectors or JavaScript needed.",
+        "quickAnswer": "sibling-index() returns the 1-based position of an element among its siblings, and sibling-count() returns the total number of siblings. Use them in calc() to create stagger delays, color cycles, width gradients, and position offsets that adapt automatically as the DOM changes —no nth-child selectors or JavaScript needed.",
         "limitations": [
             "sibling-index() and sibling-count() require Chrome 138+. Firefox and Safari do not yet support these functions as of May 2026.",
             "The functions return DOM order, not visual order. Elements reordered with CSS flexbox order or grid placement may have an index that does not match their visual position.",
@@ -6982,8 +6982,8 @@
         ],
         "whatIs": "The CSS progress() function is a mathematical mapping function (Chrome 138+) that converts an input value from one numeric range into a 0-1 progress value. For example, progress(scroll-position from 0 to 500) returns 0 when the scroll position is 0, 1 when it reaches 500, and 0.5 at 250. This progress value can drive any numeric CSS property, eliminating complex calc() chains for scroll-linked effects, viewport-relative sizing, and custom property interpolation.",
         "howToUse": [
-            "Enter the input source and its range 鈥?choose from scroll-position, viewport width/height, viewport inline/block size, or a custom CSS property with its minimum and maximum values.",
-            "Set the target CSS property you want to drive and its value at progress 0 and progress 1 鈥?for example opacity 0 to 1, or scale 0.5 to 1.5.",
+            "Enter the input source and its range —choose from scroll-position, viewport width/height, viewport inline/block size, or a custom CSS property with its minimum and maximum values.",
+            "Set the target CSS property you want to drive and its value at progress 0 and progress 1 —for example opacity 0 to 1, or scale 0.5 to 1.5.",
             "Optionally enable clamp() wrapping to keep the result bounded within the output range even when the input exceeds the defined range.",
             "Copy the generated CSS and add it to your stylesheet. The output includes both the progress() rule and the full property declaration."
         ],
@@ -7003,14 +7003,14 @@
             }
         ],
         "mistakes": [
-            "Using progress() without realizing it returns a raw 0-1 value 鈥?most properties need an additional calc() or scaling to convert progress into the desired output range, but the tool handles this mapping for you.",
-            "Forgetting that scroll-position is relative to the document scroll position by default 鈥?for an element's scroll container, use progress(self-scroll-position from 0 to N) instead.",
-            "Assuming progress() works in all CSS properties 鈥?it works in any property that accepts a number or percentage, but does not work in color functions like rgb() directly (use color-mix() instead)."
+            "Using progress() without realizing it returns a raw 0-1 value —most properties need an additional calc() or scaling to convert progress into the desired output range, but the tool handles this mapping for you.",
+            "Forgetting that scroll-position is relative to the document scroll position by default —for an element's scroll container, use progress(self-scroll-position from 0 to N) instead.",
+            "Assuming progress() works in all CSS properties —it works in any property that accepts a number or percentage, but does not work in color functions like rgb() directly (use color-mix() instead)."
         ],
         "faq": [
             {
                 "question": "How is progress() different from scroll-driven animation timelines with view-timeline?",
-                "answer": "progress() is a pure mathematical function that maps one numeric range to 0-1 鈥?it has no link to animation timelines, keyframes, or animation-range. Use progress() for declarative value mapping in any CSS property without creating a scroll-timeline. Use view-timeline and animation-range when you need full keyframe-based scroll-driven animations with multiple steps, easing, and direction control."
+                "answer": "progress() is a pure mathematical function that maps one numeric range to 0-1 —it has no link to animation timelines, keyframes, or animation-range. Use progress() for declarative value mapping in any CSS property without creating a scroll-timeline. Use view-timeline and animation-range when you need full keyframe-based scroll-driven animations with multiple steps, easing, and direction control."
             },
             {
                 "question": "What happens when the input value is outside the defined range?",
@@ -7041,7 +7041,7 @@
         "name": "CSS Stretch Sizing Generator",
         "category": "css",
         "summary": "Generate CSS using the stretch keyword for fill-available sizing in block, flex, grid, and absolutely positioned layouts.",
-        "description": "Set width or height to the stretch keyword for standardized fill-available sizing. Select your layout context 鈥?block, flex item, grid item, or absolutely positioned 鈥?and the axis you want to stretch. The output includes the correct CSS declaration and layout-specific notes about how stretch behaves differently from width: 100% in each context. Replaces vendor-prefixed -webkit-fill-available and -moz-available with a single standard keyword.",
+        "description": "Set width or height to the stretch keyword for standardized fill-available sizing. Select your layout context —block, flex item, grid item, or absolutely positioned —and the axis you want to stretch. The output includes the correct CSS declaration and layout-specific notes about how stretch behaves differently from width: 100% in each context. Replaces vendor-prefixed -webkit-fill-available and -moz-available with a single standard keyword.",
         "keywords": [
             "css stretch keyword",
             "fill-available sizing",
@@ -7049,15 +7049,15 @@
             "webkit-fill-available replacement",
             "css intrinsic sizing"
         ],
-        "whatIs": "The CSS stretch keyword (Chrome 138+) is the standard value for fill-available sizing, replacing the vendor-prefixed -webkit-fill-available and -moz-available keywords. When you set width: stretch, the element sizes to fill the available space using margin-box sizing 鈥?meaning the element's margin-box fits inside the containing block. This differs from width: 100% which uses content-box sizing and often overflows when padding, border, or margin are present. stretch works in block, flex, grid, and absolutely positioned layout contexts.",
+        "whatIs": "The CSS stretch keyword (Chrome 138+) is the standard value for fill-available sizing, replacing the vendor-prefixed -webkit-fill-available and -moz-available keywords. When you set width: stretch, the element sizes to fill the available space using margin-box sizing —meaning the element's margin-box fits inside the containing block. This differs from width: 100% which uses content-box sizing and often overflows when padding, border, or margin are present. stretch works in block, flex, grid, and absolutely positioned layout contexts.",
         "howToUse": [
-            "Select your layout context 鈥?the behavior of stretch differs slightly between block, flex, grid, and absolutely positioned elements.",
+            "Select your layout context —the behavior of stretch differs slightly between block, flex, grid, and absolutely positioned elements.",
             "Choose the axis you want to stretch (width, height, or both via inset: 0 for abspos).",
             "Review the layout-specific note explaining how stretch interacts with margins, padding, and the containing block in your chosen context.",
             "Copy the generated CSS and replace any existing width: 100% patterns or vendor-prefixed fill-available declarations."
         ],
         "useCases": [
-            "Replace width: 100% on an input or select element that overflows its parent due to padding and border 鈥?stretch uses margin-box sizing so the total box fits inside the container.",
+            "Replace width: 100% on an input or select element that overflows its parent due to padding and border —stretch uses margin-box sizing so the total box fits inside the container.",
             "Standardize cross-browser fill-available sizing by replacing -webkit-fill-available and -moz-available with the standard stretch keyword.",
             "Make an absolutely positioned element stretch to the edges of its positioned ancestor without explicit top/right/bottom/left values."
         ],
@@ -7068,18 +7068,18 @@
             },
             {
                 "title": "Migrate from vendor-prefixed fill-available",
-                "text": "A legacy stylesheet uses width: -webkit-fill-available with a -moz-available fallback. Replace both with width: stretch 鈥?the standard keyword works the same way and is supported in Chrome 138+, Firefox 130+, and Safari 18.2+. The fallback declarations can remain for older browser versions."
+                "text": "A legacy stylesheet uses width: -webkit-fill-available with a -moz-available fallback. Replace both with width: stretch —the standard keyword works the same way and is supported in Chrome 138+, Firefox 130+, and Safari 18.2+. The fallback declarations can remain for older browser versions."
             }
         ],
         "mistakes": [
-            "Expecting stretch to behave identically to width: 100% in block layout 鈥?100% uses content-box sizing and ignores padding/border on the element itself, while stretch uses margin-box sizing. In most cases, stretch is the desired behavior for inputs and form elements.",
-            "Using stretch on a flex item when the flex container has align-items: stretch 鈥?the stretch keyword on the item overrides the container's stretch alignment, which may produce unexpected sizing.",
-            "Assuming stretch works in inline layout contexts 鈥?stretch only applies to elements with a block, flex, grid, or absolutely positioned display type. Inline elements ignore stretch and fall back to intrinsic width."
+            "Expecting stretch to behave identically to width: 100% in block layout —100% uses content-box sizing and ignores padding/border on the element itself, while stretch uses margin-box sizing. In most cases, stretch is the desired behavior for inputs and form elements.",
+            "Using stretch on a flex item when the flex container has align-items: stretch —the stretch keyword on the item overrides the container's stretch alignment, which may produce unexpected sizing.",
+            "Assuming stretch works in inline layout contexts —stretch only applies to elements with a block, flex, grid, or absolutely positioned display type. Inline elements ignore stretch and fall back to intrinsic width."
         ],
         "faq": [
             {
                 "question": "How does stretch differ from width: 100% in terms of padding and border?",
-                "answer": "width: 100% is relative to the containing block's content-box width, then padding and border are added on top 鈥?the element overflows its container. stretch sizes the margin-box to fill the available space, so padding and border are subtracted from the total, keeping the element inside its container. This makes stretch behave the way most developers expect width: 100% to work, especially for form elements."
+                "answer": "width: 100% is relative to the containing block's content-box width, then padding and border are added on top —the element overflows its container. stretch sizes the margin-box to fill the available space, so padding and border are subtracted from the total, keeping the element inside its container. This makes stretch behave the way most developers expect width: 100% to work, especially for form elements."
             },
             {
                 "question": "Does stretch work in writing modes other than horizontal-tb?",
@@ -7094,10 +7094,10 @@
         "limitations": [
             "stretch is not yet supported in all browsers. Chrome 138+, Firefox 130+, and Safari 18.2+ support it. Keep vendor-prefixed fallbacks (-webkit-fill-available, -moz-available) and a width: 100% fallback for older browsers.",
             "stretch only works on elements with block, flex, grid, or absolutely positioned display. Inline elements, table cells, and replaced elements (img, video, iframe without explicit sizing) do not support stretch sizing.",
-            "In flex and grid contexts, stretch may interact unexpectedly with alignment properties. A flex item with align-self: stretch and width: stretch can produce conflicting sizing instructions 鈥?the stretch keyword on the sizing property takes precedence over alignment stretch."
+            "In flex and grid contexts, stretch may interact unexpectedly with alignment properties. A flex item with align-self: stretch and width: stretch can produce conflicting sizing instructions —the stretch keyword on the sizing property takes precedence over alignment stretch."
         ],
         "verificationSteps": [
-            "Inspect the element in DevTools and verify the computed width or height matches the expected fill-available size 鈥?the element should not overflow its container even with padding and border applied.",
+            "Inspect the element in DevTools and verify the computed width or height matches the expected fill-available size —the element should not overflow its container even with padding and border applied.",
             "Resize the viewport or container and confirm the element stretches to fill the available space at all sizes. Compare side by side with a width: 100% reference to see the difference at narrow viewports."
         ],
         "updatedAt": "2026-05-30",
