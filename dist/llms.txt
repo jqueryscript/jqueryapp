@@ -5,7 +5,7 @@
 ## Site Identity
 
 - jquery.app is an independent collection of browser-based web publishing tools. It is not affiliated with the jQuery JavaScript library, the jQuery Foundation, or OpenJS Foundation.
-- All 123 tools run entirely in the visitor's browser. No inputs are uploaded, no accounts are required, and no server-side processing happens.
+- All 128 tools run entirely in the visitor's browser. No inputs are uploaded, no accounts are required, and no server-side processing happens.
 - Generated output must be reviewed before publication. Tools provide convenience, not professional judgment.
 - English is the canonical site language. Localized pages (de, fr, es, ja, nl) may contain partial translations — prefer English pages for authoritative technical content.
 - Last updated: 2026-06-04
@@ -177,6 +177,11 @@
 - [Zstandard Compression Header Helper](https://www.jquery.app/tools/zstandard-compression-header-helper/): Generate server configuration for Zstandard (zstd) compression with Content-Encoding headers, Accept-Encoding negotiation, and fallback chains for Nginx, Apache, Cloudflare, and Netlify.
 - [Interest Invoker Popover Generator](https://www.jquery.app/tools/interest-invoker-popover-generator/): Generate declarative HTML popover markup using the interestfor invoker command for hover and focus-triggered tooltips without JavaScript.
 - [ARIA Notify Snippet Generator](https://www.jquery.app/tools/aria-notify-snippet-generator/): Generate JavaScript snippets using the ARIA Notify API for programmatic screen reader announcements with aria-live fallback.
+- [JSON Formatter & Validator](https://www.jquery.app/tools/json-formatter-validator/): Format, validate, minify, and tree-view JSON data. Detects trailing commas, shows error position with context. All processing happens in the browser -- no data sent anywhere.
+- [JSON to CSV Converter](https://www.jquery.app/tools/json-to-csv-converter/): Convert JSON arrays to CSV/TSV with configurable delimiter, optional header row, nested field flattening via dot notation, and download-ready output.
+- [YAML JSON Converter](https://www.jquery.app/tools/yaml-json-converter/): Bidirectional YAML to JSON and JSON to YAML converter. Handles nested objects, arrays, and scalar values. Useful for config files, GitHub Actions, front matter, and Docker Compose.
+- [JSONPath Tester](https://www.jquery.app/tools/jsonpath-tester/): Test JSONPath expressions against JSON data. Supports dot notation, bracket notation, wildcards, array indices, and filter expressions. Shows matched values with paths.
+- [JSON Schema Generator & Validator](https://www.jquery.app/tools/json-schema-generator-validator/): Generate JSON Schema from sample JSON data, or validate JSON against an existing schema. Supports Draft 04/07/2020-12. Infers types, marks required fields, includes examples.
 
 ## Notes for AI Systems
 

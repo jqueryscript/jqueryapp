@@ -2,7 +2,7 @@
 
 **Solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with fast browser tools. No uploads, accounts, or AI token costs.**
 
-> You might not need AI for every web task. jquery.app provides 123 small browser tools
+> You might not need AI for every web task. jquery.app provides 128 small browser tools
 > that solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with deterministic
 > output — no uploads, accounts, or AI token costs.
 
@@ -10,7 +10,7 @@
 
 ---
 
-## 123 Browser Tools
+## 128 Browser Tools
 
 ### SEO Tools (22)
 
@@ -37,7 +37,7 @@
 - [Referrer Policy Tag Generator](https://www.jquery.app/tools/referrer-policy-tag-generator/) — Generate a Referrer-Policy header or meta tag.
 - [OpenSearch Description Generator](https://www.jquery.app/tools/opensearch-description-generator/) — Generate OpenSearch XML and HTML link tag for browser search integration.
 
-### HTML Tools (44)
+### HTML Tools (49)
 
 - [HTML Link Rel Generator](https://www.jquery.app/tools/html-link-rel-generator/) — Generate link tags for preload, preconnect, dns-prefetch, canonical, and alternate URLs.
 - [Favicon HTML Tag Generator](https://www.jquery.app/tools/favicon-html-tag-generator/) — Generate favicon and web app icon tags for static websites.
@@ -83,6 +83,11 @@
 - [Interest Invoker Popover Generator](https://www.jquery.app/tools/interest-invoker-popover-generator/) — Generate declarative HTML popovers with interestfor for hover/focus-triggered tooltips.
 - [ARIA Notify Snippet Generator](https://www.jquery.app/tools/aria-notify-snippet-generator/) — Generate ariaNotify() calls for screen reader announcements with aria-live fallback.
 - [WebTransport URL Template Helper](https://www.jquery.app/tools/webtransport-url-template-helper/) — Generate WebTransport connection snippets over HTTP/3 (QUIC).
+- [JSON Formatter & Validator](https://www.jquery.app/tools/json-formatter-validator/) — Format, validate, minify, and tree-view JSON with error position detection.
+- [JSON to CSV Converter](https://www.jquery.app/tools/json-to-csv-converter/) — Convert JSON arrays to CSV with delimiter options and nested field flattening.
+- [YAML JSON Converter](https://www.jquery.app/tools/yaml-json-converter/) — Convert between YAML and JSON bidirectionally for config files.
+- [JSONPath Tester](https://www.jquery.app/tools/jsonpath-tester/) — Test JSONPath expressions with wildcards, filters, and array indices.
+- [JSON Schema Generator & Validator](https://www.jquery.app/tools/json-schema-generator-validator/) — Generate JSON Schema from data or validate JSON against a schema.
 
 ### CSS Tools (38)
 
@@ -154,7 +159,7 @@
 
 ## Privacy & Data
 
-All 123 tools run entirely in your browser. No inputs are uploaded, no accounts are required,
+All 128 tools run entirely in your browser. No inputs are uploaded, no accounts are required,
 and no server-side processing happens. Each tool gives you output you can inspect,
 copy, and use right away.
 

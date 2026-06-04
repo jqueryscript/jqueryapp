@@ -1,0 +1,84 @@
+import { textarea, checkbox, select, field, htmlEscape } from "../tool-core.js";
+
+export default {
+  form: `
+    <div class="field-grid">
+      ${textarea({ id: "jtcInput", label: "Paste JSON", value: '[{"name":"Alice","age":30,"city":"NYC"},{"name":"Bob","age":25,"city":"SF"}]', full: true })}
+    </div>
+    <div class="field-grid">
+      ${select({ id: "jtcDelimiter", label: "Delimiter", options: [
+        {label:"Comma (,)",value:","},
+        {label:"Tab",value:"\t"},
+        {label:"Semicolon (;)",value:";"},
+        {label:"Pipe (|)",value:"|"}
+      ], value: "," })}
+      ${checkbox({ id: "jtcHeader", label: "Include header row", checked: true })}
+    </div>
+    <div class="field-grid">
+      ${checkbox({ id: "jtcFlatten", label: "Flatten nested objects (dot notation)", checked: true })}
+      ${checkbox({ id: "jtcQuotes", label: "Always quote values", checked: false })}
+    </div>`,
+  generate(root) {
+    const input = root.querySelector("#jtcInput").value.trim();
+    const delim = root.querySelector("#jtcDelimiter").value;
+    const header = root.querySelector("#jtcHeader").checked;
+    const flatten = root.querySelector("#jtcFlatten").checked;
+    const quoteAll = root.querySelector("#jtcQuotes").checked;
+
+    if (!input) return { output: "Paste JSON to get started.", preview: "" };
+
+    try {
+      let data = JSON.parse(input);
+      if (!Array.isArray(data)) data = [data];
+      if (!data.length) return { output: "JSON array is empty.", preview: "" };
+
+      const allKeys = new Set();
+      data.forEach(row => {
+        const flat = flatten ? flattenObj(row) : row;
+        Object.keys(flat).forEach(k => allKeys.add(k));
+      });
+      const keys = [...allKeys];
+      const lines = [];
+
+      const csvEscape = (v) => {
+        const s = v == null ? "" : String(v);
+        if (quoteAll || s.includes(delim) || s.includes('"') || s.includes("\n")) {
+          return `"${s.replace(/"/g, '""')}"`;
+        }
+        return s;
+      };
+
+      if (header) lines.push(keys.map(csvEscape).join(delim));
+      data.forEach(row => {
+        const flat = flatten ? flattenObj(row) : row;
+        lines.push(keys.map(k => csvEscape(flat[k] ?? "")).join(delim));
+      });
+
+      const output = lines.join("\n");
+      const rowCount = data.length;
+      const preview = `<div style="border:1px solid #e5e7eb;border-radius:8px;overflow:hidden">
+        <div style="background:#f0fdf4;padding:10px 14px;font-size:12px;color:#15803d;font-weight:600">${rowCount} rows, ${keys.length} columns</div>
+        <table style="width:100%;border-collapse:collapse;font-size:12px">
+          ${lines.slice(0, 6).map((l, i) => `<tr style="${i === 0 ? 'background:#f9fafb;font-weight:600' : ''}">${l.split(delim).map(c => `<td style="padding:4px 8px;border-bottom:1px solid #f3f4f6">${c}</td>`).join("")}</tr>`).join("")}
+        </table>
+        ${lines.length > 6 ? `<div style="padding:6px 14px;font-size:11px;color:#6b7280">... ${lines.length - 6} more rows</div>` : ""}
+      </div>`;
+      return { output, preview };
+    } catch (e) {
+      return { output: `✗ Invalid JSON: ${e.message}`, preview: `<div style="padding:16px;background:#fef2f2;border:1px solid #ef4444;border-radius:8px;color:#dc2626">${e.message}</div>` };
+    }
+  }
+};
+
+function flattenObj(obj, prefix = "") {
+  const result = {};
+  for (const [k, v] of Object.entries(obj)) {
+    const key = prefix ? `${prefix}.${k}` : k;
+    if (v && typeof v === "object" && !Array.isArray(v)) {
+      Object.assign(result, flattenObj(v, key));
+    } else {
+      result[key] = v;
+    }
+  }
+  return result;
+}

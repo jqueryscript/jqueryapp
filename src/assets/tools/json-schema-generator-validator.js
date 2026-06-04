@@ -1,0 +1,118 @@
+import { textarea, select, checkbox, htmlEscape } from "../tool-core.js";
+
+export default {
+  form: `
+    <div class="field-grid">
+      ${select({ id: "jsgMode", label: "Mode", options: [
+        {label:"Generate schema from JSON",value:"generate"},
+        {label:"Validate JSON against schema",value:"validate"}
+      ], value: "generate" })}
+      ${select({ id: "jsgDraft", label: "Draft", options: [
+        {label:"Draft 2020-12",value:"2020-12"},
+        {label:"Draft 07",value:"07"},
+        {label:"Draft 04",value:"04"}
+      ], value: "07" })}
+    </div>
+    <div class="field-grid">
+      ${checkbox({ id: "jsgRequired", label: "Mark all properties as required", checked: false })}
+      ${checkbox({ id: "jsgExamples", label: "Include examples in schema", checked: true })}
+    </div>
+    <div class="field-grid">
+      ${textarea({ id: "jsgInput", label: "JSON input (or schema for validation)", value: '{\n  "title": "Example",\n  "price": 19.99,\n  "tags": ["new", "sale"],\n  "inStock": true\n}', full: true })}
+    </div>
+    <div class="field-grid" id="jsgSchemaGroup" style="display:none">
+      ${textarea({ id: "jsgSchema", label: "JSON Schema", value: "", full: true })}
+    </div>`,
+  generate(root) {
+    const mode = root.querySelector("#jsgMode").value;
+    const draft = root.querySelector("#jsgDraft").value;
+    const required = root.querySelector("#jsgRequired").checked;
+    const inclExamples = root.querySelector("#jsgExamples").checked;
+    const input = root.querySelector("#jsgInput").value.trim();
+    const schemaStr = root.querySelector("#jsgSchema")?.value?.trim() || "";
+
+    if (!input) return { output: "Paste JSON to get started.", preview: "" };
+
+    try {
+      if (mode === "generate") {
+        const data = JSON.parse(input);
+        const schema = generateSchema(data, draft, required, inclExamples);
+        const output = JSON.stringify(schema, null, 2);
+        return { output, preview: `<div style="padding:14px;background:#f0fdf4;border:1px solid #22c55e;border-radius:8px"><span style="color:#15803d;font-weight:600">Schema generated</span><div style="font-size:12px;color:#6b7280;margin-top:2px">Draft ${draft} · ${Object.keys(schema.properties || {}).length} properties</div></div>` };
+      } else {
+        const data = JSON.parse(input);
+        if (!schemaStr) return { output: "Paste a JSON Schema in the schema field to validate.", preview: "" };
+        const schema = JSON.parse(schemaStr);
+        const errors = validateAgainstSchema(data, schema);
+        if (errors.length === 0) {
+          return { output: "✓ Valid — JSON matches the schema.", preview: `<div style="padding:14px;background:#f0fdf4;border:1px solid #22c55e;border-radius:8px;text-align:center"><span style="color:#15803d;font-size:16px;font-weight:700">✓ Valid</span><div style="color:#6b7280;font-size:12px;margin-top:4px">JSON matches the schema</div></div>` };
+        }
+        return { output: `✗ ${errors.length} validation error(s):\n\n${errors.map((e, i) => `${i + 1}. ${e.path}: ${e.message}`).join("\n")}`, preview: `<div style="padding:14px;background:#fef2f2;border:1px solid #ef4444;border-radius:8px"><span style="color:#dc2626;font-weight:600">✗ ${errors.length} error(s)</span>${errors.slice(0, 5).map(e => `<div style="font-size:12px;margin-top:4px;color:#6b7280">${e.path}: ${e.message}</div>`).join("")}</div>` };
+      }
+    } catch (e) {
+      return { output: `Error: ${e.message}`, preview: `<div style="padding:14px;background:#fef2f2;border:1px solid #ef4444;border-radius:8px;color:#dc2626">${e.message}</div>` };
+    }
+  }
+};
+
+function generateSchema(data, draft, req, inclExamples) {
+  const type = Array.isArray(data) ? "array" : typeof data === "object" ? "object" : typeof data;
+  const schema = { $schema: `https://json-schema.org/draft/${draft}/schema#`, type };
+
+  if (type === "object" && data !== null) {
+    schema.properties = {};
+    for (const [k, v] of Object.entries(data)) {
+      schema.properties[k] = inferType(v, draft, inclExamples);
+    }
+    if (req) schema.required = Object.keys(data);
+  }
+  if (type === "array") {
+    schema.items = data.length > 0 ? inferType(data[0], draft, inclExamples) : {};
+  }
+  if (inclExamples && type === "object") schema.examples = [data];
+
+  return schema;
+}
+
+function inferType(value, draft, inclExamples) {
+  if (value === null) return { type: "null" };
+  const t = Array.isArray(value) ? "array" : typeof value;
+  const s = { type: t === "number" && Number.isInteger(value) ? "integer" : t };
+  if (t === "object" && !Array.isArray(value)) {
+    s.properties = {};
+    for (const [k, v] of Object.entries(value)) s.properties[k] = inferType(v, draft, inclExamples);
+  }
+  if (t === "array" && value.length > 0) s.items = inferType(value[0], draft, inclExamples);
+  if (inclExamples) s.examples = [value];
+  return s;
+}
+
+function validateAgainstSchema(data, schema, path = "$") {
+  const errors = [];
+  if (!schema.type) return errors;
+  const actualType = Array.isArray(data) ? "array" : typeof data;
+
+  if (schema.type === "integer" && actualType === "number") {
+    if (!Number.isInteger(data)) errors.push({ path, message: `Expected integer, got ${data}` });
+  } else if (schema.type !== actualType) {
+    errors.push({ path, message: `Expected ${schema.type}, got ${actualType}` });
+    return errors;
+  }
+
+  if (schema.type === "object" && schema.properties) {
+    for (const [k, propSchema] of Object.entries(schema.properties)) {
+      if (k in data) {
+        errors.push(...validateAgainstSchema(data[k], propSchema, `${path}.${k}`));
+      } else if (schema.required?.includes(k)) {
+        errors.push({ path, message: `Missing required property '${k}'` });
+      }
+    }
+  }
+
+  if (schema.type === "array" && schema.items) {
+    data.forEach((item, i) => {
+      errors.push(...validateAgainstSchema(item, schema.items, `${path}[${i}]`));
+    });
+  }
+  return errors;
+}

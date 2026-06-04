@@ -389,7 +389,23 @@
     <lastmod>2026-06-04</lastmod>
   </url>
   <url>
+    <loc>https://www.jquery.app/de/tools/json-formatter-validator/</loc>
+    <lastmod>2026-06-04</lastmod>
+  </url>
+  <url>
     <loc>https://www.jquery.app/de/tools/json-ld-starter-builder/</loc>
+    <lastmod>2026-06-04</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/de/tools/json-schema-generator-validator/</loc>
+    <lastmod>2026-06-04</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/de/tools/json-to-csv-converter/</loc>
+    <lastmod>2026-06-04</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/de/tools/jsonpath-tester/</loc>
     <lastmod>2026-06-04</lastmod>
   </url>
   <url>
@@ -574,6 +590,10 @@
   </url>
   <url>
     <loc>https://www.jquery.app/de/tools/x-robots-tag-header-generator/</loc>
+    <lastmod>2026-06-04</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/de/tools/yaml-json-converter/</loc>
     <lastmod>2026-06-04</lastmod>
   </url>
   <url>
@@ -941,7 +961,23 @@
     <lastmod>2026-06-04</lastmod>
   </url>
   <url>
+    <loc>https://www.jquery.app/es/tools/json-formatter-validator/</loc>
+    <lastmod>2026-06-04</lastmod>
+  </url>
+  <url>
     <loc>https://www.jquery.app/es/tools/json-ld-starter-builder/</loc>
+    <lastmod>2026-06-04</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/es/tools/json-schema-generator-validator/</loc>
+    <lastmod>2026-06-04</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/es/tools/json-to-csv-converter/</loc>
+    <lastmod>2026-06-04</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/es/tools/jsonpath-tester/</loc>
     <lastmod>2026-06-04</lastmod>
   </url>
   <url>
@@ -1126,6 +1162,10 @@
   </url>
   <url>
     <loc>https://www.jquery.app/es/tools/x-robots-tag-header-generator/</loc>
+    <lastmod>2026-06-04</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/es/tools/yaml-json-converter/</loc>
     <lastmod>2026-06-04</lastmod>
   </url>
   <url>
@@ -1493,7 +1533,23 @@
     <lastmod>2026-06-04</lastmod>
   </url>
   <url>
+    <loc>https://www.jquery.app/fr/tools/json-formatter-validator/</loc>
+    <lastmod>2026-06-04</lastmod>
+  </url>
+  <url>
     <loc>https://www.jquery.app/fr/tools/json-ld-starter-builder/</loc>
+    <lastmod>2026-06-04</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/fr/tools/json-schema-generator-validator/</loc>
+    <lastmod>2026-06-04</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/fr/tools/json-to-csv-converter/</loc>
+    <lastmod>2026-06-04</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/fr/tools/jsonpath-tester/</loc>
     <lastmod>2026-06-04</lastmod>
   </url>
   <url>
@@ -1678,6 +1734,10 @@
   </url>
   <url>
     <loc>https://www.jquery.app/fr/tools/x-robots-tag-header-generator/</loc>
+    <lastmod>2026-06-04</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/fr/tools/yaml-json-converter/</loc>
     <lastmod>2026-06-04</lastmod>
   </url>
   <url>
@@ -2045,7 +2105,23 @@
     <lastmod>2026-06-04</lastmod>
   </url>
   <url>
+    <loc>https://www.jquery.app/ja/tools/json-formatter-validator/</loc>
+    <lastmod>2026-06-04</lastmod>
+  </url>
+  <url>
     <loc>https://www.jquery.app/ja/tools/json-ld-starter-builder/</loc>
+    <lastmod>2026-06-04</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/ja/tools/json-schema-generator-validator/</loc>
+    <lastmod>2026-06-04</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/ja/tools/json-to-csv-converter/</loc>
+    <lastmod>2026-06-04</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/ja/tools/jsonpath-tester/</loc>
     <lastmod>2026-06-04</lastmod>
   </url>
   <url>
@@ -2230,6 +2306,10 @@
   </url>
   <url>
     <loc>https://www.jquery.app/ja/tools/x-robots-tag-header-generator/</loc>
+    <lastmod>2026-06-04</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/ja/tools/yaml-json-converter/</loc>
     <lastmod>2026-06-04</lastmod>
   </url>
   <url>
@@ -2597,7 +2677,23 @@
     <lastmod>2026-06-04</lastmod>
   </url>
   <url>
+    <loc>https://www.jquery.app/nl/tools/json-formatter-validator/</loc>
+    <lastmod>2026-06-04</lastmod>
+  </url>
+  <url>
     <loc>https://www.jquery.app/nl/tools/json-ld-starter-builder/</loc>
+    <lastmod>2026-06-04</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/nl/tools/json-schema-generator-validator/</loc>
+    <lastmod>2026-06-04</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/nl/tools/json-to-csv-converter/</loc>
+    <lastmod>2026-06-04</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/nl/tools/jsonpath-tester/</loc>
     <lastmod>2026-06-04</lastmod>
   </url>
   <url>
@@ -2782,6 +2878,10 @@
   </url>
   <url>
     <loc>https://www.jquery.app/nl/tools/x-robots-tag-header-generator/</loc>
+    <lastmod>2026-06-04</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/nl/tools/yaml-json-converter/</loc>
     <lastmod>2026-06-04</lastmod>
   </url>
   <url>
@@ -3121,7 +3221,23 @@
     <lastmod>2026-06-04</lastmod>
   </url>
   <url>
+    <loc>https://www.jquery.app/tools/json-formatter-validator/</loc>
+    <lastmod>2026-06-04</lastmod>
+  </url>
+  <url>
     <loc>https://www.jquery.app/tools/json-ld-starter-builder/</loc>
+    <lastmod>2026-06-04</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/tools/json-schema-generator-validator/</loc>
+    <lastmod>2026-06-04</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/tools/json-to-csv-converter/</loc>
+    <lastmod>2026-06-04</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/tools/jsonpath-tester/</loc>
     <lastmod>2026-06-04</lastmod>
   </url>
   <url>
@@ -3306,6 +3422,10 @@
   </url>
   <url>
     <loc>https://www.jquery.app/tools/x-robots-tag-header-generator/</loc>
+    <lastmod>2026-06-04</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/tools/yaml-json-converter/</loc>
     <lastmod>2026-06-04</lastmod>
   </url>
   <url>
