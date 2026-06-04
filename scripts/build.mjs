@@ -63,11 +63,72 @@ function absoluteUrl(locale, pathname = "") {
   return new URL(urlFor(locale, pathname), site.baseUrl).toString();
 }
 
+// Priority-ordered tool IDs for mega menu dropdowns.
+// Selected for traffic/revenue potential, not alphabetical.
+// Each category lists up to 10 IDs in priority order. Tools not in
+// the list are excluded from the nav regardless of availability.
+const navPriority = {
+  seo: [
+    "ai-crawler-robots-txt-builder",       // AI crawler policy — trending topic
+    "og-twitter-card-builder",              // Social preview tags — universal need
+    "llms-txt-generator",                   // AI search visibility — growing demand
+    "robots-txt-builder",                   // Fundamental SEO
+    "json-ld-starter-builder",              // Rich results / structured data
+    "static-site-seo-checklist-generator",  // Launch readiness
+    "hreflang-tag-generator",               // Multilingual SEO
+    "viewport-meta-tag-generator",          // Mobile optimization
+    "canonical-url-tag-generator",          // Duplicate content
+    "markdown-front-matter-generator"       // SSG / blog workflow
+  ],
+  html: [
+    "json-formatter-validator",             // #1 dev utility — high traffic
+    "json-to-csv-converter",                // Data conversion — broad audience
+    "url-slug-generator",                   // Every content creator needs
+    "reading-time-estimator",               // Bloggers, content marketing
+    "html-entity-quick-reference",          // Quick lookup — repeat visits
+    "jsonpath-tester",                      // API developers
+    "yaml-json-converter",                  // DevOps, config files
+    "json-schema-generator-validator",      // API development
+    "html-link-rel-generator",              // Preload/dns-prefetch — universal
+    "toc-anchor-generator"                  // Table of contents — bloggers
+  ],
+  css: [
+    "css-flexbox-generator",                // Most popular CSS layout tool
+    "css-box-shadow-builder",               // Visual, high engagement
+    "css-border-radius-builder",            // Quick, repeat use
+    "css-clamp-calculator",                 // Responsive typography
+    "css-color-contrast-checker",           // Accessibility + design
+    "css-carousel-generator",               // Popular UI pattern
+    "css-light-dark-function-generator",    // Dark mode — trending
+    "css-scroll-snap-generator",            // Scroll UX
+    "scroll-driven-animation-generator",    // Modern CSS animations
+    "view-transition-builder"               // Page transitions
+  ],
+  assets: [
+    "pwa-maskable-icon-safe-zone-generator", // Visual tool — engagement
+    "web-app-manifest-generator",            // PWA foundation
+    "web-app-manifest-validator"             // PWA validation
+  ],
+  "github-pages": [
+    "github-pages-workflow-generator",       // Core GH Pages workflow
+    "cache-control-header-builder",          // Performance / caching
+    "cors-header-generator",                  // API / security
+    "github-pages-cname-helper",             // Custom domain setup
+    "redirect-map-converter",                // Migration, SEO
+    "http-header-parser-explainer",          // Educational, debugging
+    "security-txt-generator-validator",      // Security compliance
+    "github-pages-spa-404-helper",           // SPA routing
+    "coop-coep-corp-header-builder",         // Cross-origin isolation
+    "assetlinks-aasa-generator"              // Deep linking
+  ]
+};
+
 function buildNavTools(allTools) {
   const map = {};
-  for (const t of allTools) {
-    if (!map[t.category]) map[t.category] = [];
-    if (map[t.category].length < 10) map[t.category].push(t);
+  for (const [category, priorityIds] of Object.entries(navPriority)) {
+    const categoryTools = allTools.filter(t => t.category === category);
+    const toolMap = Object.fromEntries(categoryTools.map(t => [t.id, t]));
+    map[category] = priorityIds.map(id => toolMap[id]).filter(Boolean).slice(0, 10);
   }
   return map;
 }
