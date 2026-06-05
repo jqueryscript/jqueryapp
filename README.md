@@ -2,7 +2,7 @@
 
 **Solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with fast browser tools. No uploads, accounts, or AI token costs.**
 
-> You might not need AI for every web task. jquery.app provides 128 small browser tools
+> You might not need AI for every web task. jquery.app provides 133 small browser tools
 > that solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with deterministic
 > output — no uploads, accounts, or AI token costs.
 
@@ -10,7 +10,7 @@
 
 ---
 
-## 128 Browser Tools
+## 133 Browser Tools
 
 ### SEO Tools (22)
 
@@ -37,7 +37,7 @@
 - [Referrer Policy Tag Generator](https://www.jquery.app/tools/referrer-policy-tag-generator/) — Generate a Referrer-Policy header or meta tag.
 - [OpenSearch Description Generator](https://www.jquery.app/tools/opensearch-description-generator/) — Generate OpenSearch XML and HTML link tag for browser search integration.
 
-### HTML Tools (49)
+### HTML Tools (54)
 
 - [HTML Link Rel Generator](https://www.jquery.app/tools/html-link-rel-generator/) — Generate link tags for preload, preconnect, dns-prefetch, canonical, and alternate URLs.
 - [Favicon HTML Tag Generator](https://www.jquery.app/tools/favicon-html-tag-generator/) — Generate favicon and web app icon tags for static websites.
@@ -88,6 +88,11 @@
 - [YAML JSON Converter](https://www.jquery.app/tools/yaml-json-converter/) — Convert between YAML and JSON bidirectionally for config files.
 - [JSONPath Tester](https://www.jquery.app/tools/jsonpath-tester/) — Test JSONPath expressions with wildcards, filters, and array indices.
 - [JSON Schema Generator & Validator](https://www.jquery.app/tools/json-schema-generator-validator/) — Generate JSON Schema from data or validate JSON against a schema.
+- [Regex Tester & Debugger](https://www.jquery.app/tools/regex-tester-debugger/) — Test JavaScript regex patterns with live match highlighting and capture groups.
+- [JWT Decoder & Claims Inspector](https://www.jquery.app/tools/jwt-decoder-claims-inspector/) — Decode JWT tokens to inspect header, payload, and timestamps.
+- [Base64 Encoder & Decoder](https://www.jquery.app/tools/base64-encoder-decoder/) — Encode or decode Base64 text with URL-safe variant support.
+- [URL Encoder & Decoder](https://www.jquery.app/tools/url-encoder-decoder/) — Encode or decode URL-encoded strings with component or full URL mode.
+- [Query String Parser & Builder](https://www.jquery.app/tools/query-string-parser-builder/) — Parse URLs into key-value tables or build query strings from parameters.
 
 ### CSS Tools (38)
 
@@ -159,7 +164,7 @@
 
 ## Privacy & Data
 
-All 128 tools run entirely in your browser. No inputs are uploaded, no accounts are required,
+All 133 tools run entirely in your browser. No inputs are uploaded, no accounts are required,
 and no server-side processing happens. Each tool gives you output you can inspect,
 copy, and use right away.
 

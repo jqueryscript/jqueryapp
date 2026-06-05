@@ -1,0 +1,92 @@
+import { textarea, select, checkbox, field, htmlEscape } from "../tool-core.js";
+
+export default {
+  form: `
+    <div class="field-grid">
+      ${select({ id: "qpMode", label: "Mode", options: [
+        {label:"Parse URL / query string",value:"parse"},
+        {label:"Build query string from params",value:"build"}
+      ], value: "parse" })}
+    </div>
+    <div class="field-grid">
+      ${textarea({ id: "qpInput", label: "Input", value: "https://example.com/page?utm_source=google&utm_medium=cpc&utm_campaign=launch&ref=homepage", full: true })}
+    </div>
+    <div class="field-grid">
+      ${checkbox({ id: "qpSort", label: "Sort parameters alphabetically", checked: false })}
+      ${checkbox({ id: "qpDedup", label: "Detect duplicate parameters", checked: true })}
+    </div>`,
+  generate(root) {
+    const mode = root.querySelector("#qpMode").value;
+    const input = root.querySelector("#qpInput").value.trim();
+    const sort = root.querySelector("#qpSort").checked;
+    const dedup = root.querySelector("#qpDedup").checked;
+
+    if (!input) return { output: "Enter a URL or query string.", preview: "" };
+
+    try {
+      if (mode === "parse") {
+        let queryString = input;
+        let baseUrl = "";
+        if (input.includes("?")) {
+          const idx = input.indexOf("?");
+          baseUrl = input.slice(0, idx);
+          queryString = input.slice(idx + 1);
+        }
+        if (queryString.includes("#")) {
+          queryString = queryString.split("#")[0];
+        }
+
+        const params = new URLSearchParams(queryString);
+        const entries = [...params.entries()];
+        if (sort) entries.sort((a, b) => a[0].localeCompare(b[0]));
+
+        const lines = [];
+        if (baseUrl) lines.push(`Base URL: ${baseUrl}`);
+        lines.push(`Parameters: ${entries.length}`);
+        lines.push("---");
+        entries.forEach(([k, v]) => lines.push(`${k} = ${v}`));
+
+        const dupes = {};
+        entries.forEach(([k]) => { dupes[k] = (dupes[k] || 0) + 1; });
+        const dupKeys = Object.entries(dupes).filter(([, c]) => c > 1).map(([k]) => k);
+        if (dedup && dupKeys.length) {
+          lines.push("");
+          lines.push(`⚠ Duplicate parameters: ${dupKeys.join(", ")}`);
+        }
+
+        const rows = entries.map(([k, v]) => `<tr><td style="padding:5px 10px;font-family:monospace;font-size:12px;font-weight:600">${k}</td><td style="padding:5px 10px;font-family:monospace;font-size:12px;word-break:break-all">${v}</td></tr>`).join("");
+        const preview = `<div style="border:1px solid #e5e7eb;border-radius:8px;overflow:hidden">
+          <div style="background:#f0fdf4;padding:8px 14px;font-size:12px;color:#15803d;font-weight:600">${entries.length} parameters${dupKeys.length ? ` · ⚠ ${dupKeys.length} duplicate(s)` : ""}</div>
+          <table style="width:100%;border-collapse:collapse">${rows}</table>
+        </div>`;
+
+        return { output: lines.join("\n"), preview };
+      } else {
+        // Build mode: parse key=value lines
+        const kvLines = input.split("\n").filter(Boolean).map(l => {
+          const eq = l.indexOf("=");
+          return eq >= 0 ? [l.slice(0, eq).trim(), l.slice(eq + 1).trim()] : [l.trim(), ""];
+        });
+        const params = new URLSearchParams();
+        kvLines.forEach(([k, v]) => params.append(k, v));
+        let qs = params.toString();
+        if (sort) {
+          const sorted = [...new URLSearchParams(qs).entries()].sort((a, b) => a[0].localeCompare(b[0]));
+          const sp = new URLSearchParams();
+          sorted.forEach(([k, v]) => sp.append(k, v));
+          qs = sp.toString();
+        }
+        const output = qs;
+
+        const preview = `<div style="border:1px solid #e5e7eb;border-radius:8px;overflow:hidden">
+          <div style="background:#f0fdf4;padding:8px 14px;font-size:12px;color:#15803d;font-weight:600">Built query string · ${kvLines.length} params</div>
+          <div style="padding:14px;font-family:monospace;font-size:13px;word-break:break-all">${output}</div>
+        </div>`;
+
+        return { output, preview };
+      }
+    } catch (e) {
+      return { output: `Error: ${e.message}`, preview: `<div style="padding:14px;background:#fef2f2;border:1px solid #ef4444;border-radius:8px;color:#dc2626">${e.message}</div>` };
+    }
+  }
+};

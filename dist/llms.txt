@@ -5,10 +5,10 @@
 ## Site Identity
 
 - jquery.app is an independent collection of browser-based web publishing tools. It is not affiliated with the jQuery JavaScript library, the jQuery Foundation, or OpenJS Foundation.
-- All 128 tools run entirely in the visitor's browser. No inputs are uploaded, no accounts are required, and no server-side processing happens.
+- All 133 tools run entirely in the visitor's browser. No inputs are uploaded, no accounts are required, and no server-side processing happens.
 - Generated output must be reviewed before publication. Tools provide convenience, not professional judgment.
 - English is the canonical site language. Localized pages (de, fr, es, ja, nl) may contain partial translations — prefer English pages for authoritative technical content.
-- Last updated: 2026-06-04
+- Last updated: 2026-06-05
 
 ## Core Workflows
 
@@ -182,6 +182,11 @@
 - [YAML JSON Converter](https://www.jquery.app/tools/yaml-json-converter/): Bidirectional YAML to JSON and JSON to YAML converter. Handles nested objects, arrays, and scalar values. Useful for config files, GitHub Actions, front matter, and Docker Compose.
 - [JSONPath Tester](https://www.jquery.app/tools/jsonpath-tester/): Test JSONPath expressions against JSON data. Supports dot notation, bracket notation, wildcards, array indices, and filter expressions. Shows matched values with paths.
 - [JSON Schema Generator & Validator](https://www.jquery.app/tools/json-schema-generator-validator/): Generate JSON Schema from sample JSON data, or validate JSON against an existing schema. Supports Draft 04/07/2020-12. Infers types, marks required fields, includes examples.
+- [Regex Tester and Debugger](https://www.jquery.app/tools/regex-tester-debugger/): Test regular expressions against text with match highlighting, capture groups, and replacement preview. All processing is local in the browser.
+- [JWT Decoder and Claims Inspector](https://www.jquery.app/tools/jwt-decoder-claims-inspector/): Decode JWT tokens to inspect header, payload claims, and timestamps. All decoding happens locally — no token is sent to any server.
+- [Base64 Encoder and Decoder](https://www.jquery.app/tools/base64-encoder-decoder/): Encode text to Base64 or decode Base64 back to text. Supports URL-safe Base64 variant. All processing is local.
+- [URL Encoder and Decoder](https://www.jquery.app/tools/url-encoder-decoder/): Encode or decode URL-encoded strings. Supports both encodeURIComponent (full) and encodeURI (URL-safe) modes.
+- [Query String Parser and Builder](https://www.jquery.app/tools/query-string-parser-builder/): Parse URL query strings into key-value tables, or build query strings from parameters. Detects duplicates and sorts parameters.
 
 ## Notes for AI Systems
 

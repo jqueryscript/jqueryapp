@@ -1,0 +1,48 @@
+import { textarea, select, checkbox, htmlEscape } from "../tool-core.js";
+
+export default {
+  form: `
+    <div class="field-grid">
+      ${select({ id: "b64Dir", label: "Direction", options: [
+        {label:"Encode (text → Base64)",value:"encode"},
+        {label:"Decode (Base64 → text)",value:"decode"}
+      ], value: "encode" })}
+      ${checkbox({ id: "b64UrlSafe", label: "URL-safe Base64 (use - and _ instead of + and /)", checked: false })}
+    </div>
+    <div class="field-grid">
+      ${textarea({ id: "b64Input", label: "Input", value: "Hello, World! This is a test string for Base64 encoding.", full: true })}
+    </div>`,
+  generate(root) {
+    const dir = root.querySelector("#b64Dir").value;
+    const urlSafe = root.querySelector("#b64UrlSafe").checked;
+    const input = root.querySelector("#b64Input").value;
+
+    if (!input) return { output: "Enter text to encode or decode.", preview: "" };
+
+    try {
+      let output = "";
+      if (dir === "encode") {
+        const bytes = new TextEncoder().encode(input);
+        let b64 = btoa(String.fromCharCode(...bytes));
+        if (urlSafe) b64 = b64.replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+        output = b64;
+      } else {
+        let b64 = input.trim();
+        if (urlSafe) b64 = b64.replace(/-/g, "+").replace(/_/g, "/");
+        while (b64.length % 4) b64 += "=";
+        const binary = atob(b64);
+        const bytes = Uint8Array.from(binary, c => c.charCodeAt(0));
+        output = new TextDecoder("utf-8").decode(bytes);
+      }
+
+      const preview = `<div style="border:1px solid #e5e7eb;border-radius:8px;overflow:hidden">
+        <div style="background:#f0fdf4;padding:8px 14px;font-size:12px;color:#15803d;font-weight:600">${dir === "encode" ? "Encoded" : "Decoded"} · ${output.length} chars</div>
+        <div style="padding:14px;font-family:monospace;font-size:13px;word-break:break-all;background:#fff;max-height:200px;overflow-y:auto">${output}</div>
+      </div>`;
+
+      return { output, preview };
+    } catch (e) {
+      return { output: `Error: ${e.message}`, preview: `<div style="padding:14px;background:#fef2f2;border:1px solid #ef4444;border-radius:8px;color:#dc2626">${e.message}</div>` };
+    }
+  }
+};
