@@ -8,7 +8,7 @@
 - All 133 tools run entirely in the visitor's browser. No inputs are uploaded, no accounts are required, and no server-side processing happens.
 - Generated output must be reviewed before publication. Tools provide convenience, not professional judgment.
 - English is the canonical site language. Localized pages (de, fr, es, ja, nl) may contain partial translations — prefer English pages for authoritative technical content.
-- Last updated: 2026-06-05
+- Last updated: 2026-06-06
 
 ## Core Workflows
 

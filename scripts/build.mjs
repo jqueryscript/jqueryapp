@@ -200,7 +200,7 @@ function pageShell({ locale, title, description, pathname, body, scripts = "", c
   const languageLinks = site.locales
     .map((item) => `<a href="${urlFor(item, pathname)}" ${item === locale ? 'aria-current="true"' : ""}>${escapeHtml(localePack(item).nativeName)}</a>`)
     .join("");
-  const languageMenu = skipAlternates ? "" : `<details class="language-menu">
+  const languageMenu = skipAlternates ? "" : `<details class="language-menu" aria-label="${attr(uiText(locale, "selectLanguage", "Select language"))}">
         <summary>${escapeHtml(lang.nativeName)}</summary>
         <div>
           ${languageLinks}
@@ -293,11 +293,18 @@ ${alternateLinks}
       var closeBtn = document.getElementById('offcanvas-close');
       if(btn&&panel&&overlay){
         function open(){btn.setAttribute('aria-expanded','true');panel.classList.add('open');overlay.classList.add('open');document.body.style.overflow='hidden';}
-        function close(){btn.setAttribute('aria-expanded','false');panel.classList.remove('open');overlay.classList.remove('open');document.body.style.overflow='';}
+        function close(){btn.setAttribute('aria-expanded','false');panel.classList.remove('open');overlay.classList.remove('open');document.body.style.overflow='';if(btn)btn.focus();}
         btn.addEventListener('click',function(){btn.getAttribute('aria-expanded')==='true'?close():open();});
         overlay.addEventListener('click',close);
         if(closeBtn)closeBtn.addEventListener('click',close);
         document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+        panel.addEventListener('keydown',function(e){
+          if(e.key!=='Tab')return;
+          var focusable=panel.querySelectorAll('a,button,[tabindex]:not([tabindex="-1"])');
+          var first=focusable[0],last=focusable[focusable.length-1];
+          if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+          else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+        });
       }
       var items = document.querySelectorAll('.nav-item');
       var timer = null, current = null;
@@ -308,8 +315,12 @@ ${alternateLinks}
         function hide(){timer=setTimeout(function(){p.classList.remove('open');if(current===p)current=null;},150);}
         item.addEventListener('mouseenter',show);
         item.addEventListener('mouseleave',hide);
+        item.addEventListener('focusin',show);
+        item.addEventListener('focusout',function(e){if(!item.contains(e.relatedTarget))hide();});
         p.addEventListener('mouseenter',function(){if(timer){clearTimeout(timer);timer=null;}});
         p.addEventListener('mouseleave',hide);
+        p.addEventListener('focusin',function(){if(timer){clearTimeout(timer);timer=null;}});
+        p.addEventListener('focusout',function(e){if(!p.contains(e.relatedTarget))hide();});
       });
     })();
   </script>
@@ -321,6 +332,7 @@ ${alternateLinks}
           <span>${escapeHtml(site.siteName)}</span>
         </a>
         <p>${escapeHtml(localeSite(locale).description)}</p>
+        <p class="footer-disclaimer">${escapeHtml(uiText(locale, "footerDisclaimer", "jquery.app is an independent collection of browser tools. Not affiliated with jQuery."))}</p>
       </div>
       <div>
         <h2>${escapeHtml(ui(locale, "tools"))}</h2>
@@ -847,7 +859,8 @@ function toolPage(locale, tool, allTools, categories) {
     url: absoluteUrl(locale, `tools/${tool.id}`),
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
     isAccessibleForFree: true,
-    inLanguage: locale
+    inLanguage: locale,
+    dateModified: tool.updatedAt || buildDate
   };
   const faqSchema = tool.faq?.length ? {
     "@context": "https://schema.org",
@@ -914,7 +927,9 @@ function toolPage(locale, tool, allTools, categories) {
       <h2>${escapeHtml(template(locale, "whatIs", { name: tool.name }))}</h2>
       <p>${escapeHtml(tool.whatIs || tool.description)}</p>
       ${tool.quickAnswer ? `<div class="quick-answer"><h3>${escapeHtml(ui(locale, "quickAnswer"))}</h3><p>${escapeHtml(tool.quickAnswer)}</p></div>` : ""}
+      <p class="tool-updated"><strong>${escapeHtml(uiText(locale, "lastUpdated", "Last updated"))}:</strong> ${tool.updatedAt || buildDate}</p>
       ${tool.limitations?.length ? `<h3>${escapeHtml(ui(locale, "limitations"))}</h3><ul>${listItems(tool.limitations)}</ul>` : ""}
+      <p class="tool-sources"><strong>${escapeHtml(uiText(locale, "sources", "Sources"))}:</strong> <a href="https://developer.mozilla.org/" rel="nofollow">MDN Web Docs</a> · <a href="https://www.w3.org/TR/" rel="nofollow">W3C Specifications</a> · <a href="https://github.com/jqueryscript/jqueryapp" rel="nofollow">jquery.app on GitHub</a></p>
       <h2>${escapeHtml(ui(locale, "howToUse"))}</h2>
       <ol>${listItems(tool.howToUse || [])}</ol>
       <h2>${escapeHtml(ui(locale, "whatUseFor"))}</h2>
@@ -1022,7 +1037,7 @@ function simplePages(locale) {
     about: {
       title: "About jquery.app",
       description: "A small workshop for the details that sit between building a page and publishing it well.",
-      content: `<h2>Why this site exists</h2><p>jquery.app is a collection of small tools for people who build, publish, and maintain websites. It is made for the quiet tasks that still matter: writing canonical tags, preparing social preview metadata, checking launch details, shaping responsive CSS, and keeping static pages tidy.</p><p>The site is intentionally simple. Most tools run entirely in your browser, ask for only the fields they need, and return output you can read before you copy it. There are no accounts, no project dashboards, and no need to upload your work to use the current tools.</p><h2>What belongs here</h2><p>jquery.app focuses on practical web publishing chores with a clear result. A good tool on this site should save a few minutes, reduce a small mistake, or make a repeated job easier to finish. It should also be understandable without a manual.</p><h2>What does not belong here</h2><p>This is not a replacement for professional judgment, browser testing, search console data, or a full technical audit. Generated code and checklists should be reviewed before they are added to a production site.</p>`
+      content: `<h2>Why this site exists</h2><p>jquery.app is a collection of small tools for people who build, publish, and maintain websites. It is made for the quiet tasks that still matter: writing canonical tags, preparing social preview metadata, checking launch details, shaping responsive CSS, and keeping static pages tidy.</p><p>The site is intentionally simple. Most tools run entirely in your browser, ask for only the fields they need, and return output you can read before you copy it. There are no accounts, no project dashboards, and no need to upload your work to use the current tools.</p><h2>About the name</h2><p>jquery.app is an independent collection of browser-based web publishing tools. It is not affiliated with the jQuery JavaScript library, the jQuery Foundation, or OpenJS Foundation.</p><h2>What belongs here</h2><p>jquery.app focuses on practical web publishing chores with a clear result. A good tool on this site should save a few minutes, reduce a small mistake, or make a repeated job easier to finish. It should also be understandable without a manual.</p><h2>What does not belong here</h2><p>This is not a replacement for professional judgment, browser testing, search console data, or a full technical audit. Generated code and checklists should be reviewed before they are added to a production site.</p>`
     },
     privacy: {
       title: "Privacy Policy",

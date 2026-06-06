@@ -11,11 +11,18 @@
       var closeBtn = document.getElementById('offcanvas-close');
       if(btn&&panel&&overlay){
         function open(){btn.setAttribute('aria-expanded','true');panel.classList.add('open');overlay.classList.add('open');document.body.style.overflow='hidden';}
-        function close(){btn.setAttribute('aria-expanded','false');panel.classList.remove('open');overlay.classList.remove('open');document.body.style.overflow='';}
+        function close(){btn.setAttribute('aria-expanded','false');panel.classList.remove('open');overlay.classList.remove('open');document.body.style.overflow='';if(btn)btn.focus();}
         btn.addEventListener('click',function(){btn.getAttribute('aria-expanded')==='true'?close():open();});
         overlay.addEventListener('click',close);
         if(closeBtn)closeBtn.addEventListener('click',close);
         document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+        panel.addEventListener('keydown',function(e){
+          if(e.key!=='Tab')return;
+          var focusable=panel.querySelectorAll('a,button,[tabindex]:not([tabindex="-1"])');
+          var first=focusable[0],last=focusable[focusable.length-1];
+          if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+          else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+        });
       }
       var items = document.querySelectorAll('.nav-item');
       var timer = null, current = null;
@@ -26,8 +33,12 @@
         function hide(){timer=setTimeout(function(){p.classList.remove('open');if(current===p)current=null;},150);}
         item.addEventListener('mouseenter',show);
         item.addEventListener('mouseleave',hide);
+        item.addEventListener('focusin',show);
+        item.addEventListener('focusout',function(e){if(!item.contains(e.relatedTarget))hide();});
         p.addEventListener('mouseenter',function(){if(timer){clearTimeout(timer);timer=null;}});
         p.addEventListener('mouseleave',hide);
+        p.addEventListener('focusin',function(){if(timer){clearTimeout(timer);timer=null;}});
+        p.addEventListener('focusout',function(e){if(!p.contains(e.relatedTarget))hide();});
       });
     })();
-  </script> <footer class="site-footer"><div class="wrap footer-grid"><div><a class="brand footer-brand" href="/"><span class="brand-mark" aria-hidden="true"></span><span>jquery.app</span></a><p>Solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with fast browser tools. No uploads, accounts, or AI token costs.</p></div><div><h2>Tools</h2><a href="/tools/seo/">SEO</a><a href="/tools/html/">HTML</a><a href="/tools/css/">CSS</a><a href="/tools/assets/">Assets</a><a href="/tools/github-pages/">GitHub Pages</a></div><div><h2>Site</h2><a href="/about/">About</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/contact/">Contact</a><a href="/llms.txt">llms.txt</a></div></div></footer></body></html>
+  </script> <footer class="site-footer"><div class="wrap footer-grid"><div><a class="brand footer-brand" href="/"><span class="brand-mark" aria-hidden="true"></span><span>jquery.app</span></a><p>Solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with fast browser tools. No uploads, accounts, or AI token costs.</p><p class="footer-disclaimer">jquery.app is an independent collection of browser tools. Not affiliated with jQuery.</p></div><div><h2>Tools</h2><a href="/tools/seo/">SEO</a><a href="/tools/html/">HTML</a><a href="/tools/css/">CSS</a><a href="/tools/assets/">Assets</a><a href="/tools/github-pages/">GitHub Pages</a></div><div><h2>Site</h2><a href="/about/">About</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/contact/">Contact</a><a href="/llms.txt">llms.txt</a></div></div></footer></body></html>
