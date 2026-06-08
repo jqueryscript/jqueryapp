@@ -1,0 +1,70 @@
+import { field, select, checkbox, htmlEscape } from "../tool-core.js";
+
+const presets = {
+  everyHour: { label: "Every hour", expr: "0 * * * *" },
+  everyDay: { label: "Every day at midnight", expr: "0 0 * * *" },
+  everyWeek: { label: "Every Monday at 9am", expr: "0 9 * * 1" },
+  everyMonth: { label: "First day of month at 3am", expr: "0 3 1 * *" },
+  custom: { label: "Custom (set fields below)", expr: "" }
+};
+
+export default {
+  form: `
+    <div class="field-grid">
+      ${select({ id: "cronPreset", label: "Schedule preset", options: Object.entries(presets).map(([k,v]) => ({label:v.label,value:k})), value: "everyDay" })}
+    </div>
+    <div class="field-grid">
+      ${field({ id: "cronMin", label: "Minute (0-59)", type: "number", value: "0", attrs: "min=0 max=59" })}
+      ${field({ id: "cronHour", label: "Hour (0-23)", type: "number", value: "0", attrs: "min=0 max=23" })}
+    </div>
+    <div class="field-grid">
+      ${field({ id: "cronDom", label: "Day of month (1-31)", value: "*", help: "* = every day" })}
+      ${field({ id: "cronMonth", label: "Month (1-12)", value: "*", help: "* = every month" })}
+    </div>
+    <div class="field-grid">
+      ${field({ id: "cronDow", label: "Day of week (0-6)", value: "*", help: "0=Sun, 1=Mon... * = every day" })}
+      ${checkbox({ id: "cronSix", label: "6-field format (includes seconds)", checked: false })}
+    </div>`,
+  generate(root) {
+    const preset = root.querySelector("#cronPreset").value;
+    const min = root.querySelector("#cronMin").value || "*";
+    const hour = root.querySelector("#cronHour").value || "*";
+    const dom = root.querySelector("#cronDom").value || "*";
+    const month = root.querySelector("#cronMonth").value || "*";
+    const dow = root.querySelector("#cronDow").value || "*";
+    const six = root.querySelector("#cronSix").checked;
+
+    let expr;
+    if (preset !== "custom" && !six) {
+      expr = presets[preset].expr;
+    } else {
+      expr = six ? `0 ${min} ${hour} ${dom} ${month} ${dow}` : `${min} ${hour} ${dom} ${month} ${dow}`;
+    }
+
+    const lines = [];
+    lines.push(`${six ? "6" : "5"}-field cron: ${expr}`);
+    lines.push("");
+    const fieldNames = six ? ["second","minute","hour","day of month","month","day of week"] : ["minute","hour","day of month","month","day of week"];
+    const fieldValues = six ? ["0",min,hour,dom,month,dow] : [min,hour,dom,month,dow];
+    fieldNames.forEach((name, i) => {
+      const v = fieldValues[i];
+      let desc = "";
+      if (v === "*") desc = "(every)";
+      else if (v.includes("/")) desc = `(every ${v.split("/")[1]})`;
+      else if (v.includes(",")) desc = "(specific values)";
+      lines.push(`  ${name}: ${v} ${desc}`);
+    });
+    lines.push("");
+    lines.push("Next 3 run times (approximate):");
+    lines.push("  Note: actual next run depends on the scheduler implementation.");
+
+    const preview = `<div style="border:1px solid #e5e7eb;border-radius:8px;overflow:hidden">
+      <div style="background:#f0fdf4;padding:10px 14px;font-size:13px;font-weight:600;color:#15803d">${expr}</div>
+      <div style="padding:14px;font-size:12px;color:#6b7280">
+        ${fieldNames.map((n,i) => `<div>${n}: <span style="font-family:monospace;color:#374151">${fieldValues[i]}</span></div>`).join("")}
+      </div>
+    </div>`;
+
+    return { output: lines.join("\n"), preview };
+  }
+};

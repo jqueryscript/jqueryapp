@@ -2,7 +2,7 @@
 
 **Solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with fast browser tools. No uploads, accounts, or AI token costs.**
 
-> You might not need AI for every web task. jquery.app provides 133 small browser tools
+> You might not need AI for every web task. jquery.app provides 138 small browser tools
 > that solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with deterministic
 > output — no uploads, accounts, or AI token costs.
 
@@ -10,7 +10,7 @@
 
 ---
 
-## 133 Browser Tools
+## 138 Browser Tools
 
 ### SEO Tools (22)
 
@@ -37,7 +37,7 @@
 - [Referrer Policy Tag Generator](https://www.jquery.app/tools/referrer-policy-tag-generator/) — Generate a Referrer-Policy header or meta tag.
 - [OpenSearch Description Generator](https://www.jquery.app/tools/opensearch-description-generator/) — Generate OpenSearch XML and HTML link tag for browser search integration.
 
-### HTML Tools (54)
+### HTML Tools (59)
 
 - [HTML Link Rel Generator](https://www.jquery.app/tools/html-link-rel-generator/) — Generate link tags for preload, preconnect, dns-prefetch, canonical, and alternate URLs.
 - [Favicon HTML Tag Generator](https://www.jquery.app/tools/favicon-html-tag-generator/) — Generate favicon and web app icon tags for static websites.
@@ -93,6 +93,11 @@
 - [Base64 Encoder & Decoder](https://www.jquery.app/tools/base64-encoder-decoder/) — Encode or decode Base64 text with URL-safe variant support.
 - [URL Encoder & Decoder](https://www.jquery.app/tools/url-encoder-decoder/) — Encode or decode URL-encoded strings with component or full URL mode.
 - [Query String Parser & Builder](https://www.jquery.app/tools/query-string-parser-builder/) — Parse URLs into key-value tables or build query strings from parameters.
+- [UUID Generator](https://www.jquery.app/tools/uuid-generator/) — Generate UUID v4 (random) or v7 (time-ordered) identifiers in batches.
+- [Unix Timestamp Converter](https://www.jquery.app/tools/unix-timestamp-converter/) — Convert between Unix timestamps and human-readable dates.
+- [Cron Expression Builder](https://www.jquery.app/tools/cron-expression-builder/) — Build cron schedule expressions with presets and custom fields.
+- [Text Diff Checker](https://www.jquery.app/tools/text-diff-checker/) — Compare two texts line-by-line or side-by-side with highlighting.
+- [Hash & HMAC Generator](https://www.jquery.app/tools/hash-hmac-generator/) — Generate JavaScript code for SHA-256/384/512 and HMAC hashes.
 
 ### CSS Tools (38)
 
@@ -164,7 +169,7 @@
 
 ## Privacy & Data
 
-All 133 tools run entirely in your browser. No inputs are uploaded, no accounts are required,
+All 138 tools run entirely in your browser. No inputs are uploaded, no accounts are required,
 and no server-side processing happens. Each tool gives you output you can inspect,
 copy, and use right away.
 
