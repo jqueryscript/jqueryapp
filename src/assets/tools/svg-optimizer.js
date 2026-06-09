@@ -1,0 +1,70 @@
+import { textarea, checkbox, htmlEscape } from "../tool-core.js";
+
+export default {
+  form: `
+    <div class="field-grid">
+      ${textarea({ id: "svgInput", label: "Paste SVG markup", value: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">\n  <!-- A simple icon -->\n  <circle cx="50" cy="50" r="40" fill="#3b82f6"/>\n  <path d="M30 50 L70 50" stroke="#fff" stroke-width="4"/>\n</svg>', full: true, attrs: 'style="min-height:160px;font-family:monospace"' })}
+    </div>
+    <div class="field-grid">
+      ${checkbox({ id: "svgoComments", label: "Remove comments", checked: true })}
+      ${checkbox({ id: "svgoMeta", label: "Remove metadata and editor data", checked: true })}
+    </div>
+    <div class="field-grid">
+      ${checkbox({ id: "svgoPrecision", label: "Round decimal precision", checked: true })}
+      ${checkbox({ id: "svgoWhitespace", label: "Collapse whitespace", checked: true })}
+    </div>`,
+  generate(root) {
+    const input = root.querySelector("#svgInput").value.trim();
+    const rmComments = root.querySelector("#svgoComments").checked;
+    const rmMeta = root.querySelector("#svgoMeta").checked;
+    const round = root.querySelector("#svgoPrecision").checked;
+    const collapse = root.querySelector("#svgoWhitespace").checked;
+
+    if (!input) return { output: "Paste SVG to optimize.", preview: "" };
+
+    let svg = input;
+
+    // Remove comments
+    if (rmComments) svg = svg.replace(/<!--[\s\S]*?-->/g, "");
+
+    // Remove metadata/editor namespaces
+    if (rmMeta) {
+      svg = svg.replace(/\s*xmlns:(?:sodipodi|inkscape|rdf|cc|dc|xlink)="[^"]*"/g, "");
+      svg = svg.replace(/\s*(?:sodipodi|inkscape):[a-zA-Z-]+="[^"]*"/g, "");
+    }
+
+    // Round decimal numbers to 2 places
+    if (round) {
+      svg = svg.replace(/(\d+\.\d{3,})/g, (m) => parseFloat(m).toFixed(2));
+    }
+
+    // Collapse whitespace
+    if (collapse) {
+      svg = svg.replace(/>\s+</g, "><");
+      svg = svg.replace(/\s{2,}/g, " ");
+      svg = svg.replace(/\n\s*/g, "\n");
+      svg = svg.trim();
+    }
+
+    const beforeSize = input.length;
+    const afterSize = svg.length;
+    const saved = beforeSize - afterSize;
+    const pct = beforeSize > 0 ? ((saved / beforeSize) * 100).toFixed(1) : 0;
+
+    const output = svg;
+    const preview = `<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div style="text-align:center">
+        <div style="font-size:11px;color:#6b7280;margin-bottom:4px">Before</div>
+        <div style="font-size:18px;font-weight:700;color:#374151">${(beforeSize / 1024).toFixed(1)} KB</div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-size:11px;color:#6b7280;margin-bottom:4px">After</div>
+        <div style="font-size:18px;font-weight:700;color:#15803d">${(afterSize / 1024).toFixed(1)} KB</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;text-align:center;font-size:13px;color:#15803d;font-weight:600">Saved ${(saved / 1024).toFixed(1)} KB (${pct}%)</div>
+    <div style="margin-top:8px;text-align:center">${svg}</div>`;
+
+    return { output, preview };
+  }
+};

@@ -2,7 +2,7 @@
 
 **Solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with fast browser tools. No uploads, accounts, or AI token costs.**
 
-> You might not need AI for every web task. jquery.app provides 138 small browser tools
+> You might not need AI for every web task. jquery.app provides 143 small browser tools
 > that solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with deterministic
 > output — no uploads, accounts, or AI token costs.
 
@@ -10,7 +10,7 @@
 
 ---
 
-## 138 Browser Tools
+## 143 Browser Tools
 
 ### SEO Tools (22)
 
@@ -37,7 +37,7 @@
 - [Referrer Policy Tag Generator](https://www.jquery.app/tools/referrer-policy-tag-generator/) — Generate a Referrer-Policy header or meta tag.
 - [OpenSearch Description Generator](https://www.jquery.app/tools/opensearch-description-generator/) — Generate OpenSearch XML and HTML link tag for browser search integration.
 
-### HTML Tools (59)
+### HTML Tools (62)
 
 - [HTML Link Rel Generator](https://www.jquery.app/tools/html-link-rel-generator/) — Generate link tags for preload, preconnect, dns-prefetch, canonical, and alternate URLs.
 - [Favicon HTML Tag Generator](https://www.jquery.app/tools/favicon-html-tag-generator/) — Generate favicon and web app icon tags for static websites.
@@ -98,8 +98,11 @@
 - [Cron Expression Builder](https://www.jquery.app/tools/cron-expression-builder/) — Build cron schedule expressions with presets and custom fields.
 - [Text Diff Checker](https://www.jquery.app/tools/text-diff-checker/) — Compare two texts line-by-line or side-by-side with highlighting.
 - [Hash & HMAC Generator](https://www.jquery.app/tools/hash-hmac-generator/) — Generate JavaScript code for SHA-256/384/512 and HMAC hashes.
+- [Markdown Preview Editor](https://www.jquery.app/tools/markdown-preview-editor/) — Split-screen Markdown editor with live GFM preview.
+- [QR Code Generator](https://www.jquery.app/tools/qr-code-generator/) — Generate QR codes as SVG for URLs, text, email, and WiFi.
+- [Image Compressor & Converter](https://www.jquery.app/tools/image-compressor-converter/) — Compress and convert images locally in JPEG/PNG/WebP.
 
-### CSS Tools (38)
+### CSS Tools (40)
 
 - [CSS Clamp Calculator](https://www.jquery.app/tools/css-clamp-calculator/) — Calculate responsive CSS clamp values for font sizes and spacing.
 - [CSS Safe Area Insets Generator](https://www.jquery.app/tools/css-safe-area-insets-generator/) — Generate CSS for safe-area insets on phones with notches and rounded corners.
@@ -139,6 +142,8 @@
 - [CSS Font-Relative Units Calculator](https://www.jquery.app/tools/css-font-relative-units-calculator/) — Calculate pixel equivalents for rcap, rch, rex, and ric root-relative font units.
 - [CSS shape() Function Generator](https://www.jquery.app/tools/css-shape-function-generator/) — Generate CSS shape() functions for non-rectangular clip-path and shape-outside.
 - [CSS @scope Rule Builder](https://www.jquery.app/tools/css-scope-rule-builder/) — Generate CSS @scope rules for scoping styles to DOM subtrees.
+- [SVG Optimizer](https://www.jquery.app/tools/svg-optimizer/) — Optimize SVG files by removing comments, metadata, and collapsing whitespace.
+- [SVG to CSS Data URI Converter](https://www.jquery.app/tools/svg-to-css-data-uri-converter/) — Convert SVG markup to CSS data URIs for background-image and img src.
 
 ### GitHub Pages Tools (14)
 
@@ -169,7 +174,7 @@
 
 ## Privacy & Data
 
-All 138 tools run entirely in your browser. No inputs are uploaded, no accounts are required,
+All 143 tools run entirely in your browser. No inputs are uploaded, no accounts are required,
 and no server-side processing happens. Each tool gives you output you can inspect,
 copy, and use right away.
 
