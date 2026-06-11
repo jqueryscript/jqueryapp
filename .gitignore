@@ -12,3 +12,5 @@ plans.md
 scripts/split-tools.mjs
 scripts/add-imports.mjs
 data/tool-ids.json
+claude-deepseek.ps1
+*.ps1
