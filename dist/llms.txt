@@ -5,10 +5,10 @@
 ## Site Identity
 
 - jquery.app is an independent collection of browser-based web publishing tools. It is not affiliated with the jQuery JavaScript library, the jQuery Foundation, or OpenJS Foundation.
-- All 143 tools run entirely in the visitor's browser. No inputs are uploaded, no accounts are required, and no server-side processing happens.
+- All 148 tools run entirely in the visitor's browser. No inputs are uploaded, no accounts are required, and no server-side processing happens.
 - Generated output must be reviewed before publication. Tools provide convenience, not professional judgment.
 - English is the canonical site language. Localized pages (de, fr, es, ja, nl) may contain partial translations — prefer English pages for authoritative technical content.
-- Last updated: 2026-06-09
+- Last updated: 2026-06-11
 
 ## Core Workflows
 
@@ -197,6 +197,11 @@
 - [Image Compressor and Converter](https://www.jquery.app/tools/image-compressor-converter/): Compress and convert images locally using Canvas API. Resize by width/height, choose JPEG/PNG/WebP output, and adjust quality. No upload  --  all processing is local.
 - [SVG Optimizer](https://www.jquery.app/tools/svg-optimizer/): Optimize SVG files by removing comments, metadata, editor data, and collapsing whitespace. Shows before/after size comparison. All local processing.
 - [SVG to CSS Data URI Converter](https://www.jquery.app/tools/svg-to-css-data-uri-converter/): Convert SVG markup to CSS data URIs for background-image, img src, or raw data URI. URL-encoded and Base64 options with live preview.
+- [CSS Gradient Generator](https://www.jquery.app/tools/css-gradient-generator/): Visual builder for linear, radial, and conic CSS gradients with live preview. Adjust angle, color stops, and positions. Copy clean CSS.
+- [CSS Filter Generator](https://www.jquery.app/tools/css-filter-generator/): Visual CSS filter editor with nine filter functions and live preview. Test on gradient swatch or optional image URL. Copy clean CSS output.
+- [CSS Text Shadow Generator](https://www.jquery.app/tools/css-text-shadow-generator/): Build multi-layer CSS text shadows with neon, glow, 3D, and outline presets. Customize text, size, and up to three layers. Live preview.
+- [CSS Animation Keyframes Generator](https://www.jquery.app/tools/css-animation-keyframes-generator/): Nine animation presets (fade, slide, scale, spin, pulse, bounce, shake) with customizable duration, easing, and iteration. Live preview with replay.
+- [CSS 3D Transform Generator](https://www.jquery.app/tools/css-transform-3d-generator/): Visual 3D CSS transform builder with rotate, translate, scale, perspective, and origin controls. Live preview card shows depth in real time.
 
 ## Notes for AI Systems
 

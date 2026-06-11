@@ -1,0 +1,869 @@
+{
+  "de": {
+    "markdown-preview-editor": {
+      "name": "Markdown Vorschau-Editor",
+      "summary": "Geteilter Bildschirm-Markdown-Editor mit Live-GitHub-Flavored-Markdown-Vorschau. Unterstuetzt Ueberschriften, fett/kursiv, Links, Codebloecke, Tabellen und Aufgabenlisten.",
+      "whatIs": "Der Markdown Vorschau-Editor ist eine geteilte Schreibumgebung, bei der der linke Bereich ein Texteditor und der rechte Bereich das Markdown in Echtzeit als HTML rendert. Er unterstuetzt GitHub-Flavored Markdown (GFM), den Standard, der auf GitHub, GitLab und den meisten Entwicklerplattformen verwendet wird.",
+      "quickAnswer": "Schreiben Sie Markdown im linken Bereich und sehen Sie das gerenderte HTML sofort im rechten Bereich aktualisiert. Unterstuetzung fuer GFM-Ueberschriften, fett, kursiv, Codebloecke mit Syntaxhervorhebung, Tabellen, Aufgabenlisten, Zitate und Links.",
+      "howToUse": [
+        "Geben Sie Markdown in den Editorbereich auf der linken Seite ein oder fuegen Sie es dort ein. Der Vorschaubereich auf der rechten Seite aktualisiert sich automatisch.",
+        "Verwenden Sie die standardmaessige Markdown-Syntax: # fuer Ueberschriften, **fett**, *kursiv*, `code` fuer Inline-Code und dreifache Backticks fuer Codebloecke.",
+        "Erstellen Sie Tabellen mit Strichen und senkrechten Strichen (| Spalte1 | Spalte2 |) sowie Aufgabenlisten mit der Syntax - [ ] und - [x].",
+        "Kopieren Sie das gerenderte HTML aus dem Vorschaubereich oder kopieren Sie den Markdown-Quelltext zur Verwendung in anderen Werkzeugen."
+      ],
+      "useCases": [
+        "Schreiben und Vorschauen einer GitHub-README.md-Datei vor dem Commit zur Ueberpruefung der korrekten GFM-Darstellung.",
+        "Dokumentation in Markdown verfassen und sofort sehen, wie Ueberschriften, Codebloecke und Tabellen nach Veroeffentlichung aussehen.",
+        "Formatierte E-Mail-Inhalte oder CMS-Eintraege erstellen, indem Sie in Markdown schreiben und das gerenderte HTML kopieren."
+      ],
+      "examples": [
+        {
+          "title": "README.md-Erstellungs-Workflow",
+          "text": "Ein Entwickler schreibt eine README fuer ein neues Open-Source-Projekt. Er gibt das Markdown ein und beobachtet die Echtzeit-Darstellung von Ueberschriften, Codebloecken und Badge-Bildern."
+        },
+        {
+          "title": "Zusammenarbeit im Dokumentationsteam",
+          "text": "Ein technischer Redakteur erstellt API-Dokumentationen. Die Live-Vorschau bestaetigt korrekte Listen, Syntaxhervorhebung und Tabellenausrichtung."
+        }
+      ],
+      "mistakes": [
+        "Nicht unterstuetztes HTML innerhalb von Markdown-Bloecken verwenden. Die Mischung von HTML mit Markdown-Syntax kann zu unerwarteten Darstellungen fuehren.",
+        "Leerzeilen vor Ueberschriften und Listen vergessen. Markdown erfordert in vielen Faellen Leerzeilen vor Blockelementen.",
+        "Tabulatoren anstelle von Leerzeichen fuer Codeblock-Einzuege verwenden. Eingerueckte Codebloecke erfordern vier Leerzeichen."
+      ],
+      "faq": [
+        {
+          "question": "Unterstuetzt dieser Editor Tabellen mit Ausrichtung?",
+          "answer": "Ja. GFM-Tabellen unterstuetzen linksbuendige (:---), rechtsbuendige (---:) und zentrierte (:---:) Spalten."
+        },
+        {
+          "question": "Kann ich das gerenderte HTML direkt kopieren?",
+          "answer": "Ja. Der Vorschaubereich zeigt das vollstaendig gerenderte HTML zur Auswahl und zum Kopieren."
+        },
+        {
+          "question": "Unterstuetzt es Syntaxhervorhebung in Codebloecken?",
+          "answer": "Ja. Codebloecke mit Sprachkennzeichen werden mit Syntaxhervorhebung dargestellt."
+        }
+      ],
+      "limitations": [
+        "Dieses Tool stimmt moeglicherweise nicht perfekt mit jeder Markdown-Engine ueberein.",
+        "Sehr grosse Dokumente (ueber 100.000 Zeichen) koennen zu Leistungseinbussen fuehren.",
+        "Eingebettete Bilder erfordern oeffentlich zugaengliche URLs."
+      ],
+      "verificationSteps": [
+        "Geben Sie # Ueberschrift 1, **fett**, *kursiv* und `code` ein. Ueberpruefen Sie die korrekte Darstellung.",
+        "Erstellen Sie eine Tabelle mit Ausrichtung und einen Codeblock mit Syntaxhervorhebung."
+      ]
+    },
+    "qr-code-generator": {
+      "name": "QR-Code-Generator",
+      "summary": "Generieren Sie QR-Codes als SVG fuer URLs, Text, E-Mail, Telefon und WLAN. Anpassbare Farben und Groesse mit SVG-Code-Ausgabe.",
+      "whatIs": "Der QR-Code-Generator erstellt QR-Codes als skalierbare Vektorgrafiken (SVG) vollstaendig im Browser. Er produziert sauberen SVG-Code, der unendlich skaliert und direkt in HTML-Seiten eingebettet werden kann.",
+      "quickAnswer": "Generieren Sie QR-Codes als SVG fuer URLs, Text, E-Mail, Telefonnummern und WLAN-Zugangsdaten. Passen Sie Farben und Groesse an. Die gesamte Verarbeitung erfolgt lokal und ist kostenlos.",
+      "howToUse": [
+        "Waehlen Sie den Inhaltstyp (URL, Text, E-Mail, Telefon oder WLAN) aus dem Dropdown-Menue.",
+        "Fuellen Sie die Felder fuer den ausgewaehlten Typ aus. Bei WLAN geben Sie SSID, Passwort und Verschluesselungstyp an.",
+        "Passen Sie die QR-Code-Farben (Vordergrund und Hintergrund) und die Groesse nach Bedarf an.",
+        "Kopieren Sie den QR-Code als SVG oder den rohen SVG-Code fuer HTML-Seiten."
+      ],
+      "useCases": [
+        "Generieren Sie QR-Codes fuer Geschaefts-URLs zur Verwendung in Druckmaterialien oder E-Mail-Signaturen.",
+        "Erstellen Sie WLAN-QR-Codes, die Gaeste scannen koennen, um sich ohne Passworteingabe zu verbinden.",
+        "Betten Sie E-Mail-QR-Codes in Flyer ein, damit Besucher durch Scannen Nachrichten senden koennen."
+      ],
+      "examples": [
+        {
+          "title": "Restaurant-Speisekarten-QR-Code",
+          "text": "Ein Restaurant platziert QR-Codes auf Tischen, die auf eine digitale Speisekarte verweisen."
+        },
+        {
+          "title": "Konferenz-WLAN-Ausweis",
+          "text": "Ein Veranstalter druckt WLAN-QR-Codes auf Konferenzausweise fuer sofortige Netzwerkverbindung."
+        }
+      ],
+      "mistakes": [
+        "Den QR-Code zu klein fuer zuverlaessiges Scannen machen. Mindestens 200x200 Pixel werden empfohlen.",
+        "Farbkombinationen mit geringem Kontrast verwenden, die QR-Codes unleserlich machen.",
+        "Vergessen, den QR-Code vor dem Druck mit mehreren Geraeten zu testen."
+      ],
+      "faq": [
+        {
+          "question": "Ist die QR-Code-Generierung wirklich kostenlos und serverlos?",
+          "answer": "Ja. Die gesamte Generierung erfolgt lokal im Browser. Es werden keine Daten an einen Server gesendet."
+        },
+        {
+          "question": "Kann ich die Farben des QR-Codes anpassen?",
+          "answer": "Ja. Sie koennen Vordergrund- und Hintergrundfarbe mit Farbwaehlern oder Hex-Werten einstellen."
+        },
+        {
+          "question": "Warum SVG und nicht PNG?",
+          "answer": "SVG ist ein Vektorformat, das unendlich skaliert ohne Qualitaetsverlust, ideal fuer Druck und Web."
+        },
+        {
+          "question": "Funktioniert der WLAN-QR-Code mit allen Telefonen?",
+          "answer": "Die meisten modernen Smartphones mit iOS (11+) und Android (10+) scannen WLAN-QR-Codes nativ."
+        }
+      ],
+      "limitations": [
+        "Das Tool generiert QR-Codes bis Version 7 (45x45 Module), etwa 150 alphanumerische Zeichen maximal.",
+        "Nur SVG-Ausgabe wird unterstuetzt. Andere Formate erfordern externe Konvertierung.",
+        "Dichte QR-Codes koennen bei kleinen Groessen schwerer zu scannen sein."
+      ],
+      "verificationSteps": [
+        "Generieren Sie einen QR-Code fuer eine kurze URL und scannen Sie ihn mit einem Smartphone.",
+        "Generieren Sie einen WLAN-QR-Code mit Test-Zugangsdaten und ueberpruefen Sie die Funktion."
+      ]
+    },
+    "image-compressor-converter": {
+      "name": "Bildkompressor und -konverter",
+      "summary": "Komprimieren und konvertieren Sie Bilder lokal mit der Canvas-API. Groessenanpassung, JPEG/PNG/WebP-Ausgabe und Qualitaetsregelung. Kein Upload.",
+      "whatIs": "Bildkompressor und -konverter ist ein browserbasiertes Tool, das die Canvas-API zur Bildkomprimierung, -skalierung und -konvertierung nutzt. Es unterstuetzt drei Ausgabeformate (JPEG, PNG, WebP).",
+      "quickAnswer": "Komprimieren, skalieren und konvertieren Sie Bilder lokal mit der Canvas-API. Waehlen Sie JPEG-, PNG- oder WebP-Ausgabe und passen Sie die Qualitaet an. Kein Datei-Upload erforderlich.",
+      "howToUse": [
+        "Waehlen Sie eine Bilddatei von Ihrem Geraet aus. Das Tool zeigt das Original und seine Groesse an.",
+        "Waehlen Sie das Ausgabeformat: JPEG fuer Fotos, PNG fuer Transparenz, WebP fuer moderne Webnutzung.",
+        "Passen Sie die Qualitaet (1-100) und optional die Zielabmessungen an.",
+        "Laden Sie das verarbeitete Bild herunter. Ein Groessenvergleich wird angezeigt."
+      ],
+      "useCases": [
+        "Fotogroessen fuer das Web durch Konvertierung in WebP oder JPEG bei 80% Qualitaet reduzieren.",
+        "PNG-Screenshots in JPEG fuer Systeme konvertieren, die PNG nicht akzeptieren.",
+        "Produktbilder vor dem Hochladen auf eine einheitliche Breite skalieren."
+      ],
+      "examples": [
+        {
+          "title": "Website-Leistungsoptimierung",
+          "text": "Ein Webentwickler konvertiert grosse JPEG-Fotos (2MB) in WebP bei 80% Qualitaet und reduziert sie drastisch."
+        },
+        {
+          "title": "E-Mail-Anhangsgroessenreduzierung",
+          "text": "Ein Benutzer konvertiert einen 15MB PNG-Screenshot in JPEG bei 60% Qualitaet fuer den E-Mail-Versand."
+        }
+      ],
+      "mistakes": [
+        "JPEG fuer Bilder mit Text oder scharfen Kanten verwenden. JPEG-Artefakte sind dort sichtbar.",
+        "Die Qualitaet beim ersten Versuch zu niedrig einstellen. Bei 80% beginnen.",
+        "Bilder vergroessern. Das Tool kann nur verkleinern. Vergroesserung verursacht Pixelbildung."
+      ],
+      "faq": [
+        {
+          "question": "Werden meine Bilder auf einen Server hochgeladen?",
+          "answer": "Nein. Die gesamte Verarbeitung erfolgt im Browser mit der Canvas-API. Ihre Bilder verlassen nie Ihren Computer."
+        },
+        {
+          "question": "Welche maximale Dateigroesse kann ich verarbeiten?",
+          "answer": "Kein explizites Limit. Sehr grosse Bilder (ueber 5000 Pixel) koennen Leistungsprobleme verursachen."
+        },
+        {
+          "question": "Welches Format fuer das Web?",
+          "answer": "WebP bietet das beste Komprimierungs-Verhaeltnis, oft 25-35% kleiner als JPEG."
+        },
+        {
+          "question": "Bewahrt dieses Tool EXIF-Daten?",
+          "answer": "Nein. Die Canvas-API entfernt EXIF-Metadaten whrend der Verarbeitung."
+        }
+      ],
+      "limitations": [
+        "Die Canvas-API unterstuetzt keine animierten Bilder (GIF, APNG). Nur der erste Frame wird verarbeitet.",
+        "CMYK-Farbprofile werden von Canvas nicht unterstuetzt.",
+        "Dateigroessenschaetzungen sind approximativ und variieren je nach Bildkomplexitaet."
+      ],
+      "verificationSteps": [
+        "Konvertieren Sie ein JPEG-Foto in WebP bei 80% Qualitaet und ueberpruefen Sie die Groessenreduktion.",
+        "Verarbeiten Sie ein PNG mit Transparenz und stellen Sie sicher, dass die Transparenz erhalten bleibt."
+      ]
+    },
+    "svg-optimizer": {
+      "name": "SVG-Optimierer",
+      "summary": "Optimieren Sie SVG-Dateien durch Entfernen von Kommentaren, Metadaten und Leerraum. Zeigt Groessenvergleich vorher/nachher. Lokale Verarbeitung.",
+      "whatIs": "Der SVG-Optimierer reduziert SVG-Dateigroessen durch Entfernen von Elementen, die die visuelle Ausgabe nicht beeinflussen. SVGs aus Designtools enthalten oft Metadaten und redundante Formatierung.",
+      "quickAnswer": "Entfernen Sie Kommentare, Metadaten, Editor-Daten und ueberfluessigen Leerraum aus SVG-Dateien. Groessenvergleich vorher/nachher. Alles lokal.",
+      "howToUse": [
+        "Fuegen Sie SVG-Markup ein oder laden Sie eine SVG-Datei hoch.",
+        "Das Tool verarbeitet das SVG automatisch und zeigt die optimierte Ausgabe an.",
+        "Ueberpruefen Sie den Groessenvergleich und passen Sie Optimierungen an.",
+        "Kopieren Sie den optimierten Code oder laden Sie die .svg-Datei herunter."
+      ],
+      "useCases": [
+        "SVG-Dateigroessen vor dem Einbetten in Webseiten reduzieren.",
+        "SVGs aus Designtools vor dem Commit in ein Repository bereinigen.",
+        "SVGs fuer CSS-Daten-URIs vorbereiten, wo kleinere Groessen das Stylesheet-Gewicht reduzieren."
+      ],
+      "examples": [
+        {
+          "title": "Figma-Export-Bereinigung",
+          "text": "Ein Designer exportiert Icons aus Figma. Die Optimierung reduziert die Groesse von 4KB auf durchschnittlich 1,2KB."
+        },
+        {
+          "title": "Inline-SVG-Leistungssteigerung",
+          "text": "Ein Hero-SVG wird von 28KB auf 9KB optimiert durch Entfernung von Illustrator-Metadaten."
+        }
+      ],
+      "mistakes": [
+        "Annehmen, dass kleinere SVGs immer identisch aussehen. Vor dem Deployment immer Vorschau anzeigen.",
+        "Das viewBox-Attribut entfernen. Es ist kritisch fuer die SVG-Skalierung.",
+        "Wiederverwendbare Symboldefinitionen uebersehen. Der Optimierer erhaelt sie, aber ID-Entfernung kann Referenzen brechen."
+      ],
+      "faq": [
+        {
+          "question": "Was entfernt der Optimierer?",
+          "answer": "XML-Kommentare, Doctype-Deklarationen, Editorspezifische Metadaten, leere Gruppen und ueberfluessigen Leerraum."
+        },
+        {
+          "question": "Minimiert er Pfaddaten?",
+          "answer": "Nein, dieses Tool konzentriert sich auf strukturelle Bereinigung."
+        },
+        {
+          "question": "Beschaedigt er inline CSS?",
+          "answer": "Nein. Inline-CSS, <style>-Blogs und Klassenstyling bleiben erhalten."
+        }
+      ],
+      "limitations": [
+        "Nur strukturelle Bereinigung, keine Pfadoptimierung.",
+        "SVGs mit eingebetteten Rasterbildern zeigen keine signifikante Groessenreduktion.",
+        "Einige SVG-Dateien verwenden nicht standardmaessige Namespace-Praefixe."
+      ],
+      "verificationSteps": [
+        "Laden Sie ein SVG aus einem Designtool hoch und ueberpruefen Sie, ob Metadaten entfernt wurden.",
+        "Oeffnen Sie Original und Optimiertes in einem Browser und vergleichen Sie die Darstellung."
+      ]
+    },
+    "svg-to-css-data-uri-converter": {
+      "name": "SVG-zu-CSS-Daten-URI-Konverter",
+      "summary": "Konvertieren Sie SVG-Markup in CSS-Daten-URIs. URL-kodierte und Base64-Optionen mit Live-Vorschau.",
+      "whatIs": "Der Konverter wandelt rohes SVG-Markup in Daten-URIs fuer CSS und HTML um. URL-Kodierung produziert kompaktere Ausgabe, Base64 ist fuer problematische Zeichen geeignet.",
+      "quickAnswer": "SVG-Markup in CSS-kompatible Daten-URIs umwandeln. URL-kodiert oder Base64. background-image, mask, img src oder rohe Daten-URI.",
+      "howToUse": [
+        "Fuegen Sie SVG-Markup in den Eingabebereich ein.",
+        "Waehlen Sie URL-Kodierung (empfohlen) oder Base64.",
+        "Waehlen Sie das Ausgabeformat: CSS background-image, mask, img src oder rohe Daten-URI.",
+        "Kopieren Sie den generierten Code in Ihr Stylesheet oder HTML."
+      ],
+      "useCases": [
+        "SVG-Icons direkt in CSS background-image einbetten, um HTTP-Anfragen zu reduzieren.",
+        "SVG-Daten-URIs in CSS mask-image fuer benutzerdefinierte Masken verwenden.",
+        "Kleine SVGs in HTML img-Tags fuer eigenstaendige E-Mail-Vorlagen einbetten."
+      ],
+      "examples": [
+        {
+          "title": "CSS-Sprite-freie Icons",
+          "text": "Ein Entwickler bettet 10 SVG-Icons als Daten-URIs direkt in das Stylesheet ein und spart HTTP-Anfragen."
+        },
+        {
+          "title": "Eigenstaendige E-Mail-Signatur",
+          "text": "Ein Designer konvertiert ein Logo-SVG in eine Base64-Daten-URI fuer eine vollstaendig eigenstaendige Signatur."
+        }
+      ],
+      "mistakes": [
+        "Base64 unnoetig verwenden. URL-Kodierung ist meist kompakter.",
+        "Leerraum vor der Kodierung nicht entfernen. Das vergroessert die URI.",
+        "Daten-URIs fuer grosse SVGs verwenden. Ueber 2-4KB die CSS-Datei unnietig aufblaehen."
+      ],
+      "faq": [
+        {
+          "question": "Welche Kodierung ist besser?",
+          "answer": "URL-Kodierung. Sie ist etwa 10-20% kompakter und lesbar."
+        },
+        {
+          "question": "Funktioniert das in allen Browsern?",
+          "answer": "Ja, in allen modernen Browsern (Chrome, Firefox, Safari, Edge)."
+        },
+        {
+          "question": "Daten-URIs in inline-Style-Attributen?",
+          "answer": "Ja, aber auf Anfuerungszeichen achten."
+        },
+        {
+          "question": "Maximale Groesse?",
+          "answer": "Aus Leistungsgruenden unter 2KB halten."
+        }
+      ],
+      "limitations": [
+        "Daten-URIs ueber 4KB aus Leistungsgruenden vermeiden.",
+        "Keine SVG-Syntaxvalidierung. Ungueltiges SVG produziert ungueltige Daten-URIs.",
+        "Browserunterschiede bei mask-image und clip-path mit Daten-URIs."
+      ],
+      "verificationSteps": [
+        "Einen SVG-Kreis konvertieren und die Darstellung ueberpruefen.",
+        "Base64- und URL-Kodierung vergleichen. Die Darstellung sollte identisch sein."
+      ]
+    }
+  },
+  "fr": {
+    "markdown-preview-editor": {
+      "name": "Editeur de Previsualisation Markdown",
+      "summary": "Editeur Markdown a ecran partage avec apercu en direct du Markdown GitHub-Flavored. Prend en charge les titres, gras/italique, liens, blocs de code, tableaux et listes de taches.",
+      "whatIs": "L'Editeur de Previsualisation Markdown est un environnement d'ecriture a ecran partage ou le panneau de gauche est un editeur de texte et le panneau de droite rend le Markdown en HTML en temps reel. Il prend en charge le GitHub-Flavored Markdown (GFM).",
+      "quickAnswer": "Ecrivez du Markdown dans le panneau de gauche et voyez le HTML rendu se mettre a jour instantanement dans le panneau de droite. Prend en charge les titres GFM, le gras, l'italique, les blocs de code, les tableaux, les listes de taches, les citations et les liens.",
+      "howToUse": [
+        "Saisissez ou collez du Markdown dans le panneau de l editeur a gauche. Le panneau d apercu a droite se met a jour automatiquement.",
+        "Utilisez la syntaxe Markdown standard : # pour les titres, **gras**, *italique*, `code` pour le code en ligne.",
+        "Creez des tableaux avec des barres verticales et des tirets (| col1 | col2 |) et des listes de taches avec - [ ] et - [x].",
+        "Copiez le HTML rendu depuis le panneau d apercu ou copiez le source Markdown."
+      ],
+      "useCases": [
+        "Rediger et previsualiser un fichier README.md GitHub avant de le commit.",
+        "Rediger de la documentation en Markdown et voir immediatement le rendu final.",
+        "Creer du contenu email formate en ecrivant en Markdown et en copiant le HTML rendu."
+      ],
+      "examples": [
+        {
+          "title": "Workflow de redaction README.md",
+          "text": "Un developpeur ecrit un README pour un nouveau projet et regarde les titres et codes s'afficher en temps reel."
+        },
+        {
+          "title": "Collaboration equipe de documentation",
+          "text": "Un redacteur technique redige une documentation API et verifie la mise en forme en direct."
+        }
+      ],
+      "mistakes": [
+        "Utiliser du HTML non pris en charge a l interieur de blocs Markdown.",
+        "Oublier les lignes vides avant les titres et les listes.",
+        "Utiliser des tabulations au lieu d espaces pour l indentation des blocs de code."
+      ],
+      "faq": [
+        {
+          "question": "Est-ce que cet editeur prend en charge les tableaux avec alignement?",
+          "answer": "Oui. Les tableaux GFM prennent en charge les colonnes alignees a gauche, a droite et au centre."
+        },
+        {
+          "question": "Puis-je copier le HTML rendu directement?",
+          "answer": "Oui. Le panneau d apercu affiche le HTML rendu pret a etre copie."
+        },
+        {
+          "question": "Prend-il en charge la coloration syntaxique?",
+          "answer": "Oui. Les blocs de code avec identifiant de langue s'affichent avec coloration syntaxique."
+        }
+      ],
+      "limitations": [
+        "Le rendu peut ne pas correspondre parfaitement a tous les moteurs Markdown.",
+        "Les tres grands documents peuvent provoquer des ralentissements.",
+        "Les images necessitent des URL publiquement accessibles."
+      ],
+      "verificationSteps": [
+        "Tapez un titre, du gras, de l'italique et du code. Verifiez le rendu.",
+        "Creez un tableau aligne et un bloc de code avec coloration."
+      ]
+    },
+    "qr-code-generator": {
+      "name": "Generateur de Code QR",
+      "summary": "Generez des codes QR en SVG pour URL, texte, email, telephone et WiFi. Couleurs et taille personnalisables.",
+      "whatIs": "Le Generateur de Code QR cree des codes QR en SVG entierement dans le navigateur. Produit un code SVG propre et echelonnable.",
+      "quickAnswer": "Generez des codes QR en SVG pour URL, texte, email, telephone et WiFi. Personnalisez couleurs et taille. Gratuit et local.",
+      "howToUse": [
+        "Selectionnez le type de contenu (URL, texte, email, telephone ou WiFi).",
+        "Remplissez les champs. Pour le WiFi, fournissez SSID, mot de passe et type de chiffrement.",
+        "Ajustez les couleurs et la taille.",
+        "Copiez le code QR rendu en SVG ou le code SVG brut."
+      ],
+      "useCases": [
+        "Generer un code QR pour une URL professionnelle.",
+        "Creer un code QR WiFi pour les invites.",
+        "Integrer un code QR email dans un depliant imprime."
+      ],
+      "examples": [
+        {
+          "title": "Code QR de menu de restaurant",
+          "text": "Un restaurant place des codes QR sur les tables renvoyant a un menu numerique."
+        },
+        {
+          "title": "Badge WiFi de conference",
+          "text": "Un organisateur imprime des codes QR WiFi sur les badges d evenement."
+        }
+      ],
+      "mistakes": [
+        "Code QR trop petit. Minimum 200x200 pixels recommande.",
+        "Couleurs a faible contraste rendant le code illisible.",
+        "Ne pas tester avant impression."
+      ],
+      "faq": [
+        {
+          "question": "Est-ce vraiment gratuit et sans serveur?",
+          "answer": "Oui. Tout se fait localement dans votre navigateur."
+        },
+        {
+          "question": "Puis-je personnaliser les couleurs?",
+          "answer": "Oui, avec des selecteurs de couleurs ou des valeurs hexa."
+        },
+        {
+          "question": "Pourquoi SVG?",
+          "answer": "Le SVG est un format vectoriel qui echelonne sans perte."
+        },
+        {
+          "question": "Fonctionne avec tous les telephones?",
+          "answer": "Oui, la plupart des smartphones modernes scannent les QR codes nativement."
+        }
+      ],
+      "limitations": [
+        "Limite a la version 7 (45x45 modules), environ 150 caracteres.",
+        "Seulement sortie SVG.",
+        "Codes denses plus difficiles a scanner en petite taille."
+      ],
+      "verificationSteps": [
+        "Generez un code QR pour une URL et scannez-le.",
+        "Generez un code WiFi et testez-le avec un telephone."
+      ]
+    },
+    "image-compressor-converter": {
+      "name": "Compresseur et Convertisseur d'Image",
+      "summary": "Compressez et convertissez des images localement via Canvas API. JPEG/PNG/WebP. Aucun upload serveur.",
+      "whatIs": "Outil de traitement d'image base navigateur utilisant Canvas API pour compresser, redimensionner et convertir les images.",
+      "quickAnswer": "Compressez, redimensionnez et convertissez des images localement. JPEG, PNG, WebP. Qualite reglable. Aucun upload.",
+      "howToUse": [
+        "Selectionnez un fichier image.",
+        "Choisissez le format de sortie: JPEG, PNG ou WebP.",
+        "Ajustez la qualite (1-100) et les dimensions.",
+        "Telechargez l'image traitee."
+      ],
+      "useCases": [
+        "Reduire les photos pour le Web avec WebP a 80%.",
+        "Convertir des captures d'ecran PNG en JPEG.",
+        "Redimensionner des images produits."
+      ],
+      "examples": [
+        {
+          "title": "Optimisation Web",
+          "text": "Conversion de photos JPEG 2MB en WebP avec reduction drastique."
+        },
+        {
+          "title": "Reduction d'email",
+          "text": "Conversion d'un PNG 15MB en JPEG pour l'envoi par email."
+        }
+      ],
+      "mistakes": [
+        "JPEG pour textes et logos. Des artefacts apparaissent.",
+        "Qualite trop basse. Commencez a 80%.",
+        "Agrandir les images. Cela cause de la pixelisation."
+      ],
+      "faq": [
+        {
+          "question": "Mes images sont-elles envoyees a un serveur?",
+          "answer": "Non. Tout se fait dans votre navigateur."
+        },
+        {
+          "question": "Taille maximale?",
+          "answer": "Pas de limite explicite. Au-dela de 5000 pixels, possibles ralentissements."
+        },
+        {
+          "question": "Quel format choisir?",
+          "answer": "WebP offre le meilleur rapport compression/qualite."
+        },
+        {
+          "question": "EXIF preserve?",
+          "answer": "Non. Les metadonnees sont supprimees."
+        }
+      ],
+      "limitations": [
+        "Pas d'images animees. Seule la premiere image est traitee.",
+        "Profils CMYK non supportes.",
+        "Estimations approximatives."
+      ],
+      "verificationSteps": [
+        "Convertissez un JPEG en WebP a 80% et verifiez la taille.",
+        "Verifiez la preservation de transparence pour les PNG."
+      ]
+    },
+    "svg-optimizer": {
+      "name": "Optimiseur SVG",
+      "summary": "Optimisez les SVG en supprimant commentaires, metadonnees et espaces. Comparaison avant/apres. Traitement local.",
+      "whatIs": "Outil base navigateur reduisant la taille des SVG en supprimant les elements n'affectant pas le rendu visuel.",
+      "quickAnswer": "Supprimez commentaires, metadonnees et espaces superflus des SVG. Comparez les tailles avant/apres. Local et gratuit.",
+      "howToUse": [
+        "Collez du SVG ou telechargez un fichier.",
+        "L'outil traite et affiche le resultat optimise.",
+        "Consultez la comparaison de taille.",
+        "Copiez ou telechargez le SVG optimise."
+      ],
+      "useCases": [
+        "Reduire les SVG avant integration Web.",
+        "Nettoyer les SVG avant commit.",
+        "Preparer des SVG pour des URI de donnees CSS."
+      ],
+      "examples": [
+        {
+          "title": "Nettoyage Figma",
+          "text": "Des icones SVG de 4KB reduites a 1,2KB en moyenne."
+        },
+        {
+          "title": "Performance SVG inline",
+          "text": "Hero SVG de 28KB reduit a 9KB par nettoyage des metadonnees."
+        }
+      ],
+      "mistakes": [
+        "Presumer qu un SVG plus petit est visuellement identique.",
+        "Supprimer le viewBox.",
+        "Oublier les definitions de symboles reutilisables."
+      ],
+      "faq": [
+        {
+          "question": "Que supprime l optimiseur?",
+          "answer": "Commentaires XML, metadonnees, groupes vides, espaces superflus."
+        },
+        {
+          "question": "Minimise-t-il les chemins?",
+          "answer": "Non, il se concentre sur le nettoyage structurel."
+        },
+        {
+          "question": "Casse-t-il le CSS?",
+          "answer": "Non, le CSS inline et les styles sont conserves."
+        }
+      ],
+      "limitations": [
+        "Nettoyage structurel uniquement.",
+        "SVG avec images raster integrees peu de gain.",
+        "Prefixes namespace non standard non reconnus."
+      ],
+      "verificationSteps": [
+        "Optimisez un SVG et verifiez la suppression des metadonnees.",
+        "Comparez le rendu avant et apres dans un navigateur."
+      ]
+    },
+    "svg-to-css-data-uri-converter": {
+      "name": "Convertisseur SVG en URI de Donnees CSS",
+      "summary": "Convertissez du SVG en URI de donnees CSS. Options URL-encodé et Base64 avec apercu en direct.",
+      "whatIs": "Transforme le SVG brut en URI de donnees pour CSS et HTML. Deux methodes: encodage URL et Base64.",
+      "quickAnswer": "Obtenez des URI de donnees CSS compatibles depuis du SVG. URL-encode ou Base64. background-image, mask, img src.",
+      "howToUse": [
+        "Collez votre SVG.",
+        "Choisissez l'encodage: URL (recommande) ou Base64.",
+        "Selectionnez le format de sortie.",
+        "Copiez le code genere dans votre CSS ou HTML."
+      ],
+      "useCases": [
+        "Integrer des icones SVG dans CSS pour reduire les requetes HTTP.",
+        "Utiliser des URI en CSS mask-image.",
+        "Integrer des SVG dans des emails."
+      ],
+      "examples": [
+        {
+          "title": "Icones sans sprites CSS",
+          "text": "10 icones SVG converties en URI de donnees et integrees dans la feuille de style."
+        },
+        {
+          "title": "Signature email autonome",
+          "text": "Logo SVG converti en URI Base64 pour signature email."
+        }
+      ],
+      "mistakes": [
+        "Base64 inutile. L encodage URL est plus compact.",
+        "Espaces superflus avant encodage.",
+        "URI de donnees pour grands SVG (plus de 2-4KB)."
+      ],
+      "faq": [
+        {
+          "question": "Quel encodage choisir?",
+          "answer": "URL-encodé, environ 10-20% plus petit."
+        },
+        {
+          "question": "Compatibilite navigateurs?",
+          "answer": "Tous les navigateurs modernes."
+        },
+        {
+          "question": "Dans les attributs style?",
+          "answer": "Oui, attention aux guillemets."
+        },
+        {
+          "question": "Taille maximale?",
+          "answer": "Sous 2KB pour les performances."
+        }
+      ],
+      "limitations": [
+        "URI de plus de 4KB deconseillees.",
+        "Pas de validation SVG.",
+        "Comportement variable selon navigateurs pour mask-image."
+      ],
+      "verificationSteps": [
+        "Convertissez un cercle SVG avec URL-encodage et verifiez le rendu.",
+        "Comparez avec le rendu Base64."
+      ]
+    }
+  },
+  "es": {
+    "markdown-preview-editor": {
+      "name": "Editor de Vista Previa Markdown",
+      "summary": "Editor Markdown de pantalla dividida con vista previa en vivo de GitHub-Flavored Markdown. Compatible con encabezados, negrita/cursiva, enlaces, bloques de codigo, tablas y listas de tareas.",
+      "whatIs": "El Editor de Vista Previa Markdown es un entorno de escritura de pantalla dividida donde el panel izquierdo es un editor de texto y el panel derecho renderiza el Markdown como HTML en tiempo real. Es compatible con GitHub-Flavored Markdown (GFM).",
+      "quickAnswer": "Escriba Markdown en el panel izquierdo y vea el HTML renderizado actualizarse al instante en el panel derecho. Compatible con encabezados GFM, negrita, cursiva, bloques de codigo, tablas, listas de tareas, citas y enlaces.",
+      "howToUse": [
+        "Escriba o pegue Markdown en el panel del editor a la izquierda. La vista previa se actualiza automaticamente.",
+        "Use la sintaxis estandar de Markdown: # para encabezados, **negrita**, *cursiva*, `codigo`.",
+        "Cree tablas con (| col1 | col2 |) y listas de tareas con - [ ] y - [x].",
+        "Copie el HTML renderizado o el codigo fuente Markdown."
+      ],
+      "useCases": [
+        "Escribir y previsualizar un README.md antes de confirmarlo.",
+        "Redactar documentacion y ver el resultado final inmediatamente.",
+        "Crear contenido email formateado escribiendo en Markdown."
+      ],
+      "examples": [
+        {
+          "title": "Flujo de trabajo README.md",
+          "text": "Un desarrollador escribe un README y observa el renderizado en tiempo real."
+        },
+        {
+          "title": "Colaboracion de documentacion",
+          "text": "Un redactor tecnico redacta documentacion API y verifica el formato en vivo."
+        }
+      ],
+      "mistakes": [
+        "Usar HTML no compatible dentro de bloques Markdown.",
+        "Olvidar las lineas en blanco antes de encabezados y listas.",
+        "Usar tabuladores en lugar de espacios para la sangria."
+      ],
+      "faq": [
+        {
+          "question": "Este editor admite tablas con alineacion?",
+          "answer": "Si. Las tablas GFM admiten alineacion izquierda, derecha y centrada."
+        },
+        {
+          "question": "Puedo copiar el HTML directamente?",
+          "answer": "Si. El panel de vista previa muestra el HTML listo para copiar."
+        },
+        {
+          "question": "Tiene resaltado de sintaxis?",
+          "answer": "Si. Los bloques de codigo con identificador de lenguaje se renderizan con resaltado."
+        }
+      ],
+      "limitations": [
+        "Puede no coincidir perfectamente con todos los motores Markdown.",
+        "Documentos muy grandes pueden causar lentitud.",
+        "Las imagenes requieren URL accesibles publicamente."
+      ],
+      "verificationSteps": [
+        "Escriba un encabezado, negrita, cursiva y codigo. Verifique el renderizado.",
+        "Cree una tabla alineada y un bloque de codigo con resaltado."
+      ]
+    },
+    "qr-code-generator": {
+      "name": "Generador de Codigos QR",
+      "summary": "Genere codigos QR como SVG para URL, texto, correo electronico, telefono y WiFi. Colores y tamano personalizables.",
+      "whatIs": "El Generador de Codigos QR crea codigos QR en SVG completamente en el navegador. Produce codigo SVG limpio y escalable.",
+      "quickAnswer": "Genere codigos QR como SVG para URL, texto, correo, telefono y WiFi. Personalice colores y tamano. Procesamiento local y gratuito.",
+      "howToUse": [
+        "Seleccione el tipo de contenido (URL, texto, correo, telefono o WiFi).",
+        "Complete los campos. Para WiFi, proporcione SSID y contrasena.",
+        "Ajuste los colores y el tamano.",
+        "Copie el codigo QR renderizado como SVG o el codigo bruto."
+      ],
+      "useCases": [
+        "Generar un codigo QR para una URL de negocio.",
+        "Crear un codigo QR WiFi para invitados.",
+        "Incrustar un codigo QR de correo en un volante."
+      ],
+      "examples": [
+        {
+          "title": "Codigo QR de menu",
+          "text": "Un restaurante coloca codigos QR en las mesas para el menu digital."
+        },
+        {
+          "title": "Codigo QR WiFi de conferencia",
+          "text": "Un organizador imprime codigos WiFi en las credenciales."
+        }
+      ],
+      "mistakes": [
+        "Codigo QR demasiado pequeno. Minimo 200x200 pixeles.",
+        "Colores de bajo contraste.",
+        "No probar antes de imprimir."
+      ],
+      "faq": [
+        {
+          "question": "Es realmente gratuito y sin servidor?",
+          "answer": "Si. Todo ocurre localmente en su navegador."
+        },
+        {
+          "question": "Puedo personalizar los colores?",
+          "answer": "Si, con selectores de color o valores hexadecimales."
+        },
+        {
+          "question": "Por que SVG?",
+          "answer": "SVG es un formato vectorial que escala sin perdida."
+        },
+        {
+          "question": "Funciona con todos los telefonos?",
+          "answer": "La mayoria de smartphones modernos escanean QR nativamente."
+        }
+      ],
+      "limitations": [
+        "Limitado a version 7 (45x45 modulos), unos 150 caracteres.",
+        "Solo salida SVG.",
+        "Codigos densos mas dificiles de escanear en tamano pequeno."
+      ],
+      "verificationSteps": [
+        "Genere un QR para una URL y escaneelo.",
+        "Genere un QR WiFi y pruebelo con un telefono."
+      ]
+    },
+    "image-compressor-converter": {
+      "name": "Compresor y Conversor de Imagenes",
+      "summary": "Comprima y convierta imagenes localmente usando Canvas API. JPEG/PNG/WebP. Sin carga al servidor.",
+      "whatIs": "Herramienta de procesamiento de imagenes basada en navegador que usa Canvas API para comprimir, cambiar tamano y convertir imagenes.",
+      "quickAnswer": "Comprima, cambie el tamano y convierta imagenes localmente. JPEG, PNG, WebP. Calidad ajustable. Sin upload.",
+      "howToUse": [
+        "Seleccione un archivo de imagen.",
+        "Elija el formato de salida: JPEG, PNG o WebP.",
+        "Ajuste la calidad (1-100) y las dimensiones.",
+        "Descargue la imagen procesada."
+      ],
+      "useCases": [
+        "Reducir fotos para Web con WebP al 80%.",
+        "Convertir capturas PNG a JPEG.",
+        "Redimensionar imagenes de productos."
+      ],
+      "examples": [
+        {
+          "title": "Optimizacion Web",
+          "text": "Fotos JPEG de 2MB convertidas a WebP con reduccion drastica."
+        },
+        {
+          "title": "Reduccion de email",
+          "text": "PNG de 15MB convertido a JPEG para envio por correo."
+        }
+      ],
+      "mistakes": [
+        "JPEG para textos y logos. Aparecen artefactos.",
+        "Calidad demasiado baja. Comience al 80%.",
+        "Ampliar imagenes. Causa pixelacion."
+      ],
+      "faq": [
+        {
+          "question": "Mis imagenes se cargan a un servidor?",
+          "answer": "No. Todo se hace en su navegador."
+        },
+        {
+          "question": "Tamano maximo?",
+          "answer": "Sin limite explicito. Mas de 5000 pixeles puede causar lentitud."
+        },
+        {
+          "question": "Que formato elegir?",
+          "answer": "WebP ofrece el mejor ratio compresion/calidad."
+        },
+        {
+          "question": "Preserva EXIF?",
+          "answer": "No. Los metadatos se eliminan."
+        }
+      ],
+      "limitations": [
+        "No soporta imagenes animadas. Solo el primer fotograma.",
+        "Perfiles CMYK no soportados.",
+        "Estimaciones aproximadas."
+      ],
+      "verificationSteps": [
+        "Convierta un JPEG a WebP al 80% y verifique el tamano.",
+        "Verifique la preservacion de transparencia en PNG."
+      ]
+    },
+    "svg-optimizer": {
+      "name": "Optimizador SVG",
+      "summary": "Optimice archivos SVG eliminando comentarios, metadatos y espacios. Comparacion antes/despues. Procesamiento local.",
+      "whatIs": "Herramienta que reduce el tamano de SVG eliminando elementos que no afectan el renderizado visual.",
+      "quickAnswer": "Elimine comentarios, metadatos y espacios sobrantes de SVG. Vea la comparacion de tamano. Local y gratuito.",
+      "howToUse": [
+        "Pegue SVG o cargue un archivo.",
+        "La herramienta procesa y muestra el resultado optimizado.",
+        "Revise la comparacion de tamano.",
+        "Copie o descargue el SVG optimizado."
+      ],
+      "useCases": [
+        "Reducir SVG antes de integrarlos en paginas web.",
+        "Limpiar SVG antes de enviarlos a un repositorio.",
+        "Preparar SVG para URI de datos CSS."
+      ],
+      "examples": [
+        {
+          "title": "Limpieza Figma",
+          "text": "Iconos SVG de 4KB reducidos a 1.2KB en promedio."
+        },
+        {
+          "title": "Rendimiento SVG inline",
+          "text": "Hero SVG de 28KB reducido a 9KB."
+        }
+      ],
+      "mistakes": [
+        "Asumir que un SVG mas pequeno es visualmente identico.",
+        "Eliminar el viewBox.",
+        "Omitir definiciones de simbolos reutilizables."
+      ],
+      "faq": [
+        {
+          "question": "Que elimina el optimizador?",
+          "answer": "Comentarios XML, metadatos, grupos vacios, espacios sobrantes."
+        },
+        {
+          "question": "Minimiza rutas?",
+          "answer": "No, se centra en limpieza estructural."
+        },
+        {
+          "question": "Romp el CSS?",
+          "answer": "No. El CSS inline y los estilos se conservan."
+        }
+      ],
+      "limitations": [
+        "Solo limpieza estructural.",
+        "SVG con imagenes raster incrustadas: poco beneficio.",
+        "Prefijos de namespace no estandar no reconocidos."
+      ],
+      "verificationSteps": [
+        "Optimice un SVG y verifique que se eliminaron los metadatos.",
+        "Compare el renderizado antes y despues."
+      ]
+    },
+    "svg-to-css-data-uri-converter": {
+      "name": "Convertidor SVG a URI de Datos CSS",
+      "summary": "Convierta SVG a URI de datos CSS. Opciones URL-codificado y Base64 con vista previa en vivo.",
+      "whatIs": "Transforma SVG bruto en URI de datos para CSS y HTML. Metodos: codificacion URL y Base64.",
+      "quickAnswer": "Obtenga URI de datos CSS desde SVG. URL-codificado o Base64. background-image, mask, img src.",
+      "howToUse": [
+        "Pegue su SVG.",
+        "Elija codificacion: URL (recomendada) o Base64.",
+        "Seleccione el formato de salida.",
+        "Copie el codigo en su CSS o HTML."
+      ],
+      "useCases": [
+        "Integrar iconos SVG en CSS para reducir solicitudes HTTP.",
+        "Usar URI en CSS mask-image.",
+        "Integrar SVG en correos electronicos."
+      ],
+      "examples": [
+        {
+          "title": "Iconos sin sprites CSS",
+          "text": "10 iconos SVG convertidos a URI e integrados en la hoja de estilos."
+        },
+        {
+          "title": "Firma de correo autonoma",
+          "text": "Logo SVG convertido a URI Base64 para firma de correo."
+        }
+      ],
+      "mistakes": [
+        "Base64 innecesario. La codificacion URL es mas compacta.",
+        "Espacios sobrantes antes de codificar.",
+        "URI para SVG grandes (mas de 2-4KB)."
+      ],
+      "faq": [
+        {
+          "question": "Que codificacion elegir?",
+          "answer": "URL-codificado, aproximadamente 10-20% mas pequeno."
+        },
+        {
+          "question": "Compatibilidad con navegadores?",
+          "answer": "Todos los navegadores modernos."
+        },
+        {
+          "question": "En atributos style?",
+          "answer": "Si, cuidado con las comillas."
+        },
+        {
+          "question": "Tamano maximo?",
+          "answer": "Mantengalo bajo 2KB por rendimiento."
+        }
+      ],
+      "limitations": [
+        "URI mayores de 4KB no recomendadas.",
+        "Sin validacion de SVG.",
+        "Comportamiento variable segun navegador para mask-image."
+      ],
+      "verificationSteps": [
+        "Convierta un circulo SVG con URL-codificado y verifique el renderizado.",
+        "Compare con el renderizado Base64."
+      ]
+    }
+  }
+}
