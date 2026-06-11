@@ -14,3 +14,6 @@ scripts/add-imports.mjs
 data/tool-ids.json
 claude-deepseek.ps1
 *.ps1
+data/batch-*.json
+scripts/translate-batch.mjs
+temp-*.json
