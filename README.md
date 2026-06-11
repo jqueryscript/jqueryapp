@@ -2,7 +2,7 @@
 
 **Solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with fast browser tools. No uploads, accounts, or AI token costs.**
 
-> You might not need AI for every web task. jquery.app provides 143 small browser tools
+> You might not need AI for every web task. jquery.app provides 148 small browser tools
 > that solve everyday HTML, CSS, SEO, mobile UI and publishing tasks with deterministic
 > output — no uploads, accounts, or AI token costs.
 
@@ -10,7 +10,7 @@
 
 ---
 
-## 143 Browser Tools
+## 148 Browser Tools
 
 ### SEO Tools (22)
 
@@ -102,7 +102,7 @@
 - [QR Code Generator](https://www.jquery.app/tools/qr-code-generator/) — Generate QR codes as SVG for URLs, text, email, and WiFi.
 - [Image Compressor & Converter](https://www.jquery.app/tools/image-compressor-converter/) — Compress and convert images locally in JPEG/PNG/WebP.
 
-### CSS Tools (40)
+### CSS Tools (45)
 
 - [CSS Clamp Calculator](https://www.jquery.app/tools/css-clamp-calculator/) — Calculate responsive CSS clamp values for font sizes and spacing.
 - [CSS Safe Area Insets Generator](https://www.jquery.app/tools/css-safe-area-insets-generator/) — Generate CSS for safe-area insets on phones with notches and rounded corners.
@@ -144,6 +144,11 @@
 - [CSS @scope Rule Builder](https://www.jquery.app/tools/css-scope-rule-builder/) — Generate CSS @scope rules for scoping styles to DOM subtrees.
 - [SVG Optimizer](https://www.jquery.app/tools/svg-optimizer/) — Optimize SVG files by removing comments, metadata, and collapsing whitespace.
 - [SVG to CSS Data URI Converter](https://www.jquery.app/tools/svg-to-css-data-uri-converter/) — Convert SVG markup to CSS data URIs for background-image and img src.
+- [CSS Gradient Generator](https://www.jquery.app/tools/css-gradient-generator/) — Build linear, radial, and conic CSS gradients visually with live preview and color stops.
+- [CSS Filter Generator](https://www.jquery.app/tools/css-filter-generator/) — Apply CSS filters (blur, brightness, contrast, grayscale, etc.) with sliders and image preview.
+- [CSS Text Shadow Generator](https://www.jquery.app/tools/css-text-shadow-generator/) — Design multi-layer text shadows with neon, glow, outline, and 3D presets.
+- [CSS Animation Keyframes Generator](https://www.jquery.app/tools/css-animation-keyframes-generator/) — Generate CSS @keyframes with nine preset animations and live replay preview.
+- [CSS 3D Transform Generator](https://www.jquery.app/tools/css-transform-3d-generator/) — Build CSS 3D transforms with rotate, translate, scale, perspective, and live preview.
 
 ### GitHub Pages Tools (14)
 
@@ -174,7 +179,7 @@
 
 ## Privacy & Data
 
-All 143 tools run entirely in your browser. No inputs are uploaded, no accounts are required,
+All 148 tools run entirely in your browser. No inputs are uploaded, no accounts are required,
 and no server-side processing happens. Each tool gives you output you can inspect,
 copy, and use right away.
 
