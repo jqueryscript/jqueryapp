@@ -1,0 +1,1728 @@
+[
+  {
+    "id": "redirect-map-converter",
+    "name": "Redirect Map Converter",
+    "category": "github-pages",
+    "summary": "Convert a CSV redirect map to Netlify _redirects, netlify.toml, Vercel vercel.json, Apache .htaccess, or Nginx config. Validate duplicates and redirect chains.",
+    "description": "Take a CSV list of old URL, new URL, and HTTP status codes and convert it to the redirect configuration format for your platform. Supports Netlify _redirects and netlify.toml, Vercel vercel.json, Apache .htaccess, and Nginx rewrite rules. Includes duplicate detection and redirect chain warnings.",
+    "keywords": [
+      "redirect map converter",
+      "csv to redirects",
+      "netlify redirects",
+      "htaccess redirect",
+      "nginx rewrite converter"
+    ],
+    "whatIs": "A redirect map is a list of URL redirects 鈥?old URL, new URL, HTTP status code 鈥?that tells your web server or hosting platform to send visitors from the old URL to the new one. Different platforms use different formats, from simple space-delimited files (Netlify _redirects) to JSON arrays (Vercel) to Apache/Nginx server config syntax. This tool converts a single CSV map to all major platform formats.",
+    "howToUse": [
+      "Enter your redirect mappings in CSV format: old_url,new_url,status (status defaults to 301 if omitted).",
+      "Select the target platform format.",
+      "Enable validation to detect duplicate source URLs and potential redirect chains.",
+      "Copy the generated redirect configuration for your chosen platform."
+    ],
+    "useCases": [
+      "Migrate a WordPress site to a static site and convert the old URL structure to new static URLs.",
+      "Convert an Apache .htaccess redirect file to Netlify _redirects format for a platform migration.",
+      "Check a redirect map for loops and duplicate entries before deploying to production."
+    ],
+    "examples": [
+      {
+        "title": "Site migration redirect map",
+        "text": "A site moves from WordPress to a static site generator. Export the old URLs and new paths as CSV, convert to Netlify _redirects format, and deploy. The tool flags any duplicate old URLs and potential redirect chains."
+      },
+      {
+        "title": "Platform migration",
+        "text": "A site migrates from Apache hosting to Vercel. Paste the Apache redirect rules into the converter and output Vercel vercel.json format. All 301 and 302 status codes are preserved."
+      }
+    ],
+    "mistakes": [
+      "Creating redirect chains (A 鈫?B 鈫?C) instead of direct redirects (A 鈫?C, B 鈫?C) 鈥?each hop adds latency and may lose SEO value.",
+      "Using relative URLs without a leading slash 鈥?all redirect paths should be absolute paths starting with /.",
+      "Forgetting to include the status code 鈥?defaults to 301, but some platforms default to 302 which has different SEO implications."
+    ],
+    "faq": [
+      {
+        "question": "Should I use 301 or 302 for my redirects?",
+        "answer": "301 (permanent) tells search engines to transfer ranking signals to the new URL and update their index. Use 301 for permanent moves. 302 (temporary) tells search engines the move is temporary and they should keep the old URL in their index. Use 302 for temporary maintenance or A/B tests. 307 and 308 are the HTTP/1.1 equivalents of 302 and 301 respectively."
+      },
+      {
+        "question": "What is the maximum number of redirects I should have?",
+        "answer": "There is no hard limit, but large redirect files (thousands of entries) can slow down request processing on some platforms. Netlify recommends keeping _redirects under 10,000 entries. For very large redirect maps, consider pattern-based redirects (using wildcards or regex) instead of individual entries."
+      }
+    ],
+    "quickAnswer": "Convert a CSV redirect map (old_url,new_url,status) to your platform's redirect format. Supports Netlify _redirects and netlify.toml, Vercel vercel.json, Apache .htaccess, and Nginx rewrite rules. Validate duplicates and redirect chains before deploying.",
+    "limitations": [
+      "Different platforms handle redirect edge cases differently 鈥?trailing slashes, query string forwarding, and wildcard matching vary. Test redirects on the actual platform after conversion.",
+      "Very large redirect maps (10,000+ entries) may need to be split or converted to pattern-based rules for performance. This tool generates one entry per redirect.",
+      "Apache and Nginx formats assume basic server configuration. Complex setups with virtual hosts, location blocks, or conditional rewrites may need manual adjustment."
+    ],
+    "verificationSteps": [
+      "Test a sample of redirects at each HTTP status code level to confirm the generated config works correctly on your platform.",
+      "Use curl -I https://yoursite.com/old-url to verify the redirect returns the expected status code and Location header."
+    ],
+    "updatedAt": "2026-05-28"
+  },
+  {
+    "id": "security-txt-generator-validator",
+    "name": "security.txt Generator & Validator",
+    "category": "github-pages",
+    "summary": "Generate and validate security.txt files per RFC 9116. Specify your contact, expiration, and optional fields, then get hosting guidance for GitHub Pages, Netlify, and Vercel.",
+    "description": "security.txt is a proposed IETF standard that helps security researchers report vulnerabilities to the right contact. Place this file at /.well-known/security.txt on your domain so researchers and automated scanners can find your vulnerability disclosure policy and contact information.",
+    "keywords": [
+      "security.txt generator",
+      "rfc 9116",
+      "security contact",
+      "vulnerability disclosure",
+      "well-known security"
+    ],
+    "whatIs": "security.txt is a simple text file published at /.well-known/security.txt that tells security researchers how to contact you about vulnerabilities. It is defined by RFC 9116 and supported by Google, GitHub, and major vulnerability disclosure platforms. The file contains a Contact field (URL or email), an Expires date, and optional fields for Canonical, Encryption, Policy, Acknowledgments, and Hiring.",
+    "howToUse": [
+      "In Generate mode: fill in your contact URL or email, set an expiration date, and add any optional fields.",
+      "In Validate mode: paste an existing security.txt file to check it against the RFC 9116 specification.",
+      "Deploy the file to /.well-known/security.txt on your domain and serve it over HTTPS."
+    ],
+    "useCases": [
+      "Create a vulnerability disclosure contact for an open-source project site.",
+      "Validate an existing security.txt before deploying it to a production domain.",
+      "Ensure the Expires date is not in the past and the Contact field uses a valid URL or email format."
+    ],
+    "examples": [
+      {
+        "title": "Security contact page for a SaaS site",
+        "text": "A SaaS company creates a security.txt with a dedicated security@ email and a link to their vulnerability disclosure policy page. The file is placed in the /.well-known/ directory and served over HTTPS."
+      },
+      {
+        "title": "Open-source static site",
+        "text": "An open-source tool site hosted on GitHub Pages adds a security.txt with a link to their GitHub Security Advisories page. The file includes Preferred-Languages and an Encryption key for PGP-encrypted reports."
+      }
+    ],
+    "mistakes": [
+      "Placing security.txt at the site root instead of /.well-known/security.txt 鈥?the /.well-known/ path is required by RFC 9116.",
+      "Letting the Expires date pass without renewal 鈥?automated scanners ignore expired security.txt files.",
+      "Serving the file over HTTP instead of HTTPS 鈥?the file must be accessible over HTTPS without redirects."
+    ],
+    "faq": [
+      {
+        "question": "Where exactly should I place the security.txt file?",
+        "answer": "Place it at /.well-known/security.txt 鈥?the full URL should be https://yourdomain.com/.well-known/security.txt. For GitHub Pages, create a .well-known directory in your published site root and place security.txt inside it. The file must be served directly, not redirected."
+      },
+      {
+        "question": "How often should I renew the Expires date?",
+        "answer": "RFC 9116 recommends setting the Expires date no more than 12 months from the current date. Set a calendar reminder to renew it before it expires. Automated scanners and bug bounty platforms ignore expired security.txt files, which defeats the purpose of having one."
+      },
+      {
+        "question": "Can I have more than one Contact field?",
+        "answer": "Yes. RFC 9116 allows multiple Contact fields. This is useful when you have separate security and abuse contacts, or when you want to list both a web form URL and a backup email address. List contacts in order of preference."
+      }
+    ],
+    "quickAnswer": "security.txt is a file at /.well-known/security.txt that tells security researchers how to report vulnerabilities to you. At minimum, include a Contact field (URL or email) and an Expires date. Renew the file before it expires to keep your vulnerability disclosure channel active.",
+    "limitations": [
+      "security.txt is a proposed standard (RFC 9116), not a W3C Recommendation. Some organizations are not yet aware of it, and automated scanner adoption varies by region and industry.",
+      "The file must be served over HTTPS without redirects. Some static hosting platforms (including GitHub Pages) may redirect /.well-known/ paths or serve them with unexpected content types.",
+      "security.txt alone does not create a vulnerability disclosure program or bug bounty. It only tells researchers where to report 鈥?you still need an internal process to handle incoming reports."
+    ],
+    "verificationSteps": [
+      "Visit https://yourdomain.com/.well-known/security.txt in a browser and confirm it loads directly over HTTPS without redirects.",
+      "Use curl -I https://yourdomain.com/.well-known/security.txt to verify the Content-Type is text/plain and the response status is 200."
+    ],
+    "updatedAt": "2026-05-28"
+  },
+  {
+    "id": "sri-hash-generator",
+    "name": "SRI Hash Generator",
+    "category": "html",
+    "summary": "Generate Subresource Integrity hashes for script and stylesheet files. Paste code, upload a local file, or reference a CDN URL and get the integrity attribute for your HTML tags.",
+    "description": "Subresource Integrity (SRI) lets browsers verify that a third-party script or stylesheet has not been tampered with. This tool generates SHA-256, SHA-384, or SHA-512 hashes of your file content and outputs the ready-to-use integrity attribute with the matching script or link tag.",
+    "keywords": [
+      "sri hash generator",
+      "subresource integrity",
+      "script integrity",
+      "cdn security hash"
+    ],
+    "whatIs": "Subresource Integrity (SRI) is a browser security feature that verifies the content of external scripts and stylesheets. You add an integrity attribute to your script or link tag containing a cryptographic hash of the file. Before executing the file, the browser computes its hash and compares it to the integrity value. If the hashes do not match 鈥?because the file was modified, compromised, or corrupted 鈥?the browser blocks the resource.",
+    "howToUse": [
+      "Provide the file content by pasting the code directly, uploading the file, or both (pasted content takes priority).",
+      "Select the hash algorithm 鈥?SHA-256 is the standard; SHA-384 and SHA-512 are also valid.",
+      "Copy the generated integrity attribute and the complete script or link tag into your HTML."
+    ],
+    "useCases": [
+      "Add integrity checks to CDN-hosted scripts like jQuery, Bootstrap, or any third-party library.",
+      "Verify that a downloaded library file matches the expected hash before deploying to production.",
+      "Generate integrity attributes for self-hosted assets when using a CDN and subdomain for caching."
+    ],
+    "examples": [
+      {
+        "title": "Secure a CDN script tag",
+        "text": "A site loads a utility library from a CDN. Generate the SRI hash from the exact file content, add the integrity attribute to the script tag, and include crossorigin='anonymous'. If the CDN file is ever tampered with, the browser refuses to execute it."
+      },
+      {
+        "title": "Verify a downloaded library",
+        "text": "A developer downloads a minified CSS framework and wants to confirm it has not been modified. Upload the file to generate its SHA-384 hash, then compare it with the hash published on the framework's official site."
+      }
+    ],
+    "mistakes": [
+      "Generating a hash from a development version of a file and using it on a different production version 鈥?the hashes will not match.",
+      "Forgetting the crossorigin='anonymous' attribute on the script or link tag, which prevents the browser from computing the hash for cross-origin resources.",
+      "Never updating the integrity hash after a CDN library upgrade 鈥?old hashes block the new file and break the page."
+    ],
+    "faq": [
+      {
+        "question": "Do I need crossorigin='anonymous' for SRI to work?",
+        "answer": "Yes, if the resource is served from a different origin than your page. Without crossorigin='anonymous', the browser cannot compute the hash of a cross-origin resource and the integrity check is skipped. For same-origin resources, crossorigin is not required but is harmless to include."
+      },
+      {
+        "question": "What happens if the SRI hash does not match the file?",
+        "answer": "The browser refuses to execute the script or apply the stylesheet entirely. The resource is blocked and an error appears in the browser console. This protects your users from compromised CDN files, but it also means a legitimate file update without a corresponding hash update breaks your page."
+      },
+      {
+        "question": "Which hash algorithm should I use for SRI?",
+        "answer": "SHA-256 is the standard and most widely used. SHA-384 and SHA-512 are also valid and provide stronger collision resistance, but the larger hash values add more bytes to your HTML. For web use, SHA-256 is sufficient 鈥?the security comes from the integrity check itself, not the hash length."
+      },
+      {
+        "question": "Can I use SRI with dynamically loaded scripts?",
+        "answer": "SRI only works with static script and link tags in the HTML. For dynamically loaded scripts (via import() or appendChild), you can set the integrity property on the script element before appending it. Module scripts loaded with import() do not support SRI directly 鈥?use import maps with integrity instead."
+      }
+    ],
+    "quickAnswer": "Use Subresource Integrity (SRI) to protect your site from compromised CDN files. Generate a cryptographic hash of the file content, add the integrity attribute to your script or link tag, and include crossorigin='anonymous'. The browser blocks the resource if its actual hash does not match.",
+    "limitations": [
+      "SRI only verifies the file content at load time. It does not protect against vulnerabilities within the loaded library itself (like XSS in an outdated jQuery version). Always keep libraries updated.",
+      "The hash must be regenerated every time the remote file changes. If you forget to update the integrity attribute after a library update, the resource is blocked and the page may break.",
+      "SRI does not work with resources that require credentials (cookies, HTTP auth) from a different origin. For credentialed cross-origin requests, use crossorigin='use-credentials' instead of 'anonymous'."
+    ],
+    "verificationSteps": [
+      "Check the browser DevTools Network tab 鈥?a resource with a matching integrity hash loads normally; a mismatched resource is blocked in red with an SRI error.",
+      "Verify the generated hash by computing it independently: openssl dgst -sha256 -binary file.js | openssl base64 -A should match the generated integrity value."
+    ],
+    "updatedAt": "2026-05-28"
+  },
+  {
+    "id": "static-site-seo-checklist-generator",
+    "name": "Static Site SEO Checklist Generator",
+    "category": "seo",
+    "summary": "Generate a practical SEO checklist for static websites before launch.",
+    "description": "Choose your site type and features, then get a launch checklist for metadata, indexing, links, performance, and multilingual setup.",
+    "keywords": [
+      "static site seo checklist",
+      "github pages seo checklist",
+      "website launch checklist"
+    ],
+    "whatIs": "A static site SEO checklist is a pre-publish review for HTML sites, GitHub Pages projects, static blogs, documentation sites, and small tool websites. It helps catch missing titles, broken internal links, missing canonical tags, missing social tags, and other small issues that can reduce search visibility.",
+    "howToUse": [
+      "Choose the site type that best matches your project.",
+      "Enter the public domain or final site URL.",
+      "Select the features your site uses, such as multilingual pages or structured data.",
+      "Copy the generated checklist and review each item before publishing."
+    ],
+    "useCases": [
+      "Review a static site before pushing to GitHub Pages.",
+      "Create a reusable checklist for blog post publishing.",
+      "Avoid missing common SEO tags on small websites."
+    ],
+    "examples": [
+      {
+        "title": "New GitHub Pages launch",
+        "text": "A publisher finishes a static website and wants a final review before sharing it. The checklist gives a plain-language list of SEO and publishing checks."
+      },
+      {
+        "title": "Recurring blog publishing process",
+        "text": "A blogger can generate a checklist for every new post to confirm title, description, canonical URL, internal links, images, and social preview tags."
+      }
+    ],
+    "mistakes": [
+      "Publishing pages without unique titles and descriptions.",
+      "Leaving important pages out of navigation or sitemap files.",
+      "Adding multilingual pages without canonical and hreflang planning."
+    ],
+    "faq": [
+      {
+        "question": "Is this checklist enough for a full SEO audit?",
+        "answer": "No. It is a launch checklist for common static site issues. A full audit also checks crawl data, search performance, content quality, backlinks, and technical logs."
+      },
+      {
+        "question": "Can I use this for a blog?",
+        "answer": "Yes. Select the blog option and include blog-specific checks such as internal links, image alt text, and social preview tags."
+      },
+      {
+        "question": "Does a GitHub Pages site need SEO tags?",
+        "answer": "Yes. Static hosting does not remove the need for titles, descriptions, canonical URLs, internal links, and indexable HTML."
+      }
+    ],
+    "quickAnswer": "Generate a practical launch checklist for your static site that covers metadata, indexing, links, performance, and multilingual setup. Select your site type and features, then review each item before publishing.",
+    "limitations": [
+      "This checklist is a launch review, not ongoing monitoring. It helps catch issues before publishing but does not track ranking changes, crawl errors, or content decay over time.",
+      "The checklist does not evaluate content quality, keyword targeting, or backlinks. Those require separate editorial and link analysis workflows.",
+      "Some checklist items require manual verification outside this tool, such as checking Google Search Console or testing page speed with real browser tools."
+    ],
+    "verificationSteps": [
+      "Run each item on the generated checklist against your published site. Mark items as verified only when you have confirmed the result.",
+      "After launch, compare the checklist against Google Search Console reports to catch issues the checklist may have missed."
+    ]
+  },
+  {
+    "id": "robots-meta-tag-generator",
+    "name": "Robots Meta Tag Generator",
+    "category": "seo",
+    "summary": "Generate page-level robots meta tags without guessing directive syntax.",
+    "description": "Build robots meta tags for indexing, following, snippets, image previews, and archive behavior.",
+    "keywords": [
+      "robots meta tag generator",
+      "noindex generator",
+      "meta robots"
+    ],
+    "whatIs": "A robots meta tag gives page-level instructions to search engines. It can allow indexing, prevent indexing, allow or block following links, limit snippets, and control image previews. It is useful when one page needs special treatment without changing the whole site's robots.txt file.",
+    "howToUse": [
+      "Choose whether the page should be indexed and whether links should be followed.",
+      "Enable optional directives such as noarchive, nosnippet, or noimageindex only when needed.",
+      "Set image preview and snippet length rules if the page has special preview requirements.",
+      "Copy the generated meta tag into the page head."
+    ],
+    "useCases": [
+      "Prevent a utility page from appearing in search results.",
+      "Allow indexing while limiting snippets or previews.",
+      "Create a robots directive for one page without changing robots.txt."
+    ],
+    "examples": [
+      {
+        "title": "Noindex a thank-you page",
+        "text": "A site has a confirmation page that users see after submitting a form. The robots meta tag can keep that utility page out of search results."
+      },
+      {
+        "title": "Limit preview controls",
+        "text": "A publisher can allow a page to be indexed but restrict snippet or image preview behavior when the content needs a smaller search preview."
+      }
+    ],
+    "mistakes": [
+      "Using noindex on a page that should rank.",
+      "Blocking a page in robots.txt and expecting search engines to see its noindex tag.",
+      "Adding conflicting directives such as index and noindex together."
+    ],
+    "faq": [
+      {
+        "question": "Should I use robots.txt or a robots meta tag?",
+        "answer": "Use robots.txt for crawl access rules. Use a robots meta tag when search engines can access the page and need page-level indexing instructions."
+      },
+      {
+        "question": "Can a blocked page read its noindex tag?",
+        "answer": "If a crawler cannot access the page because robots.txt blocks it, it may not see the noindex tag. Do not combine those rules without a clear reason."
+      },
+      {
+        "question": "What is the safest default?",
+        "answer": "For normal public pages, index and follow is the normal default. Add restrictions only when the page has a specific reason."
+      },
+      {
+        "question": "How long does it take for a noindex directive to work?",
+        "answer": "After the page is crawled again and the updated robots meta tag is discovered, it can take days to weeks for the page to be removed from search results. Use the URL Removal tool in Google Search Console for faster action when needed."
+      }
+    ],
+    "quickAnswer": "Build page-level robots meta tags to control search engine indexing, link following, snippet length, and archive behavior without changing robots.txt. Use index and follow as the default for public pages.",
+    "limitations": [
+      "Pages blocked by robots.txt cannot be read by crawlers, so any noindex directive on those pages will not be seen. Use robots.txt for crawl control and meta tags for indexing control separately.",
+      "Conflicting directives such as both index and noindex or contradictory snippet settings can cause unpredictable crawler behavior. Most crawlers use the most restrictive directive.",
+      "Some crawlers ignore meta robots directives entirely. Malicious bots, AI crawlers, and automated scrapers may not respect page-level instructions."
+    ],
+    "verificationSteps": [
+      "Inspect the generated meta tag in the page HTML source. Confirm the directive combination reflects what you intended, especially when combining noindex with follow or snippet rules.",
+      "Use the URL Inspection tool in Google Search Console to verify the discovered robots directives and any crawl issues."
+    ]
+  },
+  {
+    "id": "canonical-url-tag-generator",
+    "name": "Canonical URL Tag Generator",
+    "category": "seo",
+    "summary": "Generate canonical link tags for static pages and blog posts.",
+    "description": "Enter the preferred page URL and get a clean canonical tag for your HTML head.",
+    "keywords": [
+      "canonical tag generator",
+      "canonical url",
+      "seo link tag"
+    ],
+    "whatIs": "A canonical tag tells search engines which URL is the preferred version of a page. It is helpful when the same content can appear with and without a trailing slash, through index.html, through tracking parameters, or through alternate paths. Static sites often need canonical tags because routing and deployment output can create multiple versions of the same page.",
+    "howToUse": [
+      "Enter the final public URL that should be treated as the preferred version.",
+      "Remove index.html if your live site resolves the folder URL correctly.",
+      "Copy the generated canonical link tag into the HTML head.",
+      "Use the same canonical format consistently across the site."
+    ],
+    "useCases": [
+      "Set the preferred URL for a page available through multiple paths.",
+      "Create canonical tags for GitHub Pages or static HTML exports.",
+      "Normalize trailing slash and index.html variants."
+    ],
+    "examples": [
+      {
+        "title": "Static output with index.html",
+        "text": "A generated page exists as /tools/example/index.html, but the preferred public URL is /tools/example/. The tool outputs the cleaner canonical URL."
+      },
+      {
+        "title": "Tracking parameter cleanup",
+        "text": "A blog post receives traffic with UTM parameters. The canonical tag points search engines back to the clean version of the article URL."
+      }
+    ],
+    "mistakes": [
+      "Pointing the canonical tag to a non-equivalent page.",
+      "Using a relative URL instead of an absolute URL.",
+      "Leaving both http and https versions live without a clear canonical."
+    ],
+    "faq": [
+      {
+        "question": "Should canonical URLs be absolute?",
+        "answer": "Yes. Absolute URLs are clearer and less likely to break when pages move between folders or templates."
+      },
+      {
+        "question": "Can multiple pages use the same canonical URL?",
+        "answer": "Only if they are duplicate or near-duplicate versions of the same content. Different pages should not all point to one canonical URL."
+      },
+      {
+        "question": "Do canonical tags replace redirects?",
+        "answer": "No. Redirects control visitor and crawler navigation. Canonical tags are indexing signals for equivalent content."
+      },
+      {
+        "question": "What should the canonical URL be on a paginated page (page 2, page 3...)?",
+        "answer": "Each paginated page should generally point its canonical URL to itself, not to page 1. Pointing all pages in a series to page 1 tells search engines that only page 1 exists and can prevent deeper content from being indexed. Use self-referencing canonicals on paginated pages and add rel=\"next\" and rel=\"prev\" link tags, or use a View All page as the canonical target if one exists."
+      }
+    ],
+    "quickAnswer": "Use the canonical URL tag to tell search engines which version of a page is the authoritative one when duplicate or near-duplicate content exists across multiple URLs.",
+    "limitations": [
+      "A canonical tag is a hint, not a directive. Google may choose a different URL as canonical.",
+      "Canonical tags on pages with fundamentally different content are ignored by search engines.",
+      "Self-referencing canonicals are recommended. Every page should link to itself as canonical unless there is a specific consolidation reason."
+    ],
+    "verificationSteps": [
+      "Use the URL Inspection tool in Google Search Console to verify which URL Google considers canonical for each page.",
+      "Check that the canonical URL in the HTML head matches the intended URL exactly, including scheme and trailing slash."
+    ],
+    "comparison": {
+      "title": "canonical vs hreflang vs sitemap",
+      "columns": [
+        "Aspect",
+        "canonical",
+        "hreflang",
+        "sitemap"
+      ],
+      "rows": [
+        [
+          "Purpose",
+          "Declares the preferred URL when duplicate or near-duplicate content exists",
+          "Maps equivalent pages in different languages or regions",
+          "Lists all important URLs for crawler discovery and prioritization"
+        ],
+        [
+          "Where it goes",
+          "In the HTML head as a link tag or in the HTTP header",
+          "In the HTML head as a link tag with hreflang attribute",
+          "Standalone XML file at the site root"
+        ],
+        [
+          "What happens if missing",
+          "Search engines may choose a different URL or treat multiple URLs as separate pages",
+          "Search engines may serve the wrong language version or no language-specific result",
+          "Deep pages may not be discovered by crawlers"
+        ],
+        [
+          "Affects ranking or discovery",
+          "Ranking. Helps consolidate ranking signals to one URL.",
+          "Discovery and ranking. Helps match the correct language page to the searcher.",
+          "Discovery. Helps crawlers find pages but does not directly affect ranking."
+        ]
+      ],
+      "summary": "Canonical tags manage duplicate URLs, hreflang tags connect language versions, and sitemaps help crawlers discover pages. Each serves a distinct purpose."
+    },
+    "updatedAt": "2026-05-25"
+  },
+  {
+    "id": "html-link-rel-generator",
+    "name": "HTML Link Rel Generator",
+    "category": "html",
+    "summary": "Generate link tags for preload, preconnect, dns-prefetch, canonical, and alternate URLs.",
+    "description": "Choose a rel value, add attributes, and copy a valid link tag for the HTML head.",
+    "keywords": [
+      "html link rel generator",
+      "preload tag generator",
+      "preconnect generator"
+    ],
+    "whatIs": "An HTML link tag connects a page to another resource or declares a relationship in the document head. Developers use link tags for canonical URLs, language alternates, icons, preload hints, preconnect hints, stylesheets, and more. This tool helps keep attributes such as as, type, href, and crossorigin in the right place.",
+    "howToUse": [
+      "Choose the rel value that matches the relationship or browser hint you need.",
+      "Enter the href path or URL.",
+      "Add as, type, and crossorigin only when they apply to the selected rel value.",
+      "Copy the generated tag into the head section of your HTML."
+    ],
+    "useCases": [
+      "Create a preload tag for a font, script, image, or stylesheet.",
+      "Add preconnect or dns-prefetch for third-party origins.",
+      "Build link tags without forgetting as, type, or crossorigin attributes."
+    ],
+    "examples": [
+      {
+        "title": "Preload a key stylesheet",
+        "text": "A small site has a critical CSS file. The tool can generate a preload tag with the correct rel, href, as, and type attributes."
+      },
+      {
+        "title": "Preconnect to a font host",
+        "text": "A page uses a third-party font provider. A preconnect tag can prepare the browser connection before the font file is requested."
+      }
+    ],
+    "mistakes": [
+      "Preloading too many resources.",
+      "Using preload without the correct as attribute.",
+      "Adding preconnect to domains that are not used on the page."
+    ],
+    "faq": [
+      {
+        "question": "When should I use preload?",
+        "answer": "Use preload for a small number of critical resources that the browser needs early. Do not preload every image, script, or stylesheet."
+      },
+      {
+        "question": "What does the as attribute do?",
+        "answer": "The as attribute tells the browser what type of resource is being preloaded, such as style, script, font, image, or fetch."
+      },
+      {
+        "question": "Do preconnect tags improve every page?",
+        "answer": "No. Preconnect is useful for important third-party origins. Extra preconnect tags can waste browser resources."
+      },
+      {
+        "question": "When should I use preload instead of an inline script or style?",
+        "answer": "Use preload when a resource is critical but cannot be inlined, such as a large font file or a hero image. Inline scripts and styles are better for small critical-path code because they eliminate an extra network request."
+      }
+    ],
+    "quickAnswer": "Create valid HTML link tags for preload, preconnect, dns-prefetch, canonical, and alternate URLs without guessing the required attributes. Each rel value has specific requirements such as as, type, or crossorigin.",
+    "limitations": [
+      "The as attribute is required for preload links. Without it, the browser cannot prioritize or apply the correct Content Security Policy to the preloaded resource.",
+      "Preloading too many resources is counterproductive and can delay the loading of real critical content. Limit preload hints to one to three important resources per page.",
+      "The crossorigin attribute is required for preloading fonts and other cross-origin resources. Omitting it causes the preload to be discarded by the browser."
+    ],
+    "verificationSteps": [
+      "Inspect the generated link tag in the browser DevTools Elements panel to confirm that all required attributes are present for the selected rel value.",
+      "Open the Network panel and verify preloaded resources appear with the correct priority indicator and are not duplicated as later requests."
+    ]
+  },
+  {
+    "id": "favicon-html-tag-generator",
+    "name": "Favicon HTML Tag Generator",
+    "category": "assets",
+    "summary": "Generate favicon and web app icon tags for static websites.",
+    "description": "Create a practical favicon block for browsers, Apple touch icons, manifest files, and theme colors.",
+    "keywords": [
+      "favicon html generator",
+      "favicon tags",
+      "web app manifest generator"
+    ],
+    "whatIs": "Favicon markup tells browsers and devices which icons to use for tabs, bookmarks, home screen shortcuts, and web app installs. A small static site can still need several icon formats because desktop browsers, mobile browsers, and saved web apps use different files.",
+    "howToUse": [
+      "Enter the base path where your icon files will be published.",
+      "Add the app or site name plus theme and background colors.",
+      "Copy the generated link and meta tags into your HTML head.",
+      "Copy the manifest JSON snippet into your site.webmanifest file if you use one."
+    ],
+    "useCases": [
+      "Add favicon markup to a plain HTML website.",
+      "Prepare icon paths for GitHub Pages.",
+      "Create a small web manifest JSON snippet."
+    ],
+    "examples": [
+      {
+        "title": "Static site icon setup",
+        "text": "A GitHub Pages site stores icons in /icons. The generator creates the favicon, SVG icon, Apple touch icon, manifest link, and theme color tags."
+      },
+      {
+        "title": "Home screen save support",
+        "text": "A mobile visitor saves the site to their phone home screen. The Apple touch icon and manifest entries help the saved shortcut look intentional."
+      }
+    ],
+    "mistakes": [
+      "Using icon paths that break after deployment under a subfolder.",
+      "Forgetting an Apple touch icon for mobile home screen saves.",
+      "Using a theme color that does not match the actual site header."
+    ],
+    "faq": [
+      {
+        "question": "Do I still need favicon.ico?",
+        "answer": "It is still useful as a broad fallback. Many modern setups also include SVG and PNG icons."
+      },
+      {
+        "question": "Where should icon files live?",
+        "answer": "Use a stable public folder such as /icons or /assets/icons, and make sure the same path exists in the built output."
+      },
+      {
+        "question": "Is a web manifest required?",
+        "answer": "No. It is optional for a normal website, but useful if you want better saved-app behavior on mobile and desktop."
+      }
+    ],
+    "quickAnswer": "Generate favicon HTML tags, Apple touch icon references, and web app manifest entries for static websites. Include both SVG and fallback icon paths for broad browser support.",
+    "limitations": [
+      "Icon files must exist at the specified paths in the published output. The generated tags are only references; you must create or place the actual icon files at those paths.",
+      "The Apple touch icon has specific size expectations. Apple devices expect a 180 by 180 pixel PNG for best results when users save the page to their home screen.",
+      "The web manifest snippet requires valid JSON. A single syntax error in the manifest file can prevent browsers from reading the app metadata entirely."
+    ],
+    "verificationSteps": [
+      "Open the published page and check the browser tab for the favicon. If the icon does not appear, verify the image path matches the actual file location.",
+      "On an iOS device or simulator, use Share > Add to Home Screen and confirm the saved shortcut uses the Apple touch icon image."
+    ]
+  },
+  {
+    "id": "css-clamp-calculator",
+    "name": "CSS Clamp Calculator",
+    "category": "css",
+    "summary": "Calculate responsive CSS clamp values for font sizes and spacing.",
+    "description": "Enter minimum and maximum values plus viewport widths to generate a CSS clamp expression for fluid typography, spacing, or layout values.",
+    "keywords": [
+      "css clamp calculator",
+      "fluid typography calculator",
+      "responsive font size"
+    ],
+    "whatIs": "CSS clamp sets a minimum value, a preferred fluid value, and a maximum value in one expression. It is commonly used for responsive font sizes and spacing because it can scale smoothly between mobile and desktop without writing several media queries.",
+    "howToUse": [
+      "Enter the smallest and largest size you want the property to use.",
+      "Enter the viewport width where the smallest value should start and the viewport width where the largest value should stop.",
+      "Choose the CSS property you want to generate.",
+      "Copy the clamp expression into your stylesheet and test it at mobile, tablet, and desktop widths."
+    ],
+    "useCases": [
+      "Create fluid headings without many media queries.",
+      "Scale spacing smoothly between mobile and desktop.",
+      "Copy a clamp value directly into CSS."
+    ],
+    "examples": [
+      {
+        "title": "Responsive heading size",
+        "text": "A heading should be 32px on phones and 64px on desktop. The calculator creates one clamp value that scales between those points."
+      },
+      {
+        "title": "Fluid section spacing",
+        "text": "A landing page needs smaller spacing on mobile and wider spacing on desktop. Use clamp for padding or gap values instead of multiple breakpoints."
+      }
+    ],
+    "mistakes": [
+      "Using viewport ranges that do not match the actual layout.",
+      "Applying clamp to body text without checking readability.",
+      "Mixing px and rem values without a clear base size."
+    ],
+    "faq": [
+      {
+        "question": "Can I use clamp for more than font size?",
+        "answer": "Yes. It works for many length-based CSS properties, including margin, padding, gap, width, and border radius."
+      },
+      {
+        "question": "Does clamp replace media queries?",
+        "answer": "It can reduce many size-related media queries, but media queries are still useful when layout structure changes."
+      },
+      {
+        "question": "Should I use px or rem?",
+        "answer": "Both can work. Rem is often better for font sizes because it respects user font settings, while px is simpler for quick layout calculations."
+      }
+    ],
+    "quickAnswer": "Calculate a responsive CSS clamp expression for fluid typography, spacing, or layout values. Enter minimum and maximum sizes with viewport ranges to generate a value that scales smoothly between them.",
+    "limitations": [
+      "Clamp() values are static once generated. They do not adapt to changes in the DOM, user interactions, or container dimensions. For layout-aware scaling, consider container query units instead.",
+      "The viewport-based preferred value may need adjustment at extreme screen sizes. Test the generated clamp value on very small and very large viewports to confirm the curve feels natural.",
+      "This tool uses viewport width (vw) for the preferred value. It does not account for container query units (cqw) or other newer CSS units that behave differently."
+    ],
+    "verificationSteps": [
+      "Inspect the element using browser DevTools and verify the clamp() value resolves to expected pixel values at minimum, mid-range, and maximum viewport widths.",
+      "Resize the browser window slowly from mobile width to desktop width and confirm the property value transitions smoothly without jumps."
+    ],
+    "tags": [
+      "responsive"
+    ]
+  },
+  {
+    "id": "css-safe-area-insets-generator",
+    "name": "CSS Safe Area Insets Generator",
+    "category": "css",
+    "summary": "Generate CSS for safe-area insets on phones with notches and rounded corners.",
+    "description": "Create padding, margin, or position offset rules using env(safe-area-inset-*) with a fallback value.",
+    "keywords": [
+      "css safe area inset",
+      "iphone notch css",
+      "safe area padding generator"
+    ],
+    "whatIs": "Safe-area insets are CSS environment variables that help keep content away from phone notches, rounded screen corners, home indicator areas, and other display cutouts. They are useful for mobile web apps, fixed headers, sticky bottom bars, and full-bleed layouts.",
+    "howToUse": [
+      "Choose whether you want to generate padding, margin, or inset rules.",
+      "Set a fallback value for browsers and screens that do not need special safe-area spacing.",
+      "Enter the selector that should receive the safe-area spacing.",
+      "Copy the meta viewport tag and CSS into your page, then test on a mobile device or simulator."
+    ],
+    "useCases": [
+      "Keep fixed headers and bottom bars away from screen cutouts.",
+      "Add safe padding to mobile web apps.",
+      "Create reusable CSS variables for safe-area spacing."
+    ],
+    "examples": [
+      {
+        "title": "Sticky mobile bottom bar",
+        "text": "A mobile site has a bottom navigation bar. Safe-area padding keeps the buttons above the home indicator on modern phones."
+      },
+      {
+        "title": "Full-width app shell",
+        "text": "A browser-based tool uses a full-bleed layout. Safe-area variables prevent content from touching the notch or rounded screen edges."
+      }
+    ],
+    "mistakes": [
+      "Using safe-area variables without a fallback.",
+      "Applying inset padding on desktop layouts where it is not needed.",
+      "Forgetting viewport-fit=cover when testing full-screen mobile layouts."
+    ],
+    "faq": [
+      {
+        "question": "Do safe-area variables work on every browser?",
+        "answer": "Support is strongest where display cutouts matter. Always include fallback spacing so layouts remain usable elsewhere."
+      },
+      {
+        "question": "Why is viewport-fit=cover included?",
+        "answer": "It allows the page to extend into the full visual viewport on supported mobile browsers, which makes safe-area spacing meaningful."
+      },
+      {
+        "question": "Should I apply safe-area padding to the whole page?",
+        "answer": "Usually no. Apply it to fixed bars, app shells, or sections that need edge protection."
+      }
+    ],
+    "quickAnswer": "Generate CSS padding, margin, or position offset rules using env(safe-area-inset-*) with fallback values. This keeps content away from phone notches, rounded screen corners, and home indicators on modern mobile devices.",
+    "limitations": [
+      "Safe-area inset variables are only relevant on notched mobile devices and phones with rounded corners or home indicators. Desktop and older mobile browsers return zero for all safe-area values.",
+      "A fallback value is essential. Without a fallback, browsers that do not support env() variables will use the default of zero, which can cause content to overlap with page edges.",
+      "The viewport-fit=cover meta tag must be present in the HTML head for safe-area variables to produce the intended effect on iOS Safari. Without it, the page may letterbox."
+    ],
+    "verificationSteps": [
+      "Open the published page on a notched mobile device or in Chrome DevTools with a device like iPhone X or Pixel 6. Confirm fixed elements do not overlap with the notch or home indicator.",
+      "Set the viewport-fit=cover meta tag in the head and verify the page extends edge to edge while safe-area padding keeps content clear of obstructions."
+    ],
+    "tags": [
+      "responsive"
+    ]
+  },
+  {
+    "id": "llms-txt-generator",
+    "name": "llms.txt Generator",
+    "category": "seo",
+    "summary": "Create an llms.txt file for AI search and answer engines.",
+    "description": "Describe your site, list important pages, and generate a clean llms.txt file for static hosting.",
+    "keywords": [
+      "llms.txt generator",
+      "ai seo",
+      "generative engine optimization"
+    ],
+    "whatIs": "An llms.txt file is a plain text guide that helps AI systems understand the most important parts of a website. It can summarize the site, list canonical URLs, identify useful tool or documentation pages, and point crawlers toward the sitemap. For static sites, it is easy to publish at the site root next to robots.txt and sitemap.xml.",
+    "howToUse": [
+      "Enter the site name, public URL, and a short description.",
+      "Add one important page per line using title|absolute-url|description.",
+      "Add notes that help AI systems understand canonical URLs, language structure, or tool behavior.",
+      "Copy the output into a file named llms.txt at the published site root."
+    ],
+    "useCases": [
+      "Publish a clear AI-readable overview for a static website.",
+      "List tool, documentation, and policy pages in one small text file.",
+      "Explain canonical URL rules and multilingual paths for answer engines."
+    ],
+    "examples": [
+      {
+        "title": "Tool site overview",
+        "text": "A web utility site can list its homepage, tools index, top categories, and sitemap so AI systems see the most useful entry points first."
+      },
+      {
+        "title": "Documentation site summary",
+        "text": "A docs site can include setup guides, API references, changelog pages, and rules for which version is canonical."
+      }
+    ],
+    "mistakes": [
+      "Listing staging, localhost, or redirected URLs.",
+      "Turning llms.txt into a keyword-stuffed sales page.",
+      "Forgetting to update the file after changing major URL paths."
+    ],
+    "faq": [
+      {
+        "question": "Where should llms.txt be published?",
+        "answer": "Publish it at the root of the public site, such as https://example.com/llms.txt."
+      },
+      {
+        "question": "Does llms.txt replace sitemap.xml?",
+        "answer": "No. Sitemap.xml is still the canonical crawl list for search engines. llms.txt is a concise guide for AI-oriented discovery."
+      },
+      {
+        "question": "Should every page be listed?",
+        "answer": "No. List the pages that best explain the site, its tools, its documentation, and its policies."
+      }
+    ],
+    "quickAnswer": "Create an llms.txt file to give AI systems a concise guide to your static site: a summary, important page links, and contextual notes. Publish it at the site root alongside robots.txt and sitemap.xml.",
+    "limitations": [
+      "llms.txt is a discovery guide, not a ranking factor. AI systems may use it to understand site structure, but it does not directly influence search engine rankings.",
+      "AI systems may not read the llms.txt file at all. Many large language models and answer engines use their own crawl and retrieval pipelines that may or may not reference this file.",
+      "An over-long llms.txt file loses focus. Keep the file concise and list only the most important pages to avoid diluting the signal for AI readers."
+    ],
+    "verificationSteps": [
+      "Visit https://yoursite.com/llms.txt in a browser and confirm it renders as plain text with correct URLs and descriptions.",
+      "Check that every URL listed in llms.txt resolves to a valid published page and that the file links to the sitemap."
+    ]
+  },
+  {
+    "id": "robots-txt-builder",
+    "name": "robots.txt Builder",
+    "category": "seo",
+    "summary": "Generate a simple robots.txt file with sitemap and crawler rules.",
+    "description": "Build a robots.txt file for static sites, including sitemap location, crawl access, and optional AI crawler notes.",
+    "keywords": [
+      "robots.txt generator",
+      "sitemap robots.txt",
+      "ai crawler robots"
+    ],
+    "whatIs": "A robots.txt file gives crawlers site-level access rules. It can allow or disallow paths, point to the sitemap, and document crawler policies. Static sites often need a small, predictable robots.txt file because build outputs and GitHub Pages deployments only publish what exists in the final folder.",
+    "howToUse": [
+      "Enter the public site URL and sitemap URL.",
+      "Choose whether normal crawlers should be allowed across the site.",
+      "Add disallowed paths only when there is a real reason to block crawling.",
+      "Copy the result into robots.txt at the published site root."
+    ],
+    "useCases": [
+      "Create a clean robots.txt file for GitHub Pages.",
+      "Add a sitemap reference without hand-writing the file.",
+      "Document public crawler access before launch."
+    ],
+    "examples": [
+      {
+        "title": "Static site launch",
+        "text": "A new static site needs to allow crawling and point search engines to the sitemap. The builder creates a minimal file with the final sitemap URL."
+      },
+      {
+        "title": "Block generated utility folders",
+        "text": "A site can disallow temporary export paths while keeping public pages and tools open to crawlers."
+      }
+    ],
+    "mistakes": [
+      "Blocking important pages and expecting them to rank.",
+      "Using robots.txt to remove a page that is already indexed instead of using noindex or removal tools.",
+      "Forgetting to publish robots.txt into the final build output."
+    ],
+    "faq": [
+      {
+        "question": "Can robots.txt force a page out of Google?",
+        "answer": "No. It controls crawling. For indexing decisions, use page-level noindex when crawlers can access the page."
+      },
+      {
+        "question": "Should I add a sitemap line?",
+        "answer": "Yes. A Sitemap line gives crawlers a stable path to the site's canonical URL list."
+      },
+      {
+        "question": "Should I block AI crawlers by default?",
+        "answer": "That is a policy choice. If AI visibility matters, avoid blocking crawlers unless you have a clear business or privacy reason."
+      },
+      {
+        "question": "Should I use a different robots.txt for staging and production?",
+        "answer": "Yes. A staging or development site should block all crawlers with Disallow: / to prevent duplicate content issues and accidental indexing of in-progress pages. The production robots.txt should be permissive enough to allow crawling of pages you want indexed. Use separate robots.txt files or generate them conditionally during the build process based on the deployment environment."
+      }
+    ],
+    "quickAnswer": "Use robots.txt to tell crawlers which parts of your site they should not access. It controls crawl traffic, not indexing -- directives like noindex belong in meta tags or HTTP headers.",
+    "limitations": [
+      "robots.txt directives are advisory. Bad actors and some AI crawlers may ignore them entirely.",
+      "Blocking a page in robots.txt does not prevent indexing if other pages link to it. Use noindex meta tags or HTTP headers to prevent indexing.",
+      "Each subdomain needs its own robots.txt file. The file at example.com/robots.txt does not apply to subdomain.example.com."
+    ],
+    "verificationSteps": [
+      "Test the generated robots.txt using Google Search Console robots.txt Tester tool.",
+      "Verify the file is served from the site root with a 200 status code and Content-Type: text/plain."
+    ],
+    "comparison": {
+      "title": "robots.txt vs meta robots vs X-Robots-Tag",
+      "columns": [
+        "Aspect",
+        "robots.txt",
+        "meta robots",
+        "X-Robots-Tag"
+      ],
+      "rows": [
+        [
+          "Scope",
+          "Site-wide or directory-level",
+          "Per-page only",
+          "Per-page or per-file type via HTTP response"
+        ],
+        [
+          "Which crawlers read it",
+          "All compliant crawlers. Bad actors may ignore it.",
+          "All compliant crawlers. Same compliance model as robots.txt.",
+          "All compliant crawlers. Read from the HTTP header regardless of file type."
+        ],
+        [
+          "Available directives",
+          "allow, disallow, sitemap, crawl-delay",
+          "index, noindex, follow, nofollow, noarchive, nosnippet, max-snippet, max-image-preview, noimageindex",
+          "Same directives as meta robots plus noindex and nofollow for non-HTML files such as PDFs and images"
+        ],
+        [
+          "Use cases",
+          "Prevent crawling of admin areas, staging directories, or search pages",
+          "Prevent indexing of a specific thank-you page or thin content page",
+          "Block indexing of PDFs, images, or other non-HTML resources served from the same domain"
+        ]
+      ],
+      "summary": "robots.txt controls crawl access at the site level, meta robots controls indexing per HTML page, and X-Robots-Tag offers the same per-page control as meta robots but works for any file type via the HTTP response header."
+    },
+    "updatedAt": "2026-05-25"
+  },
+  {
+    "id": "json-ld-starter-builder",
+    "name": "JSON-LD Starter Builder",
+    "category": "seo",
+    "summary": "Generate starter JSON-LD for WebSite, Organization, Article, FAQ, or BreadcrumbList.",
+    "description": "Choose a schema type, fill in the main fields, and copy a valid JSON-LD script block.",
+    "keywords": [
+      "json-ld generator",
+      "schema markup generator",
+      "structured data builder"
+    ],
+    "whatIs": "JSON-LD is structured data written as a script block in the page head or body. It helps search engines and AI systems understand entities, page purpose, navigation paths, and question-answer content. This builder focuses on starter markup that is easy to inspect and adapt before publishing.",
+    "howToUse": [
+      "Choose the schema type that matches the page.",
+      "Enter the page URL, name, description, and optional organization or FAQ data.",
+      "Copy the generated script block into the page HTML.",
+      "Validate the final page after publishing because schema must match visible content."
+    ],
+    "useCases": [
+      "Create WebSite or Organization markup for a homepage.",
+      "Prepare Article metadata for a static blog post.",
+      "Build FAQ or BreadcrumbList schema from structured lines."
+    ],
+    "examples": [
+      {
+        "title": "Homepage entity markup",
+        "text": "A small website can add WebSite and Organization JSON-LD to identify its name, URL, and description."
+      },
+      {
+        "title": "FAQ section markup",
+        "text": "A tool page with visible questions and answers can generate matching FAQ JSON-LD for clearer machine understanding."
+      }
+    ],
+    "mistakes": [
+      "Adding schema that does not match visible page content.",
+      "Using placeholder URLs or local file paths.",
+      "Treating schema as a ranking shortcut instead of a clarity layer."
+    ],
+    "faq": [
+      {
+        "question": "Where should JSON-LD go?",
+        "answer": "It can live in the head or body. For static pages, placing it near other metadata in the head is easy to maintain."
+      },
+      {
+        "question": "Can one page have multiple JSON-LD blocks?",
+        "answer": "Yes. A page can use separate blocks for WebSite, BreadcrumbList, FAQ, WebApplication, and other relevant entities."
+      },
+      {
+        "question": "Do I need to validate it?",
+        "answer": "Yes. Validate the published page and make sure the structured data matches visible content."
+      }
+    ],
+    "quickAnswer": "Generate starter JSON-LD structured data for WebSite, Organization, Article, FAQ, and BreadcrumbList schema types. Fill in the key fields and paste the script block into your page HTML.",
+    "limitations": [
+      "Schema markup must match the visible content on the page. Search engines may ignore or penalize structured data that describes content the user cannot see.",
+      "This tool generates starter markup but does not validate the output against Schema.org schemas. Run the generated JSON-LD through Google Rich Results Test or Schema.org Validator before publishing.",
+      "Some rich result types have strict requirements beyond basic schema fields. Article, FAQ, and Review types may require additional properties for eligibility in search result enhancements."
+    ],
+    "verificationSteps": [
+      "Open the published page URL in Google Rich Results Test or Schema.org Validator and confirm no errors or warnings are reported.",
+      "Check that the JSON-LD values match the visible page content, especially the name, description, URL, and date fields."
+    ]
+  },
+  {
+    "id": "responsive-image-markup-generator",
+    "name": "Responsive Image Markup Generator",
+    "category": "assets",
+    "summary": "Generate img or picture markup with srcset, sizes, width, height, and alt text.",
+    "description": "Create responsive image HTML for static pages without forgetting sizing, lazy loading, or accessible alt text.",
+    "keywords": [
+      "responsive image generator",
+      "srcset generator",
+      "picture tag generator"
+    ],
+    "whatIs": "Responsive image markup lets the browser choose a suitable image file for the visitor's screen and layout. Good markup also includes width, height, loading, decoding, and useful alt text. Static sites benefit from this because images often have fixed exported filenames and need clear paths in the final build output.",
+    "howToUse": [
+      "Enter the default image URL, alt text, width, and height.",
+      "Add srcset candidates as image-url width pairs.",
+      "Choose whether to generate a plain img tag or a picture element with a WebP source.",
+      "Copy the markup and confirm that every image file exists in the published output."
+    ],
+    "useCases": [
+      "Prepare responsive images for static HTML pages.",
+      "Avoid missing width and height attributes that cause layout shift.",
+      "Create picture markup with WebP and fallback image paths."
+    ],
+    "examples": [
+      {
+        "title": "Blog hero image",
+        "text": "A blog post has 640px, 960px, and 1280px versions of a hero image. The generator creates srcset and sizes markup."
+      },
+      {
+        "title": "Tool screenshot",
+        "text": "A tool page screenshot needs a useful alt attribute, dimensions, and lazy loading below the fold."
+      }
+    ],
+    "mistakes": [
+      "Leaving alt text empty for meaningful images.",
+      "Using srcset paths that are not copied to the published output.",
+      "Omitting width and height, which can create layout shift."
+    ],
+    "faq": [
+      {
+        "question": "When should alt text be empty?",
+        "answer": "Use empty alt text only for decorative images. Meaningful screenshots, diagrams, and product images need useful alt text."
+      },
+      {
+        "question": "What does sizes do?",
+        "answer": "The sizes attribute tells the browser how wide the image will be in the layout so it can choose the right srcset candidate."
+      },
+      {
+        "question": "Should every image be lazy loaded?",
+        "answer": "No. Lazy loading is useful below the fold. Important above-the-fold images may need eager loading."
+      }
+    ],
+    "quickAnswer": "Generate responsive img or picture markup with srcset, sizes, width, height, and alt text. Helps avoid layout shift, missing image candidates, and inaccessible alt attributes on static sites.",
+    "limitations": [
+      "Srcset candidates must exist at the specified paths in the published output. The generated markup references file paths; you must ensure each image file is copied to the correct location.",
+      "The sizes attribute affects which srcset candidate the browser selects. An incorrect sizes value can cause the browser to download a larger or smaller image than needed.",
+      "WebP source in a picture element requires a fallback img src for older browsers that do not support WebP. Without a fallback, unsupported browsers will show no image."
+    ],
+    "verificationSteps": [
+      "Open the published page, resize the browser, and confirm the browser loads different image candidates at different viewport widths using the Network panel.",
+      "Verify the alt attribute provides accurate descriptions for meaningful images or is empty for decorative images using browser DevTools or a screen reader."
+    ]
+  },
+  {
+    "id": "responsive-iframe-embed-generator",
+    "name": "Responsive Iframe Embed Generator",
+    "category": "html",
+    "summary": "Generate responsive iframe embed markup for videos, maps, demos, and docs.",
+    "description": "Create a stable iframe wrapper with aspect ratio, loading, referrer, sandbox, and title attributes.",
+    "keywords": [
+      "responsive iframe generator",
+      "iframe embed code",
+      "aspect ratio iframe"
+    ],
+    "whatIs": "Responsive iframe markup keeps embeds from overflowing, shifting layout, or missing accessibility attributes. It is useful for videos, maps, demos, slides, and documentation widgets. A good embed includes a title, lazy loading when appropriate, a stable aspect ratio, and only the permissions the embed needs.",
+    "howToUse": [
+      "Paste the iframe source URL and write a clear title.",
+      "Choose the aspect ratio and whether lazy loading should be enabled.",
+      "Enable sandbox only when the embedded page can work with the selected restrictions.",
+      "Copy the HTML and CSS into the page where the embed should appear."
+    ],
+    "useCases": [
+      "Embed a video without fixed-width overflow.",
+      "Add a live demo iframe to documentation.",
+      "Create a map embed with a stable aspect ratio and title."
+    ],
+    "examples": [
+      {
+        "title": "Documentation demo",
+        "text": "A docs page embeds a live example. The generated wrapper keeps the iframe responsive and prevents layout jumps."
+      },
+      {
+        "title": "Video tutorial",
+        "text": "A blog post embeds a video and needs a 16:9 frame that works on mobile and desktop."
+      }
+    ],
+    "mistakes": [
+      "Embedding iframes without a title.",
+      "Using fixed width and height values that break on mobile.",
+      "Adding sandbox restrictions without testing the embedded page."
+    ],
+    "faq": [
+      {
+        "question": "Should iframe embeds use lazy loading?",
+        "answer": "Use lazy loading for embeds below the fold. For important above-the-fold embeds, test whether lazy loading delays useful content."
+      },
+      {
+        "question": "What aspect ratio should I choose?",
+        "answer": "Use 16:9 for most videos, 4:3 for older slides or demos, and 1:1 for square interactive previews."
+      },
+      {
+        "question": "Is sandbox always safe?",
+        "answer": "Sandbox can improve containment, but strict settings may break scripts, forms, or same-origin behavior. Test the embed."
+      },
+      {
+        "question": "What if the embedded content requires scripts or same-origin access?",
+        "answer": "The sandbox attribute blocks scripts and same-origin access by default. If the embed needs JavaScript or cookies, add the allow-scripts and allow-same-origin tokens and test thoroughly to avoid breaking the embedded page."
+      }
+    ],
+    "quickAnswer": "Generate responsive iframe embed markup with aspect ratio, lazy loading, sandbox restrictions, and title attributes. The output includes CSS and HTML for a stable embed that avoids layout shifts.",
+    "limitations": [
+      "Sandbox restrictions may break embedded content that relies on scripts, forms, popups, or same-origin storage. Add sandbox tokens selectively and test the embed after applying restrictions.",
+      "The aspect-ratio CSS property is a newer approach than the classic padding-bottom hack. Older browsers may need the padding-bottom fallback for responsive iframes to maintain aspect ratio.",
+      "Lazy loading (loading=lazy) may delay above-the-fold embeds from rendering. For embeds visible near the top of the page, consider eager loading or loading the embed without lazy attributes."
+    ],
+    "verificationSteps": [
+      "Load the page in a browser and confirm the iframe renders at the expected aspect ratio without overflow or scrollbars on mobile and desktop viewports.",
+      "Test the sandbox behavior by interacting with the embedded content. If the embed fails, review the sandbox tokens and add permissions as needed."
+    ]
+  },
+  {
+    "id": "github-pages-spa-404-helper",
+    "name": "GitHub Pages SPA 404 Helper",
+    "category": "github-pages",
+    "summary": "Generate a 404.html fallback for single-page apps on GitHub Pages.",
+    "description": "Create a small GitHub Pages 404 fallback snippet for client-side routing and static SPA deployments.",
+    "keywords": [
+      "github pages spa 404",
+      "github pages client side routing",
+      "404 fallback generator"
+    ],
+    "whatIs": "GitHub Pages serves static files and does not know client-side routes unless a matching file exists. A single-page app can show 404 when a visitor opens a deep route directly. A 404 fallback can redirect the browser back to the app entry point while preserving the requested path for the router.",
+    "howToUse": [
+      "Enter the app base path. Use / for a user or custom domain site, or /repo-name/ for a project page.",
+      "Choose whether the fallback should store the original path in the query string or hash.",
+      "Copy the generated 404.html file into the published site root.",
+      "Test a deep route directly after deployment."
+    ],
+    "useCases": [
+      "Fix direct visits to client-side routes on GitHub Pages.",
+      "Prepare a 404 fallback for React, Vue, Svelte, or vanilla routers.",
+      "Document the base path needed for project pages."
+    ],
+    "examples": [
+      {
+        "title": "Custom domain SPA",
+        "text": "A site at www.example.com uses client-side routing. The helper generates a fallback that redirects deep routes back to / with the path preserved."
+      },
+      {
+        "title": "Project page SPA",
+        "text": "A project deployed under /my-app/ needs the base path included so routes do not redirect to the domain root."
+      }
+    ],
+    "mistakes": [
+      "Using / as the base path for a project page deployed under /repo-name/.",
+      "Forgetting to copy 404.html into the final dist folder.",
+      "Expecting this fallback to replace server-side redirects."
+    ],
+    "faq": [
+      {
+        "question": "Does this work for every router?",
+        "answer": "No. It is a generic fallback. Your router still needs to read the preserved path and render the matching route."
+      },
+      {
+        "question": "Where should 404.html go?",
+        "answer": "Place it in the published site root, next to index.html, CNAME, robots.txt, or other final output files."
+      },
+      {
+        "question": "Should normal static sites use this?",
+        "answer": "Usually no. A normal static site should publish real HTML files for important pages instead of routing everything through a fallback."
+      }
+    ],
+    "quickAnswer": "Generate a 404.html fallback for single-page apps deployed on GitHub Pages. The fallback redirects deep client-side routes to the app entry point while preserving the original path for the router to handle.",
+    "limitations": [
+      "This is a generic client-side fallback, not a server-side redirect configuration. It relies on JavaScript in the browser to extract the original path and pass it to the router.",
+      "The client-side router must be configured to read the preserved path from the query string or hash and render the matching route. Not all routers handle this redirect pattern automatically.",
+      "This approach does not fix navigation or refresh behavior within the SPA after the initial redirect. Router-level configuration is still needed for full client-side routing support."
+    ],
+    "verificationSteps": [
+      "Deploy the site with the generated 404.html at the root, then open a deep route URL such as https://yoursite.com/some/deep/route directly in a browser.",
+      "Confirm the page loads the SPA entry point and the router navigates to the deep route without showing a 404 or blank page."
+    ]
+  },
+  {
+    "id": "css-color-contrast-checker",
+    "name": "CSS Color Contrast Checker",
+    "category": "css",
+    "summary": "Check the contrast ratio between two colors against WCAG accessibility standards.",
+    "description": "Enter a foreground and background color, and see the contrast ratio with WCAG AA and AAA pass/fail results for normal and large text. Runs entirely in your browser.",
+    "keywords": [
+      "color contrast checker",
+      "wcag contrast",
+      "accessibility checker",
+      "color accessibility"
+    ],
+    "whatIs": "WCAG contrast ratio measures the luminance difference between two colors. A ratio of 4.5:1 meets the AA standard for normal text, and 7:1 meets AAA. These thresholds help ensure that people with low vision, color vision deficiency, or who are reading on a screen in difficult lighting can still read the content. This tool calculates the precise ratio from the hex values you enter and shows whether the combination passes the level you need, helping designers and developers check color combinations before publishing.",
+    "howToUse": [
+      "Enter the foreground color using a hex code, RGB value, or color picker.",
+      "Enter the background color the same way.",
+      "Read the contrast ratio result and the WCAG AA and AAA pass/fail indicators for normal text and large text.",
+      "Adjust either color until the ratio meets your target accessibility level."
+    ],
+    "useCases": [
+      "Check whether body text on a light background meets WCAG AA readability standards.",
+      "Validate brand color combinations across buttons, badges, and UI components.",
+      "Prepare accessible design specs before handing off to development."
+    ],
+    "examples": [
+      {
+        "title": "Button text on brand color",
+        "text": "A designer picks a brand blue background for a primary button and needs white text. The tool confirms the contrast ratio meets AA for normal text or suggests a darker shade if it does not."
+      },
+      {
+        "title": "Body text on a custom background",
+        "text": "A landing page uses a light gray section background. The tool checks whether the default dark gray body text stays readable at the AA level."
+      }
+    ],
+    "mistakes": [
+      "Relying on visual judgment instead of a measured ratio, which can miss contrast problems.",
+      "Testing only on a bright screen in a well-lit room where low-contrast text may look acceptable.",
+      "Forgetting that large text passes WCAG AA at a lower ratio (3:1) than normal text (4.5:1)."
+    ],
+    "faq": [
+      {
+        "question": "What is a good contrast ratio?",
+        "answer": "For normal text, aim for at least 4.5:1 (WCAG AA) or 7:1 (WCAG AAA). For large text above 18px or 14px bold, 3:1 meets AA."
+      },
+      {
+        "question": "Does WCAG apply to decorative text?",
+        "answer": "WCAG applies to information-bearing text. Purely decorative text that carries no meaning and is not part of a user interface element does not need to meet contrast thresholds."
+      },
+      {
+        "question": "What color formats does this tool accept?",
+        "answer": "The tool accepts hex color codes and provides a color picker. Enter colors as six-digit hex values such as #333333 or #ffffff. The color picker returns hex values only."
+      }
+    ],
+    "quickAnswer": "Check whether two color combinations meet WCAG contrast standards before publishing. The tool calculates the precise ratio and tells you whether normal text, large text, and UI components pass AA or AAA levels.",
+    "limitations": [
+      "The color picker returns hex values only. It does not support RGB, HSL, or named color inputs directly.",
+      "The tool checks solid color pairs. It does not evaluate contrast on gradient text, box-shadow text, or background images where luminance varies across the element.",
+      "Contrast ratios are calculated from the colors you enter. If either color is transparent the result will not reflect the actual visible contrast against the underlying page background."
+    ],
+    "verificationSteps": [
+      "Test the final color pair in a browser by zooming to confirm text is readable at small sizes.",
+      "Compare the tool result against the WCAG contrast checker in Chrome DevTools Accessibility panel for a second opinion."
+    ],
+    "tags": [
+      "colors",
+      "accessibility"
+    ]
+  },
+  {
+    "id": "css-box-shadow-builder",
+    "name": "CSS Box Shadow Builder",
+    "category": "css",
+    "summary": "Build box-shadow CSS visually by adjusting offset, blur, spread, and color.",
+    "description": "Adjust horizontal and vertical offset, blur radius, spread, color, and inset to generate a clean box-shadow declaration. See a live preview of the shadow as you build it.",
+    "keywords": [
+      "box shadow generator",
+      "css shadow",
+      "drop shadow css",
+      "box-shadow builder"
+    ],
+    "whatIs": "box-shadow is one of the most commonly used CSS properties for adding depth and elevation to elements, but its multi-value syntax can be confusing, especially when combining offset, blur, spread, color, and the inset keyword. This tool makes the property visual by showing a live preview as you adjust each value, so you can see exactly how the shadow behaves before adding it to your stylesheet.",
+    "howToUse": [
+      "Adjust the horizontal and vertical offset to move the shadow position.",
+      "Set the blur radius and spread to control softness and size.",
+      "Pick a shadow color and toggle inset if the shadow should appear inside the element.",
+      "Copy the generated CSS declaration and paste it into your stylesheet."
+    ],
+    "useCases": [
+      "Add subtle elevation to cards, modals, and dropdown menus.",
+      "Create inset pressed effects for buttons and form fields.",
+      "Build layered shadows by combining multiple box-shadow values for realistic depth."
+    ],
+    "examples": [
+      {
+        "title": "Subtle card shadow",
+        "text": "A card component needs a light box-shadow to lift it off the page. A small offset and blur with a low-opacity black creates a clean material-style shadow."
+      },
+      {
+        "title": "Inset form field shadow",
+        "text": "A text input can use an inset shadow to suggest depth inside the field. The tool toggles the inset keyword so the shadow renders inside the element border."
+      }
+    ],
+    "mistakes": [
+      "Forgetting to add a color value, which can cause the shadow to render as black or inherit unexpected browser defaults.",
+      "Using a blur radius that is too large, making the shadow nearly invisible on small elements.",
+      "Not checking that the inset keyword produces the expected inner shadow behavior on the target element."
+    ],
+    "faq": [
+      {
+        "question": "What does the spread value do?",
+        "answer": "Spread expands or contracts the shadow size. A positive spread makes the shadow larger, while a negative spread shrinks it. Zero spread keeps the shadow the same size as the element."
+      },
+      {
+        "question": "How do I add multiple shadows?",
+        "answer": "Separate each shadow declaration with a comma. The builder can be used once per shadow, then you combine the values in your stylesheet."
+      },
+      {
+        "question": "When should I use the drop-shadow filter instead?",
+        "answer": "Use the drop-shadow CSS filter when you need a shadow that follows the exact shape of an element with a transparent background or clipped corners. box-shadow always follows the element CSS box, while drop-shadow follows the rendered pixel contour."
+      }
+    ],
+    "quickAnswer": "Generate a box-shadow declaration by adjusting offset, blur, spread, color, and inset. The live preview shows the shadow on a static div so you can tune the values before adding them to your stylesheet.",
+    "limitations": [
+      "The preview is a static div with no surrounding context. A shadow that looks correct in isolation may appear different against a real page background or near other elements.",
+      "The tool generates one shadow at a time. For layered or multiple shadows you must combine the values manually in your stylesheet.",
+      "The box-shadow property creates shadows that follow the element CSS box, not the visible shape. For non-rectangular elements with transparent backgrounds or CSS clip-path shapes, use the drop-shadow filter instead for a shadow that follows the visible contours."
+    ],
+    "verificationSteps": [
+      "Paste the generated CSS into your actual page and inspect the shadow on the real element with its background and adjacent content.",
+      "Test the shadow at different element sizes to confirm blur and spread scale as expected."
+    ],
+    "tags": [
+      "effects"
+    ]
+  },
+  {
+    "id": "css-flexbox-generator",
+    "name": "CSS Flexbox Generator",
+    "category": "css",
+    "summary": "Generate flexbox container CSS and sample HTML by selecting flex direction, wrap, alignment, and justification.",
+    "description": "Choose flex direction, wrap behavior, justify-content, and align-items values. The tool outputs complete container CSS and a minimal HTML skeleton you can test immediately.",
+    "keywords": [
+      "flexbox generator",
+      "css flexbox",
+      "flex layout",
+      "flexbox css builder"
+    ],
+    "whatIs": "Flexbox is the most common CSS layout method for one-dimensional layouts, aligning items along a main axis and a cross axis. Beginners often mix up justify-content (main axis) and align-items (cross axis), which leads to unexpected centering and spacing results. This tool makes both axes explicit by showing the generated CSS alongside the flex properties you select, so you can connect each value to its visible effect.",
+    "howToUse": [
+      "Select the flex direction and wrap behavior for your container.",
+      "Choose justify-content and align-items values to control item placement.",
+      "Copy the generated CSS for your flex container.",
+      "Use the provided HTML skeleton to test the layout in your own page."
+    ],
+    "useCases": [
+      "Center a single element both horizontally and vertically inside a container.",
+      "Create a responsive navigation bar with evenly spaced links.",
+      "Build a card row that wraps onto multiple lines at narrow viewports."
+    ],
+    "examples": [
+      {
+        "title": "Centered hero content",
+        "text": "A hero section needs a heading and button centered on both axes. The generator creates display:flex with justify-content and align-items set to center."
+      },
+      {
+        "title": "Wrapped card layout",
+        "text": "A product listing should show cards in a row that wrap when the container shrinks. Flex-wrap: wrap with justify-content: space-between creates an evenly spaced grid."
+      }
+    ],
+    "mistakes": [
+      "Confusing the main axis with the cross axis, which leads to using justify-content when align-items is needed.",
+      "Forgetting to set display: flex on the container, which causes flex properties to have no effect.",
+      "Not testing wrap behavior at narrow widths, leaving items to overflow instead of wrapping."
+    ],
+    "faq": [
+      {
+        "question": "When should I use flexbox instead of grid?",
+        "answer": "Use flexbox for one-dimensional layouts where items flow along a single axis. Use grid for two-dimensional layouts where you need to control rows and columns simultaneously."
+      },
+      {
+        "question": "What does align-items do vs align-content?",
+        "answer": "align-items controls the alignment of individual items along the cross axis within a single line. align-content controls the spacing between wrapped lines when there are multiple lines of items."
+      },
+      {
+        "question": "What does align-items center do vs justify-content center?",
+        "answer": "justify-content: center centers items along the main axis, which is horizontal by default. align-items: center centers items along the cross axis, which is vertical by default. Using both together centers items perfectly in both dimensions."
+      },
+      {
+        "question": "Do I need prefixes for flexbox?",
+        "answer": "Modern flexbox is supported without vendor prefixes in all current browsers. Only very old browsers such as Internet Explorer 10 or early Android browsers need the -ms- prefix. For most projects today, unprefixed flexbox is safe to use."
+      }
+    ],
+    "quickAnswer": "Generate flexbox container CSS by selecting direction, wrap, alignment, and justification values. The output includes the container rules and an HTML skeleton so you can test the layout immediately.",
+    "limitations": [
+      "The tool generates container-level flex properties only. It does not generate item-level flex properties such as flex-grow, flex-shrink, flex-basis, or align-self.",
+      "The generated CSS applies to the flex container only. You still need to add your own content markup and styling for the child flex items.",
+      "Flexbox alone does not handle two-dimensional layouts well. When items need to align across both rows and columns simultaneously, CSS Grid with grid-template-columns and grid-template-rows provides better control than nested flex containers."
+    ],
+    "verificationSteps": [
+      "Add the generated container CSS to a page with test child elements and resize the viewport to verify wrap and alignment behavior.",
+      "Toggle between different flex-direction values to confirm children reflow along the correct axis."
+    ],
+    "tags": [
+      "layout"
+    ]
+  },
+  {
+    "id": "css-border-radius-builder",
+    "name": "CSS Border Radius Builder",
+    "category": "css",
+    "summary": "Set rounded corners individually for each corner and generate the border-radius CSS declaration.",
+    "description": "Control each corner radius separately or use the shorthand. Choose pixel, rem, or percentage units. See a live preview of the rounded element as you adjust values.",
+    "keywords": [
+      "border radius generator",
+      "css rounded corners",
+      "border-radius builder",
+      "css corners"
+    ],
+    "whatIs": "border-radius controls how much each corner of an element is rounded, but the four-value shorthand and the eight-value elliptical syntax can be confusing. This tool makes the properties visual by letting you set each corner independently and choose between px, rem, and percentage units, so you can see the effect before writing the CSS declaration.",
+    "howToUse": [
+      "Set a radius value for each corner individually or enable uniform mode to apply one value everywhere.",
+      "Choose the unit you want to use: px, rem, or percentage.",
+      "Watch the live preview update as you adjust each corner.",
+      "Copy the generated CSS declaration into your stylesheet."
+    ],
+    "useCases": [
+      "Create pill-shaped buttons by setting the border-radius larger than the button height.",
+      "Make circular avatars and profile images with border-radius: 50%.",
+      "Design card corners with subtle rounding on the top corners and sharp bottom corners."
+    ],
+    "examples": [
+      {
+        "title": "Pill button with large radius",
+        "text": "A call-to-action button needs a fully rounded pill shape. Setting border-radius to 999px on a short button creates rounded ends regardless of the button width."
+      },
+      {
+        "title": "Card with subtle corner rounding",
+        "text": "A content card uses 8px rounding on all corners. The uniform mode applies the same value everywhere, producing a soft but professional appearance."
+      }
+    ],
+    "mistakes": [
+      "Using px on elements that should scale with font size, preventing the corner radius from adjusting when text is resized.",
+      "Forgetting the slash syntax for elliptical corners, which sets separate horizontal and vertical radii for advanced shapes.",
+      "Setting a radius larger than half the element size, which can cause the corners to overlap and produce unexpected results."
+    ],
+    "faq": [
+      {
+        "question": "How do I make a perfect circle?",
+        "answer": "Set border-radius to 50% on a square element. This creates a perfect circle because each corner is rounded to half the element width and height."
+      },
+      {
+        "question": "What unit should I use for border-radius?",
+        "answer": "Use rem for radii that should scale with the base font size and px for fixed-size decorative elements. Use percentage for circular shapes and fluid rounding."
+      },
+      {
+        "question": "How do I make a perfect pill shape?",
+        "answer": "Set border-radius to a value larger than the element height, such as 999px, on a rectangular button or badge. The browser renders fully rounded ends regardless of the element width, creating a pill shape."
+      },
+      {
+        "question": "Can I use percentage values for border-radius?",
+        "answer": "Yes, but percentage values refer to the element dimensions. A value of 50% on a square element creates a perfect circle. On a rectangle, 50% produces an elliptical shape because the percentage applies to both width and height independently."
+      }
+    ],
+    "quickAnswer": "Set rounded corners on any element by adjusting each corner independently or using a uniform value. Choose px, rem, or percentage units and see a live preview of the result.",
+    "limitations": [
+      "The tool shows uniform and individual corner radius values. It does not support the elliptical syntax that uses a slash to set separate horizontal and vertical radii per corner.",
+      "Percentage border-radius values are relative to the element dimensions and may produce unexpected elliptical corners on elements with dynamic sizing.",
+      "Rounded corners do not clip child content by default. If a child element has a background or border that extends beyond the rounded corners, add overflow: hidden to the parent to enforce clipping at the rounded boundary."
+    ],
+    "verificationSteps": [
+      "Test the generated border-radius on the target element at different sizes and screen widths to confirm corner proportions remain consistent.",
+      "Inspect the element in DevTools to verify the computed border-radius values match the declaration."
+    ],
+    "tags": [
+      "effects"
+    ]
+  },
+  {
+    "id": "touch-target-size-checker",
+    "name": "Touch Target Size Checker",
+    "category": "css",
+    "summary": "Check interactive element dimensions against WCAG 2.2 Target Size (2.5.8) requirements. Get AA/AAA results with CSS fix recommendations.",
+    "description": "Verify that buttons, links, inputs, and other interactive elements meet WCAG 2.2 target size requirements: 24x24px for AA, 44x44px for AAA. Handles the four exception types 鈥?inline, user-agent, essential, and spacing 鈥?with clear pass/fail results and CSS fix suggestions.",
+    "keywords": [
+      "touch target size checker",
+      "wcag target size",
+      "mobile tap target",
+      "accessible touch area",
+      "wcag 2.5.8 checker"
+    ],
+    "whatIs": "WCAG 2.2 Success Criterion 2.5.8 Target Size requires that interactive elements have a target area of at least 24x24 CSS pixels (AA). The AAA level requires 44x44px. These sizes ensure that people with motor impairments or using touch devices can reliably tap or click interactive elements without accidentally activating adjacent elements.",
+    "howToUse": [
+      "Enter the width and height of your interactive element in CSS pixels.",
+      "Enter the spacing to the nearest adjacent interactive element if known.",
+      "Select the element type 鈥?different exceptions apply to inline links, native controls, and essential elements.",
+      "Review the pass/fail result and CSS fix recommendations."
+    ],
+    "useCases": [
+      "Check that mobile navigation buttons meet the 24px AA target size requirement.",
+      "Verify that small icon-only buttons have sufficient spacing to adjacent elements to qualify for the spacing exception.",
+      "Audit a page for touch accessibility before a WCAG compliance review."
+    ],
+    "examples": [
+      {
+        "title": "Mobile nav icon buttons",
+        "text": "A mobile nav has 20x20px icon buttons. The tool reports AA failure. Adding 4px padding to reach 24x24px passes AA, or adding 24px spacing between buttons qualifies for the spacing exception."
+      },
+      {
+        "title": "Inline text links",
+        "text": "An article has inline text links that are only 18px tall. The tool applies the inline exception and passes AA because links within text blocks are exempt from minimum target size."
+      }
+    ],
+    "mistakes": [
+      "Assuming spacing alone fixes target size 鈥?the spacing exception requires the element to be at least 20px and have 24px spacing to adjacent targets.",
+      "Applying the inline exception to non-inline elements like standalone buttons or navigation links 鈥?the inline exception only applies to links within text blocks.",
+      "Checking desktop dimensions instead of CSS pixels 鈥?CSS pixels may differ from device pixels on high-DPI screens. Always use computed CSS values from DevTools."
+    ],
+    "faq": [
+      {
+        "question": "What counts as spacing to an adjacent target?",
+        "answer": "Spacing is measured from the edge of one target to the edge of the next nearest interactive element. This includes buttons, links, inputs, and any other clickable element. White space, margins, padding, or non-interactive content between targets counts as spacing. The spacing exception requires at least 24px of clearance."
+      },
+      {
+        "question": "Does this check apply to desktop as well as mobile?",
+        "answer": "WCAG 2.5.8 applies to all devices with pointer inputs, including desktop mouse pointers. While the criterion was motivated by mobile touch accessibility, the requirement is device-agnostic. Desktop users with motor impairments or using alternative pointing devices also benefit from larger targets."
+      }
+    ],
+    "quickAnswer": "WCAG 2.2 requires interactive elements to have a target size of at least 24x24px (AA) or 44x44px (AAA). Four exceptions apply: inline links, native controls, essential elements, and elements with 24px+ spacing to adjacent targets. Use CSS min-width/min-height and gap/padding to fix undersized targets.",
+    "limitations": [
+      "This tool checks static dimensions only. It does not account for dynamic layouts, responsive breakpoints, or zoom levels that may change the effective target size at different screen sizes.",
+      "The spacing exception requires manual verification of actual spacing between adjacent targets. This tool checks the spacing value you enter but cannot measure actual DOM layout distances.",
+      "WCAG 2.5.8 is a Level AA requirement in WCAG 2.2. Some enforcement bodies may apply it more strictly than others, and interpretation of exceptions varies."
+    ],
+    "verificationSteps": [
+      "Use browser DevTools to inspect the computed width and height of the element in CSS pixels.",
+      "Verify spacing between adjacent interactive elements using DevTools distance measurement or by inspecting the gap, margin, and padding properties."
+    ],
+    "updatedAt": "2026-05-28",
+    "tags": [
+      "accessibility"
+    ]
+  },
+  {
+    "id": "url-slug-generator",
+    "name": "URL Slug Generator",
+    "category": "html",
+    "summary": "Turn any title or heading into a clean, lowercase, hyphenated URL slug.",
+    "description": "Paste a page title, blog post headline, or any string, and get a URL-ready slug with hyphens instead of spaces and special characters removed. A small tool for a daily publishing task.",
+    "keywords": [
+      "url slug generator",
+      "seo slug",
+      "url friendly string",
+      "slugify"
+    ],
+    "whatIs": "A URL slug is the readable part of a web address, such as my-blog-post in example.com/blog/my-blog-post. Clean slugs help both readers and search engines understand what a page is about before opening it. This tool removes special characters, converts text to lowercase, and replaces spaces with hyphens so you get the standard format used by most content management systems and static site generators.",
+    "howToUse": [
+      "Paste or type a title, heading, or any text string.",
+      "The tool converts it to a clean hyphenated slug instantly.",
+      "Review the output and trim any unnecessary words.",
+      "Copy the slug for your URL path, file name, or anchor link."
+    ],
+    "useCases": [
+      "Create SEO-friendly blog post URLs from article headlines.",
+      "Generate clean file names for static site content directories.",
+      "Prepare anchor link IDs from section headings for on-page navigation."
+    ],
+    "examples": [
+      {
+        "title": "Blog post title to slug",
+        "text": "A new article titled 10 Tips for Better Web Typography becomes 10-tips-for-better-web-typography as a clean, crawlable URL path."
+      },
+      {
+        "title": "Page heading to anchor ID",
+        "text": "A documentation section heading How to Install the CLI is converted to how-to-install-the-cli and used as the id attribute on the heading element."
+      }
+    ],
+    "mistakes": [
+      "Using very long slugs with dozens of words that make URLs hard to read and share.",
+      "Forgetting to check whether the slug duplicates an existing page URL.",
+      "Stripping meaningful words that help readers and search engines understand the page topic."
+    ],
+    "quickAnswer": "Generate a URL slug from any text by converting it to lowercase, replacing spaces with hyphens, and removing special characters. Use the output as a page URL, file name, or anchor link ID.",
+    "faq": [
+      {
+        "question": "What characters are removed from slugs?",
+        "answer": "Spaces are replaced with hyphens. Special characters such as punctuation marks, symbols, quotes, brackets, and accented characters are removed to keep the slug clean."
+      },
+      {
+        "question": "How long should a URL slug be?",
+        "answer": "Aim for three to five words. Short slugs are easier to read, type, and share while still conveying what the page is about."
+      },
+      {
+        "question": "Should I include stop words in a URL slug?",
+        "answer": "Stop words such as a, an, the, and, of, and in can often be removed from slugs to keep them shorter without losing meaning. For example, tips-for-better-typography is shorter than tips-for-improving-your-typography."
+      },
+      {
+        "question": "Should I use dashes (-) or underscores (_) in a URL slug?",
+        "answer": "Use dashes. Google treats dashes as word separators, so best-widget-reviews is read as three separate words: best, widget, reviews. Underscores are treated as joiners 鈥?best_widget_reviews is read as a single term. This affects how search engines match your URL to user queries. Dashes are also easier for users to type and read in the address bar."
+      },
+      {
+        "question": "How do I handle non-English characters, emoji, or symbols in slugs?",
+        "answer": "Remove accented characters, emoji, symbols, and non-Latin scripts from slugs, or transliterate them to ASCII equivalents. Use a transliteration library or manual mapping to convert characters like 眉 to u, 帽 to n, or 莽 to c. For entirely non-Latin languages like Chinese or Arabic, consider using a short English keyword slug or a transliterated romanized version of the title."
+      }
+    ],
+    "limitations": [
+      "The tool does not detect duplicate slugs across your site. Always check whether the generated slug conflicts with an existing page URL before publishing.",
+      "Very long input text produces very long slugs. Edit the output manually if the slug exceeds a reasonable length.",
+      "The slug uses strict ASCII transliteration. Non-ASCII characters such as accented letters are removed, which may not match the expected URL format for some languages."
+    ],
+    "verificationSteps": [
+      "Copy the generated slug and test it as part of a full URL. Open the URL in a browser to confirm it resolves to the correct page.",
+      "Check that the slug does not contain double hyphens or trailing hyphens, which may look inconsistent in published URLs."
+    ]
+  },
+  {
+    "id": "html-heading-hierarchy-checker",
+    "name": "HTML Heading Hierarchy Checker",
+    "category": "html",
+    "summary": "Paste HTML and see the heading structure as a tree. Find skipped levels, missing h1 tags, and hierarchy problems.",
+    "description": "Paste any HTML snippet and get a visual tree of h1 through h6 headings. The tool flags skipped heading levels, missing h1 tags, and structural issues that affect accessibility and SEO.",
+    "keywords": [
+      "heading hierarchy checker",
+      "html heading outline",
+      "h1 h2 structure",
+      "heading accessibility"
+    ],
+    "whatIs": "Heading hierarchy (h1 through h6) is the structural backbone of any HTML document. Screen readers depend on a logical heading order to let users navigate by jumping between sections. Search engines also use headings to understand page topics and their relative importance. Skipping levels, such as jumping from h1 to h3, or using multiple h1 tags on one page, can confuse both assistive technology and crawlers. This tool extracts all headings from pasted HTML and displays them as a nested tree, so structural problems are visible at a glance before the page reaches production.",
+    "howToUse": [
+      "Paste your HTML markup into the textarea. The tool will extract all h1 through h6 heading tags.",
+      "Review the generated heading tree. Each heading appears at its correct depth.",
+      "Look for skipped levels, duplicate h1 tags, or headings that are out of logical order.",
+      "Adjust your HTML to fix any structural issues, then paste again to confirm the hierarchy is clean."
+    ],
+    "useCases": [
+      "Audit a blog post template before publishing to ensure screen reader navigation works correctly.",
+      "Check a static page heading structure for skipped levels that could confuse search engine crawlers.",
+      "Verify that section headings inside articles descend logically from h1 through h2 and h3 without gaps."
+    ],
+    "examples": [
+      {
+        "title": "Well-structured article",
+        "text": "A blog post uses h1 for the page title, h2 for major sections such as Introduction and Conclusion, and h3 for subsections within each major section. The heading tree shows a clean one-level-at-a-time descent."
+      },
+      {
+        "title": "Problematic heading order",
+        "text": "A page starts with an h1 title, then jumps directly to an h3 for the first section, skipping h2 entirely. The tree highlights the gap and flags it as a skipped level."
+      }
+    ],
+    "mistakes": [
+      "Using headings for visual size instead of structural meaning, which breaks screen reader navigation.",
+      "Skipping from h2 to h4, creating a gap that makes the hierarchy harder for crawlers to interpret.",
+      "Omitting the h1 tag entirely on a page, leaving the document without a top-level heading."
+    ],
+    "quickAnswer": "Paste your HTML to see the heading structure as a visual tree and identify skipped levels, missing h1 tags, and other hierarchy problems that affect accessibility and SEO.",
+    "faq": [
+      {
+        "question": "How many h1 tags should a page have?",
+        "answer": "One h1 per page is the standard recommendation. The h1 should describe the overall page topic. Multiple h1 tags can dilute the primary topic signal for search engines."
+      },
+      {
+        "question": "Is it ok to skip heading levels for styling reasons?",
+        "answer": "No. Headings should reflect document structure, not visual appearance. Use CSS to style headings differently rather than skipping levels for a larger or smaller look."
+      },
+      {
+        "question": "Does heading hierarchy affect SEO?",
+        "answer": "Yes. Search engines use heading structure to understand page topics and their relative importance. A clear descending hierarchy helps crawlers interpret the content outline and may influence how pages are understood for relevant queries."
+      }
+    ],
+    "limitations": [
+      "The tool only scans heading tags in the pasted HTML. It does not read CSS-generated content or detect headings injected by JavaScript after page load.",
+      "The checker validates element names only. It does not evaluate aria-level or role attributes that could override the default heading semantics.",
+      "Pasting partial HTML may show an incomplete heading tree. Paste the full page content for an accurate audit."
+    ],
+    "verificationSteps": [
+      "Compare the heading tree output against the visual page layout to confirm that each visible section has a corresponding heading at the correct level.",
+      "Test the page with a screen reader or browser extension that reads the heading outline to verify the hierarchy works for assistive technology users."
+    ]
+  },
+  {
+    "id": "reading-time-estimator",
+    "name": "Reading Time Estimator",
+    "category": "html",
+    "summary": "Paste text and get an estimated reading time based on word count and adjustable reading speed.",
+    "description": "Paste article content, blog post text, or any body copy. The tool calculates estimated reading time using a configurable words-per-minute rate. A small utility for bloggers and content editors.",
+    "keywords": [
+      "reading time calculator",
+      "read time estimator",
+      "blog reading time",
+      "content length"
+    ],
+    "whatIs": "Reading time estimates help readers decide whether they have time to read an article before clicking into it. The standard adult reading speed is 200 to 250 words per minute for typical web content. This tool counts the words in your pasted text and divides by a configurable rate to produce an estimated reading time in minutes. Bloggers can use the result as a reading-time label displayed next to the post date or author byline.",
+    "howToUse": [
+      "Paste or type the content you want to estimate in the text area.",
+      "Adjust the words-per-minute rate if your audience reads at a different pace. The default is 225 WPM.",
+      "Read the estimated time output, shown in minutes and seconds.",
+      "Use the result as a reading-time label on your blog post, article, or documentation page."
+    ],
+    "useCases": [
+      "Add a 3 min read label to blog posts so readers know the time commitment before starting.",
+      "Estimate newsletter reading time to keep editions within a comfortable length for subscribers.",
+      "Check whether a draft article is too long for its intended format, such as a quick tip versus an in-depth guide."
+    ],
+    "examples": [
+      {
+        "title": "Short blog post",
+        "text": "A 500-word article on CSS tips has an estimated reading time of about 2 minutes at 225 WPM. The author adds a 2 min read label below the headline."
+      },
+      {
+        "title": "Long-form guide",
+        "text": "A 2000-word deployment guide estimates to about 9 minutes of reading time. The author can decide whether to break it into multiple parts or keep it as a single comprehensive page."
+      }
+    ],
+    "mistakes": [
+      "Using reading time as the only content-length signal, ignoring whether the text is substantive enough for its topic.",
+      "Not accounting for code blocks, images, or tables that add visual scanning time beyond the word count.",
+      "Applying the same WPM rate to technical and non-technical content without adjusting for the difference in reading difficulty."
+    ],
+    "quickAnswer": "Calculate how long it takes to read a piece of content based on word count and an adjustable reading speed. Use the result as a reading-time label on blog posts and articles to set reader expectations.",
+    "faq": [
+      {
+        "question": "What is the standard reading speed?",
+        "answer": "The average adult reads web content at about 200 to 250 words per minute. Technical or dense material may be slower, around 150 to 200 WPM."
+      },
+      {
+        "question": "Should I include images in the reading time estimate?",
+        "answer": "Images add scanning time but are hard to convert into a consistent estimate. Many publishers ignore images in reading time and add a small fudge factor if the page is image-heavy."
+      },
+      {
+        "question": "Does reading time affect SEO?",
+        "answer": "Reading time itself is not a direct ranking factor, but content length and engagement metrics are correlated with search performance. A reading-time label also helps set reader expectations and may reduce bounce rate."
+      },
+      {
+        "question": "Should I count code blocks, tables, and lists in reading time?",
+        "answer": "Code blocks and tables slow readers down more than prose, so many reading time estimators count code and table content at a slower rate or exclude it from the word count. A common approach is to count code block words at half the normal reading speed or add a fixed time per code block (such as 5 to 10 seconds). Lists and headings can be counted at the normal reading speed since they scan quickly."
+      }
+    ],
+    "limitations": [
+      "The estimate is based on word count only. It does not account for images, tables, code blocks, or embedded media that add visual scanning time beyond the word count.",
+      "Reading difficulty varies by audience. Technical content, academic writing, and dense analysis take longer to read than conversational blog posts at the same word count.",
+      "The tool counts all pasted text including code examples and list items, which may inflate the estimate for non-prose content."
+    ],
+    "verificationSteps": [
+      "Compare the estimated reading time with the actual time it takes to read the content to calibrate the WPM rate for your specific audience.",
+      "Check that the reading-time label matches the content depth. A long estimate on a short or shallow article may discourage readers from starting."
+    ]
+  },
+  {
+    "id": "vapid-key-generator",
+    "name": "VAPID Key Generator",
+    "category": "github-pages",
+    "summary": "Generate a VAPID key pair for Web Push notifications using the browser's Web Crypto API. Output ready-to-use keys for Node web-push, Firebase, and environment variables.",
+    "description": "Generate a P-256 ECDSA key pair for Voluntary Application Server Identification (VAPID) used in Web Push Protocol. Keys are generated entirely in your browser. Output includes public and private keys in Base64URL format with usage examples for web-push, Firebase Cloud Messaging, and environment variable configuration.",
+    "keywords": [
+      "vapid key generator",
+      "web push keys",
+      "vapid key pair",
+      "push notification keys",
+      "webpush vapid"
+    ],
+    "whatIs": "VAPID (Voluntary Application Server Identification) is part of the Web Push Protocol. It uses a public/private key pair to identify your application server to push services (like Google's FCM or Mozilla's autopush). The public key is sent to the browser during push subscription. The private key stays on your server and signs push messages. Together they prove the push message comes from your server and not an impersonator.",
+    "howToUse": [
+      "Click the Generate Key Pair button to create a new P-256 key pair using your browser's Web Crypto API.",
+      "Copy the public key into your frontend JavaScript where you call pushManager.subscribe().",
+      "Copy the private key into your server environment variables and use it with the web-push library or Firebase.",
+      "Never expose the private key 鈥?it stays on your server and is used to sign push messages."
+    ],
+    "useCases": [
+      "Generate a VAPID key pair for adding web push notifications to a web app.",
+      "Replace an accidentally exposed VAPID key pair with a fresh one.",
+      "Set up push notifications with the web-push npm library, Firebase Cloud Messaging, or a custom push server."
+    ],
+    "examples": [
+      {
+        "title": "Set up web-push on a Node.js server",
+        "text": "Generate a key pair. Store the private key in an environment variable. Use the public key in the frontend to subscribe users. On the server, use webpush.setVapidDetails() with both keys and a mailto: contact URL."
+      },
+      {
+        "title": "Configure Firebase Cloud Messaging for Web Push",
+        "text": "Generate a key pair. In the Firebase Console > Project Settings > Cloud Messaging, upload the key pair under Web Push certificates. Use the public key in your Firebase web app initialization."
+      }
+    ],
+    "mistakes": [
+      "Committing the private key to a public git repository 鈥?the private key must be kept secret and managed through environment variables or a secrets manager.",
+      "Using the same VAPID key pair for multiple unrelated applications 鈥?generate a separate key pair for each application for better security isolation.",
+      "Losing the private key 鈥?there is no way to recover a VAPID private key. You must generate a new pair and update both the server and all subscribed clients."
+    ],
+    "faq": [
+      {
+        "question": "Can I generate the VAPID keys on my server instead?",
+        "answer": "Yes, and for production use that is recommended. Use OpenSSL: openssl ecparam -genkey -name prime256v1 -noout -out vapid_private.pem && openssl ec -in vapid_private.pem -pubout -out vapid_public.pem. This browser tool is convenient for development, testing, and quick setup."
+      },
+      {
+        "question": "What happens if my VAPID private key is exposed?",
+        "answer": "Anyone with the private key can send push messages that appear to come from your server. Generate a new key pair immediately, update your server with the new keys, and resubscribe all your push users with the new public key. Push subscriptions are tied to the public key 鈥?old subscriptions cannot receive messages signed with a new key."
+      },
+      {
+        "question": "Do I need a VAPID key pair for Firebase Cloud Messaging?",
+        "answer": "Yes, if you are using the Web Push Protocol with FCM. Firebase requires a VAPID key pair under Project Settings > Cloud Messaging > Web Push certificates. This is separate from the Firebase server key and is required for web push notifications to work with FCM as a push service."
+      }
+    ],
+    "quickAnswer": "Generate a VAPID key pair for Web Push notifications. The public key goes in your frontend JavaScript for pushManager.subscribe(). The private key stays on your server and is used with the web-push library or Firebase to sign push messages. Never expose the private key.",
+    "limitations": [
+      "Keys generated in the browser are only as secure as the browser environment. For production use, consider generating keys server-side with OpenSSL and storing the private key in a secure secrets manager.",
+      "The Web Crypto API requires a secure context (HTTPS or localhost). If the browser does not support Web Crypto, the tool cannot generate keys.",
+      "VAPID keys use the P-256 (prime256v1) curve. Some older push libraries expect different formats 鈥?always verify the format expected by your specific push service or library."
+    ],
+    "verificationSteps": [
+      "Test the key pair by subscribing a browser to push notifications and sending a test push message from your server.",
+      "Verify the public key is correctly embedded in your frontend JavaScript by checking the applicationServerKey parameter in the pushManager.subscribe() call."
+    ],
+    "updatedAt": "2026-05-28"
+  }
+]

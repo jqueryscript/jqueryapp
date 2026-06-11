@@ -1,0 +1,1866 @@
+[
+  {
+    "id": "html-landmark-checker",
+    "name": "HTML Landmark Checker",
+    "category": "html",
+    "summary": "Paste HTML and check for ARIA landmark elements that help screen readers navigate the page structure.",
+    "description": "Scan pasted HTML for common landmark elements: header, main, nav, footer, aside, section, form, and search. Flags missing essential landmarks and explains why each one matters for accessibility.",
+    "keywords": [
+      "html landmark checker",
+      "aria landmarks",
+      "html semantics checker",
+      "landmark audit"
+    ],
+    "whatIs": "ARIA landmarks are HTML elements that define page regions. Screen readers use landmarks to let users jump between page sections. Common landmarks include header, main, nav, footer, aside, and form. Missing landmarks make pages harder to navigate for assistive technology users.",
+    "howToUse": [
+      "Paste your HTML markup into the input area.",
+      "The tool scans for landmark elements and displays which ones are present.",
+      "Review the results showing which landmarks are missing from your page.",
+      "Add the missing landmark elements to improve page accessibility."
+    ],
+    "useCases": [
+      "Audit a static page template for missing landmark elements before publishing.",
+      "Check that every page on a site has a main element for screen reader navigation.",
+      "Verify that navigation blocks use the nav element instead of generic div elements."
+    ],
+    "examples": [
+      {
+        "title": "Missing main landmark",
+        "text": "A page template audit reveals a missing main element. The checker flags it as a required landmark and explains that screen readers depend on main to jump to page content."
+      },
+      {
+        "title": "Div navigation detected",
+        "text": "A blog layout has header and footer elements but uses a div for navigation. The checker suggests replacing the div with a nav element for better landmark structure."
+      }
+    ],
+    "mistakes": [
+      "Using multiple main elements on one page, which is not standard and confuses screen reader navigation.",
+      "Wrapping everything in a nav element instead of using it only for actual site navigation.",
+      "Using section elements without accessible names, which makes them less useful as ARIA landmarks."
+    ],
+    "quickAnswer": "Paste your HTML to check which ARIA landmark elements are present and which are missing. Screen readers use landmarks to help keyboard and assistive technology users navigate between page regions.",
+    "faq": [
+      {
+        "question": "How many main elements should a page have?",
+        "answer": "One visible main element per page. Multiple main elements are not standard and confuse screen reader navigation."
+      },
+      {
+        "question": "Are HTML5 semantic elements the same as ARIA landmarks?",
+        "answer": "Yes. Elements like header, main, nav, footer, aside, and form have implicit ARIA landmark roles. Using these semantic elements automatically creates landmarks."
+      },
+      {
+        "question": "Do I need labels on section elements?",
+        "answer": "A section element without an accessible name does not register as a landmark in the accessibility tree. Add an aria-label or aria-labelledby attribute to section elements that represent distinct page regions."
+      },
+      {
+        "question": "What is the difference between the article and section elements?",
+        "answer": "Article represents a self-contained piece of content that makes sense on its own when taken out of the page 鈥?a blog post, a news story, a product card, a forum post. Section is a thematic grouping of content that requires context from the rest of the page and typically has a heading. Use article for independent, distributable content and section for dividing a page into thematic areas."
+      }
+    ],
+    "limitations": [
+      "The tool scans for element names only. It does not check whether landmarks have accessible names provided through aria-label, aria-labelledby, or visible headings.",
+      "The checker does not validate ARIA role assignments. An element with a role attribute may override or remove the implicit landmark role.",
+      "Pasting partial HTML may miss landmark elements outside the pasted content. Paste the full page HTML for a complete audit."
+    ],
+    "verificationSteps": [
+      "Load the audited page in a browser and use a screen reader or browser extension to navigate by landmarks and confirm the expected regions are present.",
+      "Run the page through a formal accessibility testing tool such as axe DevTools or WAVE to cross-check the landmark audit results."
+    ]
+  },
+  {
+    "id": "input-attributes-generator",
+    "name": "Input Attributes Generator",
+    "category": "html",
+    "summary": "Generate HTML input elements with type-specific attributes for forms on static websites.",
+    "description": "Choose an input type and configure type-specific attributes such as placeholder, required, pattern, autocomplete, min, max, and step. Copy the complete input tag with all attributes correctly set.",
+    "keywords": [
+      "input attributes generator",
+      "html input tag",
+      "form input builder",
+      "input type attributes"
+    ],
+    "whatIs": "HTML inputs have many type-specific attributes that are easy to forget. The type attribute changes which attributes are valid: email inputs use pattern and multiple, number inputs use min, max, and step, text inputs use minlength and maxlength. Getting these right helps with form validation and user experience.",
+    "howToUse": [
+      "Choose the input type that matches the data you are collecting.",
+      "Set common attributes such as name, placeholder, and required.",
+      "Add type-specific attributes like min and max for numbers or pattern for text inputs.",
+      "Copy the complete input tag into your form HTML."
+    ],
+    "useCases": [
+      "Build a contact form with correctly attributed email and phone input fields.",
+      "Create a search form with autocomplete and placeholder attributes.",
+      "Prepare accessible form fields with labels and aria attributes included."
+    ],
+    "examples": [
+      {
+        "title": "Newsletter email field",
+        "text": "A newsletter signup form needs an email input with type=\"email\", the required attribute, and a placeholder that explains the format."
+      },
+      {
+        "title": "Quantity selector",
+        "text": "A checkout form needs a number input with min=\"1\" and max=\"10\" for item quantity so the browser validates the range before submission."
+      }
+    ],
+    "mistakes": [
+      "Using type=\"text\" for email or URL fields instead of the correct semantic input type.",
+      "Forgetting the name attribute, which is required for form submission to work.",
+      "Adding the required attribute without a visible indicator or an accessible label for screen readers."
+    ],
+    "quickAnswer": "Generate an HTML input element with the correct type and type-specific attributes. Choose from common input types and configure placeholder, required, pattern, autocomplete, min, max, and step.",
+    "faq": [
+      {
+        "question": "Which input types have built-in validation?",
+        "answer": "Email, URL, number, date, and tel inputs validate format automatically in supporting browsers. The browser checks the value against the expected format before allowing form submission."
+      },
+      {
+        "question": "Should I use the pattern attribute?",
+        "answer": "Use pattern when the input type's built-in validation is not specific enough for your format requirement. Always pair pattern validation with server-side validation."
+      },
+      {
+        "question": "What is the difference between required and aria-required?",
+        "answer": "required triggers built-in browser validation and blocks form submission when the field is empty. aria-required tells assistive technology that the field is required but does not enforce validation. Use required for validation and add aria-required for screen reader clarity."
+      },
+      {
+        "question": "Does the autocomplete attribute work with all input types?",
+        "answer": "Autocomplete works with most text-based input types (text, email, tel, search, url, number) and password fields. It does not apply to checkboxes, radio buttons, file inputs, range sliders, or buttons. For autocomplete to work, the form or input must be inside a form element with a submit button, and the browser must have stored values from a previous submission. Some browsers also require a name or id attribute on the input."
+      }
+    ],
+    "limitations": [
+      "The tool generates the input tag only. You must wrap it in a form element and add a visible label for accessibility compliance.",
+      "Browser validation styles and error messages vary significantly between browsers. Custom error messages require the constraint validation API.",
+      "The pattern attribute uses JavaScript-like regex syntax but does not support flags such as g or i. Pattern validation is always case-sensitive."
+    ],
+    "verificationSteps": [
+      "Wrap the generated input in a form and submit it with invalid data to confirm browser validation triggers the expected error behavior.",
+      "Test the input with a screen reader to verify the label, required state, and any error messages are announced correctly."
+    ]
+  },
+  {
+    "id": "dynamic-viewport-units-generator",
+    "name": "Dynamic Viewport Units Generator",
+    "category": "css",
+    "summary": "Generate CSS using dynamic viewport units (dvh, svh, lvh) with fallbacks for older browsers.",
+    "description": "Create CSS declarations using the modern viewport units: small (svh/svw), large (lvh/lvw), and dynamic (dvh/dvw). Each unit behaves differently on mobile browsers. Includes fallback declarations for older browser support.",
+    "keywords": [
+      "dynamic viewport units",
+      "dvh css",
+      "svh css",
+      "lvh css",
+      "viewport height css"
+    ],
+    "whatIs": "Modern CSS viewport units come in three variants. Small viewport (svh) is the viewport height minus the browser UI. Large viewport (lvh) is the viewport height with the browser UI retracted. Dynamic viewport (dvh) adjusts as the browser UI appears and disappears. These are useful for full-screen layouts on mobile where the browser address bar changes the visible area.",
+    "howToUse": [
+      "Choose the unit type: svh, lvh, dvh, svw, lvw, or dvw.",
+      "Set a percentage value for the viewport unit such as 100 for full height.",
+      "Choose the CSS property to apply the viewport unit to, such as min-height or height.",
+      "Copy the CSS declaration with the modern unit and a classic vh fallback."
+    ],
+    "useCases": [
+      "Create a hero section that fills the exact visible screen on mobile devices.",
+      "Prevent content from being hidden behind the mobile browser toolbar on scroll.",
+      "Build full-screen panels that adapt to changing viewport sizes as the browser UI appears and retracts."
+    ],
+    "examples": [
+      {
+        "title": "Mobile hero with svh",
+        "text": "A hero section uses min-height: 100svh to fill the screen while accounting for the mobile address bar. The classic vh fallback covers older browsers."
+      },
+      {
+        "title": "Bottom navigation with dvh",
+        "text": "A bottom navigation bar uses bottom: 0 with padding-bottom based on dvh to stay above the home indicator and adapt when the address bar retracts."
+      }
+    ],
+    "mistakes": [
+      "Using dvh for every element when svh or lvh would provide more stable behavior for the specific use case.",
+      "Not providing a classic vh or vw fallback for browsers that do not support dynamic viewport units.",
+      "Using dynamic viewport units for desktop layouts where the simple vh unit works perfectly well."
+    ],
+    "faq": [
+      {
+        "question": "When should I use dvh instead of vh?",
+        "answer": "Use dvh when the element must fill the exact visible area and adapt as the browser UI changes. Use vh for simpler cases or when a stable, unchanging height is preferred."
+      },
+      {
+        "question": "Which browsers support dynamic viewport units?",
+        "answer": "Chrome 108+, Edge 108+, Safari 15.4+, and Firefox 101+. Provide a classic vh or vw fallback for older browser versions."
+      },
+      {
+        "question": "What is the difference between svh, lvh, and dvh?",
+        "answer": "svh (small viewport height) is the height when the browser UI is expanded. lvh (large viewport height) is the height when the browser UI is retracted. dvh (dynamic viewport height) switches between the two as the UI appears and disappears during scrolling."
+      },
+      {
+        "question": "Do dynamic viewport units work on desktop?",
+        "answer": "On desktop browsers, dvh, svh, and lvh all behave the same as vh because desktop browsers do not have expandable or retractable chrome that changes the viewport size. Dynamic units only make a practical difference on mobile devices."
+      }
+    ],
+    "quickAnswer": "Use dynamic viewport units (dvh, svh, lvh) for layouts that need to fill the mobile viewport correctly when the browser UI expands and retracts. Always include a classic vh fallback for older browsers.",
+    "limitations": [
+      "Dynamic viewport units are only relevant on mobile browsers where the address bar and other UI elements expand and retract. On desktop, dvh, svh, and lvh behave identically to vh.",
+      "Some browsers update dvh on scroll end rather than continuously, which may cause a visible jump in element height as the address bar retracts.",
+      "On mobile browsers, dvh changes when the on-screen keyboard appears. Form inputs, search fields, and chat interfaces that rely on dvh for full-screen layouts may resize unexpectedly when the user starts typing. Consider using svh or a fixed vh fallback for layouts that contain form elements."
+    ],
+    "verificationSteps": [
+      "Load the page on a mobile device or emulator and scroll to confirm the element height adjusts correctly as the browser address bar retracts.",
+      "Test with the browser UI both expanded and retracted to verify svh and lvh values produce the expected visible area."
+    ],
+    "tags": [
+      "responsive"
+    ]
+  },
+  {
+    "id": "css-logical-properties-converter",
+    "name": "CSS Logical Properties Converter",
+    "category": "css",
+    "summary": "Convert physical CSS properties to logical properties for better right-to-left and writing-mode support.",
+    "description": "Turn physical CSS values like margin-left and padding-right into logical equivalents such as margin-inline-start and padding-inline-end. Write CSS once that adapts to LTR, RTL, and vertical writing modes.",
+    "keywords": [
+      "css logical properties",
+      "logical css converter",
+      "rtl css",
+      "writing mode css",
+      "inline block css"
+    ],
+    "whatIs": "CSS logical properties use writing-mode-relative directions instead of physical directions. Inline (text flow direction) and Block (perpendicular direction) replace Left, Right, Top, and Bottom. This means the same CSS works for left-to-right, right-to-left, and vertical languages without overrides. For example, margin-inline-start applies to the left side in LTR and the right side in RTL.",
+    "howToUse": [
+      "Choose the physical CSS property you want to convert, such as margin-left or padding-right.",
+      "Select the logical equivalent from the available suggestions.",
+      "Enter the value for the property.",
+      "Copy the logical property declaration into your stylesheet and test in both LTR and RTL directions."
+    ],
+    "useCases": [
+      "Prepare CSS that works for multilingual websites with RTL language support.",
+      "Write direction-agnostic component styles that do not need separate RTL overrides.",
+      "Reduce the need for a separate RTL stylesheet by using logical properties from the start."
+    ],
+    "examples": [
+      {
+        "title": "Card with automatic RTL support",
+        "text": "A card component uses margin-inline-end instead of margin-right. In RTL mode, the spacing flips automatically without additional CSS overrides."
+      },
+      {
+        "title": "Vertical writing mode layout",
+        "text": "A layout uses padding-block-start instead of padding-top so the spacing stays correct in vertical writing mode where top and bottom have different meaning."
+      }
+    ],
+    "mistakes": [
+      "Converting every physical property without checking browser support for the specific logical property variant.",
+      "Mixing physical and logical properties in the same declaration, which can cause inconsistent behavior across writing modes.",
+      "Assuming all logical properties have full browser support. Some shorthand logical properties are newer than the core set."
+    ],
+    "faq": [
+      {
+        "question": "Do all browsers support logical properties?",
+        "answer": "Chrome 87+, Edge 87+, Safari 15+, and Firefox 66+ support the core set of logical properties. Some shorthand variants are newer. Check support for the specific property you plan to use."
+      },
+      {
+        "question": "Should I replace all physical properties with logical ones?",
+        "answer": "For multilingual sites with RTL or vertical language support, yes. For English-only sites, logical properties are still fine to use but physical properties remain valid and are simpler to read."
+      },
+      {
+        "question": "What is the difference between inline and block axis?",
+        "answer": "The inline axis follows the direction text flows. In English, the inline axis is horizontal. The block axis runs perpendicular to the text flow, which is vertical in English. In a vertical writing mode these directions swap."
+      }
+    ],
+    "quickAnswer": "Convert physical CSS properties such as margin-left and padding-right into writing-mode-aware logical equivalents. This helps layouts adapt automatically to right-to-left and vertical writing modes without separate overrides.",
+    "limitations": [
+      "Some shorthand logical properties such as border-inline, border-block, and inset-inline have spotty browser support compared to the core longhand logical properties.",
+      "The converter handles single property conversion. Migrating a large stylesheet to logical properties requires updating each physical-to-logical pair and verifying no mixed-direction edge cases remain.",
+      "Logical properties map to physical properties based on the writing-mode and direction of the element. A single inline-start maps to left in LTR and right in RTL. This means the generated code behaves differently depending on the document language direction, which requires testing in both LTR and RTL modes."
+    ],
+    "verificationSteps": [
+      "Apply the converted properties to a page and switch the direction attribute from ltr to rtl on the html element to verify the layout flips correctly.",
+      "Test the page in both LTR and RTL modes to confirm spacing, borders, and alignment behave as expected in each direction."
+    ],
+    "tags": [
+      "layout"
+    ]
+  },
+  {
+    "id": "fetch-priority-attribute-generator",
+    "name": "Fetch Priority Attribute Generator",
+    "category": "html",
+    "summary": "Generate fetchpriority attributes for images, scripts, and link tags to improve Core Web Vitals.",
+    "description": "Add fetchpriority='high' or fetchpriority='low' to img, link, and script tags based on use case. Get recommended combos for LCP images, below-the-fold content, and non-critical resources.",
+    "keywords": [
+      "fetchpriority generator",
+      "fetchpriority high",
+      "lcp image fetchpriority",
+      "resource priority"
+    ],
+    "whatIs": "Fetchpriority is an HTML attribute that hints to the browser which resources to load sooner. It helps improve Largest Contentful Paint when applied to hero images and can de-prioritize non-critical resources. It is different from preload and loading='lazy'. Use it to signal relative importance of images, scripts, and stylesheets to the browser.",
+    "howToUse": [
+      "Select the resource type: image, script, or link tag.",
+      "Choose the use case: LCP hero image, below-the-fold content, or non-critical script.",
+      "The tool recommends the fetchpriority value based on your selection.",
+      "Copy the generated tag and test with Lighthouse to confirm LCP improvement."
+    ],
+    "useCases": [
+      "Apply fetchpriority='high' to the LCP hero image for faster loading.",
+      "De-prioritize below-the-fold images with fetchpriority='low'.",
+      "Prioritize critical scripts and stylesheets that block rendering."
+    ],
+    "examples": [
+      {
+        "title": "LCP hero image optimization",
+        "text": "A hero image that is the LCP element gets fetchpriority='high' plus an optimized srcset. The browser loads this image before other resources."
+      },
+      {
+        "title": "Low-priority footer images",
+        "text": "Footer images and third-party embeds get fetchpriority='low' to reduce contention with critical resources above the fold."
+      }
+    ],
+    "mistakes": [
+      "Applying fetchpriority='high' to many resources which cancels the benefit.",
+      "Using fetchpriority on preloaded resources where it already applies to the preload tag.",
+      "Forgetting to combine fetchpriority with appropriate loading and decoding attributes."
+    ],
+    "faq": [
+      {
+        "question": "How many resources should get fetchpriority='high'?",
+        "answer": "One or two critical resources at most. If everything is high priority, nothing is."
+      },
+      {
+        "question": "Does fetchpriority guarantee faster loading?",
+        "answer": "No, it is a hint. The browser decides the final loading order based on many factors."
+      },
+      {
+        "question": "Which resources benefit most from fetchpriority=\"high\"?",
+        "answer": "The LCP image (usually the largest hero image visible on page load), the main CSS file that styles above-the-fold content, and critical web fonts used in the first visible text. Only one or two resources should get high priority. If multiple resources compete for high priority, the browser still has to sequence them, which defeats the purpose of the hint."
+      },
+      {
+        "question": "When should I use fetchpriority=\"low\"?",
+        "answer": "Use low priority for images far below the fold, analytics scripts, third-party chat widgets, social media embeds, and other resources that do not contribute to the initial page render. This lets the browser defer them in favor of more critical assets without blocking the load event."
+      }
+    ],
+    "quickAnswer": "Use fetchpriority='high' only for the one image or resource most likely to become the Largest Contentful Paint element. Do not mark many resources as high priority -- the browser still decides loading order.",
+    "limitations": [
+      "fetchpriority is a hint, not a directive. The browser may ignore it based on heuristics.",
+      "Older browsers including Safari 15.4 and below do not support fetchpriority.",
+      "Overusing fetchpriority='high' on many resources dilutes the hint and may not improve loading performance."
+    ],
+    "verificationSteps": [
+      "Open Chrome DevTools Network panel and inspect the Priority column to confirm the fetchpriority hint is reflected in the browser loading order.",
+      "Compare LCP timing with and without the attribute using the Performance panel to verify actual improvement."
+    ],
+    "comparison": {
+      "title": "fetchpriority vs loading=\"lazy\"",
+      "columns": [
+        "Aspect",
+        "fetchpriority",
+        "loading=\"lazy\""
+      ],
+      "rows": [
+        [
+          "What it controls",
+          "Relative loading priority of a resource compared to other resources on the same page",
+          "Whether the browser delays loading the resource until it is near the viewport"
+        ],
+        [
+          "When to use",
+          "On the LCP element to load it sooner, or on non-critical resources to deprioritize them",
+          "On images and iframes below the fold to defer their load until the user scrolls near them"
+        ],
+        [
+          "Effect on LCP",
+          "Can improve LCP when set to high on the hero image",
+          "Can worsen LCP if applied above the fold. Only use below the fold."
+        ],
+        [
+          "Valid on which elements",
+          "img, link, script, iframe",
+          "img, iframe"
+        ],
+        [
+          "Browser support",
+          "Chrome 101+, Edge 101+, Safari 16+, Firefox 122+",
+          "Chrome 77+, Edge 79+, Safari 15.4+, Firefox 75+"
+        ]
+      ],
+      "summary": "fetchpriority hints at relative priority for loading while loading=\"lazy\" defers loading until the element is near the viewport. They address different performance concerns and can be used together on the same element."
+    },
+    "updatedAt": "2026-05-25"
+  },
+  {
+    "id": "preload-tag-builder",
+    "name": "Preload Tag Builder",
+    "category": "html",
+    "summary": "Generate correct preload link tags for fonts, hero images, CSS, and scripts with the right as and crossorigin attributes.",
+    "description": "Build preload tags by resource type. The tool ensures the correct as attribute, optional crossorigin, type, and media values are included. Avoids common preload mistakes.",
+    "keywords": [
+      "preload tag generator",
+      "rel preload as font",
+      "preload image tag",
+      "preload css link"
+    ],
+    "whatIs": "Preload tells the browser to fetch a resource early before it would normally be discovered. It speeds up loading for fonts, hero images, critical CSS, and scripts. The as attribute is required to tell the browser what type of resource to expect. Missing as or incorrect crossorigin are common mistakes.",
+    "howToUse": [
+      "Select the resource type you need to preload: font, image, CSS, or script.",
+      "Enter the URL or file path of the resource.",
+      "The tool adds the correct as and crossorigin attributes for the selected type.",
+      "Copy the link tag into the page head before other resource references."
+    ],
+    "useCases": [
+      "Preload a critical font file so text renders correctly on the first paint.",
+      "Preload a hero image to improve Largest Contentful Paint.",
+      "Preload a critical CSS file or JavaScript module for faster rendering."
+    ],
+    "examples": [
+      {
+        "title": "Web font preloading",
+        "text": "A page uses a custom web font. The preload tag with as='font' and crossorigin fetches it early, reducing the flash of invisible text."
+      },
+      {
+        "title": "Hero image preloading for LCP",
+        "text": "A landing page preloads the hero background image with as='image' to reduce Largest Contentful Paint timing by several hundred milliseconds."
+      }
+    ],
+    "mistakes": [
+      "Preloading too many resources which wastes bandwidth.",
+      "Using preload without the required as attribute.",
+      "Adding preload for cross-origin fonts without crossorigin."
+    ],
+    "faq": [
+      {
+        "question": "What is the difference between preload and prefetch?",
+        "answer": "Preload fetches resources needed for the current page as early as possible. Prefetch fetches resources likely needed for the next navigation."
+      },
+      {
+        "question": "Should I preload everything?",
+        "answer": "No. Preload a small number of truly critical resources. Too many preload hints delay important resources."
+      },
+      {
+        "question": "Do I need the as attribute on every preload link?",
+        "answer": "Yes. The as attribute is required on preload links. It tells the browser what type of resource is being loaded (style, script, font, image, fetch, etc.) so it can apply the correct prioritization, Content-Security-Policy checks, and caching rules. A preload without an as attribute is ignored by browsers and triggers a console warning."
+      },
+      {
+        "question": "What happens if a preloaded resource is not used within a few seconds?",
+        "answer": "The browser issues a console warning and the preloaded resource may be discarded. Unused preloads waste bandwidth and compete with genuinely critical resources. Always verify that the preloaded resource is consumed by the page within about 3 seconds of the preload starting. Chrome DevTools shows preload warnings in the Console and Network panels."
+      }
+    ],
+    "quickAnswer": "Use preload to fetch critical resources -- such as hero images, fonts, or above-the-fold CSS -- before the parser discovers them. Only preload a few resources per page to avoid bandwidth contention.",
+    "limitations": [
+      "Preload requires the as attribute. Omitting it or using an incorrect value may cause the browser to fetch the resource twice.",
+      "Cross-origin preloaded resources such as fonts from a CDN must include the crossorigin attribute.",
+      "Excessive preloading delays other resources and can hurt performance instead of helping."
+    ],
+    "verificationSteps": [
+      "Open Chrome DevTools Network panel and verify the preloaded resource appears early in the request waterfall with the correct Priority.",
+      "Check the browser console for missing preload warnings such as 'The resource was already loaded and preload was not used'."
+    ],
+    "comparison": {
+      "title": "preload vs prefetch vs modulepreload",
+      "columns": [
+        "Aspect",
+        "preload",
+        "prefetch",
+        "modulepreload"
+      ],
+      "rows": [
+        [
+          "What it loads",
+          "Resources needed for the current page",
+          "Resources likely needed for the next navigation",
+          "ES module scripts for the current page"
+        ],
+        [
+          "When the browser fetches it",
+          "Immediately, at high priority during page load",
+          "During idle time after the current page finishes loading",
+          "Immediately at high priority, similar to preload, but fetches the module and its dependencies"
+        ],
+        [
+          "What it is best for",
+          "Critical fonts, hero images, above-the-fold CSS",
+          "Next-page resources such as docs, images, or scripts for the likely next page",
+          "ES module entry points and their dependency trees in modern bundler output"
+        ],
+        [
+          "Required attributes",
+          "rel=\"preload\" and the as attribute",
+          "rel=\"prefetch\"",
+          "rel=\"modulepreload\""
+        ],
+        [
+          "Browser support milestone",
+          "Chrome 50+, Safari 9+, Firefox 56+",
+          "Chrome 50+, Safari 9+, Firefox 2+",
+          "Chrome 80+, Safari 15+, Firefox 115+"
+        ]
+      ],
+      "summary": "Preload fetches current-page resources early at high priority. Prefetch fetches likely next-page resources during idle time. Modulepreload is a specialized preload for ES module scripts and their dependencies."
+    },
+    "updatedAt": "2026-05-25"
+  },
+  {
+    "id": "modulepreload-tag-generator",
+    "name": "Modulepreload Tag Generator",
+    "category": "html",
+    "summary": "Generate modulepreload link tags for ES module scripts in Vite, Astro, and modern static sites.",
+    "description": "Build rel='modulepreload' link tags with the correct crossorigin attribute. Designed for modern JavaScript module workflows in Vite, Astro, SvelteKit, and vanilla ES module projects.",
+    "keywords": [
+      "modulepreload generator",
+      "rel modulepreload",
+      "vite modulepreload",
+      "es module preload"
+    ],
+    "whatIs": "Modulepreload is a specialized preload for ES module scripts. Unlike standard preload, modulepreload understands module dependency graphs. It is commonly used in Vite and Astro output. It needs the correct crossorigin attribute for cross-origin modules.",
+    "howToUse": [
+      "Enter the module script path or URL.",
+      "Choose whether the module is same-origin or cross-origin.",
+      "The tool adds the correct crossorigin attribute for the selected origin type.",
+      "Copy the tag into the page head before other module scripts."
+    ],
+    "useCases": [
+      "Add modulepreload for a Vite-built JavaScript entry module.",
+      "Preload a shared ES module chunk for faster page transitions.",
+      "Optimize module loading on a static site built with Astro or SvelteKit."
+    ],
+    "examples": [
+      {
+        "title": "Vite vendor chunk preloading",
+        "text": "A Vite project outputs a vendor chunk that multiple pages use. Modulepreload fetches it early so navigation between pages feels instant."
+      },
+      {
+        "title": "Astro site with CDN-hosted modules",
+        "text": "A static site built with Astro uses modulepreload for the main entry script with crossorigin for CDN hosting."
+      }
+    ],
+    "mistakes": [
+      "Using standard preload instead of modulepreload for ES modules.",
+      "Forgetting crossorigin on cross-origin module URLs.",
+      "Adding modulepreload for non-module scripts."
+    ],
+    "faq": [
+      {
+        "question": "Can I use modulepreload for non-module scripts?",
+        "answer": "No. Use standard preload for regular scripts. Modulepreload is specifically designed for ES module dependency graphs."
+      },
+      {
+        "question": "Which browsers support modulepreload?",
+        "answer": "Chrome 66+, Edge 79+, Firefox 115+, Safari 17.2+. It is safe as a progressive enhancement."
+      },
+      {
+        "question": "Does modulepreload work with import maps?",
+        "answer": "Yes. Modulepreload resolves bare specifiers through import maps just like ES module imports do. If you preload a module that uses bare specifiers, the browser follows the import map to resolve dependencies. Preloaded modules and their dependency graph are fetched and compiled ahead of time, so they execute without delay when imported."
+      },
+      {
+        "question": "What is the difference between modulepreload and regular preload for ES modules?",
+        "answer": "Modulepreload is specifically designed for ES module dependency graphs. Unlike regular preload, it not only fetches the target module but also parses its dependency tree and fetches all static imports. Regular preload only fetches the single specified resource. Use modulepreload for JavaScript modules and regular preload for other resource types like fonts, images, and non-module CSS."
+      }
+    ],
+    "quickAnswer": "Use modulepreload to speculatively fetch, parse, and compile ES module dependencies before they are needed. It works like preload but is designed specifically for JavaScript module scripts.",
+    "limitations": [
+      "modulepreload is only effective for ES module scripts (type='module'). It does not apply to classic scripts.",
+      "Browser support lags behind standard preload. Firefox added support in 115+, Safari in 17.2+.",
+      "modulepreload fetches the module but does not execute it. Execution still happens when the module script tag is encountered."
+    ],
+    "verificationSteps": [
+      "Open Chrome DevTools Network panel and verify module scripts fetched via modulepreload appear early in the waterfall.",
+      "Check the Coverage panel to confirm the module is being used and not fetched unnecessarily."
+    ],
+    "updatedAt": "2026-05-25"
+  },
+  {
+    "id": "image-loading-attribute-builder",
+    "name": "Image Loading Attribute Builder",
+    "category": "html",
+    "summary": "Build optimized img tags by combining loading, decoding, and fetchpriority for hero images, galleries, and article content.",
+    "description": "Choose an image use case and get a complete img tag with the right combination of loading, decoding, fetchpriority, width, height, and alt attributes. Covers hero images, thumbnails, article images, and galleries.",
+    "keywords": [
+      "img loading decoding fetchpriority",
+      "image performance attributes",
+      "lazy loading decoding async image"
+    ],
+    "whatIs": "Modern img tags benefit from several performance attributes used together: loading controls lazy loading, decoding controls how the image is decoded, and fetchpriority signals importance. Using them correctly together is better than setting them in isolation.",
+    "howToUse": [
+      "Choose the image use case that matches where the image appears on the page.",
+      "The tool sets the recommended attribute combination for that use case.",
+      "Enter the image path, dimensions, and alt text.",
+      "Copy the complete img tag into your page."
+    ],
+    "useCases": [
+      "Build a hero img with loading='eager', decoding='sync', and fetchpriority='high'.",
+      "Create lazy-loaded article images with loading='lazy' and decoding='async'.",
+      "Optimize thumbnail galleries with appropriate loading and decoding attributes."
+    ],
+    "examples": [
+      {
+        "title": "LCP hero image tag",
+        "text": "An LCP hero image gets loading='eager', decoding='sync', and fetchpriority='high' for fastest possible render."
+      },
+      {
+        "title": "Below-the-fold article image",
+        "text": "A below-the-fold article image gets loading='lazy', decoding='async', and no fetchpriority to avoid competing with critical resources."
+      }
+    ],
+    "mistakes": [
+      "Using loading='lazy' on the LCP image which delays it significantly.",
+      "Setting decoding='sync' on every image instead of only the critical ones.",
+      "Using fetchpriority='high' on multiple images which dilutes the priority hint."
+    ],
+    "faq": [
+      {
+        "question": "When should I use loading='lazy'?",
+        "answer": "For images that are below the fold and not essential for the initial page render. Never use it on the LCP image."
+      },
+      {
+        "question": "What does decoding='async' do?",
+        "answer": "It tells the browser to decode the image asynchronously, allowing other content to render first before the image finishes decoding."
+      },
+      {
+        "question": "What is the LCP image and why should I not lazy-load it?",
+        "answer": "LCP (Largest Contentful Paint) is a Core Web Vital metric that measures when the largest visible content element renders. The LCP image is typically the hero image or main visual at the top of the page. Adding loading=\"lazy\" to the LCP image delays its loading until the browser calculates that it is near the viewport 鈥?but it is already in the viewport on load, so the calculation itself adds unnecessary delay and hurts the LCP score."
+      },
+      {
+        "question": "What happens if I use loading=\"lazy\" on an image inside a scrolling container or carousel?",
+        "answer": "The lazy loading threshold is measured relative to the viewport, not the scrolling container. Images in a carousel or overflow:scroll container may not load until the container itself scrolls, and the browser may not detect that the images are close to being seen. For carousel images, consider eager loading or use JavaScript to load images based on the component scroll position."
+      }
+    ],
+    "quickAnswer": "Use loading='lazy' for below-the-fold images to defer loading until the user scrolls near them. Use loading='eager' or omit the attribute for above-the-fold images that should load immediately.",
+    "limitations": [
+      "Lazy loading defers image requests but does not reduce total page weight -- images still download when scrolled into view.",
+      "The browser reserves placeholder space for lazy images even before they load, which can affect layout if width and height attributes are missing.",
+      "Using loading='lazy' on above-the-fold images can delay LCP and hurt user experience."
+    ],
+    "verificationSteps": [
+      "Open Chrome DevTools Network panel and scroll the page to confirm lazy images only load when they enter the viewport.",
+      "Check the Performance panel and verify that above-the-fold images with loading='eager' appear in the initial request waterfall."
+    ],
+    "updatedAt": "2026-05-25"
+  },
+  {
+    "id": "referrer-policy-tag-generator",
+    "name": "Referrer Policy Tag Generator",
+    "category": "seo",
+    "summary": "Generate a Referrer-Policy header or meta tag to control how much referrer information is sent with outbound links.",
+    "description": "Build a Referrer-Policy for privacy, analytics, affiliate links, and cross-origin embeds. Generates both the HTTP header and the meta tag version. Explains each policy value.",
+    "keywords": [
+      "referrerpolicy attribute generator",
+      "referrer policy meta tag",
+      "no referrer when downgrade"
+    ],
+    "whatIs": "The Referrer-Policy controls how much of the referring URL is sent when a visitor clicks an outbound link or loads a cross-origin resource. It is useful for privacy, analytics control, and affiliate link handling. The policy can be set as an HTTP header, meta tag, or per-element attribute.",
+    "howToUse": [
+      "Choose the policy value that matches your privacy and analytics needs.",
+      "The tool explains what referrer information is sent with each option.",
+      "Copy the header or meta tag into your site configuration.",
+      "Apply per-element referrerpolicy attributes for fine-grained control on specific links."
+    ],
+    "useCases": [
+      "Strip referrer information for privacy-focused sites.",
+      "Keep full referrer information for analytics and marketing attribution.",
+      "Set a site-wide policy with per-element overrides for specific links."
+    ],
+    "examples": [
+      {
+        "title": "Privacy-conscious blog",
+        "text": "A privacy-focused blog uses strict-origin-when-cross-origin to send only the origin on cross-origin requests while keeping full referrer data on same-origin links."
+      },
+      {
+        "title": "Affiliate link handling",
+        "text": "An affiliate site uses no-referrer-when-downgrade to keep referrer data on HTTPS links while stripping it for plain HTTP destinations."
+      }
+    ],
+    "mistakes": [
+      "Setting no-referrer and breaking analytics that depend on referrer data.",
+      "Using unsafe-url which leaks full URLs including query parameters to external sites.",
+      "Forgetting that the meta tag policy can be overridden by the HTTP header."
+    ],
+    "faq": [
+      {
+        "question": "Should I use a header or a meta tag?",
+        "answer": "The HTTP header is stronger because it applies to all resources including images and scripts. The meta tag works when you cannot set headers, such as on GitHub Pages."
+      },
+      {
+        "question": "Which policy is the safest default?",
+        "answer": "Strict-origin-when-cross-origin balances privacy with functionality by sending the full referrer on same-origin requests but only the origin on cross-origin requests."
+      },
+      {
+        "question": "Does referrer policy affect Google Analytics or other analytics tools?",
+        "answer": "A restrictive referrer policy can reduce the amount of referrer data available in analytics reports. With strict-origin-when-cross-origin, analytics tools still receive the origin of the referring page (such as https://example.com), which is enough for most reporting. No-referrer removes referrer data entirely from cross-origin requests, which can make traffic source analysis harder."
+      },
+      {
+        "question": "What is the difference between no-referrer and strict-origin?",
+        "answer": "No-referrer sends no referrer information on any request, same-origin or cross-origin. Strict-origin sends the full referrer on same-origin requests but only the origin (without path and query) on cross-origin requests when the protocol security level stays the same (HTTPS to HTTPS). No-referrer is the most private; strict-origin balances privacy with useful referral data."
+      }
+    ],
+    "quickAnswer": "Use Referrer-Policy to control how much referrer information is sent when a visitor clicks a link on your site. strict-origin-when-cross-origin is a balanced default that sends full URLs on same-origin requests but only the origin on cross-origin requests.",
+    "limitations": [
+      "Referrer-Policy set via a meta tag or link attribute is a hint. Browsers may override it based on user privacy settings.",
+      "The no-referrer policy may break analytics, referral tracking, and logging that depend on the Referer header.",
+      "HTTP header-based Referrer-Policy takes precedence over meta tags. Both should be set consistently."
+    ],
+    "verificationSteps": [
+      "Click a link from your page and inspect the Referer header using DevTools Network panel.",
+      "Test different policy values and verify the referrer value in the Network panel request headers."
+    ],
+    "updatedAt": "2026-05-25"
+  },
+  {
+    "id": "css-anchor-positioning-generator",
+    "name": "CSS Anchor Positioning Generator",
+    "category": "css",
+    "summary": "Generate CSS anchor positioning rules for tooltips, dropdowns, and callouts aligned to trigger elements.",
+    "description": "Build anchor positioning CSS with anchor-name, position-anchor, and position-area. Create tooltips, dropdown menus, callouts, and popovers that align to their trigger element without JavaScript positioning libraries.",
+    "keywords": [
+      "css anchor positioning generator",
+      "position-anchor example",
+      "anchor positioning tooltip css",
+      "css anchor name"
+    ],
+    "whatIs": "CSS anchor positioning lets you tether one element to another using only CSS. You assign an anchor-name to the anchor element and use position-anchor on the positioned element. It eliminates the need for JavaScript positioning libraries for tooltips, dropdowns, and popovers. It is a new CSS feature supported in Chrome 125+.",
+    "howToUse": [
+      "Set an anchor name for the trigger element using the anchor-name property.",
+      "Choose the positioning area for the anchored element relative to the trigger.",
+      "The tool generates the CSS for both the anchor and the positioned element.",
+      "Copy the CSS and pair it with your trigger and popover HTML."
+    ],
+    "useCases": [
+      "Position a tooltip that follows a button or link.",
+      "Create a dropdown menu aligned to its trigger element.",
+      "Build a callout that points to a specific UI element on the page."
+    ],
+    "examples": [
+      {
+        "title": "Button tooltip with anchor positioning",
+        "text": "A tooltip appears above a button using position-area: top and position-anchor. The tooltip stays aligned to the button regardless of surrounding layout."
+      },
+      {
+        "title": "Nav dropdown menu",
+        "text": "A dropdown menu anchors to the bottom of its nav trigger item, automatically following the trigger's position on the page."
+      }
+    ],
+    "mistakes": [
+      "Not providing a fallback for browsers that do not support anchor positioning.",
+      "Using anchor positioning for content that must remain accessible when CSS is disabled.",
+      "Forgetting that the anchor and positioned element must be in the same containing block."
+    ],
+    "faq": [
+      {
+        "question": "Which browsers support anchor positioning?",
+        "answer": "Chrome 125+, Edge 125+. Safari and Firefox are developing support. Provide a fallback position for unsupported browsers."
+      },
+      {
+        "question": "Does anchor positioning work with the Popover API?",
+        "answer": "Yes. Popovers can use anchor positioning to align to their trigger element."
+      },
+      {
+        "question": "How do I define an anchor element for CSS anchor positioning?",
+        "answer": "Set the anchor-name CSS property on the anchor element: anchor-name: --my-anchor;. Then reference it on the positioned element with position-anchor: --my-anchor; and use anchor() functions for positioning: top: anchor(--my-anchor bottom);. The anchor element and the positioned element can be anywhere in the DOM, not necessarily siblings or parent-child."
+      },
+      {
+        "question": "What happens when the anchor element scrolls out of view?",
+        "answer": "By default, the positioned element follows the anchor and may also scroll out of view. To keep the positioned element visible within the viewport, combine anchor positioning with position: fixed or use the position-try-options property to specify fallback positions when the default position would place the element off-screen. The inset-area property also helps with automatic repositioning."
+      }
+    ],
+    "quickAnswer": "Anchor positioning lets you attach an element to another element on the page using CSS alone, without JavaScript. It replaces most manual position calculations for tooltips, popovers, and dropdown menus.",
+    "limitations": [
+      "Anchor positioning is only supported in Chrome 125+. Firefox and Safari do not yet support it as of early 2026.",
+      "The anchor element must be a DOM ancestor or referenced by anchor-name. Elements in different shadow roots may not work.",
+      "Fallback positioning with position-fallback is experimental and behavior varies across supported browsers."
+    ],
+    "verificationSteps": [
+      "Test the positioned element in Chrome and verify it tracks the anchor element correctly on scroll and resize.",
+      "Provide a JavaScript-based fallback for unsupported browsers, such as using getBoundingClientRect() to position the element."
+    ],
+    "updatedAt": "2026-05-25",
+    "tags": [
+      "layout"
+    ]
+  },
+  {
+    "id": "scroll-driven-animation-generator",
+    "name": "Scroll-Driven Animation Generator",
+    "category": "css",
+    "summary": "Generate CSS scroll-driven animations with animation-timeline for reading progress bars, reveal effects, and parallax.",
+    "description": "Build scroll() and view() timeline animations. Create reading progress bars, fade-in-on-scroll effects, parallax sections, and scroll-linked background animations without JavaScript.",
+    "keywords": [
+      "scroll timeline generator",
+      "view-timeline css",
+      "scroll driven animation css",
+      "animation-timeline scroll"
+    ],
+    "whatIs": "Scroll-driven animations use the scroll position or viewport position of an element as the animation timeline instead of time. The scroll() function tracks the scroll container position, and the view() function tracks an element's position in the viewport. This enables reading progress bars, reveal effects, and scroll-linked animations with pure CSS.",
+    "howToUse": [
+      "Choose the timeline type: scroll (tracks scroll container) or view (tracks element position in viewport).",
+      "Set the animation range and keyframes for the desired effect.",
+      "The tool generates the CSS for the animated element.",
+      "Copy the CSS and test on a scrollable page to verify the animation."
+    ],
+    "useCases": [
+      "Create a reading progress bar at the top of a blog post.",
+      "Build fade-in or slide-up reveal effects as sections scroll into view.",
+      "Add a parallax or scroll-linked background animation to a page."
+    ],
+    "examples": [
+      {
+        "title": "Blog reading progress bar",
+        "text": "A blog post shows a horizontal progress bar that fills as the reader scrolls, using animation-timeline: scroll() on the article container."
+      },
+      {
+        "title": "Scroll-triggered section reveals",
+        "text": "Sections fade in as they enter the viewport using animation-timeline: view() with a custom range starting at 0% and ending at 50% of the element's visibility."
+      }
+    ],
+    "mistakes": [
+      "Creating animations that trigger too frequently and hurt scroll performance.",
+      "Not testing on mobile where scroll behavior differs from desktop.",
+      "Using scroll-driven animations for critical content without a static fallback."
+    ],
+    "faq": [
+      {
+        "question": "Which browsers support scroll-driven animations?",
+        "answer": "Chrome 115+, Edge 115+. Safari and Firefox are developing support. Provide a static fallback."
+      },
+      {
+        "question": "What is the difference between scroll() and view()?",
+        "answer": "Scroll() tracks the scroll position of a container. View() tracks the position of the element relative to the viewport."
+      },
+      {
+        "question": "Can I use scroll-driven animations with regular CSS keyframes?",
+        "answer": "Yes. Define standard @keyframes as you normally would, then attach them to a scroll timeline with animation-timeline: scroll() or animation-timeline: view(). The keyframe percentages map to scroll progress: 0% is the start of the scroll range and 100% is the end. No JavaScript is required 鈥?the browser drives the animation from the scroll position natively."
+      },
+      {
+        "question": "What performance impact do scroll-driven animations have?",
+        "answer": "Scroll-driven animations run on the compositor thread, not the main JavaScript thread. This means they perform smoothly at 60fps without causing jank, even during busy main-thread work. They are significantly more performant than JavaScript scroll event listeners. However, animating properties that trigger layout or paint (like width, height, or box-shadow) will still cause repaints, so stick to transform and opacity for the best performance."
+      }
+    ],
+    "quickAnswer": "Scroll-driven animations let you link an animation progress directly to the scroll position of a container, eliminating the need for scroll event listeners and JavaScript-based parallax libraries.",
+    "limitations": [
+      "Chrome 115+ and Edge 115+ support scroll-driven animations. Firefox and Safari do not yet support the ScrollTimeline API.",
+      "Scroll-driven animations use the Web Animations API. CSS @keyframes are still required for defining animation states.",
+      "Scroll() and view() timing progress is determined by scroll distance. Animations may behave differently on very short or very long content."
+    ],
+    "verificationSteps": [
+      "Test the animation in Chrome and verify the element animates smoothly as the page scrolls.",
+      "Check the animation in Firefox and Safari to confirm it degrades gracefully without breaking page layout or functionality."
+    ],
+    "updatedAt": "2026-05-25",
+    "tags": [
+      "animations"
+    ]
+  },
+  {
+    "id": "discrete-transition-generator",
+    "name": "Discrete Transition Generator",
+    "category": "css",
+    "summary": "Generate CSS for animating elements that enter or leave the page using transition-behavior, @starting-style, and overlay.",
+    "description": "Build CSS transitions for elements that toggle display, such as dialogs, popovers, disclosure panels, and menus. Uses transition-behavior: allow-discrete and @starting-style for smooth enter and exit animations.",
+    "keywords": [
+      "transition display none css",
+      "transition-behavior allow-discrete",
+      "starting-style generator",
+      "discrete animation css"
+    ],
+    "whatIs": "CSS traditionally cannot transition between display: none and display: block. The transition-behavior: allow-discrete property and @starting-style rule now enable smooth transitions for appearing and disappearing elements. This is essential for dialogs, popovers, tooltips, and disclosure panels.",
+    "howToUse": [
+      "Choose the element type you want to animate: dialog, popover, or disclosure panel.",
+      "Set enter and exit animation properties such as opacity and transform.",
+      "The tool generates the @starting-style and transition CSS.",
+      "Copy the CSS and apply it to your dialog, popover, or details element."
+    ],
+    "useCases": [
+      "Add a fade-in effect to a dialog modal when it opens.",
+      "Create a slide-down animation for disclosure panels.",
+      "Build smooth enter and exit animations for popovers."
+    ],
+    "examples": [
+      {
+        "title": "Dialog fade-in animation",
+        "text": "A dialog fades in with opacity and scales up from 0.9 to 1 using @starting-style. On close, it fades back out using the same transition."
+      },
+      {
+        "title": "Popover slide transition",
+        "text": "A popover slides in from the top with a smooth transition and fades out on close, using overlay and transition-behavior: allow-discrete."
+      }
+    ],
+    "mistakes": [
+      "Forgetting to add transition-behavior: allow-discrete to the transitioning element.",
+      "Not accounting for the overlay property in dialog and popover transitions.",
+      "Creating animations that are too slow and frustrate users."
+    ],
+    "faq": [
+      {
+        "question": "What does transition-behavior: allow-discrete do?",
+        "answer": "It enables transitions for properties that normally cannot be transitioned, such as display and overlay."
+      },
+      {
+        "question": "Do I need @starting-style?",
+        "answer": "Yes. It defines the initial state of the element before it appears, such as opacity: 0 or transform values. Without it, the element appears at its final state first."
+      },
+      {
+        "question": "What CSS properties are normally discrete and cannot be transitioned?",
+        "answer": "Display, overlay, content-visibility, and the mix-blend-mode to initial transition are examples of discrete properties. They have no intermediate states 鈥?an element is either visible or not, block or none. The transition-behavior: allow-discrete rule tells the browser to wait until the end of the transition-duration before switching states, rather than switching instantly at the start."
+      },
+      {
+        "question": "Can I transition between display: none and display: block?",
+        "answer": "Yes, with transition-behavior: allow-discrete and @starting-style. Define the element in both states: @starting-style sets the initial hidden state (opacity: 0 or transform), the regular rule sets the visible state, and transition-behavior: allow-discrete makes the display switch wait until the transition finishes. The element fades out before display: none is applied, or fades in after display: block is set."
+      }
+    ],
+    "quickAnswer": "Discrete transitions enable CSS transitions for display:none and other discrete properties when an element enters or leaves the DOM. Use @starting-style to define the initial state before the element appears.",
+    "limitations": [
+      "Discrete transitions for display require Chrome 117+ or Safari 17.5+. Firefox support is behind a flag as of early 2026.",
+      "@starting-style is required for the entry animation. Without it the element snaps into its final state before starting the transition.",
+      "Discrete transitions only animate the entry and exit where display changes. Mid-state transitions between intermediate values are not supported for discrete properties."
+    ],
+    "verificationSteps": [
+      "Test the entry and exit transitions in Chrome or Safari and verify the animation plays in both directions.",
+      "Check the browser console for any CSS transition warnings related to discrete properties."
+    ],
+    "updatedAt": "2026-05-25",
+    "tags": [
+      "animations"
+    ]
+  },
+  {
+    "id": "css-light-dark-function-generator",
+    "name": "CSS Light-Dark Function Generator",
+    "category": "css",
+    "summary": "Generate CSS color-scheme and light-dark() function rules for basic dark mode without duplicate variables.",
+    "description": "Build a color-scheme declaration and light-dark() color pairs. Set up basic dark mode with a single CSS function that swaps colors based on the user's system preference. No JavaScript required.",
+    "keywords": [
+      "light-dark css generator",
+      "css light dark function",
+      "color-scheme light dark",
+      "dark mode css no js"
+    ],
+    "whatIs": "The light-dark() CSS function takes two color values and automatically picks the first for light mode and the second for dark mode based on the color-scheme property. This eliminates the need for duplicate CSS custom property blocks or a JavaScript theme toggle for basic dark mode support.",
+    "howToUse": [
+      "Choose the color properties you want to theme, such as text color or background.",
+      "Enter a light color and a dark color for each property.",
+      "The tool generates the color-scheme declaration and light-dark() function calls.",
+      "Copy the CSS and add the color-scheme meta tag to your page head."
+    ],
+    "useCases": [
+      "Add basic dark mode to a static site without JavaScript.",
+      "Create light and dark color pairs for text, backgrounds, and borders.",
+      "Build a small design token system using light-dark() for theme consistency."
+    ],
+    "examples": [
+      {
+        "title": "Static blog dark mode",
+        "text": "A static blog adds color-scheme: light dark to the root element and uses light-dark(#333, #eee) for body text. Dark mode activates automatically based on the visitor's system preference."
+      },
+      {
+        "title": "Tool site card theming",
+        "text": "A tool site uses light-dark() for card backgrounds and borders so both color schemes render correctly without separate variable definitions."
+      }
+    ],
+    "mistakes": [
+      "Only setting color-scheme without providing light-dark() color pairs.",
+      "Using light-dark() without setting color-scheme on the root element.",
+      "Forgetting to test both light and dark modes across all themed elements."
+    ],
+    "faq": [
+      {
+        "question": "Does light-dark() work in all browsers?",
+        "answer": "Chrome 123+, Edge 123+, Safari 17.5+, Firefox 120+. Provide fallback colors for older browsers by declaring the light mode color first."
+      },
+      {
+        "question": "Can light-dark() replace CSS custom properties?",
+        "answer": "It can handle basic cases, but custom properties are still better for complex design systems with many color tokens."
+      },
+      {
+        "question": "How does light-dark() detect the user color scheme?",
+        "answer": "The browser reads the prefers-color-scheme media query from the operating system or browser setting. When the user has selected a light theme, light-dark(A, B) returns A. When they have selected a dark theme, it returns B. The detection is automatic and requires no JavaScript. The function must be used within a color property 鈥?it cannot be used for non-color values."
+      },
+      {
+        "question": "What is the correct fallback pattern for browsers that do not support light-dark()?",
+        "answer": "Declare the light mode color first, then use light-dark() in a separate declaration: color: #333; color: light-dark(#333, #eee);. Browsers that support light-dark() use the second declaration. Older browsers ignore the unknown function and keep the first value. This pattern provides automatic graceful degradation without feature detection or JavaScript."
+      }
+    ],
+    "quickAnswer": "The light-dark() CSS function returns one of two color values based on the current color scheme, making it easy to support light and dark modes without duplicating CSS rules.",
+    "limitations": [
+      "light-dark() only works when the color-scheme property is set on the document or element. Without it the function defaults to the first color.",
+      "The function accepts exactly two color values -- one for light and one for dark. Complex theme switching still requires custom properties or media queries.",
+      "Older browsers do not support light-dark(). Provide a fallback color before the light-dark() function in the property declaration."
+    ],
+    "verificationSteps": [
+      "Toggle the page between light and dark mode using DevTools Rendering or the OS setting and verify colors switch correctly.",
+      "Test in a browser that does not support light-dark() to confirm the fallback color is applied."
+    ],
+    "updatedAt": "2026-05-25",
+    "tags": [
+      "colors"
+    ]
+  },
+  {
+    "id": "html-details-accordion-generator",
+    "name": "HTML Details Accordion Generator",
+    "category": "html",
+    "summary": "Generate FAQ accordions and collapsible disclosure panels using the native details and summary elements without JavaScript.",
+    "description": "Build accessible accordion and disclosure panels using the details and summary HTML elements. Create FAQ sections, collapsible content blocks, and expandable panels with CSS styling. Works without JavaScript.",
+    "keywords": [
+      "details summary accordion generator",
+      "html accordion no javascript",
+      "faq accordion html",
+      "details summary css"
+    ],
+    "whatIs": "The details and summary elements create native collapsible panels in HTML. The summary is always visible and acts as the toggle. When clicked, the rest of the details content expands. Multiple open details can be exclusive, which creates accordion behavior, with the name attribute. This works without any JavaScript.",
+    "howToUse": [
+      "Enter the items you want in the accordion as title|content pairs, one per line.",
+      "Choose exclusive or multiple-open mode for the accordion behavior.",
+      "The tool generates the details/summary HTML with CSS styling.",
+      "Copy the markup and CSS into your page."
+    ],
+    "useCases": [
+      "Build a FAQ accordion for a product or service page.",
+      "Create collapsible documentation sections for a reference site.",
+      "Add expandable content blocks to a blog post for long-form content."
+    ],
+    "examples": [
+      {
+        "title": "FAQ page with exclusive accordion",
+        "text": "A FAQ page uses exclusive accordion mode so opening one question closes the others. The name attribute on each details element enforces this behavior."
+      },
+      {
+        "title": "Recipe page with collapsible sections",
+        "text": "A recipe page uses collapsible sections for ingredients and instructions. Each section opens independently since the accordion uses multiple-open mode."
+      }
+    ],
+    "mistakes": [
+      "Hiding the default disclosure triangle without providing a visible toggle indicator.",
+      "Using details for critical content that must always be visible.",
+      "Not styling the summary element to look clickable with a hover or cursor style."
+    ],
+    "faq": [
+      {
+        "question": "How do I make only one details open at a time?",
+        "answer": "Add the same name attribute to each details element. This creates exclusive accordion behavior where opening one closes the others."
+      },
+      {
+        "question": "Does the details element work in all browsers?",
+        "answer": "Chrome 12+, Edge 79+, Safari 6+, Firefox 49+. It has near-universal support."
+      },
+      {
+        "question": "How do I animate the opening and closing of a details element?",
+        "answer": "Native details open/close cannot be smoothly animated with CSS alone because the element toggles display state instantly. However, you can animate the content height with a CSS transition on the ::details-content pseudo-element in supporting browsers (Chrome 131+), or use a small JavaScript snippet to toggle open and closed attributes with requestAnimationFrame height calculations. The CSS approach: ::details-content { overflow: hidden; transition: height 0.3s; } with block-size interpolation."
+      },
+      {
+        "question": "Can I use the details element for an FAQ section with multiple expandable items?",
+        "answer": "Yes. Using name attributes on details elements creates exclusive accordion behavior: opening one FAQ answer closes any other open one. This is a natural fit for FAQ sections. Each details element wraps one question (in summary) and its answer (in the content after summary). Screen readers recognize the expanded/collapsed state natively without ARIA attributes."
+      }
+    ],
+    "quickAnswer": "Use the native HTML details and summary elements to create an accordion that works without JavaScript. Each details element is independent and can be opened or closed by the user.",
+    "limitations": [
+      "Native details elements do not support closing one section automatically when another opens. That behavior requires custom JavaScript or the name attribute for exclusive accordion behavior.",
+      "The open attribute controls whether the details element starts expanded. Only one boolean state is available -- there is no partial expand.",
+      "Safari 17 and below do not support animating the details element open and close. Transitions require a CSS discrete transition polyfill."
+    ],
+    "verificationSteps": [
+      "Click each accordion section to verify it opens and closes independently without JavaScript errors.",
+      "Test the page with JavaScript disabled to confirm the accordion still works as progressive enhancement."
+    ],
+    "updatedAt": "2026-05-25"
+  },
+  {
+    "id": "css-color-mix-generator",
+    "name": "CSS Color Mix Generator",
+    "category": "css",
+    "summary": "Generate CSS color-mix() function calls for hover states, borders, backgrounds, and muted text from a base color.",
+    "description": "Enter a base color and get color-mix() CSS for hover, border, subtle background, and muted text colors. Uses the oklab color space for perceptually uniform mixing.",
+    "keywords": [
+      "color-mix generator",
+      "css color mix oklab",
+      "css color-mix hover",
+      "color mix css"
+    ],
+    "whatIs": "The CSS color-mix() function mixes two colors in a specified color space. It creates color variations directly in CSS without a preprocessor like Sass. Using oklab produces more perceptually uniform results than srgb. Common use cases include hover states, borders, subtle backgrounds, and muted text -- all derived from a single base color.",
+    "howToUse": [
+      "Enter a base color as a hex value.",
+      "Review the calculated color-mix() variants using white, black, or transparent.",
+      "Copy each color-mix() declaration into your CSS.",
+      "Use the generated custom properties for consistent color theming."
+    ],
+    "useCases": [
+      "Create hover states by mixing a color with white or black.",
+      "Generate subtle background tints from a brand color.",
+      "Build border colors that are slightly darker than the background."
+    ],
+    "examples": [
+      {
+        "title": "Button hover state with color-mix",
+        "text": "A button uses the base brand color for its background and color-mix() for the hover state."
+      },
+      {
+        "title": "Card background tint",
+        "text": "A card uses color-mix() to create a subtle tint background from the site accent color."
+      }
+    ],
+    "mistakes": [
+      "Using srgb instead of oklab for color mixing, which produces less natural results.",
+      "Applying color-mix() without checking browser support.",
+      "Using color-mix() where a simple opacity change would work."
+    ],
+    "faq": [
+      {
+        "question": "Why use oklab instead of srgb?",
+        "answer": "oklab produces perceptually uniform color mixing. Mixing in srgb can produce gray, muddy intermediates."
+      },
+      {
+        "question": "Does color-mix() work in all browsers?",
+        "answer": "Chrome 111+, Edge 111+, Safari 16.2+, Firefox 113+. It has broad modern support."
+      },
+      {
+        "question": "Can I mix more than two colors in a single color-mix() call?",
+        "answer": "No. A single color-mix() call takes exactly two colors. To mix three or more colors, nest color-mix() calls: color-mix(in oklab, red, color-mix(in oklab, blue, green)). The innermost mix is resolved first, then the outer mix combines the result. While this works, deeply nested mixes become hard to read quickly."
+      },
+      {
+        "question": "How does color-mix() handle colors with different opacity levels?",
+        "answer": "The alpha channel is mixed linearly along with the color channels. If one color has 50% opacity and the other has 100%, a 50% mix produces 75% opacity. The interpolation color space does not affect alpha mixing 鈥?alpha is always mixed in a linear space regardless of the chosen color interpolation method. Use percentage values to control the weight of each color in the mix."
+      }
+    ],
+    "quickAnswer": "Use color-mix() to blend two colors in a specified color space, such as oklab or srgb. It is useful for creating tint, shade, and hover variants from a single base color without a preprocessor.",
+    "limitations": [
+      "color-mix() requires Chrome 111+, Edge 111+, Safari 16.2+, and Firefox 113+. Older browsers do not support it and will ignore the declaration.",
+      "The oklab color space produces more perceptually uniform results than srgb. Mixing in srgb can create muddy intermediates.",
+      "color-mix() may not reference CSS custom properties that contain color-mix() output in some older browser versions due to property cycle detection."
+    ],
+    "verificationSteps": [
+      "Inspect the element in DevTools Styles panel and verify the computed color value matches the expected mix of the two inputs.",
+      "Test the fallback color declaration in a browser that does not support color-mix(), such as an older Chrome or Firefox version."
+    ],
+    "updatedAt": "2026-05-25",
+    "tags": [
+      "colors"
+    ]
+  },
+  {
+    "id": "css-relative-color-syntax-generator",
+    "name": "CSS Relative Color Syntax Generator",
+    "category": "css",
+    "summary": "Generate CSS relative color syntax to create alpha, lighter, darker, and channel-adjusted variants from any base color.",
+    "description": "Use the CSS relative color syntax (from keyword) to derive new colors from a base. Create alpha transparency, lighter and darker shades, muted tones, and individual channel adjustments without a preprocessor.",
+    "keywords": [
+      "relative color syntax generator",
+      "css relative colors",
+      "css from color",
+      "css color channel adjustment"
+    ],
+    "whatIs": "CSS relative color syntax lets you start from an existing color and modify its channels individually. Using rgb(from color r g b / alpha) or hsl(from color h s l / alpha) syntax, you can adjust lightness, saturation, alpha, or individual channels. This is more powerful than color-mix() for precise channel manipulation.",
+    "howToUse": [
+      "Enter a base color in hex, RGB, or HSL format.",
+      "Choose the output color space and the channel adjustments.",
+      "The tool generates the relative color syntax CSS.",
+      "Copy the declaration into your stylesheet."
+    ],
+    "useCases": [
+      "Create semi-transparent variants of a brand color.",
+      "Generate a lighter or darker shade by adjusting the lightness channel.",
+      "Boost or reduce saturation for hover and active states."
+    ],
+    "examples": [
+      {
+        "title": "Brand color with alpha transparency",
+        "text": "A designer converts a hex brand color to an 80% opacity variant using rgb(from #3b82f6 r g b / 0.8)."
+      },
+      {
+        "title": "Lighter card backgrounds via oklch",
+        "text": "A theme generates lighter and darker card backgrounds by adjusting the L channel in oklch."
+      }
+    ],
+    "mistakes": [
+      "Using the wrong color space for the desired channel manipulation.",
+      "Nesting relative colors too deeply and hurting readability.",
+      "Not providing a fallback for browsers that do not support relative color syntax."
+    ],
+    "faq": [
+      {
+        "question": "What is the difference between color-mix() and relative color syntax?",
+        "answer": "color-mix() blends two colors. Relative color syntax takes one color and adjusts its channels. Use color-mix() for blending and relative syntax for channel manipulation."
+      },
+      {
+        "question": "Which browsers support relative color syntax?",
+        "answer": "Chrome 119+, Edge 119+, Safari 16.4+, Firefox 128+. Provide a static color fallback."
+      },
+      {
+        "question": "What color spaces can I use with from?",
+        "answer": "You can use rgb, hsl, hwb, oklch, oklab, lab, lch, and srgb-linear. Each space exposes different channels for adjustment. oklch is often preferred for perceptually uniform lightness adjustments."
+      },
+      {
+        "question": "What is a practical use case for relative color syntax that I cannot do with color-mix()?",
+        "answer": "Relative color syntax can extract and manipulate individual color channels 鈥?for example, taking a brand color and creating a lighter variant by increasing its lightness channel while keeping the same hue and saturation: oklch(from var(--brand) calc(l + 0.1) c h). This channel-level control is impossible with color-mix(), which only blends two full colors together. Use relative syntax to generate systematic color scales from a single base color."
+      }
+    ],
+    "quickAnswer": "CSS relative color syntax lets you create a new color by adjusting individual channels of an existing color. It is more powerful than color-mix() for precise channel-level manipulation without a preprocessor.",
+    "limitations": [
+      "Browser support requires Chrome 119+, Safari 16.4+, and Firefox 128+. Older browsers will ignore the declaration entirely.",
+      "The syntax varies slightly by color space. Not all channels are available in every color space, and channel value ranges differ.",
+      "Complex nested relative color expressions can hurt readability. Use a CSS custom property for the base color to keep declarations clean."
+    ],
+    "verificationSteps": [
+      "Test the generated CSS in Chrome DevTools Styles panel to confirm the color resolves to the expected computed value.",
+      "Verify a static fallback color is declared before the relative color syntax for browsers that do not support the feature."
+    ],
+    "tags": [
+      "colors"
+    ]
+  },
+  {
+    "id": "css-print-styles-generator",
+    "name": "CSS Print Styles Generator",
+    "category": "css",
+    "summary": "Generate a print stylesheet that hides navigation, shows link URLs, avoids page breaks in important blocks, and sets print margins.",
+    "description": "Build a print-ready CSS block that hides non-content elements, expands link URLs for reference, avoids awkward page breaks, and sets sensible print margins and page size. Designed for documentation, recipes, checklists, and long articles.",
+    "keywords": [
+      "print css generator",
+      "print stylesheet",
+      "css print page break",
+      "@media print css"
+    ],
+    "whatIs": "A print stylesheet is CSS inside @media print that styles the page when someone prints or saves as PDF. It should hide navigation, sidebars, and footers, show full URLs after links, prevent page breaks inside important blocks like tables and code, and set sensible margins. This is especially useful for documentation, recipes, invoices, and articles.",
+    "howToUse": [
+      "Select the elements you want to hide when printing.",
+      "Choose whether to show URLs after links.",
+      "Set margin and page size preferences.",
+      "Copy the @media print block into your stylesheet and test with print preview."
+    ],
+    "useCases": [
+      "Prepare a recipe page for clean printing without navigation and ads.",
+      "Make documentation pages print with full link URLs for reference.",
+      "Style invoices and checklists for professional printed output."
+    ],
+    "examples": [
+      {
+        "title": "Recipe card print styles",
+        "text": "A recipe blog adds print styles so readers can print a clean recipe card without the header, sidebar, and comments."
+      },
+      {
+        "title": "Documentation with expanded URLs",
+        "text": "A documentation site prints with expanded link URLs so readers can follow references on paper."
+      }
+    ],
+    "mistakes": [
+      "Hiding all images instead of just decorative ones.",
+      "Using display:none on everything without testing the printed output.",
+      "Not setting page-break-inside: avoid on tables and code blocks."
+    ],
+    "faq": [
+      {
+        "question": "How do I test print styles?",
+        "answer": "Use the browser print preview (Ctrl+P) or DevTools rendering tab to emulate print media."
+      },
+      {
+        "question": "Should print styles be in a separate file?",
+        "answer": "You can use a separate print.css or embed @media print in your main stylesheet. Both approaches work."
+      },
+      {
+        "question": "Which elements should I hide in print styles?",
+        "answer": "Hide navigation bars, sidebar menus, footer widgets, comment sections, share buttons, newsletter signup forms, and any interactive elements that serve no purpose on paper. Use .nav { display: none; } or create a .no-print utility class. Keep the main content, headings, images, and any data tables that are part of the article body. The goal is a clean, readable document without page chrome."
+      },
+      {
+        "question": "How do I handle page breaks in print CSS?",
+        "answer": "Use page-break-before, page-break-after, and page-break-inside with values of auto, always, or avoid. The modern equivalents are break-before, break-after, and break-inside in the CSS Fragmentation spec. For example, use break-inside: avoid on code blocks, images, and tables to prevent them from being split across two pages. Use break-before: always on major section headings to start each section on a new page."
+      }
+    ],
+    "quickAnswer": "Generate a @media print block that hides navigation, shows link URLs, controls page breaks, and sets sensible print margins. Essential for making articles, recipes, documentation, and invoices print cleanly.",
+    "limitations": [
+      "Page-break rules such as page-break-inside: avoid are hints to the browser print engine, not guarantees. The engine may still break content if the block does not fit on one page.",
+      "Browser print engines render CSS differently. Chrome, Firefox, and Safari each produce slightly different printed output, especially with background colors, page margins, and multi-column layouts.",
+      "Print style rules only apply when the page is printed or viewed in print preview. Changes made in the browser DevTools with screen media enabled will not show print style effects. Always test print styles in print preview or by selecting the print media type in the DevTools Rendering panel."
+    ],
+    "verificationSteps": [
+      "Use print preview in Chrome, Firefox, and Safari to verify the page prints without navigation, with expanded link URLs, and with appropriate page breaks.",
+      "Save the page as PDF from each browser and compare the output for consistency in margins, font sizes, and page break placement."
+    ],
+    "tags": [
+      "performance"
+    ]
+  },
+  {
+    "id": "external-link-attribute-generator",
+    "name": "External Link Attribute Generator",
+    "category": "html",
+    "summary": "Generate external link markup with the correct rel attributes for security, SEO, sponsored content, and user-generated content.",
+    "description": "Build external link anchor tags with the right combination of target, rel (noopener, noreferrer, nofollow, sponsored, ugc), and optional aria labels. Covers standard external links, affiliate links, sponsored content, and UGC links.",
+    "keywords": [
+      "rel noopener noreferrer generator",
+      "external link attributes",
+      "nofollow sponsored ugc",
+      "external link rel"
+    ],
+    "whatIs": "External links should use target='_blank' with rel='noopener noreferrer' for security. For SEO, bloggers use rel='nofollow' for untrusted links, rel='sponsored' for paid or affiliate links, and rel='ugc' for user-generated content links. Using the right rel values helps both security and search engine understanding of link intent.",
+    "howToUse": [
+      "Choose the link type that matches your use case.",
+      "Enter the destination URL and link text.",
+      "The tool generates the anchor tag with the correct attributes.",
+      "Copy and paste the anchor tag into your HTML."
+    ],
+    "useCases": [
+      "Create secure external links with noopener and noreferrer.",
+      "Mark affiliate links with sponsored and nofollow.",
+      "Tag user-generated content links with ugc."
+    ],
+    "examples": [
+      {
+        "title": "Secure external reference link",
+        "text": "A blog post links to an external reference with target='_blank' and rel='noopener noreferrer'."
+      },
+      {
+        "title": "Affiliate link disclosure",
+        "text": "An affiliate disclosure page uses rel='sponsored nofollow' for all affiliate links."
+      }
+    ],
+    "mistakes": [
+      "Using target='_blank' without noopener which creates a security vulnerability.",
+      "Adding nofollow to internal links and hurting internal link equity.",
+      "Using both nofollow and sponsored when sponsored alone is sufficient."
+    ],
+    "faq": [
+      {
+        "question": "Should every external link use noopener?",
+        "answer": "Every target='_blank' link should include rel='noopener'. It prevents the opened page from accessing window.opener."
+      },
+      {
+        "question": "Does rel='nofollow' affect SEO?",
+        "answer": "It tells search engines not to pass ranking credit to the linked page. Use it for untrusted or paid links."
+      },
+      {
+        "question": "What is the difference between nofollow and sponsored?",
+        "answer": "nofollow tells search engines not to pass ranking credit for any reason. sponsored is specifically for paid or affiliate links. Use sponsored when the link is part of a commercial agreement and nofollow for general untrusted links."
+      },
+      {
+        "question": "Does adding noopener affect the back button or browsing history?",
+        "answer": "No. noopener only severs the window.opener relationship between the new page and the original page. It does not affect the browsing history, the back button, session storage, or cookie access. The linked page opens in a new tab or window as normal and operates independently. There is no downside to including noopener on every target=\"_blank\" link."
+      }
+    ],
+    "quickAnswer": "External links should use rel='noopener noreferrer' for security when using target='_blank'. For SEO, use rel='nofollow' for untrusted links, rel='sponsored' for paid or affiliate links, and rel='ugc' for user-generated content.",
+    "limitations": [
+      "Rel attributes are hints to search engines, not directives. Search engines may still discover and crawl linked pages regardless of rel values.",
+      "Some platforms such as social media sites and CMS editors strip or ignore custom rel attributes on links.",
+      "Social media platform links may need additional attributes such as aria-label for accessibility beyond the standard rel values."
+    ],
+    "verificationSteps": [
+      "Inspect the generated anchor tag in the HTML source to confirm target, rel, and aria-label attributes are present and correctly formatted.",
+      "Click the link on the published page and verify it opens in a new tab without triggering any security warnings in the browser console."
+    ]
+  },
+  {
+    "id": "html-script-loading-strategy-builder",
+    "name": "HTML Script Loading Strategy Builder",
+    "category": "html",
+    "summary": "Generate script tags with the right loading strategy -- normal, defer, async, or type module -- based on use case.",
+    "description": "Choose a use case and get the recommended script tag with the correct loading attribute. Covers analytics scripts, app bundles, third-party widgets, ES modules, and inline scripts. Explains when to use each strategy.",
+    "keywords": [
+      "script async defer generator",
+      "module script defer async",
+      "script loading strategy",
+      "script tag attributes"
+    ],
+    "whatIs": "How a script loads affects page performance and script execution order. A normal script blocks HTML parsing. defer downloads in parallel and executes after HTML parsing. async downloads in parallel and executes as soon as it is ready. type='module' scripts are deferred by default. Choosing the right strategy depends on whether the script is critical, depends on other scripts, or is independent.",
+    "howToUse": [
+      "Select the script type that matches your use case.",
+      "Enter the script URL.",
+      "The tool recommends the best loading attribute.",
+      "Copy the script tag with the correct attributes."
+    ],
+    "useCases": [
+      "Add a deferred application bundle that runs after the page parses.",
+      "Include an async analytics script that loads independently.",
+      "Set up a module script for a Vite or Astro entry point."
+    ],
+    "examples": [
+      {
+        "title": "Analytics script with async",
+        "text": "An analytics script uses async so it loads without blocking the page."
+      },
+      {
+        "title": "App bundle with defer",
+        "text": "An app bundle uses defer to maintain execution order while not blocking HTML parsing."
+      }
+    ],
+    "mistakes": [
+      "Using async for scripts that depend on DOM elements or other scripts.",
+      "Using defer for scripts that must run immediately regardless of parse state.",
+      "Using type='module' for scripts that are not ES modules."
+    ],
+    "faq": [
+      {
+        "question": "What is the difference between defer and async?",
+        "answer": "defer downloads in parallel and waits for HTML parsing to finish before executing, preserving script order. async downloads in parallel and executes immediately when ready, ignoring order."
+      },
+      {
+        "question": "Does type='module' need defer?",
+        "answer": "No. Module scripts are deferred by default and do not need an explicit defer attribute."
+      },
+      {
+        "question": "Where should I place the script tag in the HTML document?",
+        "answer": "Modern best practice is to place script tags in the head with defer or type=\"module\". Both download in parallel with HTML parsing and execute after the DOM is ready. Placing scripts at the end of body was a workaround for older browsers that did not support defer. With defer or module, script placement in the head is cleaner and more maintainable without blocking rendering."
+      },
+      {
+        "question": "Does defer work on inline scripts?",
+        "answer": "No. The defer attribute only works on external scripts with a src attribute. Inline scripts are executed immediately during HTML parsing. If you need an inline script to run after the DOM is ready, use the DOMContentLoaded event listener or place the script at the end of body. Alternatively, convert the inline script to an external file and use defer."
+      }
+    ],
+    "quickAnswer": "Choose a script loading strategy based on when the script must execute. Use defer for scripts that need the full DOM but can download in parallel. Use async for independent scripts like analytics. Use type='module' for modern ES module code.",
+    "limitations": [
+      "defer preserves script execution order; async does not. Choose based on whether script order matters.",
+      "async scripts execute as soon as they finish downloading, which can block rendering if the script is large.",
+      "type='module' scripts are deferred by default and do not need an additional defer attribute."
+    ],
+    "verificationSteps": [
+      "Open Chrome DevTools Network panel and check the Initiator and Waterfall columns to confirm when each script starts loading and executing.",
+      "Test page rendering and interactivity timing with different strategies using the Performance panel."
+    ],
+    "comparison": {
+      "title": "async vs defer vs type=\"module\"",
+      "columns": [
+        "Aspect",
+        "async",
+        "defer",
+        "type=\"module\""
+      ],
+      "rows": [
+        [
+          "Execution timing",
+          "Executes as soon as the script finishes downloading, before DOMContentLoaded",
+          "Executes after HTML parsing is complete, just before DOMContentLoaded",
+          "Executes after HTML parsing is complete, same as defer behavior"
+        ],
+        [
+          "Script order guarantee",
+          "No. Scripts execute in the order they finish downloading.",
+          "Yes. Scripts execute in the order they appear in the HTML.",
+          "Yes. Scripts execute in the order they appear, same as defer."
+        ],
+        [
+          "Blocks HTML parsing",
+          "Does not block HTML parsing. Downloads in parallel.",
+          "Does not block HTML parsing. Downloads in parallel.",
+          "Does not block HTML parsing. Downloads in parallel."
+        ],
+        [
+          "Use cases",
+          "Independent scripts such as analytics, A/B testing, or social widgets",
+          "Scripts that need the full DOM such as app bundles that query or modify the page",
+          "Modern ES module code where import/export syntax is used"
+        ],
+        [
+          "Default behavior without attribute",
+          "Without any attribute, the script blocks HTML parsing until it downloads and executes",
+          "N/A",
+          "type=\"module\" scripts are deferred by default and do not need an explicit defer attribute"
+        ]
+      ],
+      "summary": "Async downloads in parallel and runs on completion. Defer downloads in parallel but waits for the HTML to finish parsing. Module scripts are deferred by default and support ES module dependency graphs."
+    },
+    "updatedAt": "2026-05-25"
+  },
+  {
+    "id": "web-app-manifest-validator",
+    "name": "Web App Manifest Validator",
+    "category": "assets",
+    "summary": "Validate a web app manifest JSON against the W3C specification. Check required fields, icon sizes, start URL, scope, display mode, theme colors, and installability.",
+    "description": "Paste your web app manifest JSON and get a structured validation report. Checks required fields (name), recommended fields (icons, start_url, display, theme_color), icon size and purpose requirements, start URL and scope relationships, hex color format, and an installability checklist.",
+    "keywords": [
+      "manifest validator",
+      "web app manifest check",
+      "pwa manifest test",
+      "manifest json validator",
+      "site.webmanifest check"
+    ],
+    "whatIs": "A web app manifest is a JSON file that tells browsers how your web app should behave when installed on a user's device. It specifies the app name, icons, start URL, display mode, theme colors, and other properties. The manifest is linked from your HTML head with a link tag: <link rel=\"manifest\" href=\"/site.webmanifest\">.",
+    "howToUse": [
+      "Paste the full JSON content of your web app manifest into the text area.",
+      "The tool parses the JSON and checks each field against the W3C Web App Manifest specification.",
+      "Review errors (must fix) and warnings (should fix) and follow the installability checklist before deploying."
+    ],
+    "useCases": [
+      "Validate a manifest before deploying a PWA to ensure installability requirements are met.",
+      "Debug why a PWA install prompt is not appearing 鈥?check the manifest fields that Chrome and Edge require.",
+      "Audit an existing manifest after adding new icons, changing the start URL, or updating theme colors."
+    ],
+    "examples": [
+      {
+        "title": "Pre-launch manifest check",
+        "text": "A developer generates a manifest with the site's manifest generator and pastes it into the validator. The validator flags a missing short_name, suggests adding a 512x512 icon, and warns that the start_url does not start with /."
+      },
+      {
+        "title": "Debugging PWA install prompt",
+        "text": "A PWA is not showing the install prompt on Chrome. Paste the manifest into the validator. It reports that the icons array is empty 鈥?without at least a 192x192 icon, Chrome does not offer the install prompt."
+      }
+    ],
+    "mistakes": [
+      "Forgetting to link the manifest in the HTML head 鈥?the browser cannot discover the manifest without the link tag.",
+      "Using an empty or missing icons array 鈥?at minimum, a 192x192 and 512x512 PNG icon are required for the install prompt.",
+      "Setting the display mode to browser but expecting an installable app 鈥?standalone, fullscreen, or minimal-ui are the installable display modes."
+    ],
+    "faq": [
+      {
+        "question": "Why is my PWA install prompt not showing?",
+        "answer": "Chrome and Edge require: the manifest linked in the HTML head, served with the correct MIME type, containing at least name, short_name (or name < 30 chars), a 192x192 and 512x512 PNG icon, start_url within the scope, display set to standalone/fullscreen/minimal-ui, and a registered service worker. The site must also be served over HTTPS."
+      },
+      {
+        "question": "Is short_name required if name is already short?",
+        "answer": "If name is 30 characters or fewer, some platforms use it as the short name. However, explicitly setting short_name ensures consistent behavior across platforms. The recommended maximum for short_name is 12 characters 鈥?longer names are truncated on Android and iOS home screens."
+      },
+      {
+        "question": "What MIME type should the manifest be served with?",
+        "answer": "The manifest must be served with Content-Type: application/manifest+json. GitHub Pages serves .webmanifest files with this MIME type automatically. Netlify and Vercel also handle it correctly. If using a .json extension, you may need to configure your server to serve the correct MIME type."
+      }
+    ],
+    "quickAnswer": "Validate your web app manifest JSON for PWA installability. Required: name, icons (192x192 and 512x512), start_url, display mode (standalone/fullscreen/minimal-ui). The manifest must be linked in the HTML head and served with Content-Type: application/manifest+json.",
+    "limitations": [
+      "This validator checks the manifest JSON content only. It does not verify that icon files exist, that the start_url returns 200, or that the service worker is registered and functional.",
+      "The W3C Web App Manifest specification is evolving. New fields like protocol_handlers, shortcuts, and related_applications are not yet validated 鈥?check the latest spec for recently added fields.",
+      "Different browsers have different installability requirements. Chrome, Edge, Safari, and Firefox each interpret manifest fields slightly differently. Test on real devices across platforms."
+    ],
+    "verificationSteps": [
+      "Run a Lighthouse PWA audit 鈥?it checks the manifest along with other installability requirements.",
+      "Open Chrome DevTools > Application > Manifest and verify all fields are parsed correctly and no errors are shown."
+    ],
+    "updatedAt": "2026-05-28"
+  },
+  {
+    "id": "x-robots-tag-header-generator",
+    "name": "X-Robots-Tag Header Generator",
+    "category": "seo",
+    "summary": "Generate X-Robots-Tag HTTP headers and robots meta tags for non-HTML files, PDFs, images, feeds, and HTML pages.",
+    "description": "The X-Robots-Tag HTTP header controls how search engines index non-HTML resources like PDFs, images, and JSON feeds. Unlike the HTML meta tag, this header works on any file type. Build directives including noindex, nofollow, noarchive, nosnippet, noimageindex, and notranslate, with optional user-agent targeting.",
+    "keywords": [
+      "x-robots-tag generator",
+      "noindex header",
+      "robots http header",
+      "indexing control pdf"
+    ],
+    "whatIs": "X-Robots-Tag is an HTTP response header that tells search engines how to handle a resource in their index. It is the HTTP equivalent of the robots meta tag but works on any file type 鈥?PDFs, images, videos, feeds, JSON responses, and HTML pages alike. The header accepts the same directives as the meta tag: noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate, and others.",
+    "howToUse": [
+      "Select the directives you want to apply 鈥?common combinations are noindex, nofollow for pages to be excluded, and noarchive for content that should not be cached by search engines.",
+      "Optionally specify a user-agent to target specific crawlers, or leave it empty for all bots.",
+      "Copy the HTTP header and/or the HTML meta tag into your server configuration or page markup."
+    ],
+    "useCases": [
+      "Noindex PDFs and other downloadable files that should not appear in search results.",
+      "Prevent search engines from caching sensitive content with noarchive.",
+      "Add noimageindex to a gallery page to prevent individual image indexing while keeping the page indexed."
+    ],
+    "examples": [
+      {
+        "title": "Prevent PDF indexing",
+        "text": "A site offers PDF whitepapers behind a form. Add X-Robots-Tag: noindex, nofollow to the PDF responses so search engines do not index the gated content and do not follow links within the PDFs."
+      },
+      {
+        "title": "Protect image assets",
+        "text": "A stock photo site adds X-Robots-Tag: noimageindex to all image responses. The HTML pages remain indexed, but the individual images do not appear in Google Image Search, protecting the unwatermarked files."
+      }
+    ],
+    "mistakes": [
+      "Setting a robots meta tag on a page but also sending a conflicting X-Robots-Tag header 鈥?search engines may honor the more restrictive directive.",
+      "Using noindex on a page that is blocked by robots.txt 鈥?search engines cannot see the noindex directive if they cannot crawl the page.",
+      "Forgetting that X-Robots-Tag applies to the entire HTTP response 鈥?all embedded resources in that response inherit the header behavior."
+    ],
+    "faq": [
+      {
+        "question": "What is the difference between robots.txt Disallow and X-Robots-Tag noindex?",
+        "answer": "robots.txt Disallow prevents crawling 鈥?the search engine cannot access the resource at all. X-Robots-Tag noindex allows crawling but tells the search engine not to include the resource in its index. To remove a page from search results, use noindex and do NOT block it with robots.txt, so the crawler can read the noindex directive."
+      },
+      {
+        "question": "Does X-Robots-Tag work on non-HTML files?",
+        "answer": "Yes, and this is its main advantage over the meta tag. X-Robots-Tag works on PDFs, images, videos, Word documents, RSS feeds, JSON responses, and any other HTTP response. The HTML meta tag only works inside HTML pages."
+      },
+      {
+        "question": "Can I use X-Robots-Tag for specific user-agents only?",
+        "answer": "Yes. Most web servers support conditional headers based on user-agent. For example, in Nginx: if the user-agent matches Googlebot, add an X-Robots-Tag header. However, not all bots respect user-agent-specific directives, and the safest approach is to apply directives broadly."
+      }
+    ],
+    "quickAnswer": "X-Robots-Tag is an HTTP header that controls search engine indexing for any file type 鈥?PDFs, images, feeds, and HTML. Use it when you need indexing control over non-HTML resources or when you cannot add a meta tag to the page. It accepts the same directives as the robots meta tag.",
+    "limitations": [
+      "Some bots and crawlers ignore X-Robots-Tag entirely. It is a hint, not a binding directive, and there is no enforcement mechanism beyond voluntary compliance by search engines.",
+      "If a page is blocked by robots.txt, crawlers cannot see the X-Robots-Tag header at all. Use robots.txt and X-Robots-Tag as complementary layers, not alternatives.",
+      "X-Robots-Tag is not an official IETF standard 鈥?it is a de-facto convention supported by Google, Bing, and most major search engines. Smaller or niche crawlers may not recognize it."
+    ],
+    "verificationSteps": [
+      "Use Google Search Console URL Inspection tool to confirm the status of indexed pages after applying noindex via X-Robots-Tag.",
+      "Run curl -I https://yoursite.com/path to verify the X-Robots-Tag header is present and contains the correct directives."
+    ],
+    "updatedAt": "2026-05-28"
+  },
+  {
+    "id": "css-contrast-color-function-generator",
+    "name": "CSS contrast-color() Function Generator",
+    "category": "css",
+    "summary": "Generate CSS contrast-color() expressions that automatically pick the color with the best contrast ratio from a candidate list. No JavaScript text-color switching needed.",
+    "description": "Build contrast-color() CSS function expressions that automatically select the most readable color from a list of candidates against a given background. Choose from max-contrast mode (picks the single best candidate) or priority list mode (picks the first candidate that meets a minimum ratio). Controls include background color, candidate colors, contrast mode, and fallback. Output is a ready-to-use CSS color value expression compatible with any CSS property that accepts a color.",
+    "keywords": [
+      "contrast-color css",
+      "auto contrast text color",
+      "css contrast ratio function",
+      "accessible text color generator",
+      "css color contrast function"
+    ],
+    "whatIs": "The CSS contrast-color() function (Baseline 2026) selects the color with the highest contrast ratio from a list of candidates against a specified background. With contrast-color(background vs color1, color2, ...), you provide the background color and a list of candidate colors. The function evaluates the WCAG contrast ratio of each candidate against the background and returns the candidate with the best ratio. The optional to max keyword tells the function to always return the maximum-contrast candidate. This is a native CSS alternative to JavaScript-based text color switching for readable overlays, buttons, and badges.",
+    "howToUse": [
+      "Enter the background color against which contrast will be measured. This can be a hex, rgb, hsl, or named color value.",
+      "Add candidate colors 鈥?the function evaluates each one against the background and picks the best match. You can reorder candidates for the to max mode priority fallback.",
+      "Choose the contrast mode: to max always picks the highest-contrast candidate, or omit it to use ordered priority (first candidate above the minimum ratio wins).",
+      "Copy the generated contrast-color() expression into your stylesheet and replace the candidate colors with your design token references."
+    ],
+    "useCases": [
+      "Style text overlays on hero images and banners where the text must remain readable regardless of the background color or image.",
+      "Build badge and tag components that automatically adjust label text color based on the badge background color.",
+      "Create a dynamic button system where button text color adapts to the primary button background without writing multiple color variants."
+    ],
+    "examples": [
+      {
+        "title": "Hero section text overlay",
+        "text": "A hero banner has a background gradient that shifts between dark and light sections. Use contrast-color(var(--hero-bg) vs white, black, var(--accent)) as the heading color. The heading automatically uses white on dark sections and black on light sections without media queries or JavaScript."
+      },
+      {
+        "title": "Tag component with dynamic colors",
+        "text": "A tag component receives its background color as a CSS custom property. Use contrast-color(var(--tag-bg) to max vs white, var(--tag-text)) for the label color. The to max mode ensures maximum readability: white tags get dark text, dark tags get white text, without a separate light/dark class."
+      }
+    ],
+    "mistakes": [
+      "Using to max mode when a specific color priority is intended 鈥?to max always returns the highest-contrast candidate, ignoring the candidate order. If you prefer a brand color over maximum contrast, omit to max and let the browser pick the first sufficiently contrasting color in order.",
+      "Assuming contrast-color() recalculates when the background changes 鈥?like any CSS function, it evaluates once per render of the element. If the background changes dynamically (via animation or JavaScript), contrast-color() re-evaluates naturally as part of the style recalculation cycle.",
+      "Using too many candidate colors 鈥?each extra candidate increases contrast computation. Two or three well-chosen candidates (light, dark, accent) cover most design systems. Testing all 16.7 million hex colors as candidates is not useful."
+    ],
+    "faq": [
+      {
+        "question": "How does contrast-color() compute contrast ratio?",
+        "answer": "The function uses the WCAG 2.2 relative luminance algorithm to compute the contrast ratio between each candidate color and the background color. Relative luminance accounts for human perception of different color channels 鈥?green contributes more to perceived brightness than blue, for example. The ratio ranges from 1:1 (identical luminance) to 21:1 (black on white). The function then returns the candidate with the highest ratio (in to max mode) or the first candidate that meets or exceeds the implied threshold (in priority list mode)."
+      },
+      {
+        "question": "Which browsers support contrast-color() as of 2026?",
+        "answer": "contrast-color() is Baseline 2026, supported in Chrome 132+, Edge 132+, Safari 19+, and Firefox 136+. Safari 18 and earlier as well as older Chromium versions do not recognize the function. For cross-browser support, use the function as a progressive enhancement with a manual fallback color declared first, then override with @supports (contrast-color(white vs black, white))."
+      },
+      {
+        "question": "Can I use CSS custom properties inside contrast-color()?",
+        "answer": "Yes. All color arguments to contrast-color() accept CSS custom properties, including var() references for the background color and each candidate. This is the most practical way to use the function in a design system 鈥?pass design tokens as candidates so the function selects between semantic colors. For example: contrast-color(var(--surface) vs var(--text-primary), var(--text-inverse))."
+      },
+      {
+        "question": "What happens if none of the candidates achieve WCAG AA contrast?",
+        "answer": "The function still returns the candidate with the highest contrast ratio regardless of whether any candidate meets a specific WCAG threshold. With to max mode, it always returns the best possible candidate. Without to max, it also returns the first candidate that meets a subjective threshold, or falls back to the first candidate. For true WCAG AA/AAA compliance, pair contrast-color() with explicit color-contrast() checks or pre-validate your candidate palette against design system backgrounds during development."
+      }
+    ],
+    "quickAnswer": "Use CSS contrast-color(background vs candidates...) to automatically select the most readable color from a list. Works in Chrome 132+, Edge 132+, Safari 19+, and Firefox 136+. Supports to max mode for maximum contrast or priority-list order for branded color preference. Use with CSS custom properties for design system integration.",
+    "limitations": [
+      "contrast-color() is not supported in browsers before Chrome 132, Safari 19, or Firefox 136. Always provide a fallback color before the contrast-color() declaration, and use @supports to conditionally apply the function where available.",
+      "The function evaluates contrast based on relative luminance, which is a mathematical approximation of human color perception. Two colors with identical contrast ratios may subjectively read differently depending on hue, saturation, and surrounding context.",
+      "contrast-color() selects a single color from the candidate list. It cannot generate intermediate colors, blend candidates, or adjust opacity. For fine-grained color adjustment beyond picking from a list, use CSS color-mix() or manual color tokens."
+    ],
+    "verificationSteps": [
+      "Test the contrast-color() expression with multiple background colors by changing the background value in DevTools Styles panel and observing the color value resolve to the expected candidate.",
+      "Inspect the computed color value in Chrome DevTools to confirm contrast-color() resolves correctly, then test with the browser DevTools color contrast checker to verify the WCAG ratio meets your accessibility target."
+    ],
+    "updatedAt": "2026-05-30",
+    "tags": [
+      "colors"
+    ]
+  },
+  {
+    "id": "typed-css-attr-generator",
+    "name": "Typed CSS attr() Generator",
+    "category": "css",
+    "summary": "Generate typed CSS attr() expressions that read HTML attribute values into any CSS property with proper type casting. Supports number, px, rem, em, color, deg, s, ms, url, and percentage types.",
+    "description": "Build CSS declarations that use the typed attr() function to read HTML attribute values into CSS properties with type-safe casting. Choose from available types such as string, number, px, rem, em, percentage, color, deg, s, ms, and url. Configure fallback values for when the attribute is missing or the type conversion fails. The generated output works in Chrome 133+ where typed attr() is supported, with manual fallbacks for other browsers. This replaces the old string-only attr() that was restricted to the content property of pseudo-elements.",
+    "keywords": [
+      "typed css attr",
+      "attr type casting",
+      "data attribute css",
+      "css attr function",
+      "html attribute styling"
+    ],
+    "whatIs": "The typed CSS attr() function (Chrome 133+) reads an HTML attribute value and uses it in any CSS property, with explicit type casting. Unlike the traditional attr() which only works on the content property of ::before and ::after pseudo-elements and always returns a string, the typed version accepts a type parameter: attr(data-value type(<type>), <fallback>). Supported types include string, number, px, rem, em, percentage, color, deg, s, ms, url, and more. This enables direct data-attribute-driven styling without JavaScript interpolation.",
+    "howToUse": [
+      "Choose an HTML attribute to read 鈥?typically a data-* attribute such as data-size, data-color, or data-speed on the target element.",
+      "Select the CSS property that will receive the attribute value 鈥?any CSS property that accepts the chosen type.",
+      "Pick the type for the attr() function that matches your CSS property and expected value format.",
+      "Set a fallback value for when the attribute is missing, empty, or the value cannot be parsed into the specified type."
+    ],
+    "useCases": [
+      "Build a data-driven progress bar where the width is set by a data-percent attribute using attr(data-percent type(%), 0%) instead of an inline style.",
+      "Create a configurable animation system where data-duration and data-delay HTML attributes control animation timing via attr(data-duration type(s), 300ms).",
+      "Design a component color system where data-accent reads a hex color from the HTML and applies it to background, border, or text color through attr(data-accent type(color), #333)."
+    ],
+    "examples": [
+      {
+        "title": "Data-driven progress bar width",
+        "text": "A progress bar component uses a data-value attribute on the element. Use width: attr(data-value type(%), 0%) in CSS to set the width directly from the HTML attribute. The attribute value like data-value=\"75\" drives the bar width to 75% without inline styles or JavaScript. The fallback hides the bar when the attribute is absent."
+      },
+      {
+        "title": "Configurable animation timing",
+        "text": "A notification component needs a variable display duration set per-instance in the HTML. Use animation-duration: attr(data-duration type(s), 3s) to read data-duration=\"5\" and get a 5-second duration. Each notification element on the page can have its own timing without creating multiple CSS classes."
+      }
+    ],
+    "mistakes": [
+      "Using typed attr() without a fallback 鈥?if the attribute is missing or the value cannot be coerced into the specified type, the declaration becomes invalid and the property falls back to its initial value. Always provide a sensible fallback as the second argument.",
+      "Expecting typed attr() to work in browsers that do not support it 鈥?Chrome 133+ is required. Older browsers ignore the entire declaration when they encounter the typed attr() syntax. Use a hardcoded fallback value before the attr() declaration as a progressive enhancement strategy.",
+      "Mixing units and values incorrectly for the type 鈥?attr(data-width type(px)) expects the attribute value to be a bare number (\"300\"), not a unit-included string (\"300px\"). The type specifies the unit. A value of \"300px\" on an attribute typed as px causes the type conversion to fail and triggers the fallback."
+    ],
+    "faq": [
+      {
+        "question": "What is the difference between typed attr() and the old attr()?",
+        "answer": "The old attr() only works in the content property on ::before and ::after pseudo-elements. It always returns a string value. The typed attr() works in any CSS property that accepts the target type, uses proper type casting with the type() parameter, and supports a fallback value. The typed version also checks type compatibility at parse time 鈥?an attr(data-width type(color)) used on the width property is a parse error and invalidates the declaration."
+      },
+      {
+        "question": "Which browsers support typed attr() as of 2026?",
+        "answer": "Typed attr() is supported in Chrome 133+, Edge 133+, and Opera 119+. Safari and Firefox do not yet ship typed attr() as of May 2026. This means typed attr() is Chromium-only for the near future. Use it as a progressive enhancement by declaring a fallback value first (such as width: 300px) and then overriding with the attr() version so Chromium browsers get the dynamic behavior while others use the fallback."
+      },
+      {
+        "question": "Can I use typed attr() on any HTML attribute or only data-* attributes?",
+        "answer": "Typed attr() works on any HTML attribute, not just data-* attributes. You can read standard attributes like href, src, alt, width, height, or custom data-* attributes. However, consider performance implications: reading from data-* attributes is generally the cleanest practice for styling hooks, as standard attributes carry semantic meaning that may collide with other scripts or browser behaviors. Use data-* attributes for styling hooks and reserved the typed attr() function for that purpose."
+      },
+      {
+        "question": "Does typed attr() re-evaluate when the attribute changes?",
+        "answer": "Yes. Typed attr() is a live CSS function 鈥?when the attribute value changes in the DOM (via setAttribute or a framework), the browser re-evaluates the CSS declaration and updates the rendered style. This means you can change data-* attribute values dynamically and the CSS automatically responds without any additional JavaScript beyond the attribute update itself."
+      }
+    ],
+    "quickAnswer": "Use typed CSS attr(data-* type(<type>), <fallback>) to read HTML attribute values into any CSS property with type casting. Chrome 133+ only. Supports number, px, rem, em, percentage, color, deg, s, ms, url types. Always provide a fallback value and layer a hardcoded fallback declaration first for cross-browser compatibility.",
+    "limitations": [
+      "Typed attr() requires Chrome 133+ or Edge 133+. Safari and Firefox do not yet support it as of May 2026. The function is effectively Chromium-only, so all non-Chromium browsers will fall back to the initial value or the preceding hardcoded declaration.",
+      "The attribute value must match the expected type format exactly. A type(px) attribute expecting \"300\" breaks on \"300px\", \"300 px\", or non-numeric strings. There is no built-in sanitization or lenient parsing 鈥?the type system enforces strict value formatting.",
+      "Type conversion failures and parse errors behave differently: a type mismatch triggers the fallback value, but a completely invalid type argument (such as type(foobar)) is a CSS parse error that invalidates the entire declaration. Use only the documented type keywords to avoid invalidating styles."
+    ],
+    "verificationSteps": [
+      "Open Chrome DevTools, inspect an element with the typed attr() declaration, and verify the computed style shows the expected resolved value derived from the HTML attribute, not the fallback.",
+      "Change the data-* attribute value using the DevTools Element panel and confirm the rendered style updates in real time without a page reload or JavaScript intervention."
+    ],
+    "updatedAt": "2026-05-30",
+    "tags": [
+      "effects"
+    ]
+  },
+  {
+    "id": "css-if-function-builder",
+    "name": "CSS if() Function Builder",
+    "category": "css",
+    "summary": "Build CSS if() conditionals using style(), media(), and supports() conditions for inline responsive values without @media or @container queries.",
+    "description": "Create CSS if() function calls that conditionally apply values based on CSS variable states, media features, or feature support. Supports three condition types: style() checks CSS custom property values, media() queries media features like viewport width, and supports() detects browser feature support. The if() function replaces many @media query and @container query patterns with a single inline declaration.",
+    "keywords": [
+      "css if function",
+      "css conditional values",
+      "css style query",
+      "inline media query css",
+      "css if else"
+    ],
+    "whatIs": "The CSS if() function lets you write conditional values directly inside a property declaration. Instead of wrapping a value inside @media, @container, or @supports at-rules, you use if() inline: width: if(style(--variant: large): 300px else 150px). It supports three condition types: style() to check a CSS custom property value, media() to test media features like min-width or prefers-color-scheme, and supports() to detect whether the browser supports a specific CSS feature. Chrome 137 supports if(style()) and Chrome 142 adds if(media()) and if(supports()).",
+    "howToUse": [
+      "Choose the condition type: style() for checking CSS custom property values, media() for viewport or user-preference media features, or supports() for feature detection.",
+      "Enter the condition expression and the value to use when the condition is true.",
+      "Optionally add an else value that applies when the condition is false.",
+      "Copy the generated if() declaration and place it directly in your CSS property value."
+    ],
+    "useCases": [
+      "Set a different width based on a CSS custom property value without a @container query wrapping the entire rule.",
+      "Apply a color scheme value conditionally based on prefers-color-scheme inside a single property declaration.",
+      "Provide a fallback value when the browser does not support a specific CSS feature using supports()."
+    ],
+    "examples": [
+      {
+        "title": "Component width based on variant variable",
+        "text": "A card component uses style(--variant: featured) to set a 400px width on featured cards and 300px on standard cards: width: if(style(--variant: featured): 400px else 300px). No @container rule needed."
+      },
+      {
+        "title": "Responsive font size using media() inline",
+        "text": "Set font size conditionally based on viewport width inside a single declaration: font-size: if(media(min-width: 768px): 1.25rem else 1rem). Avoids writing separate @media blocks for simple responsive values."
+      }
+    ],
+    "mistakes": [
+      "Using if(media()) for complex multi-condition layouts 鈥?if() is designed for single conditional values, not as a replacement for all media queries. Complex layouts still benefit from @media at-rules for readability.",
+      "Forgetting that the else branch is optional 鈥?omitting it when the condition is false results in the property falling back to its initial value or a previous declaration.",
+      "Applying if(style()) to a custom property that is not set on the element or its ancestors 鈥?style() only evaluates registered or explicitly set custom properties, not inherited ones that fall back to their initial value."
+    ],
+    "faq": [
+      {
+        "question": "What is the difference between if(style()) and @container style() queries?",
+        "answer": "@container style() queries wrap an entire rule block and apply all declarations inside when the condition is true. The if(style()) function applies a single conditional value inline within a property declaration. Use @container style() when multiple properties depend on the same condition, and if(style()) when only one value needs to change. The if() approach keeps related values together in the same declaration block."
+      },
+      {
+        "question": "Which Chrome version supports each if() condition type?",
+        "answer": "Chrome 137 supports if(style()) for querying CSS custom property values. Chrome 142 adds if(media()) for media feature queries and if(supports()) for feature detection. As of May 2026, Chrome 142 is the latest stable, so all three condition types work in current Chrome. Firefox and Safari do not yet implement if() in any stable release."
+      },
+      {
+        "question": "Can if(style()) check for the absence of a custom property?",
+        "answer": "No. The style() condition checks the computed value of a custom property and can test for a specific value using the colon syntax (style(--variant: large)) or just check that the property is set (style(--variant)). It cannot test for the absence of a property. To handle both present and absent states, set the property to a default value explicitly and test against that."
+      },
+      {
+        "question": "How does if(media()) differ from a regular @media at-rule?",
+        "answer": "if(media()) evaluates the media condition inline within a single property declaration, keeping the conditional value co-located with its fallback. A @media at-rule duplicates the entire rule set. For a single value change, if(media()) is more concise. For multiple properties that change at the same breakpoint, @media remains more maintainable because the breakpoint is defined in one place."
+      }
+    ],
+    "quickAnswer": "The CSS if() function lets you write conditional values inline inside a property declaration. Use if(style()) to branch on a CSS custom property, if(media()) to branch on a media feature like viewport width, or if(supports()) to branch on browser feature support. Chrome 137+ supports if(style()); Chrome 142+ adds if(media()) and if(supports()).",
+    "limitations": [
+      "The if() function is only available in Chrome 137+ (style()) and Chrome 142+ (media(), supports()). Firefox and Safari do not yet support CSS if() in any stable release as of May 2026.",
+      "if() evaluates a single condition for a single value 鈥?it cannot replace @media or @container at-rules for complex rule blocks with multiple declaration changes.",
+      "if(style()) only works on explicitly set or registered custom properties. Custom properties inherited from an ancestor with no explicit value on the target element are treated as not matching."
+    ],
+    "verificationSteps": [
+      "Open Chrome DevTools and inspect the element with the if() declaration. Verify the computed value changes when the condition variable or media feature changes.",
+      "Test the page in a non-supporting browser (Firefox or Safari) to confirm the else value or fallback declaration applies correctly without breaking the layout."
+    ],
+    "updatedAt": "2026-05-30",
+    "tags": [
+      "layout"
+    ]
+  },
+  {
+    "id": "css-sibling-index-count-generator",
+    "name": "CSS Sibling Index and Count Generator",
+    "category": "css",
+    "summary": "Generate CSS using sibling-index() and sibling-count() to style elements by their DOM position among siblings without nth-child selectors.",
+    "description": "Use sibling-index() and sibling-count() (Chrome 138+) to create position-aware styles that adapt to the number of siblings in a container. sibling-index() returns the 1-based position of the element among its siblings. sibling-count() returns the total number of siblings. Use these in calc() to create stagger delays, color cycling, width gradients, opacity fades, z-index layering, and position offsets 鈥?all without nth-child selectors or JavaScript.",
+    "keywords": [
+      "css sibling index",
+      "sibling count css",
+      "css position among siblings",
+      "stagger animation css",
+      "css nth-child alternative"
+    ],
+    "whatIs": "sibling-index() and sibling-count() are CSS functions (Chrome 138+) that expose the DOM position of an element among its siblings. sibling-index() returns a 1-based integer representing the element's position. sibling-count() returns the total number of sibling elements. Unlike nth-child selectors that match static patterns, these functions produce dynamic numeric values that you can use in calc() for any property accepting a number or integer. This enables stagger delays, alternating colors, width gradients, and auto-layering without hardcoded selectors.",
+    "howToUse": [
+      "Select the property you want to make position-aware, such as animation-delay, background-color, width, opacity, or z-index.",
+      "Choose the sibling function: sibling-index() for per-element positioning or sibling-count() for container-aware scaling.",
+      "Build an expression using calc() to transform the raw index into the desired value range.",
+      "Copy the generated CSS and apply it to the child elements that need position-aware styling."
+    ],
+    "useCases": [
+      "Create stagger animation delays where each item animates sequentially based on its position among siblings.",
+      "Build a color cycle that rotates through a palette automatically based on element index.",
+      "Generate a width or height gradient across sibling elements without manual nth-child rules."
+    ],
+    "examples": [
+      {
+        "title": "Staggered list animation",
+        "text": "A vertical list of items fades in one by one. Apply animation-delay: calc(sibling-index() * 0.1s) to each item. The first item delays 0.1s, the second 0.2s, and so on. As items are added or removed, the delays adjust automatically."
+      },
+      {
+        "title": "Color cycling across cards",
+        "text": "A card grid cycles through three accent colors. Apply background: hsl(calc(sibling-index() * 120deg), 70%, 50%). Each card gets a hue rotated by 120 degrees from the previous one, producing a natural color cycle with no nth-child selectors."
+      }
+    ],
+    "mistakes": [
+      "Using sibling-index() in a property that does not accept numeric values 鈥?sibling-index() returns an integer and must be used in a context that supports number or integer values, such as calc() inside width, animation-delay, opacity, or z-index.",
+      "Assuming sibling-count() accounts for filtered or hidden elements 鈥?sibling-count() counts all sibling elements in the DOM regardless of display state. Hidden elements (display: none) are still counted. Use visibility: hidden instead if you need to exclude an element from the count visually without removing it from the sibling count.",
+      "Applying sibling-index() to a grid where items reorder at different breakpoints 鈥?sibling-index() reflects the DOM order, not the visual order. With CSS grid or flexbox reordering (order property), the index still follows the source order, which may not match the displayed layout."
+    ],
+    "faq": [
+      {
+        "question": "Which browsers support sibling-index() and sibling-count()?",
+        "answer": "Chrome 138+ and Edge 138+. Firefox and Safari have not yet implemented sibling-index() or sibling-count() as of May 2026. For cross-browser support, use sibling-index() and sibling-count() as progressive enhancements with nth-child selectors or JavaScript as fallbacks."
+      },
+      {
+        "question": "How is sibling-index() different from nth-child?",
+        "answer": "nth-child matches selectors based on a pattern formula (2n+1, odd, 3n) and either selects or does not select an element. sibling-index() returns the actual numeric position as a value that you can use in calc() expressions. With nth-child you need separate rules for each position. With sibling-index() you write one rule that adapts to every position automatically."
+      },
+      {
+        "question": "Can I use sibling-count() to create inverse gradient effects?",
+        "answer": "Yes. Combine sibling-count() and sibling-index() in calc() to create inverse or reverse effects, such as decreasing opacity from first to last child: opacity: calc(1 - (sibling-index() - 1) / sibling-count()). The first child gets opacity 1, the last child approaches 0. As siblings are added or removed, the gradient recalculates automatically."
+      }
+    ],
+    "quickAnswer": "sibling-index() returns the 1-based position of an element among its siblings, and sibling-count() returns the total number of siblings. Use them in calc() to create stagger delays, color cycles, width gradients, and position offsets that adapt automatically as the DOM changes 鈥?no nth-child selectors or JavaScript needed.",
+    "limitations": [
+      "sibling-index() and sibling-count() require Chrome 138+. Firefox and Safari do not yet support these functions as of May 2026.",
+      "The functions return DOM order, not visual order. Elements reordered with CSS flexbox order or grid placement may have an index that does not match their visual position.",
+      "sibling-count() includes all DOM siblings, including those hidden with display: none. Use visibility: hidden to visually hide an element without removing it from the sibling count."
+    ],
+    "verificationSteps": [
+      "Inspect a styled sibling element in Chrome DevTools and verify the computed value of the property using sibling-index() or sibling-count() matches the expected position and count.",
+      "Add or remove sibling elements dynamically and confirm the styles update to reflect the new positions and total count without any code changes."
+    ],
+    "updatedAt": "2026-05-30",
+    "tags": [
+      "effects"
+    ]
+  }
+]

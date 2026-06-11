@@ -1,0 +1,95 @@
+import { field, select, checkbox, htmlEscape } from "../tool-core.js";
+
+export default {
+  form: `
+    <div class="field-grid">
+      ${field({ id: "t3dRotateX", label: "rotateX (deg)", value: "0", type: "number", attrs: "min=-360 max=360 step=1" })}
+      ${field({ id: "t3dRotateY", label: "rotateY (deg)", value: "0", type: "number", attrs: "min=-360 max=360 step=1" })}
+    </div>
+    <div class="field-grid">
+      ${field({ id: "t3dRotateZ", label: "rotateZ (deg)", value: "0", type: "number", attrs: "min=-360 max=360 step=1" })}
+      ${field({ id: "t3dScale", label: "Scale", value: "1", type: "number", attrs: "min=0.1 max=3 step=0.05" })}
+    </div>
+    <div class="field-grid">
+      ${field({ id: "t3dTranslateX", label: "translateX (px)", value: "0", type: "number", attrs: "min=-200 max=200 step=1" })}
+      ${field({ id: "t3dTranslateY", label: "translateY (px)", value: "0", type: "number", attrs: "min=-200 max=200 step=1" })}
+    </div>
+    <div class="field-grid">
+      ${field({ id: "t3dTranslateZ", label: "translateZ (px)", value: "0", type: "number", attrs: "min=-200 max=200 step=1" })}
+      ${field({ id: "t3dPerspective", label: "Perspective (px)", value: "600", type: "number", attrs: "min=100 max=2000 step=10" })}
+    </div>
+    <div class="field-grid">
+      ${select({ id: "t3dOriginX", label: "transform-origin X", options: [
+        {label:"center",value:"center"}, {label:"left",value:"left"}, {label:"right",value:"right"},
+        {label:"25%",value:"25%"}, {label:"75%",value:"75%"}
+      ], value: "center" })}
+      ${select({ id: "t3dOriginY", label: "transform-origin Y", options: [
+        {label:"center",value:"center"}, {label:"top",value:"top"}, {label:"bottom",value:"bottom"},
+        {label:"25%",value:"25%"}, {label:"75%",value:"75%"}
+      ], value: "center" })}
+    </div>
+    <div class="field-grid">
+      ${checkbox({ id: "t3dPreserve3d", label: "Apply perspective to parent (use for nested 3D children)" })}
+    </div>`,
+  generate(root) {
+    const rx = parseInt(root.querySelector("#t3dRotateX").value) || 0;
+    const ry = parseInt(root.querySelector("#t3dRotateY").value) || 0;
+    const rz = parseInt(root.querySelector("#t3dRotateZ").value) || 0;
+    const scale = parseFloat(root.querySelector("#t3dScale").value) || 1;
+    const tx = parseInt(root.querySelector("#t3dTranslateX").value) || 0;
+    const ty = parseInt(root.querySelector("#t3dTranslateY").value) || 0;
+    const tz = parseInt(root.querySelector("#t3dTranslateZ").value) || 0;
+    const perspective = parseInt(root.querySelector("#t3dPerspective").value) || 600;
+    const ox = root.querySelector("#t3dOriginX").value || "center";
+    const oy = root.querySelector("#t3dOriginY").value || "center";
+    const preserve3d = root.querySelector("#t3dPreserve3d").checked;
+
+    let transformParts = [];
+    if (scale !== 1) transformParts.push(`scale(${scale})`);
+    if (rx !== 0) transformParts.push(`rotateX(${rx}deg)`);
+    if (ry !== 0) transformParts.push(`rotateY(${ry}deg)`);
+    if (rz !== 0) transformParts.push(`rotateZ(${rz}deg)`);
+    if (tx !== 0 || ty !== 0 || tz !== 0) transformParts.push(`translate3d(${tx}px, ${ty}px, ${tz}px)`);
+
+    const transformValue = transformParts.length ? transformParts.join(" ") : "none";
+
+    let outputLines = [];
+    if (preserve3d) {
+      outputLines.push(`perspective: ${perspective}px;`);
+      outputLines.push(`transform-style: preserve-3d;`);
+    }
+    if (transformValue !== "none") {
+      outputLines.push(`transform: ${transformValue};`);
+    }
+    if (ox !== "center" || oy !== "center") {
+      outputLines.push(`transform-origin: ${ox} ${oy};`);
+    }
+    const output = outputLines.length ? outputLines.join("\n") : "/* No transform applied */";
+
+    const wrapperStyle = preserve3d
+      ? `perspective:${perspective}px;transform-style:preserve-3d;`
+      : "";
+
+    const preview = `<div style="text-align:center;padding:20px;${wrapperStyle}">
+      <div style="
+        width:160px;height:160px;margin:20px auto;
+        background:linear-gradient(135deg,#3b82f6 0%,#8b5cf6 50%,#ec4899 100%);
+        border-radius:16px;
+        transform:${transformValue};
+        transform-origin:${ox} ${oy};
+        display:flex;align-items:center;justify-content:center;
+        box-shadow:0 4px 20px rgba(0,0,0,0.15);
+        transition:transform 0.15s ease;
+      ">
+        <span style="color:#fff;font-size:12px;font-weight:700;text-shadow:0 1px 2px rgba(0,0,0,0.3);text-align:center;line-height:1.3">3D<br>Transform</span>
+      </div>
+      <div style="font-size:11px;color:#6b7280;margin-top:8px">
+        ${rx !== 0 ? `rotateX(${rx}°) ` : ""}${ry !== 0 ? `rotateY(${ry}°) ` : ""}${rz !== 0 ? `rotateZ(${rz}°) ` : ""}
+        ${scale !== 1 ? `scale(${scale}) ` : ""}${tx !== 0 || ty !== 0 || tz !== 0 ? `translate3d(${tx}, ${ty}, ${tz}px)` : ""}
+        ${transformValue === "none" ? "default (no transform)" : ""}
+      </div>
+    </div>`;
+
+    return { output, preview };
+  }
+};

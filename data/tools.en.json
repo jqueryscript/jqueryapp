@@ -9870,5 +9870,329 @@
                          "Using data URIs for large SVGs  --  data URIs over 2-4KB increase CSS file size and delay rendering. For larger SVGs, use external files or inline SVGs in HTML."
                      ],
         "updatedAt":  "2026-06-09"
+    },
+    {
+        "id":  "css-gradient-generator",
+        "category":  "css",
+        "verificationSteps":  [
+                                  "Set gradient type to Linear, angle to 90°, and add three stops with distinct colors. Verify the preview shows a horizontal gradient and the CSS output starts with linear-gradient(90deg.",
+                                  "Switch to Radial gradient, set two stops, and toggle Repeating gradient on. Verify the CSS output begins with repeating-radial-gradient and the preview shows repeating concentric circles."
+                              ],
+        "quickAnswer":  "Build linear, radial, and conic CSS gradients visually with a live preview. Add up to three color stops with position percentages, adjust the angle, and toggle repeating mode. Copy the ready-to-use background CSS property directly.",
+        "faq":  [
+                    {
+                        "question":  "What is the difference between linear, radial, and conic gradients?",
+                        "answer":  "Linear gradients transition colors along a straight line defined by an angle (e.g., 135deg goes from top-left to bottom-right). Radial gradients spread outward from a center point in circular or elliptical shapes. Conic gradients rotate around a center point like a color wheel, with the angle controlling where the first color starts."
+                    },
+                    {
+                        "question":  "What does the repeating gradient option do?",
+                        "answer":  "A repeating gradient repeats the color stop pattern rather than filling the entire element. For example, repeating-linear-gradient(90deg, red, blue 20px) produces alternating 20px stripes. Use repeating gradients for patterns like stripes, checkerboards, and progress bars."
+                    },
+                    {
+                        "question":  "Can I use more than three color stops?",
+                        "answer":  "This tool supports up to three color stops because most common web gradients use two to three colors. For more complex gradients with four or more stops, you can copy the generated CSS and add additional stops manually by appending more color-position pairs separated by commas."
+                    }
+                ],
+        "useCases":  [
+                         "Design a modern hero section background with a diagonal blue-to-purple gradient at 135 degrees.",
+                         "Create a conic gradient for a pie chart or color wheel that rotates around a center point.",
+                         "Build a striped pattern background using repeating-linear-gradient with tight color stop positions."
+                     ],
+        "howToUse":  [
+                         "Select the gradient type: Linear (straight line), Radial (circular from center), or Conic (color wheel rotation).",
+                         "Set the angle to control gradient direction. For linear, 0deg is bottom-to-top. For conic, the angle sets the starting position of the first color.",
+                         "Pick two or three colors and set their position percentages. Positions control where each color peaks — 0% at the start, 100% at the end.",
+                         "Toggle repeating gradient for patterned output. Copy the CSS background property and paste it into your stylesheet."
+                     ],
+        "name":  "CSS Gradient Generator",
+        "description":  "Build linear, radial, and conic CSS gradients with a live preview that updates as you adjust colors, positions, and angle. Supports up to three color stops with position percentages and an optional repeating mode for pattern gradients. The tool outputs a ready-to-paste CSS background property with correct vendor-neutral syntax. No design software needed — the visual preview shows exactly what your gradient will look like before you copy the code.",
+        "limitations":  [
+                            "This tool supports three color stops for simplicity. Complex gradients with four or more stops need manual CSS editing after copying the base output.",
+                            "Radial gradients are generated in circular form only. Elliptical radial gradients and custom shape values (e.g., circle at top left) are not supported in the current controls.",
+                            "The tool does not generate vendor-prefixed CSS (-webkit-, -moz-). Modern browsers have supported unprefixed gradients since 2016-2017, but if you need very old browser support, add prefixes manually."
+                        ],
+        "summary":  "Visual builder for linear, radial, and conic CSS gradients with live preview. Adjust angle, color stops, and positions. Copy clean CSS.",
+        "whatIs":  "CSS Gradient Generator is a visual tool for creating CSS gradient backgrounds without memorizing syntax. You choose the gradient type (linear, radial, or conic), pick colors and their stop positions, and adjust the angle. A live preview shows the gradient in real time as you make changes. The tool outputs a clean CSS background property you can paste directly into your stylesheet or inline style attribute. All rendering happens in your browser — no design software or image editor required.",
+        "keywords":  [
+                         "css gradient generator",
+                         "linear gradient css",
+                         "radial gradient css",
+                         "conic gradient css",
+                         "css background gradient"
+                     ],
+        "examples":  [
+                         {
+                             "text":  "A frontend developer is styling a landing page hero section. They open the CSS Gradient Generator, select Linear at 135 degrees, and pick three brand colors: blue (#3b82f6) at 0%, purple (#8b5cf6) at 50%, and pink (#ec4899) at 100%. The live preview shows the diagonal gradient in real time, and they copy the background property directly into their hero selector.",
+                             "title":  "Landing page hero background"
+                         },
+                         {
+                             "text":  "A UI designer needs a subtle radial vignette behind a card component. They select Radial gradient, set a light blue at 0% position (center) transitioning to white at 100% (edges). The preview shows a soft spotlight effect. The CSS is copied into the card container\u0027s stylesheet with no further editing needed.",
+                             "title":  "Card vignette background"
+                         }
+                     ],
+        "mistakes":  [
+                         "Forgetting to set the background-color fallback — always add a solid background-color before the gradient for browsers that do not support gradients or while the CSS is loading.",
+                         "Using colors with low contrast between stops — the preview helps catch this, but verify the gradient still looks good when scaled to the actual element size.",
+                         "Setting all stops at the same position — this creates hard lines instead of smooth transitions. Space stops apart for gradual blends, or keep them close for sharp transitions."
+                     ],
+        "updatedAt":  "2026-06-11"
+    },
+    {
+        "id":  "css-filter-generator",
+        "category":  "css",
+        "verificationSteps":  [
+                                  "Set Blur to 3px and Grayscale to 50%. Verify the preview updates to show a blurred, desaturated effect and the CSS output contains blur(3px) grayscale(50%).",
+                                  "Paste a valid image URL (e.g., https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400) into the image URL field. Verify the image loads in the preview and the filters apply correctly to the image."
+                              ],
+        "quickAnswer":  "Apply CSS filters (blur, brightness, contrast, grayscale, hue-rotate, invert, saturate, sepia, opacity) to a preview element or uploaded image. Adjust each filter with sliders or number inputs and see the result instantly. Copy the CSS filter property when satisfied. All processing is local — images are not uploaded.",
+        "faq":  [
+                    {
+                        "question":  "Why is my image not loading in the preview?",
+                        "answer":  "The image URL must be publicly accessible and allow cross-origin requests. Many image hosting services (Unsplash, placeholder services, CDNs) work well. Local file paths (C:\\ or file://) will not work because browsers block local file access for security. Use a public HTTPS URL instead."
+                    }
+                ],
+        "useCases":  [
+                         "Preview CSS filter combinations on a gradient swatch before applying them to a website\u0027s image gallery hover effect.",
+                         "Test filter values on an uploaded product photo to determine the best settings for a grayscale-to-color card animation.",
+                         "Quickly generate a sepia-tone filter CSS for a vintage photo gallery section of a blog."
+                     ],
+        "howToUse":  [
+                         "Adjust the filter sliders — Blur, Brightness, Contrast, Grayscale, Hue-rotate, Invert, Saturate, Sepia, and Opacity. Each defaults to its neutral value.",
+                         "Watch the live preview update in real time as you change any slider. The preview shows the filter effect on a colorful gradient swatch.",
+                         "Optionally paste a public image URL to preview filters on a real photograph instead of the gradient swatch.",
+                         "Copy the CSS filter property from the output panel. Only non-default filter values appear in the output, keeping the CSS clean."
+                     ],
+        "name":  "CSS Filter Generator",
+        "description":  "Experiment with all nine CSS filter functions — blur, brightness, contrast, grayscale, hue-rotate, invert, saturate, sepia, and opacity — using a visual editor with real-time preview. Each filter has a number input that starts at its neutral default, so the output CSS only includes the filters you actually change. The preview defaults to a colorful gradient swatch, with an optional image URL field for testing on real photographs. All rendering happens locally in your browser using the CSS filter property.",
+        "limitations":  [
+                            "The drop-shadow filter function is not included in this generator. For shadow effects, use the CSS Box Shadow Builder or CSS Text Shadow Generator available separately on this site.",
+                            "The preview uses the CSS filter property, which applies to the entire element including its children. You cannot apply filters to only a background image with CSS alone — use backdrop-filter for behind-element effects.",
+                            "Image preview requires a publicly accessible HTTPS URL. Local file paths, file:// URIs, and authentication-protected images will not load due to browser security restrictions."
+                        ],
+        "summary":  "Visual CSS filter editor with nine filter functions and live preview. Test on gradient swatch or optional image URL. Copy clean CSS output.",
+        "whatIs":  "CSS Filter Generator is a visual playground for the CSS filter property, which applies graphical effects like blur, color shifting, and brightness adjustments to any HTML element. Instead of typing filter: blur(3px) grayscale(50%) by hand, you adjust sliders for each of the nine filter functions and see the result instantly. The tool is useful for designing image hover effects, creating grayscale-to-color transitions, building vintage photo styles, and previewing filters before adding them to a production stylesheet.",
+        "keywords":  [
+                         "css filter generator",
+                         "css filter effects",
+                         "blur css",
+                         "grayscale filter css",
+                         "css image filter"
+                     ],
+        "examples":  [
+                         {
+                             "text":  "A developer wants to create a grayscale-to-color hover effect for a team photo grid. They open the CSS Filter Generator, set Grayscale to 100% for the default state, then plan a hover rule with Grayscale 0%. The preview confirms the desaturated look, and they copy the filter value into their CSS alongside a transition: filter 0.3s ease rule.",
+                             "title":  "Team photo hover effect"
+                         },
+                         {
+                             "text":  "A blogger pastes an Unsplash image URL into the generator and adjusts Brightness to 115%, Contrast to 110%, and Saturate to 120%. The subtle boost makes the image more vivid. They note the filter values and apply them to the blog\u0027s article hero images via a CSS class.",
+                             "title":  "Blog image enhancement"
+                         }
+                     ],
+        "mistakes":  [
+                         "Applying grayscale and saturate together without understanding order — CSS filters are applied in the order they appear in the property value. grayscale(100%) saturate(0%) produces a different result than saturate(0%) grayscale(100%).",
+                         "Using large blur values on full-width images — blur(20px) on a 1920px-wide hero image forces the GPU to calculate a large kernel and can cause frame drops on mobile devices.",
+                         "Setting brightness to 0% and expecting to restore it — brightness(0%) makes an element completely black. To darken without losing detail, use values between 40% and 80% instead."
+                     ],
+        "updatedAt":  "2026-06-11"
+    },
+    {
+        "id":  "css-text-shadow-generator",
+        "category":  "css",
+        "verificationSteps":  [
+                                  "Select the Neon Glow preset. Verify the preview text shows a glowing cyan effect and the output contains three text-shadow layers with blue (#0ea5e9) colors.",
+                                  "Switch to Custom, set Layer 1 to X:3 Y:3 Blur:0 Color:rgba(0,0,0,0.2), and verify the output contains only one shadow: 3px 3px 0px rgba(0,0,0,0.2)."
+                              ],
+        "quickAnswer":  "Design multi-layer CSS text shadows with presets for neon glow, warm glow, long shadow, outline text, and retro 3D. Adjust shadow offset, blur, and color for up to three custom layers. See the result on live preview text that you can customize. Copy the clean text-shadow CSS property.",
+        "faq":  [
+                    {
+                        "question":  "How do I create a neon text effect with CSS text-shadow?",
+                        "answer":  "Neon text uses multiple shadow layers with the same color at increasing blur radii. Start with the Neon Glow preset, which uses three layers: a tight white inner glow (0px 0px 4px #fff), a medium-colored glow (0px 0px 8px #0ea5e9), and a wide outer glow (0px 0px 16px #0ea5e9). Stack more layers with larger blur values for a stronger neon effect."
+                    },
+                    {
+                        "question":  "Can I animate text shadows for a pulsing glow effect?",
+                        "answer":  "Yes. Text shadows can be animated with CSS @keyframes. After generating the base text-shadow value here, wrap it in a @keyframes rule that alternates between the normal shadow and a version with larger blur and brighter colors. Apply the animation to your text element with animation: pulse-glow 2s ease-in-out infinite."
+                    },
+                    {
+                        "question":  "Why do my text shadows look different on different browsers?",
+                        "answer":  "Text-shadow rendering is consistent across modern browsers, but subtle differences can appear with very large blur values (above 20px) or when combining many shadow layers (5+). For maximum consistency, test on Chrome, Firefox, and Safari, and keep blur radii reasonable."
+                    }
+                ],
+        "useCases":  [
+                         "Create a neon sign effect for a landing page heading using the Neon Glow preset with customized colors matching the brand palette.",
+                         "Build a clean outline text effect for overlay text on hero images using the Outline preset, ensuring readability against varied photo backgrounds.",
+                         "Design a retro 3D heading for a vintage-themed blog using the Retro 3D preset with warm, saturated colors."
+                     ],
+        "howToUse":  [
+                         "Choose a preset for a quick starting point: Neon Glow, Warm Glow, Long Shadow, Outline Text, or Retro 3D. Or select Custom to build your own from scratch.",
+                         "For Custom mode, configure up to three shadow layers. Each layer has X and Y offset (in pixels), blur radius, and a color picker.",
+                         "Customize the preview text and font size to see how the shadow effect reads with your actual content.",
+                         "Copy the text-shadow CSS property from the output panel. The value includes all layers separated by commas, ready for your stylesheet."
+                     ],
+        "name":  "CSS Text Shadow Generator",
+        "description":  "Design multi-layer CSS text shadows with five curated presets and a custom mode for fine-tuning. Presets include Neon Glow (cyan luminous effect), Warm Glow (amber light), Long Shadow (flat design extrusion), Outline Text (readable overlay text), and Retro 3D (vibrant stacked colors). Custom mode lets you configure up to three shadow layers with independent X/Y offset, blur radius, and color. A live preview shows the shadow on customizable sample text so you can evaluate readability at actual font sizes before copying the text-shadow CSS.",
+        "limitations":  [
+                            "Custom mode supports up to three shadow layers. For more complex effects requiring four or more layers, copy the generated CSS and manually add additional comma-separated shadow values.",
+                            "The live preview uses a single font size and text string. Shadow appearance changes with font weight, letter spacing, and typeface — test the output with your actual typography before finalizing.",
+                            "Text shadows cannot be inset (unlike box-shadow). For an engraved or debossed effect, use light-colored shadows offset upward (negative Y) combined with dark shadows offset downward."
+                        ],
+        "summary":  "Build multi-layer CSS text shadows with neon, glow, 3D, and outline presets. Customize text, size, and up to three layers. Live preview.",
+        "whatIs":  "CSS Text Shadow Generator is a visual tool for creating the CSS text-shadow property, which adds one or more colored shadows behind text characters. Unlike box-shadow, text-shadow supports multiple comma-separated layers that stack from front to back, enabling effects like neon glows, 3D extrusions, and outline text. The tool provides five presets for common effects and a custom mode where you configure each layer\u0027s offset, blur, and color. A live preview shows the result on editable sample text.",
+        "keywords":  [
+                         "text shadow generator",
+                         "css text shadow",
+                         "neon text css",
+                         "text shadow effect",
+                         "css text effects"
+                     ],
+        "examples":  [
+                         {
+                             "text":  "A designer is creating a dark-mode landing page with a hero heading that needs a neon glow effect. They open the Text Shadow Generator, select the Neon Glow preset, change the glow color from cyan to the brand\u0027s orange (#f97316), and type the actual heading text. The live preview confirms the neon effect, and they copy the three-layer text-shadow value into their heading selector.",
+                             "title":  "Dark mode neon heading"
+                         },
+                         {
+                             "text":  "A blogger wants their article title to have a subtle outline for readability over varied hero images. They select the Outline preset, which creates a crisp four-directional outline. They keep the black shadow color and set the preview text to their actual title. The effect ensures the white title text remains readable against light and dark photo backgrounds.",
+                             "title":  "Hero image outline text"
+                         }
+                     ],
+        "mistakes":  [
+                         "Using too many heavy blur layers on small text — text-shadow blur at 8px on 14px body text makes the text unreadable. For small text, keep blur under 3px.",
+                         "Choosing shadow colors that match the background — a dark text shadow on a dark background is invisible. Test on both light and dark backgrounds if the page supports dark mode.",
+                         "Forgetting that text-shadow layers paint back-to-front — the first shadow in the comma-separated list is the topmost layer. Layer order matters for effects like 3D extrusion where each layer builds on the previous one."
+                     ],
+        "updatedAt":  "2026-06-11"
+    },
+    {
+        "id":  "css-animation-keyframes-generator",
+        "category":  "css",
+        "verificationSteps":  [
+                                  "Select the Fade In preset. Verify the output includes a @keyframes fadeIn rule with from { opacity: 0 } to { opacity: 1 }, plus a .element selector with the animation shorthand.",
+                                  "Select the Spin preset and set iteration count to infinite. Verify the output uses animation: spin 1.5s linear 0s infinite normal and the preview shows a rotating element with a Replay button."
+                              ],
+        "quickAnswer":  "Choose from nine animation presets — fade, slide, scale, spin, pulse, bounce, and shake — and customize duration, easing, delay, iteration count, direction, and fill mode. Get a complete @keyframes rule plus the animation shorthand CSS. A live preview shows the animation in action with a replay button.",
+        "faq":  [
+                    {
+                        "question":  "What is the difference between ease, ease-in, ease-out, and linear?",
+                        "answer":  "ease (the default) starts slow, speeds up in the middle, and slows down at the end. ease-in starts slow and accelerates. ease-out starts fast and decelerates. linear maintains a constant speed throughout. For UI transitions, ease-out feels responsive. For looping animations like spin, linear prevents unnatural speed changes."
+                    },
+                    {
+                        "question":  "When should I use animation-fill-mode: forwards?",
+                        "answer":  "Use forwards when you want the animated element to keep its final keyframe state after the animation ends. For example, a fade-in animation should leave the element at opacity: 1. Without forwards, the element would snap back to opacity: 0. For looping animations (infinite), fill mode is usually unnecessary."
+                    },
+                    {
+                        "question":  "Can I combine multiple animations on the same element?",
+                        "answer":  "Yes, CSS supports multiple comma-separated animations on one element. For example, animation: fadeIn 0.6s ease, pulse 1.2s ease-in-out 0.6s infinite. After generating individual animations here, combine them manually in your CSS by separating each animation shorthand with a comma."
+                    }
+                ],
+        "useCases":  [
+                         "Generate a fade-in animation for a modal or dialog that appears on click, using fadeIn with ease-out and fill-mode forwards.",
+                         "Create a continuous spin animation for a loading spinner icon using the Spin preset with linear easing and infinite iteration.",
+                         "Build an attention-grabbing pulse animation for a call-to-action button using the Pulse preset and infinite iteration."
+                     ],
+        "howToUse":  [
+                         "Select an animation preset from the dropdown: Fade In/Out, Slide Down/Up, Scale In, Spin, Pulse, Bounce, or Shake.",
+                         "Customize the animation parameters: duration in seconds, easing function, delay before starting, iteration count (1, 2, 3, or infinite), direction, and fill mode.",
+                         "Edit the animation name to match your CSS naming conventions if needed.",
+                         "Watch the live preview animate. Click the Replay button to restart the animation and verify timing.",
+                         "Copy the complete output — @keyframes rule plus .element selector with the animation shorthand — into your stylesheet."
+                     ],
+        "name":  "CSS Animation Keyframes Generator",
+        "description":  "Generate ready-to-use CSS @keyframes animations with nine preset motion patterns. Choose from fade, slide, scale, spin, pulse, bounce, and shake presets, then customize duration, easing, delay, iteration count, direction, and fill mode. The tool outputs a complete @keyframes rule with the animation shorthand property. A live preview shows the animation in real time with a replay button so you can review timing before copying the code. The animation name is editable, letting you match your project\u0027s naming conventions.",
+        "limitations":  [
+                            "The @keyframes rule uses from/to syntax for simple two-state animations and percentage stops for multi-state presets. Custom keyframe percentages (e.g., 25%, 75%) must be added manually after copying the base output.",
+                            "The tool generates a single animation at a time. For elements with multiple simultaneous animations (e.g., fade in while sliding up), generate each animation separately and combine them in your CSS with comma-separated animation values.",
+                            "The live preview uses a static preview element. Animation behavior differs across browsers for certain properties like filter and box-shadow — test across Chrome, Firefox, and Safari before deploying."
+                        ],
+        "summary":  "Nine animation presets (fade, slide, scale, spin, pulse, bounce, shake) with customizable duration, easing, and iteration. Live preview with replay.",
+        "whatIs":  "CSS Animation Keyframes Generator creates complete CSS @keyframes rules and animation shorthand properties from preset motion patterns. CSS animations let you animate element properties (opacity, transform, etc.) over time without JavaScript. Each animation requires a @keyframes rule that defines the start and end states, plus an animation property on the target element that specifies duration, easing, and other timing parameters. This tool generates both parts simultaneously and shows a live preview so you can see the animation before using it in your project.",
+        "keywords":  [
+                         "css animation generator",
+                         "keyframes generator",
+                         "css keyframes",
+                         "animation css",
+                         "css animation presets"
+                     ],
+        "examples":  [
+                         {
+                             "text":  "A developer is building a toast notification system. They select the Slide Down preset, set duration to 0.4s with ease-out easing and fill-mode to forwards. The generated @keyframes slides the toast from translateY(-20px) to its natural position. They copy the CSS into their .toast-enter class.",
+                             "title":  "Toast notification enter animation"
+                         },
+                         {
+                             "text":  "A UI designer needs a loading spinner for a dashboard widget. They select the Spin preset, set duration to 1.2s with linear easing and infinite iteration. The output produces a continuous rotation. They apply it to an SVG icon inside the dashboard\u0027s loading state container.",
+                             "title":  "Dashboard loading spinner"
+                         }
+                     ],
+        "mistakes":  [
+                         "Using animation instead of transition for simple hover effects — animations are for autonomous or repeated motion. For hover-triggered property changes, use transition instead, which is simpler and more performant.",
+                         "Setting a long delay without fill-mode: backwards — during the delay period, the element shows its default style. Use backwards fill mode to show the first keyframe style during the delay.",
+                         "Forgetting to test animation performance on mobile — transform and opacity animations are GPU-accelerated and perform well. Animating width, height, or box-shadow triggers layout recalculations and can cause jank on mobile devices."
+                     ],
+        "updatedAt":  "2026-06-11"
+    },
+    {
+        "id":  "css-transform-3d-generator",
+        "category":  "css",
+        "verificationSteps":  [
+                                  "Set rotateY to 30deg and rotateX to -15deg. Verify the preview shows a tilted card with a 3D perspective effect and the CSS output includes rotateY(30deg) rotateX(-15deg).",
+                                  "Set perspective to 300px and rotateY to 45deg. Verify the 3D effect is more dramatic with the smaller perspective value (closer to the viewer)."
+                              ],
+        "quickAnswer":  "Visually build CSS 3D transforms by adjusting rotateX, rotateY, rotateZ, scale, translate3d, perspective, and transform-origin. See the result on a live preview card that updates in real time. Copy the complete CSS transform property with all values combined in the correct order.",
+        "faq":  [
+                    {
+                        "question":  "What is the difference between perspective and transform: perspective()?",
+                        "answer":  "perspective (applied to the parent) creates a shared 3D space where all children share the same vanishing point. transform: perspective() (applied to the element itself) gives each element its own perspective. Use parent perspective when you want multiple 3D elements to share the same viewpoint, like a card flip grid. Use the transform function for standalone 3D effects."
+                    },
+                    {
+                        "question":  "Why does my 3D transformed element look flat?",
+                        "answer":  "For nested 3D transforms to work, the parent must have transform-style: preserve-3d. Without it, children flatten into the parent\u0027s 2D plane. The Preserve 3D checkbox in this tool toggles that property. Also, perspective must be on a parent element, not the transformed element itself — the tool handles this correctly."
+                    },
+                    {
+                        "question":  "Do 3D CSS transforms work on all browsers?",
+                        "answer":  "3D transforms are supported in all modern browsers (Chrome 36+, Firefox 49+, Safari 9+, Edge 12+). However, Safari has occasional rendering bugs with nested preserve-3d and overflow: hidden combinations. Test complex 3D layouts across browsers."
+                    }
+                ],
+        "useCases":  [
+                         "Create a subtle card tilt effect where a card lifts and tilts toward the cursor on hover by adjusting rotateX and rotateY based on mouse position.",
+                         "Build a 3D flip animation for a pricing card that reveals details on the back by combining rotateY with a CSS transition.",
+                         "Design a hero section with a perspective-warped decorative element using translateZ to create depth layering."
+                     ],
+        "howToUse":  [
+                         "Adjust rotateX, rotateY, and rotateZ sliders to tilt the preview card in 3D space. rotateX tilts forward/backward, rotateY tilts left/right, rotateZ spins in the 2D plane.",
+                         "Set the perspective value — smaller values (200-400px) create stronger 3D effects, larger values (800-2000px) create subtler depth.",
+                         "Adjust translateX, translateY, and translateZ to reposition the element. translateZ moves it toward or away from the viewer along the depth axis.",
+                         "Scale the element if needed and set the transform-origin point to control where the rotation pivot is located.",
+                         "Toggle Preserve 3D when you plan to nest additional 3D elements inside the transformed container. Copy the CSS output to your stylesheet."
+                     ],
+        "name":  "CSS 3D Transform Generator",
+        "description":  "Build CSS 3D transforms with a visual editor that lets you adjust rotateX, rotateY, rotateZ, scale, translate3d, perspective, and transform-origin through sliders and number inputs. A live preview card shows the 3D effect in real time as you make adjustments. The tool outputs a complete CSS transform property with values in the recommended order (scale, rotate, translate). An optional Preserve 3D toggle adds perspective and transform-style for nested 3D scenes. Useful for card tilt effects, 3D flips, parallax layers, and depth-based UI interactions.",
+        "limitations":  [
+                            "This tool generates a single-element 3D transform. For complex 3D scenes with multiple nested elements at different depths, you need to layer multiple transforms manually in your CSS.",
+                            "The preview uses a static 2D card element. true 3D effects like cube faces, flip cards with backface-visibility, and multi-sided objects require additional CSS properties (backface-visibility, transform-style) that must be added manually.",
+                            "3D transforms are GPU-accelerated but can cause rendering artifacts on Safari when combined with border-radius, overflow: hidden, or certain blend modes. Test complex combinations across browsers."
+                        ],
+        "summary":  "Visual 3D CSS transform builder with rotate, translate, scale, perspective, and origin controls. Live preview card shows depth in real time.",
+        "whatIs":  "CSS 3D Transform Generator is a visual tool for creating three-dimensional CSS transforms without manually typing transform functions. CSS 3D transforms let you rotate, move, and scale elements in 3D space using functions like rotateX(), rotateY(), translateZ(), and perspective(). The tool provides sliders for each axis and a live preview card that shows the 3D effect as you adjust values. It outputs the complete transform property with all functions combined in the correct order, plus optional perspective and transform-style properties for creating 3D scenes.",
+        "keywords":  [
+                         "css 3d transform",
+                         "transform generator",
+                         "css perspective",
+                         "3d css",
+                         "css rotate"
+                     ],
+        "examples":  [
+                         {
+                             "text":  "A frontend developer is building a card UI that tilts on hover toward the cursor position. They use the 3D Transform Generator to test rotateY at 25deg and rotateX at -10deg. The preview card shows a rightward tilt with a slight upward lean. They copy the transform and use JavaScript to interpolate the rotation values based on mouse position relative to the card center.",
+                             "title":  "Mouse-tracking card tilt"
+                         },
+                         {
+                             "text":  "A designer is creating a pricing page with a featured plan that appears to float above the others. They set translateZ to 30px with perspective 800px and add a subtle box-shadow. The preview shows the card elevated in 3D space. They apply the transform to the featured pricing card for a standout effect.",
+                             "title":  "Featured pricing card elevation"
+                         }
+                     ],
+        "mistakes":  [
+                         "Setting perspective on the transformed element instead of its parent — perspective belongs on the parent container to create a shared 3D viewing space. Applying it directly to the element via transform: perspective() produces correct but isolated depth.",
+                         "Using translateZ without setting a perspective — without perspective on a parent element, translateZ values have no visual effect. The depth axis is collapsed. Always pair translateZ with perspective.",
+                         "Rotating an element beyond 90 degrees without backface-visibility: hidden — when an element rotates past 90deg, its back face becomes visible (shown mirrored). Set backface-visibility: hidden to hide the element at angles beyond 90deg."
+                     ],
+        "updatedAt":  "2026-06-11"
     }
 ]

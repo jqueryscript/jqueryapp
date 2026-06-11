@@ -1,0 +1,126 @@
+import { field, select, htmlEscape } from "../tool-core.js";
+
+const PRESETS = {
+  neon: [
+    { ox: "0", oy: "0", blur: "4", color: "#fff" },
+    { ox: "0", oy: "0", blur: "8", color: "#0ea5e9" },
+    { ox: "0", oy: "0", blur: "16", color: "#0ea5e9" },
+  ],
+  glow: [
+    { ox: "0", oy: "0", blur: "6", color: "rgba(255,255,255,0.9)" },
+    { ox: "0", oy: "0", blur: "12", color: "#f59e0b" },
+    { ox: "0", oy: "2", blur: "24", color: "#f59e0b" },
+  ],
+  longshadow: [
+    { ox: "1", oy: "1", blur: "0", color: "#d1d5db" },
+    { ox: "2", oy: "2", blur: "0", color: "#d1d5db" },
+    { ox: "3", oy: "3", blur: "0", color: "#d1d5db" },
+    { ox: "4", oy: "4", blur: "0", color: "#d1d5db" },
+    { ox: "5", oy: "5", blur: "0", color: "#cbd5e1" },
+    { ox: "6", oy: "6", blur: "0", color: "#cbd5e1" },
+  ],
+  outline: [
+    { ox: "-1", oy: "-1", blur: "0", color: "#000" },
+    { ox: "1", oy: "-1", blur: "0", color: "#000" },
+    { ox: "-1", oy: "1", blur: "0", color: "#000" },
+    { ox: "1", oy: "1", blur: "0", color: "#000" },
+    { ox: "0", oy: "0", blur: "2", color: "#000" },
+  ],
+  retro: [
+    { ox: "2", oy: "2", blur: "0", color: "#ff6b6b" },
+    { ox: "4", oy: "4", blur: "0", color: "#feca57" },
+    { ox: "6", oy: "6", blur: "0", color: "#48dbfb" },
+  ],
+};
+
+export default {
+  form: `
+    <div class="field-grid">
+      ${select({ id: "spreset", label: "Preset", options: [
+        {label:"Custom (use layers below)",value:"custom"},
+        {label:"Neon glow",value:"neon"},
+        {label:"Warm glow",value:"glow"},
+        {label:"Long shadow",value:"longshadow"},
+        {label:"Outline text",value:"outline"},
+        {label:"Retro 3D",value:"retro"},
+      ], value: "custom" })}
+      ${field({ id: "stext", label: "Preview text", value: "Shadow Play" })}
+    </div>
+    <div class="field-grid">
+      ${field({ id: "stextSize", label: "Font size (px)", value: "48", type: "number", attrs: "min=16 max=120 step=1" })}
+      ${field({ id: "stextColor", label: "Text color", value: "#111827", type: "color" })}
+    </div>
+    <fieldset style="border:1px solid #e5e7eb;border-radius:8px;padding:12px;margin:8px 0">
+      <legend style="font-size:12px;font-weight:600;color:#6b7280">Layer 1</legend>
+      <div class="field-grid">
+        ${field({ id: "sox1", label: "X (px)", value: "2", type: "number", attrs: "step=1" })}
+        ${field({ id: "soy1", label: "Y (px)", value: "2", type: "number", attrs: "step=1" })}
+      </div>
+      <div class="field-grid">
+        ${field({ id: "sbl1", label: "Blur (px)", value: "4", type: "number", attrs: "min=0 step=1" })}
+        ${field({ id: "sco1", label: "Color", value: "rgba(0,0,0,0.3)", type: "color" })}
+      </div>
+    </fieldset>
+    <fieldset style="border:1px solid #e5e7eb;border-radius:8px;padding:12px;margin:8px 0">
+      <legend style="font-size:12px;font-weight:600;color:#6b7280">Layer 2</legend>
+      <div class="field-grid">
+        ${field({ id: "sox2", label: "X (px)", value: "0", type: "number", attrs: "step=1" })}
+        ${field({ id: "soy2", label: "Y (px)", value: "0", type: "number", attrs: "step=1" })}
+      </div>
+      <div class="field-grid">
+        ${field({ id: "sbl2", label: "Blur (px)", value: "0", type: "number", attrs: "min=0 step=1" })}
+        ${field({ id: "sco2", label: "Color", value: "#000000", type: "color" })}
+      </div>
+    </fieldset>
+    <fieldset style="border:1px solid #e5e7eb;border-radius:8px;padding:12px;margin:8px 0">
+      <legend style="font-size:12px;font-weight:600;color:#6b7280">Layer 3</legend>
+      <div class="field-grid">
+        ${field({ id: "sox3", label: "X (px)", value: "0", type: "number", attrs: "step=1" })}
+        ${field({ id: "soy3", label: "Y (px)", value: "0", type: "number", attrs: "step=1" })}
+      </div>
+      <div class="field-grid">
+        ${field({ id: "sbl3", label: "Blur (px)", value: "0", type: "number", attrs: "min=0 step=1" })}
+        ${field({ id: "sco3", label: "Color", value: "#000000", type: "color" })}
+      </div>
+    </fieldset>`,
+  generate(root) {
+    const preset = root.querySelector("#spreset").value;
+    const text = root.querySelector("#stext").value || "Shadow Play";
+    const textSize = parseInt(root.querySelector("#stextSize").value) || 48;
+    const textColor = root.querySelector("#stextColor").value || "#111827";
+
+    let layers;
+    if (preset && preset !== "custom" && PRESETS[preset]) {
+      layers = PRESETS[preset];
+    } else {
+      layers = [];
+      for (let i = 1; i <= 3; i++) {
+        const ox = root.querySelector(`#sox${i}`).value || "0";
+        const oy = root.querySelector(`#soy${i}`).value || "0";
+        const blur = root.querySelector(`#sbl${i}`).value || "0";
+        const color = root.querySelector(`#sco${i}`).value || "transparent";
+        if (color && color !== "transparent" && color !== "#000000") {
+          layers.push({ ox, oy, blur, color });
+        } else if (color && color !== "transparent" && (ox !== "0" || oy !== "0" || blur !== "0")) {
+          layers.push({ ox, oy, blur, color });
+        }
+      }
+    }
+
+    const shadowParts = layers.map(l => `${l.ox}px ${l.oy}px ${l.blur}px ${l.color}`);
+    const shadowValue = shadowParts.length ? shadowParts.join(", ") : "none";
+    const output = shadowValue === "none"
+      ? "/* No shadow layers configured. Choose a preset or set layer colors. */"
+      : `text-shadow: ${shadowValue};`;
+
+    const presetLabel = preset !== "custom" ? ` · ${preset}` : "";
+    const preview = `<div style="text-align:center;padding:20px">
+      <div style="font-size:${textSize}px;font-weight:700;color:${textColor};text-shadow:${shadowValue};font-family:system-ui,sans-serif;word-break:break-word;line-height:1.3">
+        ${htmlEscape(text)}
+      </div>
+      <div style="margin-top:12px;font-size:11px;color:#6b7280">${shadowParts.length} layer${shadowParts.length !== 1 ? "s" : ""}${presetLabel}</div>
+    </div>`;
+
+    return { output, preview };
+  }
+};

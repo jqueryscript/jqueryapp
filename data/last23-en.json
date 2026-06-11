@@ -1,0 +1,1587 @@
+[
+  {
+    "id": "css-progress-function-calculator",
+    "name": "CSS progress() Function Calculator",
+    "category": "css",
+    "summary": "Calculate CSS progress() function values that map an input value from one range to a 0-1 progress value for scroll-driven animations and value mapping.",
+    "description": "Build CSS progress() function expressions that map a value from any input range to a 0-1 progress output. Use it to drive opacity, scale, color-mix mixing percentages, transform, or any CSS property that accepts a number or percentage. Handles scroll-position offsets, viewport dimensions, and custom property values as input. Outputs ready-to-use CSS with the generated progress() expression and optional clamp() wrapping for bounded results.",
+    "keywords": [
+      "css progress function",
+      "scroll-driven animations",
+      "css value mapping",
+      "progress calculator",
+      "css animation timeline"
+    ],
+    "whatIs": "The CSS progress() function is a mathematical mapping function (Chrome 138+) that converts an input value from one numeric range into a 0-1 progress value. For example, progress(scroll-position from 0 to 500) returns 0 when the scroll position is 0, 1 when it reaches 500, and 0.5 at 250. This progress value can drive any numeric CSS property, eliminating complex calc() chains for scroll-linked effects, viewport-relative sizing, and custom property interpolation.",
+    "howToUse": [
+      "Enter the input source and its range 鈥?choose from scroll-position, viewport width/height, viewport inline/block size, or a custom CSS property with its minimum and maximum values.",
+      "Set the target CSS property you want to drive and its value at progress 0 and progress 1 鈥?for example opacity 0 to 1, or scale 0.5 to 1.5.",
+      "Optionally enable clamp() wrapping to keep the result bounded within the output range even when the input exceeds the defined range.",
+      "Copy the generated CSS and add it to your stylesheet. The output includes both the progress() rule and the full property declaration."
+    ],
+    "useCases": [
+      "Drive a sticky header's opacity from fully transparent to opaque as the user scrolls from 0 to 200 pixels down the page.",
+      "Scale a hero image from 1 to 1.2 as the viewport width grows from 320px to 1920px, creating a subtle zoom effect on wider screens.",
+      "Control a color-mix() mixing percentage to transition from one color to another based on how far through a section the user has scrolled."
+    ],
+    "examples": [
+      {
+        "title": "Fade-in on scroll with progress()",
+        "text": "A hero section should fade in as the user scrolls the first 300 pixels. Use progress(scroll-position from 0 to 300) mapped to opacity: the element is fully transparent at the top of the page (progress=0) and fully opaque after 300px of scroll (progress=1). No IntersectionObserver or scroll event listener needed."
+      },
+      {
+        "title": "Responsive card scale by viewport",
+        "text": "A card grid should scale each card from 0.9 at 320px viewport width to 1.1 at 1440px. Use progress(100vw from 320 to 1440) as the input with scale as the target property. The cards subtly grow as the viewport widens, creating a responsive grid without media queries."
+      }
+    ],
+    "mistakes": [
+      "Using progress() without realizing it returns a raw 0-1 value 鈥?most properties need an additional calc() or scaling to convert progress into the desired output range, but the tool handles this mapping for you.",
+      "Forgetting that scroll-position is relative to the document scroll position by default 鈥?for an element's scroll container, use progress(self-scroll-position from 0 to N) instead.",
+      "Assuming progress() works in all CSS properties 鈥?it works in any property that accepts a number or percentage, but does not work in color functions like rgb() directly (use color-mix() instead)."
+    ],
+    "faq": [
+      {
+        "question": "How is progress() different from scroll-driven animation timelines with view-timeline?",
+        "answer": "progress() is a pure mathematical function that maps one numeric range to 0-1 鈥?it has no link to animation timelines, keyframes, or animation-range. Use progress() for declarative value mapping in any CSS property without creating a scroll-timeline. Use view-timeline and animation-range when you need full keyframe-based scroll-driven animations with multiple steps, easing, and direction control."
+      },
+      {
+        "question": "What happens when the input value is outside the defined range?",
+        "answer": "progress() returns values outside 0-1 when the input is outside the from-to range. For example, progress(x from 0 to 100) returns 1.5 when x=150. Wrap the result in clamp(0, ..., 1) to bound the output. This tool includes an optional clamp() wrapping toggle to handle this automatically."
+      },
+      {
+        "question": "Can progress() reference custom properties as input?",
+        "answer": "Yes. You can use any CSS custom property as the input value, such as progress(--scroll-offset from 0 to 500). This is useful when you want to drive a value based on JavaScript-set custom properties or when chaining multiple progress() calculations together through intermediate custom properties."
+      }
+    ],
+    "quickAnswer": "Use CSS progress(input from min to max) to map any numeric value to a 0-1 progress range. Drive opacity, scale, transform, color-mix percentages, or any number-accepting CSS property based on scroll position, viewport dimensions, or custom properties. Chrome 138+. Wrap in clamp(0, ..., 1) to bound the output.",
+    "limitations": [
+      "progress() requires Chrome 138+. Firefox, Safari, and older Chrome versions do not support it. Use scroll-driven animation keyframes or JavaScript-based scroll listeners as fallbacks for cross-browser support.",
+      "The function only works with numeric CSS properties. It cannot directly drive color stops, gradient angles, or shape functions. For color transitions, combine progress() with color-mix() using the progress value as the mixing percentage.",
+      "scroll-position in progress() measures the document scroll position by default, not an element's scroll container. Use self-scroll-position for a specific scroll container, but ensure the container is scrollable and has a defined scroll range."
+    ],
+    "verificationSteps": [
+      "Inspect the element in DevTools and confirm the computed value of the target property matches the expected value at known input positions (e.g., scroll exactly 200px and check opacity is 0.5 for a 0-to-400 range).",
+      "Test the edge cases: verify the property value at the minimum and maximum input range boundaries, and test with an input value beyond the range to confirm clamp() behavior if wrapping is enabled."
+    ],
+    "updatedAt": "2026-05-30",
+    "tags": [
+      "animations"
+    ]
+  },
+  {
+    "id": "css-stretch-sizing-generator",
+    "name": "CSS Stretch Sizing Generator",
+    "category": "css",
+    "summary": "Generate CSS using the stretch keyword for fill-available sizing in block, flex, grid, and absolutely positioned layouts.",
+    "description": "Set width or height to the stretch keyword for standardized fill-available sizing. Select your layout context 鈥?block, flex item, grid item, or absolutely positioned 鈥?and the axis you want to stretch. The output includes the correct CSS declaration and layout-specific notes about how stretch behaves differently from width: 100% in each context. Replaces vendor-prefixed -webkit-fill-available and -moz-available with a single standard keyword.",
+    "keywords": [
+      "css stretch keyword",
+      "fill-available sizing",
+      "css width stretch",
+      "webkit-fill-available replacement",
+      "css intrinsic sizing"
+    ],
+    "whatIs": "The CSS stretch keyword (Chrome 138+) is the standard value for fill-available sizing, replacing the vendor-prefixed -webkit-fill-available and -moz-available keywords. When you set width: stretch, the element sizes to fill the available space using margin-box sizing 鈥?meaning the element's margin-box fits inside the containing block. This differs from width: 100% which uses content-box sizing and often overflows when padding, border, or margin are present. stretch works in block, flex, grid, and absolutely positioned layout contexts.",
+    "howToUse": [
+      "Select your layout context 鈥?the behavior of stretch differs slightly between block, flex, grid, and absolutely positioned elements.",
+      "Choose the axis you want to stretch (width, height, or both via inset: 0 for abspos).",
+      "Review the layout-specific note explaining how stretch interacts with margins, padding, and the containing block in your chosen context.",
+      "Copy the generated CSS and replace any existing width: 100% patterns or vendor-prefixed fill-available declarations."
+    ],
+    "useCases": [
+      "Replace width: 100% on an input or select element that overflows its parent due to padding and border 鈥?stretch uses margin-box sizing so the total box fits inside the container.",
+      "Standardize cross-browser fill-available sizing by replacing -webkit-fill-available and -moz-available with the standard stretch keyword.",
+      "Make an absolutely positioned element stretch to the edges of its positioned ancestor without explicit top/right/bottom/left values."
+    ],
+    "examples": [
+      {
+        "title": "Full-width input without overflow",
+        "text": "A search form has an input with padding: 8px 12px and border: 2px. Using width: 100% causes the input to overflow its container by 28px on each side. Changing to width: stretch makes the margin-box fit inside the container, keeping the input flush with the form boundaries."
+      },
+      {
+        "title": "Migrate from vendor-prefixed fill-available",
+        "text": "A legacy stylesheet uses width: -webkit-fill-available with a -moz-available fallback. Replace both with width: stretch 鈥?the standard keyword works the same way and is supported in Chrome 138+, Firefox 130+, and Safari 18.2+. The fallback declarations can remain for older browser versions."
+      }
+    ],
+    "mistakes": [
+      "Expecting stretch to behave identically to width: 100% in block layout 鈥?100% uses content-box sizing and ignores padding/border on the element itself, while stretch uses margin-box sizing. In most cases, stretch is the desired behavior for inputs and form elements.",
+      "Using stretch on a flex item when the flex container has align-items: stretch 鈥?the stretch keyword on the item overrides the container's stretch alignment, which may produce unexpected sizing.",
+      "Assuming stretch works in inline layout contexts 鈥?stretch only applies to elements with a block, flex, grid, or absolutely positioned display type. Inline elements ignore stretch and fall back to intrinsic width."
+    ],
+    "faq": [
+      {
+        "question": "How does stretch differ from width: 100% in terms of padding and border?",
+        "answer": "width: 100% is relative to the containing block's content-box width, then padding and border are added on top 鈥?the element overflows its container. stretch sizes the margin-box to fill the available space, so padding and border are subtracted from the total, keeping the element inside its container. This makes stretch behave the way most developers expect width: 100% to work, especially for form elements."
+      },
+      {
+        "question": "Does stretch work in writing modes other than horizontal-tb?",
+        "answer": "Yes. stretch respects the writing mode of the element. In vertical writing modes (vertical-rl, vertical-lr), width: stretch stretches along the inline axis (vertical) and height: stretch stretches along the block axis (horizontal), matching the writing direction. This makes stretch more writing-mode aware than fixed pixel or percentage sizing."
+      },
+      {
+        "question": "What is the difference between stretch and the newer fill-available keyword?",
+        "answer": "fill-available and stretch are the same value with different names. The CSS specification originally proposed fill-available, then renamed it to stretch before implementation. stretch is the canonical name. Both resolve to the same intrinsic size calculation in supporting browsers, but only stretch is guaranteed forward-compatible."
+      }
+    ],
+    "quickAnswer": "Use width: stretch or height: stretch for standard fill-available sizing. Unlike width: 100%, stretch uses margin-box sizing so padding and border do not cause overflow. Replaces -webkit-fill-available and -moz-available with a single standardized keyword. Chrome 138+, Firefox 130+, Safari 18.2+.",
+    "limitations": [
+      "stretch is not yet supported in all browsers. Chrome 138+, Firefox 130+, and Safari 18.2+ support it. Keep vendor-prefixed fallbacks (-webkit-fill-available, -moz-available) and a width: 100% fallback for older browsers.",
+      "stretch only works on elements with block, flex, grid, or absolutely positioned display. Inline elements, table cells, and replaced elements (img, video, iframe without explicit sizing) do not support stretch sizing.",
+      "In flex and grid contexts, stretch may interact unexpectedly with alignment properties. A flex item with align-self: stretch and width: stretch can produce conflicting sizing instructions 鈥?the stretch keyword on the sizing property takes precedence over alignment stretch."
+    ],
+    "verificationSteps": [
+      "Inspect the element in DevTools and verify the computed width or height matches the expected fill-available size 鈥?the element should not overflow its container even with padding and border applied.",
+      "Resize the viewport or container and confirm the element stretches to fill the available space at all sizes. Compare side by side with a width: 100% reference to see the difference at narrow viewports."
+    ],
+    "updatedAt": "2026-05-30",
+    "tags": [
+      "layout",
+      "responsive"
+    ]
+  },
+  {
+    "id": "navigation-api-router-snippet-generator",
+    "name": "Navigation API Router Snippet Generator",
+    "category": "html",
+    "summary": "Generate JavaScript code for client-side routing using the Navigation API. Intercept navigations, match route patterns, and update content without full page reloads.",
+    "description": "Create ready-to-use JavaScript snippets for single-page application routing using the Navigation API (Baseline 2026: Chrome 102+, Edge 102+, Safari 16.4+, Firefox 131+). Configure route patterns, link click interception, view transition integration, and scroll restoration. The Navigation API replaces the History API with a more reliable event model that handles all navigation types (push, replace, reload, traverse) and prevents race conditions.",
+    "keywords": [
+      "navigation api routing",
+      "spa router javascript",
+      "client side routing",
+      "navigate event interception",
+      "single page application navigation"
+    ],
+    "whatIs": "The Navigation API is a modern browser API that intercepts navigations through a \navigation.addEventListener('navigate', ...) handler. Unlike the History API, which only fires a popstate event on backward/forward traversal, the Navigation API captures all navigation types including link clicks, form submissions, programmatic navigation, and browser back/forward. It integrates with the View Transition API for animated page changes and provides built-in scroll restoration and navigation lifecycle management.",
+    "howToUse": [
+      "Define route patterns using URLPattern objects or simple path matchers. Each route can have a handler function that fetches content and updates the DOM.",
+      "Configure navigation interception options: intercept all navigations, only same-origin navigations, or specific navigation types (push, replace, reload, traverse).",
+      "Enable view transition integration to animate between page states using document.startViewTransition within the navigate handler.",
+      "Select scroll restoration behavior: auto-restore to previous scroll position, scroll to top on each navigation, or custom scroll targets per route."
+    ],
+    "useCases": [
+      "Build a single-page application router with proper back/forward navigation support and no race conditions between concurrent navigation requests.",
+      "Create a multi-page application with progressively enhanced client-side navigation that gracefully degrades to full page loads on unsupported browsers.",
+      "Implement animated page transitions between views using the View Transition API within the Navigation API navigate handler."
+    ],
+    "examples": [
+      {
+        "text": "A documentation site wants client-side navigation with animated transitions between pages. Use the Navigation API to intercept link clicks, match URLPatterns for each section, call fetch() to load content, wrap the DOM update in document.startViewTransition for crossfade animations, and call navigation.updateCurrentEntry({ state }) to persist search/filter state per route.",
+        "title": "SPA with route patterns and view transitions"
+      },
+      {
+        "text": "A content site wants faster navigation without rebuilding as a full SPA. Generate code that intercepts same-origin navigations via navigation.addEventListener('navigate', ...), aborts the current fetch if a new navigation starts (preventing race conditions), updates the main content area, and falls back to full page loads when JavaScript is disabled or the Navigation API is unavailable.",
+        "title": "Multi-page app with progressive enhancement"
+      }
+    ],
+    "mistakes": [
+      "Not calling event.preventDefault() before calling event.intercept() — the navigate event must be intercepted synchronously to prevent the browser from starting its own navigation. Always call both preventDefault() and intercept() in the handler.",
+      "Ignoring the event.signal abort controller — Navigation API provides an AbortSignal on each navigate event. Long-running fetch operations should listen to event.signal to cancel stale requests when a new navigation starts, preventing race conditions.",
+      "Forgetting to handle the traversal type navigations — back/forward navigations fire a navigate event with navigationType 'traverse'. Routes need to distinguish between push/replace and traverse to restore scroll position correctly and avoid re-fetching cached content."
+    ],
+    "faq": [
+      {
+        "question": "How does the Navigation API differ from the History API for SPA routing?",
+        "answer": "The History API only fires a popstate event on backward/forward traversal. Link clicks, programmatic pushState/replaceState, and reloads are not captured — you must manually intercept all these paths. The Navigation API fires a single navigate event for every navigation type (push, replace, reload, traverse), plus provides an AbortSignal for cancellation, a FocusChanged event for accessibility, and built-in view transition and scroll restoration support."
+      },
+      {
+        "question": "Can the Navigation API be polyfilled for older browsers?",
+        "answer": "There is no full polyfill for the Navigation API because it requires deep browser integration with the navigation engine. For browsers that do not support it (Chrome < 102, Safari < 16.4, Firefox < 131), your SPA should fall back to the History API with manual link click interception, or fall back to full server-side navigation. The generated snippets include a feature detection guard for this purpose."
+      },
+      {
+        "question": "How do view transitions work with the Navigation API?",
+        "answer": "Inside the navigate event handler, after calling event.intercept(), wrap your DOM update code in document.startViewTransition(() => { ... }). The browser then captures the old and new page states, creates a crossfade animation between them, and updates the DOM inside the transition callback. The Navigation API's viewTransition option on intercept() can optionally handle this integration automatically in supported browsers."
+      }
+    ],
+    "quickAnswer": "Generate client-side routing JavaScript snippets using the Navigation API. Configure route patterns with URLPattern, interception options for link clicks and browser navigation, view transition integration for animated page changes, and scroll restoration behavior. The Navigation API (Chrome 102+, Safari 16.4+, Firefox 131+) replaces the History API with a unified navigate event, AbortSignal for cancellation, and built-in view transition support.",
+    "limitations": [
+      "The Navigation API is not yet supported in all browsers. Chrome 102+, Edge 102+, Safari 16.4+, and Firefox 131+ support it. Older browsers require a fallback to the History API or server-side navigation.",
+      "View transition integration requires both the Navigation API and View Transition API support. Cross-document view transitions are a newer feature within the View Transition API and have additional browser requirements beyond the Navigation API baseline.",
+      "The Navigation API does not handle application-level concerns like lazy loading, code splitting, or data caching. These must be implemented separately in the route handlers."
+    ],
+    "verificationSteps": [
+      "Open the browser console and navigate between routes using link clicks. Verify that each navigate event fires with the correct navigationType (push, replace, traverse) and that the DOM updates without a full page reload.",
+      "Open the Network tab, start a route navigation, and quickly navigate to another route. Verify the first request is cancelled via the AbortSignal by checking for an aborted or cancelled HTTP request in the Network tab."
+    ],
+    "updatedAt": "2026-05-31"
+  },
+  {
+    "id": "service-worker-module-template-generator",
+    "name": "Service Worker Module Template Generator",
+    "category": "html",
+    "summary": "Generate an ES module service worker with configurable cache strategies, precache URL list, auto-activation, and offline fallback support.",
+    "description": "Create a complete service worker template using ES module syntax (type: 'module') with configurable cache strategies per route pattern. Includes cache-first, network-first, stale-while-revalidate, network-only, and cache-only strategies. Configure a precache URL list for install-time caching, auto-activation via skipWaiting and clients.claim, and an optional offline fallback page for uncached resources when offline.",
+    "keywords": [
+      "service worker module",
+      "es module service worker",
+      "pwa service worker template",
+      "cache strategy service worker",
+      "offline fallback service worker"
+    ],
+    "whatIs": "ES module service workers use the \type: 'module' option in the register() call, allowing import/export syntax instead of importScripts(). This enables standard JavaScript module patterns, static imports, and better dependency management. Combined with configurable cache strategies (cache-first, network-first, stale-while-revalidate, network-only, cache-only), a service worker can control how network requests are handled, precache critical assets on install, and serve offline fallback pages.",
+    "howToUse": [
+      "Select cache strategies for different route types: cache-first for static assets, network-first for API calls, stale-while-revalidate for content that updates frequently, and network-only for sensitive endpoints.",
+      "Enter the list of URLs to precache during the install event. These are fetched and stored in the cache so they work offline immediately.",
+      "Toggle auto-activation to enable skipWaiting and clients.claim, which activates the new service worker immediately for all clients without waiting for the next page load.",
+      "Optionally enable the offline fallback page. When a fetch fails and the resource is not in cache, the service worker serves the fallback page instead of showing the browser's offline error."
+    ],
+    "useCases": [
+      "Create a progressive web app that caches all static assets on install, uses network-first for API data, and provides an offline fallback page for uncached routes.",
+      "Build a content site with stale-while-revalidate caching for articles: serve the cached version instantly and update the cache in the background, keeping content fresh without waiting for network.",
+      "Generate a project template with a service worker skeleton that developers can customize with their own cache strategies, precache lists, and offline behavior."
+    ],
+    "examples": [
+      {
+        "text": "A documentation site wants to work offline. Generate a service worker with cache-first strategy for CSS, JS, and fonts, stale-while-revalidate for HTML pages, network-first for search queries, and an offline fallback page. The precache list includes all critical pages so the entire site works without network access after the first visit.",
+        "title": "Static site PWA with full offline support"
+      },
+      {
+        "text": "A team managing multiple PWAs wants to share cache utility functions between service workers. Use the ES module template with static imports: import { cacheFirst, networkFirst } from './cache-utils.js'. The shared utility module can be maintained separately and imported by all service workers, eliminating the need for importScripts and global scope pollution.",
+        "title": "Module-based service worker with shared utilities"
+      }
+    ],
+    "mistakes": [
+      "Using importScripts() inside an ES module service worker — ES modules support static import/export and do not need importScripts(). Mixing both approaches causes runtime errors. Use standard import statements instead.",
+      "Not handling the activate event for cache cleanup — old caches from previous service worker versions accumulate if not cleaned up. Always add an activate handler that deletes outdated cache stores by comparing cache names against a versioned list.",
+      "Forgetting to scope the service worker correctly — a service worker's scope is determined by its URL path. A service worker at /sw.js controls / and below, but a service worker at /blog/sw.js only controls /blog/ and below. Use the scope option in register() explicitly to avoid confusion."
+    ],
+    "faq": [
+      {
+        "question": "What is the advantage of ES module service workers over classic importScripts-based workers?",
+        "answer": "ES module service workers support native import/export, enabling standard JavaScript module patterns, static analysis, tree shaking, and better dependency management. They avoid the global scope pollution of importScripts and provide proper error handling for missing imports. However, ES module service workers are limited to same-origin imports only and do not support dynamic import() or cross-origin module scripts."
+      },
+      {
+        "question": "How does cache-first differ from stale-while-revalidate in practice?",
+        "answer": "Cache-first returns the cached response immediately without waiting for the network. It only fetches from the network if the cache misses. Stale-while-revalidate returns the cached response immediately AND makes a network request in the background to update the cache for next time. Cache-first is ideal for immutable assets like versioned CSS/JS files. Stale-while-revalidate is better for HTML pages or API responses that should be reasonably current but can tolerate some delay in updates."
+      },
+      {
+        "question": "Why does my service worker not activate immediately after registration?",
+        "answer": "By default, a new service worker enters a waiting state until all existing clients close or navigate away. This prevents version conflicts where two service workers control different pages of the same app. Calling self.skipWaiting() during the install or activate event bypasses the waiting state, and clients.claim() immediately takes control of all uncontrolled clients. The generated template includes these as an optional toggle."
+      },
+      {
+        "question": "Can I use dynamic import() inside an ES module service worker?",
+        "answer": "No. ES module service workers support static import declarations but do not support dynamic import() calls. Dynamic imports require the module map to be mutable at runtime, which conflicts with the service worker's execution model. All module dependencies must be declared statically at the top level of the file. If you need dynamic code loading, consider splitting logic into separate static modules that cover different scenarios, or use the classic service worker pattern with importScripts."
+      }
+    ],
+    "quickAnswer": "Generate an ES module service worker template with configurable cache strategies (cache-first, network-first, stale-while-revalidate, network-only, cache-only), precache URL lists, auto-activation (skipWaiting + clients.claim), and offline fallback page support. Uses ES module syntax with static import/export instead of importScripts.",
+    "limitations": [
+      "ES module service workers do not support dynamic import() — all module dependencies must be declared statically at the top level. Dynamic code loading requires the classic importScripts pattern instead.",
+      "Cross-origin module scripts are not supported in service workers. Imported modules must be same-origin. If you need to load scripts from a CDN, use the classic service worker pattern or bundle the code locally.",
+      "The service worker lifecycle (install -> waiting -> activate -> update) can cause version conflicts during development. Browser DevTools 'Update on Reload' and 'Bypass for Network' options help, but production versioning requires careful cache naming and cleanup logic."
+    ],
+    "verificationSteps": [
+      "Open the Application panel in DevTools, go to Service Workers, and verify the service worker is registered with status 'activated and running'. Check that the scope covers the expected path range.",
+      "Toggle to offline mode in DevTools (Network tab) and reload the page. Verify that cached pages load without errors and the offline fallback page appears for uncached URLs. Check the Console for any fetch handler errors."
+    ],
+    "updatedAt": "2026-05-31"
+  },
+  {
+    "id": "reporting-api-header-generator",
+    "name": "Reporting API Header Generator",
+    "category": "github-pages",
+    "summary": "Generate Report-To and Reporting-Endpoints HTTP headers for Nginx and Apache, plus CSP Reporting and Network Error Logging configuration.",
+    "description": "Create browser error reporting headers for the Reporting API. Generate both legacy Report-To headers and the newer Reporting-Endpoints header syntax for Nginx and Apache configurations. Includes Content-Security-Policy report-uri and report-to directives for CSP violation reports, plus Network Error Logging (NEL) configuration that sends network error reports to your endpoint.",
+    "keywords": [
+      "reporting api headers",
+      "report-to header",
+      "reporting-endpoints header",
+      "csp reporting endpoint",
+      "network error logging nel"
+    ],
+    "whatIs": "The Reporting API is a browser API that collects reports about various issues — CSP violations, Network Error Logging events, deprecation warnings, browser interventions, and crash reports — and sends them to a configurable endpoint. It uses HTTP headers (Report-To or Reporting-Endpoints) to tell the browser where to send reports. The Reporting-Endpoints header is the newer standard, replacing the legacy Report-To header. Browsers batch reports and send them periodically to minimize network overhead.",
+    "howToUse": [
+      "Choose the header version: legacy Report-To for broader compatibility or the newer Reporting-Endpoints standard header. Reporting-Endpoints is simpler but has newer browser support.",
+      "Select your server type (Nginx or Apache) and copy the generated header configuration into your server config, virtual host block, or .htaccess file.",
+      "Optionally enable CSP Reporting by selecting a CSP directive type (report-uri, report-to, or both). The generated snippet includes the appropriate CSP reporting directives.",
+      "Optionally configure Network Error Logging (NEL) with your reporting endpoint URL, cache duration, and success/failure sampling rates."
+    ],
+    "useCases": [
+      "Collect CSP violation reports at a central endpoint to monitor and fine-tune your Content Security Policy without blocking legitimate content.",
+      "Monitor Network Error Logging reports to detect and diagnose network failures, DNS issues, TLS errors, and connectivity problems experienced by real users.",
+      "Receive deprecation warnings and browser intervention reports to identify features on your site that need updating before browsers remove support."
+    ],
+    "examples": [
+      {
+        "text": "A GitHub Pages site sets a strict Content Security Policy and wants to receive violation reports. Configure a Reporting-Endpoints header with a CSP-endpoint, add Content-Security-Policy with report-to: CSP-endpoint, and enable NEL to detect any network issues affecting asset loading. Reports POST to a small server endpoint that logs and aggregates them.",
+        "title": "GitHub Pages site with CSP monitoring"
+      },
+      {
+        "text": "A production Nginx reverse proxy in front of a Node.js app configures both Reporting-Endpoints and Content-Security-Policy-Report-Only headers. CSP violations, NEL events, and deprecation warnings all POST to a single reporting endpoint at /_reports. NEL is configured with max_age 86400 and a 0.1 failure sampling rate to collect representative network error data without overwhelming the endpoint.",
+        "title": "Nginx reverse proxy with full reporting suite"
+      }
+    ],
+    "mistakes": [
+      "Using both Report-To and Reporting-Endpoints headers simultaneously — browsers may send duplicate reports if both headers are present. Migrate from Report-To to Reporting-Endpoints by removing the old header once Reporting-Endpoints is configured and tested.",
+      "Setting a CSP report-uri without a corresponding reporting endpoint — report-uri sends reports to an arbitrary URL via GET requests with query parameters, which may exceed URL length limits for large violation reports. Always pair report-uri or report-to with a properly configured receiving endpoint that can handle POST requests.",
+      "Forgetting to configure CORS on the reporting endpoint — reports are sent from the origin where the headers are served, but if your reporting endpoint is on a different origin, it needs to accept cross-origin POST requests. This is especially important for sites hosted on GitHub Pages using an external reporting collector."
+    ],
+    "faq": [
+      {
+        "question": "What is the difference between Report-To and Reporting-Endpoints headers?",
+        "answer": "Report-To is the legacy header format that uses a JSON configuration with endpoint groups and priorities. Reporting-Endpoints is the newer, simpler format that maps endpoint names directly to URLs in a comma-separated list. Reporting-Endpoints is preferred for new deployments as it reduces header complexity. Chrome supports both, while Safari and Firefox support Reporting-Endpoints. For maximum compatibility, some sites include both during migration, though this can cause duplicate report delivery."
+      },
+      {
+        "question": "How does Network Error Logging (NEL) work with the Reporting API?",
+        "answer": "NEL is configured via a NEL HTTP header that specifies a reporting endpoint group, a max_age for the policy, and optional sampling rates. When the browser attempts a network request and encounters an error (DNS failure, TLS error, timeout, etc.), it generates a NEL report and sends it to the configured reporting endpoint. The browser only generates reports for the origin that served the NEL header. NEL does not require any server-side instrumentation — the reports come directly from the browser's network stack."
+      },
+      {
+        "question": "What types of reports can the Reporting API collect?",
+        "answer": "The Reporting API can collect CSP violation reports (when a resource violates your Content Security Policy), Network Error Logging reports (network errors like DNS failures, TCP timeouts, TLS errors), deprecation reports (when your site uses a deprecated browser API), intervention reports (when the browser blocks or modifies behavior on your site), and crash reports (when a page crashes). Each report type is configured via its own HTTP header or meta tag, but all can send to the same reporting endpoint."
+      }
+    ],
+    "quickAnswer": "Generate Report-To and Reporting-Endpoints HTTP headers for Nginx and Apache. Choose between legacy Report-To and newer Reporting-Endpoints syntax. Optionally configure CSP report-uri/report-to directives and Network Error Logging (NEL) headers. The Reporting API (Chrome 69+, Safari 16.4+, Edge 79+) collects CSP violations, NEL events, deprecation warnings, browser interventions, and crash reports at a central endpoint.",
+    "limitations": [
+      "Reporting-Endpoints header support varies by browser. Chrome supports it from version 69+, Safari from 16.4+, and Edge from 79+. Firefox support for Reporting-Endpoints is limited. The legacy Report-To header is still needed for broader browser compatibility.",
+      "Reports are not guaranteed to be delivered. Browsers batch reports and send them on their own schedule. If the user closes the tab before the batch is sent, reports may be lost. Do not rely on the Reporting API for critical monitoring — use it as a supplemental data source alongside server-side logging.",
+      "The reporting endpoint must be accessible via HTTPS. Browsers refuse to send reports to HTTP endpoints for sites served over HTTPS. GitHub Pages sites using a custom reporting collector must ensure the collector has a valid TLS certificate."
+    ],
+    "verificationSteps": [
+      "Deploy the headers to your server and verify they are present using curl -I or browser DevTools Network panel. Check that Reporting-Endpoints (or Report-To) appears in the response headers for HTML pages.",
+      "Trigger a CSP violation by loading an inline script on a CSP-protected page, then check your reporting endpoint for the received violation report. The report should include the blocked URI, violated directive, and source file with line number."
+    ],
+    "updatedAt": "2026-05-31"
+  },
+  {
+    "id": "trusted-types-policy-generator",
+    "name": "Trusted Types Policy Generator",
+    "category": "html",
+    "summary": "Generate a Trusted Types policy with configurable createHTML/createScript/createScriptURL operations and matching Content-Security-Policy headers for Nginx and Apache.",
+    "description": "Create a browser Trusted Types policy to prevent DOM-based XSS. Configure createHTML, createScript, and createScriptURL operations with custom sanitization or strict rejection logic. Generate the corresponding Content-Security-Policy headers in both enforce and report-only modes, with server configuration snippets for Nginx and Apache. Trusted Types requires typed values instead of strings for dangerous DOM sinks like innerHTML, eval(), and script.src, making XSS attacks significantly harder.",
+    "keywords": [
+      "trusted types policy",
+      "csp trusted types",
+      "dom xss prevention",
+      "trustedtypes.createpolicy",
+      "content security policy trusted types"
+    ],
+    "whatIs": "Trusted Types is a browser security API that prevents DOM-based XSS by requiring typed values instead of strings for dangerous DOM sinks like innerHTML, eval(), and script.src. Developers use trustedTypes.createPolicy() to define sanitization rules that transform or reject untrusted strings before they reach injection sinks. Combined with a Content-Security-Policy directive, Trusted Types closes a major class of XSS vulnerabilities by enforcing that only explicitly sanctioned operations can assign values to high-risk DOM properties.",
+    "howToUse": [
+      "Configure the allowed operations - createHTML, createScript, createScriptURL - and decide how each operation handles input: strict rejection (block all untrusted input), sanitization (pass through a sanitizer function), or passthrough for trusted sources.",
+      "Choose the CSP mode - enforce (require-trusted-types-for 'script' in Content-Security-Policy) blocks violations, or report-only (same directive in Content-Security-Policy-Report-Only) logs violations without blocking. Always start with report-only mode during migration.",
+      "Select your server platform - Nginx or Apache - to generate the corresponding CSP header configuration that integrates with your existing server blocks or virtual hosts.",
+      "Deploy the policy JavaScript file and server config, then test your application in report-only mode. Review console violation reports and adjust policies until no violations appear, then switch to enforce mode."
+    ],
+    "useCases": [
+      "Protect a content-heavy web application from stored and reflected XSS by requiring all HTML injection points to go through a Trusted Types policy with a configured sanitizer function.",
+      "Migrate a legacy application to Trusted Types by deploying in report-only mode first, fixing violation reports incrementally across the codebase, then switching to full enforce mode.",
+      "Enforce a strict Trusted Types policy in third-party script-heavy environments where external widgets and embeds load dynamic content via innerHTML, ensuring all injected HTML passes through the policy."
+    ],
+    "examples": [
+      {
+        "text": "A large admin dashboard uses innerHTML for various dynamic widgets. Deploy Trusted Types in report-only mode first by setting require-trusted-types-for 'script' in the Content-Security-Policy-Report-Only header. Collect violation reports, refactor each widget to use a Trusted Types policy, then switch to Content-Security-Policy enforce mode once all violations are resolved.",
+        "title": "Report-only migration for a legacy app"
+      },
+      {
+        "text": "A CMS with a rich text editor needs to render user-generated HTML content safely. Create a Trusted Types policy with a createHTML function that passes HTML through a DOMPurify-style sanitizer before returning a TrustedHTML object. All innerHTML assignments go through this policy, preventing XSS even if malicious content bypasses server-side filtering.",
+        "title": "Strict policy for a CMS editor"
+      }
+    ],
+    "mistakes": [
+      "Deploying Trusted Types in enforce mode without first testing in report-only mode - a strict policy can break every feature that uses innerHTML, outerHTML, or insertAdjacentHTML. Always validate with report-only before enforcing.",
+      "Using defaultPolicy as a blanket allow-all - trustedTypes.createPolicy('default', { createHTML: (s) => s }) bypasses all XSS protection by passing every string through unmodified. A default policy should still sanitize, not passthrough.",
+      "Forgetting that eval() is a Trusted Types sink - if your application uses JSON.parse() on eval-compatible strings or relies on dynamic code execution, those calls must go through a createScript policy or be controlled via a separate CSP script-src directive."
+    ],
+    "faq": [
+      {
+        "question": "Does Trusted Types protect against existing XSS vulnerabilities?",
+        "answer": "Yes, if the vulnerability requires passing a string to a DOM sink like innerHTML, outerHTML, or insertAdjacentHTML. Trusted Types forces all assignments to these sinks to go through a policy - if no policy exists or the policy rejects the input, the assignment is blocked. However, Trusted Types does not protect against XSS via URL attributes (href, src), event handlers (onclick, onerror), or server-side injection. It specifically targets DOM injection sinks."
+      },
+      {
+        "question": "Can I use Trusted Types with React, Vue, or Angular?",
+        "answer": "Yes, but the integration varies per framework. React supports Trusted Types via its expected typed object contract - dangerouslySetInnerHTML accepts TrustedHTML objects. Vue requires a custom policy wrapper for v-html bindings. Angular provides DomSanitizer integration that can be configured to work with Trusted Types. Check each framework's documentation for specific Trusted Types support details."
+      },
+      {
+        "question": "What happens to third-party scripts under Trusted Types?",
+        "answer": "Third-party scripts that assign values to DOM sinks (innerHTML, document.write, outerHTML) are blocked unless they go through a Trusted Types policy. You may need to create a policy that allows specific trusted scripts, or add a 'trusted-types' directive in the CSP header listing which policy names are allowed. Third-party script widgets commonly break under Trusted Types and require explicit policy configuration."
+      },
+      {
+        "question": "How do I handle Trusted Types in report-only mode?",
+        "answer": "Set Content-Security-Policy-Report-Only: require-trusted-types-for 'script' instead of the enforce Content-Security-Policy header. The browser logs violations to the console and sends reports to the configured report-uri endpoint without blocking any operations. Review all violation reports, create appropriate policies for each sink usage, then switch to enforce mode by moving the directive to the Content-Security-Policy header."
+      }
+    ],
+    "quickAnswer": "Trusted Types prevents DOM-based XSS by blocking strings from reaching dangerous DOM sinks like innerHTML and eval(). Use trustedTypes.createPolicy() with createHTML/createScript/createScriptURL operations, then enforce with Content-Security-Policy: require-trusted-types-for 'script'. Always test in report-only mode first using Content-Security-Policy-Report-Only to avoid breaking existing functionality.",
+    "limitations": [
+      "Trusted Types requires browser support in Chrome 83+, Edge 83+, and Safari 17+. Firefox does not support Trusted Types as of 2026. Applications must handle Firefox gracefully without Trusted Types protection by providing fallback behavior for unsupported browsers.",
+      "Trusted Types does not cover all XSS vectors - it protects DOM injection sinks (innerHTML, outerHTML, insertAdjacentHTML, eval, document.write) but does not prevent XSS through URL attributes (href, src), event handler attributes, or CSS-based injection vectors.",
+      "Migrating large applications to Trusted Types requires significant refactoring. Every innerHTML, insertAdjacentHTML, outerHTML, and document.write usage must be wrapped in a policy, which can involve hundreds of source changes in a legacy codebase with extensive dynamic DOM manipulation."
+    ],
+    "verificationSteps": [
+      "Open the browser DevTools console after deploying the Trusted Types policy in enforce mode. Any violation blocks the operation and logs a TypeError with details about the blocked assignment and the affected DOM sink. Verify that normal application usage produces zero violations.",
+      "Switch to report-only mode temporarily and use the Issues tab in Chrome DevTools to inspect Trusted Types violation reports. Filter by 'trusted-types' to see all potential violations grouped by sink type and source location."
+    ],
+    "updatedAt": "2026-05-31"
+  },
+  {
+    "id": "urlpattern-tester",
+    "name": "URLPattern Tester",
+    "category": "html",
+    "summary": "Test URL patterns with named groups, wildcards, and regex constraints. Generate JavaScript URLPattern code and see live match results with extracted parameters for multiple test URLs.",
+    "description": "Build and test URLPattern matchers with an interactive interface. Enter pattern strings using :param syntax for named groups, * for wildcards, and optional segments with ?. Add multiple test URLs to see which ones match and what parameters are extracted. Generates ready-to-use JavaScript code using the native URLPattern API available in all modern browsers.",
+    "keywords": [
+      "urlpattern tester",
+      "url pattern matching",
+      "named url groups",
+      "javascript url routing",
+      "path pattern matcher"
+    ],
+    "whatIs": "URLPattern is a standard browser API that provides declarative URL matching with named groups, wildcards, and regex constraints. Instead of writing error-prone regex patterns or manual path parsing for URL routing, developers use new URLPattern('/books/:id') to match URLs and extract parameters in a readable, maintainable way. The API supports all URL components - protocol, hostname, port, pathname, search, and hash - and handles URL encoding automatically.",
+    "howToUse": [
+      "Enter a URLPattern pattern string using :param for named groups (e.g., /blog/:slug), * for wildcard matching (e.g., /api/*), and /:param? for optional segments. You can also add regex constraints like /users/:id(\\d+).",
+      "Add one or more test URLs to match against the pattern. Each test URL is evaluated independently so you can check multiple paths, query strings, and edge cases in a single session.",
+      "Review the live match results - each test URL shows whether it matched, the extracted named group values, and any groups that returned null or undefined for unmatched optional segments.",
+      "Copy the generated JavaScript code that uses the URLPattern API with your specific pattern and test URLs. The code includes match checks and parameter extraction logic ready to drop into your project."
+    ],
+    "useCases": [
+      "Implement client-side routing in a single-page application using URLPattern instead of fragile regex parsing. Named groups make route parameters self-documenting and automatically URL-decoded.",
+      "Validate incoming URL structures in a service worker fetch handler - match request URLs against known route patterns and extract parameters for selective caching and response logic.",
+      "Test URL restructuring during a site migration - verify that old URL patterns match the expected parameters and new redirect rules capture the correct path segments before deploying to production."
+    ],
+    "examples": [
+      {
+        "text": "A vanilla JavaScript SPA defines routes like /blog/:slug and /products/:category/:id. Use URLPattern to match incoming history.pushState URLs. The pattern /blog/:slug matches /blog/hello-world and extracts {slug: 'hello-world'} as a named group. No more splitting on slashes or writing fragile regex - URLPattern handles optional groups, wildcards, and regex constraints declaratively.",
+        "title": "SPA route matching with URLPattern"
+      },
+      {
+        "text": "A service worker needs to cache API responses for /api/posts/:id but exclude /api/admin/* paths. Create a URLPattern with pathname: '/api/posts/:id' and use it in the fetch event handler to selectively cache matching requests. Named groups make it easy to construct cache keys like 'post-' + result.pathname.groups.id.",
+        "title": "Service worker cache routing"
+      }
+    ],
+    "mistakes": [
+      "Forgetting that URLPattern matches against the full URL including origin by default when using a string constructor. Use new URLPattern({ pathname: '/books/:id' }) to restrict matching to the pathname only, or include the expected origin in the pattern string for full-URL matching.",
+      "Assuming URLPattern.exec() group values are always strings - unmatched optional groups return undefined, and wildcard groups return empty string for zero-length matches. Always check for undefined before using extracted group values in application logic.",
+      "Using URLPattern where simple string methods suffice - for basic prefix or suffix checks on known static paths, URLPattern adds unnecessary complexity and performance cost. Use .startsWith(), .includes(), or exact string comparison for non-patterned URL checks."
+    ],
+    "faq": [
+      {
+        "question": "How does URLPattern differ from using regex for URL matching?",
+        "answer": "URLPattern is declarative and self-documenting: /users/:id is immediately readable, while /^\\/users\\/(\\d+)$/ requires parsing. URLPattern handles URL encoding automatically (%2F in path segments), supports named groups for readable parameter extraction, and correctly handles optional groups, wildcards, and regex constraints. It also provides a consistent API across browser, Deno, and Cloudflare Workers environments."
+      },
+      {
+        "question": "Can URLPattern match query strings and hash fragments?",
+        "answer": "Yes. URLPattern supports matching against all URL components including search (query string) and hash. Use new URLPattern({ pathname: '/search', search: 'q=:query' }) to extract query parameters by name. Wildcards in the search component let you match additional parameters: 'q=:query&*' matches any extra query parameters after the q parameter."
+      },
+      {
+        "question": "Does URLPattern work in Node.js and server-side runtimes?",
+        "answer": "URLPattern is available natively in Chrome 95+, Edge 95+, Safari 15.4+, and Firefox 115+. On the server, URLPattern is built into Deno and Cloudflare Workers. In Node.js, URLPattern is available via the urlpattern-polyfill npm package or natively in Node.js 21+ with the --experimental-url flag. Bun supports URLPattern natively without flags or polyfills."
+      },
+      {
+        "question": "Can I use regex inside URLPattern named groups?",
+        "answer": "Yes. URLPattern supports regex constraints within named groups using parenthesized patterns: /users/:id(\\d+) matches only numeric IDs while /posts/:slug([a-z0-9-]+) matches lowercase slug strings. Regex constraints let you narrow matched values without post-processing validation. The regex is applied to the matched path segment, not the full URL."
+      }
+    ],
+    "quickAnswer": "URLPattern provides declarative URL matching with named groups, wildcards, and regex constraints - no regex or manual path parsing needed. Use /books/:id syntax to match URLs and extract parameters. Available natively in Chrome 95+, Edge 95+, Safari 15.4+, and Firefox 115+. Also supported in Deno, Cloudflare Workers, and Node.js 21+.",
+    "limitations": [
+      "URLPattern browser support is strong in Chromium and Safari (15.4+) but Firefox support arrived only in version 115 and the API is still experimental in some server-side runtimes. Include the urlpattern-polyfill npm package for production apps targeting older browsers or legacy Node.js versions.",
+      "URLPattern matching is slower than simple string operations. For high-frequency URL matching in tight loops processing thousands of URLs per second, a compiled regex or trie-based router is more performant. URLPattern prioritizes readability over raw throughput.",
+      "URLPattern does not support reverse matching - you cannot generate a URL from a pattern and parameters. It only tests whether a URL matches and extracts named group values. For bidirectional URL handling, libraries like path-to-regexp offer both matching and URL generation."
+    ],
+    "verificationSteps": [
+      "Open the browser console and run new URLPattern({ pathname: '/test/:id' }).exec('https://example.com/test/123'). Verify the result object contains pathname.groups.id with value '123' and that the result is not null.",
+      "Test edge cases: an unmatched URL returns null (not an error), an optional group like /:id? returns undefined when the segment is omitted, and a wildcard pattern /files/* captures the remaining path into the wildcard group accessible via result.pathname.groups[0]."
+    ],
+    "updatedAt": "2026-05-31"
+  },
+  {
+    "id": "css-text-indent-hanging-builder",
+    "name": "CSS text-indent hanging and each-line Builder",
+    "category": "css",
+    "summary": "Build CSS text-indent values using the hanging and each-line keywords with fallback for older browsers. Generate reverse indentation for bibliographies and definition lists.",
+    "description": "Generate CSS text-indent declarations using the hanging and each-line keywords (Baseline 2026). hanging reverses the indent so the first line stays flush left and subsequent lines are indented. each-line applies indentation after every forced line break. Combine both: text-indent: 2em hanging each-line. The tool also generates a fallback declaration for browsers that do not support these keywords yet.",
+    "keywords": [
+      "css text-indent hanging",
+      "css hanging indent",
+      "each-line css",
+      "reverse indent css",
+      "css text-indent keywords"
+    ],
+    "whatIs": "CSS text-indent now supports the hanging and each-line keywords (Baseline 2026: Chrome 130+, Safari 18.2+, Firefox 135+). hanging reverses the direction of the indent: the first line stays flush left and all subsequent lines are indented by the specified length. each-line applies indentation after every forced line break (such as <br>), not just the first line. You can combine both keywords with a length value: text-indent: 2em hanging each-line creates a hanging indent that also resets after every line break.",
+    "howToUse": [
+      "Choose the indent length value in em, px, or rem units. 2em is the standard for bibliography hanging indents.",
+      "Toggle the hanging keyword to create a reverse indent where the first line is flush left and subsequent lines indented.",
+      "Toggle the each-line keyword to apply the indent after every forced line break (<br>) in addition to the first line.",
+      "Copy the generated CSS declaration including the fallback for browsers without hanging or each-line support."
+    ],
+    "useCases": [
+      "Format bibliography entries with a hanging indent where the first line is flush left and subsequent lines are indented, matching academic citation style guides.",
+      "Create definition lists where the term is flush left and the definition text is indented, using hanging with each-line to handle multi-line definitions with line breaks.",
+      "Apply hanging punctuation effects where opening quotes and bullets hang outside the text margin for a polished typographic look."
+    ],
+    "examples": [
+      {
+        "title": "Bibliography with hanging indent",
+        "text": "A research paper bibliography needs each entry to have a hanging indent: the first line (author name) is flush left and the continuation lines (title, publisher) are indented 2em. Use text-indent: 2em hanging. The browser indents all lines after the first automatically, matching Chicago and APA style requirements."
+      },
+      {
+        "title": "Definition list with each-line",
+        "text": "A glossary site uses <br> within definition paragraphs to separate usage notes from the main definition. With text-indent: 2em hanging each-line, the first line of each <br>-separated segment gets the reverse indent treatment. Each new segment after a line break resets the indent, keeping each definition section visually separated."
+      }
+    ],
+    "mistakes": [
+      "Using hanging without a length value -- hanging is a keyword modifier, not a length. You must always specify a length value first, such as text-indent: 2em hanging. Without the length, the declaration is invalid and does nothing.",
+      "Assuming each-line works with normal paragraph wrapping -- each-line only applies after forced line breaks (<br> or similar). It does not reset the indent after every soft-wrapped line. For per-line control, use a different approach such as padding-left with negative text-indent.",
+      "Combining hanging with a negative text-indent value -- hanging already reverses the indent direction. Using a negative value with hanging produces unexpected results. Use positive length values with hanging for predictable behavior."
+    ],
+    "faq": [
+      {
+        "question": "Which browsers support text-indent with hanging and each-line keywords?",
+        "answer": "Both hanging and each-line are Baseline 2026 features. Chrome 130+, Safari 18.2+, and Firefox 135+ support both keywords. In older browsers, the browser ignores the keywords and applies a regular first-line indent. The tool generates a fallback declaration so your layout degrades gracefully."
+      },
+      {
+        "question": "Can I use hanging with any unit for the indent length?",
+        "answer": "Yes. hanging and each-line work with any CSS length unit: em, rem, px, ch, ex, cm, and even percentage values. em is most common for typographic indents because it scales with the font size. Percentage values are relative to the containing block width and produce inconsistent results across viewports -- stick to em or rem for predictable hanging indents."
+      },
+      {
+        "question": "Does hanging affect inline elements or only block containers?",
+        "answer": "text-indent applies only to block containers (including flex items and grid items with display: block). It has no effect on inline elements. For inline or inline-block elements, use padding-left with a negative margin-left approach to simulate a hanging indent."
+      },
+      {
+        "question": "Does each-line also reset the hanging indent at the start of each paragraph?",
+        "answer": "hanging and each-line are independent keywords you can combine. hanging controls which lines get the indent (first line flush, rest indented). each-line controls where the indent resets (after every <br>). When used together -- text-indent: 2em hanging each-line -- you get a hanging indent that restarts after each forced line break. Each new paragraph naturally starts fresh regardless."
+      }
+    ],
+    "quickAnswer": "Use text-indent: 2em hanging to create a hanging indent where the first line is flush left and subsequent lines are indented by 2em. Add each-line to also apply indentation after every forced line break. Browser support: Chrome 130+, Safari 18.2+, Firefox 135+ (Baseline 2026). The tool generates a fallback for older browsers that ignores the keywords and applies a normal first-line indent.",
+    "limitations": [
+      "hanging and each-line require Baseline 2026 browsers (Chrome 130+, Safari 18.2+, Firefox 135+). Older browsers silently ignore the keywords and apply a standard first-line indent instead -- acceptable for progressive enhancement but may break precise layout requirements.",
+      "each-line only triggers on forced line breaks (<br>, <hr>, or elements with display: block inside the text). It does not reset after soft-wrapped lines in narrow containers. If you need indentation control per soft-wrapped line, consider padding-left with a negative text-indent workaround.",
+      "text-indent does not work on inline elements. For inline-level hanging indents in mixed inline/block layouts, use padding-left with the desired indent width and a negative text-indent on the parent block container."
+    ],
+    "verificationSteps": [
+      "Inspect a styled element in Chrome DevTools and verify the computed text-indent value includes both the length and keyword parts. Check that the first rendered line is flush left and all subsequent lines are indented by the specified length.",
+      "Test in Firefox 135+ or Safari 18.2+ and compare the rendering to Chrome 130+. The hanging indent should appear identically in all three engines. Then test in a browser without hanging support (such as an older Chrome version) to confirm the fallback produces a standard first-line indent."
+    ],
+    "updatedAt": "2026-06-01"
+  },
+  {
+    "id": "css-font-relative-units-calculator",
+    "name": "CSS Font Relative Units Calculator",
+    "category": "css",
+    "summary": "Calculate pixel equivalents for root-relative font units rcap, rch, rex, and ric compared to rem. Understand when to use each unit based on glyph measurements.",
+    "description": "Calculate pixel values for CSS root-relative font units: rcap (root element cap height), rch (root character width), rex (root x-height), and ric (root ideograph width). Unlike rem which simply multiplies the root font-size, these units reference specific glyph measurements of the root element font. This means their pixel equivalents vary by font family even at the same font-size. Compare values side by side with rem to understand which unit best suits your typographic use case.",
+    "keywords": [
+      "css font relative units",
+      "rcap css unit",
+      "rch css unit",
+      "rex css unit",
+      "ric css unit"
+    ],
+    "whatIs": "Root-relative font units (Baseline 2026: Chrome 131+, Safari 18.2+, Firefox 136+) give developers access to specific glyph measurements of the root element font. rcap equals the cap height (the height of uppercase letters), rch equals the character width (the advance measure of the 0 glyph), rex equals the x-height (height of lowercase letters like x), and ric equals the ideograph width (typically 1em in CJK fonts). Unlike rem which is simply the root font-size and tells you nothing about the font actual glyph proportions, these units expose the true metrics of the typeface in use.",
+    "howToUse": [
+      "Enter the root font family and size to see the calculated pixel equivalents for rcap, rch, rex, and ric based on the font actual glyph measurements.",
+      "Compare each unit against rem to see the ratio. A font with a large x-height will have a rex value close to rem, while a font with small lowercase letters will have a smaller rex.",
+      "Select a use case from the presets to find the recommended unit -- cap height for alignment, x-height for vertical rhythm, character width for input sizing.",
+      "Copy the generated CSS with the selected unit applied to your chosen property, including a rem fallback declaration."
+    ],
+    "useCases": [
+      "Align the height of decorative initial caps or drop caps to exactly match the cap height of the surrounding text using rcap, avoiding overshoot or gaps.",
+      "Size form input fields and monospace code blocks based on actual character width (rch) so that a maxlength of 40 fits exactly within the field width.",
+      "Set vertical spacing (margin, padding) on text elements using rex for vertical rhythm that scales proportionally to the font x-height across different typefaces."
+    ],
+    "examples": [
+      {
+        "title": "Drop cap aligned to cap height",
+        "text": "A magazine article uses a large initial drop cap. Instead of guessing a font-size that visually aligns, use height: 4rcap to set the drop cap height exactly to 4 times the cap height of the root font. The drop cap aligns perfectly with the uppercase starting word regardless of the typeface."
+      },
+      {
+        "title": "Input field sized to character width",
+        "text": "A form has a phone number field with maxlength=\"10\". Set width: 12rch to create an input field that fits slightly more than 10 characters of the current font. The field shrinks or grows with the font rather than being a fixed pixel width, adapting to user font preferences."
+      }
+    ],
+    "mistakes": [
+      "Assuming rcap and rex are the same as the element own font metrics -- these units always reference the root element font, not the element they are applied to. For element-relative cap height, use the cap unit (not yet widely supported). rcap is always relative to the html element font.",
+      "Using ric outside of CJK contexts without understanding it equals 1em in non-CJK fonts -- the ideograph width (ric) is meaningful for Chinese, Japanese, and Korean text where characters are typically square-width. For Latin text, ric behaves identically to rem, providing no advantage over the simpler unit.",
+      "Forgetting that rch is based on the zero glyph (0) width -- it does not represent the average character width or the width of the letter w. For approximate average character width, multiply rch by a font-specific ratio such as 0.5 for condensed fonts or 0.6 for wide fonts."
+    ],
+    "faq": [
+      {
+        "question": "How does rcap differ from using em or rem for cap-height alignment?",
+        "answer": "em and rem are based on the font-size, which is the distance from the top of the em-box to the bottom. Cap height is usually smaller than the font-size -- for many typefaces, the cap height is about 70% of the font-size. Using height: 1em on a drop cap creates more visual height than 1rcap because em includes descender space. rcap gives you the actual uppercase letter height, which is what you want for precise alignment."
+      },
+      {
+        "question": "Why does the pixel value of rcap or rex change when I change the font family at the same font-size?",
+        "answer": "rcap, rex, rch, and ric measure actual glyph metrics of the root font. Different typefaces have different proportions even at the same font-size. A typeface like Helvetica has a larger x-height than Garamond, so rex will be a larger pixel value for Helvetica. This is the entire point of these units -- they expose the true typographic measurements of the font in use, unlike rem which only reflects the font-size setting."
+      },
+      {
+        "question": "Can I use rcap and rex for responsive typography with clamp()?",
+        "answer": "Yes. These units work in any CSS length context including clamp(), min(), max(), and calc(). For example, font-size: clamp(1rex, 2vw + 1rex, 2rex) creates responsive text that scales with viewport width while maintaining x-height proportion. This gives you fluid typography that responds to both viewport size and font metrics simultaneously."
+      },
+      {
+        "question": "What happens in browsers that do not support rcap, rch, rex, or ric?",
+        "answer": "These units are Baseline 2026 (Chrome 131+, Safari 18.2+, Firefox 136+). In unsupported browsers, the declaration containing the unit is ignored entirely, not partially applied. Always provide a rem or px fallback before the rcap/rch/rex/ric declaration so the fallback applies in older browsers and the more precise unit takes over in supporting browsers."
+      }
+    ],
+    "quickAnswer": "rcap (cap height), rch (character width), rex (x-height), and ric (ideograph width) are root-relative font units that reference specific glyph measurements of the root element font, unlike rem which only reflects font-size. Their pixel values vary by font family. Use rcap for cap-height alignment, rex for vertical rhythm, rch for character-width sizing, and ric for CJK text. Chrome 131+, Safari 18.2+, Firefox 136+ (Baseline 2026).",
+    "limitations": [
+      "These units reference the root element font, not the element they are applied to. For element-relative glyph measurements, dedicated font-relative units like cap, ch, ex, and ic exist but are also not universally supported. There is no way to reference a specific element own cap height using a unit alone.",
+      "rch measures the width of the zero glyph, which may not represent the average character width for your specific text content. For fields with mixed character widths (like addresses), a width set in rch may overflow for wide characters or leave excess space for narrow ones.",
+      "ric equals 1em in non-CJK fonts, making it redundant with rem for Latin text. The value of ric only differs from rem when the root font includes ideographic glyph metrics, which primarily applies to Chinese, Japanese, and Korean fonts."
+    ],
+    "verificationSteps": [
+      "In Chrome 131+, inspect a styled element using rcap or rex and verify the computed pixel value matches the expected glyph measurement of the root font family. Change the root font-family and confirm the computed pixel value changes accordingly.",
+      "Compare the same declaration with rem by swapping the unit -- for example, compare height: 2rcap vs height: 2rem on a drop cap. The rcap value should produce a smaller height that matches the actual uppercase letter proportions, while rem includes descender space."
+    ],
+    "updatedAt": "2026-06-01"
+  },
+  {
+    "id": "contenteditable-plaintext-only-generator",
+    "name": "contenteditable plaintext-only Generator",
+    "category": "html",
+    "summary": "Generate accessible contenteditable=plaintext-only HTML markup with placeholder styling, focus states, and ARIA attributes. Pasting rich text strips formatting automatically -- no JavaScript needed.",
+    "description": "Create editable HTML regions that accept plain text only. The contenteditable=plaintext-only attribute turns an element into a rich text editor that automatically strips all formatting on paste -- from Word, web pages, or any rich source. No JavaScript sanitization, no event handlers, no paste interceptors. Includes optional fallback detection for older browsers, placeholder CSS, focus styles, and ARIA attributes for screen reader compatibility. Compare the behavior with regular contenteditable=true side by side.",
+    "keywords": [
+      "contenteditable plaintext-only",
+      "plain text editor html",
+      "contenteditable paste plain",
+      "html editable div",
+      "rich text plaintext only"
+    ],
+    "whatIs": "The contenteditable=plaintext-only attribute creates an HTML element that users can edit, but unlike contenteditable=true which accepts rich text formatting (bold, italic, colors, fonts), plaintext-only strips all formatting on paste. When a user copies formatted text from Word, Google Docs, or a web page and pastes it into a plaintext-only editor, the pasted content is plain text only -- no HTML tags, no inline styles, no font formatting. This behavior is built into the browser and requires zero JavaScript.",
+    "howToUse": [
+      "Choose the editor mode: plaintext-only (strips all formatting on paste) or regular contenteditable (preserves rich text). Generate HTML for either mode or both with a side-by-side comparison.",
+      "Configure placeholder text that appears when the editor is empty, and customize the placeholder CSS color and styling to match your design.",
+      "Set focus styles: outline, border color, or box-shadow that activates when the editor receives focus. Include ARIA labels for screen reader accessibility.",
+      "Copy the generated HTML markup. The tool provides a complete, self-contained snippet with associated CSS that handles fallback detection for browsers that do not yet support plaintext-only."
+    ],
+    "useCases": [
+      "Comment fields and discussion forums where users should not be able to paste formatted text that breaks the page layout or introduces hidden HTML.",
+      "Code snippet inputs or configuration editors where raw text is expected and rich formatting is unwanted noise.",
+      "Internal note-taking tools or CMS plain-text descriptions where formatting adds complexity without benefit."
+    ],
+    "examples": [
+      {
+        "text": "A blog wants to prevent commenters from pasting formatted text with hidden HTML tags that could break the layout or introduce XSS vectors. Use contenteditable=plaintext-only for the comment input. When a user copies a formatted paragraph from Word and pastes it, the browser strips all bold, italic, font, and color tags automatically -- the result is clean plain text.",
+        "title": "Blog comment plaintext field"
+      },
+      {
+        "text": "A developer tool needs two input modes: a WYSIWYG editor for rich descriptions (contenteditable=true) and a plain-text field for configuration values (contenteditable=plaintext-only). Use the generated HTML to show both modes side by side so users understand the difference immediately.",
+        "title": "Configuration editor comparison"
+      }
+    ],
+    "mistakes": [
+      "Using contenteditable=true for plain-text fields and writing JavaScript paste interceptors to strip formatting -- the browser does it for you with plaintext-only, saving code, maintenance, and edge-case bugs.",
+      "Forgetting to add ARIA attributes and accessible labels to contenteditable regions -- screen readers treat editable elements as form controls and require proper labeling via aria-label or aria-labelledby.",
+      "Not testing the fallback behavior in older browsers -- Firefox added plaintext-only in version 136. Without a fallback, users on older versions get a regular rich text editor instead."
+    ],
+    "faq": [
+      {
+        "question": "How does contenteditable plaintext-only differ from contenteditable true?",
+        "answer": "contenteditable=true allows users to edit HTML content and paste formatted text, preserving bold, italic, lists, links, and inline styles. contenteditable=plaintext-only strips all formatting on paste, including HTML tags, inline styles, and rich text from Word or web pages. The underlying editing behavior is identical -- only paste handling differs. plaintext-only behaves as if a JavaScript paste interceptor ran document.execCommand(insertText) every time, but with no code required."
+      },
+      {
+        "question": "Which browsers support contenteditable=plaintext-only?",
+        "answer": "As of 2026, plaintext-only is Baseline 2025 supported in Chrome 120+, Edge 120+, Safari 17.4+, and Firefox 136+. This covers approximately 85% of global browser usage. For older browsers, the attribute degrades gracefully to contenteditable=true (rich text). The generated HTML includes fallback detection so you can add a JavaScript paste interceptor as a safety net for older browsers."
+      },
+      {
+        "question": "Can I allow some formatting but block others with plaintext-only?",
+        "answer": "No -- plaintext-only is an all-or-nothing behavior. If you need selective filtering (for example, allowing line breaks but blocking font tags), you must write a custom paste handler with the beforeinput event or use a library like Quill or TipTap that provides configurable paste sanitization. plaintext-only is intended for cases where you want zero formatting, not custom filtering."
+      },
+      {
+        "question": "Does contenteditable plaintext-only prevent XSS?",
+        "answer": "It reduces one XSS vector: pasted HTML that contains script tags, event handlers, or other malicious markup is stripped to plain text, so those tags never enter the DOM. However, contenteditable regions are still editable HTML elements and can be targeted by other attack vectors. Always validate and sanitize content on the server side before storing or displaying it, regardless of the contenteditable mode."
+      }
+    ],
+    "quickAnswer": "Use contenteditable=plaintext-only to create editable regions that accept plain text only -- pasting formatted content strips all HTML tags and inline styles automatically. No JavaScript needed. Supported in Chrome 120+, Edge 120+, Safari 17.4+, and Firefox 136+. Degrades gracefully to rich text editing in older browsers. The generated HTML includes placeholder CSS, focus styles, ARIA attributes, and optional fallback detection.",
+    "limitations": [
+      "Not supported in Firefox before version 136. The attribute degrades to contenteditable=true gracefully, so users on older Firefox versions see a rich text editor instead of a plain-text editor. Add a JavaScript paste interceptor as a safety net for these users.",
+      "plaintext-only is an all-or-nothing approach -- it does not support allowing some formatting (like line breaks) while blocking others (like bold or fonts). For selective filtering, you need a custom solution with the beforeinput event.",
+      "Browser implementations may differ in edge cases -- for example, how trailing whitespace, multiple spaces, or unusual Unicode characters are handled on paste. Test with the types of content your users are most likely to paste."
+    ],
+    "verificationSteps": [
+      "Open the generated HTML in Chrome or Safari. Type some text, then copy a formatted paragraph from a web page or Word document and paste it into the editor. Verify that all formatting (bold, italic, colors, fonts, links) is stripped and only plain text remains.",
+      "Test the same paste operation in Firefox 135 or earlier to confirm the fallback behavior -- the editor should work as contenteditable=true (preserving formatting) since plaintext-only is not supported. If you added the optional JavaScript fallback, verify it intercepts paste events in older browsers."
+    ],
+    "updatedAt": "2026-06-01"
+  },
+  {
+    "id": "directory-upload-input-generator",
+    "name": "Directory Upload Input Generator",
+    "category": "html",
+    "summary": "Generate HTML input markup with the webkitdirectory attribute for folder selection, drag-and-drop zone, file list display with webkitRelativePath, and support for single-file, multiple-file, and directory modes.",
+    "description": "Create HTML file upload inputs that support entire folder selection via the webkitdirectory attribute. Users can select a directory from the file picker, and the browser exposes each file with its relative path within the selected directory via the webkitRelativePath property. Includes a drag-and-drop zone with visual feedback, a file list display that shows the directory structure, and support for switching between single-file, multiple-file, and directory upload modes. The standardized directory attribute provides the same functionality.",
+    "keywords": [
+      "directory upload html",
+      "webkitdirectory input",
+      "folder upload web",
+      "webkitRelativePath",
+      "html file input directory"
+    ],
+    "whatIs": "The webkitdirectory attribute on an input type=file element lets users select an entire folder instead of individual files. When a folder is selected, the browser populates the input files FileList with all files from the selected directory and its subdirectories. Each file has a webkitRelativePath property that provides the path relative to the selected directory (for example, images/logo.png). The standardized directory attribute provides the same functionality across modern browsers.",
+    "howToUse": [
+      "Choose the upload mode: single file (one file at a time), multiple files (select several files), or directory (select an entire folder).",
+      "Configure the drag-and-drop zone: enable or disable drag-and-drop support, customize the drop zone text and active state styling (border color, background, or overlay).",
+      "Customize the file list display: show file names, sizes, types, and the webkitRelativePath for directory uploads. Toggle between a flat list and a tree view that preserves the directory structure.",
+      "Copy the generated HTML with embedded CSS and JavaScript. The output includes a complete, self-contained file upload interface with event handling for the change event and drag-and-drop events."
+    ],
+    "useCases": [
+      "Build an upload interface for a documentation site that accepts entire folders of images or markdown files while preserving the directory structure.",
+      "Create a bulk file upload tool for a CMS where editors drag and drop a folder of assets and the relative paths are used for URL mapping.",
+      "Design a migration tool that accepts a folder of exported content and uses webkitRelativePath to reconstruct the original directory hierarchy on the server."
+    ],
+    "examples": [
+      {
+        "text": "A documentation site needs to accept uploads of entire image folders. Users drag the assets/images directory onto the drop zone. The input lists all files with their relative paths -- hero/header.jpg, icons/search.svg, and screenshots/dashboard.png. On upload, the server reconstructs the directory structure and maps the paths to the corresponding documentation page URLs.",
+        "title": "Documentation image uploader"
+      },
+      {
+        "text": "An email designer needs to collect all assets for a campaign in a single upload. They select the campaign folder using the directory picker. The interface shows a tree of files organized by subdirectory -- images/headers/, images/icons/, and images/logos/. Each file displays its size and type alongside its webkitRelativePath for server-side processing.",
+        "title": "Email template asset collector"
+      }
+    ],
+    "mistakes": [
+      "Using webkitdirectory without checking browser support -- it works in Chrome, Edge, Safari, and Firefox, but not in all browsers. Always provide a fallback to regular file inputs and detect support using webkitdirectory in document.createElement(input) before showing the directory picker.",
+      "Assuming webkitRelativePath is available for all files -- only files selected via a directory picker have webkitRelativePath. Files added via drag-and-drop from outside the browser (like dragging from the desktop) do not have this property unless they were also selected through a directory input.",
+      "Not handling the case where the directory contains thousands of files -- browsers may limit the number of files returned by the directory picker, and the UI may become sluggish if you try to render all files at once. Paginate or virtualize the file list for large directories."
+    ],
+    "faq": [
+      {
+        "question": "What is the difference between webkitdirectory and the standard directory attribute?",
+        "answer": "webkitdirectory was the original prefixed implementation from WebKit browsers (Chrome, Safari). The standard directory attribute provides the same functionality and is supported in Chrome 116+, Edge 116+, Safari 17.0+, and Firefox 50+. Both expose webkitRelativePath on File objects. Use the standard directory attribute for modern browsers and webkitdirectory as a fallback for older Chromium versions."
+      },
+      {
+        "question": "Can I use drag-and-drop with directory upload?",
+        "answer": "Yes, but with limitations. Drag-and-drop of folders from the operating system file manager works in Chrome and Edge. Firefox and Safari do not support dragging folders into a drop zone. The generated code handles both cases: it shows the directory picker as a fallback when drag-and-drop is not available for folders. For individual files, drag-and-drop works in all modern browsers."
+      },
+      {
+        "question": "How does webkitRelativePath work with nested directories?",
+        "answer": "webkitRelativePath provides the full path from the selected directory to the file, using forward slashes as separators. For example, selecting a directory named assets that contains images/logo.png gives each file a webkitRelativePath of images/logo.png. The path always uses forward slashes regardless of the operating system. You can use this path to reconstruct the directory structure on the server."
+      },
+      {
+        "question": "How many files can a directory input handle?",
+        "answer": "There is no official limit defined in the specification, but browsers impose practical limits. Chrome limits directory selection to approximately 10,000 files in a single directory picker. For larger datasets, consider uploading files in batches or using a Web Worker to process the file list without blocking the UI. The file list display in the generated code includes a file count and total size to help users understand the scope of their selection."
+      }
+    ],
+    "quickAnswer": "Use input type=file with the webkitdirectory attribute to let users select entire folders for upload. Each file in the selected directory exposes a webkitRelativePath property showing its path relative to the chosen folder. Supported in Chrome 30+, Edge 12+, Safari 11.1+, and Firefox 50+. The generated HTML includes a drag-and-drop zone, file list display with directory tree view, and support for single-file, multiple-file, and directory modes.",
+    "limitations": [
+      "webkitRelativePath is only available for files selected through a directory picker -- files added via drag-and-drop from the operating system do not have path information in Firefox and Safari, though Chrome and Edge support directory drag-and-drop.",
+      "Browser support for directory input is strong in Chromium-based browsers and Firefox but Safari's implementation has historically lagged. The standardized directory attribute is supported in Safari 17+ but older Safari versions require the webkitdirectory prefix.",
+      "Large directory selections (thousands of files) can freeze the browser tab while the file list is being populated and displayed. Use lazy rendering or a Web Worker for production deployments handling large directories."
+    ],
+    "verificationSteps": [
+      "Open the generated HTML in Chrome. Click the directory picker and select a folder containing subdirectories with files. Verify that the file list displays all files with their correct webkitRelativePath values (for example, subfolder/filename.ext) and that file sizes and types are shown correctly.",
+      "Test the drag-and-drop zone by dragging a folder from the file explorer onto the drop area. In Chrome and Edge, verify that the folder contents appear with the correct relative paths. In Firefox and Safari, verify that a helpful message appears directing users to use the directory picker button instead."
+    ],
+    "updatedAt": "2026-06-01"
+  },
+  {
+    "id": "scrollend-event-snippet-generator",
+    "name": "scrollend Event Snippet Generator",
+    "category": "html",
+    "summary": "Generate JavaScript snippets using the scrollend event that fires when scrolling fully completes including momentum and inertia, with debounce comparison to show why native scrollend is more accurate.",
+    "description": "The scrollend event fires when the browser detects that scrolling has fully stopped, including momentum scrolling, rubber-banding, and user-initiated inertia. Unlike debounced scroll event listeners that approximate the end of scrolling based on arbitrary timeouts, scrollend provides a precise, browser-native signal that the viewport has settled at its final scroll position. Generate ready-to-use JavaScript snippets with the scrollend event, and compare the behavior side by side with traditional debounced scroll handlers to see the difference in timing and accuracy.",
+    "keywords": [
+      "scrollend event",
+      "scrollend vs debounce",
+      "scrollend JavaScript",
+      "scroll end detection",
+      "native scrollend"
+    ],
+    "whatIs": "The scrollend event is a browser-native event that fires when scrolling has fully completed -- including momentum scrolling, rubber-banding, and inertia decay. Unlike the scroll event which fires continuously during scrolling, or debounced scroll handlers that guess when scrolling stopped based on arbitrary timeouts, scrollend fires exactly once when the user scroll gesture is truly finished. The event fires both for programmatic scrolling (scrollTo, scrollBy, scrollIntoView) and for user-initiated scrolling via touch, mouse wheel, keyboard, or trackpad. Baseline 2025, supported in Chrome 114+, Edge 114+, Safari 17.5+, and Firefox 131+.",
+    "howToUse": [
+      "Select the snippet type: basic scrollend listener with element or window target, scrollend with scroll position logging, or a side-by-side comparison of scrollend versus debounced scroll.",
+      "Configure the scroll target: window (document-level scrolling) or a specific element with overflow:auto or overflow:scroll.",
+      "Customize the handler action: log the final scroll position, update a UI element, load more content at the bottom, or trigger an animation when scrolling stops.",
+      "Copy the generated JavaScript snippet and paste it into your project. The comparison snippet shows both approaches with timing labels so you can see the difference in a live demo."
+    ],
+    "useCases": [
+      "Trigger infinite scroll content loading only when the user has truly stopped scrolling, avoiding multiple loads during momentum scrolling.",
+      "Update a sticky table of contents or scroll-progress indicator at the exact final scroll position, not during intermediate positions.",
+      "Fire analytics events or impression tracking when the user finishes scrolling to a section, ensuring accurate measurement without double-counting."
+    ],
+    "examples": [
+      {
+        "title": "Infinite scroll with accurate load triggering",
+        "text": "A social media feed uses scrollend to detect when the user reaches the bottom of the page and stops scrolling. Unlike a debounced scroll handler that may fire multiple loads during slow momentum scrolling, scrollend fires once when the scroll position settles, triggering a single content load. This prevents duplicate API calls and phantom loading states."
+      },
+      {
+        "title": "Debounce comparison for scroll-aware navigation",
+        "text": "A documentation site highlights the current section in the sidebar based on scroll position. Using scrollend, the highlight updates exactly when scrolling stops -- the user sees the correct section highlighted immediately. With a 200ms debounced scroll handler on a fast trackpad, the highlight often updates during mid-scroll flicker, jumping between sections before settling. The generated comparison snippet demonstrates both behaviors side by side."
+      }
+    ],
+    "mistakes": [
+      "Assuming scrollend fires on every scrollable element automatically -- scrollend only fires on elements that have actual scrollable overflow (scrollWidth greater than clientWidth or scrollHeight greater than clientHeight). An element with overflow:scroll but no overflow content will not fire scrollend.",
+      "Using scrollend where continuous scroll feedback is needed -- scrollend fires only when scrolling stops. For progress bars, parallax effects, or other visual updates that need to track intermediate scroll positions, use the regular scroll event with requestAnimationFrame for smooth updates.",
+      "Relying on scrollend for every scroll-completion use case -- programmatic scrolling via scrollBy or scrollIntoView may not trigger scrollend if the scrolling is interrupted by another scroll call. Chain your action in the scrollend handler rather than assuming it will always fire after a programmatic scroll."
+    ],
+    "faq": [
+      {
+        "question": "How is scrollend different from a debounced scroll event listener?",
+        "answer": "A debounced scroll listener fires after a configurable timeout (often 100-300ms) since the last scroll event -- it guesses that scrolling has stopped. scrollend fires when the browser knows scrolling has stopped, based on the actual physics of the scroll gesture: momentum has decayed, rubber-banding has settled, and the viewport is at rest. scrollend has zero configurable timeout and cannot be fooled by slow scrolling. In practice, scrollend typically fires 50-500ms faster than a 200ms debounce and is never wrong about the final position."
+      },
+      {
+        "question": "Does scrollend work with touch scrolling and trackpad momentum?",
+        "answer": "Yes. scrollend accounts for all scroll input types: touch scrolling with momentum, trackpad gesture scrolling, mouse wheel clicks, keyboard scrolling (Page Up, Page Down, arrow keys), and programmatic scrollTo/scrollBy calls. The event fires when the scroll position has fully settled after any of these inputs, including the momentum phase of touch and trackpad gestures."
+      },
+      {
+        "question": "What happens if the user starts scrolling again before scrollend fires?",
+        "answer": "If a new scroll gesture begins during the momentum phase of a previous gesture, the pending scrollend event is cancelled and a new one is scheduled for the new gesture. This is the correct behavior -- scrollend should only fire when scrolling has truly stopped, and a new gesture means scrolling has not stopped. Debounced scroll handlers can produce false positives in this scenario, firing between gestures."
+      },
+      {
+        "question": "Can I cancel or prevent the default behavior of scrollend?",
+        "answer": "No. scrollend is a read-only event that signals completion -- it has no default behavior to cancel, and calling preventDefault() on it has no effect. It fires after the scroll action is complete and the browser has committed to the final scroll position. If you need to influence scrolling behavior, use the scroll event or a pointer events approach instead."
+      }
+    ],
+    "quickAnswer": "The scrollend event fires when scrolling has fully completed including momentum, inertia, and rubber-banding. Unlike debounced scroll handlers that guess the end of scrolling with arbitrary timeouts, scrollend is a browser-native signal that fires exactly once at the true final scroll position. Baseline 2025 (Chrome 114+, Safari 17.5+, Firefox 131+). Use it for accurate infinite scroll triggering, scroll-position-based UI updates, and analytics impressions.",
+    "limitations": [
+      "scrollend only fires on elements with actual scrollable overflow. Elements with overflow:scroll but no content exceeding their dimensions will never fire scrollend. Always verify the element has scrollable content before relying on the event.",
+      "scrollend does not fire during continuous scrolling -- it only signals completion. For real-time scroll tracking during the scroll gesture, you still need the scroll event paired with requestAnimationFrame for smooth updates.",
+      "scrollend may not fire for interrupted programmatic scrolling -- if a scrollTo or scrollBy call is interrupted by another scroll call before completing, the pending scrollend may be cancelled. Chain dependent actions inside the scrollend handler callback rather than assuming it will always execute."
+    ],
+    "verificationSteps": [
+      "Create a scrollable div with enough content to scroll. Attach a scrollend listener that logs the final scrollTop value. Scroll the content and release -- verify that scrollend fires exactly once at the final resting position, not during the scroll gesture or momentum phase.",
+      "Compare scrollend against a debounced scroll handler (200ms timeout) in the same scrollable container. Scroll rapidly and observe that scrollend fires at the true end of scrolling while the debounced handler may fire multiple times or at slightly incorrect positions depending on scroll speed."
+    ],
+    "updatedAt": "2026-06-02"
+  },
+  {
+    "id": "performance-observer-snippet-generator",
+    "name": "PerformanceObserver Snippet Generator",
+    "category": "html",
+    "summary": "Generate JavaScript snippets using PerformanceObserver to monitor Core Web Vitals (LCP, INP, CLS, FID, FCP, TTFB) and other performance metrics in real-time with good/needs-improvement/poor threshold classifications.",
+    "description": "PerformanceObserver provides an efficient, callback-based API for monitoring performance metrics as they are recorded by the browser. Unlike polling-based approaches that repeatedly check performance entries, PerformanceObserver delivers entries in real-time through a single observer pattern, supporting buffered entries so you do not miss metrics that fire before your observer is registered. Generate ready-to-use PerformanceObserver snippets that track Core Web Vitals (Largest Contentful Paint, Interaction to Next Paint, Cumulative Layout Shift, First Input Delay, First Contentful Paint, Time to First Byte), classify each metric against good/needs-improvement/poor thresholds, and optionally report results via the Beacon API or a custom callback.",
+    "keywords": [
+      "PerformanceObserver",
+      "Core Web Vitals",
+      "LCP INP CLS",
+      "web performance monitoring",
+      "sendBeacon analytics"
+    ],
+    "whatIs": "PerformanceObserver is a browser API that allows developers to observe performance measurement events in real-time. Instead of polling the performance timeline or relying on manual timing measurements, PerformanceObserver subscribes to specific entry types (like largest-contentful-paint, layout-shift, first-input, paint, and navigation) and receives entries as they are recorded. This is the standard approach recommended by the Web Performance Working Group for measuring Core Web Vitals. The API supports a buffered flag that returns historical entries immediately upon registration, ensuring you do not miss metrics that fire before your observer is set up. Baseline 2025, supported in Chrome 73+, Edge 73+, Safari 14.1+, and Firefox 84+.",
+    "howToUse": [
+      "Select the performance metrics to observe: Core Web Vitals (LCP, INP, CLS, FID, FCP, TTFB) or individual entry types like paint, layout-shift, largest-contentful-paint, first-input, and navigation.",
+      "Configure threshold classification: each metric is automatically classified as good, needs-improvement, or poor based on Google Web Vitals thresholds. Optionally customize the thresholds for your specific requirements.",
+      "Choose a reporting method: log results to the console, send data via navigator.sendBeacon to an analytics endpoint, or provide a custom callback function for integration with your existing monitoring.",
+      "Copy the generated JavaScript snippet. The output includes a complete PerformanceObserver setup with multiple observers, buffered entry support, threshold classification, and optional sendBeacon reporting."
+    ],
+    "useCases": [
+      "Track Core Web Vitals in production and report them to an analytics endpoint using sendBeacon for reliable, non-blocking data transmission even during page unload.",
+      "Monitor LCP in real-time during development to verify that performance optimizations (image compression, font loading, lazy loading) are actually reducing LCP times.",
+      "Detect unexpected layout shifts (CLS) on a live site by logging every layout-shift entry with its shift score and affected nodes, helping identify the source of cumulative layout shifts."
+    ],
+    "examples": [
+      {
+        "title": "Production Core Web Vitals monitoring with sendBeacon",
+        "text": "An e-commerce site deploys the generated PerformanceObserver snippet on its product pages. The observer tracks LCP, INP, CLS, FCP, and TTFB. Each metric is classified against Google thresholds: good LCP under 2500ms, needs-improvement 2500-4000ms, poor over 4000ms. Metrics are sent via navigator.sendBeacon to /analytics/cwv every 30 seconds. The team sets up dashboard alerts when any page exceeds 10 percent poor LCP or poor CLS over 0.25."
+      },
+      {
+        "title": "Development LCP debugging with detailed logging",
+        "text": "A developer working on image optimization adds a PerformanceObserver for largest-contentful-paint entries with console logging. Each LCP entry shows the element tag, its URL for images, render time, and size. By comparing LCP entries before and after switching to next-gen formats and adding fetchpriority=high to the hero image, the developer confirms a 40 percent reduction in LCP time."
+      }
+    ],
+    "mistakes": [
+      "Registering PerformanceObserver after page load without the buffered flag -- metrics like FCP and TTFB fire before most JavaScript executes. Always set buffered: true in the observer options to receive historical entries that were recorded before the observer was registered.",
+      "Observing layout-shift entries without checking hadRecentInput -- many layout shifts occur during user interaction (typing, clicking, resizing) and should not count toward CLS. Filter out entries where hadRecentInput is true to match the Google CLS definition.",
+      "Sending performance data synchronously on page unload instead of using sendBeacon -- regular fetch or XHR requests during unload may be cancelled by the browser. navigator.sendBeacon guarantees delivery by using the browser background processing queue."
+    ],
+    "faq": [
+      {
+        "question": "What performance metrics can PerformanceObserver monitor besides Core Web Vitals?",
+        "answer": "PerformanceObserver supports over 15 entry types including mark, measure, resource, navigation, paint, largest-contentful-paint, first-input, layout-shift, longtask, element, visibility-state, and event for INP. The generated snippet focuses on Core Web Vitals but you can extend it to observe any supported entry type by adding the appropriate type string to the observed entry types list."
+      },
+      {
+        "question": "How does PerformanceObserver handle multiple observers for the same metric type?",
+        "answer": "Multiple PerformanceObserver instances can observe the same entry type simultaneously without conflicts. Each observer receives a copy of the entries independently. This is useful for separating concerns -- for example, one observer sends data to analytics while another logs detailed debug information to the console. Each observer must be disconnected individually via observer.disconnect() when no longer needed."
+      },
+      {
+        "question": "Do PerformanceObserver entries persist across page navigations in a SPA?",
+        "answer": "No. PerformanceObserver entries are collected per navigation and cleared when the page is navigated away from. In single-page applications using client-side routing, you must reconnect observers after each route change. The generated snippet includes a helper function that reconnects all observers on route change events. For cross-origin navigations, performance entries from the previous page are not accessible."
+      },
+      {
+        "question": "What are the good/needs-improvement/poor thresholds used by the generated code?",
+        "answer": "The thresholds follow Google Web Vitals guidelines. LCP under 2500ms is good, 2500-4000ms needs improvement, over 4000ms is poor. FID under 100ms is good, 100-300ms needs improvement, over 300ms is poor. CLS under 0.1 is good, 0.1-0.25 needs improvement, over 0.25 is poor. INP under 200ms is good, 200-500ms needs improvement, over 500ms is poor. FCP follows LCP thresholds (2500ms/4000ms). TTFB under 800ms is good, 800-1800ms needs improvement, over 1800ms is poor. All thresholds are configurable in the generated snippet."
+      }
+    ],
+    "quickAnswer": "PerformanceObserver provides real-time Core Web Vitals monitoring (LCP, INP, CLS, FID, FCP, TTFB) through an efficient observer pattern with buffered entry support. Classify each metric against Google good/needs-improvement/poor thresholds and optionally report via navigator.sendBeacon for reliable analytics delivery. Baseline 2025 (Chrome 73+, Safari 14.1+, Firefox 84+). More efficient than polling and the recommended approach for production Web Vitals measurement.",
+    "limitations": [
+      "PerformanceObserver entries do not persist across page navigations -- each page load starts with a fresh timeline. For SPA route changes, observers must be reconnected manually to continue tracking metrics on the new route.",
+      "Some performance entry types have browser-specific availability or behavior. For example, layout-shift entries are not available in all browsers (Firefox added support in version 134), and INP observation requires Chrome 121+ or Safari 18+. Always check for support before registering observers.",
+      "PerformanceObserver has a limited buffer for each entry type. If the buffer fills before the observer is registered and buffered: true is not set, older entries may be discarded. Register observers early in the page load lifecycle and use buffered: true to capture entries that fired during the critical rendering path."
+    ],
+    "verificationSteps": [
+      "Open the generated HTML in Chrome DevTools on a page with sufficient content. Open the console and verify that PerformanceObserver logs each registered metric with its value, classification (good/needs-improvement/poor), and entry type. Scroll down, interact with the page, and confirm that INP and CLS entries appear after user interaction.",
+      "Configure the observer to use sendBeacon reporting and provide a valid endpoint URL. Load the page, then check the Network tab in DevTools for a beacon request containing performance data. Verify that the payload includes metric names, values, threshold classifications, and a timestamp."
+    ],
+    "updatedAt": "2026-06-02"
+  },
+  {
+    "id": "uint8array-base64-hex-converter",
+    "name": "Uint8Array Base64/Hex Converter",
+    "category": "html",
+    "summary": "Encode and decode Uint8Array data using native toBase64(), toHex(), fromBase64(), and fromHex() methods. No more manual btoa or charCodeAt loops.",
+    "description": "Generate code snippets using the native Uint8Array Base64 and Hex methods available in modern browsers. toBase64() encodes binary data to a Base64 string, toHex() encodes to a hex string, and the static methods fromBase64() and fromHex() decode back to Uint8Array. Replaces error-prone manual encoding with btoa and charCodeAt patterns.",
+    "keywords": [
+      "uint8array base64",
+      "uint8array hex",
+      "uint8array.tobase64",
+      "uint8array.fromhex",
+      "binary encoding javascript"
+    ],
+    "whatIs": "Uint8Array.prototype.toBase64() encodes the byte contents of a Uint8Array to a Base64-encoded string. Uint8Array.prototype.toHex() produces a lowercase hex string. Their counterparts, Uint8Array.fromBase64(string) and Uint8Array.fromHex(string), parse Base64 and hex strings back into Uint8Array. These methods are part of Baseline 2025 (Chrome 136+) and eliminate the need for manual encoding helpers. They are the standard way to transfer binary data between the browser and the server or between different Web APIs.",
+    "howToUse": [
+      "Create a Uint8Array from file data, typed array operations, or a Web API like fetch, WebSocket, or FileReader.",
+      "Call .toBase64() on the array to get a standard Base64 string suitable for JSON payloads, data URIs, or API requests.",
+      "Call .toHex() on the array to get a hex string useful for debugging, cryptographic display, or protocols that expect hex encoding.",
+      "Use Uint8Array.fromBase64(string) or Uint8Array.fromHex(string) to decode the encoded string back to binary data."
+    ],
+    "useCases": [
+      "Encode binary file contents uploaded from a file input as Base64 for sending in a JSON API request.",
+      "Display raw byte data as a hex string in a developer tool or debug panel for inspection.",
+      "Decode a Base64-encoded response from a WebSocket or fetch API back into a Uint8Array for further binary processing."
+    ],
+    "examples": [
+      {
+        "title": "Encode a file as Base64 for JSON upload",
+        "text": "A user selects a file in an input element. Read the file as an ArrayBuffer, wrap it in a Uint8Array, call toBase64(), and include the Base64 string and filename in a JSON payload sent to the server via fetch."
+      },
+      {
+        "title": "Decode hex bytes back to binary",
+        "text": "A WebSocket delivers a hex-encoded byte string like a1b2c3d4. Pass it to Uint8Array.fromHex() to get the underlying binary data, which can then be rendered as an image or processed in a WebAssembly module."
+      }
+    ],
+    "mistakes": [
+      "Calling toBase64() or toHex() on a regular array instead of a Uint8Array — these methods only exist on Uint8Array instances, not Array or other typed arrays.",
+      "Assuming fromBase64() accepts non-standard Base64 variants — it expects standard Base64 with padding. Use the Base64 URL-safe variant through manual replacement before decoding.",
+      "Passing an invalid hex string (odd length, non-hex characters) to fromHex() — it throws a SyntaxError. Always validate or sanitize hex input before decoding."
+    ],
+    "faq": [
+      {
+        "question": "How do these methods compare to btoa and atob?",
+        "answer": "btoa and atob operate on strings, not binary data. To encode binary with btoa, you must first convert each byte to a character via String.fromCharCode, then call btoa, which is verbose and error-prone. Uint8Array.toBase64() and fromBase64() work directly on byte arrays, handle all byte values correctly, and produce standard Base64 output. They are the recommended replacement for binary encoding tasks."
+      },
+      {
+        "question": "Can I use these methods in Node.js?",
+        "answer": "Uint8Array.toBase64(), toHex(), fromBase64(), and fromHex() are Web API methods available in browsers. Node.js uses Buffer for binary encoding (Buffer.from().toString('base64') and Buffer.from(string, 'base64')). For cross-platform code, feature-detect the methods or use a conditional polyfill."
+      },
+      {
+        "question": "Do these methods support streaming or large arrays?",
+        "answer": "These methods operate on the entire Uint8Array in memory. For very large datasets (hundreds of MB), decoding into a single Uint8Array may be memory-intensive. They do not provide streaming interfaces. For large data, process chunks incrementally or use the Streams API where applicable."
+      },
+      {
+        "question": "What about Base64 URL-safe encoding?",
+        "answer": "toBase64() produces standard Base64 with + and / characters and padding. There is no built-in URL-safe variant. To get Base64url encoding, replace + with -, / with _, and strip trailing = characters after encoding. The fromBase64() method expects standard Base64 by default and does not parse the URL-safe variant directly."
+      }
+    ],
+    "quickAnswer": "Generate code snippets using native Uint8Array Base64 and Hex encoding methods. toBase64() and toHex() encode binary data; Uint8Array.fromBase64() and Uint8Array.fromHex() decode strings back to binary. Available in Chrome 136+, Edge, Firefox, Safari. No more manual btoa or charCodeAt loops.",
+    "limitations": [
+      "Not available in older browsers without Baseline 2025 support. For broad compatibility, provide a fallback using manual encoding via btoa and charCodeAt until the methods reach all supported environments.",
+      "Decoding very large Base64 or hex strings into Uint8Array allocates the full decoded buffer in memory and can cause out-of-memory conditions. For extremely large data, consider streaming decoders or chunked processing.",
+      "Only standard Base64 with padding is supported by fromBase64(). URL-safe Base64, Base64 without padding, and hex strings require pre-processing before using the native methods."
+    ],
+    "verificationSteps": [
+      "Open Chrome 136+ DevTools Console. Create a Uint8Array via new Uint8Array([72, 101, 108, 108, 111]). Call .toBase64() and verify it returns the string 'SGVsbG8='. Call Uint8Array.fromBase64('SGVsbG8=') and verify the output matches the original array.",
+      "Call .toHex() on the same Uint8Array and verify it returns '48656c6c6f'. Call Uint8Array.fromHex('48656c6c6f') and confirm the decoded array matches the original."
+    ],
+    "updatedAt": "2026-06-02"
+  },
+  {
+    "id": "regexp-escape-helper",
+    "name": "RegExp.escape() Helper",
+    "category": "html",
+    "summary": "Escape special regex characters in user input using the native RegExp.escape() method. Generate safe dynamic regex patterns with comparison to old manual escaping.",
+    "description": "Use RegExp.escape(string) to safely escape special regular expression characters in user-provided strings before building dynamic RegExp objects. This static method handles all 14 special regex characters without manual replacement logic. Includes a side-by-side comparison with the old manual escape function approach.",
+    "keywords": [
+      "regexp.escape",
+      "escape regex characters",
+      "dynamic regex pattern",
+      "regex special characters",
+      "regex input sanitization"
+    ],
+    "whatIs": "RegExp.escape(string) is a static method that returns a new string where every special regular expression character is escaped with a backslash. This makes the string safe to use inside a RegExp constructor when building dynamic patterns from user input. The method is part of Baseline 2025 (Chrome 132+) and replaces error-prone manual escape functions that developers have been writing and copying for decades.",
+    "howToUse": [
+      "Identify where you need to build a RegExp pattern from user-provided or variable input, such as search boxes or filter inputs.",
+      "Pass the input string to RegExp.escape() before inserting it into the pattern string for the RegExp constructor.",
+      "Use the escaped string in your RegExp pattern: new RegExp(RegExp.escape(userInput), 'gi').",
+      "Review the generated code included in the tool output, which shows both the native method and the manual escape function for comparison."
+    ],
+    "useCases": [
+      "Build a client-side search filter where user keystrokes are turned into a regex for live filtering — escaping prevents invalid or injected patterns from breaking the regex.",
+      "Create a find-and-replace UI where the user types a literal string to search for and a replacement. Escaping ensures that characters like . or * are treated as literals.",
+      "Highlight search terms in text content by constructing a RegExp from user input and wrapping matches in a span — escaping guarantees the pattern is syntactically valid."
+    ],
+    "examples": [
+      {
+        "title": "Live search filter",
+        "text": "A search input on a product listing page filters items by name. The user types something like .NET or (Premium). RegExp.escape() turns each query into a safe pattern so the search works correctly even with special characters."
+      },
+      {
+        "title": "Find and replace in a text editor",
+        "text": "A simple browser-based text editor lets users find and replace text. The find string is escaped with RegExp.escape() before building the replacement regex, so searching for $100 or (C) finds literal matches instead of triggering regex syntax."
+      }
+    ],
+    "mistakes": [
+      "Forgetting to escape user input and embedding it directly in a regex pattern — this causes syntax errors when the input contains special characters like (, ), or * and breaks the entire regex.",
+      "Using RegExp.escape() on the entire pattern string that already contains regex metacharacters intentionally — the method escapes everything, so pre-built patterns with quantifiers or groups will lose their special meaning.",
+      "Assuming RegExp.escape() also handles null or undefined inputs — pass a string value or check the input type before calling to avoid TypeError."
+    ],
+    "faq": [
+      {
+        "question": "What characters does RegExp.escape() escape?",
+        "answer": "The method escapes the 14 special regex characters: ^ $ \\ . * + ? ( ) [ ] { } |. Each is preceded by a backslash in the returned string. For example, RegExp.escape('hello.world') returns 'hello\\.world', and RegExp.escape('price $10') returns 'price \\$10'."
+      },
+      {
+        "question": "How does RegExp.escape() compare to the manual escape function developers used before?",
+        "answer": "The manual approach typically used string.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&') — a hard-to-read regex that developers often copied without understanding. RegExp.escape() is a standard API with consistent behavior, no regex-in-a-regex, and no edge-case bugs. It is simpler, faster, and maintained by the browser vendor."
+      },
+      {
+        "question": "Is RegExp.escape() available in Node.js?",
+        "answer": "RegExp.escape() is a JavaScript language feature, not a Web API, and is available in Node.js 20+ as a core method on the RegExp constructor. No polyfill or npm package is needed. Check your Node.js version for support."
+      },
+      {
+        "question": "Can I use RegExp.escape() with Unicode or special spaces?",
+        "answer": "Yes. RegExp.escape() works on any valid JavaScript string including Unicode characters and unusual whitespace. It only escapes the 14 regex metacharacters and leaves all other characters including non-Latin scripts untouched."
+      }
+    ],
+    "quickAnswer": "Generate code using RegExp.escape(string) to safely escape special regex characters in user input before building dynamic RegExp patterns. Supports all 14 regex metacharacters. Available in Chrome 132+, Edge, Firefox, Node.js 20+. No more manual escape regex chains.",
+    "limitations": [
+      "Not available in environments without Baseline 2025 support. Use a polyfill or the traditional manual replace function for older Node.js versions and legacy browsers.",
+      "RegExp.escape() only handles string inputs. For RegExp flags or pattern options, you must still build the full pattern string and flags array yourself.",
+      "The method escapes every special character unconditionally. If you need to build a pattern that mixes literal user input with intentional regex syntax (like wildcards), you must separately handle the intentional syntax."
+    ],
+    "verificationSteps": [
+      "Open Chrome 132+ DevTools Console. Call RegExp.escape('hello.world') and verify it returns 'hello\\.world'. Call RegExp.escape('test (1) [2]') and confirm the parentheses and brackets are escaped.",
+      "Construct new RegExp(RegExp.escape('.*+?'), 'g') and test it against the literal string '.*+?' — verify it matches, confirming the special characters are treated as literals."
+    ],
+    "updatedAt": "2026-06-02"
+  },
+  {
+    "id": "intl-durationformat-generator",
+    "name": "Intl.DurationFormat Generator",
+    "category": "html",
+    "summary": "Format durations with locale-aware Intl.DurationFormat. Supports long, short, narrow, and digital styles in 6+ locales. No more moment-duration-format.",
+    "description": "Use Intl.DurationFormat to display time durations — hours, minutes, seconds — in a locale-aware format. Choose a style (long, short, narrow, digital) and a locale to see how the same duration renders across languages. The generated code replaces third-party duration formatting libraries like moment-duration-format.",
+    "keywords": [
+      "intl.durationformat",
+      "duration formatting",
+      "locale duration",
+      "duration display",
+      "intl duration format"
+    ],
+    "whatIs": "Intl.DurationFormat is a built-in browser API that formats time durations according to locale conventions. Given a duration object with fields like hours, minutes, and seconds, it produces human-readable strings such as \"1 hour, 30 minutes\" (English long), \"1 Std 30 Min.\" (German short), or \"1:30:00\" (digital). It supports four styles: long, short, narrow, and digital. Available in Chrome 104+ and part of Baseline 2025.",
+    "howToUse": [
+      "Create a duration object with the time components you want to format: { hours: 1, minutes: 30, seconds: 0 }.",
+      "Construct a new Intl.DurationFormat instance with your chosen locale and optional style configuration.",
+      "Call format(duration) on the instance to get the localized string, or call formatToParts(duration) for an array of formatted components.",
+      "Experiment with different locales and styles in the tool to see how duration strings change across languages."
+    ],
+    "useCases": [
+      "Display video length or podcast duration in a localized media player interface.",
+      "Show estimated reading time or processing time in a user's preferred language format.",
+      "Format server-side durations (API response times, job runtimes) for internationalized admin dashboards."
+    ],
+    "examples": [
+      {
+        "title": "Localized video duration display",
+        "text": "A streaming service shows video lengths in the viewer's locale. English viewers see '1 hour, 30 minutes', German viewers see '1 Std 30 Min.', and Japanese viewers see '1時間30分'. Using Intl.DurationFormat with the user's locale handles all three automatically."
+      },
+      {
+        "title": "Digital-style countdown display",
+        "text": "An event countdown timer shows remaining time in digital format: '2:15:30' for 2 hours, 15 minutes, 30 seconds. Using style 'digital' with Intl.DurationFormat produces a consistent HH:MM:SS display across all locales."
+      }
+    ],
+    "mistakes": [
+      "Passing a Date or timestamp to Intl.DurationFormat instead of a duration object — the API expects plain objects with numeric duration fields like { hours: 1, minutes: 30 }, not timestamps or dates.",
+      "Assuming all locales use the same word order or separator — Japanese places hours before minutes without a word separator while English uses commas. Always test your target locales rather than assuming English patterns.",
+      "Using style 'digital' with hours-only durations — a duration of { minutes: 45, seconds: 0 } in digital style may display as '00:45:00' with leading hours. Adjust the duration object to omit hours if you do not want them shown."
+    ],
+    "faq": [
+      {
+        "question": "What duration fields does Intl.DurationFormat accept?",
+        "answer": "Intl.DurationFormat accepts a duration object with fields: years, months, weeks, days, hours, minutes, seconds, milliseconds, microseconds, nanoseconds. Only include the fields you need — omitted fields are not displayed. The object can mix large and small units (e.g., hours and seconds without minutes)."
+      },
+      {
+        "question": "How does the digital style differ from long, short, or narrow?",
+        "answer": "Digital style formats the duration as a numeric time display like '1:30:00' (HH:MM:SS), similar to a digital clock. Long style uses full words ('1 hour, 30 minutes'), short uses abbreviated forms ('1 hr, 30 min'), and narrow uses minimal notation ('1h 30m'). Each locale defines its own conventions for each style."
+      },
+      {
+        "question": "Does Intl.DurationFormat support fractional durations?",
+        "answer": "Duration values can be fractional or decimal numbers, but formatting behavior varies by locale and style. Fractional hours, for example, are formatted according to locale number conventions. For precise formatting, round your duration values to whole units before passing them to the API."
+      }
+    ],
+    "quickAnswer": "Generate code using Intl.DurationFormat to display time durations in a locale-aware format. Choose between long, short, narrow, and digital styles. Supports English, German, French, Spanish, Japanese, and Dutch. Drop moment-duration-format and use the native API instead.",
+    "limitations": [
+      "Intl.DurationFormat is not available in Safari as of mid-2026. Use a polyfill or fallback library for Safari users, or implement a simple manual formatter for basic cases.",
+      "The API does not aggregate units automatically — { hours: 1, minutes: 90 } formats as '1 hour, 90 minutes', not '2 hours, 30 minutes'. Normalize your duration before formatting if you want automatic unit conversion.",
+      "Each locale determines its own formatting rules and word choices. The digital style produces consistent numeric output, but long/short/narrow styles may vary in ways that affect layout width. Test across your target locales to avoid text overflow."
+    ],
+    "verificationSteps": [
+      "Open Chrome 104+ DevTools Console. Create new Intl.DurationFormat('en', { style: 'long' }). Call .format({ hours: 1, minutes: 30, seconds: 15 }) and verify it returns a string like '1 hour, 30 minutes, 15 seconds'.",
+      "Create a second instance with locale 'de' and style 'short'. Format the same duration and verify the output uses German abbreviations like 'Std' and 'Min.' — confirming locale-aware behavior."
+    ],
+    "updatedAt": "2026-06-02"
+  },
+  {
+    "id": "css-shape-function-generator",
+    "name": "CSS shape() Function Generator",
+    "category": "css",
+    "summary": "Generate CSS shape() function values for clip-path and shape-outside with polygon, circle, ellipse, path, and rect types. Supports percentage coordinates, reference boxes, and animated transitions.",
+    "description": "The CSS shape() function (Baseline 2026, Chrome 139+) creates non-rectangular shapes for clip-path and shape-outside properties. Unlike polygon(), circle(), and the other legacy shape primitives, shape() supports percentage coordinates relative to the element's own dimensions, margin-box and padding-box reference boxes, and smooth animated transitions between different shape types. Generate shape() CSS for five geometry types: polygon, circle, ellipse, path, and rect.",
+    "keywords": [
+      "css shape function",
+      "clip-path shape",
+      "shape-outside css",
+      "css geometry function",
+      "css shape animation"
+    ],
+    "whatIs": "The CSS shape() function is a new shape primitive that unifies and extends the legacy shape functions (polygon(), circle(), ellipse(), path(), inset(), rect()). Unlike earlier shape functions, shape() supports percentage coordinates that are relative to the element's own dimensions, not just pixel coordinates. It also supports reference box keywords (margin-box, padding-box, content-box, border-box) that define the coordinate system, and shapes created with shape() can be interpolated for smooth CSS transitions and animations between different shape types.",
+    "howToUse": [
+      "Select the shape type: polygon (list of coordinate pairs), circle (center and radius), ellipse (center plus x-radius and y-radius), path (SVG path data), or rect (top, right, bottom, left with optional rounding).",
+      "Choose the reference box: margin-box, padding-box, content-box, or border-box. The reference box determines the coordinate system for percentage-based coordinates.",
+      "Configure the shape coordinates. For polygons, add coordinate point pairs. For circles and ellipses, set the center position and radius values. Enable animation-friendly mode to ensure shape values use compatible syntax for CSS transitions.",
+      "Copy the generated shape() CSS and apply it to the clip-path or shape-outside property. Add a fallback using the legacy shape functions for browsers that do not support shape() yet."
+    ],
+    "useCases": [
+      "Create non-rectangular image masks for hero sections and featured content cards using clip-path with shape() polygon and percentage coordinates.",
+      "Wrap text around circular or elliptical images using shape-outside with shape() circle and padding-box reference for consistent spacing.",
+      "Animate between a polygon and a circle shape on hover or scroll using CSS transitions, since shape() supports interpolation between different shape types."
+    ],
+    "examples": [
+      {
+        "title": "Animated hero image mask",
+        "text": "A landing page shows a hero image clipped as a polygon on load, then transitions to a full rectangle on scroll. Using shape() polygon with percentage coordinates, the clip-path animates smoothly from a hexagonal shape to a full rectangle. Provide clip-path: none as the fallback for browsers without shape() support."
+      },
+      {
+        "title": "Text wrapping around a circular profile photo",
+        "text": "A blog profile page has a circular photo that text wraps around. Using shape-outside: shape() circle at 50% 50% with 50% radius and padding-box reference, the text wraps tightly around the image. The percentage-based radius scales with the image size for responsive layouts."
+      }
+    ],
+    "mistakes": [
+      "Using pixel coordinates in shape() when percentage coordinates would be more responsive -- percentage coordinates in shape() adapt to the element size, while pixel coordinates break on resize. Use percentage values unless exact pixel alignment is required.",
+      "Assuming shape() polygon uses the same comma-separated bare number syntax as polygon() -- shape() requires explicit units (px or %) on each coordinate value, making the syntax more verbose than the legacy function.",
+      "Applying shape() without a fallback for older browsers -- shape() is supported in Chrome 139+, Edge 139+, and Safari 18.2+ but not in Firefox. Unsupported browsers ignore the entire declaration. Always provide a fallback shape declaration before the shape() rule."
+    ],
+    "faq": [
+      {
+        "question": "How does shape() differ from polygon(), circle(), and the other legacy shape functions?",
+        "answer": "shape() is a unified replacement for polygon(), circle(), ellipse(), path(), inset(), and rect(). Its key advantages are: percentage coordinates relative to the element's own dimensions rather than the reference box size, explicit reference box keywords (margin-box, padding-box, content-box, border-box), and the ability to animate between different shape types. The legacy functions cannot interpolate across shape types -- you cannot transition from polygon() to circle() with the old functions, but shape() supports this."
+      },
+      {
+        "question": "Can I animate between a polygon and a circle using shape()?",
+        "answer": "Yes. With the older polygon() function, you could only animate between two polygons with the same number of vertices. With shape(), you can animate between any two supported shape types as long as the coordinate values are compatible for interpolation. Enable animation-friendly mode in this generator to ensure the generated values use compatible syntax for smooth CSS transitions between shapes."
+      },
+      {
+        "question": "What reference box should I use for shape-outside versus clip-path?",
+        "answer": "For shape-outside, the default reference box is margin-box, but padding-box is usually better because text should wrap to the padding area, not extend into the border or margin. For clip-path, the default is border-box, which clips the element including its border. Content-box is useful when you want to clip only the content area, excluding padding and border. The choice depends on whether the shape should include the element's spacing."
+      },
+      {
+        "question": "Which browsers support the CSS shape() function?",
+        "answer": "The shape() function is Baseline 2026, supported in Chrome 139+, Edge 139+, and Safari 18.2+. Firefox does not support shape() as of version 138. For production use, always include a fallback declaration using the legacy shape functions (polygon(), circle(), etc.) or clip-path: none before the shape() declaration. The fallback ensures styling works in all browsers while the shape() enhancement applies where available."
+      }
+    ],
+    "quickAnswer": "CSS shape() creates non-rectangular shapes for clip-path and shape-outside with percentage coordinates relative to element size, reference box support, and animatable transitions between polygon, circle, ellipse, path, and rect types. Chrome 139+, Safari 18.2+ (Baseline 2026). Always include a fallback shape function for unsupported browsers.",
+    "limitations": [
+      "Browser support is limited to Chrome 139+, Edge 139+, and Safari 18.2+ as of mid-2026. Firefox does not support shape() yet, and older browsers ignore the entire declaration. A fallback shape function is required for broad compatibility.",
+      "shape() polygon requires explicit units (px or %) on each coordinate value, unlike the legacy polygon() function which accepts bare numbers. This makes the syntax more verbose and error-prone when migrating from existing polygon() declarations.",
+      "Not all shape types interpolate cleanly with each other. While shape() supports cross-type animation, transitions between vastly different geometries (for example, rect to a complex path) may produce unexpected intermediate shapes. Test animations visually before deploying."
+    ],
+    "verificationSteps": [
+      "In Chrome 139+, apply the generated shape() CSS to an element with clip-path and inspect the computed style. Resize the viewport to confirm percentage coordinates scale correctly relative to the element size.",
+      "Add a CSS transition on clip-path and toggle between two shape() values (polygon and circle) on hover. Verify the transition animates smoothly between the two shapes without visual glitches or jumps."
+    ],
+    "updatedAt": "2026-06-02"
+  },
+  {
+    "id": "css-scope-rule-builder",
+    "name": "CSS @scope Rule Builder",
+    "category": "css",
+    "summary": "Generate CSS @scope at-rules that scope styles to a DOM subtree. Configure upper boundary (scope root) and optional lower boundary (scope limit) with lower specificity than unscoped styles.",
+    "description": "The CSS @scope at-rule (Baseline 2025, Chrome 118+) limits the application of style rules to a specific DOM subtree, preventing style leaks without BEM naming conventions, CSS Modules, or Shadow DOM. The @scope rule supports an upper boundary (the scope root element) and an optional lower boundary (the scope limit) that restricts how deep the styles apply. Scoped styles have lower specificity than unscoped global styles, making it easier to override scoped styles when needed. Generate @scope rules for class selectors, id selectors, and element selectors.",
+    "keywords": [
+      "css scope at-rule",
+      "scoped styles css",
+      "css style isolation",
+      "dom subtree scoping",
+      "css cascade scope"
+    ],
+    "whatIs": "The CSS @scope at-rule allows developers to define a boundary for style rules, limiting their effect to a specific DOM subtree. This solves the classic CSS scoping problem without BEM, CSS Modules, or Shadow DOM. The @scope rule takes an upper boundary selector (the scope root, required) and an optional lower boundary selector (the scope limit, optional). Styles within @scope do not leak outside the subtree, and styles outside @scope do not override scoped rules without intentional selector matching. Scoped rules have lower specificity than unscoped global rules, which makes overrides predictable and intentional.",
+    "howToUse": [
+      "Enter the scope root selector -- the element that defines the upper boundary. All style rules inside the @scope block apply only within this element's subtree.",
+      "Optionally add a scope limit selector -- the lower boundary that restricts how deep the scoped styles apply. Style rules do not apply to elements inside the scope limit or deeper.",
+      "Write the CSS style rules inside the @scope block using standard CSS syntax. These rules have lower specificity than unscoped global rules targeting the same elements.",
+      "Copy the generated @scope CSS and add it to your stylesheet. Place @scope rules after global defaults but before component-specific overrides for the most predictable cascade."
+    ],
+    "useCases": [
+      "Scope widget styles to their container element so they do not leak into the rest of the page, eliminating the need for BEM class naming on every element.",
+      "Apply different link styles within a sidebar versus the main content area without writing higher-specificity selectors or using !important.",
+      "Restrict third-party embed styles to their wrapper div so the embed's internal CSS does not affect the surrounding page layout."
+    ],
+    "examples": [
+      {
+        "title": "Sidebar widget with isolated styles",
+        "text": "A news site has a sidebar widget that needs distinct link colors and font sizes. Using @scope (.sidebar) { a { color: #555; font-size: 14px; } }, the link styles apply only within .sidebar. Links in the main content area remain unaffected, and no BEM class renaming is required on the sidebar elements."
+      },
+      {
+        "title": "Scoped card styles with a lower boundary",
+        "text": "A component library has a card component that should style its immediate children but not modify elements inside nested card instances. Using @scope (.card) to (.card-inner) { ... }, the scoped styles apply within .card but stop before .card-inner, preventing style conflicts in nested card layouts."
+      }
+    ],
+    "mistakes": [
+      "Using @scope without understanding that scoped rules have lower specificity than global rules -- if a global rule and a scoped rule target the same element, the global rule wins. This is intentional for easy overrides but can be surprising if you expect scoped rules to always apply.",
+      "Forgetting that @scope does not create a new stacking context or containment -- unlike Shadow DOM, @scope does not isolate CSS counters, z-index, or paint containment. It only limits selector matching within the DOM subtree.",
+      "Applying @scope with an overly broad scope root selector (like div or *) -- this defeats the purpose of scoping and may cause unexpected performance impact since the browser must evaluate the scope root against many elements."
+    ],
+    "faq": [
+      {
+        "question": "How does @scope differ from Shadow DOM for style isolation?",
+        "answer": "Shadow DOM provides complete encapsulation: styles inside a shadow root cannot affect the host page, and host page styles cannot penetrate into the shadow tree. @scope only limits selector matching to a DOM subtree but does not prevent inheritance of inheritable properties (like font-family or color), does not create a new document fragment, and does not isolate CSS counters, z-index, or custom properties. @scope is lighter and requires no DOM restructuring, while Shadow DOM provides stronger guarantees at the cost of more significant DOM changes."
+      },
+      {
+        "question": "Does @scope replace BEM or CSS Modules?",
+        "answer": "@scope reduces but does not fully replace BEM or CSS Modules. For simple component scoping within a single DOM tree, @scope can eliminate the need for BEM's block-element-modifier naming within a scope boundary. However, for deeply nested components, multiple scopes, or cross-framework component boundaries, BEM or CSS Modules still provide clearer naming and more predictable behavior. @scope is best used as a complement to existing methodologies, not a wholesale replacement."
+      },
+      {
+        "question": "What happens if I nest @scope rules?",
+        "answer": "Nested @scope rules are supported. An inner @scope rule is evaluated relative to its outer scope's root. Style rules in the inner scope apply to elements matching both scope boundaries. This is useful for component hierarchies where a child component scope should be evaluated within the parent scope context. The lower specificity of scoped rules applies to each scope level independently."
+      },
+      {
+        "question": "Which browsers support CSS @scope?",
+        "answer": "@scope is Baseline 2025, supported in Chrome 118+, Edge 118+, Safari 17.4+, and Firefox 128+. This covers over 90% of global browser usage as of mid-2026. @scope can be used safely in production with fallback styling for unsupported browsers -- the rules inside @scope simply apply globally without scoping in browsers that do not support the at-rule."
+      }
+    ],
+    "quickAnswer": "CSS @scope limits style rules to a DOM subtree, preventing style leaks without BEM or Shadow DOM. Configure an upper boundary (scope root) and optional lower boundary (scope limit). Scoped rules have lower specificity than unscoped rules for predictable overrides. Chrome 118+, Safari 17.4+, Firefox 128+ (Baseline 2025).",
+    "limitations": [
+      "@scope does not create a new stacking context, z-index isolation, or containment -- it only limits selector matching. Properties like z-index, CSS counters, and custom properties still interact across scope boundaries.",
+      "Overly broad scope root selectors (such as a common class used in many places) can cause unexpected style application. Each @scope rule is evaluated for every element matching the scope root, so complex scope trees may affect performance on pages with many DOM elements.",
+      "In browsers that do not support @scope, the rules inside the at-rule are ignored entirely, not un-scoped. If broad browser support is required, duplicate the scoped rules as unscoped rules outside the @scope block as a fallback."
+    ],
+    "verificationSteps": [
+      "In Chrome 118+, apply the generated @scope CSS to a page with multiple sections. Verify that styles inside @scope only apply to elements within the scope root subtree and not to identical elements outside it.",
+      "Add an unscoped global rule that targets the same elements as the scoped rule. Verify that the global rule takes precedence, confirming that scoped rules have lower specificity than global rules."
+    ],
+    "updatedAt": "2026-06-02"
+  },
+  {
+    "id": "custom-highlight-api-generator",
+    "name": "Custom Highlight API Generator",
+    "category": "html",
+    "summary": "Generate JavaScript and CSS snippets for the Custom Highlights API to style arbitrary text ranges without modifying the DOM. Uses CSS.highlights registry and ::highlight() pseudo-element for find-in-page, syntax highlighting, and search results.",
+    "description": "The Custom Highlights API (Baseline 2026, Chrome 105+) lets you style arbitrary ranges of text using CSS without wrapping them in span elements. Register named highlights via CSS.highlights.set() and apply styles with the ::highlight() pseudo-element. Unlike wrapping text in span tags, highlights do not modify the DOM tree, do not affect text content, and are invisible to assistive technology and JavaScript selectors. Generate JavaScript code to create and manage highlights with configurable range matching, plus CSS for highlight styling with supported properties only.",
+    "keywords": [
+      "custom highlight api",
+      "css highlight pseudo",
+      "highlight text without dom",
+      "css.highlights registry",
+      "text range styling"
+    ],
+    "whatIs": "The Custom Highlights API provides a way to style text ranges in the browser without modifying the DOM. Instead of wrapping text in span elements with inline styles, you create Range objects, collect them into a Highlight object, and register it with the CSS.highlights registry under a name. The ::highlight() pseudo-element then applies styles to those ranges. Because highlights do not modify the DOM, they are ideal for transient visual effects like search highlighting, find-in-page results, and syntax highlighting, where you want to avoid cluttering the DOM with temporary span wrappers.",
+    "howToUse": [
+      "Write or paste the text content into the editor, or use the sample text provided. The tool demonstrates how highlights apply to ranges within the text.",
+      "Configure the highlight name (used for the ::highlight() CSS selector) and the text patterns or ranges to highlight. Choose between word matching, regex matching, or manual range specification.",
+      "Customize the highlight styling: background color, text color, border radius, and underline options. The ::highlight() pseudo-element supports a subset of CSS properties including color, background-color, text-decoration, and text-shadow.",
+      "Copy the generated JavaScript (for creating and managing highlights) and CSS (for styling them). The output includes a self-contained example that can be embedded directly into a web page."
+    ],
+    "useCases": [
+      "Implement find-in-page highlighting that marks all occurrences of a search term without wrapping every match in a span element and without disrupting the existing DOM structure.",
+      "Add syntax highlighting to code blocks in a documentation site by creating highlights for keywords, strings, and comments based on regex pattern matching.",
+      "Build a text comparison tool that highlights added, removed, and changed words between two versions of text, with each type using a different ::highlight() color."
+    ],
+    "examples": [
+      {
+        "title": "Find-in-page search highlighting",
+        "text": "A documentation site implements live search highlighting. As the user types in the search box, the JavaScript creates Range objects for every occurrence of the search term, registers them as a highlight named search-match, and the CSS ::highlight(search-match) applies a yellow background. When the user clears the search, the highlight is removed by calling CSS.highlights.delete(). The DOM remains clean -- no span elements to clean up."
+      },
+      {
+        "title": "Multi-color syntax highlighting",
+        "text": "A code snippet viewer highlights keywords in blue, strings in green, and comments in gray using three separate named highlights. JavaScript regex matches each category of tokens, creates Range objects, and registers three highlights: keyword-highlight, string-highlight, and comment-highlight. Each highlight has its own ::highlight() CSS rule with a different color. The original code text in the DOM is unchanged."
+      }
+    ],
+    "mistakes": [
+      "Using highlights on elements that are not connected to the DOM -- Range objects require the target elements to be in the document tree. Create highlights after the target content is rendered, typically in a DOMContentLoaded handler.",
+      "Assuming ::highlight() supports all CSS properties -- it only supports color, background-color, text-decoration, text-shadow, and a few other visual properties. Properties like font-size, padding, margin, and display do not apply to highlights.",
+      "Forgetting that highlights do not affect text selection or the accessibility tree -- the Custom Highlights API is purely visual. Highlights do not appear in the accessibility tree, are not announced by screen readers, and do not affect text selection behavior."
+    ],
+    "faq": [
+      {
+        "question": "How does the Custom Highlights API differ from wrapping text in span elements?",
+        "answer": "Wrapping text in span elements modifies the DOM tree -- it splits text nodes, adds elements, and changes the document structure, which can break CSS selectors, text operations, and assistive technology. The Custom Highlights API creates Range objects that reference existing text nodes without modifying the DOM. Highlights are invisible to the browser's accessibility tree, JavaScript selectors, and text content APIs. This makes highlights ideal for transient visual effects that must not interfere with the underlying document structure."
+      },
+      {
+        "question": "Can ::highlight() style text that spans across multiple HTML elements?",
+        "answer": "No. Highlights can only reference text within a single Text node. If the desired highlight spans across multiple elements (for example, a phrase that starts in a paragraph and ends in a link), you must create separate Highlight objects for each Text node segment. The generated code handles this by breaking multi-element ranges into individual Text node ranges."
+      },
+      {
+        "question": "What happens to highlights when the DOM changes?",
+        "answer": "Highlights are tied to specific Range objects that reference specific Text nodes. If the DOM changes -- text content is modified, elements are removed, or new nodes are inserted -- the highlights on affected text nodes may become invalid or detached. The Custom Highlights API does not automatically update highlights when the DOM changes. You must recreate highlights after DOM mutations that affect the highlighted text ranges."
+      },
+      {
+        "question": "Which browsers support the Custom Highlights API?",
+        "answer": "The Custom Highlights API is Baseline 2026, supported in Chrome 105+, Edge 105+, and Safari 18.2+. Firefox does not support it as of version 138. For find-in-page and search highlighting, provide a fallback that wraps text in span elements for unsupported browsers. The generated code includes feature detection and an optional fallback path."
+      }
+    ],
+    "quickAnswer": "The Custom Highlights API styles arbitrary text ranges via CSS without modifying the DOM. Use CSS.highlights.set() to register named highlights and ::highlight() pseudo-element for styling. Supports color, background-color, text-decoration, and text-shadow. Chrome 105+, Safari 18.2+ (Baseline 2026). Ideal for find-in-page, syntax highlighting, and search result markers with clean DOM preservation.",
+    "limitations": [
+      "Browser support: Chrome 105+, Edge 105+, and Safari 18.2+. Firefox does not support the API as of version 138. A DOM-based fallback (span wrapping) is required for Firefox and other unsupported browsers.",
+      "::highlight() supports a limited set of CSS properties: color, background-color, text-decoration, text-decoration-color, text-decoration-style, text-shadow, and stroke-related properties. Layout properties like font-size, padding, margin, or display cannot be applied to highlights.",
+      "Highlights are not automatically maintained when the DOM changes. Adding, removing, or modifying text content that overlaps with a highlighted range invalidates the highlight. You must recreate highlights after DOM mutations that affect the targeted text."
+    ],
+    "verificationSteps": [
+      "Open the generated HTML in Chrome 105+. Type a search term in the input field and verify that all occurrences in the text display the highlight styling (background color, text color) without any span elements appearing in the DOM inspector.",
+      "Inspect the element in Chrome DevTools and verify that no span elements have been added to the DOM. Check that CSS.highlights.keys() in the console returns the registered highlight name and that the ::highlight() pseudo-element is visible in the Styles panel."
+    ],
+    "updatedAt": "2026-06-02"
+  },
+  {
+    "id": "webtransport-url-template-helper",
+    "name": "WebTransport URL Template Helper",
+    "category": "html",
+    "summary": "Generate a JavaScript WebTransport connection snippet with URL template, bidirectional streams, and datagram support for low-latency client-server communication over HTTP/3 (QUIC).",
+    "description": "WebTransport is a low-latency client-server protocol built on HTTP/3 (QUIC) that supports multiplexed bidirectional streams and unreliable datagrams. This tool generates a ready-to-use JavaScript snippet for connecting to a WebTransport server, handling stream and datagram I/O, and optionally configuring self-signed certificate verification. Use it to replace WebSocket and WebRTC data channels in real-time applications like gaming, live collaboration, and streaming analytics.",
+    "keywords": [
+      "webtransport helper",
+      "webtransport url template",
+      "http3 quic api",
+      "bidirectional stream",
+      "webtransport javascript snippet"
+    ],
+    "whatIs": "WebTransport is a browser API that enables low-latency client-server communication over HTTP/3 (QUIC). It provides two data transport modes: bidirectional streams (reliable, ordered, TCP-like) and datagrams (unreliable, unordered, UDP-like), both multiplexed over a single QUIC connection. Unlike WebSockets which use a single ordered message stream, WebTransport allows multiple independent streams in parallel, making it suitable for applications that need both reliability and low-latency best-effort delivery. The API uses a URL template to establish the connection and supports self-signed certificates for development via the serverCertificateHashes option.",
+    "howToUse": [
+      "Enter the WebTransport server URL using the https:// scheme and the server host and port, such as https://example.com:4433, that points to your HTTP/3 (QUIC) endpoint.",
+      "Choose which transport features to include in the generated snippet: bidirectional streams, datagrams, or both.",
+      "Optionally enable self-signed certificate support for development servers by providing the certificate SHA-256 hash in the serverCertificateHashes option.",
+      "Copy the generated JavaScript snippet and integrate it into your application. The snippet includes connection establishment, stream opening, datagram sending and receiving, and connection close handling."
+    ],
+    "useCases": [
+      "Build a real-time multiplayer game that uses reliable streams for game state synchronization and unreliable datagrams for position updates.",
+      "Create a live collaborative document editor where each document section streams over its own bidirectional channel, avoiding head-of-line blocking from WebSockets.",
+      "Stream high-frequency sensor or market data using unreliable datagrams where occasional packet loss is preferable to delivery latency."
+    ],
+    "examples": [
+      {
+        "title": "Real-time game with mixed transport",
+        "text": "A browser game needs to sync player inventory and score over a reliable channel while broadcasting player positions every 50ms over an unreliable datagram channel. Use WebTransport with both stream and datagram support. The generated snippet creates one bidirectional stream for inventory updates and sends position data as datagrams, avoiding head-of-line blocking that would occur with a single WebSocket connection."
+      },
+      {
+        "title": "Live collaboration with isolated streams",
+        "text": "A collaborative editor opens separate bidirectional streams for each open document tab. If one document stream experiences packet loss, only that document lags while the other documents continue uninterrupted. The snippet demonstrates how to assign stream IDs to documents and handle per-stream errors independently."
+      }
+    ],
+    "mistakes": [
+      "Assuming WebTransport uses the wss:// scheme like WebSockets -- WebTransport servers use HTTPS or a custom scheme. The URL must point to an HTTP/3 (QUIC) endpoint, not a WebSocket endpoint.",
+      "Forgetting to handle the serverCertificateHashes option for development servers -- connecting to a server with a self-signed certificate without providing the certificate hash causes the connection to fail with a security error.",
+      "Using datagrams when ordered delivery is required -- datagrams are unreliable and may arrive out of order or not at all. Use bidirectional streams for any data that must arrive in order."
+    ],
+    "faq": [
+      {
+        "question": "What is the difference between WebTransport and WebSockets?",
+        "answer": "WebTransport runs over HTTP/3 (QUIC), which provides multiplexed independent streams and datagrams in a single connection. WebSockets run over a single TCP stream where all messages are ordered sequentially -- a lost packet blocks all subsequent data until it is retransmitted (head-of-line blocking). WebTransport also supports unreliable datagrams for low-latency data that can tolerate occasional loss. However, WebTransport requires HTTP/3 support on both client and server, while WebSockets work over any HTTP connection."
+      },
+      {
+        "question": "Which browsers support WebTransport?",
+        "answer": "WebTransport is Baseline 2026: Chrome 97+, Edge 97+, and Safari 18.2+. Firefox has not yet shipped WebTransport as of early 2026. The API is considered stable in Chromium-based browsers. For production use, check the current browser support status and provide a WebSocket fallback for unsupported browsers."
+      },
+      {
+        "question": "How do I handle self-signed certificates with WebTransport?",
+        "answer": "Use the serverCertificateHashes option in the WebTransport options object. This accepts an array of certificate hash objects, each with a hashAlgorithm (SHA-256) and hashValue (base64-encoded). This option is designed for development and testing. Production servers should use publicly trusted certificates. The browser still validates the certificate chain -- serverCertificateHashes tells the browser which certificate to accept."
+      },
+      {
+        "question": "Can WebTransport replace both WebSockets and WebRTC data channels?",
+        "answer": "For client-server communication, yes. WebTransport provides the stream model of WebSockets plus the datagram model of WebRTC data channels in a single API, without requiring a signaling server or STUN/TURN infrastructure. For peer-to-peer communication, WebRTC is still needed. WebTransport is a client-server protocol only."
+      }
+    ],
+    "quickAnswer": "Generate a JavaScript WebTransport connection snippet for HTTP/3 (QUIC) communication. WebTransport supports multiplexed bidirectional streams and unreliable datagrams in a single connection, replacing WebSockets and WebRTC data channels for client-server real-time apps. Chrome 97+, Edge 97+, Safari 18.2+.",
+    "limitations": [
+      "WebTransport requires HTTP/3 (QUIC) support on the server. Standard HTTP/1.1 and HTTP/2 servers cannot accept WebTransport connections. This limits deployment to servers with dedicated QUIC support (nginx with QUIC patch, node with @fails-components/webtransport, or cloud platforms).",
+      "Firefox does not support WebTransport as of early 2026. Applications that need cross-browser real-time communication must implement a WebSocket or WebRTC fallback for Firefox users, which increases development and testing overhead.",
+      "WebTransport connections can be blocked by corporate firewalls and proxy servers that do not support QUIC or UDP. In restricted network environments, fall back to WebSockets over TCP for reliable connectivity."
+    ],
+    "verificationSteps": [
+      "Open the generated HTML in Chrome 97+ and check the browser console for a successful WebTransport connection log. The snippet logs the connection state transitions (connecting, connected, closed, or error).",
+      "Use the browser DevTools Network panel to inspect the WebTransport connection. The connection appears under the WebTransport tab (Chrome DevTools) showing connection ID, protocol version, and transfer statistics for streams and datagrams."
+    ],
+    "updatedAt": "2026-06-03"
+  },
+  {
+    "id": "zstandard-compression-header-helper",
+    "name": "Zstandard Compression Header Helper",
+    "category": "github-pages",
+    "summary": "Generate server configuration for Zstandard (zstd) compression with Content-Encoding headers, Accept-Encoding negotiation, and fallback chains for Nginx, Apache, Cloudflare, and Netlify.",
+    "description": "Zstandard (zstd) compression offers 5-15% better compression ratios than Brotli at comparable speeds, making it an attractive option for reducing bandwidth and improving load times. This tool generates server configuration snippets for enabling zstd compression on Nginx, Apache, Cloudflare Workers, and Netlify with proper Content-Encoding: zstd headers, Accept-Encoding negotiation, graceful fallback to gzip or brotli for clients that do not advertise zstd support, and optional Shared Dictionary Compression for delta updates between page versions.",
+    "keywords": [
+      "zstd compression config",
+      "content-encoding zstd",
+      "zstandard nginx config",
+      "zstd cdn configuration",
+      "shared dictionary compression"
+    ],
+    "whatIs": "Zstandard (zstd) is a compression algorithm developed by Meta that provides compression ratios approaching LZMA and Deflate with decompression speeds comparable to LZ4. It became Baseline 2026 with Chrome 123+ adding support for zstd Content-Encoding responses. When a browser sends Accept-Encoding: zstd in its request headers, the server can compress responses with zstd and set Content-Encoding: zstd. For clients that do not support zstd, the server must fall back to brotli (br) or gzip. Shared Dictionary Compression (SDCH) is an optional extension where the server and client share a compression dictionary, enabling delta updates that send only the changed content between page versions.",
+    "howToUse": [
+      "Select your hosting platform: Nginx, Apache, Cloudflare Workers, or Netlify. Each platform uses a different configuration format for enabling compression and setting Content-Encoding headers.",
+      "Choose whether to enable zstd alongside existing brotli and gzip compression or replace one of them. The generated config includes proper Accept-Encoding negotiation with fallback ordering.",
+      "Optionally enable Shared Dictionary Compression (SDCH) for delta updates. Requires both server and client configuration, and the generated snippet includes the dictionary negotiation headers.",
+      "Copy the generated configuration into your server config file, CDN edge function, or platform-specific headers configuration file. Deploy and verify the Content-Encoding header on compressed responses."
+    ],
+    "useCases": [
+      "Reduce bandwidth costs and page load times on a high-traffic static site by enabling zstd compression for HTML, CSS, and JavaScript assets.",
+      "Deploy zstd on an Nginx server fronted by Cloudflare, with proper Accept-Encoding negotiation so Cloudflare passes through zstd responses to supporting browsers.",
+      "Enable Shared Dictionary Compression for a frequently updated documentation site, where each deploy changes only a fraction of the total content and delta compression significantly reduces download sizes for returning visitors."
+    ],
+    "examples": [
+      {
+        "title": "Nginx with zstd and brotli fallback",
+        "text": "A high-traffic blog serves HTML pages from an Nginx server. Enable zstd compression with Content-Encoding: zstd for browsers that send Accept-Encoding: zstd, with brotli as the secondary preference and gzip as the universal fallback. The generated Nginx config uses the ngx_brotli and zstd modules with a configuration block that negotiates the best compression format per request."
+      },
+      {
+        "title": "Cloudflare Workers with CDN compression",
+        "text": "A static site uses Cloudflare in front of an origin server. Since Cloudflare does not natively serve zstd-compressed content from origin, deploy a Cloudflare Worker that checks the Accept-Encoding header, fetches from the origin, compresses the response with zstd using the Web Platform Compression Streams API (CompressionStream), and sets Content-Encoding: zstd. For non-supporting browsers, the Worker passes through the origin response unchanged."
+      }
+    ],
+    "mistakes": [
+      "Enabling zstd without verifying the browser Accept-Encoding header -- serving gzip content with Content-Encoding: zstd header causes browsers without zstd support to fail parsing the response, displaying garbage or a blank page.",
+      "Using zstd in Cloudflare without a Worker -- Cloudflare does not cache or serve zstd responses from origin natively. The origin must either serve zstd through a Worker or Cloudflare must pass through the origin Content-Encoding header, which may not be cached correctly.",
+      "Enabling Shared Dictionary Compression without testing the dictionary negotiation -- SDCH requires careful coordination between the server and client dictionary versions. An expired or mismatched dictionary causes compression errors that break page rendering."
+    ],
+    "faq": [
+      {
+        "question": "How does Zstandard compare to Brotli and Gzip?",
+        "answer": "At compression level 3-5, zstd typically compresses 5-15% better than brotli at equal speeds. At higher levels (10-19), zstd approaches LZMA-level compression ratios while decompressing 2-3x faster than brotli. Gzip is the slowest to decompress and achieves the lowest compression ratio of the three. For web content, zstd level 3 offers the best balance of compression speed and ratio. However, brotli has broader browser support (all modern browsers) compared to zstd (Chrome 123+, Edge 123+, Safari 18.2+)."
+      },
+      {
+        "question": "Which browsers support Content-Encoding: zstd?",
+        "answer": "Content-Encoding: zstd is supported in Chrome 123+, Edge 123+, and Safari 18.2+ (Baseline 2026). Firefox does not support zstd Content-Encoding as of early 2026. Always include gzip or brotli as a fallback in your Accept-Encoding negotiation. The server Accept-Encoding handling should order the compression formats by preference, with zstd first for supporting clients."
+      },
+      {
+        "question": "What is Shared Dictionary Compression (SDCH) for zstd?",
+        "answer": "SDCH uses a shared dictionary between the client and server to compress only the changes between page versions. When a client visits a page, the server sends a dictionary ID and the compressed delta. On subsequent visits, the client uses the cached dictionary to decompress the delta, downloading only the changed content. This can reduce page update sizes by 80-95% for sites where most content changes slowly. SDCH requires the server to track dictionary versions and the client to cache dictionaries. It is configured via the Use-As-Dictionary and Sec-Dictionary headers."
+      }
+    ],
+    "quickAnswer": "Generate server configuration for Zstandard (zstd) compression with Content-Encoding: zstd headers, Accept-Encoding negotiation, and fallback to brotli and gzip. Supports Nginx, Apache, Cloudflare Workers, and Netlify. Optional Shared Dictionary Compression for delta updates. Chrome 123+, Edge 123+, Safari 18.2+.",
+    "limitations": [
+      "Zstandard Content-Encoding is not supported in Firefox (as of early 2026) and has limited browser market share compared to brotli and gzip. A multi-format Accept-Encoding negotiation with gzip fallback is always required for production deployment.",
+      "CDN and reverse proxy support for zstd pass-through is inconsistent. Cloudflare does not natively cache zstd responses. Vercel and Netlify have limited zstd support in their edge networks. Test the entire delivery chain before enabling zstd in production.",
+      "Shared Dictionary Compression requires server-side dictionary generation infrastructure and client-side dictionary caching. The initial page load without a cached dictionary is not compressed with SDCH, and dictionary version management adds operational complexity that may not be worthwhile for small sites."
+    ],
+    "verificationSteps": [
+      "After deploying the zstd configuration, open the site in Chrome 123+ and check the Network panel. The response headers should include Content-Encoding: zstd. Verify the response body decompresses correctly by checking the decoded Size column in DevTools.",
+      "Test the fallback chain by sending requests with different Accept-Encoding headers using curl. Run curl -H \"Accept-Encoding: gzip\" -I https://yoursite.com/ and confirm the response uses gzip. Run curl -H \"Accept-Encoding: zstd\" -I https://yoursite.com/ and confirm the response uses zstd."
+    ],
+    "updatedAt": "2026-06-03"
+  },
+  {
+    "id": "interest-invoker-popover-generator",
+    "name": "Interest Invoker Popover Generator",
+    "category": "html",
+    "summary": "Generate declarative HTML popover markup using the interestfor invoker command for hover and focus-triggered tooltips without JavaScript.",
+    "description": "Create hover and focus-triggered popovers using the interestfor invoker command (Chrome 142+). The commandfor and command attributes on buttons let you open popovers declaratively — no JavaScript event listeners needed. Pair with the popover attribute for tooltips, hover cards, and keyboard-accessible popups.",
+    "keywords": [
+      "interestfor popover",
+      "declarative popover html",
+      "hover tooltip html",
+      "commandfor popover",
+      "popover without javascript"
+    ],
+    "whatIs": "The interestfor invoker command is a declarative HTML attribute (Chrome 142+) that opens a popover when the user hovers over or focuses the trigger element. Set commandfor='popover-id' and command='interestfor' on a button, and popover='hint' on the target div. The popover opens on hover AND focus, making it keyboard-accessible by default. This replaces manual mouseenter/mouseleave handlers with popover.showPopover()/hidePopover().",
+    "howToUse": [
+      "Create a popover element with the popover attribute set to hint (for tooltips) or auto.",
+      "Add a trigger button with commandfor pointing to the popover id and command set to interestfor.",
+      "Optionally add CSS for hover styling on the trigger and position the popover with anchor positioning.",
+      "Test that the popover opens on both mouse hover and keyboard focus for accessibility."
+    ],
+    "useCases": [
+      "Create an accessible tooltip that opens on hover and focus without writing a single line of JavaScript.",
+      "Build a hover card preview for product links that shows details when the user hovers or tabs to the link.",
+      "Replace JavaScript-based hover menus with declarative popovers that work consistently across mouse and keyboard."
+    ],
+    "examples": [
+      {
+        "title": "Accessible tooltip on an info icon",
+        "text": "An info icon button uses commandfor='info-tip' and command='interestfor' to open a popover with popover='hint'. Users hovering with a mouse see the tooltip. Keyboard users tabbing to the button also trigger it — no extra code needed."
+      },
+      {
+        "title": "Product card hover preview",
+        "text": "A product grid has popover hover cards for each item. The commandfor points to a popover with the product image, price, and add-to-cart button. Hover triggers are faster and simpler than click-to-open patterns."
+      }
+    ],
+    "mistakes": [
+      "Forgetting to set popover='hint' on the popover — using popover='auto' causes the popover to close on light dismiss, conflicting with the hover behavior.",
+      "Using interestfor for critical UI like forms or links inside the popover — the popover closes when the user moves focus away, making interactive content inaccessible.",
+      "Not adding visible hover/focus styling on the trigger button — users need to know which elements have hover-activated popovers."
+    ],
+    "faq": [
+      {
+        "question": "What is the difference between interestfor and togglePopover?",
+        "answer": "interestfor opens the popover on hover and focus, and closes it when the user moves away. togglePopover opens and closes on click, keeping the popover open until clicked again. Use interestfor for tooltips and hover cards. Use togglePopover for menus and dialogs that need click interaction."
+      },
+      {
+        "question": "Does interestfor work with keyboard navigation?",
+        "answer": "Yes. interestfor responds to both mouse hover and keyboard focus. When a user tabs to the trigger button, the popover opens automatically. When they tab away, it closes. This makes interestfor popovers keyboard-accessible by default."
+      },
+      {
+        "question": "Can I control the delay before the popover opens?",
+        "answer": "Yes. Use the interesttarget-delay CSS property on the trigger element or the popover itself. interesttarget-delay: 300ms adds a 300ms delay before opening. This prevents accidental popovers when the user moves their mouse across the page quickly."
+      }
+    ],
+    "quickAnswer": "Use commandfor='popover-id' and command='interestfor' on a button to open a popover on hover and focus without JavaScript. Set popover='hint' on the target for tooltip behavior. Chrome 142+.",
+    "limitations": [
+      "The interestfor command requires Chrome 142+. Other browsers do not support it yet, and there is no polyfill. The popover simply won't open in unsupported browsers.",
+      "Popovers opened with interestfor cannot contain interactive content — they close when focus moves away. For interactive popups, use togglePopover or showPopover on click instead.",
+      "interestfor requires the popover target to be in the DOM at page load. Dynamically created popover elements need to be registered before interestfor can reference them."
+    ],
+    "verificationSteps": [
+      "Hover over the trigger button in Chrome 142+ and confirm the popover opens. Move the mouse away and confirm it closes.",
+      "Tab to the trigger button with the keyboard and confirm the popover opens on focus. Tab away and confirm it closes."
+    ],
+    "updatedAt": "2026-06-03"
+  },
+  {
+    "id": "aria-notify-snippet-generator",
+    "name": "ARIA Notify Snippet Generator",
+    "category": "html",
+    "summary": "Generate JavaScript snippets using the ARIA Notify API for programmatic screen reader announcements with aria-live fallback.",
+    "description": "Create accessible dynamic notifications using the ARIA Notify API (Chrome 141+). The ariaNotify() function programmatically announces messages to assistive technology — no manual aria-live region management needed. Each notification supports priority levels, duration control, and returns a Promise when the announcement completes. Includes fallback to traditional aria-live regions for cross-browser support.",
+    "keywords": [
+      "aria notify api",
+      "screen reader notification",
+      "accessible announcement",
+      "ariaNotify javascript",
+      "aria-live alternative"
+    ],
+    "whatIs": "The ARIA Notify API (Chrome 141+) provides a programmatic way to announce dynamic content changes to assistive technology. Instead of creating and managing aria-live regions manually, you call ariaNotify('message', { priority, duration, silent }). The API handles the announcement queue, priority ordering, and Promise-based completion. This replaces the common pattern of toggling aria-live region textContent to trigger screen reader announcements.",
+    "howToUse": [
+      "Choose the notification message and priority level (normal, important, or none).",
+      "Set the duration in milliseconds or 0 for manual clearing.",
+      "Call ariaNotify() at the appropriate trigger point (form submit, async completion, etc.).",
+      "Include a fallback to aria-live regions for browsers that don't support the API."
+    ],
+    "useCases": [
+      "Announce form submission results to screen reader users after an AJAX save completes.",
+      "Notify users of new content loaded via infinite scroll or live updates.",
+      "Alert assistive technology users when a timer expires or a background task completes."
+    ],
+    "examples": [
+      {
+        "title": "Form submission feedback",
+        "text": "A form submits via fetch(). After the response, ariaNotify('Form saved successfully', { priority: 'normal' }) announces the result to screen readers. The user doesn't need to navigate to a status message — the announcement comes to them."
+      },
+      {
+        "title": "Live content update announcement",
+        "text": "A dashboard loads new data every 30 seconds. After each update, ariaNotify('Dashboard updated with 5 new items', { priority: 'none', silent: true }) provides a background notification that doesn't interrupt the current screen reader output."
+      }
+    ],
+    "mistakes": [
+      "Calling ariaNotify() too frequently — rapid notifications can overwhelm screen reader users. Queue important ones and debounce non-critical updates.",
+      "Using ariaNotify() for user-triggered actions that already have native feedback — button clicks and form submissions often have built-in screen reader feedback.",
+      "Forgetting to include a fallback for older browsers — the API is Chrome 141+ only, so keep an aria-live region as a fallback for Firefox and Safari users."
+    ],
+    "faq": [
+      {
+        "question": "How is ariaNotify different from aria-live regions?",
+        "answer": "ariaNotify() is a programmatic API — you call it directly in JavaScript when you want to announce something. aria-live regions are DOM elements that announce whenever their text content changes. ariaNotify() handles queuing, priority, and timing automatically. aria-live regions require manual DOM manipulation and can be fragile — duplicate announcements, missed updates, and timing issues are common."
+      },
+      {
+        "question": "What do the priority levels mean?",
+        "answer": "normal announcements wait for the current screen reader output to finish before playing. important announcements interrupt the current output immediately. none (silent) notifications don't interrupt but are available for the user to review later. Use important sparingly — only for critical alerts like errors or time-sensitive warnings."
+      },
+      {
+        "question": "When does the ariaNotify Promise resolve?",
+        "answer": "The Promise resolves when the assistive technology has finished announcing the message. If no screen reader is active, it resolves immediately. This lets you chain announcements or perform actions after the user has heard the message. await ariaNotify('Saved') ensures the next announcement doesn't overlap."
+      }
+    ],
+    "quickAnswer": "Use ariaNotify('message', { priority, duration }) to programmatically announce content to screen readers. Returns a Promise that resolves when the announcement completes. Chrome 141+. Fallback: use aria-live regions for older browsers.",
+    "limitations": [
+      "The ARIA Notify API is Chrome 141+ only. Firefox and Safari do not support it yet. A fallback to traditional aria-live regions is required for cross-browser accessibility.",
+      "ariaNotify() requires user activation for important priority announcements — the call must be within a user gesture (click, keypress) or the priority is downgraded to normal.",
+      "Multiple rapid notifications can be coalesced or dropped by the browser. The API is designed for occasional dynamic announcements, not streaming real-time updates."
+    ],
+    "verificationSteps": [
+      "Enable a screen reader (VoiceOver, NVDA, or ChromeVox) and trigger the ariaNotify call. Confirm the message is announced correctly.",
+      "Test with a non-supporting browser (Firefox) to verify the aria-live region fallback announces the message."
+    ],
+    "updatedAt": "2026-06-03"
+  }
+]
