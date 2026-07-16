@@ -14,8 +14,8 @@
     ],
     "whatIs": "The CSS progress() function is a mathematical mapping function (Chrome 138+) that converts an input value from one numeric range into a 0-1 progress value. For example, progress(scroll-position from 0 to 500) returns 0 when the scroll position is 0, 1 when it reaches 500, and 0.5 at 250. This progress value can drive any numeric CSS property, eliminating complex calc() chains for scroll-linked effects, viewport-relative sizing, and custom property interpolation.",
     "howToUse": [
-      "Enter the input source and its range 鈥?choose from scroll-position, viewport width/height, viewport inline/block size, or a custom CSS property with its minimum and maximum values.",
-      "Set the target CSS property you want to drive and its value at progress 0 and progress 1 鈥?for example opacity 0 to 1, or scale 0.5 to 1.5.",
+      "Enter the input source and its range — choose from scroll-position, viewport width/height, viewport inline/block size, or a custom CSS property with its minimum and maximum values.",
+      "Set the target CSS property you want to drive and its value at progress 0 and progress 1 — for example opacity 0 to 1, or scale 0.5 to 1.5.",
       "Optionally enable clamp() wrapping to keep the result bounded within the output range even when the input exceeds the defined range.",
       "Copy the generated CSS and add it to your stylesheet. The output includes both the progress() rule and the full property declaration."
     ],
@@ -35,14 +35,14 @@
       }
     ],
     "mistakes": [
-      "Using progress() without realizing it returns a raw 0-1 value 鈥?most properties need an additional calc() or scaling to convert progress into the desired output range, but the tool handles this mapping for you.",
-      "Forgetting that scroll-position is relative to the document scroll position by default 鈥?for an element's scroll container, use progress(self-scroll-position from 0 to N) instead.",
-      "Assuming progress() works in all CSS properties 鈥?it works in any property that accepts a number or percentage, but does not work in color functions like rgb() directly (use color-mix() instead)."
+      "Using progress() without realizing it returns a raw 0-1 value — most properties need an additional calc() or scaling to convert progress into the desired output range, but the tool handles this mapping for you.",
+      "Forgetting that scroll-position is relative to the document scroll position by default — for an element's scroll container, use progress(self-scroll-position from 0 to N) instead.",
+      "Assuming progress() works in all CSS properties — it works in any property that accepts a number or percentage, but does not work in color functions like rgb() directly (use color-mix() instead)."
     ],
     "faq": [
       {
         "question": "How is progress() different from scroll-driven animation timelines with view-timeline?",
-        "answer": "progress() is a pure mathematical function that maps one numeric range to 0-1 鈥?it has no link to animation timelines, keyframes, or animation-range. Use progress() for declarative value mapping in any CSS property without creating a scroll-timeline. Use view-timeline and animation-range when you need full keyframe-based scroll-driven animations with multiple steps, easing, and direction control."
+        "answer": "progress() is a pure mathematical function that maps one numeric range to 0-1 — it has no link to animation timelines, keyframes, or animation-range. Use progress() for declarative value mapping in any CSS property without creating a scroll-timeline. Use view-timeline and animation-range when you need full keyframe-based scroll-driven animations with multiple steps, easing, and direction control."
       },
       {
         "question": "What happens when the input value is outside the defined range?",
@@ -73,7 +73,7 @@
     "name": "CSS Stretch Sizing Generator",
     "category": "css",
     "summary": "Generate CSS using the stretch keyword for fill-available sizing in block, flex, grid, and absolutely positioned layouts.",
-    "description": "Set width or height to the stretch keyword for standardized fill-available sizing. Select your layout context 鈥?block, flex item, grid item, or absolutely positioned 鈥?and the axis you want to stretch. The output includes the correct CSS declaration and layout-specific notes about how stretch behaves differently from width: 100% in each context. Replaces vendor-prefixed -webkit-fill-available and -moz-available with a single standard keyword.",
+    "description": "Set width or height to the stretch keyword for standardized fill-available sizing. Select your layout context — block, flex item, grid item, or absolutely positioned — and the axis you want to stretch. The output includes the correct CSS declaration and layout-specific notes about how stretch behaves differently from width: 100% in each context. Replaces vendor-prefixed -webkit-fill-available and -moz-available with a single standard keyword.",
     "keywords": [
       "css stretch keyword",
       "fill-available sizing",
@@ -81,15 +81,15 @@
       "webkit-fill-available replacement",
       "css intrinsic sizing"
     ],
-    "whatIs": "The CSS stretch keyword (Chrome 138+) is the standard value for fill-available sizing, replacing the vendor-prefixed -webkit-fill-available and -moz-available keywords. When you set width: stretch, the element sizes to fill the available space using margin-box sizing 鈥?meaning the element's margin-box fits inside the containing block. This differs from width: 100% which uses content-box sizing and often overflows when padding, border, or margin are present. stretch works in block, flex, grid, and absolutely positioned layout contexts.",
+    "whatIs": "The CSS stretch keyword (Chrome 138+) is the standard value for fill-available sizing, replacing the vendor-prefixed -webkit-fill-available and -moz-available keywords. When you set width: stretch, the element sizes to fill the available space using margin-box sizing — meaning the element's margin-box fits inside the containing block. This differs from width: 100% which uses content-box sizing and often overflows when padding, border, or margin are present. stretch works in block, flex, grid, and absolutely positioned layout contexts.",
     "howToUse": [
-      "Select your layout context 鈥?the behavior of stretch differs slightly between block, flex, grid, and absolutely positioned elements.",
+      "Select your layout context — the behavior of stretch differs slightly between block, flex, grid, and absolutely positioned elements.",
       "Choose the axis you want to stretch (width, height, or both via inset: 0 for abspos).",
       "Review the layout-specific note explaining how stretch interacts with margins, padding, and the containing block in your chosen context.",
       "Copy the generated CSS and replace any existing width: 100% patterns or vendor-prefixed fill-available declarations."
     ],
     "useCases": [
-      "Replace width: 100% on an input or select element that overflows its parent due to padding and border 鈥?stretch uses margin-box sizing so the total box fits inside the container.",
+      "Replace width: 100% on an input or select element that overflows its parent due to padding and border — stretch uses margin-box sizing so the total box fits inside the container.",
       "Standardize cross-browser fill-available sizing by replacing -webkit-fill-available and -moz-available with the standard stretch keyword.",
       "Make an absolutely positioned element stretch to the edges of its positioned ancestor without explicit top/right/bottom/left values."
     ],
@@ -100,18 +100,18 @@
       },
       {
         "title": "Migrate from vendor-prefixed fill-available",
-        "text": "A legacy stylesheet uses width: -webkit-fill-available with a -moz-available fallback. Replace both with width: stretch 鈥?the standard keyword works the same way and is supported in Chrome 138+, Firefox 130+, and Safari 18.2+. The fallback declarations can remain for older browser versions."
+        "text": "A legacy stylesheet uses width: -webkit-fill-available with a -moz-available fallback. Replace both with width: stretch — the standard keyword works the same way and is supported in Chrome 138+, Firefox 130+, and Safari 18.2+. The fallback declarations can remain for older browser versions."
       }
     ],
     "mistakes": [
-      "Expecting stretch to behave identically to width: 100% in block layout 鈥?100% uses content-box sizing and ignores padding/border on the element itself, while stretch uses margin-box sizing. In most cases, stretch is the desired behavior for inputs and form elements.",
-      "Using stretch on a flex item when the flex container has align-items: stretch 鈥?the stretch keyword on the item overrides the container's stretch alignment, which may produce unexpected sizing.",
-      "Assuming stretch works in inline layout contexts 鈥?stretch only applies to elements with a block, flex, grid, or absolutely positioned display type. Inline elements ignore stretch and fall back to intrinsic width."
+      "Expecting stretch to behave identically to width: 100% in block layout — 100% uses content-box sizing and ignores padding/border on the element itself, while stretch uses margin-box sizing. In most cases, stretch is the desired behavior for inputs and form elements.",
+      "Using stretch on a flex item when the flex container has align-items: stretch — the stretch keyword on the item overrides the container's stretch alignment, which may produce unexpected sizing.",
+      "Assuming stretch works in inline layout contexts — stretch only applies to elements with a block, flex, grid, or absolutely positioned display type. Inline elements ignore stretch and fall back to intrinsic width."
     ],
     "faq": [
       {
         "question": "How does stretch differ from width: 100% in terms of padding and border?",
-        "answer": "width: 100% is relative to the containing block's content-box width, then padding and border are added on top 鈥?the element overflows its container. stretch sizes the margin-box to fill the available space, so padding and border are subtracted from the total, keeping the element inside its container. This makes stretch behave the way most developers expect width: 100% to work, especially for form elements."
+        "answer": "width: 100% is relative to the containing block's content-box width, then padding and border are added on top — the element overflows its container. stretch sizes the margin-box to fill the available space, so padding and border are subtracted from the total, keeping the element inside its container. This makes stretch behave the way most developers expect width: 100% to work, especially for form elements."
       },
       {
         "question": "Does stretch work in writing modes other than horizontal-tb?",
@@ -126,10 +126,10 @@
     "limitations": [
       "stretch is not yet supported in all browsers. Chrome 138+, Firefox 130+, and Safari 18.2+ support it. Keep vendor-prefixed fallbacks (-webkit-fill-available, -moz-available) and a width: 100% fallback for older browsers.",
       "stretch only works on elements with block, flex, grid, or absolutely positioned display. Inline elements, table cells, and replaced elements (img, video, iframe without explicit sizing) do not support stretch sizing.",
-      "In flex and grid contexts, stretch may interact unexpectedly with alignment properties. A flex item with align-self: stretch and width: stretch can produce conflicting sizing instructions 鈥?the stretch keyword on the sizing property takes precedence over alignment stretch."
+      "In flex and grid contexts, stretch may interact unexpectedly with alignment properties. A flex item with align-self: stretch and width: stretch can produce conflicting sizing instructions — the stretch keyword on the sizing property takes precedence over alignment stretch."
     ],
     "verificationSteps": [
-      "Inspect the element in DevTools and verify the computed width or height matches the expected fill-available size 鈥?the element should not overflow its container even with padding and border applied.",
+      "Inspect the element in DevTools and verify the computed width or height matches the expected fill-available size — the element should not overflow its container even with padding and border applied.",
       "Resize the viewport or container and confirm the element stretches to fill the available space at all sizes. Compare side by side with a width: 100% reference to see the difference at narrow viewports."
     ],
     "updatedAt": "2026-05-30",

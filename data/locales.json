@@ -7133,6 +7133,8 @@
                                                                                             ]
                                                                   },
                              "css-scroll-state-query-generator":  {
+                                                                      "name":  "CSS-Scroll-State-Query-Generator",
+                                                                      "summary":  "Erstellen Sie CSS-scroll-state()-Container-Queries für eingerastete, fixierte oder scrollbare Elemente. Enthält einen JavaScript-Fallback für browserübergreifende Unterstützung.",
                                                                       "whatIs":  "Eine Scroll-State-Container-Query ist eine CSS-Funktion, mit der Sie Elemente basierend auf dem Scroll-Zustand eines Containers gestalten können, ohne JavaScript. Statt JavaScript zur Erkennung der Scroll-Position und zum Umschalten von Klassen zu verwenden, schreiben Sie eine @container scroll-state(...)-Query, die automatisch Styles anwendet, wenn Elemente eingerastet, fixiert oder wenn ein Container scrollbar ist. Dies ermöglicht scrollgesteuerte UI wie aktive Carousel-Indikatoren und Sticky-Header-Schatten ohne JavaScript.",
                                                                       "quickAnswer":  "Verwenden Sie CSS-scroll-state()-Queries innerhalb von @container-Regeln, um Elemente basierend auf der Scroll-Position ohne JavaScript zu gestalten. Zielen Sie auf snapped, stuck, scrollable oder overflowing Zustände ab. Erfordert container-type: scroll-state und Chrome 135+. Fügen Sie einen JS-Fallback für browserübergreifende Unterstützung ein.",
                                                                       "howToUse":  [
@@ -7182,6 +7184,8 @@
                                                                                             ]
                                                                   },
                              "html-invoker-command-generator":  {
+                                                                    "name":  "HTML-Invoker-Command-Generator",
+                                                                    "summary":  "Erstellen Sie deklarative Command-Buttons für Dialoge, Popover und Details-Elemente mit der Invoker Commands API. Kein JavaScript erforderlich.",
                                                                     "whatIs":  "Die Invoker Commands API ist eine deklarative HTML-Funktion, mit der Buttons andere Elemente ohne JavaScript steuern können. Mit dem commandfor-Attribut (das auf die ID eines Zielelements zeigt) und dem command-Attribut (das die Aktion angibt) kann ein Button Dialoge öffnen/schliessen, Popover umschalten, Details-Elemente erweitern/einklappen oder benutzerdefinierte Command-Events auslösen. Dies ersetzt onclick-Handler durch deklaratives, zugängliches HTML.",
                                                                     "quickAnswer":  "Verwenden Sie die Invoker Commands API für deklarative Buttons, die Dialoge, Popover und Details ohne JavaScript steuern. Setzen Sie commandfor auf die Ziel-Element-ID und command auf die Aktion (show-modal, toggle-popover, open, close). Integrierte Befehle funktionieren nativ; benutzerdefinierte Befehle lösen ein \u0027command\u0027-Event auf dem Ziel aus.",
                                                                     "howToUse":  [
@@ -7231,6 +7235,8 @@
                                                                                           ]
                                                                 },
                              "customizable-select-generator":  {
+                                                                   "name":  "Generator für anpassbare Select-Elemente",
+                                                                   "summary":  "Erstellen Sie CSS für anpassbare Select-Elemente mit appearance: base-select, Picker-Symbolen, Auswahlmarkierungen und Styles für den offenen und geschlossenen Zustand.",
                                                                    "whatIs":  "Das anpassbare Select-Element ist eine neue CSS-Funktion, mit der Sie native HTML-Select-Elemente gestalten können, ohne sie durch JavaScript-gesteuerte div-Strukturen zu ersetzen. Mit appearance: base-select können Sie das Picker-Symbol, die Auswahlhaken und das Dropdown-Popover gestalten, während die gesamte integrierte Zugänglichkeit und das Formularverhalten eines echten Select-Elements erhalten bleiben. Keine JavaScript-Dropdown-Bibliothek erforderlich.",
                                                                    "quickAnswer":  "Gestalten Sie native Select-Elemente mit appearance: base-select (Chrome 135+). Verwenden Sie ::picker-icon für Dropdown-Pfeile, option::checkmark für Auswahlindikatoren und ::picker(select) für Popover-Styling. Native Formularsemantik und Tastaturzugänglichkeit bleiben erhalten. Der Fallback ist ein standardmässiges lesbares Select.",
                                                                    "howToUse":  [
@@ -7280,6 +7286,8 @@
                                                                                          ]
                                                                },
                              "css-carousel-generator":  {
+                                                            "name":  "CSS-Karussell-Generator",
+                                                            "summary":  "Erstellen Sie natives CSS-Karussell-Markup mit Scroll-Snap, Scroll-Schaltflächen, Scroll-Markierungen und zugänglicher Listenstruktur. Kein JavaScript erforderlich.",
                                                             "whatIs":  "Ein CSS-Carousel ist ein horizontal oder vertikal scrollbarer Container, bei dem Elemente beim Scrollen in Position einrasten. Modernes CSS (Chrome 135+) fügt integrierte Scroll-Buttons und Marker hinzu, die ohne JavaScript funktionieren, sowie Scroll-State-Queries zur Gestaltung des aktuell eingerasteten Elements. Dies ist eine native Alternative zu JavaScript-Carousel-Bibliotheken.",
                                                             "quickAnswer":  "Erstellen Sie ein natives CSS-Carousel mit scroll-snap, Buttons und Markern —kein JavaScript erforderlich. Verwenden Sie scroll-snap-type für das Einrastverhalten, ::scroll-button() für Pfeile, ::scroll-marker() für Punkte und scroll-state(snapped: true)-Queries für die Gestaltung des aktiven Elements. Chrome 135+ für volle Funktionen; funktioniert andernorts abwärtskompatibel.",
                                                             "howToUse":  [
@@ -7334,6 +7342,8 @@
                                                                                   ]
                                                         },
                              "view-transition-builder":  {
+                                                             "name":  "View-Transition-Builder",
+                                                             "summary":  "Erstellen Sie CSS und JavaScript für die View Transitions API, einschließlich Same-Document- und Cross-Document-Übergängen sowie Reduced-Motion-Fallback.",
                                                              "whatIs":  "Die View Transitions API erzeugt sanfte animierte Ubergange beim Navigieren zwischen Seiten oder beim Aktualisieren von Seiteninhalten. Der Browser erstellt Schnappschusse des alten und neuen Zustands und blendet zwischen ihnen uber. Sie konnen view-transition-name bestimmten Elementen zuweisen, um sie wahrend des Ubergangs unabhangig zu animieren. Fur Same-Document-Ubergange (SPAs) verwenden Sie document.startViewTransition(). Fur Cross-Document-Ubergange (MPAs) fugen Sie ein Meta-Tag hinzu.",
                                                              "quickAnswer":  "Verwenden Sie die View Transitions API fur sanfte Seiten- und Elementanimationen. Fur SPAs: document.startViewTransition(() =\u003e updateDOM()). Fur MPAs: fugen Sie \u003cmeta name=\"view-transition\" content=\"same-origin\"\u003e in den head ein. Weisen Sie view-transition-name zu Elementen fur unabhangige Animationen zu. Respektieren Sie immer prefers-reduced-motion.",
                                                              "howToUse":  [
@@ -10362,7 +10372,7 @@
                                                         },
                              "css-flexbox-generator":  {
                                                            "name":  "Generateur CSS Flexbox",
-                                                           "summary":  "Générez du CSS flexbox et un squelette HTMLà partir des proprietes flex choisies.",
+                                                           "summary":  "Générez du CSS flexbox et un squelette HTML à partir des propriétés flex choisies.",
                                                            "whatIs":  "Flexbox est la methode de mise en page CSS la plus courante pour les dispositions unidimensionnelles, alignant les elements le long d\u0027un axe principal et d\u0027un axe transverse. Les debutants confondent souvent justify-content (axe principal) et align-items (axe transverse), ce qui conduit a des resultats de centrage et d\u0027espacement inattendus. Cet outil rend les deux axes explicites en montrant le CSS genere parallelement aux proprietes flex que vous selectionnez, afin que vous puissiez connecter chaque valeur a son effet visible.",
                                                            "quickAnswer":  "Generez du CSS de conteneur flexbox en selectionnant la direction, le retour a la ligne, l\u0027alignement et les valeurs de justification. Le resultat inclut les regles du conteneur et un squelette HTML pour tester la mise en page immediatement.",
                                                            "howToUse":  [
@@ -16085,6 +16095,8 @@
                                                                                             ]
                                                                   },
                              "css-carousel-generator":  {
+                                                            "name":  "Générateur de carrousel CSS",
+                                                            "summary":  "Générez le balisage d’un carrousel CSS natif avec scroll-snap, boutons de défilement, repères de défilement et structure de liste accessible. Aucun JavaScript requis.",
                                                             "whatIs":  "Un carrousel CSS est un conteneur a defilement horizontal ou vertical dont les elements se positionnent par snap lorsque l\u0027utilisateur fait defiler. Le CSS moderne (Chrome 135+) ajoute des boutons de defilement et marqueurs integres qui fonctionnent sans JavaScript, ainsi que des requetes scroll-state pour styliser l\u0027element actuellement accroche differemment des autres. C\u0027est une alternative native aux bibliotheques de carrousel JavaScript.",
                                                             "quickAnswer":  "Construisez un carrousel CSS natif avec scroll-snap, boutons et marqueurs - pas besoin de JavaScript. Utilisez scroll-snap-type pour le comportement de snap, ::scroll-button() pour les fleches, ::scroll-marker() pour les points, et les requetes scroll-state(snapped: true) pour le style de l\u0027element actif.",
                                                             "howToUse":  [
@@ -16139,6 +16151,8 @@
                                                                                   ]
                                                         },
                              "css-scroll-state-query-generator":  {
+                                                                      "name":  "Générateur de requêtes CSS Scroll-State",
+                                                                      "summary":  "Générez des requêtes de conteneur CSS scroll-state() pour styliser les éléments alignés, fixés ou défilables. Inclut un fallback JavaScript pour les autres navigateurs.",
                                                                       "whatIs":  "Une requete de conteneur scroll-state est une fonctionnalite CSS qui permet de styliser les elements en fonction de l\u0027etat de defilement d\u0027un conteneur. Au lieu d\u0027utiliser JavaScript pour detecter la position de defilement et basculer des classes, vous ecrivez une requete @container scroll-state(...) qui applique automatiquement les styles lorsque les elements sont accroches (snapped), bloques (stuck) ou lorsqu\u0027un conteneur est defilable.",
                                                                       "quickAnswer":  "Utilisez les requetes CSS scroll-state() dans les regles @container pour styliser les elements en fonction de la position de defilement sans JavaScript. Ciblez les etats snapped, stuck, scrollable ou overflowing. Necessite container-type: scroll-state et Chrome 135+.",
                                                                       "howToUse":  [
@@ -16188,6 +16202,8 @@
                                                                                             ]
                                                                   },
                              "customizable-select-generator":  {
+                                                                   "name":  "Générateur de select personnalisable",
+                                                                   "summary":  "Générez le CSS de select personnalisables avec appearance: base-select, icônes du sélecteur, coches et styles pour les états ouvert et fermé.",
                                                                    "whatIs":  "L\u0027element select personnalisable est une nouvelle fonctionnalite CSS qui permet de styliser les elements HTML select natifs sans les remplacer par des structures div pilotees par JavaScript. En utilisant appearance: base-select, vous pouvez styliser l\u0027icone du picker, les coches des options et le popup de la liste deroulante tout en conservant toute l\u0027accessibilite integree et le comportement de formulaire d\u0027un vrai element select.",
                                                                    "quickAnswer":  "Stylisez les elements select natifs avec appearance: base-select (Chrome 135+). Utilisez ::picker-icon pour les fleches de la liste deroulante, option::checkmark pour les indicateurs de selection et ::picker(select) pour le style du popup. La semantique native du formulaire et l\u0027accessibilite clavier sont preservees.",
                                                                    "howToUse":  [
@@ -16237,6 +16253,8 @@
                                                                                          ]
                                                                },
                              "html-invoker-command-generator":  {
+                                                                    "name":  "Générateur de commandes HTML Invoker",
+                                                                    "summary":  "Générez des boutons de commande déclaratifs pour les boîtes de dialogue, popovers et éléments details avec l’API Invoker Commands. Aucun JavaScript requis.",
                                                                     "whatIs":  "L\u0027API Invoker Commands est une fonctionnalite HTML declarative qui permet aux boutons de controler d\u0027autres elements sans JavaScript. En utilisant l\u0027attribut commandfor (pointant vers l\u0027id d\u0027un element cible) et l\u0027attribut command (specifiant l\u0027action), un bouton peut ouvrir/fermer des dialogues, basculer des popovers, developper/reduire des details ou declencher des evenements de commande personnalises.",
                                                                     "quickAnswer":  "Utilisez l\u0027API Invoker Commands pour des boutons declaratifs qui controlent dialogues, popovers et details sans JavaScript. Definissez commandfor sur l\u0027ID de l\u0027element cible et command sur l\u0027action (show-modal, toggle-popover, open, close). Les commandes integrees fonctionnent nativement.",
                                                                     "howToUse":  [
@@ -16286,6 +16304,8 @@
                                                                                           ]
                                                                 },
                              "view-transition-builder":  {
+                                                             "name":  "Générateur de transitions de vue",
+                                                             "summary":  "Générez le CSS et le JavaScript de l’API View Transitions pour les transitions de page et d’élément, avec prise en charge SPA, MPA et reduced-motion.",
                                                              "whatIs":  "L\u0027API View Transitions cree des transitions animees fluides lors de la navigation entre les pages ou de la mise a jour du contenu de la page. Le navigateur capture des instantanes des etats ancien et nouveau, puis effectue un fondu enchevetre entre eux. Vous pouvez assigner view-transition-name a des elements specifiques pour les animer independamment pendant la transition. Pour les transitions dans un meme document (SPA), utilisez document.startViewTransition(). Pour les transitions entre documents (MPA), ajoutez une balise meta.",
                                                              "quickAnswer":  "Utilisez l\u0027API View Transitions pour des animations fluides de page et d\u0027elements. Pour les SPA : document.startViewTransition(() =\u003e updateDOM()). Pour les MPA : ajoutez \u003cmeta name=\"view-transition\" content=\"same-origin\"\u003e dans l\u0027en-tete. Assignez view-transition-name aux elements pour une animation independante. Respectez toujours prefers-reduced-motion.",
                                                              "howToUse":  [
@@ -19066,7 +19086,7 @@
                                                         },
                              "css-flexbox-generator":  {
                                                            "name":  "Generador CSS Flexbox",
-                                                           "summary":  "Genera CSS flexbox y esqueleto HTMLà partir de las propiedades flex selecciónadas.",
+                                                           "summary":  "Genera CSS flexbox y un esqueleto HTML a partir de las propiedades flex seleccionadas.",
                                                            "whatIs":  "Flexbox es el método de diseño CSS más común para diseños unidimensionales, alineando elementos a lo largo de un eje principal y un eje transversal. Los principiantes a menudo confunden justify-content (eje principal) y align-items (eje transversal), lo que lleva a resultados inesperados de centrado y espaciado. Esta herramienta hace explícitos ambos ejes mostrando el CSS generado junto a las propiedades flex seleccionadas.",
                                                            "quickAnswer":  "Genere CSS de contenedor flexbox seleccionando dirección, ajuste, alineación y valores de justificación. La salida incluye las reglas del contenedor y un esqueleto HTML para que pueda probar el diseño inmediatamente.",
                                                            "howToUse":  [
@@ -24789,6 +24809,8 @@
                                                                                             ]
                                                                   },
                              "css-carousel-generator":  {
+                                                            "name":  "Generador de carruseles CSS",
+                                                            "summary":  "Genera el marcado de un carrusel CSS nativo con scroll-snap, botones de desplazamiento, marcadores y una estructura de lista accesible. No requiere JavaScript.",
                                                             "whatIs":  "Un carrusel CSS es un contenedor desplazable horizontal o verticalmente donde los elementos se ajustan en posición mientras el usuario se desplaza. El CSS moderno (Chrome 135+) agrega botones de desplazamiento y marcadores integrados que funcionan sin JavaScript, además de consultas de estado de desplazamiento para estilizar el elemento actualmente ajustado de manera diferente a los demás. Esta es una alternativa nativa a las bibliotecas de carrusel JavaScript.",
                                                             "quickAnswer":  "Construya un carrusel CSS nativo con scroll-snap, botones y marcadores — no necesita JavaScript. Use scroll-snap-type para el comportamiento de ajuste, ::scroll-button() para flechas, ::scroll-marker() para puntos y consultas scroll-state(snapped: true) para estilizar el elemento activo. Chrome 135+ para todas las funciones; degradación elegante en otros navegadores.",
                                                             "howToUse":  [
@@ -24843,6 +24865,8 @@
                                                                                   ]
                                                         },
                              "css-scroll-state-query-generator":  {
+                                                                      "name":  "Generador de consultas CSS Scroll-State",
+                                                                      "summary":  "Genera consultas de contenedor CSS scroll-state() para aplicar estilos a elementos ajustados, fijados o desplazables. Incluye un fallback de JavaScript para otros navegadores.",
                                                                       "whatIs":  "Una consulta de contenedor scroll-state es una función CSS que permite estilizar elementos según el estado de desplazamiento de un contenedor. En lugar de usar JavaScript para detectar la posición de desplazamiento y alternar clases, escribe una consulta @container scroll-state(...) que aplica estilos automáticamente cuando los elementos están ajustados (snapped), fijos (stuck) o cuando un contenedor es desplazable. Esto permite IU impulsada por desplazamiento como indicadores de carrusel activos y sombras de encabezado fijo sin JavaScript.",
                                                                       "quickAnswer":  "Use consultas CSS scroll-state() dentro de reglas @container para estilizar elementos según la posición de desplazamiento sin JavaScript. Apunte a estados snapped, stuck, scrollable o overflowing. Requiere container-type: scroll-state y Chrome 135+. Incluya un fallback JS para compatibilidad entre navegadores.",
                                                                       "howToUse":  [
@@ -24892,6 +24916,8 @@
                                                                                             ]
                                                                   },
                              "customizable-select-generator":  {
+                                                                   "name":  "Generador de select personalizable",
+                                                                   "summary":  "Genera CSS para elementos select personalizables con appearance: base-select, iconos del selector, marcas de selección y estilos para los estados abierto y cerrado.",
                                                                    "whatIs":  "El elemento select personalizable es una nueva función CSS que permite estilizar elementos select HTML nativos sin reemplazarlos con estructuras div potenciadas por JavaScript. Usando appearance: base-select, puede estilizar el icono del selector, las marcas de verificación de opciones y el popover desplegable mientras mantiene toda la accesibilidad integrada y el comportamiento de formulario de un elemento select real. No necesita una biblioteca desplegable JavaScript.",
                                                                    "quickAnswer":  "Estilice elementos select nativos con appearance: base-select (Chrome 135+). Use ::picker-icon para flechas desplegables, option::checkmark para indicadores de selección y ::picker(select) para estilizar el popover. Se conservan la semántica de formulario nativa y la accesibilidad del teclado. El fallback es un select estándar legible.",
                                                                    "howToUse":  [
@@ -24941,6 +24967,8 @@
                                                                                          ]
                                                                },
                              "html-invoker-command-generator":  {
+                                                                    "name":  "Generador de comandos HTML Invoker",
+                                                                    "summary":  "Genera botones de comando declarativos para diálogos, popovers y elementos details con la API Invoker Commands. No requiere JavaScript.",
                                                                     "whatIs":  "La API Invoker Commands es una función HTML declarativa que permite a los botones controlar otros elementos sin JavaScript. Usando el atributo commandfor (que apunta al id de un elemento objetivo) y el atributo command (que especifica la acción), un botón puede abrir/cerrar diálogos, alternar popovers, expandir/contraer detalles o disparar eventos de comando personalizados. Esto reemplaza los manejadores onclick con HTML declarativo y accesible.",
                                                                     "quickAnswer":  "Use la API Invoker Commands para botones declarativos que controlen diálogos, popovers y detalles sin JavaScript. Establezca commandfor al ID del elemento objetivo y command a la acción (show-modal, toggle-popover, open, close). Los comandos integrados funcionan de forma nativa; los comandos personalizados disparan un evento \u0027command\u0027 en el objetivo.",
                                                                     "howToUse":  [
@@ -24990,6 +25018,8 @@
                                                                                           ]
                                                                 },
                              "view-transition-builder":  {
+                                                             "name":  "Generador de transiciones de vista",
+                                                             "summary":  "Genera CSS y JavaScript para la API View Transitions con transiciones de página y de elementos, compatibilidad con SPA y MPA, y fallback para reduced-motion.",
                                                              "whatIs":  "La API de View Transitions crea transiciones animadas suaves al navegar entre páginas o actualizar contenido. El navegador captura capturas de pantalla de los estados antiguo y nuevo, luego hace una transición gradual entre ellos. Puede asignar view-transition-name a elementos específicos para animarlos de forma independiente durante la transición.",
                                                              "quickAnswer":  "Use la API de View Transitions para animaciones suaves de página y elementos. Para SPA: document.startViewTransition(() =\u003e updateDOM()). Para MPA: agregue \u003cmeta name=\"view-transition\" content=\"same-origin\"\u003e al head. Asigne view-transition-name a elementos para animación independiente.",
                                                              "howToUse":  [
@@ -33493,6 +33523,8 @@
                                                                                             ]
                                                                   },
                              "css-carousel-generator":  {
+                                                            "name":  "CSSカルーセルジェネレーター",
+                                                            "summary":  "scroll-snap、スクロールボタン、スクロールマーカー、アクセシブルなリスト構造を備えたネイティブCSSカルーセルを生成します。JavaScriptは不要です。",
                                                             "whatIs":  "CSSカルーセルはユーザーがスクロールする際に項目が所定の位置にスナップする水平または垂直のスクロール可能なコンテナです。モダンCSS（Chrome 135以上）にはJavaScriptなしで動作する組み込みのスクロールボタンやマーカーおよび現在スナップされている項目を他と異なるスタイルにするためのスクロールステートクエリが追加されています。これはJavaScriptカルーセルライブラリのネイティブな代替手段です。",
                                                             "quickAnswer":  "JavaScript不要のネイティブCSSカルーセルをscroll-snap、ボタン、マーカーで構築します。スクロール動作にはscroll-snap-type、矢印には::scroll-button()、インジケータードットには::scroll-marker()、アクティブ項目のスタイルにはscroll-state(snapped: true)クエリを使用します。完全な機能はChrome 135以上で利用可能で他のブラウザでは適切に低下します。",
                                                             "howToUse":  [
@@ -33547,6 +33579,8 @@
                                                                                   ]
                                                         },
                              "css-scroll-state-query-generator":  {
+                                                                      "name":  "CSSスクロールステートクエリジェネレーター",
+                                                                      "summary":  "スナップ、固定、スクロール可能な要素をスタイルするCSS scroll-state()コンテナークエリを生成します。ブラウザー互換用のJavaScriptフォールバックも含まれます。",
                                                                       "whatIs":  "スクロールステートコンテナクエリはコンテナのスクロール状態に基づいて要素をスタイル設定できるCSS機能です。JavaScriptを使用してスクロール位置を検出してクラスを切り替える代わりに@container scroll-state(...) クエリを記述して要素がスナップされたときスティッキーになったときまたはコンテナがスクロール可能なときに自動的にスタイルを適用します。これによりアクティブなカルーセルインジケーターやスティッキーヘッダーのシャドウなどをJavaScriptなしで実現できます。",
                                                                       "quickAnswer":  "CSS scroll-state()クエリを@containerルール内で使用してJavaScriptなしでスクロール位置に基づいて要素をスタイル設定します。スナップ、スティッキー、スクロール可能、オーバーフローの状態を対象にします。container-type: scroll-stateとChrome 135以上が必要です。クロスブラウザサポートのためにJSフォールバックを含めてください。",
                                                                       "howToUse":  [
@@ -33596,6 +33630,8 @@
                                                                                             ]
                                                                   },
                              "customizable-select-generator":  {
+                                                                   "name":  "カスタマイズ可能なselect要素ジェネレーター",
+                                                                   "summary":  "appearance: base-select、ピッカーアイコン、チェックマーク、開閉状態のスタイルを使ったカスタマイズ可能なselect要素のCSSを生成します。",
                                                                    "whatIs":  "カスタマイズ可能なselect要素はネイティブのHTML select要素をJavaScriptで構築されたdiv構造に置き換えることなくスタイル設定できる新しいCSS機能です。appearance: base-selectを使用することでピッカーアイコン、オプションチェックマーク、ドロップダウンポップオーバーをスタイル設定しながら実際のselect要素の組み込みアクセシビリティとフォーム動作をすべて維持できます。JavaScriptのドロップダウンライブラリは不要です。",
                                                                    "quickAnswer":  "appearance: base-select（Chrome 135以上）を使用してネイティブのselect要素をスタイル設定します。ドロップダウン矢印には::picker-icon、選択インジケーターにはoption::checkmark、ポップオーバースタイルには::picker(select)を使用します。ネイティブのフォームセマンティクスとキーボードアクセシビリティは維持されます。フォールバックは標準の読み取り可能なselectです。",
                                                                    "howToUse":  [
@@ -33645,6 +33681,8 @@
                                                                                          ]
                                                                },
                              "html-invoker-command-generator":  {
+                                                                    "name":  "HTML Invoker Commandsジェネレーター",
+                                                                    "summary":  "Invoker Commands APIを使い、ダイアログ、ポップオーバー、details要素を操作する宣言的なコマンドボタンを生成します。JavaScriptは不要です。",
                                                                     "whatIs":  "Invoker Commands APIはJavaScriptなしでボタンが他の要素を制御できるようにする宣言的HTML機能です。commandfor属性（ターゲット要素のIDを指す）とcommand属性（アクションを指定する）を使用することでボタンはダイアログの開閉、ポップオーバーの切り替え、details要素の展開/折りたたみ、カスタムコマンドイベントの発生ができます。これはonclickハンドラーを宣言的でアクセシブルなHTMLに置き換えます。",
                                                                     "quickAnswer":  "Invoker Commands APIを使用してJavaScriptなしでダイアログ、ポップオーバー、詳細要素を制御する宣言的ボタンを作成します。commandforをターゲット要素のIDに設定しcommandをアクション（show-modal、toggle-popover、open、close）に設定します。組み込みコマンドはネイティブに機能しカスタムコマンドはターゲットでcommandイベントを発生させます。",
                                                                     "howToUse":  [
@@ -42180,6 +42218,8 @@
                                                                                             ]
                                                                   },
                              "css-carousel-generator":  {
+                                                            "name":  "CSS-carrouselgenerator",
+                                                            "summary":  "Genereer native CSS-carrouselmarkup met scroll-snap, scrollknoppen, scrollmarkeringen en een toegankelijke lijststructuur. Geen JavaScript nodig.",
                                                             "whatIs":  "Een CSS-carrousel is een horizontaal of verticaal scrollbare container waarin items in positie klikken terwijl de gebruiker scrollt. Moderne CSS (Chrome 135+) voegt ingebouwde scrollknoppen en markers toe die werken zonder JavaScript, plus scroll-state queries voor het stylen van het huidige geklikte item anders dan andere. Dit is een native alternatief voor JavaScript-carrouselbibliotheken.",
                                                             "quickAnswer":  "Bouw een native CSS-carrousel met scroll-snap, knoppen en markers - geen JavaScript nodig. Gebruik scroll-snap-type voor snapgedrag, ::scroll-button() voor pijlen, ::scroll-marker() voor stippen en scroll-state(snapped: true) queries voor actieve item styling. Chrome 135+ voor volledige functies; degradeert elegant elders.",
                                                             "howToUse":  [
@@ -42234,6 +42274,8 @@
                                                                                   ]
                                                         },
                              "css-scroll-state-query-generator":  {
+                                                                      "name":  "CSS Scroll-State-querygenerator",
+                                                                      "summary":  "Genereer CSS scroll-state()-containerqueries om gesnapte, vastgezette of scrollbare elementen te stylen. Inclusief JavaScript-fallback voor ondersteuning in andere browsers.",
                                                                       "whatIs":  "Een scroll-state container query is een CSS-functie waarmee u elementen kunt stylen op basis van de scroll-status van een container. In plaats van JavaScript te gebruiken om de scrollpositie te detecteren en klassen te schakelen, schrijft u een @container scroll-state(...) query die automatisch stijlen toepast wanneer elementen zijn geklikt, vastzitten of wanneer een container scrollbaar is. Dit maakt scroll-gestuurde UI mogelijk zoals actieve carrouselindicatoren en sticky header-schaduwen zonder JavaScript.",
                                                                       "quickAnswer":  "Gebruik CSS scroll-state() queries binnen @container-regels om elementen te stylen op basis van scrollpositie zonder JavaScript. Richt op geklikte, vastzittende, scrollbare of overlopende toestanden. Vereist container-type: scroll-state en Chrome 135+. Voeg een JS-fallback toe voor cross-browser ondersteuning.",
                                                                       "howToUse":  [
@@ -42283,6 +42325,8 @@
                                                                                             ]
                                                                   },
                              "customizable-select-generator":  {
+                                                                   "name":  "Generator voor aanpasbare select-elementen",
+                                                                   "summary":  "Genereer CSS voor aanpasbare select-elementen met appearance: base-select, picker-pictogrammen, vinkjes en styling voor de open en gesloten toestand.",
                                                                    "whatIs":  "Het aanpasbare select-element is een nieuwe CSS-functie waarmee u native HTML-select-elementen kunt stylen zonder ze te vervangen door door JavaScript aangedreven div-structuren. Met appearance: base-select kunt u het picker-pictogram, optie-checkmarks en de dropdown-popover stylen terwijl alle ingebouwde toegankelijkheid en formuliergedrag van een echt select-element behouden blijven. Geen JavaScript-dropdownbibliotheek nodig.",
                                                                    "quickAnswer":  "Style native select-elementen met appearance: base-select (Chrome 135+). Gebruik ::picker-icon voor dropdownpijlen, option::checkmark voor selectie-indicatoren en ::picker(select) voor popover-styling. Native formuliersemantiek en toetsenbordtoegankelijkheid blijven behouden. Fallback is een standaard leesbare select.",
                                                                    "howToUse":  [
@@ -42332,6 +42376,8 @@
                                                                                          ]
                                                                },
                              "html-invoker-command-generator":  {
+                                                                    "name":  "HTML Invoker Command-generator",
+                                                                    "summary":  "Genereer declaratieve commandoknoppen voor dialogen, popovers en details-elementen met de Invoker Commands API. Geen JavaScript nodig.",
                                                                     "whatIs":  "De Invoker Commands API is een declaratieve HTML-functie waarmee knoppen andere elementen kunnen besturen zonder JavaScript. Met het commandfor-attribuut (verwijzend naar de id van een doelelement) en het command-attribuut (specificeren van de actie) kan een knop dialogen openen/sluiten, popovers schakelen, details uit-/inklappen of aangepaste commando-evenementen activeren. Dit vervangt onclick-handlers door declaratieve, toegankelijke HTML.",
                                                                     "quickAnswer":  "Gebruik de Invoker Commands API voor declaratieve knoppen die dialogen, popovers en details besturen zonder JavaScript. Stel commandfor in op de id van het doelelement en command op de actie (show-modal, toggle-popover, open, close). Ingebouwde commando\u0027s werken natively; aangepaste commando\u0027s activeren een \u0027command\u0027-evenement op het doel.",
                                                                     "howToUse":  [
@@ -42381,6 +42427,8 @@
                                                                                           ]
                                                                 },
                              "view-transition-builder":  {
+                                                             "name":  "View Transition-builder",
+                                                             "summary":  "Genereer CSS en JavaScript voor de View Transitions API, met same-document- en cross-document-overgangen en een reduced-motion-fallback.",
                                                              "whatIs":  "De View Transitions API creëert vloeiende geanimeerde overgangen bij het navigeren tussen pagina\u0027s of het bijwerken van pagina-inhoud. De browser maakt screenshots van de oude en nieuwe toestanden en vervaagt vervolgens tussen beide. U kunt view-transition-name toewijzen aan specifieke elementen om ze onafhankelijk te animeren tijdens de overgang. Voor same-document transities (SPA\u0027s) gebruikt u document.startViewTransition(). Voor cross-document (MPA\u0027s) voegt u een meta-tag toe.",
                                                              "quickAnswer":  "Gebruik de View Transitions API voor vloeiende pagina- en elementanimaties. Voor SPA\u0027s: document.startViewTransition(() =\u003e updateDOM()). Voor MPA\u0027s: voeg \u003cmeta name=\"view-transition\" content=\"same-origin\"\u003e toe aan de head. Wijs view-transition-name toe aan elementen voor onafhankelijke animatie. Respecteer altijd prefers-reduced-motion.",
                                                              "howToUse":  [

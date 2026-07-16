@@ -1,4 +1,4 @@
-import { field, textarea, select, checkbox, htmlEscape, attrEscape, normalizeUrl } from "../tool-core.js";
+import { field, select, checkbox, attrEscape } from "../tool-core.js";
 
 export default {
     form: `
@@ -36,15 +36,4 @@ export default {
       }
       return { output: `${tag}\n\n<!-- ${explanation} -->` };
     }
-  }
 };
-
-document.querySelectorAll("[data-tool-id]").forEach((root) => {
-  const id = root.dataset.toolId;
-  const config = tools[id];
-  if (!config) {
-    root.innerHTML = `<p>This tool is not available yet.</p>`;
-    return;
-  }
-  mountTool(root, config);
-});;

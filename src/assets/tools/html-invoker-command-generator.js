@@ -24,7 +24,7 @@ export default {
   generate(root) {
     const targetId = root.querySelector("#ivTargetId").value.trim() || "my-target";
     const targetType = root.querySelector("#ivTarget").value;
-    const command = root.querySelector("#ivCommand").value;
+    const requestedCommand = root.querySelector("#ivCommand").value;
     const buttonText = root.querySelector("#ivButtonText").value.trim() || "Click";
     const includeTarget = root.querySelector("#ivTemplate").checked;
     const includeCustom = root.querySelector("#ivCustomJs").checked;
@@ -32,13 +32,14 @@ export default {
     // Update command dropdown based on target type
     const t = targets.find(x => x.id === targetType);
     const sel = root.querySelector("#ivCommand");
-    const currentCmd = sel.value;
-    sel.innerHTML = (t ? t.commands : ["custom"]).map(c =>
-      `<option value="${c}" ${c === currentCmd ? "selected" : ""}>${c}</option>`
+    const commands = t ? t.commands : ["custom"];
+    const command = commands.includes(requestedCommand) ? requestedCommand : commands[0];
+    sel.innerHTML = commands.map(c =>
+      `<option value="${c}" ${c === command ? "selected" : ""}>${c}</option>`
     ).join("");
 
     const lines = [];
-    lines.push("/* === Invoker Commands API (Baseline 2025) === */);
+    lines.push("/* === Invoker Commands API (Baseline 2025) === */");
 
     // Button HTML
     lines.push("");

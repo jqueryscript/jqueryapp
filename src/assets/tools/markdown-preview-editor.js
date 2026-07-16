@@ -1,9 +1,31 @@
 import { textarea, checkbox, htmlEscape } from "../tool-core.js";
 
+const defaultMarkdown = [
+  "# Hello World",
+  "",
+  "This is **bold** and *italic*.",
+  "",
+  "- List item 1",
+  "- List item 2",
+  "",
+  "[Link](https://example.com)",
+  "",
+  "`inline code`",
+  "",
+  "> Blockquote",
+  "",
+  "---",
+  "",
+  "## Code",
+  "```js",
+  "console.log('hi');",
+  "```"
+].join("\n");
+
 export default {
   form: `
     <div class="field-grid">
-      ${textarea({ id: "mdInput", label: "Markdown input", value: "# Hello World\n\nThis is **bold** and *italic*.\n\n- List item 1\n- List item 2\n\n[Link](https://example.com)\n\n` + "`inline code`" + `\n\n> Blockquote\n\n---\n\n## Code\n` + "```js\nconsole.log('hi');\n```", full: true, attrs: 'style="min-height:200px"' })}
+      ${textarea({ id: "mdInput", label: "Markdown input", value: defaultMarkdown, full: true })}
     </div>
     <div class="field-grid">
       ${checkbox({ id: "mdSplit", label: "Split editor/preview", checked: true })}
@@ -24,7 +46,7 @@ export default {
     const output = html;
 
     const preview = `<div style="display:${split?'grid':'block'};grid-template-columns:1fr 1fr;gap:12px">
-      ${split ? `<div style="border:1px solid #e5e7eb;border-radius:8px;padding:12px;background:#f9fafb;font-family:monospace;font-size:13px;white-space:pre-wrap;overflow-y:auto;max-height:500px">${input}</div>` : ""}
+      ${split ? `<div style="border:1px solid #e5e7eb;border-radius:8px;padding:12px;background:#f9fafb;font-family:monospace;font-size:13px;white-space:pre-wrap;overflow-y:auto;max-height:500px">${htmlEscape(input)}</div>` : ""}
       <div style="border:1px solid #e5e7eb;border-radius:8px;padding:16px;background:#fff;overflow-y:auto;max-height:500px;line-height:1.7;font-size:15px;color:#374151" class="md-preview">${html}</div>
     </div>
     <div style="margin-top:8px;font-size:11px;color:#6b7280">${info}</div>`;
@@ -34,7 +56,7 @@ export default {
 };
 
 function parseMarkdown(md, gfm) {
-  let html = md;
+  let html = htmlEscape(md);
   // Code blocks (must be first)
   html = html.replace(/```(\w*)\n([\s\S]*?)```/g, (_, lang, code) => `<pre><code class="language-${lang}">${code.trim()}</code></pre>`);
   // Inline code

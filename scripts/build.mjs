@@ -1109,7 +1109,7 @@ function notFoundPage(locale) {
     locale,
     title: `${ui(locale, "notFoundTitle")} - ${site.siteName}`,
     description: "The requested page could not be found.",
-    pathname: "404",
+    pathname: "404.html",
     body,
     extraHead: '<meta name="robots" content="noindex">',
     skipAlternates: true
