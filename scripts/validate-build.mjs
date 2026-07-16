@@ -6,6 +6,7 @@ const root = path.resolve(import.meta.dirname, "..");
 const distDir = path.join(root, "dist");
 const toolsDir = path.join(root, "src", "assets", "tools");
 const tools = JSON.parse(fs.readFileSync(path.join(root, "data", "tools.en.json"), "utf8"));
+const categories = JSON.parse(fs.readFileSync(path.join(root, "data", "categories.en.json"), "utf8"));
 const locales = JSON.parse(fs.readFileSync(path.join(root, "data", "locales.json"), "utf8"));
 const site = JSON.parse(fs.readFileSync(path.join(root, "data", "site.json"), "utf8"));
 const errors = [];
@@ -84,6 +85,7 @@ function validateToolData() {
     for (const field of ["name", "summary", "description", "quickAnswer", "whatIs"]) {
       if (typeof tool[field] !== "string" || !tool[field].trim()) addError(`${tool.id} is missing ${field}`);
     }
+    if (!categories[tool.category]) addError(`${tool.id} uses unknown category: ${tool.category}`);
     for (const [field, minimum] of [["examples", 2], ["limitations", 3], ["verificationSteps", 2]]) {
       if (!Array.isArray(tool[field]) || tool[field].length < minimum) addError(`${tool.id} needs at least ${minimum} ${field}`);
     }
@@ -95,6 +97,31 @@ function validateToolData() {
       const localized = locales[locale]?.tools?.[tool.id];
       if (!localized?.name?.trim()) addError(`Missing localized name: ${locale}/${tool.id}`);
       if (!localized?.summary?.trim()) addError(`Missing localized summary: ${locale}/${tool.id}`);
+    }
+    for (const category of Object.keys(categories)) {
+      const localized = locales[locale]?.categories?.[category];
+      for (const field of ["name", "navLabel", "description"]) {
+        if (!localized?.[field]?.trim()) addError(`Missing localized category ${field}: ${locale}/${category}`);
+      }
+    }
+  }
+}
+
+function validateCategoryData() {
+  const orders = new Set();
+  for (const [category, details] of Object.entries(categories)) {
+    for (const field of ["name", "navLabel", "description", "socialImage"]) {
+      if (typeof details[field] !== "string" || !details[field].trim()) addError(`${category} category is missing ${field}`);
+    }
+    if (!Number.isInteger(details.order) || details.order < 1) addError(`${category} category needs a positive integer order`);
+    if (orders.has(details.order)) addError(`Duplicate category order: ${details.order}`);
+    orders.add(details.order);
+    if (!tools.some((tool) => tool.category === category)) addError(`Category has no tools: ${category}`);
+
+    for (const locale of site.locales) {
+      const localeDir = locale === site.defaultLocale ? distDir : path.join(distDir, locale);
+      const categoryPage = path.join(localeDir, "tools", category, "index.html");
+      if (!fs.existsSync(categoryPage)) addError(`Missing built category page: ${relative(categoryPage)}`);
     }
   }
 }
@@ -168,6 +195,10 @@ function validateHtml() {
         continue;
       }
       if (url.origin !== new URL(site.baseUrl).origin) continue;
+      if (/\/[^/]+\.[^/]+\/$/.test(url.pathname)) {
+        addError(`File-like internal reference has a trailing slash ${url.pathname} from ${relative(file)}`);
+        continue;
+      }
       const key = url.pathname;
       if (checkedTargets.has(key)) continue;
       checkedTargets.add(key);
@@ -207,6 +238,7 @@ function validateHtml() {
 
 await validateToolModules();
 validateToolData();
+validateCategoryData();
 const htmlFiles = validateHtml();
 validateMojibake([
   ...walk(path.join(root, "data")).filter((file) => file.endsWith(".json")),

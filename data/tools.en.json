@@ -332,7 +332,7 @@
     {
         "id":  "coop-coep-corp-header-builder",
         "name":  "COOP/COEP/CORP Header Builder",
-        "category":  "github-pages",
+        "category":  "security",
         "summary":  "Build Cross-Origin isolation headers for SharedArrayBuffer, WebAssembly threads, and cross-origin security. Choose from presets with debugging checklists.",
         "description":  "Configure Cross-Origin-Opener-Policy (COOP), Cross-Origin-Embedder-Policy (COEP), and Cross-Origin-Resource-Policy (CORP) for cross-origin isolation. Presets for full isolation (SharedArrayBuffer/WASM), moderate isolation with third-party embed support, and relaxed opener-only isolation.",
         "keywords":  [
@@ -394,7 +394,7 @@
     {
         "id":  "cors-header-generator",
         "name":  "CORS Header Generator",
-        "category":  "github-pages",
+        "category":  "security",
         "summary":  "Generate CORS HTTP headers for any origin, method, and credential configuration. Output in raw HTTP, Nginx, Apache, Express, or Cloudflare Workers format.",
         "description":  "Build correct Access-Control-Allow-Origin, Allow-Methods, Allow-Headers, Allow-Credentials, and Max-Age headers. This tool warns about dangerous combinations like wildcard origins with credentials and outputs ready-to-paste snippets for five deployment platforms.",
         "keywords":  [
@@ -459,7 +459,7 @@
     {
         "id":  "csp-hash-generator",
         "name":  "CSP Hash Generator",
-        "category":  "html",
+        "category":  "security",
         "summary":  "Generate CSP hash values for inline scripts and styles. Hash exact code content with SHA-256, SHA-384, or SHA-512 and get the matching CSP directive snippet.",
         "description":  "Content Security Policy allows specific inline scripts and styles by their cryptographic hash. This tool hashes your exact inline code and outputs the CSP directive —every space, newline, and indent matters, so the hash matches only the exact content you provide.",
         "keywords":  [
@@ -854,7 +854,7 @@
     {
         "id":  "focus-ring-css-generator",
         "name":  "Focus Ring CSS Generator",
-        "category":  "css",
+        "category":  "html",
         "summary":  "Generate accessible :focus-visible outline or box-shadow focus ring CSS with contrast checking against background colors.",
         "description":  "Build a focus indicator that meets WCAG 2.4.7 accessibility requirements. Choose outline width, offset, style, and color, or use a box-shadow fallback. The tool checks contrast between the focus ring color and your background color —WCAG requires at least 3:1 contrast for focus indicators.",
         "keywords":  [
@@ -1115,7 +1115,7 @@
     {
         "id":  "html-sanitizer-config-builder",
         "name":  "HTML Sanitizer Config Builder",
-        "category":  "html",
+        "category":  "security",
         "summary":  "Generate Sanitizer API and DOMPurify allowlist configurations. Choose content-type presets or customize allowed tags and attributes for safe HTML rendering.",
         "description":  "Build HTML sanitizer configurations for rendering user-submitted content safely. Choose from presets for comments, blog posts, or rich text, customize allowed tags and attributes, and output ready-to-use configs for the native Sanitizer API and DOMPurify.",
         "keywords":  [
@@ -1623,7 +1623,7 @@
     {
         "id":  "security-txt-generator-validator",
         "name":  "security.txt Generator \u0026 Validator",
-        "category":  "github-pages",
+        "category":  "security",
         "summary":  "Generate and validate security.txt files per RFC 9116. Specify your contact, expiration, and optional fields, then get hosting guidance for GitHub Pages, Netlify, and Vercel.",
         "description":  "security.txt is a proposed IETF standard that helps security researchers report vulnerabilities to the right contact. Place this file at /.well-known/security.txt on your domain so researchers and automated scanners can find your vulnerability disclosure policy and contact information.",
         "keywords":  [
@@ -1688,7 +1688,7 @@
     {
         "id":  "sri-hash-generator",
         "name":  "SRI Hash Generator",
-        "category":  "html",
+        "category":  "security",
         "summary":  "Generate Subresource Integrity hashes for script and stylesheet files. Paste code, upload a local file, or reference a CDN URL and get the integrity attribute for your HTML tags.",
         "description":  "Subresource Integrity (SRI) lets browsers verify that a third-party script or stylesheet has not been tampered with. This tool generates SHA-256, SHA-384, or SHA-512 hashes of your file content and outputs the ready-to-use integrity attribute with the matching script or link tag.",
         "keywords":  [
@@ -2952,7 +2952,7 @@
     {
         "id":  "touch-target-size-checker",
         "name":  "Touch Target Size Checker",
-        "category":  "css",
+        "category":  "html",
         "summary":  "Check interactive element dimensions against WCAG 2.2 Target Size (2.5.8) requirements. Get AA/AAA results with CSS fix recommendations.",
         "description":  "Verify that buttons, links, inputs, and other interactive elements meet WCAG 2.2 target size requirements: 24x24px for AA, 44x44px for AAA. Handles the four exception types —inline, user-agent, essential, and spacing —with clear pass/fail results and CSS fix suggestions.",
         "keywords":  [
@@ -3017,7 +3017,7 @@
     {
         "id":  "url-slug-generator",
         "name":  "URL Slug Generator",
-        "category":  "html",
+        "category":  "seo",
         "summary":  "Turn any title or heading into a clean, lowercase, hyphenated URL slug.",
         "description":  "Paste a page title, blog post headline, or any string, and get a URL-ready slug with hyphens instead of spaces and special characters removed. A small tool for a daily publishing task.",
         "keywords":  [
@@ -3153,7 +3153,7 @@
     {
         "id":  "reading-time-estimator",
         "name":  "Reading Time Estimator",
-        "category":  "html",
+        "category":  "seo",
         "summary":  "Paste text and get an estimated reading time based on word count and adjustable reading speed.",
         "description":  "Paste article content, blog post text, or any body copy. The tool calculates estimated reading time using a configurable words-per-minute rate. A small utility for bloggers and content editors.",
         "keywords":  [
@@ -3221,7 +3221,7 @@
     {
         "id":  "vapid-key-generator",
         "name":  "VAPID Key Generator",
-        "category":  "github-pages",
+        "category":  "security",
         "summary":  "Generate a VAPID key pair for Web Push notifications using the browser\u0027s Web Crypto API. Output ready-to-use keys for Node web-push, Firebase, and environment variables.",
         "description":  "Generate a P-256 ECDSA key pair for Voluntary Application Server Identification (VAPID) used in Web Push Protocol. Keys are generated entirely in your browser. Output includes public and private keys in Base64URL format with usage examples for web-push, Firebase Cloud Messaging, and environment variable configuration.",
         "keywords":  [
@@ -3837,7 +3837,7 @@
     {
         "id":  "iframe-sandbox-allow-generator",
         "name":  "Iframe Sandbox \u0026 Allow Attribute Generator",
-        "category":  "html",
+        "category":  "security",
         "summary":  "Generate secure iframe markup with sandbox flags and allow permissions by embed type.",
         "description":  "Choose an embed type such as YouTube, maps, forms, or payment, and get an iframe tag with the correct sandbox restrictions and allow permissions. Helps avoid over-permissive defaults.",
         "keywords":  [
@@ -4043,7 +4043,7 @@
     {
         "id":  "speculation-rules-generator",
         "name":  "Speculation Rules Generator",
-        "category":  "seo",
+        "category":  "javascript",
         "summary":  "Generate Speculation Rules JSON for prerendering and prefetching pages in Chrome and Edge.",
         "description":  "Choose prerender or prefetch mode, pick a URL list or document rules source, and get the script tag with JSON speculation rules. Use to speed up navigation on static sites.",
         "keywords":  [
@@ -4111,7 +4111,7 @@
     {
         "id":  "permissions-policy-generator",
         "name":  "Permissions-Policy Header Generator",
-        "category":  "seo",
+        "category":  "security",
         "summary":  "Generate a Permissions-Policy HTTP header to control browser feature access across your site.",
         "description":  "Choose which browser features to allow or deny, set per-feature origin policies, and get the Permissions-Policy header plus matching iframe allow examples.",
         "keywords":  [
@@ -4180,7 +4180,7 @@
     {
         "id":  "csp-starter-policy-generator",
         "name":  "CSP Starter Policy Generator for Static Sites",
-        "category":  "seo",
+        "category":  "security",
         "summary":  "Generate a Content-Security-Policy header for static sites with CDN, analytics, font, and embed options.",
         "description":  "Choose preset templates for common static site setups or customize each directive. Get a Content-Security-Policy header and a report-only version for testing.",
         "keywords":  [
@@ -4422,7 +4422,7 @@
     {
         "id":  "toc-anchor-generator",
         "name":  "Table of Contents Anchor Generator",
-        "category":  "html",
+        "category":  "seo",
         "summary":  "Paste HTML headings and get a nested table of contents with anchor links for articles and documentation.",
         "description":  "Extract headings from pasted HTML and build a nested unordered list with anchor links. Each heading gets a slugified ID. Perfect for long blog posts, guides, and documentation pages.",
         "keywords":  [
@@ -4838,7 +4838,7 @@
     {
         "id":  "no-js-redirect-page-generator",
         "name":  "No-JS Redirect Page Generator",
-        "category":  "html",
+        "category":  "github-pages",
         "summary":  "Generate a complete HTML redirect page using the meta refresh tag without JavaScript.",
         "description":  "Create a self-contained HTML page that redirects visitors to a new URL using the meta refresh tag. Works on any static hosting without server configuration or JavaScript.",
         "keywords":  [
@@ -4906,7 +4906,7 @@
     {
         "id":  "static-404-page-template-generator",
         "name":  "Static 404 Page Template Generator",
-        "category":  "html",
+        "category":  "github-pages",
         "summary":  "Generate a friendly 404 error page with navigation links for static websites and GitHub Pages.",
         "description":  "Build a complete 404.html page with a helpful message, navigation links, and optional search. The output is ready to place in your static site root for GitHub Pages and other static hosting.",
         "keywords":  [
@@ -5735,7 +5735,7 @@
     {
         "id":  "referrer-policy-tag-generator",
         "name":  "Referrer Policy Tag Generator",
-        "category":  "seo",
+        "category":  "security",
         "summary":  "Generate a Referrer-Policy header or meta tag to control how much referrer information is sent with outbound links.",
         "description":  "Build a Referrer-Policy for privacy, analytics, affiliate links, and cross-origin embeds. Generates both the HTTP header and the meta tag version. Explains each policy value.",
         "keywords":  [
@@ -7109,7 +7109,7 @@
     {
         "id":  "navigation-api-router-snippet-generator",
         "name":  "Navigation API Router Snippet Generator",
-        "category":  "html",
+        "category":  "javascript",
         "summary":  "Generate JavaScript code for client-side routing using the Navigation API. Intercept navigations, match route patterns, and update content without full page reloads.",
         "description":  "Create ready-to-use JavaScript snippets for single-page application routing using the Navigation API (Baseline 2026: Chrome 102+, Edge 102+, Safari 16.4+, Firefox 131+). Configure route patterns, link click interception, view transition integration, and scroll restoration. The Navigation API replaces the History API with a more reliable event model that handles all navigation types (push, replace, reload, traverse) and prevents race conditions.",
         "keywords":  [
@@ -7175,7 +7175,7 @@
     {
         "id":  "service-worker-module-template-generator",
         "name":  "Service Worker Module Template Generator",
-        "category":  "html",
+        "category":  "javascript",
         "summary":  "Generate an ES module service worker with configurable cache strategies, precache URL list, auto-activation, and offline fallback support.",
         "description":  "Create a complete service worker template using ES module syntax (type: \u0027module\u0027) with configurable cache strategies per route pattern. Includes cache-first, network-first, stale-while-revalidate, network-only, and cache-only strategies. Configure a precache URL list for install-time caching, auto-activation via skipWaiting and clients.claim, and an optional offline fallback page for uncached resources when offline.",
         "keywords":  [
@@ -7245,7 +7245,7 @@
     {
         "id":  "reporting-api-header-generator",
         "name":  "Reporting API Header Generator",
-        "category":  "github-pages",
+        "category":  "javascript",
         "summary":  "Generate Report-To and Reporting-Endpoints HTTP headers for Nginx and Apache, plus CSP Reporting and Network Error Logging configuration.",
         "description":  "Create browser error reporting headers for the Reporting API. Generate both legacy Report-To headers and the newer Reporting-Endpoints header syntax for Nginx and Apache configurations. Includes Content-Security-Policy report-uri and report-to directives for CSP violation reports, plus Network Error Logging (NEL) configuration that sends network error reports to your endpoint.",
         "keywords":  [
@@ -7311,7 +7311,7 @@
     {
         "id":  "trusted-types-policy-generator",
         "name":  "Trusted Types Policy Generator",
-        "category":  "html",
+        "category":  "security",
         "summary":  "Generate a Trusted Types policy with configurable createHTML/createScript/createScriptURL operations and matching Content-Security-Policy headers for Nginx and Apache.",
         "description":  "Create a browser Trusted Types policy to prevent DOM-based XSS. Configure createHTML, createScript, and createScriptURL operations with custom sanitization or strict rejection logic. Generate the corresponding Content-Security-Policy headers in both enforce and report-only modes, with server configuration snippets for Nginx and Apache. Trusted Types requires typed values instead of strings for dangerous DOM sinks like innerHTML, eval(), and script.src, making XSS attacks significantly harder.",
         "keywords":  [
@@ -7381,7 +7381,7 @@
     {
         "id":  "urlpattern-tester",
         "name":  "URLPattern Tester",
-        "category":  "html",
+        "category":  "javascript",
         "summary":  "Test URL patterns with named groups, wildcards, and regex constraints. Generate JavaScript URLPattern code and see live match results with extracted parameters for multiple test URLs.",
         "description":  "Build and test URLPattern matchers with an interactive interface. Enter pattern strings using :param syntax for named groups, * for wildcards, and optional segments with ?. Add multiple test URLs to see which ones match and what parameters are extracted. Generates ready-to-use JavaScript code using the native URLPattern API available in all modern browsers.",
         "keywords":  [
@@ -7731,7 +7731,7 @@
     {
         "id":  "scrollend-event-snippet-generator",
         "name":  "scrollend Event Snippet Generator",
-        "category":  "html",
+        "category":  "javascript",
         "summary":  "Generate JavaScript snippets using the scrollend event that fires when scrolling fully completes including momentum and inertia, with debounce comparison to show why native scrollend is more accurate.",
         "description":  "The scrollend event fires when the browser detects that scrolling has fully stopped, including momentum scrolling, rubber-banding, and user-initiated inertia. Unlike debounced scroll event listeners that approximate the end of scrolling based on arbitrary timeouts, scrollend provides a precise, browser-native signal that the viewport has settled at its final scroll position. Generate ready-to-use JavaScript snippets with the scrollend event, and compare the behavior side by side with traditional debounced scroll handlers to see the difference in timing and accuracy.",
         "keywords":  [
@@ -7801,7 +7801,7 @@
     {
         "id":  "performance-observer-snippet-generator",
         "name":  "PerformanceObserver Snippet Generator",
-        "category":  "html",
+        "category":  "javascript",
         "summary":  "Generate JavaScript snippets using PerformanceObserver to monitor Core Web Vitals (LCP, INP, CLS, FID, FCP, TTFB) and other performance metrics in real-time with good/needs-improvement/poor threshold classifications.",
         "description":  "PerformanceObserver provides an efficient, callback-based API for monitoring performance metrics as they are recorded by the browser. Unlike polling-based approaches that repeatedly check performance entries, PerformanceObserver delivers entries in real-time through a single observer pattern, supporting buffered entries so you do not miss metrics that fire before your observer is registered. Generate ready-to-use PerformanceObserver snippets that track Core Web Vitals (Largest Contentful Paint, Interaction to Next Paint, Cumulative Layout Shift, First Input Delay, First Contentful Paint, Time to First Byte), classify each metric against good/needs-improvement/poor thresholds, and optionally report results via the Beacon API or a custom callback.",
         "keywords":  [
@@ -7871,7 +7871,7 @@
     {
         "id":  "uint8array-base64-hex-converter",
         "name":  "Uint8Array Base64/Hex Converter",
-        "category":  "html",
+        "category":  "security",
         "summary":  "Encode and decode Uint8Array data using native toBase64(), toHex(), fromBase64(), and fromHex() methods. No more manual btoa or charCodeAt loops.",
         "description":  "Generate code snippets using the native Uint8Array Base64 and Hex methods available in modern browsers. toBase64() encodes binary data to a Base64 string, toHex() encodes to a hex string, and the static methods fromBase64() and fromHex() decode back to Uint8Array. Replaces error-prone manual encoding with btoa and charCodeAt patterns.",
         "keywords":  [
@@ -7941,7 +7941,7 @@
     {
         "id":  "regexp-escape-helper",
         "name":  "RegExp.escape() Helper",
-        "category":  "html",
+        "category":  "javascript",
         "summary":  "Escape special regex characters in user input using the native RegExp.escape() method. Generate safe dynamic regex patterns with comparison to old manual escaping.",
         "description":  "Use RegExp.escape(string) to safely escape special regular expression characters in user-provided strings before building dynamic RegExp objects. This static method handles all 14 special regex characters without manual replacement logic. Includes a side-by-side comparison with the old manual escape function approach.",
         "keywords":  [
@@ -8011,7 +8011,7 @@
     {
         "id":  "intl-durationformat-generator",
         "name":  "Intl.DurationFormat Generator",
-        "category":  "html",
+        "category":  "javascript",
         "summary":  "Format durations with locale-aware Intl.DurationFormat. Supports long, short, narrow, and digital styles in 6+ locales. No more moment-duration-format.",
         "description":  "Use Intl.DurationFormat to display time durations — hours, minutes, seconds — in a locale-aware format. Choose a style (long, short, narrow, digital) and a locale to see how the same duration renders across languages. The generated code replaces third-party duration formatting libraries like moment-duration-format.",
         "keywords":  [
@@ -8217,7 +8217,7 @@
     {
         "id":  "custom-highlight-api-generator",
         "name":  "Custom Highlight API Generator",
-        "category":  "html",
+        "category":  "javascript",
         "summary":  "Generate JavaScript and CSS snippets for the Custom Highlights API to style arbitrary text ranges without modifying the DOM. Uses CSS.highlights registry and ::highlight() pseudo-element for find-in-page, syntax highlighting, and search results.",
         "description":  "The Custom Highlights API (Baseline 2026, Chrome 105+) lets you style arbitrary ranges of text using CSS without wrapping them in span elements. Register named highlights via CSS.highlights.set() and apply styles with the ::highlight() pseudo-element. Unlike wrapping text in span tags, highlights do not modify the DOM tree, do not affect text content, and are invisible to assistive technology and JavaScript selectors. Generate JavaScript code to create and manage highlights with configurable range matching, plus CSS for highlight styling with supported properties only.",
         "keywords":  [
@@ -8287,7 +8287,7 @@
     {
         "id":  "webtransport-url-template-helper",
         "name":  "WebTransport URL Template Helper",
-        "category":  "html",
+        "category":  "javascript",
         "summary":  "Generate a JavaScript WebTransport connection snippet with URL template, bidirectional streams, and datagram support for low-latency client-server communication over HTTP/3 (QUIC).",
         "description":  "WebTransport is a low-latency client-server protocol built on HTTP/3 (QUIC) that supports multiplexed bidirectional streams and unreliable datagrams. This tool generates a ready-to-use JavaScript snippet for connecting to a WebTransport server, handling stream and datagram I/O, and optionally configuring self-signed certificate verification. Use it to replace WebSocket and WebRTC data channels in real-time applications like gaming, live collaboration, and streaming analytics.",
         "keywords":  [
@@ -8555,7 +8555,7 @@
     {
         "id":  "json-formatter-validator",
         "name":  "JSON Formatter \u0026 Validator",
-        "category":  "html",
+        "category":  "data",
         "summary":  "Format, validate, minify, and tree-view JSON data. Detects trailing commas, shows error position with context. All processing happens in the browser -- no data sent anywhere.",
         "description":  "A complete browser-based JSON toolkit. Paste or load raw JSON to format it with configurable indentation, validate syntax with precise error location reporting, minify for production payloads, or explore data in a collapsible tree view. Catches trailing commas, duplicate keys, unescaped control characters, and other common JSON mistakes. Every operation runs locally in the browser -- no data leaves your machine.",
         "keywords":  [
@@ -8621,7 +8621,7 @@
     {
         "id":  "json-to-csv-converter",
         "name":  "JSON to CSV Converter",
-        "category":  "html",
+        "category":  "data",
         "summary":  "Convert JSON arrays to CSV/TSV with configurable delimiter, optional header row, nested field flattening via dot notation, and download-ready output.",
         "description":  "Convert arrays of JSON objects into delimited text formats. Choose comma (CSV) or tab (TSV) delimiters, toggle header rows on or off, and flatten nested fields using dot notation. The output is displayed as a preview table and is available for copy or download as a .csv file. Supports arrays of objects, arrays of primitives, and mixed structures.",
         "keywords":  [
@@ -8687,7 +8687,7 @@
     {
         "id":  "yaml-json-converter",
         "name":  "YAML JSON Converter",
-        "category":  "html",
+        "category":  "data",
         "summary":  "Bidirectional YAML to JSON and JSON to YAML converter. Handles nested objects, arrays, and scalar values. Useful for config files, GitHub Actions, front matter, and Docker Compose.",
         "description":  "Convert between YAML and JSON bidirectionally. Paste YAML and get clean JSON, or paste JSON and get readable YAML. Handles nested objects, arrays, strings, numbers, booleans, and null values. Preserves data types during conversion. Useful for translating GitHub Actions workflows, Jekyll front matter, Docker Compose files, and application configs.",
         "keywords":  [
@@ -8753,7 +8753,7 @@
     {
         "id":  "jsonpath-tester",
         "name":  "JSONPath Tester",
-        "category":  "html",
+        "category":  "data",
         "summary":  "Test JSONPath expressions against JSON data. Supports dot notation, bracket notation, wildcards, array indices, and filter expressions. Shows matched values with paths.",
         "description":  "Build and test JSONPath expressions against any JSON document. Supports the full JSONPath syntax including dot notation ($.store.book[0].title), bracket notation ($[\u0027store\u0027][\u0027book\u0027][0][\u0027title\u0027]), wildcards (*, $..*), array slices, and filter expressions (?(@.price \u003c 10)). Results display each matched value with its full path for easy verification.",
         "keywords":  [
@@ -8819,7 +8819,7 @@
     {
         "id":  "json-schema-generator-validator",
         "name":  "JSON Schema Generator \u0026 Validator",
-        "category":  "html",
+        "category":  "data",
         "summary":  "Generate JSON Schema from sample JSON data, or validate JSON against an existing schema. Supports Draft 04/07/2020-12. Infers types, marks required fields, includes examples.",
         "description":  "Two tools in one: generate a JSON Schema from sample JSON data by inferring types, required fields, and structure, or validate a JSON document against an existing schema. Supports JSON Schema Draft 4, Draft 7, and Draft 2020-12. The generator produces clean schemas with type inference, required field detection, and example values baked in.",
         "keywords":  [
@@ -8885,7 +8885,7 @@
     {
         "id":  "regex-tester-debugger",
         "name":  "Regex Tester and Debugger",
-        "category":  "html",
+        "category":  "data",
         "summary":  "Test regular expressions against text with match highlighting, capture groups, and replacement preview. All processing is local in the browser.",
         "description":  "A browser-based regular expression tester that runs JavaScript regex against any text input. See live matches with highlighted output, inspect capture groups, and preview replacement results. Supports all JavaScript regex flags (g, i, m, s, u, y). No data is sent to a server — all matching happens locally.",
         "keywords":  [
@@ -8951,7 +8951,7 @@
     {
         "id":  "jwt-decoder-claims-inspector",
         "name":  "JWT Decoder and Claims Inspector",
-        "category":  "html",
+        "category":  "security",
         "summary":  "Decode JWT tokens to inspect header, payload claims, and timestamps. All decoding happens locally — no token is sent to any server.",
         "description":  "A browser-based JWT decoder that decodes the header and payload of JSON Web Tokens without sending data anywhere. Inspect claims like sub, iat, exp, and nbf with automatic timestamp conversion to human-readable dates. The tool warns about insecure algorithms (alg: none) and explains the signature verification status.",
         "keywords":  [
@@ -9017,7 +9017,7 @@
     {
         "id":  "base64-encoder-decoder",
         "name":  "Base64 Encoder and Decoder",
-        "category":  "html",
+        "category":  "security",
         "summary":  "Encode text to Base64 or decode Base64 back to text. Supports URL-safe Base64 variant. All processing is local.",
         "description":  "A browser-based Base64 encoder and decoder. Convert any text to Base64 encoding for use in data URIs, API authentication headers, email attachments, or config files. Decode Base64 strings back to readable text. Supports both standard Base64 and URL-safe Base64 (using - and _ instead of + and /).",
         "keywords":  [
@@ -9083,7 +9083,7 @@
     {
         "id":  "url-encoder-decoder",
         "name":  "URL Encoder and Decoder",
-        "category":  "html",
+        "category":  "security",
         "summary":  "Encode or decode URL-encoded strings. Supports both encodeURIComponent (full) and encodeURI (URL-safe) modes.",
         "description":  "A browser-based URL encoder and decoder. Convert text to percent-encoded format for safe inclusion in URLs, query parameters, and API requests. Supports two modes: encodeURIComponent (encodes all special characters for query values) and encodeURI (preserves URL structure characters like : / ? \u0026 =).",
         "keywords":  [
@@ -9144,7 +9144,7 @@
     {
         "id":  "query-string-parser-builder",
         "name":  "Query String Parser and Builder",
-        "category":  "html",
+        "category":  "data",
         "summary":  "Parse URL query strings into key-value tables, or build query strings from parameters. Detects duplicates and sorts parameters.",
         "description":  "A browser-based query string tool with two modes: Parse mode extracts and displays all query parameters from a URL or query string in a clean table, with duplicate detection. Build mode constructs a query string from key=value pairs entered line by line. Both modes support alphabetical sorting of parameters.",
         "keywords":  [
@@ -9206,7 +9206,7 @@
     {
         "id":  "uuid-generator",
         "name":  "UUID Generator",
-        "category":  "html",
+        "category":  "security",
         "summary":  "Generate UUID v4 (random) or v7 (time-ordered) identifiers with configurable options",
         "description":  "A browser-based UUID generator that creates RFC 9562-compliant identifiers. Choose between v4 (random) for general-purpose unique IDs and v7 (time-ordered) for sortable database-friendly IDs. Generate up to 100 UUIDs at once with configurable uppercase/lowercase and hyphen formatting. All generation uses the browser\u0027s cryptographic random number generator — no data is sent anywhere.",
         "keywords":  [
@@ -9272,7 +9272,7 @@
     {
         "id":  "unix-timestamp-converter",
         "name":  "Unix Timestamp Converter",
-        "category":  "html",
+        "category":  "data",
         "summary":  "Convert between Unix timestamps and human-readable dates with timezone support",
         "description":  "A browser-based Unix timestamp converter that transforms between machine-readable epoch time and human-readable dates. Enter a timestamp in seconds or milliseconds, or paste an ISO date string, and instantly see the UTC time, local time, day of week, and timezone offset. The current timestamp is shown by default for quick reference.",
         "keywords":  [
@@ -9338,7 +9338,7 @@
     {
         "id":  "cron-expression-builder",
         "name":  "Cron Expression Builder",
-        "category":  "html",
+        "category":  "data",
         "summary":  "Build and understand cron schedule expressions with presets or custom fields",
         "description":  "A browser-based cron expression builder that helps you create and understand cron schedule patterns. Start from common presets (every hour, daily, weekly) or build custom schedules by setting each field individually. Supports both standard 5-field cron and 6-field cron with seconds. The output explains what each field means in plain language.",
         "keywords":  [
@@ -9404,7 +9404,7 @@
     {
         "id":  "text-diff-checker",
         "name":  "Text Diff Checker",
-        "category":  "html",
+        "category":  "data",
         "summary":  "Compare two texts line-by-line or side-by-side with visual highlighting",
         "description":  "A browser-based text comparison tool that shows differences between two texts. Choose line-by-line diff (unified format) or side-by-side comparison. Added, removed, and changed lines are highlighted with green, red, and yellow backgrounds. Supports case-insensitive comparison. No text is uploaded — all comparison happens locally.",
         "keywords":  [
@@ -9466,7 +9466,7 @@
     {
         "id":  "hash-hmac-generator",
         "name":  "Hash and HMAC Generator",
-        "category":  "html",
+        "category":  "security",
         "summary":  "Generate cryptographic hashes and HMAC JavaScript code using Web Crypto API",
         "description":  "A browser-based hash and HMAC generator that provides ready-to-use JavaScript code snippets for computing cryptographic hashes with the Web Crypto API. Supports SHA-256, SHA-384, SHA-512, SHA-1, and MD5. For HMAC (keyed hash), provide a secret key. The tool generates copy-paste JavaScript code that works in any modern browser.",
         "keywords":  [
@@ -9531,7 +9531,7 @@
     },
     {
         "id":  "markdown-preview-editor",
-        "category":  "html",
+        "category":  "data",
         "verificationSteps":  [
                                   "Type # Heading 1, **bold**, *italic*, and code in the editor. Verify each renders correctly in the preview pane in real time.",
                                   "Create a three-column table with header alignment and a fenced code block with a language identifier. Verify the table shows alignment and the code block has syntax highlighting."
@@ -9597,7 +9597,7 @@
     },
     {
         "id":  "qr-code-generator",
-        "category":  "html",
+        "category":  "assets",
         "verificationSteps":  [
                                   "Generate a QR code for a short URL. Scan it with a smartphone camera and verify it opens the correct URL.",
                                   "Generate a WiFi QR code with a test SSID and password. Use a phone camera to scan it and verify the phone detects the correct network credentials."
@@ -9667,7 +9667,7 @@
     },
     {
         "id":  "image-compressor-converter",
-        "category":  "html",
+        "category":  "assets",
         "verificationSteps":  [
                                   "Select a JPEG photo, set output format to WebP at 80% quality, and click download. Verify the WebP file opens correctly in a browser and the file size is significantly smaller than the original.",
                                   "Select a PNG with transparency, set output format to PNG, and download. Verify the transparency is preserved in the output file."
@@ -9737,7 +9737,7 @@
     },
     {
         "id":  "svg-optimizer",
-        "category":  "css",
+        "category":  "assets",
         "verificationSteps":  [
                                   "Upload an SVG exported from a design tool. Verify the output no longer contains editor metadata (e.g., xmlns:inkscape, figma:type attributes).",
                                   "Open both the original and optimized SVG in a browser or SVG viewer. Verify they render identically despite the size difference."
@@ -9803,7 +9803,7 @@
     },
     {
         "id":  "svg-to-css-data-uri-converter",
-        "category":  "css",
+        "category":  "assets",
         "verificationSteps":  [
                                   "Paste a simple SVG circle into the tool, select URL-encode with CSS background-image output. Copy the result, apply it to a div in a test HTML file, and verify the circle renders in the background.",
                                   "Switch to Base64 encoding and verify the output renders identically in the live preview. Compare the character counts of both outputs."

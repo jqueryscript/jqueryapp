@@ -23,6 +23,7 @@
                           "language":  "Language",
                           "browseTools":  "Browse all tools",
                           "allTools":  "All Tools",
+                          "moreTools":  "More",
                           "megaAllPrefix":  "All Free {0} Tools",
                           "browseCollections":  "Tool collections for common workflows",
                           "collections":  "Collections",
@@ -176,6 +177,7 @@
                           "home":  "Startseite",
                           "noAccountRequired":  "Kein Konto erforderlich",
                           "allTools":  "Alle Tools",
+                          "moreTools":  "Mehr",
                           "megaAllPrefix":  "Alle kostenlosen {0}-Tools",
                           "quickReference":  "Kurzreferenz",
                           "category":  "Kategorie",
@@ -195,7 +197,8 @@
                       },
                "categories":  {
                                   "seo":  {
-                                              "name":  "SEO-Tools",
+                                              "name":  "SEO- & Web-Publishing-Tools",
+                                              "navLabel":  "SEO",
                                               "description":  "Browser-Tools für Metadaten, Indexierung, Canonicals, Social Previews und Launch-Checks.",
                                               "intro":  "SEO-Arbeit stockt oft kurz vor der Veröffentlichung: ein fehlender Canonical, eine schwache Social Preview oder eine Robots-Anweisung, die nicht sicher sitzt. Diese Tools machen solche Aufgaben klar und prufbar.",
                                               "bestFor":  [
@@ -220,7 +223,8 @@
                                                       ]
                                           },
                                   "html":  {
-                                               "name":  "HTML-Tools",
+                                               "name":  "HTML- & Barrierefreiheits-Tools",
+                                               "navLabel":  "HTML",
                                                "description":  "Hilfen für saubere HTML-Tags, Head-Markup, Snippets und Publishing-Abläufe.",
                                                "intro":  "HTML-Fehler wirken klein, erreichen aber schnell Produktion. Ein falsches Head-Tag oder ein fehlendes Attribut kann Previews, Barrierefreiheit und Wartung beeinflussen.",
                                                "bestFor":  [
@@ -245,7 +249,8 @@
                                                        ]
                                            },
                                   "css":  {
-                                              "name":  "CSS-Tools",
+                                              "name":  "CSS- & Design-Tools",
+                                              "navLabel":  "CSS",
                                               "description":  "CSS-Generatoren für responsive Layouts, Abstände, Mobile-Feinschliff und UI-Details.",
                                               "intro":  "Gutes CSS hängt oft an kleinen Werten: fluiden Schriftgrößen, Abstanden, Breakpoints und stabilen Grenzen. Diese Tools machen solche Werte nachvollziehbar.",
                                               "bestFor":  [
@@ -270,7 +275,8 @@
                                                       ]
                                           },
                                   "assets":  {
-                                                 "name":  "Bild- und Asset-Tools",
+                                                 "name":  "Bilder-, SVG- & Asset-Tools",
+                                                 "navLabel":  "Assets",
                                                  "description":  "Lokale Hilfen für Icons, Bild-Markup, Asset-Pfade und Dateien statischer Websites.",
                                                  "intro":  "Bilder, Favicons und statische Dateien werden oft am Ende erledigt. Genau dann fallen falsche Pfade, fehlende Größen oder unklare Alt-Texte auf.",
                                                  "bestFor":  [
@@ -295,7 +301,8 @@
                                                          ]
                                              },
                                   "github-pages":  {
-                                                       "name":  "GitHub-Pages-Tools",
+                                                       "name":  "GitHub-Pages- & Deployment-Tools",
+                                                       "navLabel":  "Deployment",
                                                        "description":  "Tools für Custom Domains, statisches Publishing, Launch-Checks und GitHub-Pages-Wartung.",
                                                        "intro":  "GitHub Pages ist einfach, aber Domain- und Publishing-Regeln sind streng. Eine CNAME-Datei im falschen Ordner oder ein fehlender Build-Output kann aus einer guten Seite eine 404 machen.",
                                                        "bestFor":  [
@@ -318,8 +325,98 @@
                                                                        "answer":  "Haufige Ursachen sind falscher Branch, falscher Ordner, fehlende index.html oder eine Domain am falschen Repository."
                                                                    }
                                                                ]
-                                                   }
-                              },
+                                                   },
+                       "data": {
+                           "name": "JSON-, Daten- & Formatierungs-Tools",
+                           "navLabel": "Daten",
+                           "description": "Browser-Tools zum Prüfen, Umwandeln, Vergleichen und Formatieren strukturierter Daten und Texte.",
+                           "intro": "Diese Tools helfen beim Prüfen von JSON, Umwandeln von Datenformaten, Testen von Mustern und Vergleichen von Text, ohne Daten hochzuladen.",
+                           "bestFor": [
+                               "Frontend- und API-Entwicklung",
+                               "Arbeit mit Konfigurationsdateien",
+                               "Schnelle Prüfungen während des Debuggings"
+                           ],
+                           "useCases": [
+                               "JSON oder YAML prüfen und formatieren",
+                               "CSV- und strukturierte Daten umwandeln",
+                               "Reguläre Ausdrücke, JSONPath und Abfragen testen"
+                           ],
+                           "faq": [
+                               {
+                                   "question": "Werden meine Daten hochgeladen?",
+                                   "answer": "Nein. Die Tools verarbeiten Eingaben direkt im Browser."
+                               },
+                               {
+                                   "question": "Kann ich die Ausgabe direkt produktiv verwenden?",
+                                   "answer": "Prüfe umgewandelte Daten und Sonderfälle vor dem Einsatz."
+                               },
+                               {
+                                   "question": "Welche Formate werden abgedeckt?",
+                                   "answer": "Die Sammlung umfasst unter anderem JSON, CSV, YAML, Markdown, Abfragezeichenfolgen und Zeitstempel."
+                               }
+                           ]
+                       },
+                       "security": {
+                           "name": "Kodierungs-, Hash- & Sicherheits-Tools",
+                           "navLabel": "Sicherheit",
+                           "description": "Browser-Tools für Kodierung, Hashes, Tokens und Sicherheitsheader, deren Ausgabe vor dem Einsatz geprüft werden kann.",
+                           "intro": "Diese Sammlung deckt häufige Aufgaben rund um Kodierung, Hashes, Browser-Sicherheitsrichtlinien und tokenbasierte Daten ab.",
+                           "bestFor": [
+                               "Webentwickler und technische Redakteure",
+                               "Header- und Richtlinienentwürfe",
+                               "Lokale Kodierungs- und Hash-Aufgaben"
+                           ],
+                           "useCases": [
+                               "Base64-, URL- und Binärdaten umwandeln",
+                               "Hashes und Integritätswerte erzeugen",
+                               "CSP-, CORS- und weitere Sicherheitsheader vorbereiten"
+                           ],
+                           "faq": [
+                               {
+                                   "question": "Speichern die Tools Schlüssel oder Tokens?",
+                                   "answer": "Nein. Eingaben werden lokal im Browser verarbeitet."
+                               },
+                               {
+                                   "question": "Ersetzen die Generatoren ein Sicherheitsaudit?",
+                                   "answer": "Nein. Sie erstellen prüfbare Ausgangswerte, aber keine vollständige Sicherheitsbewertung."
+                               },
+                               {
+                                   "question": "Sollte ich Richtlinien vor der Veröffentlichung testen?",
+                                   "answer": "Ja. Prüfe Header und Richtlinien zuerst in einer Testumgebung."
+                               }
+                           ]
+                       },
+                       "javascript": {
+                           "name": "JavaScript- & Web-API-Tools",
+                           "navLabel": "JavaScript",
+                           "description": "Browser-Tools und Codebausteine für moderne JavaScript-Funktionen, Web-APIs und Laufzeitdiagnosen.",
+                           "intro": "Diese Tools unterstützen kleine JavaScript- und Web-API-Aufgaben mit lesbaren Snippets und direkt prüfbaren Ergebnissen.",
+                           "bestFor": [
+                               "Frontend-Entwicklung",
+                               "Tests moderner Browser-APIs",
+                               "Kleine wiederverwendbare Codebausteine"
+                           ],
+                           "useCases": [
+                               "URLPattern und reguläre Ausdrücke testen",
+                               "Service Worker und Navigation vorbereiten",
+                               "Performance- und Browser-API-Snippets erzeugen"
+                           ],
+                           "faq": [
+                               {
+                                   "question": "Laufen die Beispiele in jedem Browser?",
+                                   "answer": "Nicht immer. Prüfe die Unterstützung der verwendeten Web-API für deine Zielbrowser."
+                               },
+                               {
+                                   "question": "Sind die Snippets produktionsfertig?",
+                                   "answer": "Sie sind Ausgangspunkte und sollten im eigenen Projekt getestet werden."
+                               },
+                               {
+                                   "question": "Benötigen die Tools ein Framework?",
+                                   "answer": "Nein. Die Ausgaben verwenden Browser-JavaScript und Web-APIs."
+                               }
+                           ]
+                       }
+               },
                "toolTemplates":  {
                                      "whatIs":  "{name} ist ein Browser-Tool für diese Aufgabe: {summary} Die Ausgabe bleibt lesbar, damit du sie vor dem Einbau in eine Live-Seite prüfen kannst.",
                                      "howToUse":  [
@@ -9140,6 +9237,7 @@
                           "home":  "Accueil",
                           "noAccountRequired":  "Aucun compte requis",
                           "allTools":  "Tous les outils",
+                          "moreTools":  "Plus",
                           "megaAllPrefix":  "Tous les outils {0} gratuits",
                           "quickReference":  "Référence rapide",
                           "category":  "Catégorie",
@@ -9159,7 +9257,8 @@
                       },
                "categories":  {
                                   "seo":  {
-                                              "name":  "Outils SEO",
+                                              "name":  "Outils SEO et publication web",
+                                              "navLabel":  "SEO",
                                               "description":  "Outils pour metadonnees, indexation, URL canoniques, apercus sociaux et controles de lancement.",
                                               "intro":  "Le SEO ralentit souvent juste avant la publication : canonical manquant, apercu social faible ou directive robots mal choisie. Ces outils rendent ces décisions plus simples a vérifier.",
                                               "bestFor":  [
@@ -9184,7 +9283,8 @@
                                                       ]
                                           },
                                   "html":  {
-                                               "name":  "Outils HTML",
+                                               "name":  "Outils HTML et accessibilité",
+                                               "navLabel":  "HTML",
                                                "description":  "Assistants pour balises HTML propres, head markup, snippets et flux de publication.",
                                                "intro":  "Les erreurs HTML semblent petites, mais elles peuvent toucher les apercus, l\u0027accessibilité, le crawl et la maintenance. Ces outils gardent le markup lisible.",
                                                "bestFor":  [
@@ -9209,7 +9309,8 @@
                                                        ]
                                            },
                                   "css":  {
-                                              "name":  "Outils CSS",
+                                              "name":  "Outils CSS et design",
+                                              "navLabel":  "CSS",
                                               "description":  "Generateurs CSS pour layouts responsives, espacements, mobile et details d\u0027interface.",
                                               "intro":  "Un bon CSS depend souvent de petites valeurs : typographie fluide, espacements, limites et breakpoints. Ces outils rendent ces valeurs plus faciles a controler.",
                                               "bestFor":  [
@@ -9234,7 +9335,8 @@
                                                       ]
                                           },
                                   "assets":  {
-                                                 "name":  "Outils images et assets",
+                                                 "name":  "Outils images, SVG et ressources",
+                                                 "navLabel":  "Ressources",
                                                  "description":  "Aides locales pour icônes, balisage d\u0027image, chemins d\u0027assets et fichiers statiques.",
                                                  "intro":  "Images, favicons et fichiers statiques arrivent souvent en fin de lancement. C\u0027est aussi la que les chemins et attributs manquants cassent le rendu.",
                                                  "bestFor":  [
@@ -9259,7 +9361,8 @@
                                                          ]
                                              },
                                   "github-pages":  {
-                                                       "name":  "Outils GitHub Pages",
+                                                       "name":  "Outils GitHub Pages et déploiement",
+                                                       "navLabel":  "Déploiement",
                                                        "description":  "Outils pour domaines personnalisés, publication statique, controles de lancement et maintenance GitHub Pages.",
                                                        "intro":  "GitHub Pages est simple, mais les règles de domaine et de publication sont strictes. Un CNAME au mauvais endroit ou un index manquant peut produire une 404.",
                                                        "bestFor":  [
@@ -9282,8 +9385,98 @@
                                                                        "answer":  "Branche, dossier de publication, index.html absent ou domaine lié au mauvais depot sont des causes courantes."
                                                                    }
                                                                ]
-                                                   }
-                              },
+                                                   },
+                       "data": {
+                           "name": "Outils JSON, données et formatage",
+                           "navLabel": "Données",
+                           "description": "Outils dans le navigateur pour valider, convertir, comparer et formater des données structurées et du texte.",
+                           "intro": "Ces outils servent à vérifier du JSON, convertir des formats, tester des motifs et comparer du texte sans envoyer les données à un serveur.",
+                           "bestFor": [
+                               "Développement frontend et API",
+                               "Fichiers de configuration",
+                               "Contrôles rapides pendant le débogage"
+                           ],
+                           "useCases": [
+                               "Valider et formater JSON ou YAML",
+                               "Convertir CSV et données structurées",
+                               "Tester expressions régulières, JSONPath et requêtes"
+                           ],
+                           "faq": [
+                               {
+                                   "question": "Mes données sont-elles envoyées ?",
+                                   "answer": "Non. Les entrées sont traitées directement dans le navigateur."
+                               },
+                               {
+                                   "question": "Puis-je publier le résultat sans contrôle ?",
+                                   "answer": "Vérifiez les conversions et les cas particuliers avant utilisation."
+                               },
+                               {
+                                   "question": "Quels formats sont couverts ?",
+                                   "answer": "La collection couvre notamment JSON, CSV, YAML, Markdown, les paramètres d’URL et les horodatages."
+                               }
+                           ]
+                       },
+                       "security": {
+                           "name": "Outils d’encodage, de hachage et de sécurité",
+                           "navLabel": "Sécurité",
+                           "description": "Outils pour encodage, hachage, jetons et en-têtes de sécurité avec une sortie lisible avant utilisation.",
+                           "intro": "Cette collection couvre les tâches courantes d’encodage, de hachage, de politiques de sécurité du navigateur et de données de jetons.",
+                           "bestFor": [
+                               "Développeurs web",
+                               "Préparation d’en-têtes et de politiques",
+                               "Encodage et hachage local"
+                           ],
+                           "useCases": [
+                               "Convertir Base64, URL et données binaires",
+                               "Générer des hachages et valeurs d’intégrité",
+                               "Préparer CSP, CORS et autres en-têtes"
+                           ],
+                           "faq": [
+                               {
+                                   "question": "Les clés ou jetons sont-ils stockés ?",
+                                   "answer": "Non. Les entrées sont traitées localement dans le navigateur."
+                               },
+                               {
+                                   "question": "Ces générateurs remplacent-ils un audit ?",
+                                   "answer": "Non. Ils produisent une base à vérifier, pas une évaluation complète de sécurité."
+                               },
+                               {
+                                   "question": "Faut-il tester les politiques avant publication ?",
+                                   "answer": "Oui. Testez d’abord les en-têtes et politiques dans un environnement de préproduction."
+                               }
+                           ]
+                       },
+                       "javascript": {
+                           "name": "Outils JavaScript et API Web",
+                           "navLabel": "JavaScript",
+                           "description": "Outils et extraits pour les fonctions JavaScript modernes, les API Web et le diagnostic dans le navigateur.",
+                           "intro": "Ces outils traitent de petites tâches JavaScript et API Web avec des extraits lisibles et des résultats faciles à vérifier.",
+                           "bestFor": [
+                               "Développement frontend",
+                               "Essai d’API Web modernes",
+                               "Extraits de code réutilisables"
+                           ],
+                           "useCases": [
+                               "Tester URLPattern et les expressions régulières",
+                               "Préparer service workers et navigation",
+                               "Générer des extraits de performance et d’API navigateur"
+                           ],
+                           "faq": [
+                               {
+                                   "question": "Les exemples fonctionnent-ils dans tous les navigateurs ?",
+                                   "answer": "Pas toujours. Vérifiez la compatibilité de chaque API avec vos navigateurs cibles."
+                               },
+                               {
+                                   "question": "Les extraits sont-ils prêts pour la production ?",
+                                   "answer": "Ce sont des points de départ à tester dans votre projet."
+                               },
+                               {
+                                   "question": "Un framework est-il nécessaire ?",
+                                   "answer": "Non. Les sorties utilisent JavaScript et les API natives du navigateur."
+                               }
+                           ]
+                       }
+               },
                "toolTemplates":  {
                                      "whatIs":  "{name} est un outil dans le navigateur pour cette tâche : {summary} La sortie reste lisible afin de la vérifier avant de l\u0027utiliser sur un site publié.",
                                      "howToUse":  [
@@ -17854,6 +18047,7 @@
                           "home":  "Inicio",
                           "noAccountRequired":  "Sin cuenta requerida",
                           "allTools":  "Todas las herramientas",
+                          "moreTools":  "Más",
                           "megaAllPrefix":  "Todas las herramientas {0} gratuitas",
                           "quickReference":  "Referencia rápida",
                           "category":  "Categoría",
@@ -17873,7 +18067,8 @@
                       },
                "categories":  {
                                   "seo":  {
-                                              "name":  "Herramientas SEO",
+                                              "name":  "Herramientas de SEO y publicación web",
+                                              "navLabel":  "SEO",
                                               "description":  "Herramientas para metadatos, indexación, canonical, vistas previas sociales y revisiones de lanzamiento.",
                                               "intro":  "El SEO suele frenarse justo antes de publicar: falta un canonical, una vista previa social no convence o una directiva robots queda dudosa. Estas herramientas hacen esos detalles más fáciles de revisar.",
                                               "bestFor":  [
@@ -17898,7 +18093,8 @@
                                                       ]
                                           },
                                   "html":  {
-                                               "name":  "Herramientas HTML",
+                                               "name":  "Herramientas de HTML y accesibilidad",
+                                               "navLabel":  "HTML",
                                                "description":  "Ayudas para etiquetas HTML, head markup, snippets y flujos de publicación.",
                                                "intro":  "Los errores HTML parecen pequeños, pero afectan previews, accesibilidad, rastreo y mantenimiento. Estas herramientas mantienen el marcado claro.",
                                                "bestFor":  [
@@ -17923,7 +18119,8 @@
                                                        ]
                                            },
                                   "css":  {
-                                              "name":  "Herramientas CSS",
+                                              "name":  "Herramientas de CSS y diseño",
+                                              "navLabel":  "CSS",
                                               "description":  "Generadores CSS para layouts responsive, espaciado, pulido móvil y detalles de interfaz.",
                                               "intro":  "Buen CSS muchas veces depende de números pequeños: tipografía fluida, espaciado, límites y breakpoints. Estas herramientas convierten esas decisiones en CSS revisable.",
                                               "bestFor":  [
@@ -17948,7 +18145,8 @@
                                                       ]
                                           },
                                   "assets":  {
-                                                 "name":  "Herramientas de imágenes y assets",
+                                                 "name":  "Herramientas de imágenes, SVG y recursos",
+                                                 "navLabel":  "Recursos",
                                                  "description":  "Ayudas locales para iconos, marcado de imagen, rutas de assets y archivos estáticos.",
                                                  "intro":  "Imágenes, favicons y archivos estáticos suelen quedarse para el final. Allí aparecen rutas rotas, tamaños ausentes o alt text flojo.",
                                                  "bestFor":  [
@@ -17973,7 +18171,8 @@
                                                          ]
                                              },
                                   "github-pages":  {
-                                                       "name":  "Herramientas GitHub Pages",
+                                                       "name":  "Herramientas de GitHub Pages y despliegue",
+                                                       "navLabel":  "Despliegue",
                                                        "description":  "Herramientas para dominios personalizados, publicación estática, revisiones de lanzamiento y mantenimiento.",
                                                        "intro":  "GitHub Pages es simple, pero sus reglas de dominio y publicación no perdonan. Un CNAME en la carpeta incorrecta o un index faltante puede terminar en 404.",
                                                        "bestFor":  [
@@ -17996,8 +18195,98 @@
                                                                        "answer":  "Branch, carpeta de publicación, index.html ausente o dominio conectado al repo equivocado son causas comunes."
                                                                    }
                                                                ]
-                                                   }
-                              },
+                                                   },
+                       "data": {
+                           "name": "Herramientas de JSON, datos y formato",
+                           "navLabel": "Datos",
+                           "description": "Herramientas en el navegador para validar, convertir, comparar y formatear datos estructurados y texto.",
+                           "intro": "Estas herramientas permiten revisar JSON, convertir formatos, probar patrones y comparar texto sin subir los datos.",
+                           "bestFor": [
+                               "Desarrollo frontend y de API",
+                               "Archivos de configuración",
+                               "Comprobaciones rápidas durante la depuración"
+                           ],
+                           "useCases": [
+                               "Validar y dar formato a JSON o YAML",
+                               "Convertir CSV y datos estructurados",
+                               "Probar expresiones regulares, JSONPath y consultas"
+                           ],
+                           "faq": [
+                               {
+                                   "question": "¿Se suben mis datos?",
+                                   "answer": "No. Las entradas se procesan directamente en el navegador."
+                               },
+                               {
+                                   "question": "¿Puedo usar el resultado sin revisarlo?",
+                                   "answer": "Revisa las conversiones y los casos especiales antes de usarlo."
+                               },
+                               {
+                                   "question": "¿Qué formatos incluye la categoría?",
+                                   "answer": "Incluye JSON, CSV, YAML, Markdown, cadenas de consulta y marcas de tiempo, entre otros."
+                               }
+                           ]
+                       },
+                       "security": {
+                           "name": "Herramientas de codificación, hash y seguridad",
+                           "navLabel": "Seguridad",
+                           "description": "Herramientas para codificación, hashes, tokens y cabeceras de seguridad con resultados legibles antes de usarlos.",
+                           "intro": "Esta colección cubre tareas habituales de codificación, hashes, políticas de seguridad del navegador y datos de tokens.",
+                           "bestFor": [
+                               "Desarrolladores web",
+                               "Preparación de cabeceras y políticas",
+                               "Codificación y hash local"
+                           ],
+                           "useCases": [
+                               "Convertir Base64, URL y datos binarios",
+                               "Generar hashes y valores de integridad",
+                               "Preparar CSP, CORS y otras cabeceras"
+                           ],
+                           "faq": [
+                               {
+                                   "question": "¿Se guardan claves o tokens?",
+                                   "answer": "No. Las entradas se procesan localmente en el navegador."
+                               },
+                               {
+                                   "question": "¿Sustituyen estas herramientas una auditoría?",
+                                   "answer": "No. Generan una base para revisar, no una evaluación completa de seguridad."
+                               },
+                               {
+                                   "question": "¿Debo probar las políticas antes de publicarlas?",
+                                   "answer": "Sí. Prueba primero las cabeceras y políticas en un entorno de preparación."
+                               }
+                           ]
+                       },
+                       "javascript": {
+                           "name": "Herramientas de JavaScript y API web",
+                           "navLabel": "JavaScript",
+                           "description": "Herramientas y fragmentos para funciones modernas de JavaScript, API web y diagnóstico en el navegador.",
+                           "intro": "Estas herramientas resuelven pequeñas tareas de JavaScript y API web con fragmentos legibles y resultados fáciles de revisar.",
+                           "bestFor": [
+                               "Desarrollo frontend",
+                               "Pruebas de API web modernas",
+                               "Fragmentos de código reutilizables"
+                           ],
+                           "useCases": [
+                               "Probar URLPattern y expresiones regulares",
+                               "Preparar service workers y navegación",
+                               "Generar fragmentos de rendimiento y API del navegador"
+                           ],
+                           "faq": [
+                               {
+                                   "question": "¿Funcionan los ejemplos en todos los navegadores?",
+                                   "answer": "No siempre. Comprueba la compatibilidad de cada API con tus navegadores objetivo."
+                               },
+                               {
+                                   "question": "¿Los fragmentos están listos para producción?",
+                                   "answer": "Son puntos de partida que debes probar en tu proyecto."
+                               },
+                               {
+                                   "question": "¿Necesitan un framework?",
+                                   "answer": "No. Los resultados usan JavaScript y API nativas del navegador."
+                               }
+                           ]
+                       }
+               },
                "toolTemplates":  {
                                      "whatIs":  "{name} es una herramienta de navegador para esta tarea: {summary} La salida es fácil de revisar antes de usarla en un sitio publicado.",
                                      "howToUse":  [
@@ -26568,6 +26857,7 @@
                           "home":  "ホーム",
                           "noAccountRequired":  "アカウント不要",
                           "allTools":  "すべてのツール",
+                          "moreTools":  "その他",
                           "megaAllPrefix":  "無料{0}ツール",
                           "quickReference":  "クイックリファレンス",
                           "category":  "カテゴリ",
@@ -26587,7 +26877,8 @@
                       },
                "categories":  {
                                   "seo":  {
-                                              "name":  "SEOツール",
+                                              "name":  "SEO・Web公開ツール",
+                                              "navLabel":  "SEO",
                                               "description":  "メタデータ、インデックス、canonical、SNSプレビュー、公開前チェックのためのツール。",
                                               "intro":  "SEO作業は公開直前の細部で止まりがちです。canonical、SNSプレビュー、robots指定などを確認しやすい形にします。",
                                               "bestFor":  [
@@ -26612,7 +26903,8 @@
                                                       ]
                                           },
                                   "html":  {
-                                               "name":  "HTMLツール",
+                                               "name":  "HTML・アクセシビリティツール",
+                                               "navLabel":  "HTML",
                                                "description":  "HTMLタグ、headマークアップ、スニペット、公開作業を整えるための補助ツール。",
                                                "intro":  "HTMLの小さなミスは、プレビュー、アクセシビリティ、クロール、保守性に影響します。よく使うマークアップを確認しやすくします。",
                                                "bestFor":  [
@@ -26637,7 +26929,8 @@
                                                        ]
                                            },
                                   "css":  {
-                                              "name":  "CSSツール",
+                                              "name":  "CSS・デザインツール",
+                                              "navLabel":  "CSS",
                                               "description":  "レスポンシブレイアウト、余白、モバイル調整、UI細部向けのCSSジェネレーター。",
                                               "intro":  "良いCSSは小さな数値に支えられます。流動的な文字サイズ、余白、制限値、ブレークポイントを確認しやすいCSSにします。",
                                               "bestFor":  [
@@ -26662,7 +26955,8 @@
                                                       ]
                                           },
                                   "assets":  {
-                                                 "name":  "画像・アセットツール",
+                                                 "name":  "画像・SVG・アセットツール",
+                                                 "navLabel":  "アセット",
                                                  "description":  "アイコン、画像マークアップ、アセットパス、静的ファイルを確認するための補助ツール。",
                                                  "intro":  "画像、favicon、静的ファイルは公開直前に残りがちです。そこでパス、サイズ、alt、コピー漏れが問題になります。",
                                                  "bestFor":  [
@@ -26687,7 +26981,8 @@
                                                          ]
                                              },
                                   "github-pages":  {
-                                                       "name":  "GitHub Pagesツール",
+                                                       "name":  "GitHub Pages・デプロイツール",
+                                                       "navLabel":  "デプロイ",
                                                        "description":  "カスタムドメイン、静的公開、公開前チェック、GitHub Pages保守のためのツール。",
                                                        "intro":  "GitHub Pagesは簡単ですが、ドメインと公開フォルダのルールは厳密です。CNAMEの場所やindex.htmlの有無で404になります。",
                                                        "bestFor":  [
@@ -26710,8 +27005,98 @@
                                                                        "answer":  "公開ブランチ、公開フォルダ、index.html、ドメインの紐付け違いがよくある原因です。"
                                                                    }
                                                                ]
-                                                   }
-                              },
+                                                   },
+                       "data": {
+                           "name": "JSON・データ・フォーマットツール",
+                           "navLabel": "データ",
+                           "description": "構造化データやテキストの検証、変換、比較、整形をブラウザ内で行うツールです。",
+                           "intro": "JSONの検証、データ形式の変換、パターンのテスト、テキスト比較をアップロードなしで行えます。",
+                           "bestFor": [
+                               "フロントエンドとAPI開発",
+                               "設定ファイルの作業",
+                               "デバッグ中の簡易チェック"
+                           ],
+                           "useCases": [
+                               "JSONやYAMLの検証と整形",
+                               "CSVと構造化データの変換",
+                               "正規表現、JSONPath、クエリのテスト"
+                           ],
+                           "faq": [
+                               {
+                                   "question": "データはアップロードされますか？",
+                                   "answer": "いいえ。入力内容はブラウザ内で処理されます。"
+                               },
+                               {
+                                   "question": "結果をそのまま公開できますか？",
+                                   "answer": "変換結果と例外的な入力を確認してから使用してください。"
+                               },
+                               {
+                                   "question": "どの形式に対応していますか？",
+                                   "answer": "JSON、CSV、YAML、Markdown、クエリ文字列、タイムスタンプなどを扱います。"
+                               }
+                           ]
+                       },
+                       "security": {
+                           "name": "エンコード・ハッシュ・セキュリティツール",
+                           "navLabel": "セキュリティ",
+                           "description": "エンコード、ハッシュ、トークン、セキュリティヘッダーをブラウザ内で扱うツールです。",
+                           "intro": "エンコード、ハッシュ、ブラウザのセキュリティポリシー、トークンデータに関する一般的な作業をまとめています。",
+                           "bestFor": [
+                               "Web開発者",
+                               "ヘッダーとポリシーの準備",
+                               "ローカルでのエンコードとハッシュ"
+                           ],
+                           "useCases": [
+                               "Base64、URL、バイナリデータの変換",
+                               "ハッシュと整合性値の生成",
+                               "CSP、CORSなどのヘッダー作成"
+                           ],
+                           "faq": [
+                               {
+                                   "question": "キーやトークンは保存されますか？",
+                                   "answer": "いいえ。入力内容はブラウザ内で処理されます。"
+                               },
+                               {
+                                   "question": "セキュリティ監査の代わりになりますか？",
+                                   "answer": "いいえ。確認可能な初期値を作りますが、完全な監査ではありません。"
+                               },
+                               {
+                                   "question": "公開前にポリシーをテストすべきですか？",
+                                   "answer": "はい。ステージング環境でヘッダーとポリシーを確認してください。"
+                               }
+                           ]
+                       },
+                       "javascript": {
+                           "name": "JavaScript・Web APIツール",
+                           "navLabel": "JavaScript",
+                           "description": "最新のJavaScript機能、Web API、実行時診断に使えるツールとコード例です。",
+                           "intro": "読みやすいコード例と確認しやすい結果で、小規模なJavaScriptやWeb APIの作業を支援します。",
+                           "bestFor": [
+                               "フロントエンド開発",
+                               "最新Web APIの試行",
+                               "再利用できる小さなコード例"
+                           ],
+                           "useCases": [
+                               "URLPatternと正規表現のテスト",
+                               "Service Workerとナビゲーションの準備",
+                               "パフォーマンスとブラウザAPIのコード生成"
+                           ],
+                           "faq": [
+                               {
+                                   "question": "すべてのブラウザで動作しますか？",
+                                   "answer": "常にではありません。対象ブラウザで各Web APIの対応状況を確認してください。"
+                               },
+                               {
+                                   "question": "コードは本番環境でそのまま使えますか？",
+                                   "answer": "出発点として使用し、自分のプロジェクトでテストしてください。"
+                               },
+                               {
+                                   "question": "フレームワークは必要ですか？",
+                                   "answer": "いいえ。ブラウザ標準のJavaScriptとWeb APIを使用します。"
+                               }
+                           ]
+                       }
+               },
                "toolTemplates":  {
                                      "whatIs":  "{name}は、{summary} 出力は公開サイトに使う前に確認しやすい形で表示されます。",
                                      "howToUse":  [
@@ -35282,6 +35667,7 @@
                           "home":  "Home",
                           "noAccountRequired":  "Geen account nodig",
                           "allTools":  "Alle tools",
+                          "moreTools":  "Meer",
                           "megaAllPrefix":  "Alle gratis {0}-tools",
                           "quickReference":  "Snelle referentie",
                           "category":  "Categorie",
@@ -35301,7 +35687,8 @@
                       },
                "categories":  {
                                   "seo":  {
-                                              "name":  "SEO-tools",
+                                              "name":  "SEO- en webpublicatietools",
+                                              "navLabel":  "SEO",
                                               "description":  "Tools voor metadata, indexering, canonical URL\u0027s, social previews en launchchecks.",
                                               "intro":  "SEO-werk loopt vaak vast vlak voor publicatie: een ontbrekende canonical, zwakke social preview of twijfelachtige robots-instructie. Deze tools maken die details controleerbaar.",
                                               "bestFor":  [
@@ -35326,7 +35713,8 @@
                                                       ]
                                           },
                                   "html":  {
-                                               "name":  "HTML-tools",
+                                               "name":  "HTML- en toegankelijkheidstools",
+                                               "navLabel":  "HTML",
                                                "description":  "Hulpmiddelen voor schone HTML-tags, head markup, snippets en publicatiewerk.",
                                                "intro":  "HTML-fouten lijken klein, maar raken previews, toegankelijkheid, crawlbaarheid en onderhoud. Deze tools houden markup leesbaar.",
                                                "bestFor":  [
@@ -35351,7 +35739,8 @@
                                                        ]
                                            },
                                   "css":  {
-                                              "name":  "CSS-tools",
+                                              "name":  "CSS- en ontwerptools",
+                                              "navLabel":  "CSS",
                                               "description":  "CSS-generators voor responsive layouts, spacing, mobiel detailwerk en UI-aanpassingen.",
                                               "intro":  "Goed CSS hängt vaak af van kleine waarden: vloeiende typografie, spacing, grenzen en breakpoints. Deze tools maken die keuzes controleerbaar.",
                                               "bestFor":  [
@@ -35376,7 +35765,8 @@
                                                       ]
                                           },
                                   "assets":  {
-                                                 "name":  "Afbeelding- en assettools",
+                                                 "name":  "Afbeelding-, SVG- en assettools",
+                                                 "navLabel":  "Assets",
                                                  "description":  "Lokale hulpmiddelen voor iconen, image markup, assetpaden en statische websitebestanden.",
                                                  "intro":  "Afbeeldingen, favicons en statische bestanden blijven vaak tot het eind liggen. Dan vallen gebroken paden, ontbrekende maten en zwakke alt-teksten op.",
                                                  "bestFor":  [
@@ -35401,7 +35791,8 @@
                                                          ]
                                              },
                                   "github-pages":  {
-                                                       "name":  "GitHub Pages tools",
+                                                       "name":  "GitHub Pages- en deploymenttools",
+                                                       "navLabel":  "Deployment",
                                                        "description":  "Tools voor custom domains, statische publicatie, launchchecks en GitHub Pages onderhoud.",
                                                        "intro":  "GitHub Pages is eenvoudig, maar domein- en publicatieregels zijn precies. Een CNAME in de verkeerde map of ontbrekende index.html kan een 404 veroorzaken.",
                                                        "bestFor":  [
@@ -35424,8 +35815,98 @@
                                                                        "answer":  "Vaak gaat het om verkeerde branch, map, ontbrekende index.html of een domein op de verkeerde repo."
                                                                    }
                                                                ]
-                                                   }
-                              },
+                                                   },
+                       "data": {
+                           "name": "JSON-, data- en formatteertools",
+                           "navLabel": "Data",
+                           "description": "Browsertools voor het valideren, converteren, vergelijken en formatteren van gestructureerde data en tekst.",
+                           "intro": "Met deze tools controleer je JSON, converteer je formaten, test je patronen en vergelijk je tekst zonder gegevens te uploaden.",
+                           "bestFor": [
+                               "Frontend- en API-ontwikkeling",
+                               "Configuratiebestanden",
+                               "Snelle controles tijdens debugging"
+                           ],
+                           "useCases": [
+                               "JSON of YAML valideren en formatteren",
+                               "CSV en gestructureerde data converteren",
+                               "Regex, JSONPath en queries testen"
+                           ],
+                           "faq": [
+                               {
+                                   "question": "Worden mijn gegevens geüpload?",
+                                   "answer": "Nee. Invoer wordt rechtstreeks in de browser verwerkt."
+                               },
+                               {
+                                   "question": "Kan ik de uitvoer direct gebruiken?",
+                                   "answer": "Controleer conversies en randgevallen voordat je de uitvoer gebruikt."
+                               },
+                               {
+                                   "question": "Welke formaten vallen hieronder?",
+                                   "answer": "De categorie bevat onder meer JSON, CSV, YAML, Markdown, querystrings en timestamps."
+                               }
+                           ]
+                       },
+                       "security": {
+                           "name": "Coderings-, hash- en beveiligingstools",
+                           "navLabel": "Beveiliging",
+                           "description": "Browsertools voor codering, hashes, tokens en beveiligingsheaders met leesbare uitvoer voor controle.",
+                           "intro": "Deze verzameling behandelt algemene taken rond codering, hashes, browserbeveiligingsbeleid en tokengegevens.",
+                           "bestFor": [
+                               "Webontwikkelaars",
+                               "Voorbereiden van headers en beleid",
+                               "Lokale codering en hashing"
+                           ],
+                           "useCases": [
+                               "Base64-, URL- en binaire data converteren",
+                               "Hashes en integriteitswaarden genereren",
+                               "CSP-, CORS- en andere headers voorbereiden"
+                           ],
+                           "faq": [
+                               {
+                                   "question": "Worden sleutels of tokens opgeslagen?",
+                                   "answer": "Nee. Invoer wordt lokaal in de browser verwerkt."
+                               },
+                               {
+                                   "question": "Vervangen deze tools een beveiligingsaudit?",
+                                   "answer": "Nee. Ze leveren controleerbare startwaarden, geen volledige beveiligingsbeoordeling."
+                               },
+                               {
+                                   "question": "Moet ik beleid testen voor publicatie?",
+                                   "answer": "Ja. Test headers en beleid eerst in een stagingomgeving."
+                               }
+                           ]
+                       },
+                       "javascript": {
+                           "name": "JavaScript- en Web API-tools",
+                           "navLabel": "JavaScript",
+                           "description": "Browsertools en snippets voor moderne JavaScript-functies, Web API's en runtime-diagnostiek.",
+                           "intro": "Deze tools helpen bij kleine JavaScript- en Web API-taken met leesbare snippets en direct controleerbare resultaten.",
+                           "bestFor": [
+                               "Frontend-ontwikkeling",
+                               "Moderne Web API's testen",
+                               "Kleine herbruikbare codesnippets"
+                           ],
+                           "useCases": [
+                               "URLPattern en reguliere expressies testen",
+                               "Service workers en navigatie voorbereiden",
+                               "Performance- en browser-API-snippets genereren"
+                           ],
+                           "faq": [
+                               {
+                                   "question": "Werken de voorbeelden in elke browser?",
+                                   "answer": "Niet altijd. Controleer de ondersteuning van elke Web API voor je doelbrowsers."
+                               },
+                               {
+                                   "question": "Zijn de snippets productieklaar?",
+                                   "answer": "Het zijn startpunten die je in je eigen project moet testen."
+                               },
+                               {
+                                   "question": "Is een framework nodig?",
+                                   "answer": "Nee. De uitvoer gebruikt browser-JavaScript en Web API's."
+                               }
+                           ]
+                       }
+               },
                "toolTemplates":  {
                                      "whatIs":  "{name} is een browsertool voor deze taak: {summary} De uitvoer blijft leesbaar, zodat je die kunt controleren voordat je hem publiceert.",
                                      "howToUse":  [

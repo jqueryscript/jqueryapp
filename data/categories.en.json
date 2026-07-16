@@ -1,7 +1,10 @@
 {
   "seo": {
-    "name": "SEO Tools",
-    "description": "Small browser tools for metadata, indexing, canonical URLs, social previews, and static site launch checks.",
+    "name": "SEO & Web Publishing Tools",
+    "navLabel": "SEO",
+    "order": 6,
+    "socialImage": "og-seo.png",
+    "description": "Browser tools for search metadata, indexing, feeds, content publishing, social previews, and launch checks.",
     "intro": "SEO work often slows down at the edge of publishing: a missing canonical URL, a weak social preview, a forgotten robots directive, or a checklist that lives in memory instead of the page. These tools focus on the small details that make a page easier to crawl, understand, share, and maintain.",
     "bestFor": [
       "Preparing static pages before they are submitted to Google Search Console.",
@@ -45,8 +48,11 @@
     ]
   },
   "html": {
-    "name": "HTML Tools",
-    "description": "Copy-paste helpers for cleaner HTML tags, head markup, snippets, and publishing workflows.",
+    "name": "HTML & Accessibility Tools",
+    "navLabel": "HTML",
+    "order": 1,
+    "socialImage": "og-html.png",
+    "description": "HTML generators and accessibility checks for semantic markup, forms, embeds, loading hints, and browser-native UI.",
     "intro": "HTML mistakes are rarely dramatic, but they can be expensive when they reach production. A broken head tag, inconsistent snippet, or missing attribute can affect previews, accessibility, crawlability, and maintenance. This collection keeps common markup work visible and easy to review.",
     "bestFor": [
       "Preparing HTML snippets for static pages and documentation.",
@@ -90,8 +96,11 @@
     ]
   },
   "css": {
-    "name": "CSS Tools",
-    "description": "Practical CSS generators for responsive layouts, spacing, mobile polish, and everyday UI fixes.",
+    "name": "CSS & Design Tools",
+    "navLabel": "CSS",
+    "order": 2,
+    "socialImage": "og-css.png",
+    "description": "CSS generators and visual helpers for layouts, color, responsive sizing, animation, and everyday interface work.",
     "intro": "Good CSS often comes down to small numbers that need to survive real screens: fluid type, spacing, breakpoints, safe line lengths, and layout constraints. These tools help turn visual decisions into CSS you can inspect instead of guessing values by trial and error.",
     "bestFor": [
       "Building responsive CSS values for static pages and simple front ends.",
@@ -135,8 +144,11 @@
     ]
   },
   "assets": {
-    "name": "Image & Asset Tools",
-    "description": "Local helpers for icons, image markup, asset paths, and static website files.",
+    "name": "Images, SVG & Asset Tools",
+    "navLabel": "Assets",
+    "order": 5,
+    "socialImage": "og-assets.png",
+    "description": "Local image, SVG, icon, QR code, manifest, and asset helpers for websites and browser apps.",
     "intro": "Images, favicons, and static files are easy to leave until the end of a launch. That is when small mistakes appear: the wrong path, a missing size, an unclear alt attribute, or an icon file that never reaches the published folder. These tools keep asset work concrete.",
     "bestFor": [
       "Preparing static website assets before deployment.",
@@ -180,8 +192,11 @@
     ]
   },
   "github-pages": {
-    "name": "GitHub Pages Tools",
-    "description": "Tools for custom domains, static publishing, launch checks, and GitHub Pages website maintenance.",
+    "name": "GitHub Pages & Deployment Tools",
+    "navLabel": "Deploy",
+    "order": 7,
+    "socialImage": "og-github-pages.png",
+    "description": "Tools for GitHub Pages, DNS, redirects, HTTP headers, static deployment, and launch troubleshooting.",
     "intro": "GitHub Pages is simple once it is set up, but its domain and publishing rules are unforgiving. A CNAME file in the wrong folder, an outdated custom domain setting, or a missing build artifact can turn a correct website into a 404. These helpers focus on the checks that matter before and after deployment.",
     "bestFor": [
       "Preparing custom domains for GitHub Pages.",
@@ -221,6 +236,126 @@
       {
         "question": "Do I need a separate CNAME for every subdomain?",
         "answer": "If you host multiple sites from separate repositories under subdomains of the same apex domain, each repository needs its own CNAME file with the matching subdomain. One CNAME file cannot cover multiple subdomains."
+      }
+    ]
+  },
+  "data": {
+    "name": "JSON, Data & Formatter Tools",
+    "navLabel": "Data",
+    "order": 3,
+    "socialImage": "og-tools.png",
+    "description": "Format, validate, compare, convert, and inspect JSON, YAML, CSV, text, timestamps, cron expressions, and query strings.",
+    "intro": "Structured data problems often appear between systems: an API response needs validation, YAML must become JSON, a timestamp needs interpretation, or two text versions need comparison. These tools keep that work local and make each transformation visible before you copy the result.",
+    "bestFor": [
+      "Developers inspecting API payloads and configuration files.",
+      "Publishers converting structured content between common formats.",
+      "Anyone who needs a quick, inspectable formatter or comparison result."
+    ],
+    "useCases": [
+      "Format and validate JSON before committing a configuration file.",
+      "Convert JSON to CSV or YAML to JSON without uploading source data.",
+      "Test JSONPath, regex, timestamps, cron expressions, and query parameters."
+    ],
+    "taskGuide": "Choose the tool that matches the format you already have and the result you need. Validate before converting when possible, because a formatter cannot repair ambiguous or missing data. Review field names, data types, time zones, delimiters, and escaping in the output before using it in an API, spreadsheet, build file, or published page.",
+    "checklist": [
+      "Confirm the input format and character encoding before conversion.",
+      "Review numbers, booleans, null values, dates, and nested structures after formatting.",
+      "Check delimiter and quoting behavior when producing CSV.",
+      "Test expressions against representative data, not only a single simple example.",
+      "Keep a copy of the original input until the transformed output is verified."
+    ],
+    "faq": [
+      {
+        "question": "Does formatting JSON change its data?",
+        "answer": "Formatting should only change whitespace and indentation. Validation and conversion tools may expose invalid syntax or change representation, so compare the result before replacing the original file."
+      },
+      {
+        "question": "Is pasted data uploaded?",
+        "answer": "The current data tools run in your browser. Input is processed locally and is not intentionally sent to a jquery.app application server."
+      },
+      {
+        "question": "Can these tools handle very large files?",
+        "answer": "They are designed for everyday browser-sized inputs. Very large files can use substantial memory or make the tab unresponsive, so use a streaming command-line or desktop tool for large datasets."
+      }
+    ]
+  },
+  "security": {
+    "name": "Encoders, Hash & Security Tools",
+    "navLabel": "Security",
+    "order": 4,
+    "socialImage": "og-tools.png",
+    "description": "Encode and inspect data, generate hashes, and prepare browser security policies, integrity values, tokens, and headers.",
+    "intro": "Encoding and security syntax must be exact. A missing directive, incorrect hash, or misunderstood token can break a page or create false confidence. These tools generate inspectable output for common browser security and data-encoding tasks, while keeping clear boundaries between encoding, hashing, inspection, and verification.",
+    "bestFor": [
+      "Preparing CSP, Permissions Policy, CORS, and cross-origin headers.",
+      "Encoding URL or Base64 data and inspecting JWT claims.",
+      "Generating hashes, integrity values, UUIDs, and security-related files."
+    ],
+    "useCases": [
+      "Generate a CSP starter policy or hash for an inline resource.",
+      "Encode a URL component or convert Base64 and hexadecimal data.",
+      "Inspect a JWT payload without treating decoding as signature verification."
+    ],
+    "taskGuide": "Start by identifying whether the task is encoding, hashing, signing, or policy configuration. These operations are not interchangeable. Review generated policies against the resources your site actually loads, test headers in a staging environment, and never treat decoded content as trusted until the relevant signature or source has been verified.",
+    "checklist": [
+      "Distinguish reversible encoding from one-way hashing and cryptographic signing.",
+      "Test security headers in report-only or staging mode before enforcing them.",
+      "Verify hashes against the exact bytes served in production.",
+      "Do not paste production secrets, private keys, or sensitive tokens into browser tools.",
+      "Confirm browser and server support for every generated directive."
+    ],
+    "faq": [
+      {
+        "question": "Is Base64 encryption?",
+        "answer": "No. Base64 is a reversible representation of bytes. Anyone with the encoded value can decode it, so it must not be used to protect secrets."
+      },
+      {
+        "question": "Does decoding a JWT verify it?",
+        "answer": "No. Decoding reveals the header and payload but does not prove that the signature is valid. Verify JWT signatures in a trusted server-side environment before using claims for authorization."
+      },
+      {
+        "question": "Can generated security headers be deployed unchanged?",
+        "answer": "Treat them as a reviewed starting point. The correct policy depends on your actual origins, scripts, frames, APIs, browser targets, and server configuration."
+      }
+    ]
+  },
+  "javascript": {
+    "name": "JavaScript & Web API Tools",
+    "navLabel": "JavaScript",
+    "order": 8,
+    "socialImage": "og-tools.png",
+    "description": "Generate and test browser API snippets for navigation, workers, performance, URLs, regex, transport, reporting, and modern interactions.",
+    "intro": "Modern browser APIs can replace large libraries, but their event models, fallback requirements, and support boundaries are easy to miss. These tools produce focused examples for one API at a time so you can inspect the code, understand its assumptions, and adapt it to your application.",
+    "bestFor": [
+      "Frontend developers evaluating a modern browser API.",
+      "Static-site authors adding small progressive enhancements.",
+      "Teams preparing copyable examples with explicit fallback notes."
+    ],
+    "useCases": [
+      "Create Navigation API, service worker, or PerformanceObserver starter code.",
+      "Test URLPattern, RegExp.escape(), and locale-aware duration formatting.",
+      "Prepare Reporting API, WebTransport, or interaction event snippets."
+    ],
+    "taskGuide": "Choose an API based on the browser capability you need, then verify its support and fallback behavior before adopting the generated snippet. Test success, error, cancellation, and unsupported-browser paths. Keep progressive enhancements optional so core content and navigation remain usable when the API is unavailable.",
+    "checklist": [
+      "Check current browser support for the API and every method used by the snippet.",
+      "Add feature detection before calling newer browser APIs.",
+      "Handle errors, abort signals, timeouts, and cleanup where applicable.",
+      "Test keyboard, reduced-motion, and assistive-technology behavior for UI APIs.",
+      "Confirm the page still works when the enhancement is unavailable."
+    ],
+    "faq": [
+      {
+        "question": "Do these snippets need a build tool?",
+        "answer": "Most examples use browser-native JavaScript and can run without a framework. Module-based examples may need to be served over HTTP rather than opened directly from a local file."
+      },
+      {
+        "question": "How should I handle unsupported browsers?",
+        "answer": "Use feature detection, preserve a functional baseline, and add the API as a progressive enhancement. Provide a documented fallback when the feature controls essential behavior."
+      },
+      {
+        "question": "Are browser support claims permanent?",
+        "answer": "No. Browser APIs evolve, and support can change between releases. Review official compatibility information before deploying generated code."
       }
     ]
   }

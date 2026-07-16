@@ -56,7 +56,9 @@ function fillTemplate(value, values = {}) {
 function urlFor(locale, pathname = "") {
   const clean = pathname.replace(/^\/+/, "").replace(/\/+$/, "");
   const prefix = locale === site.defaultLocale ? "" : `/${locale}`;
-  return clean ? `${prefix}/${clean}/` : (prefix ? `${prefix}/` : "/");
+  if (!clean) return prefix ? `${prefix}/` : "/";
+  const suffix = /\.[a-z0-9]+$/i.test(clean) ? "" : "/";
+  return `${prefix}/${clean}${suffix}`;
 }
 
 function absoluteUrl(locale, pathname = "") {
@@ -65,80 +67,71 @@ function absoluteUrl(locale, pathname = "") {
 
 // Priority-ordered tool IDs for mega menu dropdowns.
 // Selected for traffic/revenue potential, not alphabetical.
-// Each category lists up to 10 IDs in priority order. Tools not in
+// Each category lists up to 12 IDs in priority order. Tools not in
 // the list are excluded from the nav regardless of availability.
 const navPriority = {
-  seo: [
-    "ai-crawler-robots-txt-builder",       // AI crawler policy — trending topic
-    "og-twitter-card-builder",              // Social preview tags — universal need
-    "llms-txt-generator",                   // AI search visibility — growing demand
-    "robots-txt-builder",                   // Fundamental SEO
-    "json-ld-starter-builder",              // Rich results / structured data
-    "static-site-seo-checklist-generator",  // Launch readiness
-    "hreflang-tag-generator",               // Multilingual SEO
-    "viewport-meta-tag-generator",          // Mobile optimization
-    "canonical-url-tag-generator",          // Duplicate content
-    "markdown-front-matter-generator",       // SSG / blog workflow
-    "hreflang-sitemap-builder",              // Multilingual sitemap
-    "opensearch-description-generator"       // Browser search integration
-  ],
   html: [
-    "json-formatter-validator",             // #1 dev utility — high traffic
-    "json-to-csv-converter",                // Data conversion — broad audience
-    "url-slug-generator",                   // Every content creator needs
-    "reading-time-estimator",               // Bloggers, content marketing
-    "html-entity-quick-reference",          // Quick lookup — repeat visits
-    "jsonpath-tester",                      // API developers
-    "yaml-json-converter",                  // DevOps, config files
-    "json-schema-generator-validator",      // API development
-    "html-link-rel-generator",              // Preload/dns-prefetch — universal
-    "toc-anchor-generator",                  // Table of contents — bloggers
-    "html-heading-hierarchy-checker",        // Accessibility / SEO structure
-    "html-popover-generator"                 // Native popover — modern HTML
+    "customizable-select-generator", "html-invoker-command-generator", "html-popover-generator",
+    "dialog-modal-html-generator", "html-heading-hierarchy-checker", "html-landmark-checker",
+    "accessible-skip-link-generator", "html-link-rel-generator", "image-loading-attribute-builder",
+    "input-attributes-generator", "html-details-accordion-generator", "responsive-iframe-embed-generator"
   ],
   css: [
-    "css-flexbox-generator",                // Most popular CSS layout tool
-    "css-box-shadow-builder",               // Visual, high engagement
-    "css-border-radius-builder",            // Quick, repeat use
-    "css-clamp-calculator",                 // Responsive typography
-    "css-color-contrast-checker",           // Accessibility + design
-    "css-carousel-generator",               // Popular UI pattern
-    "css-light-dark-function-generator",    // Dark mode — trending
-    "css-scroll-snap-generator",            // Scroll UX
-    "scroll-driven-animation-generator",    // Modern CSS animations
-    "view-transition-builder",               // Page transitions
-    "css-color-mix-generator",               // Modern color manipulation
-    "aspect-ratio-placeholder-calculator"     // CLS prevention
+    "css-flexbox-generator", "css-box-shadow-builder", "css-gradient-generator", "css-border-radius-builder",
+    "css-clamp-calculator", "css-color-contrast-checker", "css-carousel-generator", "css-filter-generator",
+    "css-light-dark-function-generator", "css-scroll-snap-generator", "scroll-driven-animation-generator",
+    "css-transform-3d-generator"
+  ],
+  data: [
+    "json-formatter-validator", "json-to-csv-converter", "yaml-json-converter", "jsonpath-tester",
+    "json-schema-generator-validator", "regex-tester-debugger", "query-string-parser-builder",
+    "unix-timestamp-converter", "cron-expression-builder", "text-diff-checker", "markdown-preview-editor"
+  ],
+  security: [
+    "base64-encoder-decoder", "url-encoder-decoder", "jwt-decoder-claims-inspector", "hash-hmac-generator",
+    "csp-hash-generator", "csp-starter-policy-generator", "sri-hash-generator", "uuid-generator",
+    "permissions-policy-generator", "security-txt-generator-validator", "cors-header-generator",
+    "trusted-types-policy-generator"
   ],
   assets: [
-    "pwa-maskable-icon-safe-zone-generator", // Visual tool — engagement
-    "web-app-manifest-generator",            // PWA foundation
-    "web-app-manifest-validator"             // PWA validation
+    "image-compressor-converter", "svg-optimizer", "svg-to-css-data-uri-converter", "qr-code-generator",
+    "responsive-image-markup-generator", "favicon-html-tag-generator", "pwa-maskable-icon-safe-zone-generator",
+    "web-app-manifest-generator", "web-app-manifest-validator"
+  ],
+  seo: [
+    "url-slug-generator", "reading-time-estimator", "og-twitter-card-builder", "robots-txt-builder",
+    "canonical-url-tag-generator", "static-sitemap-xml-builder", "json-ld-starter-builder",
+    "llms-txt-generator", "hreflang-tag-generator", "markdown-front-matter-generator",
+    "rss-feed-starter-generator", "static-site-seo-checklist-generator"
   ],
   "github-pages": [
-    "github-pages-workflow-generator",       // Core GH Pages workflow
-    "cache-control-header-builder",          // Performance / caching
-    "cors-header-generator",                  // API / security
-    "github-pages-cname-helper",             // Custom domain setup
-    "redirect-map-converter",                // Migration, SEO
-    "http-header-parser-explainer",          // Educational, debugging
-    "security-txt-generator-validator",      // Security compliance
-    "github-pages-spa-404-helper",           // SPA routing
-    "coop-coep-corp-header-builder",         // Cross-origin isolation
-    "assetlinks-aasa-generator",             // Deep linking
-    "vapid-key-generator",                   // Web push notifications
-    "reporting-api-header-generator"          // Browser reports / CSP
+    "github-pages-workflow-generator", "github-pages-cname-helper", "github-pages-spa-404-helper",
+    "static-404-page-template-generator", "no-js-redirect-page-generator", "dns-record-quick-reference",
+    "cache-control-header-builder", "redirect-map-converter", "http-header-parser-explainer",
+    "zstandard-compression-header-helper", "assetlinks-aasa-generator"
+  ],
+  javascript: [
+    "regexp-escape-helper", "urlpattern-tester", "intl-durationformat-generator",
+    "performance-observer-snippet-generator", "service-worker-module-template-generator",
+    "navigation-api-router-snippet-generator", "scrollend-event-snippet-generator",
+    "custom-highlight-api-generator", "webtransport-url-template-helper", "reporting-api-header-generator",
+    "speculation-rules-generator"
   ]
 };
 
-function buildNavTools(allTools) {
-  const map = {};
-  for (const [category, priorityIds] of Object.entries(navPriority)) {
+function categoryEntries(categories) {
+  return Object.entries(categories).sort(([, a], [, b]) => (a.order || 999) - (b.order || 999));
+}
+
+function buildNavTools(allTools, categories) {
+  const tools = {};
+  for (const [category] of categoryEntries(categories)) {
+    const priorityIds = navPriority[category] || [];
     const categoryTools = allTools.filter(t => t.category === category);
     const toolMap = Object.fromEntries(categoryTools.map(t => [t.id, t]));
-    map[category] = priorityIds.map(id => toolMap[id]).filter(Boolean).slice(0, 12);
+    tools[category] = priorityIds.map(id => toolMap[id]).filter(Boolean).slice(0, 12);
   }
-  return map;
+  return { categories, tools };
 }
 
 function pageShell({ locale, title, description, pathname, body, scripts = "", current = "", extraHead = "", canonicalOverride = "", skipAlternates = false, image = "", navTools = null }) {
@@ -151,32 +144,54 @@ function pageShell({ locale, title, description, pathname, body, scripts = "", c
     seo: `<svg width="18" height="18" viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 1-9 9m9-9a9 9 0 0 0-9-9m9 9H3m9 9a9 9 0 0 1-9-9m9 9c1.66 0 3-4.03 3-9s-1.34-9-3-9m0 18c-1.66 0-3-4.03-3-9s1.34-9 3-9m-9 9a9 9 0 0 1 9-9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
     html: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>`,
     css: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l9 4-2 14-7 4-7-4-2-14z"/><path d="M12 2v20"/><path d="m7 7 5-1 5 1"/><path d="m7 12 5 1 5-1"/></svg>`,
+    data: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5"/><path d="M3 12c0 1.7 4 3 9 3s9-1.3 9-3"/></svg>`,
+    security: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V5l8-3 8 3z"/><path d="m9 12 2 2 4-4"/></svg>`,
     assets: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.09-3.09a2 2 0 0 0-2.82 0L9 18"/></svg>`,
-    "github-pages": `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65A3.7 3.7 0 0 1 8 18c-1.15.1-2.18-.4-3-1.5 0 0-1.5-2-3.5-1.5"/></svg>`
+    "github-pages": `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65A3.7 3.7 0 0 1 8 18c-1.15.1-2.18-.4-3-1.5 0 0-1.5-2-3.5-1.5"/></svg>`,
+    javascript: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
+    more: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg>`
   };
 
+  const navCategoryEntries = navTools?.categories ? categoryEntries(navTools.categories) : [];
+  const navToolMap = navTools?.tools || {};
+  const primaryCategories = navCategoryEntries.slice(0, 5);
+  const overflowCategories = navCategoryEntries.slice(5);
   const navItems = [
     [uiText(locale, "allTools", "All Tools"), urlFor(locale, "tools"), "tools"],
-    [ui(locale, "seo"), urlFor(locale, "tools/seo"), "seo"],
-    [ui(locale, "html"), urlFor(locale, "tools/html"), "html"],
-    [ui(locale, "css"), urlFor(locale, "tools/css"), "css"],
-    [ui(locale, "assets"), urlFor(locale, "tools/assets"), "assets"],
-    [ui(locale, "githubPages"), urlFor(locale, "tools/github-pages"), "github-pages"]
+    ...primaryCategories.map(([key, details]) => [details.navLabel || details.name, urlFor(locale, `tools/${key}`), key]),
+    ...(overflowCategories.length ? [[uiText(locale, "moreTools", "More"), urlFor(locale, "tools"), "more"]] : [])
+  ];
+  const offcanvasItems = [
+    [uiText(locale, "allTools", "All Tools"), urlFor(locale, "tools"), "tools"],
+    ...navCategoryEntries.map(([key, details]) => [details.navLabel || details.name, urlFor(locale, `tools/${key}`), key])
   ];
 
   // Build mega menu nav or simple nav
   let mainNavHtml = "";
   if (navTools) {
     mainNavHtml = navItems.map(([label, href, key]) => {
-      const tools = navTools[key] || [];
-      const isCurrent = current === key;
+      const tools = navToolMap[key] || [];
+      const isCurrent = current === key || (key === "more" && overflowCategories.some(([category]) => category === current));
       const icon = navIcons[key] || "";
+      if (key === "more") {
+        return `<div class="nav-item">
+        <a href="${href}" class="nav-trigger" ${isCurrent ? 'aria-current="page"' : ""}>${icon}<span>${escapeHtml(label)}</span><span class="nav-arrow" aria-hidden="true">&#9662;</span></a>
+        <div class="mega-panel" role="region" aria-label="${attr(label)}">
+          <div class="mega-inner">
+            <div class="mega-tools">
+              ${overflowCategories.map(([category, details]) => `<a href="${urlFor(locale, `tools/${category}`)}">${escapeHtml(details.name)}</a>`).join("")}
+            </div>
+            <a class="mega-all" href="${href}">${escapeHtml(uiText(locale, "allTools", "All Tools"))} &rarr;</a>
+          </div>
+        </div>
+      </div>`;
+      }
       if (!tools.length) {
-        return `<a href="${href}" ${isCurrent ? 'aria-current="page"' : ""}>${icon}<span>${label}</span></a>`;
+        return `<a href="${href}" ${isCurrent ? 'aria-current="page"' : ""}>${icon}<span>${escapeHtml(label)}</span></a>`;
       }
       return `<div class="nav-item">
-        <a href="${href}" class="nav-trigger" ${isCurrent ? 'aria-current="page"' : ""}>${icon}<span>${label}</span><span class="nav-arrow" aria-hidden="true">&#9662;</span></a>
-        <div class="mega-panel" role="region" aria-label="${label} tools">
+        <a href="${href}" class="nav-trigger" ${isCurrent ? 'aria-current="page"' : ""}>${icon}<span>${escapeHtml(label)}</span><span class="nav-arrow" aria-hidden="true">&#9662;</span></a>
+        <div class="mega-panel" role="region" aria-label="${attr(label)} tools">
           <div class="mega-inner">
             <div class="mega-tools">
               ${tools.map((t) => `<a href="${urlFor(locale, `tools/${t.id}`)}">${escapeHtml(t.name)}</a>`).join("")}
@@ -264,14 +279,14 @@ ${alternateLinks}
     <div class="offcanvas-inner">
       <nav class="offcanvas-nav">
         <a href="${urlFor(locale, "tools")}" class="offcanvas-all">${escapeHtml(ui(locale, "browseTools"))}</a>
-        ${navItems.map(([label, href, key]) => {
+        ${offcanvasItems.map(([label, href, key]) => {
           const oicon = navIcons[key] || "";
-          const tools = navTools ? (navTools[key] || []) : [];
+          const tools = navToolMap[key] || [];
           const viewAllLabel = key === "tools"
             ? uiText(locale, "allTools", "All Tools")
             : escapeHtml(uiText(locale, "megaAllPrefix", "All Free {0} Tools").replace("{0}", label));
           return `<details class="offcanvas-group">
-            <summary>${oicon}${label}</summary>
+            <summary>${oicon}${escapeHtml(label)}</summary>
             ${tools.length ? tools.map((t) => `<a href="${urlFor(locale, `tools/${t.id}`)}">${escapeHtml(t.name)}</a>`).join("") : ""}
             <a href="${href}" class="offcanvas-view-all">${viewAllLabel}</a>
           </details>`;
@@ -378,12 +393,13 @@ function hero({ eyebrow, title, description, actions = "" }) {
 </section>`;
 }
 
-function toolCard(tool, locale) {
+function toolCard(tool, locale, categories) {
   const keywords = (tool.keywords || []).join(" ");
   const tags = (tool.tags || []).join(" ");
-  return `<article class="tool-card" data-tool-name="${attr(tool.name)}" data-category="${attr(tool.category)}" data-category-label="${attr(titleCase(tool.category))}" data-keywords="${attr(keywords)}"${tags ? ` data-tags="${attr(tags)}"` : ""}>
+  const categoryLabel = categories?.[tool.category]?.name || titleCase(tool.category);
+  return `<article class="tool-card" data-tool-name="${attr(tool.name)}" data-category="${attr(tool.category)}" data-category-label="${attr(categoryLabel)}" data-keywords="${attr(keywords)}"${tags ? ` data-tags="${attr(tags)}"` : ""}>
   <div>
-    <p class="card-kicker">${escapeHtml(titleCase(tool.category))}</p>
+    <p class="card-kicker">${escapeHtml(categoryLabel)}</p>
     <h2><a href="${urlFor(locale, `tools/${tool.id}`)}">${escapeHtml(tool.name)}</a></h2>
     <p>${escapeHtml(tool.summary)}</p>
   </div>
@@ -578,7 +594,7 @@ function homePage(locale, tools, categories, collections) {
     <p>${escapeHtml(ui(locale, "homeIntroText"))}</p>
   </div>
   <div class="wrap category-grid offset-grid">
-    ${Object.entries(categories).map(([key, details]) => categoryPill(key, details, locale)).join("")}
+    ${categoryEntries(categories).map(([key, details]) => categoryPill(key, details, locale)).join("")}
   </div>
 </section>
 <section class="section dark-band">
@@ -600,7 +616,7 @@ function homePage(locale, tools, categories, collections) {
     <p>${escapeHtml(ui(locale, "homeToolsText"))}</p>
   </div>
   <div class="wrap tool-grid">
-    ${tools.slice(0, 6).map((tool) => toolCard(tool, locale)).join("")}
+    ${tools.slice(0, 6).map((tool) => toolCard(tool, locale, categories)).join("")}
   </div>
 </section>
 ${collections ? `<section class="section">
@@ -622,7 +638,7 @@ ${collections ? `<section class="section">
     scripts,
     current: "home",
     image: `${site.baseUrl}/assets/social/og-home.png`,
-    navTools: buildNavTools(tools)
+    navTools: buildNavTools(tools, categories)
   });
 }
 
@@ -634,7 +650,7 @@ function toolsIndexPage(locale, tools, categories) {
     ])),
     jsonLd(itemListSchema(locale, "Free web tools", tools))
   ].join("");
-  const grouped = Object.entries(categories)
+  const grouped = categoryEntries(categories)
     .map(([category, details]) => {
       const categoryTools = tools.filter((tool) => tool.category === category);
       if (!categoryTools.length) return "";
@@ -644,7 +660,7 @@ function toolsIndexPage(locale, tools, categories) {
     <p>${escapeHtml(details.description)}</p>
   </div>
   <div class="tool-grid compact">
-    ${categoryTools.map((tool) => toolCard(tool, locale)).join("")}
+    ${categoryTools.map((tool) => toolCard(tool, locale, categories)).join("")}
   </div>
 </section>`;
     })
@@ -672,11 +688,11 @@ function toolsIndexPage(locale, tools, categories) {
     scripts: scripts + `<script src="/assets/tool-directory-filter.js" defer></script>`,
     image: `${site.baseUrl}/assets/social/og-tools.png`,
     current: "tools",
-    navTools: buildNavTools(tools),
+    navTools: buildNavTools(tools, categories),
   });
 }
 
-function categoryPage(locale, category, details, tools, allTools) {
+function categoryPage(locale, category, details, tools, allTools, categories) {
   const faqSchema = details.faq?.length ? {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -712,7 +728,7 @@ function categoryPage(locale, category, details, tools, allTools) {
     <h2>${escapeHtml(template(locale, "toolsYouCanUse", { category: details.name }))}</h2>
   </div>
   <div class="wrap tool-grid">
-    ${tools.map((tool) => toolCard(tool, locale)).join("")}
+    ${tools.map((tool) => toolCard(tool, locale, categories)).join("")}
   </div>
 </section>
 <section class="section article-band">
@@ -752,8 +768,8 @@ ${details.faq?.length ? `<section class="section faq-band">
     body,
     scripts,
     current: category,
-    image: `${site.baseUrl}/assets/social/og-${category}.png`,
-    navTools: buildNavTools(allTools || tools),
+    image: `${site.baseUrl}/assets/social/${details.socialImage || `og-${category}.png`}`,
+    navTools: buildNavTools(allTools || tools, categories),
   });
 }
 
@@ -789,7 +805,7 @@ function collectionPage(locale, collectionId, details, tools, categories, collec
     <h2>${escapeHtml(template(locale, "toolsYouCanUse", { category: details.name }))}</h2>
   </div>
   <div class="wrap tool-grid">
-    ${tools.map((tool) => toolCard(tool, locale)).join("")}
+    ${tools.map((tool) => toolCard(tool, locale, categories)).join("")}
   </div>
 </section>
 <section class="section article-band">
@@ -830,19 +846,21 @@ ${details.faq?.length ? `<section class="section faq-band">
     scripts,
     current: "collections",
     image: `${site.baseUrl}/assets/social/og-${collectionId}.png`,
-    navTools: buildNavTools(allTools || tools),
+    navTools: buildNavTools(allTools || tools, categories),
   });
 }
 
 function toolPage(locale, tool, allTools, categories) {
   const related = allTools.filter((item) => item.category === tool.category && item.id !== tool.id).slice(0, 3);
-  const complementary = ["seo", "html", "css", "assets", "github-pages"];
   const complementaryCategories = {
-    seo: ["html", "github-pages"],
-    html: ["seo", "css"],
-    css: ["html", "assets"],
-    assets: ["css", "html"],
-    "github-pages": ["seo", "assets"]
+    html: ["css", "javascript", "seo"],
+    css: ["html", "assets", "javascript"],
+    data: ["security", "javascript", "seo"],
+    security: ["javascript", "github-pages", "html"],
+    assets: ["css", "html", "seo"],
+    seo: ["html", "github-pages", "data"],
+    "github-pages": ["seo", "security", "javascript"],
+    javascript: ["html", "data", "security"]
   };
   const crossCategory = (complementaryCategories[tool.category] || [])
     .flatMap((cat) => allTools.filter((item) => item.category === cat && item.id !== tool.id))
@@ -977,7 +995,7 @@ ${related.length ? `<section class="section">
     <h2>${escapeHtml(template(locale, "moreCategory", { category: categoryName.toLowerCase() }))}</h2>
   </div>
   <div class="wrap tool-grid compact">
-    ${related.map((item) => toolCard(item, locale)).join("")}
+    ${related.map((item) => toolCard(item, locale, categories)).join("")}
   </div>
 </section>` : ""}
 ${crossCategory.length ? `<section class="section">
@@ -986,7 +1004,7 @@ ${crossCategory.length ? `<section class="section">
     <h2>${escapeHtml(ui(locale, "alsoTry"))}</h2>
   </div>
   <div class="wrap tool-grid compact">
-    ${crossCategory.map((item) => toolCard(item, locale)).join("")}
+    ${crossCategory.map((item) => toolCard(item, locale, categories)).join("")}
   </div>
 </section>` : ""}`;
 
@@ -997,13 +1015,13 @@ ${crossCategory.length ? `<section class="section">
     pathname: `tools/${tool.id}`,
     body,
     scripts,
-    image: `${site.baseUrl}/assets/social/og-${tool.category}.png`,
+    image: `${site.baseUrl}/assets/social/${categories[tool.category]?.socialImage || "og-tools.png"}`,
     current: tool.category,
-    navTools: buildNavTools(allTools),
+    navTools: buildNavTools(allTools, categories),
   });
 }
 
-function simplePage(locale, slug, title, description, content) {
+function simplePage(locale, slug, title, description, content, allTools, categories) {
   const scripts = jsonLd({
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -1029,7 +1047,15 @@ function simplePage(locale, slug, title, description, content) {
   </div>
 </section>`;
 
-  return pageShell({ locale, title: `${title} - ${site.siteName}`, description, pathname: slug, body, scripts });
+  return pageShell({
+    locale,
+    title: `${title} - ${site.siteName}`,
+    description,
+    pathname: slug,
+    body,
+    scripts,
+    navTools: buildNavTools(allTools, categories)
+  });
 }
 
 function simplePages(locale) {
@@ -1092,7 +1118,7 @@ function simplePages(locale) {
   return localized[locale] || en;
 }
 
-function notFoundPage(locale) {
+function notFoundPage(locale, allTools, categories) {
   const body = `<section class="page-hero">
   <div class="wrap narrow">
     <p class="eyebrow">404</p>
@@ -1112,11 +1138,12 @@ function notFoundPage(locale) {
     pathname: "404.html",
     body,
     extraHead: '<meta name="robots" content="noindex">',
-    skipAlternates: true
+    skipAlternates: true,
+    navTools: buildNavTools(allTools, categories)
   });
 }
 
-function redirectPage({ locale, fromPathname, toPathname }) {
+function redirectPage({ locale, fromPathname, toPathname, allTools, categories }) {
   const target = urlFor(locale, toPathname);
   const targetAbsolute = absoluteUrl(locale, toPathname);
   return pageShell({
@@ -1137,7 +1164,8 @@ function redirectPage({ locale, fromPathname, toPathname }) {
 </section>`,
     extraHead: `<meta http-equiv="refresh" content="0; url=${attr(target)}">
   <meta name="robots" content="noindex">`,
-    skipAlternates: true
+    skipAlternates: true,
+    navTools: buildNavTools(allTools, categories)
   });
 }
 
@@ -1158,7 +1186,7 @@ ${items}
 }
 
 function llmsTxt(tools, categories) {
-  const categoryLines = Object.entries(categories)
+  const categoryLines = categoryEntries(categories)
     .map(([category, details]) => `- [${details.name}](${absoluteUrl(site.defaultLocale, `tools/${category}`)}): ${details.description}`)
     .join("\n");
   const toolLines = tools
@@ -1279,10 +1307,10 @@ async function buildLocale(locale) {
   await writePage(path.join(localeDir, "tools", "index.html"), toolsIndexPage(locale, tools, categories));
   addSitemapUrl("tools");
 
-  for (const [category, details] of Object.entries(categories)) {
+  for (const [category, details] of categoryEntries(categories)) {
     const categoryTools = tools.filter((tool) => tool.category === category);
     if (categoryTools.length) {
-      await writePage(path.join(localeDir, "tools", category, "index.html"), categoryPage(locale, category, details, categoryTools, tools));
+      await writePage(path.join(localeDir, "tools", category, "index.html"), categoryPage(locale, category, details, categoryTools, tools, categories));
       addSitemapUrl(`tools/${category}`);
     }
   }
@@ -1301,17 +1329,17 @@ async function buildLocale(locale) {
   }
 
   const pages = simplePages(locale);
-  await writePage(path.join(localeDir, "about", "index.html"), simplePage(locale, "about", pages.about.title, pages.about.description, pages.about.content));
+  await writePage(path.join(localeDir, "about", "index.html"), simplePage(locale, "about", pages.about.title, pages.about.description, pages.about.content, tools, categories));
   addSitemapUrl("about");
-  await writePage(path.join(localeDir, "privacy", "index.html"), simplePage(locale, "privacy", pages.privacy.title, pages.privacy.description, pages.privacy.content));
+  await writePage(path.join(localeDir, "privacy", "index.html"), simplePage(locale, "privacy", pages.privacy.title, pages.privacy.description, pages.privacy.content, tools, categories));
   addSitemapUrl("privacy");
-  await writePage(path.join(localeDir, "terms", "index.html"), simplePage(locale, "terms", pages.terms.title, pages.terms.description, pages.terms.content));
+  await writePage(path.join(localeDir, "terms", "index.html"), simplePage(locale, "terms", pages.terms.title, pages.terms.description, pages.terms.content, tools, categories));
   addSitemapUrl("terms");
-  await writePage(path.join(localeDir, "contact", "index.html"), simplePage(locale, "contact", pages.contact.title, pages.contact.description, pages.contact.content));
+  await writePage(path.join(localeDir, "contact", "index.html"), simplePage(locale, "contact", pages.contact.title, pages.contact.description, pages.contact.content, tools, categories));
   addSitemapUrl("contact");
 
   if (locale === site.defaultLocale) {
-    await writePage(path.join(distDir, "404.html"), notFoundPage(locale));
+    await writePage(path.join(distDir, "404.html"), notFoundPage(locale, tools, categories));
     await writeLegacyDefaultLocaleRedirects(locale, tools, categories, collections);
   }
 
@@ -1327,7 +1355,7 @@ async function writeLegacyDefaultLocaleRedirects(locale, tools, categories, coll
     "privacy",
     "terms",
     "contact",
-    ...Object.entries(categories)
+    ...categoryEntries(categories)
       .filter(([category]) => tools.some((tool) => tool.category === category))
       .map(([category]) => `tools/${category}`),
     ...tools.map((tool) => `tools/${tool.id}`),
@@ -1338,7 +1366,7 @@ async function writeLegacyDefaultLocaleRedirects(locale, tools, categories, coll
     const targetParts = pathname ? pathname.split("/") : [];
     await writePage(
       path.join(legacyDir, ...targetParts, "index.html"),
-      redirectPage({ locale, fromPathname: path.posix.join(locale, pathname), toPathname: pathname })
+      redirectPage({ locale, fromPathname: path.posix.join(locale, pathname), toPathname: pathname, allTools: tools, categories })
     );
   }
 }

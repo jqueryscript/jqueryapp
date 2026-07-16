@@ -285,6 +285,10 @@
     <lastmod>2026-06-11</lastmod>
   </url>
   <url>
+    <loc>https://www.jquery.app/de/tools/data/</loc>
+    <lastmod>2026-06-11</lastmod>
+  </url>
+  <url>
     <loc>https://www.jquery.app/de/tools/declarative-shadow-dom-snippet-generator/</loc>
     <lastmod>2026-06-11</lastmod>
   </url>
@@ -418,6 +422,10 @@
   </url>
   <url>
     <loc>https://www.jquery.app/de/tools/intl-durationformat-generator/</loc>
+    <lastmod>2026-06-11</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/de/tools/javascript/</loc>
     <lastmod>2026-06-11</lastmod>
   </url>
   <url>
@@ -562,6 +570,10 @@
   </url>
   <url>
     <loc>https://www.jquery.app/de/tools/security-txt-generator-validator/</loc>
+    <lastmod>2026-06-11</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/de/tools/security/</loc>
     <lastmod>2026-06-11</lastmod>
   </url>
   <url>
@@ -937,6 +949,10 @@
     <lastmod>2026-06-11</lastmod>
   </url>
   <url>
+    <loc>https://www.jquery.app/es/tools/data/</loc>
+    <lastmod>2026-06-11</lastmod>
+  </url>
+  <url>
     <loc>https://www.jquery.app/es/tools/declarative-shadow-dom-snippet-generator/</loc>
     <lastmod>2026-06-11</lastmod>
   </url>
@@ -1070,6 +1086,10 @@
   </url>
   <url>
     <loc>https://www.jquery.app/es/tools/intl-durationformat-generator/</loc>
+    <lastmod>2026-06-11</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/es/tools/javascript/</loc>
     <lastmod>2026-06-11</lastmod>
   </url>
   <url>
@@ -1214,6 +1234,10 @@
   </url>
   <url>
     <loc>https://www.jquery.app/es/tools/security-txt-generator-validator/</loc>
+    <lastmod>2026-06-11</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/es/tools/security/</loc>
     <lastmod>2026-06-11</lastmod>
   </url>
   <url>
@@ -1589,6 +1613,10 @@
     <lastmod>2026-06-11</lastmod>
   </url>
   <url>
+    <loc>https://www.jquery.app/fr/tools/data/</loc>
+    <lastmod>2026-06-11</lastmod>
+  </url>
+  <url>
     <loc>https://www.jquery.app/fr/tools/declarative-shadow-dom-snippet-generator/</loc>
     <lastmod>2026-06-11</lastmod>
   </url>
@@ -1722,6 +1750,10 @@
   </url>
   <url>
     <loc>https://www.jquery.app/fr/tools/intl-durationformat-generator/</loc>
+    <lastmod>2026-06-11</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/fr/tools/javascript/</loc>
     <lastmod>2026-06-11</lastmod>
   </url>
   <url>
@@ -1866,6 +1898,10 @@
   </url>
   <url>
     <loc>https://www.jquery.app/fr/tools/security-txt-generator-validator/</loc>
+    <lastmod>2026-06-11</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/fr/tools/security/</loc>
     <lastmod>2026-06-11</lastmod>
   </url>
   <url>
@@ -2241,6 +2277,10 @@
     <lastmod>2026-06-11</lastmod>
   </url>
   <url>
+    <loc>https://www.jquery.app/ja/tools/data/</loc>
+    <lastmod>2026-06-11</lastmod>
+  </url>
+  <url>
     <loc>https://www.jquery.app/ja/tools/declarative-shadow-dom-snippet-generator/</loc>
     <lastmod>2026-06-11</lastmod>
   </url>
@@ -2374,6 +2414,10 @@
   </url>
   <url>
     <loc>https://www.jquery.app/ja/tools/intl-durationformat-generator/</loc>
+    <lastmod>2026-06-11</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/ja/tools/javascript/</loc>
     <lastmod>2026-06-11</lastmod>
   </url>
   <url>
@@ -2518,6 +2562,10 @@
   </url>
   <url>
     <loc>https://www.jquery.app/ja/tools/security-txt-generator-validator/</loc>
+    <lastmod>2026-06-11</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/ja/tools/security/</loc>
     <lastmod>2026-06-11</lastmod>
   </url>
   <url>
@@ -2893,6 +2941,10 @@
     <lastmod>2026-06-11</lastmod>
   </url>
   <url>
+    <loc>https://www.jquery.app/nl/tools/data/</loc>
+    <lastmod>2026-06-11</lastmod>
+  </url>
+  <url>
     <loc>https://www.jquery.app/nl/tools/declarative-shadow-dom-snippet-generator/</loc>
     <lastmod>2026-06-11</lastmod>
   </url>
@@ -3026,6 +3078,10 @@
   </url>
   <url>
     <loc>https://www.jquery.app/nl/tools/intl-durationformat-generator/</loc>
+    <lastmod>2026-06-11</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/nl/tools/javascript/</loc>
     <lastmod>2026-06-11</lastmod>
   </url>
   <url>
@@ -3170,6 +3226,10 @@
   </url>
   <url>
     <loc>https://www.jquery.app/nl/tools/security-txt-generator-validator/</loc>
+    <lastmod>2026-06-11</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/nl/tools/security/</loc>
     <lastmod>2026-06-11</lastmod>
   </url>
   <url>
@@ -3517,6 +3577,10 @@
     <lastmod>2026-06-11</lastmod>
   </url>
   <url>
+    <loc>https://www.jquery.app/tools/data/</loc>
+    <lastmod>2026-06-11</lastmod>
+  </url>
+  <url>
     <loc>https://www.jquery.app/tools/declarative-shadow-dom-snippet-generator/</loc>
     <lastmod>2026-06-11</lastmod>
   </url>
@@ -3650,6 +3714,10 @@
   </url>
   <url>
     <loc>https://www.jquery.app/tools/intl-durationformat-generator/</loc>
+    <lastmod>2026-06-11</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/tools/javascript/</loc>
     <lastmod>2026-06-11</lastmod>
   </url>
   <url>
@@ -3794,6 +3862,10 @@
   </url>
   <url>
     <loc>https://www.jquery.app/tools/security-txt-generator-validator/</loc>
+    <lastmod>2026-06-11</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jquery.app/tools/security/</loc>
     <lastmod>2026-06-11</lastmod>
   </url>
   <url>

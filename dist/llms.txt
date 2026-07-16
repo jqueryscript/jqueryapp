@@ -37,11 +37,14 @@
 
 ## Tool Categories
 
-- [SEO Tools](https://www.jquery.app/tools/seo/): Small browser tools for metadata, indexing, canonical URLs, social previews, and static site launch checks.
-- [HTML Tools](https://www.jquery.app/tools/html/): Copy-paste helpers for cleaner HTML tags, head markup, snippets, and publishing workflows.
-- [CSS Tools](https://www.jquery.app/tools/css/): Practical CSS generators for responsive layouts, spacing, mobile polish, and everyday UI fixes.
-- [Image & Asset Tools](https://www.jquery.app/tools/assets/): Local helpers for icons, image markup, asset paths, and static website files.
-- [GitHub Pages Tools](https://www.jquery.app/tools/github-pages/): Tools for custom domains, static publishing, launch checks, and GitHub Pages website maintenance.
+- [HTML & Accessibility Tools](https://www.jquery.app/tools/html/): HTML generators and accessibility checks for semantic markup, forms, embeds, loading hints, and browser-native UI.
+- [CSS & Design Tools](https://www.jquery.app/tools/css/): CSS generators and visual helpers for layouts, color, responsive sizing, animation, and everyday interface work.
+- [JSON, Data & Formatter Tools](https://www.jquery.app/tools/data/): Format, validate, compare, convert, and inspect JSON, YAML, CSV, text, timestamps, cron expressions, and query strings.
+- [Encoders, Hash & Security Tools](https://www.jquery.app/tools/security/): Encode and inspect data, generate hashes, and prepare browser security policies, integrity values, tokens, and headers.
+- [Images, SVG & Asset Tools](https://www.jquery.app/tools/assets/): Local image, SVG, icon, QR code, manifest, and asset helpers for websites and browser apps.
+- [SEO & Web Publishing Tools](https://www.jquery.app/tools/seo/): Browser tools for search metadata, indexing, feeds, content publishing, social previews, and launch checks.
+- [GitHub Pages & Deployment Tools](https://www.jquery.app/tools/github-pages/): Tools for GitHub Pages, DNS, redirects, HTTP headers, static deployment, and launch troubleshooting.
+- [JavaScript & Web API Tools](https://www.jquery.app/tools/javascript/): Generate and test browser API snippets for navigation, workers, performance, URLs, regex, transport, reporting, and modern interactions.
 
 ## Important Pages
 
